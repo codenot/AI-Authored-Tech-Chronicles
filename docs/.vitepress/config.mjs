@@ -14,7 +14,8 @@ export default defineConfig({
       { text: '🏠 首页', link: '/' },
       { text: '🛣️ WebRTC ICE 破冰决战', link: '/webrtc-ice-series/01_ice_connectivity_troubleshooting' },
       { text: '📡 RTC 拥塞控制群侠传', link: '/rtc-algorithm/01_rtc_congestion_intro' },
-      { text: '🌲 Git 分支管理学', link: '/git-workflow/01_branch_management' }
+      { text: '🌲 Git 分支管理学', link: '/git-workflow/01_branch_management' },
+      { text: '🤖 AI 编程与工程化', link: '/software-engineering/00_traditional_software_engineering' }
     ],
 
     sidebar: {
@@ -39,6 +40,18 @@ export default defineConfig({
             { text: '01. 抓捕建联失败的连环杀手', link: '/webrtc-ice-series/01_ice_connectivity_troubleshooting' },
             { text: '02. 完整建联协议大剖析', link: '/webrtc-ice-series/02_ice_detailed_workflow' },
             { text: '03. Wireshark 深海抓包直击', link: '/webrtc-ice-series/03_ice_packet_capture_analysis' }
+          ]
+        }
+      ],
+      '/software-engineering/': [
+        {
+          text: 'AI 编程时代软件工程',
+          items: [
+            { text: '00. 软件工程的物理直觉', link: '/software-engineering/00_traditional_software_engineering' },
+            { text: '01. AI时代软件工程新八股', link: '/software-engineering/01_ai_software_engineering' },
+            { text: '02. 架构级 Prompt 实战', link: '/software-engineering/02_ai_gateway_practice' },
+            { text: '03. GStack：精英兵团车轮战', link: '/software-engineering/03_gstack_ai_team' },
+            { text: '04. OpenSpec：对抗架构失忆', link: '/software-engineering/04_openspec_vibe_coding' }
           ]
         }
       ],

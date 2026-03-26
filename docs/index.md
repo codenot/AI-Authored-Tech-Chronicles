@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: 📡 翻看拥塞控制算法大观
       link: /rtc-algorithm/01_rtc_congestion_intro
+    - theme: alt
+      text: 🤖 驯服 AI 的工程咒语
+      link: /software-engineering/00_traditional_software_engineering
 
 features:
   - title: "绝对白话，拒绝八股教条"
