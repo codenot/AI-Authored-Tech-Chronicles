@@ -18,6 +18,9 @@ hero:
     - theme: alt
       text: 🤖 驯服 AI 的工程咒语
       link: /software-engineering/00_traditional_software_engineering
+    - theme: alt
+      text: 🧠 探索 AI 编程最佳实践
+      link: /AI编程最佳实践/article-01-overview
 
 features:
   - title: "绝对白话，拒绝八股教条"
@@ -29,4 +32,7 @@ features:
   - title: "面向实战排错"
     details: "如果你遇到了黑屏、卡顿、音画不同步，这里有 Wireshark 级别的‘望闻问切’独门排障心法教你暴力破局。"
     icon: 🛡️
+  - title: "系统化 AI 编程约束"
+    details: "彻底解构 AI 编程的本质，通过深入浅出的源码解析，教你用硬核系统流程对抗 AI 幻觉与惰性。"
+    icon: 🧠
 ---

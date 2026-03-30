@@ -15,7 +15,8 @@ export default defineConfig({
       { text: '🛣️ WebRTC ICE 破冰决战', link: '/webrtc-ice-series/01_ice_connectivity_troubleshooting' },
       { text: '📡 RTC 拥塞控制群侠传', link: '/rtc-algorithm/01_rtc_congestion_intro' },
       { text: '🌲 Git 分支管理学', link: '/git-workflow/01_branch_management' },
-      { text: '🤖 AI 编程与工程化', link: '/software-engineering/00_traditional_software_engineering' }
+      { text: '🤖 AI 编程与工程化', link: '/software-engineering/00_traditional_software_engineering' },
+      { text: '🧠 AI 编程最佳实践', link: '/AI编程最佳实践/article-01-overview' }
     ],
 
     sidebar: {
@@ -60,6 +61,18 @@ export default defineConfig({
           text: '版本控制密码',
           items: [
             { text: '01. 抛弃 develop 的断舍离', link: '/git-workflow/01_branch_management' }
+          ]
+        }
+      ],
+      '/AI编程最佳实践/': [
+        {
+          text: 'AI 编程最佳实践',
+          items: [
+            { text: '01. AI 编程总览', link: '/AI编程最佳实践/article-01-overview' },
+            { text: '02. gstack 工作流', link: '/AI编程最佳实践/article-02-gstack-superpowers' },
+            { text: '03. Superpowers 解析', link: '/AI编程最佳实践/article-03-superpowers' },
+            { text: '04. 核心原理解构', link: '/AI编程最佳实践/article-04-core-principles' },
+            { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' }
           ]
         }
       ]
