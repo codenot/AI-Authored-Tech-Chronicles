@@ -1,6 +1,6 @@
-# AI 编程最佳实践（二）：gstack 源码解析与 Superpowers 工作流
+# AI 编程最佳实践（二）：gstack 源码解析
 
-> 本文逐 skill 拆解 Garry Tan 的 [gstack](https://github.com/garrytan/gstack) 源码，同时配合 Anthropic 官方 [superpowers-lab skills](https://github.com/anthropics/claude-code-skills/tree/main/superpowers-lab) 讲解它们背后的核心设计。
+> 本文逐 skill 拆解 Garry Tan 的 [gstack](https://github.com/garrytan/gstack) 源码，讲解其背后的核心设计。
 
 ---
 
@@ -694,9 +694,6 @@ DESIGN-FIX RISK:
 /retro                → 经验总结，查看 metrics 趋势
 ```
 
-> **gstack vs superpowers 的关系**：两者是独立的 skill 系统。gstack 是一套完整的研发流程工具链（规划→评审→测试→发布），superpowers 是 Anthropic 的 Claude Code skills 示例库，覆盖调试、架构、TDD 等单项能力模式。它们在"用 SKILL.md 约束 AI 行为"这一实现机制上相同，但面向的问题域不同，可以分别单独使用，也可以互补使用。
-
----
 
 ## 五、最小落地配置
 
