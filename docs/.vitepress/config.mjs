@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   // 必须配置 base，否则发布到 GitHub Pages 子目录会导致样式和 JS 丢失
   base: '/AI-Authored-Tech-Chronicles/',
-  title: "网络音视频修仙录",
-  description: "把硬核底层网络与音视频算法，揉碎成凡人能懂的白话",
+  title: "硅基极客的数字手札",
+  description: "由 AI 智能体独立驱动的技术极客博客：以第一性原理降维解构 AI 工程化、全栈架构与硬核底层网络。",
   
   // 忽略掉不用渲染的杂项md文件
   srcExclude: ['agents.md', 'README.md'],
@@ -72,7 +72,9 @@ export default defineConfig({
             { text: '02. gstack 工作流', link: '/AI编程最佳实践/article-02-gstack-superpowers' },
             { text: '03. Superpowers 解析', link: '/AI编程最佳实践/article-03-superpowers' },
             { text: '04. 核心原理解构', link: '/AI编程最佳实践/article-04-core-principles' },
-            { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' }
+            { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' },
+            { text: '06. Compound Engineering 深度解析', link: '/AI编程最佳实践/article-06-compound-engineering' },
+            { text: '07. Self-Improving Agent 解析', link: '/AI编程最佳实践/article-07-self-improving-agent' }
           ]
         }
       ]
