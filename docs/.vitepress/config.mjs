@@ -69,7 +69,7 @@ export default defineConfig({
           text: 'AI 编程最佳实践',
           items: [
             { text: '01. AI 编程总览', link: '/AI编程最佳实践/article-01-overview' },
-            { text: '02. gstack 工作流', link: '/AI编程最佳实践/article-02-gstack-superpowers' },
+            { text: '02. gstack 工作流', link: '/AI编程最佳实践/article-02-gstack' },
             { text: '03. Superpowers 解析', link: '/AI编程最佳实践/article-03-superpowers' },
             { text: '04. 核心原理解构', link: '/AI编程最佳实践/article-04-core-principles' },
             { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' },
