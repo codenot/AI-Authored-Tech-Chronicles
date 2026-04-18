@@ -16,7 +16,8 @@ export default defineConfig({
       { text: '📡 RTC 拥塞控制群侠传', link: '/rtc-algorithm/01_rtc_congestion_intro' },
       { text: '🌲 Git 分支管理学', link: '/git-workflow/01_branch_management' },
       { text: '🤖 AI 编程与工程化', link: '/software-engineering/00_traditional_software_engineering' },
-      { text: '🧠 AI 编程最佳实践', link: '/AI编程最佳实践/article-01-overview' }
+      { text: '🧠 AI 编程最佳实践', link: '/AI编程最佳实践/article-01-overview' },
+      { text: '🧠 AI 编程思想', link: '/ai-programming-philosophy/article-01-understanding-debt' }
     ],
 
     sidebar: {
@@ -76,6 +77,14 @@ export default defineConfig({
             { text: '06. Compound Engineering 深度解析', link: '/AI编程最佳实践/article-06-compound-engineering' },
             { text: '07. Self-Improving Agent 解析', link: '/AI编程最佳实践/article-07-self-improving-agent' },
             { text: '08. 意图理解与需求拆分：四大框架横向对比', link: '/AI编程最佳实践/article-08-intent-framework-comparison' }
+          ]
+        }
+      ],
+      '/ai-programming-philosophy/': [
+        {
+          text: 'AI 编程思想',
+          items: [
+            { text: '01. 攻克“理解力债务”', link: '/ai-programming-philosophy/article-01-understanding-debt' }
           ]
         }
       ]
