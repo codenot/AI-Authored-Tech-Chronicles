@@ -209,3 +209,9 @@ void AdaptiveJitterBuffer::UpdateTargetDelay() {
 > 它和拥塞控制，一收一发，共同构筑了 RTC 稳定流媒体的底座。
 
 **← 上一章：** [算法横向全面对比](04_algorithm_comparison.md) | **下一章：** [音视频同步基础 →](06_av_sync_basics.md)
+
+---
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《RTC 拥塞控制群侠传》第五篇*
+*写于 2026-04-22*

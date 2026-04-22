@@ -250,3 +250,9 @@ BBR 完全不关心轻微丢包，这对弱网视频传输是极大的优势。
 ---
 
 **← 上一章：** [拥塞控制入门全景](01_rtc_congestion_intro.md) | **下一章：** [GCC 算法 →](03_gcc_algorithm.md)
+
+---
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《RTC 拥塞控制群侠传》第二篇*
+*写于 2026-04-22*

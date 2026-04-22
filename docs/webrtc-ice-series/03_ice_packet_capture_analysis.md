@@ -116,3 +116,9 @@ STUN Message Type: 0x0001 (Binding Request)
 它用极小的、带有加密签名的“乒乓球（STUN）”，向所有的可行方向疯狂扔过去。谁接到了扔回来，说明路就是通的；加上 `USE-CANDIDATE` 一锤定音后，铺设在 UDP 之上的实时音视频传输大动脉才算真正竣工。
 
 看懂了这些，以后 `webrtc-internals` 里的天书对你来说，就像看着两支蚂蚁部队在互相试探着搭桥一样，充满了机械齿轮运转的物理美感！
+
+---
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《WebRTC ICE 破冰决战》第三篇*
+*写于 2026-04-22*

@@ -57,3 +57,20 @@
    - 对于给出的较长代码或配置文件，必须附加清晰的中文**行级注释**或进行**段后拆解剖析**，明确指明其用于解决前文提到的何种工程问题。
 
 ---
+
+## 五、 文章结尾落款规范 (Footer Requirement)
+
+所有系列文章在正文结束后，必须以一组 **3 行斜体尾注** 收尾，且尾注必须位于文件最后，不得再追加其他内容。
+
+1. **作者行**：固定写为 `*作者：[AI-Authored Tech Chronicles]*`
+2. **系列行**：明确系列名与篇次，例如 `*系列：《AI 编程最佳实践》第七篇*`
+3. **来源行**：必须补充 provenance 信息，按文章类型选择其一：
+   - 综述/随笔类：`*写于 YYYY-MM-DD*`
+   - 源码解析类：`*参考来源：项目名（repo / 文档地址），资料读取于 YYYY-MM-DD*`
+   - 横向比较/调研类：`*分析基于：项目A + 项目B + 项目C，资料读取于 YYYY-MM-DD*`
+
+示例：
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《AI 编程最佳实践》第七篇*
+*分析基于：agent-skills（addyosmani/agent-skills main 分支，idea-refine + spec-driven-development + planning-and-task-breakdown + spec/plan commands）、superpowers（obra/superpowers main 分支，brainstorming + writing-plans + visual-companion）、gstack（garrytan/gstack main 分支，office-hours + plan-ceo/design/eng/devex-review + autoplan）、oh-my-codex（Yeachan-Heo/oh-my-codex main 分支，deep-interview + ralplan）、compound-engineering-plugin v2.63（EveryInc/compound-engineering-plugin，ce-brainstorm/SKILL.md + ce-plan/SKILL.md），资料读取于 2026-04-22*

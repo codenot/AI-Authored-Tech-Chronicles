@@ -151,3 +151,9 @@ public:
 > 这种以“听感”为第一顺位的决策，是做实时声网技术的金科玉律。
 
 **← 上一章：** [JitterBuffer基础原理](05_jitterbuffer_basics.md) | **下一章：** [WebRTC的具体演进与落地实现 →](07_webrtc_jitterbuffer_implementation.md)
+
+---
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《RTC 拥塞控制群侠传》第六篇*
+*写于 2026-04-22*

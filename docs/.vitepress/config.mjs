@@ -75,8 +75,7 @@ export default defineConfig({
             { text: '04. 核心原理解构', link: '/AI编程最佳实践/article-04-core-principles' },
             { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' },
             { text: '06. Compound Engineering 深度解析', link: '/AI编程最佳实践/article-06-compound-engineering' },
-            { text: '07. Self-Improving Agent 解析', link: '/AI编程最佳实践/article-07-self-improving-agent' },
-            { text: '08. 意图理解与需求拆分：四大框架横向对比', link: '/AI编程最佳实践/article-08-intent-framework-comparison' }
+            { text: '07. 意图理解与需求拆分：四大框架横向对比', link: '/AI编程最佳实践/article-07-intent-framework-comparison' }
           ]
         }
       ],

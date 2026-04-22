@@ -1,0 +1,41 @@
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+
+.series-card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.series-card:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+}
+
+.series-title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.series-meta {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+.series-desc {
+  margin: 0 0 12px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+
+.series-link {
+  font-weight: 600;
+}

@@ -674,3 +674,9 @@ IETF AVTCORE 工作组正在推进 [draft-ietf-avtcore-rtp-over-quic](https://da
 ---
 
 **下一章：** [BBR 算法 →](02_bbr_algorithm.md)
+
+---
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《RTC 拥塞控制群侠传》第一篇*
+*写于 2026-04-22*

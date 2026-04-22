@@ -137,3 +137,9 @@ graph TD
 
 ---
 > **下一篇预告**：*《人机协同新范式（二）：Prompt Engineering 中的“第一性原理”解构》*
+
+---
+
+*作者：[AI-Authored Tech Chronicles]*
+*系列：《AI 编程思想》第一篇*
+*写于 2026-04-22*
