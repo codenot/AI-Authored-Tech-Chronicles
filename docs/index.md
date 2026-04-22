@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 从这里开始
-      link: /software-engineering/00_traditional_software_engineering
+      link: /ai-programming-philosophy/01_ai_software_engineering
     - theme: alt
       text: AI 编程最佳实践
       link: /AI编程最佳实践/article-01-overview
@@ -41,19 +41,19 @@ features:
 
 ## 推荐阅读路径
 
-- **想快速建立全局认知**：先读 `AI 编程与工程化`，再跳到 `AI 编程最佳实践`。
+- **想快速建立全局认知**：先读 `AI 编程思想`，再跳到 `AI 编程最佳实践`。
 - **想解决实时通信问题**：先读 `WebRTC ICE`，再读 `RTC 拥塞控制`。
 - **想沉淀团队方法论**：读 `AI 编程思想` 与 `Git 分支管理学`。
 
 ## 系列导航
 
-### AI 编程与工程化
+### AI 编程思想
 
-当前篇数：6
+当前篇数：3
 
 从软件工程基础直觉到 AI 协作范式，建立完整的工程方法底座。
 
-[开始阅读](/software-engineering/00_traditional_software_engineering)
+[开始阅读](/ai-programming-philosophy/01_ai_software_engineering)
 
 ### AI 编程最佳实践
 
@@ -62,14 +62,6 @@ features:
 面向落地，聚焦工作流、协作模式与可复制的团队实践方案。
 
 [开始阅读](/AI编程最佳实践/article-01-overview)
-
-### AI 编程思想
-
-当前篇数：1
-
-聚焦长期认知框架，处理理解成本、决策质量与工程思维升级。
-
-[开始阅读](/ai-programming-philosophy/article-01-understanding-debt)
 
 ### WebRTC ICE 破冰决战
 
@@ -97,5 +89,5 @@ features:
 
 ## 最近新增
 
-- [AI 编程思想 01：攻克“理解力债务”](/ai-programming-philosophy/article-01-understanding-debt)
+- [AI 编程思想 02：AI 协作中的“理解力债务”](/ai-programming-philosophy/02_understanding_debt)
 - [OpenClaw 参考文档](/openclaw/ref)

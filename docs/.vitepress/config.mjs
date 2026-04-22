@@ -15,9 +15,8 @@ export default defineConfig({
       { text: '🛣️ WebRTC ICE 破冰决战', link: '/webrtc-ice-series/01_ice_connectivity_troubleshooting' },
       { text: '📡 RTC 拥塞控制群侠传', link: '/rtc-algorithm/01_rtc_congestion_intro' },
       { text: '🌲 Git 分支管理学', link: '/git-workflow/01_branch_management' },
-      { text: '🤖 AI 编程与工程化', link: '/software-engineering/00_traditional_software_engineering' },
+      { text: '🧠 AI 编程思想', link: '/ai-programming-philosophy/01_ai_software_engineering' },
       { text: '🧠 AI 编程最佳实践', link: '/AI编程最佳实践/article-01-overview' },
-      { text: '🧠 AI 编程思想', link: '/ai-programming-philosophy/article-01-understanding-debt' }
     ],
 
     sidebar: {
@@ -45,15 +44,13 @@ export default defineConfig({
           ]
         }
       ],
-      '/software-engineering/': [
+      '/ai-programming-philosophy/': [
         {
-          text: 'AI 编程时代软件工程',
+          text: 'AI 编程思想',
           items: [
-            { text: '00. 软件工程的物理直觉', link: '/software-engineering/00_traditional_software_engineering' },
-            { text: '01. AI时代软件工程新八股', link: '/software-engineering/01_ai_software_engineering' },
-            { text: '02. 架构级 Prompt 实战', link: '/software-engineering/02_ai_gateway_practice' },
-            { text: '03. GStack：精英兵团车轮战', link: '/software-engineering/03_gstack_ai_team' },
-            { text: '04. OpenSpec：对抗架构失忆', link: '/software-engineering/04_openspec_vibe_coding' }
+            { text: '01. 软件工程一路如何走到 AI 时代', link: '/ai-programming-philosophy/01_ai_software_engineering' },
+            { text: '02. AI 协作中的“理解力债务”', link: '/ai-programming-philosophy/02_understanding_debt' },
+            { text: '03. AI Agent 设计范式与核心交互机制', link: '/ai-programming-philosophy/03_ai_agent_design_patterns' }
           ]
         }
       ],
@@ -79,14 +76,6 @@ export default defineConfig({
           ]
         }
       ],
-      '/ai-programming-philosophy/': [
-        {
-          text: 'AI 编程思想',
-          items: [
-            { text: '01. 攻克“理解力债务”', link: '/ai-programming-philosophy/article-01-understanding-debt' }
-          ]
-        }
-      ]
     },
 
     socialLinks: [
