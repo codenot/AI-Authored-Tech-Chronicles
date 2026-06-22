@@ -73,7 +73,13 @@ export default defineConfig({
             { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' },
             { text: '06. Compound Engineering 深度解析', link: '/AI编程最佳实践/article-06-compound-engineering' },
             { text: '07. 意图理解与需求拆分：四大框架横向对比', link: '/AI编程最佳实践/article-07-intent-framework-comparison' },
-            { text: '08. Matt Pocock Skills 深度解析', link: '/AI编程最佳实践/article-08-matt-pocock-skills' }
+            { text: '08. Matt Pocock Skills 深度解析', link: '/AI编程最佳实践/article-08-matt-pocock-skills' },
+            { text: '资料. agent-skills 意图识别与文档生成', link: '/AI编程最佳实践/material-agent-skills-intent-docs' },
+            { text: '资料. Superpowers 意图识别与文档生成', link: '/AI编程最佳实践/material-superpowers-intent-docs' },
+            { text: '资料. gstack 意图识别与文档生成', link: '/AI编程最佳实践/material-gstack-intent-docs' },
+            { text: '资料. Compound Engineering 意图识别与文档生成', link: '/AI编程最佳实践/material-compound-engineering-intent-docs' },
+            { text: '资料. Matt Pocock Skills 意图识别与文档生成', link: '/AI编程最佳实践/material-matt-pocock-skills-intent-docs' },
+            { text: '资料. Spec Kit 意图识别与文档生成', link: '/AI编程最佳实践/material-spec-kit-intent-docs' }
           ]
         }
       ],

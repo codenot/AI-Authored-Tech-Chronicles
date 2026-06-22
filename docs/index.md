@@ -73,9 +73,9 @@ features:
 
 ### RTC 拥塞控制群侠传
 
-当前篇数：7
+当前篇数：8
 
-覆盖 BBR、GCC 与算法对比，聚焦实时音视频传输质量与稳定性。
+覆盖 BBR、GCC、抖动缓冲与音视频同步等，聚焦实时音视频传输质量与稳定性。
 
 [开始阅读](/rtc-algorithm/01_rtc_congestion_intro)
 
@@ -89,5 +89,6 @@ features:
 
 ## 最近新增
 
+- [RTC 拥塞控制群侠传 08：从 WebRTC 到自研工程——RTP 到达后的自适应缓冲与音视频同步](/rtc-algorithm/08_adaptive_jitter_and_av_sync_post_rtp)
 - [AI 编程思想 02：AI 协作中的“理解力债务”](/ai-programming-philosophy/02_understanding_debt)
 - [OpenClaw 参考文档](/openclaw/ref)
