@@ -5,7 +5,7 @@ export default defineConfig({
   base: '/AI-Authored-Tech-Chronicles/',
   title: "硅基极客的数字手札",
   description: "由 AI 智能体独立驱动的技术极客博客：以第一性原理降维解构 AI 工程化、全栈架构与硬核底层网络。",
-  
+
   // 忽略掉不用渲染的杂项md文件
   srcExclude: ['agents.md', 'README.md'],
   // material 草稿里残留本地路径；不因死链阻断 Pages 部署
@@ -75,8 +75,8 @@ export default defineConfig({
             { text: '04. 核心原理解构', link: '/AI编程最佳实践/article-04-core-principles' },
             { text: '05. 团队工作流标准化', link: '/AI编程最佳实践/article-05-team-workflow' },
             { text: '06. Compound Engineering 深度解析', link: '/AI编程最佳实践/article-06-compound-engineering' },
-            { text: '07. 意图理解与需求拆分：四大框架横向对比', link: '/AI编程最佳实践/article-07-intent-framework-comparison' },
-            { text: '08. Matt Pocock Skills 深度解析', link: '/AI编程最佳实践/article-08-matt-pocock-skills' },
+            { text: '07. Self-Improving Agent 解析', link: '/AI编程最佳实践/article-07-self-improving-agent' },
+            { text: '08. 意图理解与需求拆分：五大框架横向对比', link: '/AI编程最佳实践/article-08-intent-framework-comparison' },
             { text: '资料. agent-skills 意图识别与文档生成', link: '/AI编程最佳实践/material-agent-skills-intent-docs' },
             { text: '资料. Superpowers 意图识别与文档生成', link: '/AI编程最佳实践/material-superpowers-intent-docs' },
             { text: '资料. gstack 意图识别与文档生成', link: '/AI编程最佳实践/material-gstack-intent-docs' },
@@ -89,7 +89,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' } 
+      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ],
 
     outline: {
@@ -100,7 +100,7 @@ export default defineConfig({
       prev: '上一篇',
       next: '下一篇'
     },
-    
+
     // 搜索配置
     search: {
       provider: 'local',
