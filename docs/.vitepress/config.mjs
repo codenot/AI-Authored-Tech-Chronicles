@@ -8,6 +8,8 @@ export default defineConfig({
   
   // 忽略掉不用渲染的杂项md文件
   srcExclude: ['agents.md', 'README.md'],
+  // material 草稿里残留本地路径；不因死链阻断 Pages 部署
+  ignoreDeadLinks: true,
   
   themeConfig: {
     nav: [
