@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apple CPU 世代全谱 · 桌面 / 移动</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #070b12;
+    --bg-2: #0d1420;
+    --panel: #121a28;
+    --panel-2: #182234;
+    --line: #243044;
+    --line-2: #31405a;
+    --ink: #e8eef8;
+    --muted: #8b9bb4;
+    --faint: #5d6d86;
+    --apple: #a2aaad;
+    --apple-2: #2997ff;
+    --gold: #d4a017;
+    --teal: #2ec4b6;
+    --rose: #e85d75;
+    --ok: #5ad67d;
+    --warn: #f0b429;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans SC", "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  a { color: var(--apple-2); }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 28px 22px 80px; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background:
+      radial-gradient(1200px 420px at 12% -10%, rgba(41,151,255,.20), transparent 55%),
+      radial-gradient(900px 380px at 92% 0%, rgba(162,170,173,.14), transparent 50%),
+      linear-gradient(180deg, #101826 0%, #0a101a 100%);
+    padding: 36px 36px 28px;
+    box-shadow: var(--shadow);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -40% 40%;
+    height: 280px;
+    background: repeating-linear-gradient(-32deg, transparent 0 14px, rgba(41,151,255,.05) 14px 15px);
+    pointer-events: none;
+  }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--apple-2); font-size: 12px; letter-spacing: .18em; font-weight: 700; text-transform: uppercase;
+  }
+  .kicker span { width: 28px; height: 1px; background: var(--apple-2); display: inline-block; }
+  h1 { font-size: clamp(28px, 4vw, 46px); line-height: 1.15; margin: 10px 0 12px; letter-spacing: -.03em; }
+  .lede { max-width: 820px; color: var(--muted); font-size: 15.5px; margin: 0 0 22px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    border: 1px solid var(--line-2); background: rgba(18,26,40,.7);
+    color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px;
+  }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  .stat {
+    background: rgba(8,12,20,.45); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px;
+  }
+  .stat b { display: block; font-size: 26px; font-family: "IBM Plex Mono", monospace; color: #fff; }
+  .stat em { font-style: normal; color: var(--faint); font-size: 12px; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin: 22px 0 16px; padding: 10px 0 12px;
+    background: linear-gradient(180deg, rgba(7,11,18,.96), rgba(7,11,18,.88) 70%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabs { display: flex; gap: 6px; background: var(--panel); border: 1px solid var(--line); padding: 4px; border-radius: 999px; }
+  .tab {
+    border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; font: 600 13px/1 "Noto Sans SC", sans-serif;
+  }
+  .tab.active { background: var(--apple-2); color: #fff; }
+  .search {
+    flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
+    color: var(--ink); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none;
+  }
+  .search:focus { border-color: var(--apple-2); }
+
+  .note {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; color: var(--muted); font-size: 13px; margin-bottom: 18px;
+  }
+  .note strong { color: var(--ink); }
+  .note ol { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin: 4px 0; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .chip { font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .chip.flag { color: var(--gold); border-color: rgba(212,160,23,.4); }
+  .chip.hi { color: var(--apple-2); border-color: rgba(41,151,255,.35); }
+  .chip.mid { color: var(--teal); border-color: rgba(46,196,182,.35); }
+  .chip.lo { color: #b7c3d6; }
+
+  .panel {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .table-scroll { overflow-x: auto; overflow-y: visible; min-height: 125vh; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1320px; }
+  thead th {
+    position: sticky; top: 0; z-index: 5;
+    background: #141c28; color: #c5d3e8; font-size: 12px; font-weight: 700;
+    letter-spacing: .04em; text-align: left; padding: 12px 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  tbody td {
+    vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line);
+    font-size: 13px; background: var(--panel);
+  }
+  tbody tr:hover td.sku { background: #1a2434; }
+  .gen-cell, .arch-cell, .ms-cell { background: #101820 !important; }
+  .gen-cell { width: 168px; border-right: 1px solid var(--line); }
+  .arch-cell { width: 230px; color: var(--muted); font-size: 12.5px; }
+  .ms-cell { width: 380px; color: #c9d4e4; font-size: 12.5px; line-height: 1.58; }
+  .gen-name { color: #fff; font-weight: 700; font-size: 14px; }
+  .gen-sub { color: var(--apple); font-size: 12px; margin-top: 4px; font-family: "IBM Plex Mono", monospace; }
+  .kv { margin: 0; padding: 0; list-style: none; }
+  .kv li { margin: 3px 0; }
+  .kv b { color: #d5deeb; font-weight: 600; }
+  .date { color: #dfe7f3; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; white-space: nowrap; }
+  .tier {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    padding: 2px 6px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .t-flag { background: rgba(212,160,23,.15); color: var(--gold); }
+  .t-hi { background: rgba(41,151,255,.14); color: var(--apple-2); }
+  .t-mid { background: rgba(46,196,182,.14); color: var(--teal); }
+  .t-lo { background: rgba(183,195,214,.12); color: #c5d0e0; }
+  .model { font-weight: 700; color: #fff; font-size: 14px; margin-top: 0; }
+  .spec { color: var(--muted); margin-top: 4px; font-size: 12.5px; }
+  .scores { display: grid; gap: 8px; min-width: 250px; }
+  .score-block {
+    background: #0e1624; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+  }
+  .score-h { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ver {
+    font-size: 10px; color: var(--faint); font-family: "IBM Plex Mono", monospace; letter-spacing: .04em;
+  }
+  .ver-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    padding: 1px 6px; border-radius: 4px; margin-right: 6px; font-family: "IBM Plex Mono", monospace;
+  }
+  .ver-7 { background: #2997ff; color: #fff; }
+  .ver-6 { background: #2ec4b6; color: #062b28; }
+  .ver-5 { background: #d4a017; color: #1a1400; }
+  .ver-4 { background: #6b7c93; color: #fff; }
+  .ver-3 { background: #4a5568; color: #fff; }
+  .ver-2 { background: #805ad5; color: #fff; }
+  .nums { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #fff; }
+  .nums small { color: var(--muted); font-size: 11px; }
+  .bar { height: 4px; background: #223049; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--apple), var(--apple-2)); }
+  .na { color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+  .hidden { display: none !important; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+
+  footer {
+    margin-top: 28px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  footer h3 { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  footer ul { margin: 0; padding-left: 18px; }
+  footer li { margin: 4px 0; }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 22px; }
+    .table-scroll { min-height: 125vh; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span></span>Apple CPU Chronicle · 1994–2026</div>
+    <h1>Apple 处理器世代全谱</h1>
+    <p class="lede">从 PowerPC 601（1994）讲到 M6（2026），移动端从自研 A4 讲到 A19 Pro。桌面 / 移动分表；每一代列出各档最高型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
+    <div class="meta-row">
+      <span class="pill">资料读取于 2026-09-10</span>
+      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="n-desk">—</b><em>桌面世代</em></div>
+      <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
+      <div class="stat"><b id="n-span">—</b><em>跨度</em></div>
+      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-seg="desktop">桌面端</button>
+      <button class="tab" data-seg="mobile">移动端</button>
+    </div>
+    <input class="search" id="q" placeholder="搜索代数、代号、型号，例如 M4 Max / Firestorm / A17 Pro" />
+  </div>
+
+  <section class="note">
+    <strong>读表规则</strong>
+    <ol>
+      <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 拓扑 / 内存与 I/O。</li>
+      <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>Geekbench 2 以 <b>Power Mac G5 1.6 GHz = 1000</b> 为综合分基准，没有单核/多核拆分，不可与 GB3 之后的分核分数换算。</li>
+      <li>本表不列 Threadripper 一类 HEDT 分档。Intel Mac 过渡期（2006–2020）只用一格记事：苹果桌面离开 AIM/自研、改用 Intel 约 14 年——不展开 Intel SKU 细节（见 Intel 全谱页）。</li>
+      <li>M 系列记入桌面栏（Mac / Studio / Mac Pro 电脑级）；A 系列记入移动栏。iPad 上的 M 芯片仍属桌面/电脑级架构，本表桌面栏以 Mac 为主。</li>
+      <li>分数来源：EveryMac / Geekbench Browser / LaptopMedia / MacRumors / 评测实验室。编造分数不会出现，找不到就留空。Cinebench R23 几乎全部留空（无可靠公开样本则 null）。</li>
+    </ol>
+  </section>
+  <div class="legend">
+    <span class="chip">GB2 综合分 = 无分核，不可与 GB3+ 换算</span>
+    <span class="chip">R23 = Cinebench R23（多数留空）</span>
+  </div>
+
+  <div class="panel">
+    <div class="table-scroll">
+      <table id="grid">
+        <thead>
+          <tr>
+            <th style="width:168px">产品世代</th>
+            <th style="width:230px">架构 · 工艺 · 规格</th>
+            <th style="width:110px">发布时间</th>
+            <th>型号与规格</th>
+            <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
+            <th style="width:380px">里程碑与当时评论</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty hidden" id="empty">没有匹配的世代或型号。</div>
+  </div>
+
+  <footer>
+    <h3>数据来源</h3>
+    <ul>
+      <li>规格与发布日：Apple Newsroom、Wikipedia Apple silicon / PowerPC 处理器列表（PowerPC 601 至 M6 / A19），读取于 2026-09-10。</li>
+      <li>Geekbench：EveryMac Geekbench averages、Geekbench Browser（含 iOS / macOS 榜）、LaptopMedia / MacRumors 对近期 M5/M6 的第三方样本汇总。</li>
+      <li>GB2 综合分：Power Mac G5 / G4 等早期 Mac 口径（G5 1.6 GHz = 1000 基准）。</li>
+      <li>Intel Mac 过渡期不列 Intel SKU 细节；完整 x86 世代见 Intel 全谱页。</li>
+      <li>Cinebench R23：公开稳定样本极少，本表几乎全部留空，不编造。</li>
+    </ul>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Apple CPU 世代全谱》资料页<br />分析基于：Apple Newsroom + Wikipedia Apple silicon / PowerPC + EveryMac Geekbench averages + Geekbench Browser + LaptopMedia / MacRumors（近期 M5/M6），资料读取于 2026-09-10</p>
+  </footer>
+</div>
+
+<script>
+const GB_META = {
+  7: { tag: "GB7", label: "Geekbench 7", maxSc: 4500, from: "2026-07-23" },
+  6: { tag: "GB6", label: "Geekbench 6", maxSc: 4500, from: "2023-02-14" },
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" },
+  4: { tag: "GB4", label: "Geekbench 4", maxSc: 12000, from: "2016-11-10" },
+  3: { tag: "GB3", label: "Geekbench 3", maxSc: 6000, from: "2013-02-14" },
+  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+};
+const R23 = "Cinebench R23";
+
+const DATA = {
+desktop: [
+  {
+    gen: "PowerPC 601",
+    code: "AIM 601",
+    year: "1994",
+    arch: [["微架构","PowerPC 601"],["工艺","0.6 μm"],["ISA","PowerPC 32-bit"],["总线","64-bit"],["制造商","IBM / Motorola"]],
+    milestone: "1994-03-14 Power Macintosh 启动 PowerPC 时代。601 是 AIM 联盟第一颗量产 PowerPC，混合 POWER/PowerPC 指令，让苹果离开 68k。同频整数相对 68040 大约 2–4 倍量级（看负载），卖点是 RISC 吞吐和 AIM 供货。没有片上满速大 L2，总线与主板决定上限。这是 Mac 第一次换 ISA，也是此后 G3/G4/G5 的起点。",
+    skus: [
+      {tier:"旗舰", date:"1994-03-14", name:"PowerPC 601 80/100 MHz", spec:"1 核 · Power Mac 6100 / 7100 / 8100", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "PowerPC 603 / 604",
+    code: "G2 分档",
+    year: "1995–1997",
+    arch: [["微架构","603 低功耗 / 604 高端乱序"],["工艺","0.5–0.35 μm"],["缓存","L1 603e 起加大"],["SMP","604 支持"],["定位","便携 vs 高端桌面"]],
+    milestone: "603/603e 走低功耗与笔记本（缓存太小一度拖垮 68k 模拟）；604/604e 走高端桌面与克隆机。同频相对 601 有一代架构提升，但频率竞赛很快被 Intel 拉开。G3（750）出来后，604 路线被同频更高的 750 正面超过。",
+    skus: [
+      {tier:"主流", date:"1996", name:"PowerPC 603e", spec:"200–300 MHz · 入门 / 便携", gb:[], r23:null},
+      {tier:"旗舰", date:"1997", name:"PowerPC 604e", spec:"约 200–250 MHz · 高端 Power Mac", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "PowerPC G3",
+    code: "750 / 740",
+    year: "1997–2001",
+    arch: [["微架构","PowerPC 750"],["工艺","0.25–0.18 μm"],["缓存","片外 / 后片上 L2"],["功耗","相对 604 更低"],["代表机","iMac / PowerBook / 蓝白 G3"]],
+    milestone: "1997-11-10。G3 同频打赢同期 Pentium II，功耗更低，成就 iMac、PowerBook G3、蓝白 Power Mac G3。604 继任者被砍。这是苹果「换芯叙事」第一次大获成功：不是堆频率，是 IPC+功耗+产品设计一起赢。",
+    skus: [
+      {tier:"主流", date:"1998–2001", name:"iMac G3", spec:"233–700 MHz 档 · 消费一体机", gb:[], r23:null},
+      {tier:"旗舰", date:"1999", name:"蓝白 Power Mac G3", spec:"最高约 450 MHz · 蓝白机箱顶配", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "PowerPC G4",
+    code: "7400 / 7410 / 7450 / 7455 / 7447",
+    year: "1999–2005",
+    arch: [["微架构","AltiVec Velocity Engine"],["工艺","0.22–0.13 μm"],["制造商","Motorola"],["时钟","长期约 1.0–1.42 GHz"],["双核","后期少见"]],
+    milestone: "1999 Power Mac G4。AltiVec 向量单元是卖点，多媒体/科学计算吃红利；但时钟长期卡在约 1.0–1.42 GHz，被 Pentium 4 / Athlon 频率战压着。双 1.42 GHz 是消费桌面顶。Geekbench 2：双 1.42 GHz G4 约 1224（Low End Mac / EveryMac 口径）。评论长期是「向量强、时钟弱」。",
+    skus: [
+      {tier:"主流", date:"2002–2004", name:"单核 G4 1.25 GHz 级", spec:"单核 · 约 1.25 GHz · 主流桌面 / 便携", gb:[], r23:null},
+      {tier:"旗舰", date:"2003", name:"Dual 1.42 GHz G4", spec:"双核 · 1.42 GHz · Power Mac G4 顶配", gb:[{v:2,overall:1224}], r23:null}
+    ]
+  },
+  {
+    gen: "PowerPC G5",
+    code: "IBM 970 / 970FX / 970MP",
+    year: "2003–2006",
+    arch: [["微架构","64-bit PowerPC"],["工艺","130–90 nm"],["总线","高倍系统总线"],["散热","液冷顶配"],["拓扑","双路 / 后期四核 970MP"]],
+    milestone: "2003-06。64-bit、高速总线，对上当时 x86 有平台代差叙事；散热与频率上限很快暴露，2.7 GHz 双路靠液冷。Geekbench 2 以 G5 1.6 GHz=1000 为基准。Quad 2.5 GHz（970MP）综合分约 3244–3316。2005–06 Jobs 宣布转 Intel：不是不想继续 PowerPC，是 IBM 交不出能效与路线图。",
+    skus: [
+      {tier:"主流", date:"2003", name:"Dual 2.0 GHz G5", spec:"双路 · 2.0 GHz · 首发档", gb:[{v:2,overall:1692}], r23:null},
+      {tier:"高性能", date:"2005", name:"Dual 2.7 GHz 970FX", spec:"双路 · 2.7 GHz · 液冷顶配", gb:[{v:2,overall:2256}], r23:null},
+      {tier:"旗舰", date:"2005-10", name:"Power Mac G5 Quad 2.5 GHz", spec:"970MP · 4 核 · 2.5 GHz", gb:[{v:2,overall:3244}], r23:null}
+    ]
+  },
+  {
+    gen: "Intel 过渡期",
+    code: "Core Duo → Ice Lake / Cascade Lake W",
+    year: "2006–2020",
+    arch: [["ISA","x86-64"],["设计","苹果未自研 CPU"],["过渡","Rosetta（PowerPC→Intel）"],["安全","后半段 T2"],["跨度","约 14 年"]],
+    milestone: "2006-01 宣布、2006 中出货。从 Core Duo 到第 10 代 Comet Lake / Ice Lake，再到 Xeon W 的 Mac Pro。本表不列 Intel SKU 细节（见 Intel 全谱页）；这里只记「苹果桌面离开自研/AIM，改用 Intel 长达约 14 年」。Rosetta 让 PowerPC 软件过渡；后期 32-bit app 淘汰、T2、蝶式键盘等成为时代槽点。真正回到自研是 2020 M1。",
+    skus: [
+      {tier:"主流", date:"2006", name:"Core Duo MacBook Pro 首发档", spec:"Intel Core Duo · 首代 Intel Mac 笔记本", gb:[], r23:null},
+      {tier:"旗舰", date:"约 2019", name:"Mac Pro Xeon W 高端配置", spec:"Intel · 非苹果设计 · 不列 SKU 细节", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple M1",
+    code: "Icestorm / Firestorm",
+    year: "2020–2022",
+    arch: [["微架构","Apple Silicon ARMv8.5"],["工艺","TSMC 5 nm"],["内存","统一内存"],["NPU","16-core Neural Engine"],["I/O","Thunderbolt 集成"]],
+    milestone: "2020-11-10。8 核（4P+4E）把笔记本续航和单核同时拉到消费级第一梯队；Rosetta 2 让 x86 软件可跑。M1 Pro/Max 加宽内存与 GPU；M1 Ultra 用 UltraFusion 粘两颗 Max。Geekbench 6 基线约 sc 2386 / mc 8571（LaptopMedia 口径）。评论：不是「ARM 笔记本能用」，是「Intel Mac 突然显得又热又慢」。",
+    skus: [
+      {tier:"入门", date:"2020-11-10", name:"M1", spec:"8 核（4P+4E）· 最多 8 核 GPU · 带宽 68.25 GB/s", gb:[{v:6,sc:2386,mc:8571}], r23:null},
+      {tier:"主流", date:"2021-10-18", name:"M1 Pro", spec:"最多 10 核（8P+2E）· 最多 16 核 GPU · 带宽最高 200 GB/s · MacBook Pro 14/16", gb:[{v:6,sc:2385,mc:12338}], r23:null},
+      {tier:"高性能", date:"2021-10-18", name:"M1 Max", spec:"10 核（8P+2E）· 最多 32 核 GPU · 带宽最高 400 GB/s", gb:[{v:6,sc:2397,mc:12631}], r23:null},
+      {tier:"旗舰", date:"2022-03-08", name:"M1 Ultra", spec:"20 核 CPU（16P+4E）· 最多 64 核 GPU · 统一内存最高 128 GB · 带宽最高 800 GB/s", gb:[{v:6,sc:2405,mc:18367}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple M2",
+    code: "Avalanche / Blizzard",
+    year: "2022–2023",
+    arch: [["微架构","Avalanche / Blizzard"],["工艺","TSMC 5 nm Enhanced"],["顶配","最高 24 核 Ultra"],["内存","统一内存最高 192 GB（Ultra）"],["媒体","AV1 decode"]],
+    milestone: "2022-06 M2；Pro/Max 2023-01；Ultra 2023-06。相对 M1 单核约 +10–15%、多核视核数。M2 Ultra 24 核。媒体口径：迭代扎实，但不如 M1 那年的「世界观颠覆」。",
+    skus: [
+      {tier:"入门", date:"2022-06", name:"M2", spec:"8 核（4P+4E）· 最多 10 核 GPU · 带宽 100 GB/s", gb:[{v:6,sc:2613,mc:10082}], r23:null},
+      {tier:"主流", date:"2023-01", name:"M2 Pro", spec:"最多 12 核（8P+4E）· 最多 19 核 GPU · 带宽 200 GB/s · MacBook Pro / Mac mini", gb:[{v:6,sc:2678,mc:14511}], r23:null},
+      {tier:"高性能", date:"2023-01", name:"M2 Max", spec:"12 核（8P+4E）· 最多 38 核 GPU · 带宽最高 400 GB/s", gb:[{v:6,sc:2642,mc:14621}], r23:null},
+      {tier:"旗舰", date:"2023-06", name:"M2 Ultra", spec:"24 核 · 最多 76 核 GPU · 统一内存最高 192 GB · 带宽最高 800 GB/s", gb:[{v:6,sc:2691,mc:21241}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple M3",
+    code: "Everest / Sawtooth",
+    year: "2023–2025",
+    arch: [["微架构","Everest / Sawtooth"],["工艺","TSMC 3 nm"],["GPU","Dynamic Caching · 硬件光追 / mesh"],["Ultra","最晚到 2025-03"],["定位","首款 3 nm PC 芯片族"]],
+    milestone: "2023-10 同场发 M3/Pro/Max。首款 3 nm PC 芯片族；GPU 功能集现代化。M3 Ultra（2025）32 核 CPU / 最多 80 核 GPU，把 Studio 顶配补齐。注意：M3 Pro 内存通道相对 M2 Pro 的取舍引发「不是线性升级」讨论。",
+    skus: [
+      {tier:"入门", date:"2023-10", name:"M3", spec:"8 核（4P+4E）· 最多 10 核 GPU · 带宽 100 GB/s", gb:[{v:6,sc:3135,mc:12042}], r23:null},
+      {tier:"主流", date:"2023-10", name:"M3 Pro", spec:"最多 12 核（6P+6E）· 最多 18 核 GPU · 带宽 150 GB/s · MacBook Pro", gb:[{v:6,sc:3202,mc:15831}], r23:null},
+      {tier:"高性能", date:"2023-10", name:"M3 Max", spec:"最多 16 核 · 最多 40 核 GPU · 带宽最高 400 GB/s", gb:[{v:6,sc:3270,mc:21385}], r23:null},
+      {tier:"旗舰", date:"2025-03", name:"M3 Ultra", spec:"32 核 · 最多 80 核 GPU · 带宽约 819 GB/s", gb:[{v:6,sc:3247,mc:28169}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple M4",
+    code: "2024–2025 Mac / iPad Pro 首发",
+    year: "2024–2025",
+    arch: [["微架构","Apple M4"],["工艺","TSMC 第二代 3 nm"],["主频","更高主频"],["NPU","Neural Engine ~38 TOPS 级（Apple 口径）"],["I/O","Thunderbolt 5（Pro/Max）"]],
+    milestone: "2024-05 先上 iPad Pro，再进 Mac mini / iMac / MacBook Pro。单核 GB6 跃到约 3800 档，是 M 系列最大的单核台阶之一。M4 Max 16 核多核约 25760。无 M4 Ultra——顶配仍用 M3 Ultra 过渡。",
+    skus: [
+      {tier:"主流", date:"2024-05", name:"M4", spec:"最多 10 核 · 最多 10 核 GPU · 带宽 120 GB/s · iPad Pro / Mac mini / iMac", gb:[{v:6,sc:3830,mc:14990}], r23:null},
+      {tier:"高性能", date:"2024-10", name:"M4 Pro", spec:"最多 14 核 · 最多 20 核 GPU · 带宽最高 273 GB/s · Thunderbolt 5", gb:[{v:6,sc:3943,mc:22914}], r23:null},
+      {tier:"旗舰", date:"2024-10", name:"M4 Max", spec:"最多 16 核 · 最多 40 核 GPU · 带宽最高 546 GB/s · 无 M4 Ultra", gb:[{v:6,sc:3880,mc:25760}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple M5",
+    code: "N3P · Super cores 引入",
+    year: "2025–2026",
+    arch: [["微架构","Super core 命名（S+P 簇）"],["工艺","TSMC N3P"],["GPU","Neural Accelerators"],["Ultra","2026-08 与 M6 同场"],["AI","从 Neural Engine 扩到 GPU 内加速器"]],
+    milestone: "2025-10 基线 M5；2026 初 Pro/Max；2026-08 M5 Ultra（最多 36 核 CPU / 80 核 GPU / 512 GB / 1.2 TB/s）。AI 算力叙事从 Neural Engine 扩到 GPU 内加速器。M5 Max GB6 约 sc 4305 / mc 29159（LaptopMedia）。",
+    skus: [
+      {tier:"入门", date:"2025-10", name:"M5", spec:"最多 10 核 · 最多 10 核 GPU · 带宽约 153 GB/s", gb:[{v:6,sc:4227,mc:17802}], r23:null},
+      {tier:"主流", date:"2026", name:"M5 Pro", spec:"最多 18 核（6S+12P）· 最多 20 核 GPU · 带宽约 307 GB/s · MacBook Pro", gb:[{v:6,sc:4276,mc:28030}], r23:null},
+      {tier:"高性能", date:"2026", name:"M5 Max", spec:"18 核（6S+12P）· 最多 40 核 GPU · 带宽最高 614 GB/s", gb:[{v:6,sc:4305,mc:29159}], r23:null},
+      {tier:"旗舰", date:"2026-08-25", name:"M5 Ultra", spec:"最多 36 核（12S+24P）· 最多 80 核 GPU · 统一内存最高 512 GB · 带宽 1.2 TB/s", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple M6",
+    code: "TSMC N2 · 2 nm",
+    year: "2026",
+    arch: [["微架构","2 Super + 4 P + 6 E"],["工艺","TSMC N2 · 2 nm"],["GPU","12 核 GPU"],["NPU","Dual 16-core Neural Engine"],["带宽","最高 170 GB/s · 主要 Mac mini"]],
+    milestone: "2026-08-25 与 M5 Ultra 同场发布。第一颗 2 nm Apple Silicon；引入更明确的 Super core。报道称本代可能跳过 Pro/Max，高端交给下一代。GB6 第三方约 sc 4501 / mc 21312（ithinkdiff 等，标注为第三方早期样本）。不要写成「全面超过 M5 Ultra」——定位与功耗墙完全不同。",
+    skus: [
+      {tier:"旗舰", date:"2026-08-25", name:"M6", spec:"12 核 · 12 核 GPU · 统一内存 16–32 GB", gb:[{v:6,sc:4501,mc:21312}], r23:null}
+    ]
+  }
+],
+mobile: [
+  {
+    gen: "Apple A4",
+    code: "APL0398",
+    year: "2010",
+    arch: [["微架构","Cortex-A8"],["工艺","Samsung 45 nm"],["CPU 拓扑","1 核"],["GPU","PowerVR SGX535"],["代表机型","iPad / iPhone 4"]],
+    milestone: "2010 苹果第一颗自研 SoC 品牌登场。内核仍是授权 Cortex-A8，真正的「自研」在封装、系统调校和产品定义。iPhone 4 与初代 iPad 靠它立住视网膜屏与多任务叙事。公开 Geekbench 稳定样本稀缺，本表留空。这是 A 系列编号的起点，不是架构独立的起点。",
+    skus: [
+      {tier:"旗舰", date:"2010-03", name:"A4", spec:"1 核 Cortex-A8 · PowerVR SGX535 · iPad / iPhone 4", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A5 / A5X",
+    code: "APL0498 / APL5498",
+    year: "2011–2012",
+    arch: [["微架构","双核 Cortex-A9"],["工艺","45→32 nm"],["CPU 拓扑","2 核"],["GPU","PowerVR · A5X 加宽"],["代表机型","iPhone 4s / iPad 2 / iPad 3"]],
+    milestone: "2011 A5 把双核 Cortex-A9 带进 iPhone 4s 与 iPad 2，多任务和游戏帧率第一次感觉「够用」。A5X 给 iPad 3 视网膜屏加宽 GPU，也把发热与续航写成槽点。仍是授权核，但苹果已经在 GPU 与封装上拉开差异。公开 GB 样本不稳定，留空。",
+    skus: [
+      {tier:"主流", date:"2011-10", name:"A5", spec:"双核 Cortex-A9 · iPhone 4s / iPad 2", gb:[], r23:null},
+      {tier:"旗舰", date:"2012-03", name:"A5X", spec:"双核 · 加宽 GPU · iPad 3", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A6",
+    code: "Swift",
+    year: "2012",
+    arch: [["微架构","苹果自研 Swift 双核"],["工艺","32 nm"],["CPU 拓扑","2 核"],["GPU","PowerVR SGX543MP3"],["代表机型","iPhone 5 / 5c"]],
+    milestone: "2012 iPhone 5。Swift 是苹果第一次认真做自研应用核，不再只是 Cortex 贴牌。同频相对 A5 有明显 IPC 台阶，评论写成「终于不像换皮 ARM」。仍无 64-bit，真正的 ISA 跃迁留给次年 A7。公开稳定 GB 样本少，留空。",
+    skus: [
+      {tier:"旗舰", date:"2012-09", name:"A6", spec:"Swift 双核 · 32 nm · iPhone 5", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A7",
+    code: "Cyclone",
+    year: "2013",
+    arch: [["微架构","Cyclone"],["工艺","28 nm"],["CPU 拓扑","2 核 64-bit"],["GPU","PowerVR G6430"],["代表机型","iPhone 5s / iPad Air"]],
+    milestone: "2013-09。首款量产 64-bit 消费手机 SoC，把 ARMv8 带进口袋一年多才轮到 Android 阵营跟进。Cyclone 单核相对 A6 再抬一档；M7 运动协处理器开始拆分传感器负载。Geekbench 4 样本约 sc 1267 / mc 2070（iPhone 5s）。这是「手机也能跑桌面级 ISA」叙事的起点。",
+    skus: [
+      {tier:"旗舰", date:"2013-09-20", name:"A7", spec:"Cyclone 双核 · 64-bit · iPhone 5s", gb:[{v:4,sc:1267,mc:2070}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A8 / A8X",
+    code: "Typhoon",
+    year: "2014",
+    arch: [["微架构","Typhoon"],["工艺","20 nm"],["CPU 拓扑","2 核（A8）/ 3 核（A8X）"],["GPU","PowerVR · A8X 加宽"],["代表机型","iPhone 6 / iPad Air 2"]],
+    milestone: "2014 A8 随 iPhone 6 进入 20 nm，能效与金属机身一起定义「大屏 iPhone」。A8X 给 iPad Air 2 三核 CPU 与更宽 GPU，平板性能第一次明显甩开同代手机。公开 GB 口径分散，本表留空。评论重点在工艺与整机，而不再是「会不会做核」。",
+    skus: [
+      {tier:"主流", date:"2014-09", name:"A8", spec:"双核 · 20 nm · iPhone 6 / 6 Plus", gb:[], r23:null},
+      {tier:"旗舰", date:"2014-10", name:"A8X", spec:"三核 Typhoon · iPad Air 2", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A9 / A9X",
+    code: "Twister",
+    year: "2015–2016",
+    arch: [["微架构","Twister"],["工艺","14/16 nm 双代工厂"],["CPU 拓扑","2 核（A9）/ 双核加宽（A9X）"],["GPU","PowerVR 系列"],["代表机型","iPhone 6s / iPad Pro"]],
+    milestone: "2015 A9 首次双代工厂（TSMC/Samsung）量产，引发「芯片彩票」续航讨论。A9X 驱动初代 12.9 寸 iPad Pro，把平板推向生产力叙事。Twister 相对 Typhoon 又是一轮扎实 IPC。公开稳定对比样本不统一，留空。这是苹果平板第一次认真对标轻薄本。",
+    skus: [
+      {tier:"主流", date:"2015-09", name:"A9", spec:"双核 · 14/16 nm · iPhone 6s", gb:[], r23:null},
+      {tier:"旗舰", date:"2015-11", name:"A9X", spec:"Twister · iPad Pro 首发", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A10 Fusion",
+    code: "Hurricane + Zephyr",
+    year: "2016",
+    arch: [["微架构","Hurricane + Zephyr"],["工艺","16 nm"],["CPU 拓扑","2P+2E 大数据优先"],["GPU","苹果定制 6 核级叙事"],["代表机型","iPhone 7 / 7 Plus"]],
+    milestone: "2016 iPhone 7。2P+2E 是苹果第一次在手机上公开大小核调度：大数据优先，小核扛后台。单核继续领跑安卓旗舰；立体声扬声器与取消 3.5 mm 同期成为产品槽点。公开 GB 口径不一，留空。融合架构为后来 A11 的更完整大小核铺路。",
+    skus: [
+      {tier:"旗舰", date:"2016-09", name:"A10 Fusion", spec:"2P+2E · iPhone 7 / 7 Plus", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A11 Bionic",
+    code: "Monsoon + Mistral",
+    year: "2017",
+    arch: [["微架构","Monsoon + Mistral"],["工艺","TSMC 10 nm"],["CPU 拓扑","2P+4E"],["GPU","首款苹果设计三核级 GPU 叙事"],["代表机型","iPhone 8 / X · Neural Engine 2 核"]],
+    milestone: "2017。2P+4E、自研 GPU 叙事、Neural Engine 2 核同场——Bionic 品牌从此绑定「端侧智能」。Face ID 与 Animoji 把 NPU 写成卖点而不只是跑分。GB6 约 sc 1097 / mc 2357，GB5 约 sc 897 / mc 2236。这是苹果把「芯片故事」从 CPU 扩展到 AI 加速的一代。",
+    skus: [
+      {tier:"旗舰", date:"2017-09", name:"A11 Bionic", spec:"2P+4E · Neural Engine 2 核 · iPhone 8 / X", gb:[{v:6,sc:1097,mc:2357},{v:5,sc:897,mc:2236}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A12 Bionic",
+    code: "Vortex + Tempest",
+    year: "2018",
+    arch: [["微架构","Vortex + Tempest"],["工艺","TSMC 7 nm"],["CPU 拓扑","2P+4E"],["GPU","4 核"],["代表机型","iPhone XS / XR · Neural Engine 8 核"]],
+    milestone: "2018 首款 7 nm 消费 SoC 之一。Neural Engine 扩到 8 核，Core ML 与摄影计算开始吃满。单核继续压着同期骁龙；XS Max 大电池把续航写回正面。公开 GB6 口径分散，本表留空以免混用版本。7 nm + 8 核 NPU 成为此后两年的基线叙事。",
+    skus: [
+      {tier:"旗舰", date:"2018-09", name:"A12 Bionic", spec:"2P+4E · 7 nm · Neural Engine 8 核 · iPhone XS", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A13 Bionic",
+    code: "Lightning + Thunder",
+    year: "2019",
+    arch: [["微架构","Lightning + Thunder"],["工艺","TSMC 7 nm+"],["CPU 拓扑","2P+4E"],["GPU","4 核"],["代表机型","iPhone 11 / 11 Pro"]],
+    milestone: "2019 iPhone 11 系列。制程小迭代，IPC 与能效再抬一档；夜间模式与多摄像头把 ISP/NPU 协作推到台前。GB6 约 sc 1721 / mc 4373（upgreat 等口径）。评论：不是换代震感，是「每年稳稳拉开安卓旗舰单核」的惯性。A14 的 5 nm 才是下一记重锤。",
+    skus: [
+      {tier:"旗舰", date:"2019-09", name:"A13 Bionic", spec:"2P+4E · 7 nm+ · iPhone 11 Pro", gb:[{v:6,sc:1721,mc:4373}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A14 Bionic",
+    code: "Firestorm + Icestorm",
+    year: "2020",
+    arch: [["微架构","Firestorm + Icestorm"],["工艺","TSMC 5 nm"],["CPU 拓扑","2P+4E"],["GPU","4 核"],["代表机型","iPhone 12 / iPad Air"]],
+    milestone: "2020 首款 5 nm 手机 SoC，与 M1 同代核家族。iPhone 12 借 5G 与 MagSafe 换代；单核 GB6 约 2087 / 多核 4820，GB5 约 1477 / 3874。同一套 P/E 命名稍后出现在 M1——手机核正式「 upstream」到电脑。评论开始认真问：下次 Mac 还会用 Intel 吗？",
+    skus: [
+      {tier:"旗舰", date:"2020-10", name:"A14 Bionic", spec:"2P+4E · 5 nm · iPhone 12 / iPad Air", gb:[{v:6,sc:2087,mc:4820},{v:5,sc:1477,mc:3874}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A15 Bionic",
+    code: "Avalanche + Blizzard",
+    year: "2021",
+    arch: [["微架构","Avalanche + Blizzard"],["工艺","TSMC 5 nm Enhanced"],["CPU 拓扑","2P+4E"],["GPU","4/5 核分档"],["代表机型","iPhone 13 / 13 Pro / iPad mini"]],
+    milestone: "2021。同代核稍后用于 M2。Pro 与非 Pro 的 GPU 核数分档成为槽点；摄影计算与 ProRes（13 Pro）继续吃 NPU/ISP。GB6 约 sc 2347 / mc 6353。单核逼近当时不少 Intel 笔记本基线——M1 已经证明这不是巧合。",
+    skus: [
+      {tier:"旗舰", date:"2021-09", name:"A15 Bionic", spec:"2P+4E · 最多 5 核 GPU · iPhone 13 Pro", gb:[{v:6,sc:2347,mc:6353}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A16 Bionic",
+    code: "Everest + Sawtooth",
+    year: "2022",
+    arch: [["微架构","Everest + Sawtooth"],["工艺","TSMC 4 nm"],["CPU 拓扑","2P+4E"],["GPU","5 核"],["代表机型","iPhone 14 Pro → 15"]],
+    milestone: "2022 先给 14 Pro，次年下放到 15。4 nm 小步进，常亮显示与灵动岛才是产品记忆点。GB6 约 sc 2613 / mc 7217。与同场的 M2 相比，手机墙更紧，多核明显受限于热与电池。评论：稳健迭代，真正的 3 nm 留给 A17。",
+    skus: [
+      {tier:"旗舰", date:"2022-09", name:"A16 Bionic", spec:"2P+4E · 4 nm · iPhone 14 Pro / 15", gb:[{v:6,sc:2613,mc:7217}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A17 Pro",
+    code: "Everest / Sawtooth 3 nm",
+    year: "2023",
+    arch: [["微架构","2P+4E"],["工艺","TSMC 3 nm"],["CPU 拓扑","2P+4E"],["GPU","6 核 · 硬件光追"],["代表机型","iPhone 15 Pro / Pro Max"]],
+    milestone: "2023 首款 3 nm 手机 SoC，硬件光追与 USB-C（Pro）同场。GB6 取图表中位口径 sc 2881 / mc 7199。单核再创新高，多核受手机热墙限制，并未线性拉开。这是「Pro 独占制程一年」策略的典型：明年再下放到非 Pro。",
+    skus: [
+      {tier:"旗舰", date:"2023-09", name:"A17 Pro", spec:"2P+4E · 3 nm · 硬件光追 · iPhone 15 Pro", gb:[{v:6,sc:2881,mc:7199}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A18 / A18 Pro",
+    code: "N3E",
+    year: "2024",
+    arch: [["微架构","A18 家族"],["工艺","TSMC N3E"],["CPU 拓扑","2P+4E"],["GPU","改进光追 / 网格着色"],["代表机型","iPhone 16 / 16 Pro"]],
+    milestone: "2024 全系上 A18 品牌，Pro 与非 Pro 分硅。Apple Intelligence 把端侧模型写成系统卖点。GB6：A18 Pro 约 sc 3444 / mc 8641；A18 约 sc 3317 / mc 7506（Geekbench iOS 页近似）。单核继续贴着 M 系列入门机，但多核仍是手机墙。",
+    skus: [
+      {tier:"主流", date:"2024-09", name:"A18", spec:"2P+4E · N3E · iPhone 16", gb:[{v:6,sc:3317,mc:7506}], r23:null},
+      {tier:"旗舰", date:"2024-09", name:"A18 Pro", spec:"2P+4E · N3E · iPhone 16 Pro", gb:[{v:6,sc:3444,mc:8641}], r23:null}
+    ]
+  },
+  {
+    gen: "Apple A19 / A19 Pro",
+    code: "N3P",
+    year: "2025",
+    arch: [["微架构","A19 家族"],["工艺","TSMC N3P"],["CPU 拓扑","2P+4E"],["GPU","同代强化"],["代表机型","iPhone 17 / 17 Pro"]],
+    milestone: "2025 N3P 刷新。Geekbench Browser iOS 榜：A19 Pro 约 sc 3785 / mc 9837；A19 约 sc 3607 / mc 9246。单核逼近 M4 入门区，但不要直接跨设备换算场景。端侧 AI 与影像管线仍是差异化主场；纯跑分叙事已经让位给「整机智能」叙事。",
+    skus: [
+      {tier:"主流", date:"2025-09", name:"A19", spec:"2P+4E · N3P · iPhone 17", gb:[{v:6,sc:3607,mc:9246}], r23:null},
+      {tier:"旗舰", date:"2025-09", name:"A19 Pro", spec:"2P+4E · N3P · iPhone 17 Pro", gb:[{v:6,sc:3785,mc:9837}], r23:null}
+    ]
+  }
+]
+};
+
+const TIER_CLASS = { "旗舰":"t-flag", "刷新旗舰":"t-flag", "HEDT":"t-flag", "EX":"t-flag", "4S/8S":"t-hi", "高性能":"t-hi", "主流":"t-mid", "入门":"t-lo" };
+
+function fmt(n) {
+  if (n == null || n === "") return "—";
+  if (typeof n === "string") return n;
+  return n.toLocaleString("en-US");
+}
+function barW(v, max) {
+  if (!v || !max) return 0;
+  return Math.max(6, Math.min(100, Math.round(v / max * 100)));
+}
+function normalizeGb(sku) {
+  if (Array.isArray(sku.gb) && sku.gb.length) return sku.gb.slice().sort((a,b) => a.v - b.v);
+  if (sku.gb7) return [{ v: 7, sc: sku.gb7[0], mc: sku.gb7[1] }];
+  return [];
+}
+function gbBlock(item) {
+  const meta = GB_META[item.v] || { tag: "GB"+item.v, label: "Geekbench "+item.v, maxSc: 3000 };
+  const overall = item.overall != null && item.sc == null && item.mc == null;
+  const nums = overall
+    ? `${fmt(item.overall)} <small>综合分</small>`
+    : `${fmt(item.sc)} <small>单核</small> · ${fmt(item.mc)} <small>多核</small>`;
+  const bar = overall ? item.overall : item.sc;
+  return `<div class="score-block">
+    <div class="score-h"><span><span class="ver-tag ver-${item.v}">${meta.tag}</span></span></div>
+    <div class="nums">${nums}</div>
+    <div class="bar"><i style="width:${barW(bar, meta.maxSc)}%"></i></div>
+  </div>`;
+}
+function scoreBox(sku) {
+  const rows = normalizeGb(sku);
+  const r = sku.r23;
+  let html = `<div class="scores">`;
+  html += rows.map(x => gbBlock(x)).join("");
+  if (!rows.length && !r) {
+    html += `<div class="score-block"><div class="na">—</div></div>`;
+  }
+  if (r) {
+    html += `<div class="score-block"><div class="score-h"><span class="ver">${R23}</span></div>
+      <div class="nums">${fmt(r[0])} <small>单核</small> · ${fmt(r[1])} <small>多核</small></div></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function archList(arr) {
+  return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
+}
+function matchQuery(gen, q) {
+  if (!q) return true;
+  const blob = [gen.gen, gen.code, gen.year, gen.milestone, ...gen.arch.map(x => x.join(" ")), ...gen.skus.map(s => s.name + " " + s.spec)].join(" ").toLowerCase();
+  return blob.includes(q);
+}
+function render(seg, q) {
+  const tbody = document.querySelector("#grid tbody");
+  const empty = document.getElementById("empty");
+  const list = DATA[seg].filter(g => matchQuery(g, q));
+  tbody.innerHTML = "";
+  if (!list.length) { empty.classList.remove("hidden"); return; }
+  empty.classList.add("hidden");
+  for (const g of list) {
+    const n = g.skus.length;
+    g.skus.forEach((s, i) => {
+      const tr = document.createElement("tr");
+      let cells = "";
+      if (i === 0) {
+        cells += `<td class="gen-cell" rowspan="${n}"><div class="gen-name">${g.gen}</div><div class="gen-sub">${g.code}<br>${g.year}</div></td>`;
+        cells += `<td class="arch-cell" rowspan="${n}">${archList(g.arch)}</td>`;
+      }
+      cells += `<td><div class="date">${s.date}</div></td>`;
+      cells += `<td class="sku"><div class="model">${s.name}</div><div class="spec">${s.spec}</div></td>`;
+      cells += `<td>${scoreBox(s)}</td>`;
+      if (i === 0) cells += `<td class="ms-cell" rowspan="${n}">${g.milestone}</td>`;
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+document.getElementById("n-desk").textContent = DATA.desktop.length;
+document.getElementById("n-mob").textContent = DATA.mobile.length;
+document.getElementById("n-span").textContent = "32 年";
+
+let seg = "desktop";
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    seg = btn.dataset.seg;
+    render(seg, document.getElementById("q").value.trim().toLowerCase());
+    window.scrollTo(0, 0);
+  });
+});
+document.getElementById("q").addEventListener("input", e => {
+  render(seg, e.target.value.trim().toLowerCase());
+});
+render("desktop", "");
+</script>
+</body>
+</html>

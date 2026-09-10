@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>高通 CPU 世代全谱 · 移动 / PC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #070b12;
+    --bg-2: #0d1420;
+    --panel: #121a28;
+    --panel-2: #182234;
+    --line: #243044;
+    --line-2: #31405a;
+    --ink: #e8eef8;
+    --muted: #8b9bb4;
+    --faint: #5d6d86;
+    --qcom: #e11b22;
+    --qcom-2: #00a3e0;
+    --gold: #d4a017;
+    --teal: #2ec4b6;
+    --rose: #e85d75;
+    --ok: #5ad67d;
+    --warn: #f0b429;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans SC", "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  a { color: var(--qcom-2); }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 28px 22px 80px; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background:
+      radial-gradient(1200px 420px at 12% -10%, rgba(225,27,34,.22), transparent 55%),
+      radial-gradient(900px 380px at 92% 0%, rgba(0,163,224,.16), transparent 50%),
+      linear-gradient(180deg, #101826 0%, #0a101a 100%);
+    padding: 36px 36px 28px;
+    box-shadow: var(--shadow);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -40% 40%;
+    height: 280px;
+    background: repeating-linear-gradient(-32deg, transparent 0 14px, rgba(225,27,34,.05) 14px 15px);
+    pointer-events: none;
+  }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--qcom); font-size: 12px; letter-spacing: .18em; font-weight: 700; text-transform: uppercase;
+  }
+  .kicker span { width: 28px; height: 1px; background: var(--qcom); display: inline-block; }
+  h1 { font-size: clamp(28px, 4vw, 46px); line-height: 1.15; margin: 10px 0 12px; letter-spacing: -.03em; }
+  .lede { max-width: 820px; color: var(--muted); font-size: 15.5px; margin: 0 0 22px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    border: 1px solid var(--line-2); background: rgba(18,26,40,.7);
+    color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px;
+  }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  .stat {
+    background: rgba(8,12,20,.45); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px;
+  }
+  .stat b { display: block; font-size: 26px; font-family: "IBM Plex Mono", monospace; color: #fff; }
+  .stat em { font-style: normal; color: var(--faint); font-size: 12px; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin: 22px 0 16px; padding: 10px 0 12px;
+    background: linear-gradient(180deg, rgba(7,11,18,.96), rgba(7,11,18,.88) 70%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabs { display: flex; gap: 6px; background: var(--panel); border: 1px solid var(--line); padding: 4px; border-radius: 999px; }
+  .tab {
+    border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; font: 600 13px/1 "Noto Sans SC", sans-serif;
+  }
+  .tab.active { background: var(--qcom); color: #fff; }
+  .search {
+    flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
+    color: var(--ink); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none;
+  }
+  .search:focus { border-color: var(--qcom-2); }
+
+  .note {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; color: var(--muted); font-size: 13px; margin-bottom: 18px;
+  }
+  .note strong { color: var(--ink); }
+  .note ol { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin: 4px 0; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .chip { font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .chip.flag { color: var(--gold); border-color: rgba(212,160,23,.4); }
+  .chip.hi { color: var(--qcom-2); border-color: rgba(0,163,224,.35); }
+  .chip.mid { color: var(--teal); border-color: rgba(46,196,182,.35); }
+  .chip.lo { color: #b7c3d6; }
+
+  .panel {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .table-scroll { overflow-x: auto; overflow-y: visible; min-height: 125vh; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1320px; }
+  thead th {
+    position: sticky; top: 0; z-index: 5;
+    background: #141c28; color: #c5d3e8; font-size: 12px; font-weight: 700;
+    letter-spacing: .04em; text-align: left; padding: 12px 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  tbody td {
+    vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line);
+    font-size: 13px; background: var(--panel);
+  }
+  tbody tr:hover td.sku { background: #1a2434; }
+  .gen-cell, .arch-cell, .ms-cell { background: #101820 !important; }
+  .gen-cell { width: 168px; border-right: 1px solid var(--line); }
+  .arch-cell { width: 230px; color: var(--muted); font-size: 12.5px; }
+  .ms-cell { width: 380px; color: #c9d4e4; font-size: 12.5px; line-height: 1.58; }
+  .gen-name { color: #fff; font-weight: 700; font-size: 14px; }
+  .gen-sub { color: var(--qcom); font-size: 12px; margin-top: 4px; font-family: "IBM Plex Mono", monospace; }
+  .kv { margin: 0; padding: 0; list-style: none; }
+  .kv li { margin: 3px 0; }
+  .kv b { color: #d5deeb; font-weight: 600; }
+  .date { color: #dfe7f3; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; white-space: nowrap; }
+  .tier {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    padding: 2px 6px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .t-flag { background: rgba(212,160,23,.15); color: var(--gold); }
+  .t-hi { background: rgba(0,163,224,.14); color: var(--qcom-2); }
+  .t-mid { background: rgba(46,196,182,.14); color: var(--teal); }
+  .t-lo { background: rgba(183,195,214,.12); color: #c5d0e0; }
+  .model { font-weight: 700; color: #fff; font-size: 14px; margin-top: 0; }
+  .spec { color: var(--muted); margin-top: 4px; font-size: 12.5px; }
+  .scores { display: grid; gap: 8px; min-width: 250px; }
+  .score-block {
+    background: #0e1624; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+  }
+  .score-h { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ver {
+    font-size: 10px; color: var(--faint); font-family: "IBM Plex Mono", monospace; letter-spacing: .04em;
+  }
+  .ver-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    padding: 1px 6px; border-radius: 4px; margin-right: 6px; font-family: "IBM Plex Mono", monospace;
+  }
+  .ver-7 { background: #00a3e0; color: #fff; }
+  .ver-6 { background: #2ec4b6; color: #062b28; }
+  .ver-5 { background: #d4a017; color: #1a1400; }
+  .ver-4 { background: #6b7c93; color: #fff; }
+  .ver-3 { background: #4a5568; color: #fff; }
+  .ver-2 { background: #805ad5; color: #fff; }
+  .nums { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #fff; }
+  .nums small { color: var(--muted); font-size: 11px; }
+  .bar { height: 4px; background: #223049; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--qcom), var(--qcom-2)); }
+  .na { color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+  .hidden { display: none !important; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+
+  footer {
+    margin-top: 28px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  footer h3 { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  footer ul { margin: 0; padding-left: 18px; }
+  footer li { margin: 4px 0; }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 22px; }
+    .table-scroll { min-height: 125vh; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span></span>Qualcomm / Snapdragon Chronicle · 约 2007–2026</div>
+    <h1>高通处理器世代全谱</h1>
+    <p class="lede">从早期 Snapdragon S1/S2 讲到骁龙 8 Elite 系列与 Snapdragon X 系列 PC 平台。移动 / PC（笔记本）分表；每一代列各档最高型号。Geekbench 有哪个大版本就列哪个，不可换算；找不到留空，禁止编造分数。</p>
+    <div class="meta-row">
+      <span class="pill">资料读取于 2026-09-10</span>
+      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">品牌色 · Snapdragon 红 / 青</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
+      <div class="stat"><b id="n-desk">—</b><em>PC 世代</em></div>
+      <div class="stat"><b id="n-span">—</b><em>跨度</em></div>
+      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-seg="mobile">移动端</button>
+      <button class="tab" data-seg="desktop">PC端</button>
+    </div>
+    <input class="search" id="q" placeholder="搜索代数、代号、型号，例如 8 Elite / Oryon / X2E-96 / 855" />
+  </div>
+
+  <section class="note">
+    <strong>读表规则</strong>
+    <ol>
+      <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / CPU 拓扑 / GPU / 基带。</li>
+      <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>移动栏以手机 / 平板 Snapdragon 为主；PC 栏以 Windows on Arm（SQ / 8cx / X / X2）为主。不列服务器 SoC。</li>
+      <li>中端 7 / 6 系列只记关键节点，不穷举每一 SKU。分数来源 Notebookcheck / Geekbench Browser / CPU-Monkey / NanoReview 等公开样本；找不到就留空，不编造。</li>
+      <li>Cinebench R23 对多数移动 SoC 无稳定公开样本，默认留空（null）。</li>
+    </ol>
+  </section>
+  <div class="legend">
+    <span class="chip">GB 版本不可换算</span>
+    <span class="chip">R23 = Cinebench R23（多数留空）</span>
+  </div>
+
+  <div class="panel">
+    <div class="table-scroll">
+      <table id="grid">
+        <thead>
+          <tr>
+            <th style="width:168px">产品世代</th>
+            <th style="width:230px">架构 · 工艺 · 规格</th>
+            <th style="width:110px">发布时间</th>
+            <th>型号与规格</th>
+            <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
+            <th style="width:380px">里程碑与当时评论</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty hidden" id="empty">没有匹配的世代或型号。</div>
+  </div>
+
+  <footer>
+    <h3>数据来源</h3>
+    <ul>
+      <li>规格与发布日：Qualcomm Newsroom / Snapdragon Summit、Wikipedia Snapdragon 处理器列表、产品 brief（含 X2 Elite），读取于 2026-09-10。</li>
+      <li>Geekbench：Geekbench Browser、Notebookcheck CPU 数据库、CPU-Monkey、NanoReview 公开样本汇总。版本之间不可换算。</li>
+      <li>近期旗舰：Snapdragon 8 Elite / 8 Elite Gen 5 参考机与零售机（S25 / Xiaomi 17 / Honor Magic8 等）第三方样本；PC 端 X Elite / X2 Elite Extreme 参考 Notebookcheck 与产品 brief。</li>
+      <li>Cinebench R23：公开稳定样本极少，本表几乎全部留空，不编造。</li>
+    </ul>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《高通 CPU 世代全谱》资料页<br />分析基于：Qualcomm Newsroom + Wikipedia Snapdragon + Geekbench Browser + Notebookcheck + CPU-Monkey，资料读取于 2026-09-10</p>
+  </footer>
+</div>
+
+<script>
+const GB_META = {
+  7: { tag: "GB7", label: "Geekbench 7", maxSc: 4200, from: "2026-07-23" },
+  6: { tag: "GB6", label: "Geekbench 6", maxSc: 4200, from: "2023-02-14" },
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 1800, from: "2019-09-03" },
+  4: { tag: "GB4", label: "Geekbench 4", maxSc: 6000, from: "2016-11-10" },
+  3: { tag: "GB3", label: "Geekbench 3", maxSc: 4000, from: "2013-02-14" },
+  2: { tag: "GB2", label: "Geekbench 2", maxSc: 8000, from: "2008-08-01" }
+};
+const R23 = "Cinebench R23";
+
+const DATA = {
+mobile: [
+  {
+    gen: "Snapdragon S1 / S2",
+    code: "QSD8x50 / MSM7x30",
+    year: "2008–2010",
+    arch: [["微架构","Scorpion（ARM 定制）"],["工艺","65–45 nm"],["CPU 拓扑","单核为主"],["GPU","Adreno 200"],["基带","集成 3G"]],
+    milestone: "2007–08 Snapdragon 品牌立住：CPU+GPU+基带一体化。S1（QSD8250）驱动早期 Android / Windows Phone 高配机；S2 把主频与多媒体管线抬一档。公开稳定 Geekbench 样本稀缺，本表留空。这是「手机也能叫平台」叙事的起点，不是跑分起点。",
+    skus: [
+      {tier:"旗舰", date:"2008–2009", name:"Snapdragon S1 QSD8250", spec:"单核 Scorpion · Adreno 200 · 早期 Android 旗舰", gb:[], r23:null},
+      {tier:"主流", date:"2010", name:"Snapdragon S2 MSM8255", spec:"单核升频 · 中端到高配 Android", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon S3",
+    code: "MSM8x60",
+    year: "2010–2011",
+    arch: [["微架构","双核 Scorpion"],["工艺","45 nm"],["CPU 拓扑","2 核"],["GPU","Adreno 220"],["基带","集成"]],
+    milestone: "2010 双核 Scorpion 进入高端 Android。相对单核 S1/S2 多任务与游戏帧率第一次「够用」。仍无 big.LITTLE，发热与调度都还粗。公开 GB 样本不稳定，留空。下一记真正的架构跃迁是 Krait。",
+    skus: [
+      {tier:"旗舰", date:"2011", name:"Snapdragon S3 MSM8660", spec:"双核 Scorpion · Adreno 220", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon S4",
+    code: "Krait · APQ8064 / MSM8960",
+    year: "2012–2013",
+    arch: [["微架构","Krait"],["工艺","28 nm"],["CPU 拓扑","双核 / 四核"],["GPU","Adreno 225 / 320"],["基带","集成 LTE（部分）"]],
+    milestone: "2012 Krait 让高通第一次用「自研核」叙事正面打 Cortex-A9/A15。S4 Pro（APQ8064）四核 + Adreno 320 成为当年 Android 旗舰标配；S4 Plus 走双核主流。评论：IPC 与 GPU 同时上台阶，LTE 集成开始成卖点。早期 GB4 口径分散，本表留空。",
+    skus: [
+      {tier:"主流", date:"2012", name:"Snapdragon S4 Plus MSM8960", spec:"双核 Krait · 集成 LTE", gb:[], r23:null},
+      {tier:"旗舰", date:"2012", name:"Snapdragon S4 Pro APQ8064", spec:"四核 Krait · Adreno 320 · 高端平板 / 手机", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 600 / 800",
+    code: "APQ8064T / MSM8974",
+    year: "2013",
+    arch: [["微架构","Krait 300 / 400"],["工艺","28 nm"],["CPU 拓扑","四核"],["GPU","Adreno 320 / 330"],["基带","800 集成 LTE"]],
+    milestone: "2013 数字命名时代开始：600 打高通中上、800 正式成为旗舰线编号。800（MSM8974）四核 Krait 400 + Adreno 330，把「骁龙 800」写成安卓顶配同义词。这是第一代「每年一颗 8xx 旗舰」产品节奏的起点。公开稳定跨版本 GB 样本少，留空。",
+    skus: [
+      {tier:"主流", date:"2013", name:"Snapdragon 600", spec:"四核 Krait 300 · Adreno 320 · 高配非旗舰", gb:[], r23:null},
+      {tier:"旗舰", date:"2013", name:"Snapdragon 800", spec:"四核 Krait 400 · Adreno 330 · 首代 800 旗舰线", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 801 / 805",
+    code: "MSM8974AC / APQ8084",
+    year: "2014",
+    arch: [["微架构","Krait 400"],["工艺","28 nm"],["CPU 拓扑","四核"],["GPU","Adreno 330 / 420"],["基带","801 集成"]],
+    milestone: "2014 801 是 800 的高频刷新（Galaxy S5 / OnePlus One 等）；805 把 Adreno 420 与 4K 叙事推上台面，偏平板与超旗舰。仍是 28 nm Krait 末班车。评论：性能够用，真正的代差留给 64-bit + big.LITTLE 的 810。公开 GB 留空。",
+    skus: [
+      {tier:"高性能", date:"2014", name:"Snapdragon 801", spec:"四核 Krait 400 升频 · 当年主力旗舰", gb:[], r23:null},
+      {tier:"旗舰", date:"2014", name:"Snapdragon 805", spec:"四核 · Adreno 420 · 4K / 超旗舰", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 808 / 810",
+    code: "MSM8992 / MSM8994",
+    year: "2015",
+    arch: [["微架构","Cortex-A57 + A53"],["工艺","20 nm"],["CPU 拓扑","810：4×A57+4×A53"],["GPU","Adreno 418 / 430"],["基带","X10 LTE"]],
+    milestone: "2015 第一次全面 big.LITTLE + 64-bit。810 因持续高负载降频与发热成为当年安卓圈最大槽点；808 双大核相对温和。评论写成「架构对了、工艺与调度没跟上」。公开稳定 GB 样本口径不一，留空——这代的遗产是教训，不是跑分。",
+    skus: [
+      {tier:"高性能", date:"2015", name:"Snapdragon 808", spec:"2×A57+4×A53 · Adreno 418", gb:[], r23:null},
+      {tier:"旗舰", date:"2015", name:"Snapdragon 810", spec:"4×A57+4×A53 · Adreno 430 · 旗舰（热墙争议）", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 820 / 821",
+    code: "MSM8996 · Kryo",
+    year: "2016",
+    arch: [["微架构","自研 Kryo（4 核）"],["工艺","Samsung 14 nm"],["CPU 拓扑","2×高性能 + 2×高效"],["GPU","Adreno 530"],["基带","X12 LTE"]],
+    milestone: "2016 用自研 Kryo 四核翻盘 810 的口碑。820 把能效与 GPU 拉回第一梯队；821 小幅升频。Geekbench 5 约 sc 344 / mc 903；GB6 约 sc 334 / mc 685（CPU-Monkey / GadgetVersus 口径）。评论：不是核数最多，是「终于不再烫到降频」。",
+    skus: [
+      {tier:"高性能", date:"2015-11", name:"Snapdragon 820", spec:"4 核 Kryo · 14 nm · 旗舰基线", gb:[{v:6,sc:334,mc:685},{v:5,sc:344,mc:903}], r23:null},
+      {tier:"旗舰", date:"2016-07", name:"Snapdragon 821", spec:"Kryo 升频 · Adreno 530 · 821 刷新", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 835",
+    code: "MSM8998 · Kryo 280",
+    year: "2017",
+    arch: [["微架构","Kryo 280（A73/A53 定制）"],["工艺","Samsung 10 nm"],["CPU 拓扑","4×金 + 4×银"],["GPU","Adreno 540"],["基带","X16 LTE · 首款量产级 Gigabit"]],
+    milestone: "2017 Galaxy S8 / Pixel 2 等。10 nm + 八核重新回到「能效旗舰」叙事；快速充电与相机 ISP 同期强化。GB5 约 sc 384 / mc 1685；GB6 约 sc 406 / mc 1367。评论：稳，不炸——相对 810 是信任修复。",
+    skus: [
+      {tier:"旗舰", date:"2017-03", name:"Snapdragon 835", spec:"8 核 Kryo 280 · Adreno 540 · 10 nm", gb:[{v:6,sc:406,mc:1367},{v:5,sc:384,mc:1685}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 845",
+    code: "SDM845 · Kryo 385",
+    year: "2018",
+    arch: [["微架构","Kryo 385（A75/A55 定制）"],["工艺","Samsung 10 nm LPP"],["CPU 拓扑","4×金 + 4×银"],["GPU","Adreno 630"],["基带","X20 LTE"]],
+    milestone: "2018 旗舰标配。AI 引擎与 Spectra ISP 写成摄影卖点；Adreno 630 游戏口碑好。GB5 约 sc 504 / mc 2165（CPU-Monkey）。评论：扎实一代，真正的「换代震感」留给次年 855 的 A76 级大核。",
+    skus: [
+      {tier:"旗舰", date:"2018-02", name:"Snapdragon 845", spec:"8 核 Kryo 385 · Adreno 630", gb:[{v:5,sc:504,mc:2165}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 855 / 855+",
+    code: "SM8150 · Kryo 485",
+    year: "2019",
+    arch: [["微架构","Kryo 485（A76 级 Prime）"],["工艺","TSMC 7 nm"],["CPU 拓扑","1+3+4"],["GPU","Adreno 640"],["基带","X24 LTE · 外挂 X50 5G"]],
+    milestone: "2019 首款量产 7 nm 骁龙旗舰；1+3+4 拓扑定型。855+ 升 GPU/CPU 频率打游戏机。GB6 约 sc 968 / mc 2731（NanoReview）。5G 靠外挂 X50，整机厚度与发热成为产品槽点——真正的 SoC 内集成 5G 留给 865。",
+    skus: [
+      {tier:"高性能", date:"2018-12", name:"Snapdragon 855", spec:"1+3+4 · 7 nm · 可外挂 X50 5G", gb:[{v:6,sc:968,mc:2731}], r23:null},
+      {tier:"旗舰", date:"2019-07", name:"Snapdragon 855+", spec:"855 升频 · Adreno 640 更高主频 · 游戏机", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 865 / 865+",
+    code: "SM8250 · Kryo 585",
+    year: "2019–2020",
+    arch: [["微架构","Kryo 585"],["工艺","TSMC 7 nm+"],["CPU 拓扑","1+3+4"],["GPU","Adreno 650"],["基带","外挂 X55 5G"]],
+    milestone: "2019-12 发布。性能相对 855 再抬一档，但 5G 仍外挂 X55——「旗舰却要外挂」成为年度吐槽。865+ / 870 继续升频。GB6 约 sc 1128 / mc 3277。评论：CPU/GPU 强，模组方案拖累轻薄与成本。",
+    skus: [
+      {tier:"高性能", date:"2019-12", name:"Snapdragon 865", spec:"1+3+4 · Adreno 650 · 外挂 X55", gb:[{v:6,sc:1128,mc:3277}], r23:null},
+      {tier:"旗舰", date:"2020-07", name:"Snapdragon 865+", spec:"升频版 · 游戏旗舰", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 888 / 888+",
+    code: "SM8350 · Kryo 680",
+    year: "2020–2021",
+    arch: [["微架构","Kryo 680（X1+A78+A55）"],["工艺","Samsung 5 nm"],["CPU 拓扑","1+3+4"],["GPU","Adreno 660"],["基带","首款集成 X60 5G"]],
+    milestone: "2020-12。终于集成 5G（X60），同时引入 Cortex-X1 超级核。三星 5 nm 能效与持续性能引发「又热又降频」讨论，888+ 小幅抬频。GB6 约 sc 1488 / mc 3373（NanoReview）。评论：单核上台阶，能效口碑不如同期台积电竞品。",
+    skus: [
+      {tier:"高性能", date:"2020-12", name:"Snapdragon 888", spec:"1×X1+3×A78+4×A55 · 集成 X60", gb:[{v:6,sc:1488,mc:3373}], r23:null},
+      {tier:"旗舰", date:"2021-06", name:"Snapdragon 888+", spec:"888 升频 · 游戏 / 超旗舰", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 8 Gen 1 / 8+ Gen 1",
+    code: "SM8450 / SM8475",
+    year: "2021–2022",
+    arch: [["微架构","Kryo · X2 超级核"],["工艺","Gen1：Samsung 4 nm → 8+：TSMC 4 nm"],["CPU 拓扑","1+3+4"],["GPU","Adreno 730"],["基带","X65 5G"]],
+    milestone: "2021-12 改名「8 Gen 1」。三星 4 nm 首发能效再次挨打；2022-05 8+ Gen 1 转 TSMC 4 nm，性能与温度口碑立刻翻盘——证明代工厂比命名更重要。GB6：8 Gen 1 约 sc 1675 / mc 4453；8+ 约 sc 1761 / mc 4688（NanoReview）。",
+    skus: [
+      {tier:"高性能", date:"2021-12", name:"Snapdragon 8 Gen 1", spec:"Samsung 4 nm · X2 超级核 · 集成 X65", gb:[{v:6,sc:1675,mc:4453}], r23:null},
+      {tier:"旗舰", date:"2022-05", name:"Snapdragon 8+ Gen 1", spec:"TSMC 4 nm · 升频 · 口碑翻盘", gb:[{v:6,sc:1761,mc:4688}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 7 系列关键节点",
+    code: "7 Gen 1 / 7+ Gen 2 / 7 Gen 3 / 7s",
+    year: "2022–2025",
+    arch: [["微架构","公版 Cortex 大小核"],["工艺","4–4 nm 级为主"],["定位","高端中端 / 次旗舰"],["GPU","Adreno 6xx/7xx 裁切"],["基带","集成 5G"]],
+    milestone: "7 系承接「买不起每年旗舰、又不愿掉到 6 系」的用户。7+ Gen 2 一度接近上代旗舰体验；7 Gen 3 / 7s 继续堆影像与能效。不穷举 SKU：每档只记代表最高型号。多数公开 GB 样本分散，本表仅列有较稳口径者，其余留空。",
+    skus: [
+      {tier:"入门", date:"2023–2024", name:"Snapdragon 7s Gen 2 / 7s Gen 3", spec:"7 系入门切割 · 走量机型", gb:[], r23:null},
+      {tier:"旗舰", date:"2023", name:"Snapdragon 7+ Gen 2", spec:"次旗舰天花板 · 接近上代 8 系体验", gb:[], r23:null},
+      {tier:"主流", date:"2024", name:"Snapdragon 7 Gen 3", spec:"均衡中端 · 影像 / 续航向", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 6 系列关键节点",
+    code: "6 Gen 1 / 6 Gen 3 / 4 系过渡",
+    year: "2022–2025",
+    arch: [["微架构","公版高效核为主"],["工艺","4 nm / 6 nm 混用"],["定位","主流与入门 5G"],["GPU","Adreno 中低端"],["基带","集成 5G"]],
+    milestone: "6 系是全球走量 5G 的基本盘。6 Gen 1 把「能用的 5G」铺开；后续 Gen 刷新堆 ISP 与能效。不列每一颗 4/4s/6s：只记世代代表性顶格。公开跨机稳定 GB 少，留空以免编造。",
+    skus: [
+      {tier:"入门", date:"2022", name:"Snapdragon 6 Gen 1", spec:"入门 5G 基本盘", gb:[], r23:null},
+      {tier:"主流", date:"2024", name:"Snapdragon 6 Gen 3", spec:"主流 5G · 走量机型顶格", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 8 Gen 2",
+    code: "SM8550 · Kryo",
+    year: "2022–2023",
+    arch: [["微架构","1×X3 + 2×A715 + 2×A710 + 3×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","1+2+2+3"],["GPU","Adreno 740 · 硬件光追叙事"],["基带","X70 5G"]],
+    milestone: "2022-11。拓扑改为更均衡的 1+2+2+3；AI 与光追写成游戏卖点。Leading Version / for Galaxy 小幅升频。GB6 约 sc 2004 / mc 5311（NanoReview）。评论：回到「能效+性能双在线」的旗舰常态，为 8 Gen 3 铺路。",
+    skus: [
+      {tier:"高性能", date:"2022-11", name:"Snapdragon 8 Gen 2", spec:"1+2+2+3 · Adreno 740 · TSMC 4 nm", gb:[{v:6,sc:2004,mc:5311}], r23:null},
+      {tier:"旗舰", date:"2023", name:"Snapdragon 8 Gen 2 Leading / for Galaxy", spec:"升频版 · 部分三星 / 国行旗舰", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 8 Gen 3",
+    code: "SM8650",
+    year: "2023–2024",
+    arch: [["微架构","1×X4 + 5×A720 + 2×A520"],["工艺","TSMC 4 nm（N4P）"],["CPU 拓扑","1+5+2"],["GPU","Adreno 750"],["基带","X75 5G"]],
+    milestone: "2023-10。大核 Cortex-X4，中核加到五颗，多核吞吐明显上台阶。for Galaxy 再抬 100 MHz 级。GB6 约 sc 2193 / mc 7304（NanoReview）。评论：安卓多核继续压苹果手机；单核仍被 A17/A18 压着——直到次年 Oryon。",
+    skus: [
+      {tier:"高性能", date:"2023-10", name:"Snapdragon 8 Gen 3", spec:"1+5+2 · Adreno 750 · X75", gb:[{v:6,sc:2193,mc:7304}], r23:null},
+      {tier:"旗舰", date:"2023-10", name:"Snapdragon 8 Gen 3 for Galaxy", spec:"升频 · S24 系列部分市场", gb:[{v:6,sc:2275,mc:7147}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 8 Elite",
+    code: "SM8750 · Oryon v2",
+    year: "2024–2025",
+    arch: [["微架构","第二代 Oryon（自研）"],["工艺","TSMC N3E 3 nm"],["CPU 拓扑","2+6（Prime + Performance）"],["GPU","Adreno 830"],["基带","X80 5G"]],
+    milestone: "2024-10 Snapdragon Summit。手机端首次用上自研 Oryon（源自 Nuvia），放弃公版 Cortex 超级核叙事。参考机 GB6 约 sc 3222 / mc 10444；Galaxy 零售中位约 sc 3105 / mc 9941（Notebookcheck）。单核第一次认真咬住同期 A18 Pro，多核过万成为安卓新常态。",
+    skus: [
+      {tier:"高性能", date:"2024-10", name:"Snapdragon 8 Elite", spec:"2+6 Oryon · Adreno 830 · N3E", gb:[{v:6,sc:3222,mc:10444}], r23:null},
+      {tier:"旗舰", date:"2025", name:"Snapdragon 8 Elite for Galaxy", spec:"双 Prime 升频 · S25 系列", gb:[{v:6,sc:3105,mc:9941}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 8 Elite Gen 5",
+    code: "SM8850 · Oryon v3",
+    year: "2025–2026",
+    arch: [["微架构","第三代 Oryon"],["工艺","TSMC N3P 3 nm"],["CPU 拓扑","2×Prime（至高 4.60 GHz）+ 6×Perf（3.62 GHz）"],["GPU","Adreno 840"],["基带","X85 5G"]],
+    milestone: "2025-09-24 Summit 发布。宣称相对 8 Elite CPU 约 +20%、能效约 +35%；Qualcomm 称「最快移动 CPU」。参考机 GB6 约 sc 3831 / mc 12383（heise / Notebookcheck）；零售 Xiaomi 17 Ultra 约 sc 3722 / mc 11411。存在 for Galaxy / 折叠七核 / V 系列（减 GPU slice）等分硅。截至 2026-09 仍是安卓旗舰主芯片。",
+    skus: [
+      {tier:"高性能", date:"2025–2026", name:"Snapdragon 8 Elite Gen 5 for Galaxy", spec:"三星定制升频 · S26 系列", gb:[], r23:null},
+      {tier:"旗舰", date:"2025-09", name:"Snapdragon 8 Elite Gen 5", spec:"2+6 Oryon v3 · 至高 4.60 GHz · Adreno 840 · N3P", gb:[{v:6,sc:3722,mc:11411}], r23:null},
+      {tier:"主流", date:"2026", name:"Snapdragon 8 Elite Gen 5 V-Series", spec:"同频 CPU · GPU slice / HPM 裁切 · 更低价位旗舰", gb:[{v:6,sc:3429,mc:10461}], r23:null}
+    ]
+  }
+],
+desktop: [
+  {
+    gen: "Microsoft SQ1",
+    code: "Snapdragon 8cx 定制 · Surface",
+    year: "2019",
+    arch: [["微架构","Kryo 495（A76/A55）"],["工艺","7 nm"],["CPU 拓扑","4+4"],["GPU","Adreno 685"],["平台","Surface Pro X"]],
+    milestone: "2019 Surface Pro X。微软与高通定制 SQ1，Windows on Arm 第一次有「自家旗舰平板」叙事。兼容层与原生应用生态是真正瓶颈，不是峰值跑分。公开 GB6 稳定样本少；GB5 口径分散，本表留空以免混用早期工程样。",
+    skus: [
+      {tier:"旗舰", date:"2019-10", name:"Microsoft SQ1", spec:"8 核 · Adreno 685 · Surface Pro X 首发", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Microsoft SQ2",
+    code: "SQ1 升频刷新",
+    year: "2020",
+    arch: [["微架构","Kryo 495 升频"],["工艺","7 nm"],["CPU 拓扑","4+4"],["GPU","Adreno 690"],["平台","Surface Pro X 刷新"]],
+    milestone: "2020 Surface Pro X 配置升级。GPU 到 Adreno 690，CPU 小幅抬频。GB5 约 sc 789 / mc 3092（GadgetVersus）。评论：能效与续航仍是卖点，x86 转译性能继续被吐槽——真正改写叙事要等到 2024 的 Oryon X Elite。",
+    skus: [
+      {tier:"旗舰", date:"2020-09", name:"Microsoft SQ2", spec:"8 核升频 · Adreno 690 · Surface Pro X", gb:[{v:5,sc:789,mc:3092}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon 8cx Gen 2 / Gen 3",
+    code: "SC8180X / SC8280",
+    year: "2021–2022",
+    arch: [["微架构","Gen3：X1+A78+A55 级"],["工艺","Gen3：5 nm"],["CPU 拓扑","8 核"],["GPU","Adreno 硬件加速"],["平台","Always Connected PC"]],
+    milestone: "8cx 是高通面向 Windows PC 的标准平台（相对微软定制 SQ）。Gen 3（2021 末–2022）把手机级 X1 核带进笔记本，GB5 约 sc 1128 / mc 5854。相对 M1 仍有明显代差；生态问题大于硅本身。这是 X Elite 之前最后一代「手机核进 PC」。",
+    skus: [
+      {tier:"主流", date:"2021", name:"Snapdragon 8cx Gen 2", spec:"7 nm 刷新 · 商用轻薄本", gb:[], r23:null},
+      {tier:"旗舰", date:"2022", name:"Snapdragon 8cx Gen 3", spec:"8 核 · 5 nm · Windows on Arm 标准旗舰", gb:[{v:5,sc:1128,mc:5854}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon X Elite / X Plus / X",
+    code: "Oryon v1 · X1E / X1P",
+    year: "2024–2025",
+    arch: [["微架构","第一代 Oryon（Nuvia）"],["工艺","TSMC 4 nm"],["CPU 拓扑","Elite 12 核全大核；Plus 10 核"],["GPU","Adreno X1-85"],["NPU","45 TOPS 级 · Copilot+"]],
+    milestone: "2024-06 起 Copilot+ PC 潮。X Elite（如 X1E-84-100）12 核 Oryon，GB6 约 sc 2880 / mc 15211（NanoReview）；X Plus（X1P-64-100）约 sc 2412 / mc 13302。续航与 NPU 强制改写 Windows 笔记本选型；早期应用兼容仍有坑。评论：终于能正面聊性能，而不只是「能开机很久」。",
+    skus: [
+      {tier:"旗舰", date:"2024-06", name:"Snapdragon X Elite X1E-84-100", spec:"12 核 Oryon · 至高约 3.8 GHz · Adreno X1-85", gb:[{v:6,sc:2880,mc:15211}], r23:null},
+      {tier:"主流", date:"2024–2025", name:"Snapdragon X Plus / X 入门配置", spec:"更低核数 / 频率切割 · 轻薄续航本", gb:[], r23:null},
+      {tier:"高性能", date:"2024", name:"Snapdragon X Plus X1P-64-100", spec:"10 核 Oryon · Copilot+ 主流高配", gb:[{v:6,sc:2412,mc:13302}], r23:null}
+    ]
+  },
+  {
+    gen: "Snapdragon X2 Elite / Extreme",
+    code: "Oryon v3 · X2E · Glymur",
+    year: "2025–2026",
+    arch: [["微架构","第三代 Oryon"],["工艺","TSMC 3 nm"],["CPU 拓扑","Extreme：12P+6 · 共 18 核"],["GPU","Adreno X2-90"],["NPU","80 TOPS"]],
+    milestone: "2025-09 Summit 发布，2026 上半年零售。X2 Elite Extreme（X2E-96-100）18 核、至高 5.0 GHz、80 TOPS NPU。Notebookcheck：GB6 中位约 sc 4062 / mc 23166（参考机至 sc 4080 / mc 23491）。定位直接对标 Apple M4/M5 与 Intel/AMD 高端轻薄。X2 Plus（10 核）2026-01 补齐价位带。",
+    skus: [
+      {tier:"主流", date:"2026-01", name:"Snapdragon X2 Plus", spec:"10 核 · 更低价 Copilot+ · 宣称相对上代 Plus 单核约 +35%", gb:[], r23:null},
+      {tier:"旗舰", date:"2026", name:"Snapdragon X2 Elite Extreme X2E-96-100", spec:"18 核（12+6）· 至高 5.0 GHz · Adreno X2-90 · 80 TOPS", gb:[{v:6,sc:4062,mc:23166}], r23:null},
+      {tier:"高性能", date:"2026", name:"Snapdragon X2 Elite（18 / 12 核 SKU）", spec:"X2E-88/84 等 · 至高约 4.7 GHz · 80 TOPS", gb:[], r23:null}
+    ]
+  }
+]
+};
+
+const TIER_CLASS = { "旗舰":"t-flag", "刷新旗舰":"t-flag", "HEDT":"t-flag", "EX":"t-flag", "高性能":"t-hi", "主流":"t-mid", "入门":"t-lo" };
+
+function fmt(n) {
+  if (n == null || n === "") return "—";
+  if (typeof n === "string") return n;
+  return n.toLocaleString("en-US");
+}
+function barW(v, max) {
+  if (!v || !max) return 0;
+  return Math.max(6, Math.min(100, Math.round(v / max * 100)));
+}
+function normalizeGb(sku) {
+  if (Array.isArray(sku.gb) && sku.gb.length) return sku.gb.slice().sort((a,b) => a.v - b.v);
+  if (sku.gb7) return [{ v: 7, sc: sku.gb7[0], mc: sku.gb7[1] }];
+  return [];
+}
+function gbBlock(item) {
+  const meta = GB_META[item.v] || { tag: "GB"+item.v, label: "Geekbench "+item.v, maxSc: 3000 };
+  const overall = item.overall != null && item.sc == null && item.mc == null;
+  const nums = overall
+    ? `${fmt(item.overall)} <small>综合分</small>`
+    : `${fmt(item.sc)} <small>单核</small> · ${fmt(item.mc)} <small>多核</small>`;
+  const bar = overall ? item.overall : item.sc;
+  return `<div class="score-block">
+    <div class="score-h"><span><span class="ver-tag ver-${item.v}">${meta.tag}</span></span></div>
+    <div class="nums">${nums}</div>
+    <div class="bar"><i style="width:${barW(bar, meta.maxSc)}%"></i></div>
+  </div>`;
+}
+function scoreBox(sku) {
+  const rows = normalizeGb(sku);
+  const r = sku.r23;
+  let html = `<div class="scores">`;
+  html += rows.map(x => gbBlock(x)).join("");
+  if (!rows.length && !r) {
+    html += `<div class="score-block"><div class="na">—</div></div>`;
+  }
+  if (r) {
+    html += `<div class="score-block"><div class="score-h"><span class="ver">${R23}</span></div>
+      <div class="nums">${fmt(r[0])} <small>单核</small> · ${fmt(r[1])} <small>多核</small></div></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function archList(arr) {
+  return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
+}
+function matchQuery(gen, q) {
+  if (!q) return true;
+  const blob = [gen.gen, gen.code, gen.year, gen.milestone, ...gen.arch.map(x => x.join(" ")), ...gen.skus.map(s => s.name + " " + s.spec)].join(" ").toLowerCase();
+  return blob.includes(q);
+}
+function render(seg, q) {
+  const tbody = document.querySelector("#grid tbody");
+  const empty = document.getElementById("empty");
+  const list = DATA[seg].filter(g => matchQuery(g, q));
+  tbody.innerHTML = "";
+  if (!list.length) { empty.classList.remove("hidden"); return; }
+  empty.classList.add("hidden");
+  for (const g of list) {
+    const n = g.skus.length;
+    g.skus.forEach((s, i) => {
+      const tr = document.createElement("tr");
+      let cells = "";
+      if (i === 0) {
+        cells += `<td class="gen-cell" rowspan="${n}"><div class="gen-name">${g.gen}</div><div class="gen-sub">${g.code}<br>${g.year}</div></td>`;
+        cells += `<td class="arch-cell" rowspan="${n}">${archList(g.arch)}</td>`;
+      }
+      cells += `<td><div class="date">${s.date}</div></td>`;
+      cells += `<td class="sku"><div class="model">${s.name}</div><div class="spec">${s.spec}</div></td>`;
+      cells += `<td>${scoreBox(s)}</td>`;
+      if (i === 0) cells += `<td class="ms-cell" rowspan="${n}">${g.milestone}</td>`;
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+document.getElementById("n-mob").textContent = DATA.mobile.length;
+document.getElementById("n-desk").textContent = DATA.desktop.length;
+document.getElementById("n-span").textContent = "约 19 年";
+
+let seg = "mobile";
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    seg = btn.dataset.seg;
+    render(seg, document.getElementById("q").value.trim().toLowerCase());
+    window.scrollTo(0, 0);
+  });
+});
+document.getElementById("q").addEventListener("input", e => {
+  render(seg, e.target.value.trim().toLowerCase());
+});
+render("mobile", "");
+</script>
+</body>
+</html>

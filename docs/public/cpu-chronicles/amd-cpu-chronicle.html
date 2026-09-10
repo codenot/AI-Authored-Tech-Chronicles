@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AMD CPU 世代全谱 · 桌面 / 移动 / 服务器</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #070b12;
+    --bg-2: #0d1420;
+    --panel: #121a28;
+    --panel-2: #182234;
+    --line: #243044;
+    --line-2: #31405a;
+    --ink: #e8eef8;
+    --muted: #8b9bb4;
+    --faint: #5d6d86;
+    --amd: #ed1c24;
+    --amd-2: #c8102e;
+    --gold: #d4a017;
+    --teal: #2ec4b6;
+    --rose: #e85d75;
+    --ok: #5ad67d;
+    --warn: #f0b429;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans SC", "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  a { color: var(--amd); }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 28px 22px 80px; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background:
+      radial-gradient(1200px 420px at 12% -10%, rgba(237,28,36,.22), transparent 55%),
+      radial-gradient(900px 380px at 92% 0%, rgba(212,160,23,.12), transparent 50%),
+      linear-gradient(180deg, #101826 0%, #0a101a 100%);
+    padding: 36px 36px 28px;
+    box-shadow: var(--shadow);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -40% 40%;
+    height: 280px;
+    background: repeating-linear-gradient(-32deg, transparent 0 14px, rgba(237,28,36,.05) 14px 15px);
+    pointer-events: none;
+  }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--amd); font-size: 12px; letter-spacing: .18em; font-weight: 700; text-transform: uppercase;
+  }
+  .kicker span { width: 28px; height: 1px; background: var(--amd); display: inline-block; }
+  h1 { font-size: clamp(28px, 4vw, 46px); line-height: 1.15; margin: 10px 0 12px; letter-spacing: -.03em; }
+  .lede { max-width: 820px; color: var(--muted); font-size: 15.5px; margin: 0 0 22px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    border: 1px solid var(--line-2); background: rgba(18,26,40,.7);
+    color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px;
+  }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  .stat {
+    background: rgba(8,12,20,.45); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px;
+  }
+  .stat b { display: block; font-size: 26px; font-family: "IBM Plex Mono", monospace; color: #fff; }
+  .stat em { font-style: normal; color: var(--faint); font-size: 12px; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin: 22px 0 16px; padding: 10px 0 12px;
+    background: linear-gradient(180deg, rgba(7,11,18,.96), rgba(7,11,18,.88) 70%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabs { display: flex; gap: 6px; background: var(--panel); border: 1px solid var(--line); padding: 4px; border-radius: 999px; }
+  .tab {
+    border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; font: 600 13px/1 "Noto Sans SC", sans-serif;
+  }
+  .tab.active { background: var(--amd-2); color: #fff; }
+  .search {
+    flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
+    color: var(--ink); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none;
+  }
+  .search:focus { border-color: var(--amd); }
+
+  .note {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; color: var(--muted); font-size: 13px; margin-bottom: 18px;
+  }
+  .note strong { color: var(--ink); }
+  .note ol { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin: 4px 0; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .chip { font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .chip.flag { color: var(--gold); border-color: rgba(212,160,23,.4); }
+  .chip.hi { color: var(--amd); border-color: rgba(237,28,36,.35); }
+  .chip.mid { color: var(--teal); border-color: rgba(46,196,182,.35); }
+  .chip.lo { color: #b7c3d6; }
+
+  .panel {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .table-scroll { overflow-x: auto; overflow-y: visible; min-height: 125vh; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1320px; }
+  thead th {
+    position: sticky; top: 0; z-index: 5;
+    background: #1a1420; color: #c5d3e8; font-size: 12px; font-weight: 700;
+    letter-spacing: .04em; text-align: left; padding: 12px 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  tbody td {
+    vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line);
+    font-size: 13px; background: var(--panel);
+  }
+  tbody tr:hover td.sku { background: #261820; }
+  .gen-cell, .arch-cell, .ms-cell { background: #141018 !important; }
+  .gen-cell { width: 168px; border-right: 1px solid var(--line); }
+  .arch-cell { width: 230px; color: var(--muted); font-size: 12.5px; }
+  .ms-cell { width: 380px; color: #c9d4e4; font-size: 12.5px; line-height: 1.58; }
+  .gen-name { color: #fff; font-weight: 700; font-size: 14px; }
+  .gen-sub { color: var(--amd); font-size: 12px; margin-top: 4px; font-family: "IBM Plex Mono", monospace; }
+  .kv { margin: 0; padding: 0; list-style: none; }
+  .kv li { margin: 3px 0; }
+  .kv b { color: #d5deeb; font-weight: 600; }
+  .date { color: #dfe7f3; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; white-space: nowrap; }
+  .tier {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    padding: 2px 6px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .t-flag { background: rgba(212,160,23,.15); color: var(--gold); }
+  .t-hi { background: rgba(237,28,36,.14); color: var(--amd); }
+  .t-mid { background: rgba(46,196,182,.14); color: var(--teal); }
+  .t-lo { background: rgba(183,195,214,.12); color: #c5d0e0; }
+  .model { font-weight: 700; color: #fff; font-size: 14px; }
+  .spec { color: var(--muted); margin-top: 4px; font-size: 12.5px; }
+  .scores { display: grid; gap: 8px; min-width: 250px; }
+  .score-block {
+    background: #0e1624; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+  }
+  .score-h { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ver {
+    font-size: 10px; color: var(--faint); font-family: "IBM Plex Mono", monospace; letter-spacing: .04em;
+  }
+  .ver-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    padding: 1px 6px; border-radius: 4px; margin-right: 6px; font-family: "IBM Plex Mono", monospace;
+  }
+  .ver-7 { background: #c8102e; color: #fff; }
+  .ver-6 { background: #2ec4b6; color: #062b28; }
+  .ver-5 { background: #d4a017; color: #1a1400; }
+  .ver-4 { background: #6b7c93; color: #fff; }
+  .ver-3 { background: #4a5568; color: #fff; }
+  .ver-2 { background: #805ad5; color: #fff; }
+  .nums { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #fff; }
+  .nums small { color: var(--muted); font-size: 11px; }
+  .bar { height: 4px; background: #223049; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--amd-2), var(--amd)); }
+  .na { color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+  .hidden { display: none !important; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+
+  footer {
+    margin-top: 28px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  footer h3 { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  footer ul { margin: 0; padding-left: 18px; }
+  footer li { margin: 4px 0; }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 22px; }
+    .table-scroll { min-height: 125vh; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span></span>AMD CPU Chronicle · 1978–2026</div>
+    <h1>AMD 处理器世代全谱</h1>
+    <p class="lede">从 <b>Am8086 第二源</b> 讲到 Ryzen 9000 / EPYC Venice。桌面、移动、服务器分表；每一代列出各档最高型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
+    <div class="meta-row">
+      <span class="pill">资料读取于 2026-09-10</span>
+      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="n-desk">—</b><em>桌面世代</em></div>
+      <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
+      <div class="stat"><b id="n-srv">—</b><em>服务器世代</em></div>
+      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-seg="desktop">桌面端</button>
+      <button class="tab" data-seg="mobile">移动端</button>
+      <button class="tab" data-seg="server">服务器</button>
+    </div>
+    <input class="search" id="q" placeholder="搜索代数、代号、型号，例如 9800X3D / Zen 5 / EPYC 9965" />
+  </div>
+
+  <section class="note">
+    <strong>读表规则</strong>
+    <ol>
+      <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 插槽 / 内存 / I/O。</li>
+      <li>第 3–5 列按档次分行：旗舰、高性能、主流、入门（若该代无独立入门线则省略）。每一档只列该档最高型号。Threadripper 记为 HEDT。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>分数来源：GB7 优先 Browser 官方榜；没有官方榜的型号用 CPU-Monkey / Notebookcheck / 实验室评测 / Geekbench 博客。编造分数不会出现，找不到就留空。</li>
+      <li>Geekbench 2 只公布 <b>综合分</b>（相对 Power Mac G5 1.6 GHz = 1000），没有单核/多核拆分，不可与 GB3 之后的分核分数换算。</li>
+      <li>Cinebench R23 于 2020-11 发布。笔记本受功耗墙影响；服务器超高核心数 Geekbench 线程扩展有限（192 核 GB 多核往往远低于按核线性外推）。</li>
+    </ol>
+  </section>
+  <div class="legend">
+    <span class="chip flag">旗舰 / HEDT</span>
+    <span class="chip hi">高性能</span>
+    <span class="chip mid">主流</span>
+    <span class="chip lo">入门</span>
+    <span class="chip">GB2 综合分 = 无分核，不可与 GB3+ 换算</span>
+    <span class="chip">R23 = Cinebench R23</span>
+  </div>
+
+  <div class="panel">
+    <div class="table-scroll">
+      <table id="grid">
+        <thead>
+          <tr>
+            <th style="width:168px">产品世代</th>
+            <th style="width:230px">架构 · 工艺 · 规格</th>
+            <th style="width:110px">发布时间</th>
+            <th>型号与规格</th>
+            <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
+            <th style="width:380px">里程碑与当时评论</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty hidden" id="empty">没有匹配的世代或型号。</div>
+  </div>
+
+  <footer>
+    <h3>数据来源</h3>
+    <ul>
+      <li>规格与发布日：AMD 产品规格、新闻稿、Wikipedia 处理器/微架构/EPYC 列表（Am8086 至 EPYC 9006 Venice），读取于 2026-09-10。</li>
+      <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/5 = Notebookcheck 中位、CPU-Monkey、Digital Trends / StorageReview 实验室。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
+      <li>GB2 综合分：<a href="https://www.geekbench.com/blog/2009/01/pc-performance-january-2009/">Geekbench 博客 PC Performance 2009-01</a>。</li>
+      <li>1978–2008-07 的 CPU：Geekbench 尚未发布。K5/K6/Athlon 早期在公开网上几乎没有可引用的 GB 分数。</li>
+      <li>Cinebench R23：Maxon 无公开全量榜；CPU-Monkey / Notebookcheck / 实验室。R23 于 2020-11 发布。</li>
+    </ul>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿 + Wikipedia 处理器列表 + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck/实验室评测（GB2–GB6）+ Geekbench 博客 PC Performance 2009-01（GB2 综合分），资料读取于 2026-09-10</p>
+  </footer>
+</div>
+
+<script>
+const GB_META = {
+  7: { tag: "GB7", label: "Geekbench 7", maxSc: 3164, from: "2026-07-23" },
+  6: { tag: "GB6", label: "Geekbench 6", maxSc: 3400, from: "2023-02-14" },
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2400, from: "2019-09-03" },
+  4: { tag: "GB4", label: "Geekbench 4", maxSc: 9900, from: "2016-11-10" },
+  3: { tag: "GB3", label: "Geekbench 3", maxSc: 5000, from: "2013-02-14" },
+  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+};
+const R23 = "Cinebench R23";
+
+const DATA = {
+desktop: [
+  {
+    gen: "Am8086 / Am8088",
+    code: "第二源 8086",
+    year: "约 1982",
+    arch: [["微架构","8086 兼容"],["工艺","3 μm 级"],["总线","16-bit 内部"],["角色","Intel 第二源"],["寻址","1 MB"]],
+    milestone: "AMD 按与 Intel 的交叉授权出货 Am8086 / Am8088，这是红队进入 x86 的真正起点，比自研内核早十年。内核与 Intel 8086 同级：16-bit、段寻址、没有保护模式。Am8088 的 8-bit 外部总线对标 IBM PC 生态。卖点是供货，不是微架构。公开 Geekbench 样本不存在——GB 要到 2008 年才发布。后来的 286 第二源和 386 清洁室诉讼，都从这份授权关系长出来。",
+    skus: [
+      {tier:"旗舰", date:"约 1982", name:"Am8086", spec:"1 核 · 5 / 8 / 10 MHz · 16-bit 总线 · 8086 兼容", gb:[], r23:null},
+      {tier:"主流", date:"约 1982", name:"Am8088", spec:"1 核 · 8-bit 外部总线 · IBM PC 兼容第二源", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Am286",
+    code: "第二源 80286",
+    year: "1982",
+    arch: [["微架构","80286 兼容"],["工艺","1.5 μm"],["模式","实模式 + 保护模式"],["寻址","16 MB"],["角色","Intel 第二源"]],
+    milestone: "1982 年 AMD 作为 Intel 第二源出货 Am286，这是 AMD 进入 x86 桌面的起点。内核与 Intel 80286 同级，同频相对 8086 大约 2 倍，卖点是供货和价格而不是微架构。没有从保护模式方便退回实模式，和 Intel 286 同一包袱。后来的 x86 克隆诉讼要从这里算起：AMD 先按授权做兼容，再在 386 上打出独立产品。",
+    skus: [
+      {tier:"旗舰", date:"1982", name:"Am286", spec:"1 核 · 8 / 10 / 12 / 16 / 20 MHz · 80286 兼容", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Am386",
+    code: "清洁室 386",
+    year: "1991",
+    arch: [["微架构","386 兼容 32-bit"],["工艺","0.8 μm 级"],["数据通路","32-bit"],["寻址","4 GB"],["晶体管","约 275k 级"]],
+    milestone: "1991 年 Am386 是清洁室设计，不再依赖 Intel 授权。同频 IPC 与 Intel 386 相当（相对 286 约 1.5–2 倍的 32-bit 吞吐），卖点是更高频率档和更低价格：DX-40 比 Intel 33 MHz 顶配更快。这场诉讼胜出让 AMD 第一次有了独立 x86 产品线。分页与保护环仍是 NT/UNIX 的底座，AMD 在这里卖的是「兼容且更便宜」。",
+    skus: [
+      {tier:"旗舰", date:"1991", name:"Am386 DX-40", spec:"1 核 · 40 MHz · 32-bit 总线", gb:[], r23:null},
+      {tier:"主流", date:"1991", name:"Am386 SX", spec:"32-bit 核 + 16-bit 外部总线", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Am486",
+    code: "486 兼容",
+    year: "1993–1995",
+    arch: [["微架构","486 兼容"],["工艺","0.7–0.5 μm"],["集成","片上 FPU + L1"],["倍频","DX2 / DX4"],["插槽","Socket 3"]],
+    milestone: "Am486 把 FPU 和 8 KB L1 做成 Intel 486 兼容，同频相对 386 大约 2 倍。DX4-120 把频率推过 Intel 同期顶配，是 Pentium 到来前 AMD 的性能台阶。没有超标量，整数仍接近每时钟 1 条有效指令。NexGen 并购还没发生，K5 尚未出货——这一代仍是「更快的克隆」，不是自研微架构。",
+    skus: [
+      {tier:"旗舰", date:"1995", name:"Am486 DX4-120", spec:"1 核 · 120 MHz（×3）· L1 8–16 KB", gb:[], r23:null},
+      {tier:"主流", date:"1993", name:"Am486 DX2-66", spec:"1 核 · 66 MHz（×2）· 片上 FPU", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "K5",
+    code: "SSA/5",
+    year: "1996",
+    arch: [["微架构","K5 乱序 / RISC86"],["工艺","0.5–0.35 μm"],["插槽","Socket 5 / 7"],["译码","x86 → RISC 类 μop"],["晶体管","约 4.3M"]],
+    milestone: "1996-03。AMD 第一颗完全自研 x86：把指令译成 RISC 类 μop 再乱序执行，思路接近 Pentium Pro 而不是 Pentium 双流水。同频整数常能打平或略胜 Pentium，浮点和上市延迟是短板——PR 75/90 对标 Pentium 75/90，实际时钟更低。Socket 7 兼容让升级便宜。K5 证明 AMD 能做乱序核，但错过了 Pentium 的市场窗口，真正翻盘要等 K7 Athlon。",
+    skus: [
+      {tier:"旗舰", date:"1996-10", name:"AMD K5 PR133", spec:"1 核 · 100 MHz 实际 · Socket 7 · PR 评级 133", gb:[], r23:null},
+      {tier:"主流", date:"1996-03-27", name:"AMD K5 PR75", spec:"1 核 · 75 MHz · 首发自研 x86", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "K6 / K6-2 / K6-III",
+    code: "NX686 / Chomper / Sharptooth",
+    year: "1997–1999",
+    arch: [["微架构","K6 乱序"],["工艺","0.35–0.18 μm"],["插槽","Socket 7 / Super 7"],["指令","MMX · 3DNow!"],["L2","K6-III 片上 256 KB"]],
+    milestone: "1997-04 K6 来自 NexGen Nx686。同频整数常强于 Pentium MMX，Super 7 让 Socket 7 主板能上 100 MHz FSB。1998 K6-2 引入 3DNow!，是 x86 消费端第一次认真做 3D 扩展，游戏优化参差。1999 K6-III 把 256 KB L2 放回片上，同频 IPC 再抬一档，但 Athlon 已经上市。这一代的评论是：便宜、兼容、整数强，FPU 和平台带宽仍落后 Slot 1。",
+    skus: [
+      {tier:"旗舰", date:"1999-02-22", name:"AMD K6-III 450", spec:"1 核 · 450 MHz · 片上 L2 256 KB · Super 7", gb:[], r23:null},
+      {tier:"高性能", date:"1998-05-28", name:"AMD K6-2 400", spec:"1 核 · 400 MHz · 3DNow! · Socket 7", gb:[], r23:null},
+      {tier:"主流", date:"1997-04-02", name:"AMD K6 233", spec:"1 核 · 233 MHz · MMX · Socket 7", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Athlon（K7）",
+    code: "Argon / Pluto / Thunderbird",
+    year: "1999–2000",
+    arch: [["微架构","K7 乱序三发射"],["工艺","0.25–0.18 μm"],["插槽","Slot A → Socket A"],["总线","EV6 200–266 MHz"],["L2","Thunderbird 片上满速 256 KB"]],
+    milestone: "1999-06-23 Athlon 是 AMD 第一次在性能上正面超过 Intel：三发射乱序、EV6 总线，同频整数相对 Pentium III 大约 +10–20%。Thunderbird 把满速 L2 放回片上，1 GHz 竞赛里 Athlon 与 Pentium III 交替破千。Slot A 卡式封装很快换成 Socket A。这是「红队能打高端」的世代，也是此后 Athlon XP 对 Pentium 4 的序章。",
+    skus: [
+      {tier:"旗舰", date:"2000-06-05", name:"Athlon 1 GHz Thunderbird", spec:"1 核 · 1000 MHz · L2 256 KB 满速 · Socket A", gb:[], r23:null},
+      {tier:"主流", date:"1999-06-23", name:"Athlon 500", spec:"Argon · 500 MHz · Slot A · 半速片外 L2", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Athlon XP",
+    code: "Palomino / Thoroughbred / Barton",
+    year: "2001–2003",
+    arch: [["微架构","K7 + 3DNow! Professional"],["工艺","0.18–0.13 μm"],["插槽","Socket A"],["FSB","266–400 MHz DDR"],["L2","Barton 512 KB"]],
+    milestone: "2001-10 Palomino 引入 PR 评级（XP 1800+ 实际 1.53 GHz）。同频 IPC 相对 Thunderbird 大约 +5–10%，功耗下降。Thoroughbred 0.13 μm 把频率推到 2200+；Barton 512 KB L2 的 3200+ 是 K7 桌面收官。当时大量评测写：同价 Athlon XP 整数打赢早期 Pentium 4，NetBurst 的 IPC 回退正好被 K7 短流水线打中。Duron 走低价，Sempron 还没改名。",
+    skus: [
+      {tier:"旗舰", date:"2003-02-10", name:"Athlon XP 3200+", spec:"Barton · 2200 MHz · L2 512 KB · FSB 400 · Socket A", gb:[], r23:null},
+      {tier:"主流", date:"2001-10-09", name:"Athlon XP 1800+", spec:"Palomino · 1533 MHz · L2 256 KB", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Athlon 64",
+    code: "Clawhammer / Newcastle / San Diego",
+    year: "2003–2005",
+    arch: [["微架构","K8 Hammer"],["工艺","130–90 nm"],["插槽","754 / 939 / 940"],["内存","片上 IMC · DDR"],["指令","AMD64"]],
+    milestone: "2003-09-23。K8 把内存控制器搬进 CPU，并推出 AMD64——后来 Intel 也只能跟。同频 IPC 相对 Barton 大约 +15–20%，相对 Prescott 的领先更明显，因为 IMC 把内存延迟打下来。FX-55 / FX-57 是单核旗舰。HyperTransport 替代 FSB。这一代被写成「AMD 的平台代差」：不是多几个 MHz，是把北桥瓶颈拆掉。64-bit 桌面软件当时几乎没有，真正吃到红利的是服务器 Opteron。",
+    skus: [
+      {tier:"旗舰", date:"2005-06-27", name:"Athlon 64 FX-57", spec:"San Diego · 1 核 · 2.80 GHz · L2 1 MB · Socket 939", gb:[{v:2,overall:1879}], r23:null},
+      {tier:"主流", date:"2003-09-23", name:"Athlon 64 3200+", spec:"Clawhammer · 2.00 GHz · Socket 754 · IMC DDR", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Athlon 64 X2",
+    code: "Manchester / Toledo / Windsor",
+    year: "2005–2008",
+    arch: [["微架构","K8 双核"],["工艺","90 / 65 nm"],["插槽","939 / AM2"],["缓存","每核独立 L2"],["内存","AM2 起 DDR2"]],
+    milestone: "2005-05 消费级双核。两颗 K8 核共享 IMC，不像 Pentium D 那样走 FSB 粘核，多核效率明显更高：相对单核大约 1.7–1.9 倍而不是 1.6。6400+（3.20 GHz / 2×1 MB L2）在 Geekbench 2 综合分约 3307。AM2 把内存换成 DDR2。2006 年 Conroe 上市后，X2 在整数和功耗上被正面超过，K8 双核的窗口只有一年多。",
+    skus: [
+      {tier:"旗舰", date:"2007-08-20", name:"Athlon 64 X2 6400+", spec:"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W", gb:[{v:2,overall:3307}], r23:null},
+      {tier:"主流", date:"2005-05-31", name:"Athlon 64 X2 4800+", spec:"Toledo · 2.40 GHz · Socket 939", gb:[{v:2,overall:2416}], r23:null}
+    ]
+  },
+  {
+    gen: "Phenom",
+    code: "Agena / Toliman",
+    year: "2007–2008",
+    arch: [["微架构","K10 Stars"],["工艺","65 nm"],["插槽","AM2+"],["核心","真四核原生"],["缺陷","TLB errata"]],
+    milestone: "2007-11 Phenom 是 AMD 第一颗原生四核（不是双模粘核）。K10 相对 K8 的 IPC 大约 +10–15%，共享 L3、HT 3.0。9950（2.60 GHz）Geekbench 2 综合分约 4724。上市即被 TLB errata 打断：BIOS 关掉快速路径后性能再掉一截，对上 Q6600/QX9650 几乎没有胜局。这一代口碑被缺陷改写，K10 的架构故事要等 Phenom II 才讲完。",
+    skus: [
+      {tier:"旗舰", date:"2008-03-27", name:"Phenom X4 9950", spec:"Agena · 4 核 / 4 线程 · 2.60 GHz · L3 2 MB · TDP 140 W · AM2+", gb:[{v:2,overall:4724}], r23:null},
+      {tier:"主流", date:"2007-11-19", name:"Phenom X4 9600", spec:"4 核 · 2.30 GHz · 首发原生四核", gb:[{v:2,overall:3851}], r23:null}
+    ]
+  },
+  {
+    gen: "Phenom II",
+    code: "Deneb / Thuban",
+    year: "2009–2011",
+    arch: [["微架构","K10 刷新"],["工艺","45 nm"],["插槽","AM2+ / AM3"],["L3","6 MB"],["顶配","六核 Thuban"]],
+    milestone: "2009-01 Deneb 修好 TLB、加大 L3 到 6 MB，45 nm 降漏电。IPC 相对 Phenom 大约 +10–15%（含缓存），仍落后 Nehalem 约 10–20%。X4 965（3.40 GHz）是四核旗舰；2010 X6 1100T 把消费级推到 6 核。AM3 引入 DDR3。Unlock 核心（某些 555 能开第四核）成为社区传说。这一代能打主流，打不赢 i7-920/980X 的高端——直到 2011 Bulldozer 把局面变得更差。",
+    skus: [
+      {tier:"旗舰", date:"2010-12-07", name:"Phenom II X6 1100T", spec:"Thuban · 6 核 / 6 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 125 W · AM3", gb:[], r23:null},
+      {tier:"高性能", date:"2009-08-13", name:"Phenom II X4 965 BE", spec:"Deneb · 4 核 · 3.40 GHz · TDP 125 W · 可超频", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "FX（Bulldozer / Piledriver）",
+    code: "Zambezi / Vishera",
+    year: "2011–2013",
+    arch: [["微架构","模块化双整数 / 共享 FPU"],["工艺","32 nm SOI"],["插槽","AM3+"],["顶配","8 模块整数 = 8「核」"],["功耗","TDP 125–220 W"]],
+    milestone: "2011-10 Bulldozer：一个模块两套整数、一套共享 FPU，官方叫 8 核，评测当 4 个「胖核」看。同频 IPC 相对 K10 不升反降，单线程明显弱于 Sandy Bridge（常见 20–30%）。8150 多核只能打平 2600K 的一部分负载。2012 Piledriver 8350/9590 把 IPC 拉回约 +10–15%，9590 靠 4.7/5.0 GHz 和 220 W 堆频率，被写成「最后的 FX」。Steamroller/Excavator 几乎没进桌面旗舰。这一代把 AM3+ 钉死四年，Ryzen 的「52% IPC」叙事正是对它而来。",
+    skus: [
+      {tier:"旗舰", date:"2013-06-11", name:"FX-9590", spec:"Vishera · 8 核 / 8 线程 · 4.70 / 5.00 GHz · L3 8 MB · TDP 220 W · AM3+", gb:[], r23:null},
+      {tier:"高性能", date:"2012-10-23", name:"FX-8350", spec:"8 核 · 4.00 / 4.20 GHz · TDP 125 W", gb:[{v:6,sc:576,mc:2361},{v:5,sc:573,mc:2777}], r23:[579,3803]},
+      {tier:"主流", date:"2011-10-12", name:"FX-8150", spec:"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "A 系列桌面 APU",
+    code: "Llano → Bristol Ridge",
+    year: "2011–2016",
+    arch: [["微架构","Stars / Piledriver / Steamroller / Excavator"],["工艺","32 nm → 28 nm"],["插槽","FM1 / FM2 / FM2+"],["定位","CPU+核显一体"],["对手","入门独显 + Pentium/i3"]],
+    milestone: "2011 Llano 把 K10 四核和能打的核显封进 FM1，A8-3850 让「无独显也能 1080p 低画质」第一次在桌面成立。CPU IPC 仍是 2010 年的 Stars，对上 Sandy Bridge 单核大约落后 20%+。Trinity/Richland 换 Piledriver，Kaveri（2014）上 Steamroller 和 HSA，Godavari A10-7890K（2016，4.1/4.3 GHz、95 W）是 FM2+ 收官。评论口径稳定：核显赢入门独显，CPU 只够办公。这条线与 FX 并行四年，Ryzen 到来后桌面 APU 才重新有单核故事（2400G 起）。",
+    skus: [
+      {tier:"旗舰", date:"2016-02-16", name:"A10-7890K", spec:"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7", gb:[], r23:null},
+      {tier:"高性能", date:"2014-01-14", name:"A10-7850K", spec:"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+", gb:[], r23:null},
+      {tier:"主流", date:"2011-06-30", name:"A8-3850", spec:"Llano · 4 核 · 2.90 GHz · FM1 · 核显 HD 6550D", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 1000",
+    code: "Summit Ridge / Whitehaven",
+    year: "2017",
+    arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","AM4 / TR4"],["内存","DDR4 双通道 / TR 四通道"],["SMT","同时多线程回归"]],
+    milestone: "2017-03-02。Zen 宣称相对 Excavator IPC +52%，评测整数大约 +50% 量级，单核追上 7700K 附近、多核 8 核 16 线程直接超过。1800X（3.6/4.0 GHz、95 W）把 8 核做进 500 美元档。Infinity Fabric + CCX（4 核一组）的跨 CCX 延迟成为新槽点。Threadripper 1950X 16 核打开 HEDT。AM4 承诺多代兼容。这一代把 AMD 从 FX 的口碑坑里拉出来，Intel 被迫在同年把 i7 改成 6 核。",
+    skus: [
+      {tier:"旗舰", date:"2017-03-02", name:"Ryzen 7 1800X", spec:"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4", gb:[{v:6,sc:1167,mc:5932},{v:5,sc:932,mc:6344},{v:4,sc:4499,mc:22009}], r23:[969,9314]},
+      {tier:"HEDT", date:"2017-08-10", name:"Threadripper 1950X", spec:"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4", gb:[], r23:null},
+      {tier:"主流", date:"2017-04-11", name:"Ryzen 5 1600X", spec:"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 2000",
+    code: "Pinnacle Ridge / Colfax",
+    year: "2018",
+    arch: [["微架构","Zen+"],["工艺","12 nm"],["插槽","AM4 / TR4"],["内存","DDR4-2933"],["缓存","更好的延迟"]],
+    milestone: "2018-04。Zen+ 是 12 nm 优化，IPC 大约 +3–5%，频率和缓存延迟改善。2700X（3.7/4.3 GHz、105 W）Precision Boost 2 让加速更跟得上负载，游戏相对 1800X 大约 +10–12%。对上已经上市的 8700K 仍然单核落后。Threadripper 2990WX 32 核把 NUMA 式四 die 延迟问题公开化，评测常写成「核数够、跨 die 痛」。这一代没有架构故事，有的是价格和平台成熟。",
+    skus: [
+      {tier:"旗舰", date:"2018-04-19", name:"Ryzen 7 2700X", spec:"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4", gb:[{v:6,sc:1294,mc:null},{v:5,sc:1062,mc:7100}], r23:[1071,9971]},
+      {tier:"HEDT", date:"2018-08-13", name:"Threadripper 2990WX", spec:"32 核 / 64 线程 · 3.00 / 4.20 GHz · TDP 250 W", gb:[], r23:null},
+      {tier:"主流", date:"2018-04-19", name:"Ryzen 5 2600X", spec:"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 3000",
+    code: "Matisse / Castle Peak",
+    year: "2019",
+    arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 12 nm I/O"],["插槽","AM4 / sTRX4"],["结构","Chiplet：CCD + cIOD"],["AVX","256-bit 满速"]],
+    milestone: "2019-07。Zen 2 官方 IPC +15%，评测整数大约 +12–18%。Chiplet 把 7 nm 计算和 12 nm I/O 拆开，主流桌面第一次出现 16 核（3950X）。3900X 12 核在上市时就把 9900K 的多核甩开，单核仍略落后。Notebookcheck：3950X GB6 约 1840 / 11870。Threadripper 3990X 64 核把 HEDT 做成「半颗 EPYC」。跨 CCD 延迟仍在，游戏调度需要 BIOS 和 Windows 补丁。这一代是 AMD 在多核上确立默认选项的转折。",
+    skus: [
+      {tier:"旗舰", date:"2019-11-25", name:"Ryzen 9 3950X", spec:"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4", gb:[{v:6,sc:1840,mc:11870}], r23:null},
+      {tier:"HEDT", date:"2020-02-07", name:"Threadripper 3990X", spec:"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4", gb:[], r23:null},
+      {tier:"高性能", date:"2019-07-07", name:"Ryzen 9 3900X", spec:"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W", gb:[], r23:null},
+      {tier:"主流", date:"2019-07-07", name:"Ryzen 5 3600", spec:"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 5000",
+    code: "Vermeer / Chagall",
+    year: "2020–2022",
+    arch: [["微架构","Zen 3"],["工艺","TSMC 7 nm"],["插槽","AM4 / sWRX8"],["CCX","每 CCD 8 核共享 32 MB L3"],["X3D","5800X3D 3D V-Cache"]],
+    milestone: "2020-11-05。Zen 3 官方 IPC +19%，每个 CCD 从两个 4 核 CCX 合成一个 8 核 CCX，L3 对游戏延迟的改善比纸面 IPC 更明显。Tom's Hardware：5950X 终于在单核上超过 Intel 的长期领先。CPU-Monkey R23 1644 / 28577；GB5 实验室约 1726 / 14239；GB6 约 2226。2022-04 5800X3D 把 64 MB 堆叠缓存放进 8 核，游戏帧率超过当时所有非 X3D 旗舰，开启「游戏买缓存」路线。AM4 在这一代收官，升级理由从核数变成单核+缓存。",
+    skus: [
+      {tier:"旗舰", date:"2020-11-05", name:"Ryzen 9 5950X", spec:"16 核 / 32 线程 · 3.40 / 4.90 GHz · L3 64 MB · TDP 105 W · AM4", gb:[{v:6,sc:2226,mc:13355},{v:5,sc:1726,mc:14239}], r23:[1644,28577]},
+      {tier:"刷新旗舰", date:"2022-04-20", name:"Ryzen 7 5800X3D", spec:"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W", gb:[{v:5,sc:1622,mc:10856}], r23:[1452,14317]},
+      {tier:"高性能", date:"2020-11-05", name:"Ryzen 9 5900X", spec:"12 核 / 24 线程 · 3.70 / 4.80 GHz · TDP 105 W", gb:[{v:6,sc:2200,mc:null},{v:5,sc:1700,mc:12839}], r23:[1636,21642]},
+      {tier:"主流", date:"2020-11-05", name:"Ryzen 5 5600X", spec:"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W", gb:[{v:5,sc:1641,mc:8177}], r23:[1544,11120]}
+    ]
+  },
+  {
+    gen: "Ryzen 7000",
+    code: "Raphael / Storm Peak",
+    year: "2022–2023",
+    arch: [["微架构","Zen 4"],["工艺","TSMC N5 CCD + N6 I/O"],["插槽","AM5 / sTR5"],["内存","DDR5"],["I/O","PCIe 5.0 · AVX-512"]],
+    milestone: "2022-09-27。Zen 4 官方 IPC +13%，加上 5 nm 频率（7950X 加速 5.7 GHz），Digital Trends 测得相对 5950X 单核 R23 +31%、GB5 +25%。R23 约 2018 / 37182；GB5 约 2149 / 23764；GB6 约 2977 / 19221；GB7 单核 2592。AM5 换 LGA 1718、DDR5、PCIe 5.0，平台税一次付清。2023-02 7950X3D / 7800X3D 把 V-Cache 带上 AM5，7800X3D 成为 2023–2024 游戏默认推荐。Threadripper 7980X 64 核走 sTR5。能效比 5000 明显好，170 W TDP 是新的满载账单。",
+    skus: [
+      {tier:"旗舰", date:"2022-09-27", name:"Ryzen 9 7950X", spec:"16 核 / 32 线程 · 4.50 / 5.70 GHz · L3 64 MB · TDP 170 W · AM5", gb:[{v:7,sc:2592,mc:null},{v:6,sc:2977,mc:19221},{v:5,sc:2149,mc:23764}], r23:[2018,37182]},
+      {tier:"刷新旗舰", date:"2023-02-28", name:"Ryzen 9 7950X3D", spec:"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W", gb:[{v:7,sc:2527,mc:null},{v:6,sc:null,mc:19642}], r23:null},
+      {tier:"HEDT", date:"2023-11-21", name:"Threadripper 7980X", spec:"64 核 / 128 线程 · 3.20 / 5.10 GHz · TDP 350 W · sTR5", gb:[{v:7,sc:2541,mc:null}], r23:null},
+      {tier:"高性能", date:"2023-04-06", name:"Ryzen 7 7800X3D", spec:"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐", gb:[{v:7,sc:2422,mc:null},{v:6,sc:2731,mc:14229}], r23:[1811,17762]},
+      {tier:"主流", date:"2022-09-27", name:"Ryzen 9 7900X", spec:"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W", gb:[{v:7,sc:2609,mc:null},{v:6,sc:2946,mc:null},{v:5,sc:2274,mc:19987}], r23:[2039,29480]},
+      {tier:"入门", date:"2022-09-27", name:"Ryzen 5 7600X", spec:"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W", gb:[{v:7,sc:2599,mc:null},{v:5,sc:2205,mc:11917}], r23:[1967,15322]}
+    ]
+  },
+  {
+    gen: "Ryzen 9000",
+    code: "Granite Ridge / Shimada Peak",
+    year: "2024–2026",
+    arch: [["微架构","Zen 5"],["工艺","TSMC N4X CCD + N6 I/O"],["插槽","AM5 / sTR5"],["AVX","满宽 AVX-512"],["X3D","第二代 3D V-Cache；X3D2 双堆叠"]],
+    milestone: "2024-08-15。Zen 5 官方 IPC +16%，评测在 Cinebench 上大约 +12%，应用负载 10–16% 看代码。满宽 AVX-512 让部分吞吐翻倍。9950X GB7 3034 / 25540，GB6 约 3385 / 21758，R23 约 2243 / 42103。游戏提升小于生产力，X3D 才是游戏主线：9800X3D（2024-11）8 核单 CCD 缓存成为默认推荐；9950X3D（2025-03）双 CCD；9950X3D2（2026-04，192 MB L3 / 200 W）再叠一层。9850X3D（2026-01）把 8 核 X3D 再提频。Threadripper 9980X 64 核 / GB7 单核 2725。桌面 Zen 6（Medusa）在 2026-09 尚未作为消费旗舰放量，9000 仍是 AM5 主战场。",
+    skus: [
+      {tier:"刷新旗舰", date:"2026-04-22", name:"Ryzen 9 9950X3D2", spec:"16 核 / 32 线程 · 4.30 / 5.60 GHz · L3 192 MB · TDP 200 W · AM5", gb:[{v:7,sc:3164,mc:28217}], r23:null},
+      {tier:"旗舰", date:"2024-08-15", name:"Ryzen 9 9950X", spec:"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W", gb:[{v:7,sc:3034,mc:25540},{v:6,sc:3385,mc:21758}], r23:[2243,42103]},
+      {tier:"高性能", date:"2025-03-12", name:"Ryzen 9 9950X3D", spec:"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 128 MB · TDP 170 W", gb:[{v:7,sc:3060,mc:26576},{v:6,sc:3363,mc:20465}], r23:null},
+      {tier:"HEDT", date:"2025-08-30", name:"Threadripper 9980X", spec:"64 核 / 128 线程 · 3.20 / 5.40 GHz · TDP 350 W · sTR5", gb:[{v:7,sc:2725,mc:null}], r23:null},
+      {tier:"主流", date:"2024-11-07", name:"Ryzen 7 9800X3D", spec:"8 核 / 16 线程 · 4.70 / 5.20 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐", gb:[{v:7,sc:2970,mc:null},{v:6,sc:3315,mc:18350}], r23:[2087,22992]},
+      {tier:"入门", date:"2024-08-15", name:"Ryzen 5 9600X", spec:"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W", gb:[{v:7,sc:2918,mc:14399},{v:6,sc:3343,mc:null}], r23:null}
+    ]
+  }
+],
+
+mobile: [
+  {
+    gen: "早期移动 x86",
+    code: "Am386 / Am486 / K6-2+",
+    year: "1991–1999",
+    arch: [["定位","早期笔记本"],["工艺","0.8–0.18 μm"],["特点","低压、静态设计"],["平台","Compaq / Toshiba 等 OEM"]],
+    milestone: "AMD 移动线从低压 386/486 开始，真正有独立故事的是 K6-2+ / K6-III+：片上 L2 和更低电压让 Win98 笔记本能买 AMD。同频 IPC 与桌面 K6 相同，瓶颈是电池和 66–100 MHz 总线。没有 SpeedStep 那样的动态变频品牌，OEM 靠降电压和停钟。Athlon 4 到来之前，AMD 笔记本是「便宜的 Socket 7 本」，不是性能本。",
+    skus: [
+      {tier:"旗舰", date:"1999", name:"AMD K6-III+ 450", spec:"1 核 · 450 MHz · 片上 L2 · 低压移动", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Mobile Athlon 4 / XP-M",
+    code: "Palomino / Thoroughbred 移动",
+    year: "2001–2003",
+    arch: [["微架构","K7 移动"],["工艺","0.18–0.13 μm"],["插槽","Socket 563 / 754 前身"],["电源","PowerNow!"]],
+    milestone: "2001 Mobile Athlon 4 把 K7 带进笔记本，PowerNow! 按负载调频调压，是 AMD 的 SpeedStep 对标。同频 IPC 与桌面 Athlon XP 相同，35 W 级热设计让 1.2–2.0 GHz 成为主流。对上 Pentium III-M / 早期 P4-M，整数往往不落下风，FPU 和平台芯片组是短板。这一代证明 K7 能进薄本，Turion 的品牌化还要再等两年。",
+    skus: [
+      {tier:"旗舰", date:"2003", name:"Mobile Athlon XP-M 2600+", spec:"Thoroughbred · 约 2.0 GHz · PowerNow! · 35 W 级", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Turion 64",
+    code: "Lancaster / Richmond",
+    year: "2005–2006",
+    arch: [["微架构","K8 移动"],["工艺","90 nm"],["插槽","Socket S1"],["内存","IMC DDR"],["指令","AMD64"]],
+    milestone: "2005-03 Turion 64 把 K8 IMC 和 AMD64 带进笔记本，25–35 W。同频 IPC 相对 XP-M 大约 +15%，内存延迟下降是体感来源。对上 Pentium M，单核互有胜负，Centrino 的整机（芯片组+Wi-Fi）品牌更完整。Turion 是 AMD 第一次认真做移动品牌，而不是「低压桌面核」。双核还要等 X2 移动版和之后的 Turion II。",
+    skus: [
+      {tier:"旗舰", date:"2005-03-10", name:"Turion 64 ML-44", spec:"1 核 · 2.40 GHz · L2 1 MB · 35 W · Socket S1", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Turion II / Phenom II 移动",
+    code: "Caspian / Champlain",
+    year: "2009–2010",
+    arch: [["微架构","K10 移动"],["工艺","45 nm"],["插槽","S1g3 / S1g4"],["核心","双核为主"],["内存","DDR3"]],
+    milestone: "45 nm K10 移动版把双核 2.x GHz 做成 35 W 主流。IPC 相对 K8 大约 +10–15%，DDR3 和 45 nm 漏电下降改善续航。对上 Arrandale i5，核显和单核仍落后，价格是唯一武器。Phenom II 四核移动 SKU 很少，散热墙立刻出现。这一代是 AMD 笔记本在 Llano APU 到来前的「纯 CPU」尾声。",
+    skus: [
+      {tier:"旗舰", date:"2010-05", name:"Turion II Ultra M620", spec:"2 核 · 2.50 GHz · 45 nm · 35 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Llano A 系列",
+    code: "Sabine",
+    year: "2011",
+    arch: [["微架构","K10 Stars + Sumo 核显"],["工艺","32 nm"],["插槽","FS1"],["定位","第一代笔记本 APU"],["核显","VLIW"]],
+    milestone: "2011-06 Llano 是第一代笔记本 APU：K10 四核 CPU + 相对能打的核显。CPU IPC 仍是 2010 年的 Stars，对上 Sandy Bridge 单核大约落后 20%+；核显在 1080p 低画质上第一次让「无独显本也能玩游戏」成立。A8-3500M 是典型 35 W 四核。评论分裂：核显赢、CPU 输。这条「APU 换独显入门」的路线一直延续到 Vega / RDNA。",
+    skus: [
+      {tier:"旗舰", date:"2011-06-14", name:"A8-3500M", spec:"4 核 / 4 线程 · 1.50 / 2.40 GHz · 35 W · Radeon HD 6620G", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Trinity / Richland",
+    code: "Piledriver APU",
+    year: "2012–2013",
+    arch: [["微架构","Piledriver 模块 + 核显"],["工艺","32 nm"],["插槽","FS1r2"],["模块","2 模块 = 4 整数"]],
+    milestone: "2012 Trinity 用 Piledriver 替换 Stars，官方 IPC 有个位数提升，实际单核仍明显弱于 Ivy Bridge。核显相对 Llano 大约 +20–50% 看驱动。A10-4600M 是 35 W 旗舰。Richland（2013）再提频。笔记本评测的口径很稳定：核显能打入门独显，CPU 只够办公和网页。Bulldozer 家族在移动端的问题与桌面相同——模块不是完整的核。",
+    skus: [
+      {tier:"旗舰", date:"2012-05-15", name:"A10-4600M", spec:"4 核（2 模块）· 2.30 / 3.20 GHz · 35 W · HD 7660G", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Carrizo / Bristol Ridge",
+    code: "Excavator APU",
+    year: "2015–2016",
+    arch: [["微架构","Excavator + GCN 核显"],["工艺","28 nm"],["封装","FP4 BGA"],["HSA","CPU/GPU 统一内存"]],
+    milestone: "2015 Carrizo 是 Excavator 移动落地：官方相对 Steamroller IPC +5–15%，28 nm 在笔记本上已经偏老。HSA 统一内存是架构故事，软件几乎没跟上。Bristol Ridge（2016，AM4 前夜的 15–35 W APU）把 GCN 核显再提一档，FX-9830P 是最后的 pre-Zen 旗舰。这一代的意义是把 AM4/FP 平台铺好，性能叙事留给 2017 年的 Raven Ridge。",
+    skus: [
+      {tier:"旗舰", date:"2016-06", name:"FX-9830P", spec:"Bristol Ridge · 4 核 · 3.00 / 3.70 GHz · 35 W · Radeon R7", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 2000 移动",
+    code: "Raven Ridge",
+    year: "2017–2018",
+    arch: [["微架构","Zen + Vega"],["工艺","14 nm"],["封装","FP5"],["TDP","15–35 W"],["核显","Vega 10/11"]],
+    milestone: "2017-10 Raven Ridge 把 Zen 和 Vega 放进笔记本。2700U（4 核 8 线程、15 W）相对 Bristol Ridge 单核大约 +50% 量级，核显在 1080p 低画质能打独显 MX 入门。15 W 墙让全核频率掉得很快，评测必须看 PL1/PL2。这一代让 AMD 笔记本重新出现在推荐列表里：不是因为核显，是因为 CPU 终于不再是拖后腿的那个。",
+    skus: [
+      {tier:"旗舰", date:"2017-10-26", name:"Ryzen 7 2700U", spec:"4 核 / 8 线程 · 2.20 / 3.80 GHz · 15 W · Vega 10", gb:[], r23:null},
+      {tier:"主流", date:"2018-01", name:"Ryzen 5 2500U", spec:"4 核 / 8 线程 · 2.00 / 3.60 GHz · 15 W · Vega 8", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 3000 移动",
+    code: "Picasso / Renoir 前夜",
+    year: "2019",
+    arch: [["微架构","Zen+ + Vega"],["工艺","12 nm"],["封装","FP5"],["变化","提频与延迟"]],
+    milestone: "2019 Picasso 是 12 nm Zen+ 刷新，IPC 约 +3–5%，3750H / 3700U 把频率再挤一档。核显仍是 Vega。真正的移动核数跃迁是 2020 Renoir（4000 系列，Zen 2 7 nm 8 核）。Picasso 被写成「Raven Ridge 的 Optimization」：能买，但等 4800H 的人更多。",
+    skus: [
+      {tier:"旗舰", date:"2019-01-06", name:"Ryzen 7 3750H", spec:"4 核 / 8 线程 · 2.30 / 4.00 GHz · 35 W · Vega 10", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 4000 移动",
+    code: "Renoir",
+    year: "2020",
+    arch: [["微架构","Zen 2 + Vega"],["工艺","TSMC 7 nm"],["封装","FP6"],["核心","轻薄本首次 8 核"],["核显","Vega 8"]],
+    milestone: "2020-01 CES。Renoir 把 Zen 2 8 核 16 线程塞进 15–45 W：4800H / 4900HS 是游戏本和创作者本的分水岭。IPC 相对 Picasso 大约 +15%，核数翻倍，多核是断层。Vega 核显没有同步升级到 RDNA，核显故事暂时让路给 CPU。15 W 4800U 的 PL2 短时加速成为新槽点。这一代让 AMD 在轻薄本多核上第一次明显领先同价 Intel 10 代。",
+    skus: [
+      {tier:"旗舰", date:"2020-03-16", name:"Ryzen 9 4900HS", spec:"8 核 / 16 线程 · 3.00 / 4.30 GHz · 35 W · Vega 8", gb:[{v:5,sc:1452,mc:6379}], r23:null},
+      {tier:"高性能", date:"2020-03-16", name:"Ryzen 7 4800H", spec:"8 核 / 16 线程 · 2.90 / 4.20 GHz · 45 W", gb:[], r23:null},
+      {tier:"主流", date:"2020-03-16", name:"Ryzen 7 4800U", spec:"8 核 / 16 线程 · 1.80 / 4.20 GHz · 15 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 5000 移动",
+    code: "Cézanne / Barcelo",
+    year: "2021",
+    arch: [["微架构","Zen 3 + Vega"],["工艺","TSMC 7 nm"],["封装","FP6"],["CCX","8 核共享 L3"],["核显","仍为 Vega"]],
+    milestone: "2021-01。Cézanne 把 Zen 3 带进笔记本，IPC 相对 Renoir 大约 +19% 的桌面口径在 15–45 W 墙上打了折扣，单核仍然明显强于 4800H。5900HX（8 核、45 W、4.6 GHz 加速）是游戏本旗舰。核显仍是 Vega，RDNA 要等 6000。Barcelo 是 2022 的 15 W 刷新。这一代赢在 CPU 单核和能效，核显开始成为短板。",
+    skus: [
+      {tier:"旗舰", date:"2021-01-12", name:"Ryzen 9 5900HX", spec:"8 核 / 16 线程 · 3.30 / 4.60 GHz · 45 W · Vega 8", gb:[{v:6,sc:1992,mc:7255},{v:5,sc:1510,mc:8432}], r23:null},
+      {tier:"主流", date:"2021-01-12", name:"Ryzen 7 5800U", spec:"8 核 / 16 线程 · 1.90 / 4.40 GHz · 15 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 6000",
+    code: "Rembrandt",
+    year: "2022",
+    arch: [["微架构","Zen 3+ + RDNA 2"],["工艺","TSMC 6 nm"],["封装","FP7"],["内存","DDR5 / LPDDR5"],["核显","RDNA 2"]],
+    milestone: "2022-01。Rembrandt 是 Zen 3+（6 nm）加 RDNA 2 核显，IPC 大约 +0–5%，真正的跃迁是核显：6900HS 的 680M 在 1080p 低中画质第一次能正经打游戏。DDR5/LPDDR5、PCIe 4.0、USB4 是平台升级。对上 Alder Lake-P 的核显互有胜负，CPU 多核 8 核打 12/14 核混合架构开始吃力。这一代把「APU 游戏本」重新写进推荐。",
+    skus: [
+      {tier:"旗舰", date:"2022-01-04", name:"Ryzen 9 6900HX", spec:"8 核 / 16 线程 · 3.30 / 4.90 GHz · 45 W · Radeon 680M", gb:[{v:6,sc:1980,mc:null}], r23:null},
+      {tier:"主流", date:"2022-01-04", name:"Ryzen 7 6800U", spec:"8 核 / 16 线程 · 2.70 / 4.70 GHz · 15–28 W · 680M", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen 7040 / 8040",
+    code: "Phoenix / Hawk Point",
+    year: "2023–2024",
+    arch: [["微架构","Zen 4 + RDNA 3"],["工艺","TSMC 4 nm"],["封装","FP7/FP8"],["NPU","XDNA 第一代"],["核显","780M / 890M"]],
+    milestone: "2023-01 Phoenix（7040）把 Zen 4 和 RDNA 3 放进 15–45 W，IPC 相对 Rembrandt 大约 +10–15% 加频率。7840U / 7940HS 是轻薄创作者默认。NPU 10–16 TOPS 第一次出现，软件几乎接不上。2024 Hawk Point（8040）主要是 NPU 和频率刷新。核显 780M/890M 继续打 1080p。这一代的购买点是 CPU+核显组合，不是 AI 品牌。",
+    skus: [
+      {tier:"旗舰", date:"2023-03", name:"Ryzen 9 7940HS", spec:"8 核 / 16 线程 · 4.00 / 5.20 GHz · 35–54 W · Radeon 780M", gb:[{v:7,sc:2110,mc:null},{v:6,sc:2617,mc:12447},{v:5,sc:1974,mc:11600}], r23:null},
+      {tier:"主流", date:"2023-03", name:"Ryzen 7 7840U", spec:"8 核 / 16 线程 · 3.30 / 5.10 GHz · 15–30 W · 780M", gb:[{v:7,sc:2204,mc:null}], r23:null}
+    ]
+  },
+  {
+    gen: "Dragon Range",
+    code: "Ryzen 7045 / 8045",
+    year: "2023–2024",
+    arch: [["微架构","Zen 4 桌面 CCD"],["工艺","TSMC N5"],["封装","FL1"],["核心","最高 16 核"],["定位","厚游戏本"]],
+    milestone: "2023-01 Dragon Range 把 Raphael 桌面 CCD 塞进 55–75 W+ 厚本：7945HX 16 核 32 线程，多核接近桌面 7950X 的降压版。Notebookcheck GB6 约 2784 / 15473（8945HX 刷新）。单核强、全核看模具功耗墙。与 Phoenix 的分工很清楚：HX 拼核数，HS/U 拼核显和厚度。Intel HX 混合架构是直接对手，16 颗完整 Zen 4 对 8P+16E 各有胜场。",
+    skus: [
+      {tier:"旗舰", date:"2024", name:"Ryzen 9 8945HX", spec:"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55 W+ · Dragon Range 刷新", gb:[{v:6,sc:2784,mc:15473}], r23:null},
+      {tier:"高性能", date:"2023-02", name:"Ryzen 9 7945HX", spec:"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55–75 W", gb:[{v:7,sc:2432,mc:null}], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen AI 300",
+    code: "Strix Point",
+    year: "2024",
+    arch: [["微架构","Zen 5 + Zen 5c 混合"],["工艺","TSMC 4 nm"],["NPU","XDNA 2 · 50 TOPS"],["核显","RDNA 3.5 890M"],["封装","FP8"]],
+    milestone: "2024-07。Strix Point 是 AMD 的 Copilot+ 答卷：Zen 5 + Zen 5c 混合、NPU 50 TOPS、890M。AI 9 HX 370（4P+8c / 12 核）单核接近桌面 Zen 5 降频版。混合调度比 Intel 的 P/E 更同构（都是 Zen 5 家族）。NPU 终于跨过 40 TOPS 门槛，应用仍薄。核显继续打 1080p。这一代把品牌从 Ryzen 7040 换成 Ryzen AI，卖点顺序变成 NPU → 核显 → CPU。",
+    skus: [
+      {tier:"旗舰", date:"2024-07-17", name:"Ryzen AI 9 HX 370", spec:"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.10 GHz · 28–54 W · 890M · NPU 50 TOPS", gb:[{v:7,sc:2364,mc:null}], r23:null},
+      {tier:"主流", date:"2024-07-17", name:"Ryzen AI 9 365", spec:"10 核 / 20 线程 · 28 W 级 · 880M", gb:[{v:7,sc:2234,mc:null}], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen AI Max 300",
+    code: "Strix Halo",
+    year: "2025",
+    arch: [["微架构","Zen 5 + RDNA 3.5 大核显"],["工艺","TSMC 4 nm"],["内存","256-bit LPDDR5X"],["核显","最多 40 CU"],["定位","迷你工作站 / 掌机级"]],
+    milestone: "2025。Strix Halo 把 16 核 Zen 5 和最多 40 CU 核显、256-bit 内存封进 BGA，对标苹果统一内存和 Intel 独显轻薄本。AI Max+ 395（16 核）GB7 单核 2438；PRO 390 单核 2511。多核受 55–120 W 墙限制。核显在 1080p/1440p 上第一次接近入门独显。封装内存不可升级。这一代是「APU 当工作站」的极限尝试，不是常规轻薄本。",
+    skus: [
+      {tier:"旗舰", date:"2025-01", name:"Ryzen AI Max+ 395", spec:"16 核 / 32 线程 · 最高 5.1 GHz · 55–120 W · Radeon 8060S · 256-bit LPDDR5X", gb:[{v:7,sc:2438,mc:null}], r23:null},
+      {tier:"高性能", date:"2025-01", name:"Ryzen AI Max PRO 390", spec:"12 核 / 24 线程 · 3.20 / 5.00 GHz · 55 W", gb:[{v:7,sc:2511,mc:null}], r23:null}
+    ]
+  },
+  {
+    gen: "Fire Range",
+    code: "Ryzen 9005 HX",
+    year: "2025",
+    arch: [["微架构","Zen 5 桌面 CCD"],["工艺","TSMC N4"],["封装","FL1"],["核心","最高 16 核"],["定位","厚游戏本 / 创作者本"]],
+    milestone: "2025-01 CES。Fire Range 把 Granite Ridge 桌面 CCD 塞进 55–75 W+ 厚本，对位上一代 Dragon Range。9955HX 16 核 / 5.4 GHz；9955HX3D 再叠 3D V-Cache，是 2025 年 AMD 笔记本多核顶。NanoReview：9955HX GB6 约 3230 / 19563，R23 多核约 35872。单核接近桌面 9950X 降压版，全核看模具 135 W PL2 墙。与 Strix Point / Halo 的分工不变：HX 拼核数，AI 300 拼 NPU 和核显，Halo 拼统一内存。",
+    skus: [
+      {tier:"旗舰", date:"2025-01", name:"Ryzen 9 9955HX3D", spec:"16 核 / 32 线程 · 最高 5.4 GHz · L3 128 MB · 55–75 W+ · 3D V-Cache", gb:[], r23:null},
+      {tier:"高性能", date:"2025-01-07", name:"Ryzen 9 9955HX", spec:"16 核 / 32 线程 · 2.50 / 5.40 GHz · L3 64 MB · 55–75 W", gb:[{v:6,sc:3230,mc:19563}], r23:null}
+    ]
+  },
+  {
+    gen: "Ryzen AI 400",
+    code: "Gorgon Point",
+    year: "2026",
+    arch: [["微架构","Zen 5 + Zen 5c 刷新"],["工艺","TSMC 4 nm"],["NPU","XDNA 2 · 最高 60 TOPS"],["核显","RDNA 3.5 890M"],["定位","Copilot+ 轻薄本刷新"]],
+    milestone: "2026 CES / MWC。Gorgon Point 是 Strix Point 的频率与 NPU 刷新，不是 Zen 6：仍是 4×Zen 5 + 8×Zen 5c，加速提到 5.2 GHz，NPU 从 50 提到 60 TOPS。AI 9 HX 475 是消费旗舰；HX 470 / 465 填中间档。CPU IPC 与 AI 300 同族，购买点是 NPU 配额和 OEM 整机而不是微架构跃迁。Krackan 切下来的 4+4 核硅片另走桌面 Ryzen AI 400G（450G），不进这张移动旗舰表。公开 Geekbench 稳定样本在 2026-09 仍少，表中不编造。",
+    skus: [
+      {tier:"旗舰", date:"2026-01", name:"Ryzen AI 9 HX 475", spec:"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.20 GHz · 15–54 W · 890M · NPU 60 TOPS", gb:[], r23:null},
+      {tier:"高性能", date:"2026-01", name:"Ryzen AI 9 HX 470", spec:"12 核 / 24 线程 · 5.20 GHz · NPU 55 TOPS", gb:[], r23:null},
+      {tier:"主流", date:"2026-01", name:"Ryzen AI 9 465", spec:"10 核 / 20 线程 · 最高 5.0 GHz", gb:[], r23:null}
+    ]
+  }
+],
+
+server: [
+  {
+    gen: "Opteron（K8）",
+    code: "SledgeHammer",
+    year: "2003–2006",
+    arch: [["微架构","K8"],["工艺","130–90 nm"],["插槽","940"],["互连","HyperTransport 多路"],["内存","每路 IMC DDR ECC"]],
+    milestone: "2003-04-22 Opteron 把 K8 做成服务器：每路自带内存控制器，双路/四路走 HyperTransport，不再挤一条 FSB。同频 IPC 相对 Xeon Nocona 明显领先，内存延迟是胜负手。248 / 252 等 SKU 让双路 1U 第一次能用 AMD。AMD64 在服务器上比桌面更早变成刚需。这一代改写了双路模板，Intel 要到 2009 Nehalem-EP 才把 IMC 收进 Xeon。",
+    skus: [
+      {tier:"旗舰", date:"2004-11", name:"Opteron 252", spec:"1 核 · 2.60 GHz · L2 1 MB · Socket 940 · 双路", gb:[], r23:null},
+      {tier:"主流", date:"2003-04-22", name:"Opteron 246", spec:"1 核 · 2.00 GHz · 首发 K8 服务器", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Opteron（K10）",
+    code: "Barcelona / Shanghai / Istanbul",
+    year: "2007–2010",
+    arch: [["微架构","K10"],["工艺","65 / 45 nm"],["插槽","F / AM3 服务器变体"],["核心","原生四核 → 六核"],["缺陷","Barcelona TLB"]],
+    milestone: "2007 Barcelona 原生四核，TLB errata 重演桌面 Phenom 的翻车，BIOS 修复后性能再削一刀。Shanghai 45 nm / 6 MB L3 把局面挽回；Istanbul 六核（2010）是 K10 服务器顶。IPC 相对 K8 大约 +10–15%。对上 Xeon 5400/5500，能效互有胜负，Nehalem-EP 上市后 Opteron 重新落后。这一代证明「原生四核」不够，平台和缺陷管理同样决定口碑。",
+    skus: [
+      {tier:"旗舰", date:"2010-06", name:"Opteron 2435 Istanbul", spec:"6 核 · 2.60 GHz · 45 nm · 双路", gb:[], r23:null},
+      {tier:"高性能", date:"2008-11", name:"Opteron 2384 Shanghai", spec:"4 核 · 2.70 GHz · L3 6 MB", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Opteron 6100/6200",
+    code: "Magny-Cours / Interlagos",
+    year: "2010–2012",
+    arch: [["微架构","K10 双 die / Bulldozer"],["插槽","G34"],["内存","四通道"],["顶配","12 / 16 整数核"]],
+    milestone: "2010 Magny-Cours 把两颗六核 K10 粘成 12 核，G34 四通道，核密度一时领先 Xeon 5600。模块间走 HT，NUMA 调优变成运维功课。2011 Interlagos（6200）换 Bulldozer 模块，16 整数核的单线程倒退把优势吐回去。对上 Sandy Bridge-EP，单核和功耗全面落后。G34 平台的遗产是「多核便宜」，不是「每核更快」。",
+    skus: [
+      {tier:"旗舰", date:"2011-11", name:"Opteron 6282SE", spec:"Interlagos · 16 核 · 2.60 GHz · G34 · TDP 140 W", gb:[], r23:null},
+      {tier:"高性能", date:"2010-03-29", name:"Opteron 6174", spec:"Magny-Cours · 12 核 · 2.20 GHz · 四通道", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Opteron 6300",
+    code: "Abu Dhabi",
+    year: "2012",
+    arch: [["微架构","Piledriver"],["插槽","G34"],["工艺","32 nm"],["顶配","16 核 6380"]],
+    milestone: "2012 Piledriver 服务器版，IPC 相对 Interlagos 大约 +10–15%，6380 16 核 / 2.7 GHz。仍然打不赢 Ivy Bridge-EP 的单核和 AVX。这是 Zen 之前最后一代通用 Opteron 旗舰，之后 AMD 服务器几乎退出超大规模，直到 2017 EPYC。评论很短：能买来做密度，不能买来做单线程。",
+    skus: [
+      {tier:"旗舰", date:"2012-11-05", name:"Opteron 6380", spec:"16 核 · 2.50 / 2.70 GHz · G34 · TDP 115 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 7001",
+    code: "Naples",
+    year: "2017",
+    arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","SP3"],["核心","最高 32"],["内存","8 通道 DDR4"]],
+    milestone: "2017-06-20。Naples 用 4 个 Zen die 做成 32 核 64 线程、8 通道 DDR4、128 条 PCIe 3.0，单路顶掉很多双路 Xeon 2600。IPC 就是桌面 Zen 那 +52% 相对 Excavator。7601（2.2/3.2 GHz、180 W）是旗舰。NUMA 域和 Infinity Fabric 延迟需要 BIOS/OS 调。这一代把 AMD 重新写进服务器短名单：不是因为单核，是因为每路通道数和核数。",
+    skus: [
+      {tier:"旗舰", date:"2017-06-20", name:"EPYC 7601", spec:"32 核 / 64 线程 · 2.20 / 3.20 GHz · TDP 180 W · SP3", gb:[], r23:null},
+      {tier:"主流", date:"2017-06-20", name:"EPYC 7351", spec:"16 核 / 32 线程 · 2.40 GHz · TDP 170 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 7002",
+    code: "Rome",
+    year: "2019",
+    arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 14 nm I/O"],["插槽","SP3"],["核心","最高 64"],["PCIe","128 条 4.0"]],
+    milestone: "2019-08。Rome 把 chiplet 做成 8 个 8 核 CCD + 中央 I/O die，64 核 128 线程。IPC +15% 量级，PCIe 4.0 和 8 通道继续拉大与 Cascade Lake 的 I/O 差距。7742 / 7H12 是顶配。云厂商第一次能在单路里放下「一台虚拟化主机」。跨 CCD 延迟仍在，但核密度和通道数已经足够改写 TCO 表格。SP3 插槽两代兼容是采购加分。",
+    skus: [
+      {tier:"旗舰", date:"2019-08-07", name:"EPYC 7742", spec:"64 核 / 128 线程 · 2.25 / 3.40 GHz · TDP 225 W · SP3", gb:[{v:6,sc:1278,mc:13647}], r23:null},
+      {tier:"高性能", date:"2019-08-07", name:"EPYC 7642", spec:"48 核 / 96 线程 · 2.30 / 3.30 GHz · TDP 225 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 7003",
+    code: "Milan / Milan-X",
+    year: "2021–2022",
+    arch: [["微架构","Zen 3"],["工艺","TSMC 7 nm"],["插槽","SP3 末代"],["核心","最高 64"],["X","Milan-X 3D V-Cache"]],
+    milestone: "2021-03-15 Milan。Zen 3 每 CCD 8 核共享 L3，IPC +19% 的桌面口径在服务器上同样成立。7763 64 核 / 280 W 是 SP3 收官旗舰。2022 Milan-X 把 3D V-Cache 堆进服务器，对技术计算和缓存敏感负载提升显著。对上 Ice Lake-SP 40 核，核数和通道继续领先，单核互有胜负。这是 AMD 在通用双路上变成「默认选项」的一代。",
+    skus: [
+      {tier:"旗舰", date:"2021-03-15", name:"EPYC 7763", spec:"64 核 / 128 线程 · 2.45 / 3.50 GHz · TDP 280 W · SP3", gb:[{v:6,sc:1612,mc:16042},{v:5,sc:1305,mc:null}], r23:null},
+      {tier:"刷新旗舰", date:"2022-03-21", name:"EPYC 7773X", spec:"Milan-X · 64 核 · 3D V-Cache · TDP 280 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 9004",
+    code: "Genoa / Genoa-X",
+    year: "2022–2023",
+    arch: [["微架构","Zen 4"],["工艺","TSMC N5 CCD + N6 I/O"],["插槽","SP5"],["核心","最高 96"],["内存","12 通道 DDR5 · PCIe 5.0 · CXL"]],
+    milestone: "2022-11-10 Genoa。96 核 192 线程、12 通道 DDR5、PCIe 5.0、CXL，SP5 新插座。IPC 相对 Milan 大约 +13% 加频率。9654（2.4/3.7 GHz、360 W）是通用旗舰。Genoa-X 再堆 V-Cache。Tom's Hardware：5 nm 数据中心 x86 第一次。对上 Sapphire Rapids 56 核，核密度和通道数继续压着打。12 通道把内存带宽写成规格的一部分，不再是「8 通道也够」。",
+    skus: [
+      {tier:"旗舰", date:"2022-11-10", name:"EPYC 9654", spec:"96 核 / 192 线程 · 2.40 / 3.70 GHz · L3 384 MB · TDP 360 W · SP5", gb:[{v:6,sc:1981,mc:21232}], r23:null},
+      {tier:"高性能", date:"2022-11-10", name:"EPYC 9554", spec:"64 核 / 128 线程 · 3.10 / 3.75 GHz · TDP 360 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 97x4",
+    code: "Bergamo",
+    year: "2023",
+    arch: [["微架构","Zen 4c"],["工艺","TSMC N5"],["插槽","SP5"],["核心","最高 128"],["定位","云密度"]],
+    milestone: "2023-06 Bergamo 用缩小的 Zen 4c 做到 128 核 256 线程（9754）。单核 IPC 接近 Zen 4、频率和缓存更保守，卖点是机柜密度和每瓦请求数。StorageReview 双路对比里 GB 多核很高，但单核低于 Genoa 高频 SKU。没有 AVX-512 满血定位，HPC 不是目标。云上的横向扩展负载（微服务、CDN）才是设计点。和 Genoa 同插座，选型从「一个 Platinum」变成「P 核吞吐 vs c 核密度」。",
+    skus: [
+      {tier:"旗舰", date:"2023-06-13", name:"EPYC 9754", spec:"128 核 / 256 线程 · 2.25 / 3.10 GHz · TDP 360 W · Zen 4c · SP5", gb:[], r23:null},
+      {tier:"高性能", date:"2023-06-13", name:"EPYC 9734", spec:"112 核 / 224 线程 · TDP 340 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 8004",
+    code: "Siena",
+    year: "2023",
+    arch: [["微架构","Zen 4c"],["工艺","TSMC N5"],["插槽","SP6"],["核心","最高 64"],["定位","边缘 / 单路"]],
+    milestone: "2023-09 Siena 用更小的 SP6 插座把 Zen 4c 做成 32–64 核边缘/电信/存储节点。通道数和 PCIe 比 SP5 少，TDP 更低。这是「不是所有服务器都要 96 核」的产品线，对标 Xeon 的中低 TDP SKU。性能故事让给功耗封顶和单路成本。",
+    skus: [
+      {tier:"旗舰", date:"2023-09-18", name:"EPYC 8534P", spec:"64 核 / 128 线程 · Zen 4c · SP6 · 单路边缘", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 9005",
+    code: "Turin",
+    year: "2024",
+    arch: [["微架构","Zen 5"],["工艺","TSMC N4X"],["插槽","SP5"],["核心","最高 128"],["AVX","满宽 AVX-512"]],
+    milestone: "2024-10 Turin。Zen 5 128 核（9755，2.7/4.1 GHz、512 MB L3、500 W）把满血 P 核密度再推一档。StorageReview：GB6 单核 1641 / 多核 11800（GB 对超高核数扩展有限）；R23 多核 131846 / 单核 1400。对上 128 核 Bergamo，整数压缩类负载可到约 2 倍（更高频率+更大 L3+Zen 5 IPC）。9575F 把 64 核推到 5.0 GHz。SP5 插槽两代兼容。500 W 把机柜供电写成规格。",
+    skus: [
+      {tier:"旗舰", date:"2024-10-10", name:"EPYC 9755", spec:"128 核 / 256 线程 · 2.70 / 4.10 GHz · L3 512 MB · TDP 500 W · SP5", gb:[{v:6,sc:1641,mc:11800}], r23:[1400,131846]},
+      {tier:"高性能", date:"2024-10-10", name:"EPYC 9655", spec:"96 核 / 192 线程 · 2.50 / 4.50 GHz · TDP 400 W", gb:[], r23:null},
+      {tier:"主流", date:"2024-10-10", name:"EPYC 9575F", spec:"64 核 / 128 线程 · 3.30 / 5.00 GHz · TDP 400 W · 高频", gb:[{v:6,sc:1865,mc:13219}], r23:[1052,111149]}
+    ]
+  },
+  {
+    gen: "EPYC 9x45 密度",
+    code: "Turin Dense",
+    year: "2024",
+    arch: [["微架构","Zen 5c"],["工艺","TSMC N3E"],["插槽","SP5"],["核心","最高 192"],["定位","云密度"]],
+    milestone: "2024-10 Turin Dense 用 Zen 5c 做到 192 核（9965，2.25/3.7 GHz、384 MB L3、500 W）。StorageReview GB6 1453 / 11199——单核低于 9755，多核在 GB 里也不按 192 核线性涨，说明这类负载的扩展墙。卖点是虚拟机密度和每瓦线程，不是 Cinebench 单核。9845 160 核、9825 144 核填中间档。和 9755 的分工：要单核和 AVX 选 Turin，要线程密度选 Dense。",
+    skus: [
+      {tier:"旗舰", date:"2024-10-10", name:"EPYC 9965", spec:"192 核 / 384 线程 · 2.25 / 3.70 GHz · L3 384 MB · TDP 500 W · Zen 5c", gb:[{v:6,sc:1453,mc:11199}], r23:null},
+      {tier:"高性能", date:"2024-10-10", name:"EPYC 9845", spec:"160 核 / 320 线程 · 2.10 / 3.70 GHz · TDP 390 W", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "EPYC 9006",
+    code: "Venice / Venice Dense",
+    year: "2026",
+    arch: [["微架构","Zen 6 / Zen 6c"],["工艺","TSMC N2"],["插槽","SP7 / SP8"],["核心","最高 256×Zen 6c 或 96×Zen 6"],["I/O","16 通道 DDR5 · PCIe 6.0 · CXL 3.1"]],
+    milestone: "2026-07-23 Advancing AI 发布。Venice 是第一代 Zen 6 服务器，也是第一款 2 nm 级高性能 x86。9006 覆盖 8–256 核：高频档最多 96 颗 Zen 6（加速至 5.0 GHz），密度档 256 颗 Zen 6c。新插座 SP7，16 通道 DDR5（最高 8 GT/s RDIMM / 12.8 GT/s MRDIMM），128 条 PCIe 6.0，CXL 3.1，TDP 最高 600 W。9006X 3D V-Cache 把 L3 堆到 1152 MB、加速 5.15 GHz。SP8 接边缘 8–128 核。公开 Geekbench 稳定样本在 2026-09 仍少，表中不编造。这是密度路线与带宽路线的下一次同时加码。",
+    skus: [
+      {tier:"旗舰", date:"2026-07-23", name:"EPYC 9006 密度旗舰", spec:"最多 256 核 Zen 6c · SP7 · TDP 最高 600 W · PCIe 6.0", gb:[], r23:null},
+      {tier:"高性能", date:"2026-07-23", name:"EPYC 9006 高频档", spec:"最多 96 核 Zen 6 · 加速至 5.0 GHz · 16 通道 DDR5", gb:[], r23:null},
+      {tier:"主流", date:"2026-07-23", name:"EPYC 9006X", spec:"3D V-Cache · L3 最高 1152 MB · 加速至 5.15 GHz", gb:[], r23:null}
+    ]
+  }
+]
+};
+
+const TIER_CLASS = { "旗舰":"t-flag", "刷新旗舰":"t-flag", "HEDT":"t-flag", "EX":"t-flag", "4S/8S":"t-hi", "高性能":"t-hi", "主流":"t-mid", "入门":"t-lo" };
+
+function fmt(n) {
+  if (n == null || n === "") return "—";
+  if (typeof n === "string") return n;
+  return n.toLocaleString("en-US");
+}
+function barW(v, max) {
+  if (!v || !max) return 0;
+  return Math.max(6, Math.min(100, Math.round(v / max * 100)));
+}
+function normalizeGb(sku) {
+  if (Array.isArray(sku.gb) && sku.gb.length) return sku.gb.slice().sort((a,b) => a.v - b.v);
+  if (sku.gb7) return [{ v: 7, sc: sku.gb7[0], mc: sku.gb7[1] }];
+  return [];
+}
+function gbBlock(item) {
+  const meta = GB_META[item.v] || { tag: "GB"+item.v, label: "Geekbench "+item.v, maxSc: 3000 };
+  const overall = item.overall != null && item.sc == null && item.mc == null;
+  const nums = overall
+    ? `${fmt(item.overall)} <small>综合分</small>`
+    : `${fmt(item.sc)} <small>单核</small> · ${fmt(item.mc)} <small>多核</small>`;
+  const bar = overall ? item.overall : item.sc;
+  return `<div class="score-block">
+    <div class="score-h"><span><span class="ver-tag ver-${item.v}">${meta.tag}</span></span></div>
+    <div class="nums">${nums}</div>
+    <div class="bar"><i style="width:${barW(bar, meta.maxSc)}%"></i></div>
+  </div>`;
+}
+function scoreBox(sku) {
+  const rows = normalizeGb(sku);
+  const r = sku.r23;
+  let html = `<div class="scores">`;
+  html += rows.map(x => gbBlock(x)).join("");
+  if (!rows.length && !r) {
+    html += `<div class="score-block"><div class="na">—</div></div>`;
+  }
+  if (r) {
+    html += `<div class="score-block"><div class="score-h"><span class="ver">${R23}</span></div>
+      <div class="nums">${fmt(r[0])} <small>单核</small> · ${fmt(r[1])} <small>多核</small></div></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function archList(arr) {
+  return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
+}
+function matchQuery(gen, q) {
+  if (!q) return true;
+  const blob = [gen.gen, gen.code, gen.year, gen.milestone, ...gen.arch.map(x => x.join(" ")), ...gen.skus.map(s => s.name + " " + s.spec)].join(" ").toLowerCase();
+  return blob.includes(q);
+}
+function render(seg, q) {
+  const tbody = document.querySelector("#grid tbody");
+  const empty = document.getElementById("empty");
+  const list = DATA[seg].filter(g => matchQuery(g, q));
+  tbody.innerHTML = "";
+  if (!list.length) { empty.classList.remove("hidden"); return; }
+  empty.classList.add("hidden");
+  for (const g of list) {
+    const n = g.skus.length;
+    g.skus.forEach((s, i) => {
+      const tr = document.createElement("tr");
+      let cells = "";
+      if (i === 0) {
+        cells += `<td class="gen-cell" rowspan="${n}"><div class="gen-name">${g.gen}</div><div class="gen-sub">${g.code}<br>${g.year}</div></td>`;
+        cells += `<td class="arch-cell" rowspan="${n}">${archList(g.arch)}</td>`;
+      }
+      cells += `<td><div class="date">${s.date}</div></td>`;
+      cells += `<td class="sku"><span class="tier ${TIER_CLASS[s.tier] || "t-lo"}">${s.tier}</span><div class="model">${s.name}</div><div class="spec">${s.spec}</div></td>`;
+      cells += `<td>${scoreBox(s)}</td>`;
+      if (i === 0) cells += `<td class="ms-cell" rowspan="${n}">${g.milestone}</td>`;
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+document.getElementById("n-desk").textContent = DATA.desktop.length;
+document.getElementById("n-mob").textContent = DATA.mobile.length;
+document.getElementById("n-srv").textContent = DATA.server.length;
+
+let seg = "desktop";
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    seg = btn.dataset.seg;
+    render(seg, document.getElementById("q").value.trim().toLowerCase());
+    window.scrollTo(0, 0);
+  });
+});
+document.getElementById("q").addEventListener("input", e => {
+  render(seg, e.target.value.trim().toLowerCase());
+});
+render("desktop", "");
+</script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>华为海思 CPU 世代全谱 · 手机麒麟</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #070b12;
+    --bg-2: #0d1420;
+    --panel: #121a28;
+    --panel-2: #182234;
+    --line: #243044;
+    --line-2: #31405a;
+    --ink: #e8eef8;
+    --muted: #8b9bb4;
+    --faint: #5d6d86;
+    --hisi: #cf0a2c;
+    --hisi-2: #c7000b;
+    --gold: #d4a017;
+    --teal: #2ec4b6;
+    --rose: #e85d75;
+    --ok: #5ad67d;
+    --warn: #f0b429;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans SC", "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  a { color: var(--hisi); }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 28px 22px 80px; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background:
+      radial-gradient(1200px 420px at 12% -10%, rgba(207,10,44,.22), transparent 55%),
+      radial-gradient(900px 380px at 92% 0%, rgba(199,0,11,.14), transparent 50%),
+      linear-gradient(180deg, #101826 0%, #0a101a 100%);
+    padding: 36px 36px 28px;
+    box-shadow: var(--shadow);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -40% 40%;
+    height: 280px;
+    background: repeating-linear-gradient(-32deg, transparent 0 14px, rgba(207,10,44,.05) 14px 15px);
+    pointer-events: none;
+  }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--hisi); font-size: 12px; letter-spacing: .18em; font-weight: 700; text-transform: uppercase;
+  }
+  .kicker span { width: 28px; height: 1px; background: var(--hisi); display: inline-block; }
+  h1 { font-size: clamp(28px, 4vw, 46px); line-height: 1.15; margin: 10px 0 12px; letter-spacing: -.03em; }
+  .lede { max-width: 820px; color: var(--muted); font-size: 15.5px; margin: 0 0 22px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    border: 1px solid var(--line-2); background: rgba(18,26,40,.7);
+    color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px;
+  }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  .stat {
+    background: rgba(8,12,20,.45); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px;
+  }
+  .stat b { display: block; font-size: 26px; font-family: "IBM Plex Mono", monospace; color: #fff; }
+  .stat em { font-style: normal; color: var(--faint); font-size: 12px; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin: 22px 0 16px; padding: 10px 0 12px;
+    background: linear-gradient(180deg, rgba(7,11,18,.96), rgba(7,11,18,.88) 70%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabs { display: flex; gap: 6px; background: var(--panel); border: 1px solid var(--line); padding: 4px; border-radius: 999px; }
+  .tab {
+    border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; font: 600 13px/1 "Noto Sans SC", sans-serif;
+  }
+  .tab.active { background: var(--hisi-2); color: #fff; }
+  .search {
+    flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
+    color: var(--ink); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none;
+  }
+  .search:focus { border-color: var(--hisi); }
+
+  .note {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; color: var(--muted); font-size: 13px; margin-bottom: 18px;
+  }
+  .note strong { color: var(--ink); }
+  .note ol { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin: 4px 0; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .chip { font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .chip.flag { color: var(--gold); border-color: rgba(212,160,23,.4); }
+  .chip.hi { color: var(--hisi); border-color: rgba(207,10,44,.35); }
+  .chip.mid { color: var(--teal); border-color: rgba(46,196,182,.35); }
+  .chip.lo { color: #b7c3d6; }
+
+  .panel {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .table-scroll { overflow-x: auto; overflow-y: visible; min-height: 125vh; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1320px; }
+  thead th {
+    position: sticky; top: 0; z-index: 5;
+    background: #141c28; color: #c5d3e8; font-size: 12px; font-weight: 700;
+    letter-spacing: .04em; text-align: left; padding: 12px 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  tbody td {
+    vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line);
+    font-size: 13px; background: var(--panel);
+  }
+  tbody tr:hover td.sku { background: #1a2434; }
+  .gen-cell, .arch-cell, .ms-cell { background: #101820 !important; }
+  .gen-cell { width: 168px; border-right: 1px solid var(--line); }
+  .arch-cell { width: 230px; color: var(--muted); font-size: 12.5px; }
+  .ms-cell { width: 380px; color: #c9d4e4; font-size: 12.5px; line-height: 1.58; }
+  .gen-name { color: #fff; font-weight: 700; font-size: 14px; }
+  .gen-sub { color: var(--hisi); font-size: 12px; margin-top: 4px; font-family: "IBM Plex Mono", monospace; }
+  .kv { margin: 0; padding: 0; list-style: none; }
+  .kv li { margin: 3px 0; }
+  .kv b { color: #d5deeb; font-weight: 600; }
+  .date { color: #dfe7f3; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; white-space: nowrap; }
+  .tier {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    padding: 2px 6px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .t-flag { background: rgba(212,160,23,.15); color: var(--gold); }
+  .t-hi { background: rgba(207,10,44,.14); color: var(--hisi); }
+  .t-mid { background: rgba(46,196,182,.14); color: var(--teal); }
+  .t-lo { background: rgba(183,195,214,.12); color: #c5d0e0; }
+  .model { font-weight: 700; color: #fff; font-size: 14px; margin-top: 0; }
+  .spec { color: var(--muted); margin-top: 4px; font-size: 12.5px; }
+  .scores { display: grid; gap: 8px; min-width: 250px; }
+  .score-block {
+    background: #0e1624; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+  }
+  .score-h { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ver {
+    font-size: 10px; color: var(--faint); font-family: "IBM Plex Mono", monospace; letter-spacing: .04em;
+  }
+  .ver-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    padding: 1px 6px; border-radius: 4px; margin-right: 6px; font-family: "IBM Plex Mono", monospace;
+  }
+  .ver-7 { background: #cf0a2c; color: #fff; }
+  .ver-6 { background: #2ec4b6; color: #062b28; }
+  .ver-5 { background: #d4a017; color: #1a1400; }
+  .ver-4 { background: #6b7c93; color: #fff; }
+  .ver-3 { background: #4a5568; color: #fff; }
+  .ver-2 { background: #805ad5; color: #fff; }
+  .nums { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #fff; }
+  .nums small { color: var(--muted); font-size: 11px; }
+  .bar { height: 4px; background: #223049; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--hisi-2), var(--hisi)); }
+  .na { color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+  .hidden { display: none !important; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+
+  footer {
+    margin-top: 28px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  footer h3 { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  footer ul { margin: 0; padding-left: 18px; }
+  footer li { margin: 4px 0; }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 22px; }
+    .table-scroll { min-height: 125vh; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span></span>HiSilicon / Kirin Chronicle · 约 2012–2026</div>
+    <h1>海思处理器世代全谱</h1>
+    <p class="lede">只收录<strong>手机麒麟</strong>（旗舰 + 中端），从 K3V2 / 早期 Kirin 到 9030。覆盖制裁前后与回归机型。昇腾、平板 / PC 麒麟不在本表。每一代列各档最高型号；Geekbench 有实数才写，禁止编造。</p>
+    <div class="meta-row">
+      <span class="pill">资料读取于 2026-09-10</span>
+      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">主题色 Huawei 红 / 黑</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="n-mob">—</b><em>手机麒麟世代</em></div>
+      <div class="stat"><b id="n-sku">—</b><em>型号行</em></div>
+      <div class="stat"><b id="n-span">—</b><em>跨度</em></div>
+      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-seg="mobile">手机麒麟</button>
+    </div>
+    <input class="search" id="q" placeholder="搜索代数、代号、型号，例如 9000S / 810 / Mate 60 / nova" />
+  </div>
+
+  <section class="note">
+    <strong>读表规则</strong>
+    <ol>
+      <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 拓扑 / 内存与 I/O。</li>
+      <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>美国出口管制（Entity List / 外国直接产品规则）自约 2019–2020 起切断海思对 TSMC 先进节点的稳定代工；2023 起 SMIC N+2 / N+3（约 7 nm / 6 nm 级 DUV）支撑麒麟回归。里程碑栏如实简述，不演义。</li>
+      <li>发布时间尽量精确到月（YYYY-MM）；公开资料仅到季度时取该季代表月，冲突时优先发布会 / Wikipedia 列表。</li>
+      <li>本表仅手机麒麟：旗舰（Mate / Pura 等）与中端（nova / Honor 时代 620–985 等）按时间排在同一张表；昇腾 Ascend、平板 9000W、电脑 X90 已移除。</li>
+      <li>分数来源：NanoReview / PhoneArena / Geekbench Browser / Notebookcheck / CPUBoss 等公开汇总。找不到或样本不可靠（如早期未满血跑分）则留空，不编造。</li>
+      <li>Cinebench R23 对手机 SoC 几乎无稳定公开样本，本表一律留空。</li>
+    </ol>
+  </section>
+  <div class="legend">
+    <span class="chip">制裁 / SMIC 回归见里程碑</span>
+    <span class="chip">R23 = Cinebench R23（本表留空）</span>
+  </div>
+
+  <div class="panel">
+    <div class="table-scroll">
+      <table id="grid">
+        <thead>
+          <tr>
+            <th style="width:168px">产品世代</th>
+            <th style="width:230px">架构 · 工艺 · 规格</th>
+            <th style="width:110px">发布时间</th>
+            <th>型号与规格</th>
+            <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
+            <th style="width:380px">里程碑与当时评论</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty hidden" id="empty">没有匹配的世代或型号。</div>
+  </div>
+
+  <footer>
+    <h3>数据来源</h3>
+    <ul>
+      <li>规格与发布日：Wikipedia HiSilicon / Kirin、MoePC Kirin SKU 表、华为消费者业务公开页、TechInsights 拆解、SCMP / Tom's Hardware / GSMArena（2023–2026 回归机型），读取于 2026-09-10。</li>
+      <li>Geekbench：NanoReview SoC 页、Geekbench Browser、PhoneArena、Notebookcheck、CPUBoss / CpuTronic 公开汇总。早期未满血或样本冲突者留空。</li>
+      <li>制裁与代工：美国 Entity List / FDPR 公开时间线；SMIC N+2（约 7 nm 级）/ N+3（约 6–5 nm 级 DUV）第三方工艺研判（TechInsights 等）。</li>
+      <li>Cinebench R23：手机 SoC 公开稳定样本极少，本表全部留空，不编造。</li>
+    </ul>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《华为海思 CPU 世代全谱》资料页<br />分析基于：Wikipedia HiSilicon + MoePC + NanoReview / Geekbench Browser / PhoneArena + TechInsights / SCMP（制裁与回归），资料读取于 2026-09-10</p>
+  </footer>
+</div>
+
+<script>
+const GB_META = {
+  7: { tag: "GB7", label: "Geekbench 7", maxSc: 4500, from: "2026-07-23" },
+  6: { tag: "GB6", label: "Geekbench 6", maxSc: 4500, from: "2023-02-14" },
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" },
+  4: { tag: "GB4", label: "Geekbench 4", maxSc: 12000, from: "2016-11-10" },
+  3: { tag: "GB3", label: "Geekbench 3", maxSc: 6000, from: "2013-02-14" },
+  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+};
+const R23 = "Cinebench R23";
+
+const DATA = {
+mobile: [
+  {
+    gen: "K3V2",
+    code: "Hi3620 · 早期海思",
+    year: "2012-02",
+    arch: [["微架构","Cortex-A9 四核"],["工艺","40 nm"],["GPU","Vivante GC4000"],["定位","早期自研 SoC"],["代表机型","Ascend D1 / MediaPad"]],
+    milestone: "2012 前后海思以 K3V2 进入智能手机 SoC 叙事，仍是授权核 + 自研整合。性能与发热争议并存，真正的「麒麟品牌」要等到次年 Kirin 编号体系。公开稳定 Geekbench 样本稀缺，留空。这是海思消费移动线的起点，不是旗舰统治力的起点。",
+    skus: [
+      {tier:"旗舰", date:"2012-02", name:"K3V2", spec:"4× Cortex-A9 · 40 nm · Ascend / MediaPad 早期机", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 910 / 910T",
+    code: "Hi6620",
+    year: "2014-01–2014-05",
+    arch: [["微架构","Cortex-A9 四核"],["工艺","28 nm HPm"],["GPU","Mali-450 MP4"],["基带","Balong 710 LTE Cat.4"],["代表机型","Ascend P7"]],
+    milestone: "2014 麒麟正式编号时代。910 / 910T 把 28 nm 与 LTE Cat.4 带进华为中高端机。仍是 A9 时代，真正拉开差距的是随后的 big.LITTLE 920 系。公开 GB 样本不稳定，留空。",
+    skus: [
+      {tier:"主流", date:"2014-01", name:"Kirin 910", spec:"4× A9 @1.6 GHz · Mali-450 MP4", gb:[], r23:null},
+      {tier:"旗舰", date:"2014-05", name:"Kirin 910T", spec:"4× A9 @1.8 GHz · Mali-450 MP4 · Ascend P7", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 920 / 925 / 928",
+    code: "Hi3630",
+    year: "2014-06–2014-10",
+    arch: [["微架构","4× A15 + 4× A7"],["工艺","28 nm HPm"],["GPU","Mali-T628 MP4"],["基带","Balong 720 LTE Cat.6"],["代表机型","Ascend Mate 7 / Honor 6"]],
+    milestone: "2014 H2。海思第一代认真做 big.LITTLE 旗舰：A15 性能核 + Cat.6。Mate 7 大电池叙事盖过纯跑分。仍落后同期骁龙 801/810 舆论，但供应链自主故事开始成型。公开稳定 GB6 样本少，留空。",
+    skus: [
+      {tier:"主流", date:"2014-06", name:"Kirin 920", spec:"4× A15 @1.7 GHz + 4× A7 · Honor 6", gb:[], r23:null},
+      {tier:"高性能", date:"2014-09", name:"Kirin 925", spec:"4× A15 + 4× A7 · Mate 7 等", gb:[], r23:null},
+      {tier:"旗舰", date:"2014-10", name:"Kirin 928", spec:"4× A15 + 4× A7 · 最高频档 · 旗舰机", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 620",
+    code: "Hi6210",
+    year: "2014-12",
+    arch: [["微架构","8× Cortex-A53"],["工艺","28 nm"],["GPU","Mali-450 MP4"],["定位","入门 / 中低端"],["代表机型","Honor 4X / 4C"]],
+    milestone: "海思第一颗量产 64-bit 入门八核。定位清晰：便宜、够用、撑起荣耀数字系列。公开 GB6 稳定样本稀缺，留空。",
+    skus: [
+      {tier:"入门", date:"2014-12", name:"Kirin 620", spec:"8× A53 · 28 nm · Honor 4X / 4C", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 930 / 935",
+    code: "Hi3635",
+    year: "2015-03",
+    arch: [["微架构","8× Cortex-A53"],["工艺","28 nm HPm"],["GPU","Mali-T628 MP4"],["基带","LTE Cat.6"],["代表机型","P8 / Mate S"]],
+    milestone: "2015。全 A53 八核走能效与成本，旗舰位很快被 950 取代。935 略抬 GPU/CPU 频率。公开 GB 样本分散，留空。过渡世代：证明海思能量产八核，但 IPC 要等 A72。",
+    skus: [
+      {tier:"主流", date:"2015-03", name:"Kirin 930", spec:"8× A53 · 28 nm", gb:[], r23:null},
+      {tier:"旗舰", date:"2015-03", name:"Kirin 935", spec:"8× A53 · Mali-T628 更高频 · P8 / Mate S 顶配叙事", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 950 / 955",
+    code: "Hi3650",
+    year: "2015-11–2016-04",
+    arch: [["微架构","4× A72 + 4× A53"],["工艺","TSMC 16FF+"],["GPU","Mali-T880 MP4"],["基带","Balong 720 Cat.6"],["代表机型","Mate 8 / P9"]],
+    milestone: "2015 Q4。16 nm + A72 让麒麟第一次进入「能打同期旗舰」讨论。Mate 8 续航与发热口碑好；955 略抬频。GB6 约 sc 341 / mc 1294（公开汇总口径）。这是海思从「能用」到「值得买」的关键一跳。",
+    skus: [
+      {tier:"主流", date:"2015-11", name:"Kirin 950", spec:"4× A72 @2.3 GHz + 4× A53 · Mate 8", gb:[{v:6,sc:341,mc:1294}], r23:null},
+      {tier:"旗舰", date:"2016-04", name:"Kirin 955", spec:"4× A72 @2.52 GHz + 4× A53 · Mali-T880 MP4 · P9 / Mate 8 顶", gb:[{v:6,sc:341,mc:1294}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 650 / 655 / 658 / 659",
+    code: "Hi6250 族",
+    year: "2016-04–2017-07",
+    arch: [["微架构","4× A53 + 4× A53"],["工艺","16 nm"],["GPU","Mali-T830 MP2"],["定位","中端"],["代表机型","P9 Lite / nova / Honor 6X"]],
+    milestone: "16 nm 中端长寿平台，衍生 655/658/659 小迭代。拍照与双摄下放的主力芯。公开 GB6 样本不稳定，留空。",
+    skus: [
+      {tier:"入门", date:"2016-04", name:"Kirin 650", spec:"8× A53 · P9 Lite / Honor 5C", gb:[], r23:null},
+      {tier:"主流", date:"2017-07", name:"Kirin 659", spec:"8× A53 调频顶 · 16 nm · nova / Honor 中端", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 960",
+    code: "Hi3660",
+    year: "2016-10",
+    arch: [["微架构","4× A73 + 4× A53"],["工艺","TSMC 16FFC"],["GPU","Mali-G71 MP8"],["基带","Balong 750 Cat.12"],["代表机型","Mate 9 / P10"]],
+    milestone: "2016 Q4。首发 Cortex-A73 消费 SoC 之一，G71 MP8 显着加宽 GPU。USB-C、双摄叙事与 Mate 9 同场。GB6 约 sc 403 / mc 1147（NanoReview 样本偏少）。评论：CPU 扎实，GPU 与能效仍有槽点，但「华为自研芯够用」已成共识。",
+    skus: [
+      {tier:"旗舰", date:"2016-10", name:"Kirin 960", spec:"4× A73 @2.36 GHz + 4× A53 · Mali-G71 MP8 · Mate 9", gb:[{v:6,sc:403,mc:1147}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 970",
+    code: "Hi3670 · 首款 NPU",
+    year: "2017-09",
+    arch: [["微架构","4× A73 + 4× A53"],["工艺","TSMC 10 nm"],["GPU","Mali-G72 MP12"],["NPU","Cambricon 独立 NPU"],["代表机型","Mate 10 / P20"]],
+    milestone: "2017-09 IFA。世界首款量产独立 NPU 手机 SoC（寒武纪 IP），把「端侧 AI」写成发布会主叙事。10 nm。GB6 约 sc 420 / mc 1617。纯 CPU 相对 960 步进有限，真正的代差在 ISP/NPU 与摄影计算。此后麒麟每年都要讲 AI。",
+    skus: [
+      {tier:"旗舰", date:"2017-09", name:"Kirin 970", spec:"4× A73 + 4× A53 · 10 nm · NPU · Mate 10 / P20", gb:[{v:6,sc:420,mc:1617}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 710 / 710F",
+    code: "Hi6260",
+    year: "2018-07",
+    arch: [["微架构","4× A73 + 4× A53"],["工艺","12 nm"],["GPU","Mali-G51 MP4"],["定位","主流中端"],["代表机型","nova 3i / Honor 8X"]],
+    milestone: "A73 中端普及芯，性价比口碑好。GB6 约 sc 348–352 / mc 1206–1244。710F 为后续改版。荣耀拆分前的「中端基本盘」。",
+    skus: [
+      {tier:"主流", date:"2018-07", name:"Kirin 710 / 710F", spec:"4× A73 + 4× A53 · 12 nm · nova / Honor 8X", gb:[{v:6,sc:352,mc:1244}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 980",
+    code: "Hi3680 · 双 A76",
+    year: "2018-08",
+    arch: [["微架构","2× A76 + 2× A76 + 4× A55"],["工艺","TSMC 7 nm"],["GPU","Mali-G76 MP10"],["NPU","双核 NPU"],["代表机型","Mate 20 / P30"]],
+    milestone: "2018-08。首批 7 nm 消费 SoC 之一；2+2+4 三丛集 A76。单核与能效明显上台阶。GB6 约 sc 928 / mc 2875。Mate 20 / P30 影像与续航口碑把「麒麟旗舰」推到全球安卓第一梯队讨论。",
+    skus: [
+      {tier:"旗舰", date:"2018-08", name:"Kirin 980", spec:"2× A76 @2.6 + 2× A76 @1.92 + 4× A55 · 7 nm · Mate 20", gb:[{v:6,sc:928,mc:2875}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 810",
+    code: "Hi6280",
+    year: "2019-06",
+    arch: [["微架构","2× A76 + 6× A55"],["工艺","TSMC 7 nm"],["GPU","Mali-G52 MP6"],["NPU","达芬奇"],["代表机型","nova 5 / Honor 9X"]],
+    milestone: "7 nm 中端爆款。A76 让中端单核接近上代旗舰。GB6 约 sc 770–797 / mc 1983–2120（取公开区间中位约 770/1983）。证明海思中端也能吃先进节点——随后制裁让这一优势难以延续。",
+    skus: [
+      {tier:"主流", date:"2019-06", name:"Kirin 810", spec:"2× A76 @2.27 + 6× A55 · 7 nm · nova 5", gb:[{v:6,sc:770,mc:1983}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 990 4G / 5G",
+    code: "Hi3690 · 双模 5G",
+    year: "2019-09",
+    arch: [["微架构","2× A76 + 2× A76 + 4× A55"],["工艺","TSMC 7 nm / 7 nm+（5G）"],["GPU","Mali-G76 MP16"],["基带","Balong 5000（5G 版）"],["代表机型","Mate 30 / P40"]],
+    milestone: "2019-09 IFA。990 5G 把基带堆进 SoC（7 nm+），4G 版略砍。达芬奇 NPU。GB6：5G 约 sc 1018 / mc 3387；4G 约 sc 748 / mc 3078。同期美国开始加码对华为实体清单——这是制裁前最后一代「正常全球供应链」旗舰芯之一。",
+    skus: [
+      {tier:"高性能", date:"2019-09", name:"Kirin 990 4G", spec:"同架构略低配 · 外挂/无 5G 集成 · Mate 30 4G", gb:[{v:6,sc:748,mc:3078}], r23:null},
+      {tier:"旗舰", date:"2019-09", name:"Kirin 990 5G", spec:"2+2+4 A76/A55 · 7 nm+ · 集成 Balong 5000 · Mate 30 Pro 5G", gb:[{v:6,sc:1018,mc:3387}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 820 / 820E",
+    code: "5G 中端",
+    year: "2020-03–2021-01",
+    arch: [["微架构","1× A76 + 3× A76 + 4× A55"],["工艺","7 nm"],["GPU","Mali-G57 MP6"],["基带","集成 5G"],["代表机型","nova 7 / Honor 30S"]],
+    milestone: "2020-03。中端集成 5G。GB6 约 sc 836 / mc 2458。制裁阴影下仍能出货一段时间，是荣耀离开前最后一代强势麒麟中端之一。",
+    skus: [
+      {tier:"主流", date:"2020-03", name:"Kirin 820", spec:"1+3 A76 + 4× A55 · 7 nm 5G · nova 7", gb:[{v:6,sc:836,mc:2458}], r23:null},
+      {tier:"入门", date:"2021-01", name:"Kirin 820E", spec:"同族降配 · 部分荣耀 / nova", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 985",
+    code: "Hi6290 · 次旗舰 5G",
+    year: "2020-04",
+    arch: [["微架构","1× A76 + 3× A76 + 4× A55"],["工艺","TSMC 7 nm"],["GPU","Mali-G77 MP8"],["基带","Balong 5000"],["代表机型","Honor 30 / nova 7 Pro"]],
+    milestone: "卡在 990 与 820 之间的次旗舰。GB6 约 sc 699 / mc 2593。库存清完后同类定位长期空缺，直到回归后的中端线重建。",
+    skus: [
+      {tier:"高性能", date:"2020-04", name:"Kirin 985", spec:"1+3 A76 + 4× A55 · G77 MP8 · Honor 30", gb:[{v:6,sc:699,mc:2593}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 9000 / 9000E",
+    code: "Hi36A0 · 末代 TSMC 5 nm",
+    year: "2020-10",
+    arch: [["微架构","1× A77 + 3× A77 + 4× A55"],["工艺","TSMC 5 nm"],["GPU","Mali-G78 MP24 / MP22（E）"],["基带","Balong 5000 5G"],["代表机型","Mate 40 / Mate 40 Pro"]],
+    milestone: "2020-10。TSMC N5，1+3+4 A77，G78 超宽。Mate 40 系列成「库存潮汐」：美国外国直接产品规则切断后续先进代工后，这是海思最后一批大规模 TSMC 5 nm 手机芯。GB6：9000 约 sc 1262 / mc 3507；9000E 约 sc 1176 / mc 3255。之后约三年旗舰麒麟缺货，华为被迫用高通 4G 等过渡。",
+    skus: [
+      {tier:"旗舰", date:"2020-10", name:"Kirin 9000", spec:"1+3+4 A77/A55 · G78 MP24 · 5 nm · Mate 40 Pro", gb:[{v:6,sc:1262,mc:3507}], r23:null},
+      {tier:"高性能", date:"2020-10", name:"Kirin 9000E", spec:"同 CPU · G78 MP22 · Mate 40 / 部分 Pro", gb:[{v:6,sc:1176,mc:3255}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 9000S / 9000S1",
+    code: "Hi36A0V120 · SMIC 回归",
+    year: "2023-08–2024-05",
+    arch: [["微架构","Taishan V120 + A510"],["工艺","SMIC N+2（约 7 nm 级 DUV）"],["GPU","Maleoon 910"],["NPU","Da Vinci 大小核"],["代表机型","Mate 60 / Pura 70"]],
+    milestone: "2023-08 Mate 60 突然开售：麒麟 9000S，自研泰山核 + Maleoon GPU，SMIC N+2。这是制裁后第一颗大规模量产的国产先进节点手机旗舰芯，卫星通话与「回归」舆论盖过纯跑分。GB6 约 sc 1325 / mc 4118。9000S1 用于 Pura 70 基版等，略调频。诚实口径：密度/能效仍落后同期台积电 4/3 nm 竞品，但是供应链政治事件。",
+    skus: [
+      {tier:"旗舰", date:"2023-08", name:"Kirin 9000S", spec:"1+3 Taishan V120 + 4× A510 · Maleoon 910 · Mate 60 / Pro", gb:[{v:6,sc:1325,mc:4118}], r23:null},
+      {tier:"主流", date:"2024-05", name:"Kirin 9000S1", spec:"同族调频 · Pura 70 等", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 9010",
+    code: "Hi36A0V121",
+    year: "2024-04",
+    arch: [["微架构","Taishan V121 / V120 + A510"],["工艺","SMIC N+2"],["拓扑","1+3+4（逻辑多线程叙事 2+6+4）"],["GPU","Maleoon 910 系"],["代表机型","Pura 70 Pro / Ultra · Mate XT"]],
+    milestone: "2024-04 Pura 70 系列。新增大核 Taishan V121，相对 9000S 单核/多核再抬一档。GB6 约 sc 1421 / mc 4323（NanoReview）。Mate XT 三折叠早期亦用此芯。评论：仍是 N+2 上的架构微迭代，重点在影像、折叠形态与鸿蒙，而非追平骁龙 8 Gen 3 跑分。",
+    skus: [
+      {tier:"旗舰", date:"2024-04", name:"Kirin 9010", spec:"Taishan V121 @2.3 + V120 @2.18 + A510 · Pura 70 Pro / Ultra", gb:[{v:6,sc:1421,mc:4323}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 9020",
+    code: "Hi36C0V110 · Maleoon 920",
+    year: "2024-11",
+    arch: [["微架构","Taishan V123 / V120 + Taishan-Little"],["工艺","SMIC N+2（约 7 nm）"],["GPU","Maleoon 920"],["基带","Balong 6000 5G Rel.17"],["代表机型","Mate 70 / Pura 80 / Mate XTs"]],
+    milestone: "2024 Q4 Mate 70；2025 官方逐步公开芯片名（Pura 80 / Mate XTs 发布会）。自研小核替换 A510，Maleoon 920 + Balong 6000。TechInsights：仍为 SMIC 7N+2，非传闻「9100 / 5 nm」。GB6 约 sc 1370 / mc 4446。2025-08 起华为不再讳言麒麟型号——制裁叙事从「藏芯」转向「亮芯」。",
+    skus: [
+      {tier:"旗舰", date:"2024-11", name:"Kirin 9020", spec:"1× Taishan @2.5 + 3× @2.15 + 4× Little @1.6 · Maleoon 920 · Mate 70 Pro / Pura 80", gb:[{v:6,sc:1370,mc:4446}], r23:null}
+    ]
+  },
+  {
+    gen: "Kirin 9030 / 9030 Pro",
+    code: "SMIC N+3 · Mate 80",
+    year: "2025-11",
+    arch: [["微架构","Taishan V124 族"],["工艺","SMIC N+3（约 6–5 nm 级 DUV）"],["GPU","Maleoon 935"],["拓扑","9030：8 核；9030 Pro：9 核"],["代表机型","Mate 80 Pro / Pro Max / RS · Mate X7"]],
+    milestone: "2025-11 Mate 80。华为官网列出 9030 / 9030 Pro：Pro 为 1+4+4（9 核），标准版 1+3+4；宣称相对上代有约 35–45% 整机性能提升（华为自己口径）。TechInsights：N+3 仍是 DUV 多重图形，密度追平全球顶尖 EUV 节点仍有差距。早期 Geekbench 泄露样本被指未满血，本表留空以免误导。2026 传 Pura 90 系或 9030S——未获稳定公开规格前不单列。",
+    skus: [
+      {tier:"主流", date:"2025-11", name:"Kirin 9020（Mate 80 基版）", spec:"上代芯下放 · Mate 80 标准版", gb:[{v:6,sc:1370,mc:4446}], r23:null},
+      {tier:"高性能", date:"2025-11", name:"Kirin 9030", spec:"8 核 · 同族时钟 · Mate 80 Pro 12 GB 等", gb:[], r23:null},
+      {tier:"旗舰", date:"2025-11", name:"Kirin 9030 Pro", spec:"9 核 · Taishan V124 · Maleoon 935 · Mate 80 Pro Max / RS / Mate X7", gb:[], r23:null}
+    ]
+  }
+]
+};
+
+const TIER_CLASS = { "旗舰":"t-flag", "刷新旗舰":"t-flag", "HEDT":"t-flag", "EX":"t-flag", "4S/8S":"t-hi", "高性能":"t-hi", "主流":"t-mid", "入门":"t-lo" };
+
+function fmt(n) {
+  if (n == null || n === "") return "—";
+  if (typeof n === "string") return n;
+  return n.toLocaleString("en-US");
+}
+function barW(v, max) {
+  if (!v || !max) return 0;
+  return Math.max(6, Math.min(100, Math.round(v / max * 100)));
+}
+function normalizeGb(sku) {
+  if (Array.isArray(sku.gb) && sku.gb.length) return sku.gb.slice().sort((a,b) => a.v - b.v);
+  if (sku.gb7) return [{ v: 7, sc: sku.gb7[0], mc: sku.gb7[1] }];
+  return [];
+}
+function gbBlock(item) {
+  const meta = GB_META[item.v] || { tag: "GB"+item.v, label: "Geekbench "+item.v, maxSc: 3000 };
+  const overall = item.overall != null && item.sc == null && item.mc == null;
+  const nums = overall
+    ? `${fmt(item.overall)} <small>综合分</small>`
+    : `${fmt(item.sc)} <small>单核</small> · ${fmt(item.mc)} <small>多核</small>`;
+  const bar = overall ? item.overall : item.sc;
+  return `<div class="score-block">
+    <div class="score-h"><span><span class="ver-tag ver-${item.v}">${meta.tag}</span></span></div>
+    <div class="nums">${nums}</div>
+    <div class="bar"><i style="width:${barW(bar, meta.maxSc)}%"></i></div>
+  </div>`;
+}
+function scoreBox(sku) {
+  const rows = normalizeGb(sku);
+  const r = sku.r23;
+  let html = `<div class="scores">`;
+  html += rows.map(x => gbBlock(x)).join("");
+  if (!rows.length && !r) {
+    html += `<div class="score-block"><div class="na">—</div></div>`;
+  }
+  if (r) {
+    html += `<div class="score-block"><div class="score-h"><span class="ver">${R23}</span></div>
+      <div class="nums">${fmt(r[0])} <small>单核</small> · ${fmt(r[1])} <small>多核</small></div></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function archList(arr) {
+  return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
+}
+function matchQuery(gen, q) {
+  if (!q) return true;
+  const blob = [gen.gen, gen.code, gen.year, gen.milestone, ...gen.arch.map(x => x.join(" ")), ...gen.skus.map(s => s.name + " " + s.spec)].join(" ").toLowerCase();
+  return blob.includes(q);
+}
+function render(seg, q) {
+  const tbody = document.querySelector("#grid tbody");
+  const empty = document.getElementById("empty");
+  const list = DATA[seg].filter(g => matchQuery(g, q));
+  tbody.innerHTML = "";
+  if (!list.length) { empty.classList.remove("hidden"); return; }
+  empty.classList.add("hidden");
+  for (const g of list) {
+    const n = g.skus.length;
+    g.skus.forEach((s, i) => {
+      const tr = document.createElement("tr");
+      let cells = "";
+      if (i === 0) {
+        cells += `<td class="gen-cell" rowspan="${n}"><div class="gen-name">${g.gen}</div><div class="gen-sub">${g.code}<br>${g.year}</div></td>`;
+        cells += `<td class="arch-cell" rowspan="${n}">${archList(g.arch)}</td>`;
+      }
+      cells += `<td><div class="date">${s.date}</div></td>`;
+      cells += `<td class="sku"><div class="model">${s.name}</div><div class="spec">${s.spec}</div></td>`;
+      cells += `<td>${scoreBox(s)}</td>`;
+      if (i === 0) cells += `<td class="ms-cell" rowspan="${n}">${g.milestone}</td>`;
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+document.getElementById("n-mob").textContent = DATA.mobile.length;
+document.getElementById("n-sku").textContent = DATA.mobile.reduce((n,g)=>n+g.skus.length,0);
+document.getElementById("n-span").textContent = "约 14 年";
+
+let seg = "mobile";
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    seg = btn.dataset.seg;
+    render(seg, document.getElementById("q").value.trim().toLowerCase());
+    window.scrollTo(0, 0);
+  });
+});
+document.getElementById("q").addEventListener("input", e => {
+  render(seg, e.target.value.trim().toLowerCase());
+});
+render("mobile", "");
+</script>
+</body>
+</html>

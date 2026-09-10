@@ -17,6 +17,7 @@ export default defineConfig({
       { text: '🌲 Git 分支管理学', link: '/git-workflow/01_branch_management' },
       { text: '🧠 AI 编程思想', link: '/ai-programming-philosophy/01_ai_software_engineering' },
       { text: '🧠 AI 编程最佳实践', link: '/AI编程最佳实践/article-01-overview' },
+      { text: '🧩 CPU 世代全谱', link: '/cpu-chronicles/' },
     ],
 
     sidebar: {

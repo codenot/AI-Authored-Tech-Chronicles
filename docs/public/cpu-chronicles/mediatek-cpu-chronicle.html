@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>联发科 CPU 世代全谱 · 移动</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #070b12;
+    --bg-2: #0d1420;
+    --panel: #121a28;
+    --panel-2: #182234;
+    --line: #243044;
+    --line-2: #31405a;
+    --ink: #e8eef8;
+    --muted: #8b9bb4;
+    --faint: #5d6d86;
+    --mtk: #0a56c7;
+    --mtk-2: #f7941d;
+    --gold: #d4a017;
+    --teal: #2ec4b6;
+    --rose: #e85d75;
+    --ok: #5ad67d;
+    --warn: #f0b429;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans SC", "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  a { color: var(--mtk-2); }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 28px 22px 80px; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background:
+      radial-gradient(1200px 420px at 12% -10%, rgba(10,86,199,.28), transparent 55%),
+      radial-gradient(900px 380px at 92% 0%, rgba(247,148,29,.16), transparent 50%),
+      linear-gradient(180deg, #101826 0%, #0a101a 100%);
+    padding: 36px 36px 28px;
+    box-shadow: var(--shadow);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -40% 40%;
+    height: 280px;
+    background: repeating-linear-gradient(-32deg, transparent 0 14px, rgba(10,86,199,.05) 14px 15px);
+    pointer-events: none;
+  }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--mtk-2); font-size: 12px; letter-spacing: .18em; font-weight: 700; text-transform: uppercase;
+  }
+  .kicker span { width: 28px; height: 1px; background: var(--mtk-2); display: inline-block; }
+  h1 { font-size: clamp(28px, 4vw, 46px); line-height: 1.15; margin: 10px 0 12px; letter-spacing: -.03em; }
+  .lede { max-width: 820px; color: var(--muted); font-size: 15.5px; margin: 0 0 22px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    border: 1px solid var(--line-2); background: rgba(18,26,40,.7);
+    color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px;
+  }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  .stat {
+    background: rgba(8,12,20,.45); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px;
+  }
+  .stat b { display: block; font-size: 26px; font-family: "IBM Plex Mono", monospace; color: #fff; }
+  .stat em { font-style: normal; color: var(--faint); font-size: 12px; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin: 22px 0 16px; padding: 10px 0 12px;
+    background: linear-gradient(180deg, rgba(7,11,18,.96), rgba(7,11,18,.88) 70%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .tabs { display: flex; gap: 6px; background: var(--panel); border: 1px solid var(--line); padding: 4px; border-radius: 999px; }
+  .tab {
+    border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; font: 600 13px/1 "Noto Sans SC", sans-serif;
+  }
+  .tab.active { background: var(--mtk); color: #fff; }
+  .search {
+    flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
+    color: var(--ink); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none;
+  }
+  .search:focus { border-color: var(--mtk-2); }
+
+  .note {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; color: var(--muted); font-size: 13px; margin-bottom: 18px;
+  }
+  .note strong { color: var(--ink); }
+  .note ol { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin: 4px 0; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .chip { font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .chip.flag { color: var(--gold); border-color: rgba(212,160,23,.4); }
+  .chip.hi { color: var(--mtk-2); border-color: rgba(247,148,29,.4); }
+  .chip.mid { color: var(--teal); border-color: rgba(46,196,182,.35); }
+  .chip.lo { color: #b7c3d6; }
+
+  .panel {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .table-scroll { overflow-x: auto; overflow-y: visible; min-height: 125vh; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1320px; }
+  thead th {
+    position: sticky; top: 0; z-index: 5;
+    background: #141c28; color: #c5d3e8; font-size: 12px; font-weight: 700;
+    letter-spacing: .04em; text-align: left; padding: 12px 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  tbody td {
+    vertical-align: top; padding: 12px; border-bottom: 1px solid var(--line);
+    font-size: 13px; background: var(--panel);
+  }
+  tbody tr:hover td.sku { background: #1a2434; }
+  .gen-cell, .arch-cell, .ms-cell { background: #101820 !important; }
+  .gen-cell { width: 168px; border-right: 1px solid var(--line); }
+  .arch-cell { width: 230px; color: var(--muted); font-size: 12.5px; }
+  .ms-cell { width: 380px; color: #c9d4e4; font-size: 12.5px; line-height: 1.58; }
+  .gen-name { color: #fff; font-weight: 700; font-size: 14px; }
+  .gen-sub { color: var(--mtk-2); font-size: 12px; margin-top: 4px; font-family: "IBM Plex Mono", monospace; }
+  .kv { margin: 0; padding: 0; list-style: none; }
+  .kv li { margin: 3px 0; }
+  .kv b { color: #d5deeb; font-weight: 600; }
+  .date { color: #dfe7f3; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; white-space: nowrap; }
+  .tier {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    padding: 2px 6px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .t-flag { background: rgba(212,160,23,.15); color: var(--gold); }
+  .t-hi { background: rgba(247,148,29,.14); color: var(--mtk-2); }
+  .t-mid { background: rgba(46,196,182,.14); color: var(--teal); }
+  .t-lo { background: rgba(183,195,214,.12); color: #c5d0e0; }
+  .model { font-weight: 700; color: #fff; font-size: 14px; margin-top: 0; }
+  .spec { color: var(--muted); margin-top: 4px; font-size: 12.5px; }
+  .scores { display: grid; gap: 8px; min-width: 250px; }
+  .score-block {
+    background: #0e1624; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+  }
+  .score-h { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ver {
+    font-size: 10px; color: var(--faint); font-family: "IBM Plex Mono", monospace; letter-spacing: .04em;
+  }
+  .ver-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    padding: 1px 6px; border-radius: 4px; margin-right: 6px; font-family: "IBM Plex Mono", monospace;
+  }
+  .ver-7 { background: #0a56c7; color: #fff; }
+  .ver-6 { background: #2ec4b6; color: #062b28; }
+  .ver-5 { background: #f7941d; color: #1a1400; }
+  .ver-4 { background: #6b7c93; color: #fff; }
+  .ver-3 { background: #4a5568; color: #fff; }
+  .ver-2 { background: #805ad5; color: #fff; }
+  .nums { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #fff; }
+  .nums small { color: var(--muted); font-size: 11px; }
+  .bar { height: 4px; background: #223049; border-radius: 99px; margin-top: 6px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--mtk), var(--mtk-2)); }
+  .na { color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+  .hidden { display: none !important; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+
+  footer {
+    margin-top: 28px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  footer h3 { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  footer ul { margin: 0; padding-left: 18px; }
+  footer li { margin: 4px 0; }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 22px; }
+    .table-scroll { min-height: 125vh; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker"><span></span>MediaTek Chronicle · 约 2013–2026</div>
+    <h1>联发科处理器世代全谱</h1>
+    <p class="lede">从 Helio 时代讲到天玑 Dimensity 旗舰与中端系列（含 2026 最新）。以移动 SoC 为主；每一代列各档最高型号。Geekbench 有哪个版本列哪个，不可换算；找不到留空，禁止编造。</p>
+    <div class="meta-row">
+      <span class="pill">资料读取于 2026-09-10</span>
+      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">品牌色 · MediaTek 蓝 / 黄</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="n-flag">—</b><em>旗舰世代</em></div>
+      <div class="stat"><b id="n-mid">—</b><em>中高端世代</em></div>
+      <div class="stat"><b id="n-pc">—</b><em>PC / 平板世代</em></div>
+      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-seg="flagship">旗舰端</button>
+      <button class="tab" data-seg="mid">中高端</button>
+      <button class="tab" data-seg="pc">PC / 平板</button>
+    </div>
+    <input class="search" id="q" placeholder="搜索代数、代号、型号，例如 9500 / Dimensity / Helio G99 / Kompanio" />
+  </div>
+
+  <section class="note">
+    <strong>读表规则</strong>
+    <ol>
+      <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 拓扑 / 内存与 I/O。</li>
+      <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>旗舰端：Helio X 系列与天玑 1000 / 1200 / 9000 系（含 9500）。中高端：Helio P/G 与天玑 7000 / 8000 系。PC/平板：Kompanio Chromebook / 平板芯片。</li>
+      <li>分数来源：NanoReview、Geekbench Browser、Notebookcheck、MediaTek 官网 / 新闻稿、Beebom / Gizmochina 等第三方评测。编造分数不会出现，找不到就留空。</li>
+      <li>本表不把 AnTuTu 与 Geekbench 混算；发布会官方 GB 数字若与零售机独立样本差距大，优先列独立样本，并在里程碑注明。</li>
+    </ol>
+  </section>
+  <div class="legend">
+    <span class="chip">版本标签不可跨 GB 换算</span>
+    <span class="chip">R23 = Cinebench R23（移动端多数留空）</span>
+  </div>
+
+  <div class="panel">
+    <div class="table-scroll">
+      <table id="grid">
+        <thead>
+          <tr>
+            <th style="width:168px">产品世代</th>
+            <th style="width:230px">架构 · 工艺 · 规格</th>
+            <th style="width:110px">发布时间</th>
+            <th>型号与规格</th>
+            <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
+            <th style="width:380px">里程碑与当时评论</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="empty hidden" id="empty">没有匹配的世代或型号。</div>
+  </div>
+
+  <footer>
+    <h3>数据来源</h3>
+    <ul>
+      <li>规格与发布日：MediaTek 官网产品页 / 新闻稿（含 Dimensity 9500 2025-09-22 发布）、Wikipedia MediaTek / Dimensity 列表，读取于 2026-09-10。</li>
+      <li>Geekbench：NanoReview SoC 页汇总、Geekbench Browser、Notebookcheck、Beebom / Gizmochina 对 Dimensity 9500 等的独立零售机样本。</li>
+      <li>Dimensity 9500：独立样本约 GB6 3315 / 9914（Beebom）；发布会宣称 GB6.4 约 4007 / 11217——本表优先独立样本，不混用版本口径。</li>
+      <li>Helio 早期（X20 等）公开稳定 GB5/GB6 样本稀缺，宁缺毋滥，留空。</li>
+      <li>Cinebench R23：移动 SoC 公开稳定样本极少，本表几乎全部留空，不编造。</li>
+    </ul>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《联发科 CPU 世代全谱》资料页<br />分析基于：MediaTek 官网 + NanoReview + Geekbench Browser + Notebookcheck + Beebom / Gizmochina，资料读取于 2026-09-10</p>
+  </footer>
+</div>
+
+<script>
+const GB_META = {
+  7: { tag: "GB7", label: "Geekbench 7", maxSc: 4500, from: "2026-07-23" },
+  6: { tag: "GB6", label: "Geekbench 6", maxSc: 4500, from: "2023-02-14" },
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" },
+  4: { tag: "GB4", label: "Geekbench 4", maxSc: 12000, from: "2016-11-10" },
+  3: { tag: "GB3", label: "Geekbench 3", maxSc: 6000, from: "2013-02-14" },
+  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+};
+const R23 = "Cinebench R23";
+
+const DATA = {
+flagship: [
+  {
+    gen: "Helio X20",
+    code: "MT6797",
+    year: "2015–2016",
+    arch: [["微架构","2×A72 + 4×A53 + 4×A53 三簇"],["工艺","TSMC 20 nm"],["CPU 拓扑","10 核"],["GPU","Mali-T880 MP4"],["定位","Helio 时代旗舰"]],
+    milestone: "2015 发布、2016 量产。世界首款量产十核手机 SoC，三簇大小核叙事一时很响；单核仍落后同期 Kryo / Twister。公开稳定的现代 GB5/GB6 零售样本稀缺，本表留空（2015–16 年 Geekbench 截图多为旧大版本，不可与 GB6 混用）。Helio X 系列是联发科冲击旗舰的第一次认真尝试。",
+    skus: [
+      {tier:"旗舰", date:"2016", name:"Helio X20", spec:"10 核 · 最高约 2.5 GHz A72 · Mali-T880 MP4 · 20 nm", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Helio X30",
+    code: "MT6799",
+    year: "2017",
+    arch: [["微架构","2×A73 + 4×A53 + 4×A35"],["工艺","TSMC 10 nm"],["CPU 拓扑","10 核"],["GPU","PowerVR GT7400 Plus"],["定位","Helio 最后一颗真旗舰"]],
+    milestone: "2017。10 nm、十核再冲旗舰，但生态与调校跟不上骁龙 835 一代。GB6 约 sc 336 / mc 1115（第三方汇总口径）。此后联发科旗舰线沉寂数年，直到 Dimensity 1000 / 9000。评论：规格表漂亮，零售体验与驱动成槽点。",
+    skus: [
+      {tier:"旗舰", date:"2017-02", name:"Helio X30", spec:"10 核 · 最高约 2.6 GHz · PowerVR GT7400 Plus · 10 nm", gb:[{v:6,sc:336,mc:1115}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 1000 / 1000+",
+    code: "MT6889",
+    year: "2019–2020",
+    arch: [["微架构","4×A77 + 4×A55"],["工艺","TSMC 7 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G77 MP9"],["5G","集成 5G 调制解调器"]],
+    milestone: "2019-11 宣布 Dimensity 品牌；1000+ 为 2020 刷新。联发科重回「能打旗舰」叙事的起点：集成 5G、Mali-G77。GB6：1000+ 约 sc 1031 / mc 3123（NanoReview）。尚未对上骁龙 865/888 的绝对顶，但性价比与 5G 普及战里站稳脚跟。",
+    skus: [
+      {tier:"主流", date:"2019-11", name:"Dimensity 1000", spec:"4×A77 + 4×A55 · 首发天玑旗舰编号", gb:[], r23:null},
+      {tier:"旗舰", date:"2020-05", name:"Dimensity 1000+", spec:"4×A77 + 4×A55 · Mali-G77 MP9 · 7 nm · 5G", gb:[{v:6,sc:1031,mc:3123}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 1200 / 1300",
+    code: "MT6893 / MT6893Z",
+    year: "2021–2022",
+    arch: [["微架构","1×A78 + 3×A78 + 4×A55"],["工艺","TSMC 6 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G77 MP9"],["定位","9000 系登场前的顶配天玑"]],
+    milestone: "2021 初 Dimensity 1200；1300 为 2022 小刷新。6 nm、A78 大核把中上旗舰体验铺开。GB6：1200 约 sc 1143 / mc 3353；1300 约 sc 1114 / mc 3281（NanoReview）。同年年底 9000 用 4 nm + X2 真正改写联发科旗舰地位，1200/1300 成为「过渡顶配」一代。",
+    skus: [
+      {tier:"旗舰", date:"2021-01", name:"Dimensity 1200", spec:"1+3×A78 + 4×A55 · Mali-G77 MP9 · 6 nm", gb:[{v:6,sc:1143,mc:3353}], r23:null},
+      {tier:"高性能", date:"2022-03", name:"Dimensity 1300", spec:"同族小刷新 · 时钟/调校微调", gb:[{v:6,sc:1114,mc:3281}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 9000 / 9000+",
+    code: "MT6983",
+    year: "2021–2022",
+    arch: [["微架构","1×X2 + 3×A710 + 4×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核 ARMv9"],["GPU","Mali-G710 MP10"],["内存","LPDDR5X"]],
+    milestone: "2021-11-18。联发科现代旗舰的真正分水岭：首发级 Armv9、4 nm、对标骁龙 8 Gen 1 的叙事第一次站得住。GB6 约 sc 1693 / mc 4384（NanoReview）。9000+ 拉高时钟。vivo / OPPO / 一加等开始认真把天玑放进高端机。评论：从「性价比 5G」变成「能跟旗舰打」。",
+    skus: [
+      {tier:"主流", date:"2021-11-18", name:"Dimensity 9000", spec:"1×X2@3.05 + 3×A710 + 4×A510 · LPDDR5X", gb:[{v:6,sc:1693,mc:4384}], r23:null},
+      {tier:"旗舰", date:"2022", name:"Dimensity 9000+", spec:"X2 提频刷新 · Mali-G710 MP10 · 4 nm", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 9200 / 9200+",
+    code: "MT6985",
+    year: "2022–2023",
+    arch: [["微架构","1×X3 + 3×A715 + 4×A510"],["工艺","TSMC 第二代 4 nm"],["CPU 拓扑","8 核"],["GPU","Immortalis-G715 MP11 · 硬件光追"],["连接","Wi-Fi 7 叙事"]],
+    milestone: "2022-11。X3 + Immortalis 光追 GPU，把「旗舰功能集」写进天玑。GB6 约 sc 1745 / mc 4351（NanoReview）。9200+ 小幅提频。多核相对 9000 提升有限，卖点更多在 GPU/影像/连接。评论：稳迭代，真正的架构胆识留给次年全大核 9300。",
+    skus: [
+      {tier:"主流", date:"2022-11", name:"Dimensity 9200", spec:"1×X3 + 3×A715 + 4×A510 · 光追 GPU", gb:[{v:6,sc:1745,mc:4351}], r23:null},
+      {tier:"旗舰", date:"2023", name:"Dimensity 9200+", spec:"X3 提频 · Immortalis-G715 · 第二代 4 nm", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 9300 / 9300+",
+    code: "MT6989",
+    year: "2023–2024",
+    arch: [["微架构","4×X4 + 4×A720 全大核"],["工艺","TSMC N4P（第三代 4 nm）"],["CPU 拓扑","8 核全大核"],["GPU","Immortalis-G720 MP12"],["NPU","NPU 790"]],
+    milestone: "2023-11-06。砍掉小核、上全大核（1+3×X4 + 4×A720），多核暴涨成为安卓阵营话题。GB6：9300 约 sc 2186 / mc 7422；9300+（2024-05，X4 至约 3.4 GHz）约 sc 2250 / mc 7315（NanoReview）。vivo X100 / iQOO 等机型把天玑重新推到「敢选旗舰」心智。争议点：峰值功耗与持续性能调度。",
+    skus: [
+      {tier:"主流", date:"2023-11-06", name:"Dimensity 9300", spec:"1×X4@3.25 + 3×X4@2.85 + 4×A720@2.0 · N4P", gb:[{v:6,sc:2186,mc:7422}], r23:null},
+      {tier:"旗舰", date:"2024-05", name:"Dimensity 9300+", spec:"X4 提至约 3.4 GHz · Immortalis-G720 MP12", gb:[{v:6,sc:2250,mc:7315}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 9400 / 9400+",
+    code: "MT6991",
+    year: "2024–2025",
+    arch: [["微架构","1×X925 + 3×X4 + 4×A720 全大核"],["工艺","TSMC N3E 3 nm"],["CPU 拓扑","8 核全大核"],["GPU","Immortalis-G925 MP12"],["内存","LPDDR5X"]],
+    milestone: "2024-10-09。首款天玑 3 nm 旗舰；X925 超大核 + G925。GB6：9400 约 sc 2797 / mc 8767（NanoReview）。9400+（2025-04）超大核约 3.73 GHz，GB6 约 sc 2729 / mc 8430（NanoReview 对比页汇总）。vivo X200 / OPPO Find X8 等出货。评论：单核台阶明显，持续性能与散热仍是机型调校的主战场。",
+    skus: [
+      {tier:"主流", date:"2024-10-09", name:"Dimensity 9400", spec:"1×X925@3.62 + 3×X4@3.3 + 4×A720@2.4 · 3 nm", gb:[{v:6,sc:2797,mc:8767}], r23:null},
+      {tier:"旗舰", date:"2025-04", name:"Dimensity 9400+", spec:"X925@约 3.73 GHz · Immortalis-G925 MP12 · N3E", gb:[{v:6,sc:2729,mc:8430}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 9500",
+    code: "MT6991 下一代 / C1 家族",
+    year: "2025–2026",
+    arch: [["微架构","Arm C1-Ultra / Premium / Pro"],["工艺","TSMC N3P 3 nm"],["CPU 拓扑","1+3+4 全大核"],["GPU","Mali-G1 Ultra MC12"],["NPU","NPU 990"],["内存","LPDDR5X-10667 · UFS 4.1"]],
+    milestone: "2025-09-22 发布。第三代全大核，换上 Arm Lumex C1（C1-Ultra@4.21 GHz + 3×C1-Premium@3.5 + 4×C1-Pro@2.7）。发布会宣称 GB6.4 约 4007 / 11217；独立零售评测（Beebom 等）约 GB6 sc 3315 / mc 9914——本表列独立样本。截至 2026-09 仍是天玑旗舰现役顶，未检索到已量产的 9600 一代。旗舰机型 2025 Q4 起陆续上市。",
+    skus: [
+      {tier:"旗舰", date:"2025-09-22", name:"Dimensity 9500", spec:"1×C1-Ultra@4.21 + 3×C1-Premium@3.5 + 4×C1-Pro@2.7 · G1 Ultra MC12 · N3P", gb:[{v:6,sc:3315,mc:9914}], r23:null}
+    ]
+  }
+],
+mid: [
+  {
+    gen: "Helio P60",
+    code: "MT6771",
+    year: "2018",
+    arch: [["微架构","4×A73 + 4×A53"],["工艺","TSMC 12 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G72 MP3"],["定位","中端 AI / 性价比"]],
+    milestone: "2018。P 系列把「能效 + APU 叙事」卖进千元机。GB6 约 sc 341 / mc 779（NanoReview 少样本口径）。不是性能猛兽，但铺货量巨大，是 Helio 中端心智的代表作之一。",
+    skus: [
+      {tier:"主流", date:"2018-02", name:"Helio P60", spec:"4×A73 + 4×A53 · Mali-G72 MP3 · 12 nm", gb:[{v:6,sc:341,mc:779}], r23:null}
+    ]
+  },
+  {
+    gen: "Helio G90 / G95",
+    code: "MT6785 / MT6785V",
+    year: "2019–2020",
+    arch: [["微架构","2×A76 + 6×A55"],["工艺","TSMC 12 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G76 MP4"],["定位","游戏向中端"]],
+    milestone: "2019 G90 系列把「游戏手机下沉」做成 Helio G 品牌。G95（2020）小幅提频。GB6：G95 约 sc 673 / mc 1881（NanoReview）。Redmi Note 等机型出货海量。评论：GPU/触摸采样率叙事强于绝对 CPU 单核。",
+    skus: [
+      {tier:"主流", date:"2019", name:"Helio G90 / G90T", spec:"2×A76 + 6×A55 · 游戏向中端", gb:[], r23:null},
+      {tier:"高性能", date:"2020", name:"Helio G95", spec:"2×A76 提频 · Mali-G76 MP4 · 12 nm", gb:[{v:6,sc:673,mc:1881}], r23:null}
+    ]
+  },
+  {
+    gen: "Helio G99",
+    code: "MT6789",
+    year: "2022",
+    arch: [["微架构","2×A76 + 6×A55"],["工艺","TSMC 6 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G57 MP2"],["定位","长青中端 4G"]],
+    milestone: "2022-05。6 nm 把 G95 架构搬进更省电的节点，成为 2022–2025 千元机常青树（含 G99 Ultimate 等营销后缀）。GB6 约 sc 727 / mc 2047（NanoReview）。无 5G——5G 中端交给天玑 7000 系。",
+    skus: [
+      {tier:"主流", date:"2022-05", name:"Helio G99", spec:"2×A76@2.2 + 6×A55 · Mali-G57 MP2 · 6 nm · 4G", gb:[{v:6,sc:727,mc:2047}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 8000 / 8100",
+    code: "MT6895 / MT6895Z",
+    year: "2022",
+    arch: [["微架构","4×A78 + 4×A55"],["工艺","TSMC 5 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G610 MP6"],["定位","次旗舰 / 高性能中端"]],
+    milestone: "2022。8000/8100 把「旗舰级体验下探」做成天玑第二曲线：5 nm、A78 四丛集。GB6：8100 约 sc 1139 / mc 3842（NanoReview）。Redmi / realme / OPPO 次旗舰大量采用。评论：性能接近上一代旗舰，价格在中端——联发科份额暴涨的关键一代。",
+    skus: [
+      {tier:"主流", date:"2022", name:"Dimensity 8000", spec:"4×A78 + 4×A55 · 同族基线", gb:[], r23:null},
+      {tier:"旗舰", date:"2022", name:"Dimensity 8100", spec:"4×A78 提频 · Mali-G610 MP6 · 5 nm", gb:[{v:6,sc:1139,mc:3842}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 8200",
+    code: "MT6896",
+    year: "2022–2023",
+    arch: [["微架构","1+3×A78 + 4×A55"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G610 MP6"],["定位","8000 系进化"]],
+    milestone: "2022 末–2023。4 nm 版 8000 系，单核再抬。GB6 约 sc 1230 / mc 3297（NanoReview；多核样本受机型调度影响波动大）。Xiaomi 13T 等机型代表「中端也能用上接近旗舰的节点」。",
+    skus: [
+      {tier:"高性能", date:"2022-12", name:"Dimensity 8200", spec:"1×A78@3.1 + 3×A78 + 4×A55 · Mali-G610 MC6 · 4 nm", gb:[{v:6,sc:1230,mc:3297}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 7200",
+    code: "MT6886",
+    year: "2023",
+    arch: [["微架构","2×A715 + 6×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G610"],["定位","7000 系中端"]],
+    milestone: "2023。7000 系吃下主流 5G 市场。7200 Ultra 等变种拉高 GPU/时钟。GB6：7200 Ultra 约 sc 1193 / mc 2693（NanoReview）。定位清晰：日常流畅 + 能效，不跟 8000/9000 抢峰值。",
+    skus: [
+      {tier:"入门", date:"2023", name:"Dimensity 7200", spec:"同族基线 · 主流 5G", gb:[], r23:null},
+      {tier:"主流", date:"2023-09", name:"Dimensity 7200 Ultra", spec:"2×A715 级 + A510 · Mali-G610 · 4 nm", gb:[{v:6,sc:1193,mc:2693}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 8300 / 8350",
+    code: "MT6897",
+    year: "2023–2024",
+    arch: [["微架构","1+3×A715 + 4×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G615 MP6"],["定位","新一代次旗舰"]],
+    milestone: "2023-11 Dimensity 8300；8350 为 2024 刷新（小幅 CPU 增益 + 游戏引擎营销）。GB6：8300 约 sc 1375 / mc 4217；8350 约 sc 1398 / mc 4313（NanoReview）。接棒 8200，继续占据「旗舰杀手」价位。",
+    skus: [
+      {tier:"高性能", date:"2023-11", name:"Dimensity 8300", spec:"1×A715@3.35 + 3×A715 + 4×A510 · 4 nm", gb:[{v:6,sc:1375,mc:4217}], r23:null},
+      {tier:"旗舰", date:"2024-11", name:"Dimensity 8350", spec:"8300 同族刷新 · Mali-G615 MP6", gb:[{v:6,sc:1398,mc:4313}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 8400",
+    code: "MT6899",
+    year: "2024–2025",
+    arch: [["微架构","8×A725 全大核"],["工艺","TSMC N4P"],["CPU 拓扑","8 核全大核中端"],["GPU","Mali-G720 MP7"],["定位","中端全大核"]],
+    milestone: "2024-12。把 9300 系「全大核」思路下放到中端：八颗 A725。GB6 约 sc 1581 / mc 6195（NanoReview）——多核逼近早期旗舰。8400 Ultra 多为散热/持续性能营销后缀。评论：中端多核突然「够用到夸张」，单核仍低于 9000 系超大核。",
+    skus: [
+      {tier:"旗舰", date:"2024-12", name:"Dimensity 8400", spec:"8×Cortex-A725@最高约 3.25 GHz · Mali-G720 MP7 · N4P", gb:[{v:6,sc:1581,mc:6195}], r23:null}
+    ]
+  },
+  {
+    gen: "Dimensity 7400 / 7020 等",
+    code: "7000 系刷新",
+    year: "2024–2025",
+    arch: [["微架构","A78 / A76 中端簇"],["工艺","多为 6–4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G615 / G57 等"],["定位","主流与入门 5G"]],
+    milestone: "2025-02 前后 Dimensity 7400 / 6400 等继续刷新 7000/6000 系。GB6：7400 约 sc 1061 / mc 3185（NanoReview）。7020 等更偏入门 5G。评论：迭代细碎、同质化严重，但对出货量与 5G 普及贡献最大。",
+    skus: [
+      {tier:"入门", date:"2023–2024", name:"Dimensity 7020 等", spec:"入门 5G · 日常通讯与轻负载", gb:[], r23:null},
+      {tier:"主流", date:"2025-02", name:"Dimensity 7400", spec:"A78 级中端簇 · Mali-G615 MP2 · 4 nm 级", gb:[{v:6,sc:1061,mc:3185}], r23:null}
+    ]
+  }
+],
+pc: [
+  {
+    gen: "Kompanio 1300T",
+    code: "平板 / 安卓平板 SoC",
+    year: "2022",
+    arch: [["微架构","4×A78 + 4×A55"],["工艺","TSMC 6 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G77 MP9"],["定位","安卓平板"]],
+    milestone: "面向安卓平板（如 Lenovo Tab P11 Pro Gen 2）。Notebookcheck：GB5 约 sc 773 / mc 2669。与手机天玑同族核，但整机散热与系统调度不同，勿与手机分数直接横比场景。",
+    skus: [
+      {tier:"主流", date:"2022", name:"Kompanio 1300T", spec:"4×A78 + 4×A55 · Mali-G77 MP9 · 6 nm · 平板", gb:[{v:5,sc:773,mc:2669}], r23:null}
+    ]
+  },
+  {
+    gen: "Kompanio 1380",
+    code: "MT8195T",
+    year: "2022",
+    arch: [["微架构","4×A78 + 4×A55"],["工艺","TSMC 6 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G57 MP5"],["定位","高端 Chromebook"]],
+    milestone: "Premium Chromebook SoC：A78@最高 3 GHz、Wi-Fi 6、AV1。公开稳定的 GB6 零售汇总样本不足，本表留空。Acer Chromebook Spin 513 等首发机证明联发科能进「轻薄本」供应链，但仍难撼动 Intel/AMD 在 ChromeOS 的份额叙事。",
+    skus: [
+      {tier:"旗舰", date:"2022", name:"Kompanio 1380", spec:"4×A78@至 3 GHz + 4×A55 · Mali-G57 · 6 nm · Chromebook", gb:[], r23:null}
+    ]
+  },
+  {
+    gen: "Kompanio 520 等入门",
+    code: "教育 / 入门 Chromebook",
+    year: "2023–2025",
+    arch: [["微架构","A55 / 入门 Arm 簇"],["工艺","成熟节点"],["定位","教育本"],["对比","常对标 Intel N100 入门级"]],
+    milestone: "教育与入门 Chromebook 出货主力。公开 Geekbench 稳定对比样本因机型与 ChromeOS 版本分散，本表留空。价值在续航、风扇噪音与 BOM，不在绝对跑分。",
+    skus: [
+      {tier:"入门", date:"约 2023+", name:"Kompanio 520 等", spec:"入门八核 Arm · 教育 Chromebook", gb:[], r23:null}
+    ]
+  }
+]
+};
+
+const TIER_CLASS = { "旗舰":"t-flag", "刷新旗舰":"t-flag", "HEDT":"t-flag", "EX":"t-flag", "4S/8S":"t-hi", "高性能":"t-hi", "主流":"t-mid", "入门":"t-lo" };
+
+function fmt(n) {
+  if (n == null || n === "") return "—";
+  if (typeof n === "string") return n;
+  return n.toLocaleString("en-US");
+}
+function barW(v, max) {
+  if (!v || !max) return 0;
+  return Math.max(6, Math.min(100, Math.round(v / max * 100)));
+}
+function normalizeGb(sku) {
+  if (Array.isArray(sku.gb) && sku.gb.length) return sku.gb.slice().sort((a,b) => a.v - b.v);
+  if (sku.gb7) return [{ v: 7, sc: sku.gb7[0], mc: sku.gb7[1] }];
+  return [];
+}
+function gbBlock(item) {
+  const meta = GB_META[item.v] || { tag: "GB"+item.v, label: "Geekbench "+item.v, maxSc: 3000 };
+  const overall = item.overall != null && item.sc == null && item.mc == null;
+  const nums = overall
+    ? `${fmt(item.overall)} <small>综合分</small>`
+    : `${fmt(item.sc)} <small>单核</small> · ${fmt(item.mc)} <small>多核</small>`;
+  const bar = overall ? item.overall : item.sc;
+  return `<div class="score-block">
+    <div class="score-h"><span><span class="ver-tag ver-${item.v}">${meta.tag}</span></span></div>
+    <div class="nums">${nums}</div>
+    <div class="bar"><i style="width:${barW(bar, meta.maxSc)}%"></i></div>
+  </div>`;
+}
+function scoreBox(sku) {
+  const rows = normalizeGb(sku);
+  const r = sku.r23;
+  let html = `<div class="scores">`;
+  html += rows.map(x => gbBlock(x)).join("");
+  if (!rows.length && !r) {
+    html += `<div class="score-block"><div class="na">—</div></div>`;
+  }
+  if (r) {
+    html += `<div class="score-block"><div class="score-h"><span class="ver">${R23}</span></div>
+      <div class="nums">${fmt(r[0])} <small>单核</small> · ${fmt(r[1])} <small>多核</small></div></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function archList(arr) {
+  return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
+}
+function matchQuery(gen, q) {
+  if (!q) return true;
+  const blob = [gen.gen, gen.code, gen.year, gen.milestone, ...gen.arch.map(x => x.join(" ")), ...gen.skus.map(s => s.name + " " + s.spec)].join(" ").toLowerCase();
+  return blob.includes(q);
+}
+function render(seg, q) {
+  const tbody = document.querySelector("#grid tbody");
+  const empty = document.getElementById("empty");
+  const list = DATA[seg].filter(g => matchQuery(g, q));
+  tbody.innerHTML = "";
+  if (!list.length) { empty.classList.remove("hidden"); return; }
+  empty.classList.add("hidden");
+  for (const g of list) {
+    const n = g.skus.length;
+    g.skus.forEach((s, i) => {
+      const tr = document.createElement("tr");
+      let cells = "";
+      if (i === 0) {
+        cells += `<td class="gen-cell" rowspan="${n}"><div class="gen-name">${g.gen}</div><div class="gen-sub">${g.code}<br>${g.year}</div></td>`;
+        cells += `<td class="arch-cell" rowspan="${n}">${archList(g.arch)}</td>`;
+      }
+      cells += `<td><div class="date">${s.date}</div></td>`;
+      cells += `<td class="sku"><div class="model">${s.name}</div><div class="spec">${s.spec}</div></td>`;
+      cells += `<td>${scoreBox(s)}</td>`;
+      if (i === 0) cells += `<td class="ms-cell" rowspan="${n}">${g.milestone}</td>`;
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+document.getElementById("n-flag").textContent = DATA.flagship.length;
+document.getElementById("n-mid").textContent = DATA.mid.length;
+document.getElementById("n-pc").textContent = DATA.pc.length;
+
+let seg = "flagship";
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    seg = btn.dataset.seg;
+    render(seg, document.getElementById("q").value.trim().toLowerCase());
+    window.scrollTo(0, 0);
+  });
+});
+document.getElementById("q").addEventListener("input", e => {
+  render(seg, e.target.value.trim().toLowerCase());
+});
+render("flagship", "");
+</script>
+</body>
+</html>
