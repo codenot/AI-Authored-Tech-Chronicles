@@ -198,13 +198,13 @@
     <p class="lede">从 <b>8086（1978）</b> 讲到 Core Ultra / Xeon 6。桌面、移动、服务器分表；每一代列出各档最高型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
     <div class="meta-row">
       <span class="pill">资料读取于 2026-09-15</span>
-      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-desk">—</b><em>桌面世代</em></div>
       <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
       <div class="stat"><b id="n-srv">—</b><em>服务器世代</em></div>
-      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
     </div>
   </header>
 
@@ -222,9 +222,8 @@
     <ol>
       <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 插槽 / 内存 / I/O。</li>
       <li>第 3–5 列按档次分行：旗舰、高性能、主流、入门（若该代无独立入门线则省略）。每一档只列该档最高型号。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>分数来源：GB7 优先 Browser 官方榜；没有官方榜的型号用 CPU-Monkey / Notebookcheck / Geekbench 博客 PC Performance 等。编造分数不会出现，找不到就留空。</li>
-      <li>Geekbench 2 只公布 <b>综合分</b>（相对 Power Mac G5 1.6 GHz = 1000），没有单核/多核拆分，不可与 GB3 之后的分核分数换算。</li>
       <li>Cinebench R23 于 2020-11 发布。笔记本受功耗墙影响；服务器超高核心数 Geekbench 线程扩展有限。</li>
     </ol>
   </section>
@@ -233,7 +232,6 @@
     <span class="chip hi">高性能</span>
     <span class="chip mid">主流</span>
     <span class="chip lo">入门</span>
-    <span class="chip">GB2 综合分 = 无分核，不可与 GB3+ 换算</span>
     <span class="chip">R23 = Cinebench R23</span>
   </div>
 
@@ -259,13 +257,12 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：Intel 数据手册 / ARK、Intel 新闻稿、Wikipedia 处理器列表（8086 至 Xeon 6），读取于 2026-09-10。</li>
-      <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/5/4/3 = Notebookcheck 中位、CPU-Monkey、The Verge / Digital Trends / Hardwareluxx 实验室。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
-      <li>GB2 综合分：<a href="https://www.geekbench.com/blog/2009/01/pc-performance-january-2009/">Geekbench 博客 PC Performance 2009-01</a> 与 <a href="https://www.geekbench.com/blog/2007/06/pc-performance-june-2007/">2007-06</a>（未超频 Windows 均值）。</li>
+      <li>规格与发布日：Intel 数据手册 / ARK、Intel 新闻稿、Wikipedia 处理器列表（8086 至 Xeon 6），读取于 2026-09-15。</li>
+      <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/GB5 = Notebookcheck 中位、CPU-Monkey、The Verge / Digital Trends / Hardwareluxx 实验室。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
       <li>1978–2008-07 的 CPU：Geekbench 尚未发布。8086–Pentium III 等更早芯片在公开网上也几乎没有可引用的 GB 分数。</li>
       <li>Cinebench R23：Maxon 无公开全量榜；CPU-Monkey / Notebookcheck。R23 于 2020-11 发布。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Intel CPU 世代全谱》资料页<br />分析基于：Intel 数据手册/ARK + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck（官方榜缺失 SKU 的 GB5/GB6）+ Geekbench 博客 PC Performance 2007-06/2009-01（GB2 综合分），资料读取于 2026-09-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Intel CPU 世代全谱》资料页<br />分析基于：Intel 数据手册/ARK + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck（官方榜缺失 SKU 的 GB5/GB6），资料读取于 2026-09-15</p>
   </footer>
 </div>
 
@@ -273,10 +270,7 @@
 const GB_META = {
   7: { tag: "GB7", label: "Geekbench 7", maxSc: 2945, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 3380, from: "2023-02-14" },
-  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2400, from: "2019-09-03" },
-  4: { tag: "GB4", label: "Geekbench 4", maxSc: 9900, from: "2016-11-10" },
-  3: { tag: "GB3", label: "Geekbench 3", maxSc: 5000, from: "2013-02-14" },
-  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2400, from: "2019-09-03" }
 };
 const R23 = "Cinebench R23";
 
@@ -379,7 +373,7 @@ desktop: [
     arch: [["微架构","NetBurst 超长流水"],["工艺","180–90 nm"],["插槽","Socket 423 / 478 / LGA 775"],["总线","FSB 400–1066 MT/s"],["指令","SSE2 / SSE3"]],
     milestone: "2000-11-20。NetBurst 用 20 级以上流水线赌频率：同频 IPC 相对 Tualatin 大约回退 20–30%，指望 3–4 GHz 把差距赚回来。Northwood 130 nm、512 KB L2、3.2 GHz 尚可；Prescott 90 nm 再加深流水、2 MB L2，漏电和高温让 4 GHz 目标破产，670（3.80 GHz / 115 W）已是这条线的末路。HT 第一次出现在消费桌面。这是后来 Core 短流水线回头路的直接原因，也是 Tick-Tock 叙事被提出的背景。",
     skus: [
-      {tier:"旗舰", date:"2005-11-14", name:"Pentium 4 670", spec:"Prescott · 1 核 / 2 线程（HT）· 3.80 GHz · L2 2 MB · LGA 775 · TDP 115 W", gb:[{v:2,overall:1911,src:"Geekbench 博客 2009-01 综合分"}], r23:null},
+      {tier:"旗舰", date:"2005-11-14", name:"Pentium 4 670", spec:"Prescott · 1 核 / 2 线程（HT）· 3.80 GHz · L2 2 MB · LGA 775 · TDP 115 W", gb:[], r23:null},
       {tier:"高性能", date:"2004-02-02", name:"Pentium 4 Extreme Edition 3.4", spec:"Gallatin · 3.40 GHz · L3 2 MB · FSB 800", gb:[], r23:null},
       {tier:"主流", date:"2002-01-07", name:"Pentium 4 2.2 GHz", spec:"Northwood · 2200 MHz · L2 512 KB · Socket 478", gb:[], r23:null}
     ]
@@ -392,7 +386,7 @@ desktop: [
     milestone: "消费级双核的 NetBurst 答卷：Smithfield/Presler 把两颗 P4 核粘在同一封装，L2 不共享，核间走 FSB。多核相对单核 P4 大约 1.6–1.8 倍而不是 2 倍，功耗 130 W 级。EE 965 开 HT 做到 2 核 4 线程、3.73 GHz，是这条线的顶点。2006 年 Conroe 同价位在整数和功耗上正面击溃 Pentium D，NetBurst 双核几乎没有完整产品周期。",
     skus: [
       {tier:"旗舰", date:"2006-03-05", name:"Pentium Extreme Edition 965", spec:"Presler · 2 核 / 4 线程 · 3.73 GHz · L2 2×2 MB · TDP 130 W", gb:[], r23:null},
-      {tier:"主流", date:"2006-01-05", name:"Pentium D 950", spec:"Presler · 2 核 / 2 线程 · 3.40 GHz · TDP 130 W", gb:[{v:2,overall:2065,src:"Geekbench 博客 2009-01（条目写作 945/950）综合分"}], r23:null}
+      {tier:"主流", date:"2006-01-05", name:"Pentium D 950", spec:"Presler · 2 核 / 2 线程 · 3.40 GHz · TDP 130 W", gb:[], r23:null}
     ]
   },
   {
@@ -408,9 +402,9 @@ desktop: [
     ],
     milestone: "2006-07 Conroe 结束 NetBurst。短流水线 + 共享大 L2，同频整数相对 Prescott 大约 +50–80%，Intel 当时的口径是「40% 更高性能、40% 更低功耗」。QX9770（3.20 GHz / 4 核 / FSB 1600）是 Yorkfield 旗舰；E8600 把双核做到 3.33 GHz / 65 W。45 nm Penryn 引入高 k 金属栅，IPC 再约 +5–10%。Tick-Tock 从此成为默认叙事：一年工艺、一年架构。AMD 在桌面的性能领先窗口被关上。",
     skus: [
-      {tier:"旗舰", date:"2007-11-11", name:"Core 2 Extreme QX9770", spec:"Yorkfield · 4 核 / 4 线程 · 3.20 GHz · L2 12 MB · TDP 136 W · FSB 1600", gb:[{v:2,overall:5271,src:"Geekbench 博客 2009-01 综合分（条目写作 X9770）"},{v:5,sc:449,mc:1582}], r23:null},
+      {tier:"旗舰", date:"2007-11-11", name:"Core 2 Extreme QX9770", spec:"Yorkfield · 4 核 / 4 线程 · 3.20 GHz · L2 12 MB · TDP 136 W · FSB 1600", gb:[{v:5,sc:449,mc:1582}], r23:null},
       {tier:"高性能", date:"2008-08-10", name:"Core 2 Quad Q9650", spec:"Yorkfield · 4 核 / 4 线程 · 3.00 GHz · L2 12 MB · TDP 95 W", gb:[{v:5,sc:469,mc:1550,src:"CPU-Monkey"}], r23:null},
-      {tier:"主流", date:"2008-08-10", name:"Core 2 Duo E8600", spec:"Wolfdale · 2 核 / 2 线程 · 3.33 GHz · L2 6 MB · TDP 65 W", gb:[{v:2,overall:3855,src:"Geekbench 博客 2009-01 综合分"},{v:5,sc:486,mc:885,src:"CPU-Monkey"}], r23:null}
+      {tier:"主流", date:"2008-08-10", name:"Core 2 Duo E8600", spec:"Wolfdale · 2 核 / 2 线程 · 3.33 GHz · L2 6 MB · TDP 65 W", gb:[{v:5,sc:486,mc:885,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -444,7 +438,7 @@ desktop: [
     ],
     milestone: "2011-01。环形总线把 CPU、核显、L3 放进同一环；AVX 256-bit 第一次进消费桌面。内核 IPC 相对 Nehalem/Westmere 大约 +10–15%（AnandTech 整数约 8–15%，AVX 代码更高）。i7-2600K（3.4/3.8 GHz、95 W）钎焊、超频潜力大，成为此后十年的对照物：直到 12 代之前，很多工作站仍在跑这一代。核显 HD 3000 只够桌面，独立显卡仍是游戏刚需。LGA 1155 平台寿命被反复验证，是 Intel 口碑最好的一代之一。",
     skus: [
-      {tier:"旗舰", date:"2011-01-09", name:"Core i7-2600K", spec:"4 核 / 8 线程 · 3.40 / 3.80 GHz · L3 8 MB · TDP 95 W · HD 3000", gb:[{v:7,sc:770,mc:2631},{v:6,sc:705,mc:2457},{v:5,sc:807,mc:3097},{v:4,sc:3791,mc:12427}], r23:null},
+      {tier:"旗舰", date:"2011-01-09", name:"Core i7-2600K", spec:"4 核 / 8 线程 · 3.40 / 3.80 GHz · L3 8 MB · TDP 95 W · HD 3000", gb:[{v:7,sc:770,mc:2631},{v:6,sc:705,mc:2457},{v:5,sc:807,mc:3097}], r23:null},
       {tier:"高性能", date:"2011-10-24", name:"Core i7-2700K", spec:"4 核 / 8 线程 · 3.50 / 3.90 GHz · L3 8 MB · TDP 95 W", gb:[{v:7,sc:822,mc:2971},{v:5,sc:782,mc:2894,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2011-01-09", name:"Core i5-2500K", spec:"4 核 / 4 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 95 W", gb:[{v:7,sc:811,mc:2457},{v:5,sc:760,mc:2537,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2011-02-20", name:"Core i3-2100", spec:"2 核 / 4 线程 · 3.10 GHz · L3 3 MB · TDP 65 W", gb:[{v:7,sc:511,mc:951},{v:5,sc:575,mc:1262,src:"CPU-Monkey"}], r23:null}
@@ -481,7 +475,7 @@ desktop: [
     ],
     milestone: "2013-06 Haswell：FIVR 把电压调节搬进封装，低载功耗明显改善，高载发热上升，超频墙比 2600K 更烫。内核 IPC 相对 Ivy Bridge 大约 +8–15%（整数偏 10%，AVX2/FMA3 代码更高）。AVX2 从此成为多媒体和 HPC 基线。2014 Devil's Canyon（4790K，4.0/4.4 GHz）改 TIM 并拉高频率，被看成 LGA 1150 的真正旗舰。Haswell-E 5960X 把消费 HEDT 推到 8 核。TSX 随后因 errata 被关掉，对当时消费软件几乎无感。",
     skus: [
-      {tier:"旗舰", date:"2014-06-02", name:"Core i7-4790K", spec:"Devil's Canyon · 4 核 / 8 线程 · 4.00 / 4.40 GHz · L3 8 MB · TDP 88 W", gb:[{v:7,sc:1354,mc:4497},{v:6,sc:1387,mc:4674},{v:5,sc:1073,mc:4001},{v:3,sc:4418,mc:15557,src:"Notebookcheck GB3 中位"},{v:4,sc:4940,mc:17483,src:"Notebookcheck GB4.4"}], r23:[1069,4936]},
+      {tier:"旗舰", date:"2014-06-02", name:"Core i7-4790K", spec:"Devil's Canyon · 4 核 / 8 线程 · 4.00 / 4.40 GHz · L3 8 MB · TDP 88 W", gb:[{v:7,sc:1354,mc:4497},{v:6,sc:1387,mc:4674},{v:5,sc:1073,mc:4001}], r23:[1069,4936]},
       {tier:"HEDT", date:"2014-08-29", name:"Core i7-5960X", spec:"Haswell-E · 8 核 / 16 线程 · 3.00 / 3.50 GHz · L3 20 MB · TDP 140 W · LGA 2011-3", gb:[{v:7,sc:null,mc:5692},{v:5,sc:1002,mc:7843,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2014-06-02", name:"Core i5-4690K", spec:"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 88 W", gb:[{v:7,sc:null,mc:3849},{v:5,sc:1082,mc:3723,src:"CPU-Monkey"}], r23:null}
     ]
@@ -516,7 +510,7 @@ desktop: [
     ],
     milestone: "2015-08。Skylake 是此后六年消费内核的祖宗，也是最后一次「干净」的架构跃迁。内核 IPC 相对 Haswell 大约 +8–11%，相对 Broadwell 约 +5%。DDR4-2133 成为默认，DMI 3.0 提高芯片组带宽。6700K（4.0/4.2 GHz、91 W）把 4 核 8 线程再挤一档频率。消费级 4 核一直维持到 2017，给了 Ryzen 切入窗口。Meltdown/Spectre 微码修复从这一代开始长期背锅，KPTI 对系统调用密集负载的回退在服务器上更明显。",
     skus: [
-      {tier:"旗舰", date:"2015-08-05", name:"Core i7-6700K", spec:"4 核 / 8 线程 · 4.00 / 4.20 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1445,mc:5034},{v:6,sc:1347,mc:4600},{v:5,sc:1151,mc:4459,src:"CPU-Monkey"},{v:3,sc:4598,mc:17122,src:"Notebookcheck GB3 64-bit 中位"}], r23:[1124,5640]},
+      {tier:"旗舰", date:"2015-08-05", name:"Core i7-6700K", spec:"4 核 / 8 线程 · 4.00 / 4.20 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1445,mc:5034},{v:6,sc:1347,mc:4600},{v:5,sc:1151,mc:4459,src:"CPU-Monkey"}], r23:[1124,5640]},
       {tier:"主流", date:"2015-08-05", name:"Core i5-6600K", spec:"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 91 W", gb:[{v:7,sc:1345,mc:3850},{v:5,sc:1106,mc:3631,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2015-09-01", name:"Core i3-6320", spec:"2 核 / 4 线程 · 3.90 GHz · L3 4 MB · TDP 51 W", gb:[{v:6,sc:1311,mc:2730,src:"CPU-Monkey"},{v:5,sc:1011,mc:2331,src:"CPU-Monkey"}], r23:null}
     ]
@@ -534,7 +528,7 @@ desktop: [
     ],
     milestone: "2017-01。官方把 Tick-Tock 改成 PAO（Process–Architecture–Optimization）。Kaby Lake 是 Optimization：内核 IPC 基本为 0，7700K 把频率从 4.2 拉到 4.5 GHz，单核大约 +5–8%，全靠时钟。Speed Shift 硬件 P-state 改善轻载响应；HEVC 10-bit / VP9 硬解是体感最大的功能项。10 nm 缺席被坐实，14 nm 开始进入「再优化」循环。同代 7350K 把可超频 i3 做成 2 核 4.2 GHz 的怪 SKU，说明这一年桌面真的没有架构故事可讲。",
     skus: [
-      {tier:"旗舰", date:"2017-01-03", name:"Core i7-7700K", spec:"4 核 / 8 线程 · 4.20 / 4.50 GHz · L3 8 MB · TDP 91 W · HD 630", gb:[{v:7,sc:1553,mc:5455},{v:6,sc:1463,mc:5149},{v:5,sc:1229,mc:4719,src:"CPU-Monkey"},{v:4,sc:5480,mc:17800,src:"Notebookcheck GB4.0"},{v:3,sc:4700,mc:18800,src:"Notebookcheck GB3 64-bit"}], r23:[1216,6055]},
+      {tier:"旗舰", date:"2017-01-03", name:"Core i7-7700K", spec:"4 核 / 8 线程 · 4.20 / 4.50 GHz · L3 8 MB · TDP 91 W · HD 630", gb:[{v:7,sc:1553,mc:5455},{v:6,sc:1463,mc:5149},{v:5,sc:1229,mc:4719,src:"CPU-Monkey"}], r23:[1216,6055]},
       {tier:"主流", date:"2017-01-03", name:"Core i5-7600K", spec:"4 核 / 4 线程 · 3.80 / 4.20 GHz · L3 6 MB · TDP 91 W", gb:[{v:7,sc:1424,mc:null},{v:5,sc:1174,mc:3855,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2017-01-03", name:"Core i3-7350K", spec:"2 核 / 4 线程 · 4.20 GHz · L3 4 MB · TDP 60 W · 可超频", gb:[{v:6,sc:1298,mc:2740,src:"CPU-Monkey"},{v:5,sc:1176,mc:2557,src:"CPU-Monkey"}], r23:[1251,3136]}
     ]
@@ -552,7 +546,7 @@ desktop: [
     ],
     milestone: "2017-10。Ryzen 上市后的直接回应：内核仍是 Skylake，i7 从 4 核改 6 核。8700K 对比 7700K，单核几乎持平（频率接近），多核大约 +40–50%。必须配 300 系主板，LGA 1151 针脚兼容但芯片组锁代，引发社区反感。i5 首次 6 核无 HT，i3 变成 4 核。HEDT 侧 Skylake-X 引入消费 i9，7980XE 18 核 / 165 W，网格互连和网格延迟成为新槽点。这一代赢的是核数，不是 IPC。",
     skus: [
-      {tier:"旗舰", date:"2017-10-05", name:"Core i7-8700K", spec:"6 核 / 12 线程 · 3.70 / 4.70 GHz · L3 12 MB · TDP 95 W", gb:[{v:7,sc:1570,mc:7222},{v:6,sc:1486,mc:6750},{v:5,sc:1242,mc:6693,src:"CPU-Monkey"},{v:4,sc:5754,mc:23209,src:"Notebookcheck GB4.0 中位"}], r23:[1209,8960]},
+      {tier:"旗舰", date:"2017-10-05", name:"Core i7-8700K", spec:"6 核 / 12 线程 · 3.70 / 4.70 GHz · L3 12 MB · TDP 95 W", gb:[{v:7,sc:1570,mc:7222},{v:6,sc:1486,mc:6750},{v:5,sc:1242,mc:6693,src:"CPU-Monkey"}], r23:[1209,8960]},
       {tier:"HEDT", date:"2017-09-25", name:"Core i9-7980XE", spec:"Skylake-X · 18 核 / 36 线程 · 2.60 / 4.20 GHz · L3 24.75 MB · TDP 165 W · LGA 2066", gb:[{v:6,sc:1394,mc:11708,src:"CPU-Monkey"},{v:5,sc:1121,mc:16495,src:"CPU-Monkey"}], r23:[1281,28196]},
       {tier:"主流", date:"2017-10-05", name:"Core i5-8600K", spec:"6 核 / 6 线程 · 3.60 / 4.30 GHz · L3 9 MB · TDP 95 W", gb:[{v:7,sc:1505,mc:null},{v:5,sc:1251,mc:5631,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2017-10-05", name:"Core i3-8350K", spec:"4 核 / 4 线程 · 4.00 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1564,mc:null},{v:5,sc:1172,mc:3855,src:"CPU-Monkey"}], r23:null}
@@ -571,8 +565,8 @@ desktop: [
     ],
     milestone: "2018-10。消费主流第一次出现 i9：9900K 8 核 16 线程、5.0 GHz 单核加速。内核 IPC 仍是 Skylake，单核相对 8700K 大约 +5–8%（频率），多核大约 +30%。i7-9700K 关掉 HT 引发差评：8 核 8 线程在渲染上明显弱于 8700K 的 6 核 12 线程之外的预期。9900K 成为 2018–2019 游戏旗舰，95 W 标称 TDP 与实际封装功耗（PL2 常 >180 W）的鸿沟被公开化。14 nm++ 扩核路线的散热账单从这里开始无法回避。",
     skus: [
-      {tier:"旗舰", date:"2018-10-19", name:"Core i9-9900K", spec:"8 核 / 16 线程 · 3.60 / 5.00 GHz · L3 16 MB · TDP 95 W（实际远高于此）", gb:[{v:7,sc:1670,mc:9118},{v:6,sc:1670,mc:null},{v:5,sc:1342,mc:8779},{v:4,sc:6049,mc:32981,src:"Notebookcheck GB4.4 中位"}], r23:[1343,12470]},
-      {tier:"高性能", date:"2018-10-19", name:"Core i7-9700K", spec:"8 核 / 8 线程 · 3.60 / 4.90 GHz · L3 12 MB · TDP 95 W · 无 HT", gb:[{v:7,sc:1648,mc:7896},{v:6,sc:1746,mc:7361},{v:5,sc:1300,mc:7440},{v:4,sc:5984,mc:null}], r23:[1285,9428]},
+      {tier:"旗舰", date:"2018-10-19", name:"Core i9-9900K", spec:"8 核 / 16 线程 · 3.60 / 5.00 GHz · L3 16 MB · TDP 95 W（实际远高于此）", gb:[{v:7,sc:1670,mc:9118},{v:6,sc:1670,mc:null},{v:5,sc:1342,mc:8779}], r23:[1343,12470]},
+      {tier:"高性能", date:"2018-10-19", name:"Core i7-9700K", spec:"8 核 / 8 线程 · 3.60 / 4.90 GHz · L3 12 MB · TDP 95 W · 无 HT", gb:[{v:7,sc:1648,mc:7896},{v:6,sc:1746,mc:7361},{v:5,sc:1300,mc:7440}], r23:[1285,9428]},
       {tier:"主流", date:"2018-10-19", name:"Core i5-9600K", spec:"6 核 / 6 线程 · 3.70 / 4.60 GHz · L3 9 MB · TDP 95 W", gb:[{v:7,sc:1559,mc:null},{v:5,sc:1244,mc:5643,src:"CPU-Monkey"}], r23:[1187,6596]}
     ]
   },
@@ -742,7 +736,7 @@ mobile: [
     arch: [["Yonah","双核 65 nm，32-bit"],["Merom","Core 2 64-bit 移动"],["Penryn","45 nm"],["TDP","35 / 17 W 档"]],
     milestone: "2006-01 Yonah（Core Duo T2600）是第一颗主流双核笔记本 CPU，仍是 32-bit，TDP 31 W。同频 IPC 继承 Pentium M，双核让编译和轻度创作第一次能在薄本上「能用」。2006-08 Merom（T7600）把 64-bit 和 SSSE3 带进笔记本，内核与桌面 Conroe 同族，同频相对 Yonah 大约 +10% 量级。2008 Penryn X9000（45 nm、2.80 GHz、44 W）再降漏电。笔记本从「能跑 Office」变成「能跟桌面双核对话」，但四核还要再等一年。",
     skus: [
-      {tier:"旗舰", date:"2008-01-07", name:"Core 2 Extreme X9000", spec:"Penryn · 2 核 / 2 线程 · 2.80 GHz · TDP 44 W", gb:[{v:2,overall:2947,src:"Geekbench 博客 2009-01 综合分"}], r23:null},
+      {tier:"旗舰", date:"2008-01-07", name:"Core 2 Extreme X9000", spec:"Penryn · 2 核 / 2 线程 · 2.80 GHz · TDP 44 W", gb:[], r23:null},
       {tier:"高性能", date:"2006-08-27", name:"Core 2 Duo T7600", spec:"Merom · 2.33 GHz · TDP 34 W", gb:[], r23:null},
       {tier:"主流", date:"2006-01-05", name:"Core Duo T2600", spec:"Yonah · 2.16 GHz · 双核 32-bit · TDP 31 W", gb:[], r23:null}
     ]
@@ -1031,7 +1025,7 @@ mobile: [
     milestone: "2024-09 Lunar Lake。Intel 明确对标 Arm 能效：板载 LPDDR5X、17–37 W、Lion Cove P + 4 个 LP-E，没有传统 E 核集群。288V 8 线程，GB6 单核约 2770、多核约 1.1 万——多核绝对分数不高，单核和能效是卖点。Xe2（Arc 140V）核显是 2024 轻薄本高点，1080p 核显游戏明显强于 Meteor Lake。NPU 48 TOPS 终于对上 Copilot+ 门槛。封装内存不可升级，32 GB 封顶，这是用容量换能效的明确取舍。",
     skus: [
       {tier:"旗舰", date:"2024-09-03", name:"Core Ultra 9 288V", spec:"4P+4LP-E / 8 线程 · P 最高 5.1 GHz · 17–37 W · Arc 140V 8 Xe · 板载最高 32 GB", gb:[{v:6,sc:2770,mc:11050,src:"CPU-Monkey"},{v:5,sc:2094,mc:9626,src:"GadgetVersus"}], r23:[1984,9300]},
-      {tier:"高性能", date:"2024-09-03", name:"Core Ultra 7 268V", spec:"4P+4LP-E / 8 线程 · P 最高 5.0 GHz · 8–37 W · 32 GB", gb:[{v:7,sc:2220,mc:null}], r23:null},
+      {tier:"高性能", date:"2024-09-03", name:"Core Ultra 7 268V", spec:"4P+4LP-E / 8 线程 · P 最高 5.0 GHz · 8–37 W · 32 GB", gb:[{v:7,sc:2220},{v:5,sc:2434,mc:9660,src:"Technical City"}], r23:null},
       {tier:"主流", date:"2024-09-03", name:"Core Ultra 7 258V", spec:"4P+4LP-E / 8 线程 · P 最高 4.8 GHz · 8–37 W", gb:[{v:7,sc:2079,mc:null},{v:6,sc:2609,mc:10690},{v:5,sc:1834,mc:9583,src:"GadgetVersus"}], r23:null}
     ]
   },
@@ -1123,11 +1117,11 @@ server: [
     code: "Woodcrest / Clovertown / Tigerton",
     year: "2006–2008",
     arch: [["微架构","Core"],["工艺","65 / 45 nm"],["插槽","LGA 771"],["内存","FB-DIMM DDR2"],["能效","相对 NetBurst 大幅下降"]],
-    milestone: "2006-06 Woodcrest（5160 3.00 GHz / 80 W）用 Core 架构把服务器能效翻过来：同频相对 Nocona 大约 +50% 量级，功耗却下降，直接对打 Opteron。Clovertown X5355（2.66 GHz 四核、双路 8 核）在 Geekbench 2 综合分约 6495，是当时多核榜前列。Tigerton X7350 把四核做成四路。仍走 FSB，内存延迟不如 IMC 的 Opteron。这是 Nehalem-EP 之前最后一代前端总线服务器，也是 Intel 把「能效」重新写成服务器主叙事的一代。",
+    milestone: "2006-06 Woodcrest（5160 3.00 GHz / 80 W）用 Core 架构把服务器能效翻过来：同频相对 Nocona 大约 +50% 量级，功耗却下降，直接对打 Opteron。Clovertown X5355（2.66 GHz 四核、双路 8 核）在当时多核综合跑分榜上名列前茅。Tigerton X7350 把四核做成四路。仍走 FSB，内存延迟不如 IMC 的 Opteron。这是 Nehalem-EP 之前最后一代前端总线服务器，也是 Intel 把「能效」重新写成服务器主叙事的一代。",
     skus: [
       {tier:"旗舰", date:"2007-09-05", name:"Xeon X7350", spec:"Tigerton · 4 核 · 2.93 GHz · 四路 · TDP 130 W", gb:[], r23:null},
-      {tier:"高性能", date:"2006-11-14", name:"Xeon X5355", spec:"Clovertown · 4 核 · 2.66 GHz · 双路 · TDP 120 W", gb:[{v:2,overall:6495,src:"Geekbench 博客 2007-06 双路 8 核综合分"}], r23:null},
-      {tier:"主流", date:"2006-06-26", name:"Xeon 5160", spec:"Woodcrest · 2 核 · 3.00 GHz · TDP 80 W · Core 架构服务器首发旗舰", gb:[], r23:null}
+      {tier:"高性能", date:"2006-11-14", name:"Xeon X5355", spec:"Clovertown · 4 核 · 2.66 GHz · 双路 · TDP 120 W", gb:[{v:5,sc:333,mc:960,src:"Technical City"}], r23:null},
+      {tier:"主流", date:"2006-06-26", name:"Xeon 5160", spec:"Woodcrest · 2 核 · 3.00 GHz · TDP 80 W · Core 架构服务器首发旗舰", gb:[{v:5,sc:378,mc:571,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1143,8 +1137,8 @@ server: [
     ],
     milestone: "2009-03 Xeon 5500（Nehalem-EP）。IMC + QPI 替代 FSB，双路内存延迟下降、核间带宽改善。内核 IPC 相对 Penryn/Woodcrest 大约 +10–15%，平台收益在数据库和虚拟化上更大。X5570 2.93 GHz / 95 W 四核 8 线程成为 2009–2010 云主机常见料。Turbo 和 HT 在服务器上第一次同时成为默认。奠定此后十年双路模板：CPU 自带内存控制器、点对点互连、双路对称。代价是平台（5500 芯片组、DDR3、新插座）必须整代升级。",
     skus: [
-      {tier:"旗舰", date:"2009-03-30", name:"Xeon X5570", spec:"4 核 / 8 线程 · 2.93 GHz · TDP 95 W · 双路", gb:[], r23:null},
-      {tier:"主流", date:"2009-03-30", name:"Xeon E5540", spec:"4 核 / 8 线程 · 2.53 GHz · TDP 80 W", gb:[], r23:null}
+      {tier:"旗舰", date:"2009-03-30", name:"Xeon X5570", spec:"4 核 / 8 线程 · 2.93 GHz · TDP 95 W · 双路", gb:[{v:5,sc:473,mc:1785,src:"Technical City"}], r23:null},
+      {tier:"主流", date:"2009-03-30", name:"Xeon E5540", spec:"4 核 / 8 线程 · 2.53 GHz · TDP 80 W", gb:[{v:5,sc:385,mc:1395,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1160,8 +1154,8 @@ server: [
     ],
     milestone: "2010–2011 Westmere。32 nm 把 EP 扩到 6 核 12 线程（X5690 3.46 GHz / 130 W），内核 IPC 相对 Nehalem 几乎为 0，靠工艺和核数。AES-NI 在这一代普及，HTTPS 卸载从「要卡」变成「CPU 指令」。E7-8870（Westmere-EX，10 核 / 八路）把大内存和 RAS 做成关键业务线，和双路 EP 分家。这一代没有微架构故事，但把「双路通用云」和「四路/八路关键业务」两条产品线画清楚了。",
     skus: [
-      {tier:"旗舰", date:"2011-04-03", name:"Xeon X5690", spec:"Westmere-EP · 6 核 / 12 线程 · 3.46 GHz · TDP 130 W", gb:[], r23:null},
-      {tier:"EX", date:"2011-04-03", name:"Xeon E7-8870", spec:"Westmere-EX · 10 核 / 20 线程 · 2.40 GHz · TDP 130 W · 八路", gb:[], r23:null}
+      {tier:"旗舰", date:"2011-04-03", name:"Xeon X5690", spec:"Westmere-EP · 6 核 / 12 线程 · 3.46 GHz · TDP 130 W", gb:[{v:5,sc:545,mc:2533,src:"Technical City"}], r23:null},
+      {tier:"EX", date:"2011-04-03", name:"Xeon E7-8870", spec:"Westmere-EX · 10 核 / 20 线程 · 2.40 GHz · TDP 130 W · 八路", gb:[{v:5,sc:423,mc:5562,src:"CpuTronic"}], r23:null}
     ]
   },
   {
@@ -1177,8 +1171,8 @@ server: [
     ],
     milestone: "2012 Sandy Bridge-EP。PCIe 从芯片组收进 CPU，双路 I/O 带宽结构现代化。内核 IPC 相对 Westmere 大约 +10–15%，AVX 进服务器。E5-2690 8 核 16 线程 / 135 W 成为 2012–2013 云主机常用料，E5-2670（2.60 GHz / 115 W）是能效档。环形总线在 8 核上还顺，再往上开始谈环延迟。对比前代，这一次是「内核 + 平台」同时动：虚拟化、万兆网卡、本地 SSD 都从 PCIe 上 CPU 受益。",
     skus: [
-      {tier:"旗舰", date:"2012-03-06", name:"Xeon E5-2690", spec:"8 核 / 16 线程 · 2.90 GHz · TDP 135 W · 双路", gb:[], r23:null},
-      {tier:"主流", date:"2012-03-06", name:"Xeon E5-2670", spec:"8 核 / 16 线程 · 2.60 GHz · TDP 115 W", gb:[], r23:null}
+      {tier:"旗舰", date:"2012-03-06", name:"Xeon E5-2690", spec:"8 核 / 16 线程 · 2.90 GHz · TDP 135 W · 双路", gb:[{v:5,sc:586,mc:3475,src:"Technical City"}], r23:null},
+      {tier:"主流", date:"2012-03-06", name:"Xeon E5-2670", spec:"8 核 / 16 线程 · 2.60 GHz · TDP 115 W", gb:[{v:5,sc:507,mc:3096,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1211,7 +1205,7 @@ server: [
     ],
     milestone: "2014-09 Haswell-EP。内核 IPC 相对 Ivy Bridge-EP 大约 +10–15%，DDR4 进入双路，AVX2 成为科学计算默认。E5-2699 v3 18 核 36 线程 / 145 W 把单路线程推到新高，E5-2680 v3 12 核是性价比料。FIVR 和环上 18 核让全核频率和 AVX 降频成为运维必须看的项：标称 2.3 GHz，AVX 重载会再掉一档。这一代出货周期长，很多机房 2017 年还在买 v3。",
     skus: [
-      {tier:"旗舰", date:"2014-09-08", name:"Xeon E5-2699 v3", spec:"18 核 / 36 线程 · 2.30 GHz · TDP 145 W", gb:[], r23:null},
+      {tier:"旗舰", date:"2014-09-08", name:"Xeon E5-2699 v3", spec:"18 核 / 36 线程 · 2.30 GHz · TDP 145 W", gb:[{v:5,sc:907,mc:6352,src:"Technical City"}], r23:null},
       {tier:"主流", date:"2014-09-08", name:"Xeon E5-2680 v3", spec:"12 核 / 24 线程 · 2.50 GHz · TDP 120 W", gb:[{v:5,sc:908,mc:9658,src:"CPU-Monkey"}], r23:null}
     ]
   },
@@ -1229,7 +1223,7 @@ server: [
     milestone: "2016 Broadwell-EP。14 nm，IPC 相对 Haswell-EP 大约 +5%，同插槽最后一次扩核到 22（2699 v4）。E5-2680 v4 14 核 / 120 W 是出货量最大的料之一。没有新平台，纯扩核 + 降漏电。Skylake-SP 的网格和 AVX-512 还没来，企业继续在 LGA 2011-3 上买「多 4 核」的刷新。评测口径很稳定：单线程几乎没变，虚拟机密度和编译吞吐随核数走。这是 FSB 时代之后、网格时代之前，环形总线双路的收官。",
     skus: [
       {tier:"旗舰", date:"2016-03-20", name:"Xeon E5-2699 v4", spec:"22 核 / 44 线程 · 2.20 GHz · TDP 145 W", gb:[{v:7,sc:null,mc:null},{v:5,sc:994,mc:13547,src:"CPU-Monkey"}], r23:null},
-      {tier:"主流", date:"2016-03-20", name:"Xeon E5-2680 v4", spec:"14 核 / 28 线程 · 2.40 GHz · TDP 120 W", gb:[], r23:null}
+      {tier:"主流", date:"2016-03-20", name:"Xeon E5-2680 v4", spec:"14 核 / 28 线程 · 2.40 GHz · TDP 120 W", gb:[{v:5,sc:1027,mc:6893,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1246,8 +1240,8 @@ server: [
     milestone: "2017-07 Skylake-SP。放弃 E5/E7，改 Platinum/Gold/Silver。网格互连替换环形，六通道 DDR4，AVX-512。内核 IPC 相对 Broadwell 大约 +10%（标量），AVX-512 吞吐是另一条曲线，降频也是。Platinum 8180 28 核 / 205 W。同期 EPYC Naples 以 32 核 / 8 通道切入，服务器竞争格局改变：Intel 第一次在核数和内存通道上同时被压。网格延迟和 UPI 拓扑成为新的调优项。这一代的评论从「Xeon 默认选项」变成「要对着 EPYC 算 TCO」。",
     skus: [
       {tier:"旗舰", date:"2017-07-11", name:"Xeon Platinum 8180", spec:"28 核 / 56 线程 · 2.50 GHz · L3 38.5 MB · TDP 205 W", gb:[{v:5,sc:1083,mc:22158,src:"CPU-Monkey"}], r23:null},
-      {tier:"高性能", date:"2017-07-11", name:"Xeon Gold 6154", spec:"18 核 / 36 线程 · 3.00 GHz · TDP 200 W", gb:[], r23:null},
-      {tier:"主流", date:"2017-07-11", name:"Xeon Silver 4116", spec:"12 核 / 24 线程 · 2.10 GHz · TDP 85 W", gb:[], r23:null}
+      {tier:"高性能", date:"2017-07-11", name:"Xeon Gold 6154", spec:"18 核 / 36 线程 · 3.00 GHz · TDP 200 W", gb:[{v:5,sc:1207,mc:10443,src:"Technical City"}], r23:null},
+      {tier:"主流", date:"2017-07-11", name:"Xeon Silver 4116", spec:"12 核 / 24 线程 · 2.10 GHz · TDP 85 W", gb:[{v:5,sc:936,mc:5832,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1264,8 +1258,8 @@ server: [
     milestone: "2019 Cascade Lake。同 Purley 平台刷新，IPC 标量接近 0，补 Spectre/Meltdown 硬件缓解和 DL Boost（VNNI）。8280 仍是 28 核 / 205 W，Gold 6258R 把 28 核做进 Refresh 高频档。9200 AP 用双 die 堆到 56 核，插座与供货都偏专项，不是通用双路的替代。相对 EPYC Rome 的 64 核 / 8 通道，Intel 用 AVX-512 和软件生态守 HPC/AI 推理，通用虚拟化密度继续被动。这一代是「补安全与 AI 指令，不补核数」。",
     skus: [
       {tier:"旗舰", date:"2019-04-02", name:"Xeon Platinum 8280", spec:"28 核 / 56 线程 · 2.70 GHz · L3 38.5 MB · TDP 205 W", gb:[], r23:null},
-      {tier:"高性能", date:"2019-04-02", name:"Xeon Gold 6258R", spec:"28 核 / 56 线程 · 2.70 GHz · TDP 205 W · Refresh", gb:[], r23:null},
-      {tier:"主流", date:"2019-04-02", name:"Xeon Silver 4214", spec:"12 核 / 24 线程 · 2.20 GHz · TDP 85 W", gb:[], r23:null}
+      {tier:"高性能", date:"2019-04-02", name:"Xeon Gold 6258R", spec:"28 核 / 56 线程 · 2.70 GHz · TDP 205 W · Refresh", gb:[{v:5,sc:1123,mc:11265,src:"Technical City"}], r23:null},
+      {tier:"主流", date:"2019-04-02", name:"Xeon Silver 4214", spec:"12 核 / 24 线程 · 2.20 GHz · TDP 85 W", gb:[{v:5,sc:1014,mc:6424,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1281,7 +1275,7 @@ server: [
     milestone: "2021-04 Ice Lake-SP。服务器 10 nm 迟到四年。Sunny Cove IPC 相对 Skylake-SP 大约 +18–20%（Intel 口径约 20%），8380 40 核 80 线程 / 270 W。8 通道 DDR4 与 PCIe 4.0 补上与 EPYC Rome/Milan 的部分 I/O 差距，核数仍落后（Milan 64 核）。Cooper Lake 8380HL 用 14 nm 填四路/八路和 BF16。评测共识：单线程和 AVX-512 有故事，整机密度仍要靠双路堆。10 nm 迟到的四年，正好是 EPYC 抢走双路默认选项的四年。",
     skus: [
       {tier:"旗舰", date:"2021-04-06", name:"Xeon Platinum 8380", spec:"Ice Lake-SP · 40 核 / 80 线程 · 2.30 / 3.40 GHz · L3 60 MB · TDP 270 W", gb:[{v:5,sc:1075,mc:39775,src:"CpuTronic"}], r23:null},
-      {tier:"高性能", date:"2021-04-06", name:"Xeon Gold 6354", spec:"18 核 / 36 线程 · 3.00 GHz · TDP 205 W", gb:[], r23:null},
+      {tier:"高性能", date:"2021-04-06", name:"Xeon Gold 6354", spec:"18 核 / 36 线程 · 3.00 GHz · TDP 205 W", gb:[{v:5,sc:1123,mc:14070,src:"CpuTronic"}], r23:null},
       {tier:"4S/8S", date:"2020-06-18", name:"Xeon Platinum 8380HL", spec:"Cooper Lake · 28 核 · 14 nm · 针对四路八路与 BF16", gb:[], r23:null}
     ]
   },
@@ -1299,8 +1293,8 @@ server: [
     milestone: "2023-01 Sapphire Rapids，延期后的发布。Golden Cove 内核，8480+ 56 核、8490H 60 核 / 350 W。AMX 成为服务器端 AI 矩阵单元，HBM 版（Max）是另一条 SKU。IPC 相对 Ice Lake-SP 大约 +15% 量级（P 核代差），平台是 DDR5、PCIe 5.0、CXL。对比同期 EPYC Genoa 96 核，核心密度仍落后，加速器和 AMX 成为 Intel 的差异化叙事。出货初期的稳定性与延迟问题影响口碑，真正放量要等到 Emerald Rapids 把同插座核数补上。",
     skus: [
       {tier:"旗舰", date:"2023-01-10", name:"Xeon Platinum 8490H", spec:"60 核 / 120 线程 · 1.90 / 3.50 GHz · L3 112.5 MB · TDP 350 W · 8S", gb:[], r23:null},
-      {tier:"高性能", date:"2023-01-10", name:"Xeon Platinum 8480+", spec:"56 核 / 112 线程 · 2.00 / 3.80 GHz · L3 105 MB · TDP 350 W", gb:[{v:6,sc:1494,mc:10690}], r23:null},
-      {tier:"主流", date:"2023-01-10", name:"Xeon Gold 6430", spec:"32 核 / 64 线程 · 2.10 GHz · TDP 270 W", gb:[], r23:null}
+      {tier:"高性能", date:"2023-01-10", name:"Xeon Platinum 8480+", spec:"56 核 / 112 线程 · 2.00 / 3.80 GHz · L3 105 MB · TDP 350 W", gb:[{v:6,sc:1494,mc:10690},{v:5,sc:752,mc:37794,src:"GadgetVersus / Geekbench Browser"}], r23:null},
+      {tier:"主流", date:"2023-01-10", name:"Xeon Gold 6430", spec:"32 核 / 64 线程 · 2.10 GHz · TDP 270 W", gb:[{v:5,sc:1462,mc:12591,src:"Technical City"}], r23:null}
     ]
   },
   {
@@ -1318,7 +1312,7 @@ server: [
     skus: [
       {tier:"旗舰", date:"2023-12-14", name:"Xeon Platinum 8592+", spec:"64 核 / 128 线程 · 1.90 / 3.90 GHz · L3 320 MB · TDP 350 W", gb:[], r23:null},
       {tier:"高性能", date:"2023-12-14", name:"Xeon Platinum 8580", spec:"60 核 / 120 线程 · 2.00 / 4.00 GHz · TDP 350 W", gb:[], r23:null},
-      {tier:"主流", date:"2023-12-14", name:"Xeon Gold 6548N", spec:"32 核档云优化 SKU", gb:[], r23:null}
+      {tier:"主流", date:"2023-12-14", name:"Xeon Gold 6548N", spec:"32 核档云优化 SKU", gb:[{v:5,sc:1451,mc:20092,src:"CpuTronic"}], r23:null}
     ]
   },
   {
