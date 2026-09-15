@@ -196,14 +196,14 @@
     <h1>Apple 处理器世代全谱</h1>
     <p class="lede">从 PowerPC 601（1994）讲到 M6（2026），移动端从自研 A4 讲到 A19 Pro。桌面 / 移动分表；每一代列出各档最高型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-10</span>
-      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">资料读取于 2026-09-15</span>
+      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-desk">—</b><em>桌面世代</em></div>
       <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
       <div class="stat"><b id="n-span">—</b><em>跨度</em></div>
-      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
     </div>
   </header>
 
@@ -220,15 +220,13 @@
     <ol>
       <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 拓扑 / 内存与 I/O。</li>
       <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
-      <li>Geekbench 2 以 <b>Power Mac G5 1.6 GHz = 1000</b> 为综合分基准，没有单核/多核拆分，不可与 GB3 之后的分核分数换算。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>本表不列 Threadripper 一类 HEDT 分档。Intel Mac 过渡期（2006–2020）只用一格记事：苹果桌面离开 AIM/自研、改用 Intel 约 14 年——不展开 Intel SKU 细节（见 Intel 全谱页）。</li>
       <li>M 系列记入桌面栏（Mac / Studio / Mac Pro 电脑级）；A 系列记入移动栏。iPad 上的 M 芯片仍属桌面/电脑级架构，本表桌面栏以 Mac 为主。</li>
       <li>分数来源：EveryMac / Geekbench Browser / LaptopMedia / MacRumors / 评测实验室。编造分数不会出现，找不到就留空。Cinebench R23 几乎全部留空（无可靠公开样本则 null）。</li>
     </ol>
   </section>
   <div class="legend">
-    <span class="chip">GB2 综合分 = 无分核，不可与 GB3+ 换算</span>
     <span class="chip">R23 = Cinebench R23（多数留空）</span>
   </div>
 
@@ -254,13 +252,12 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：Apple Newsroom、Wikipedia Apple silicon / PowerPC 处理器列表（PowerPC 601 至 M6 / A19），读取于 2026-09-10。</li>
+      <li>规格与发布日：Apple Newsroom、Wikipedia Apple silicon / PowerPC 处理器列表（PowerPC 601 至 M6 / A19），读取于 2026-09-15。</li>
       <li>Geekbench：EveryMac Geekbench averages、Geekbench Browser（含 iOS / macOS 榜）、LaptopMedia / MacRumors 对近期 M5/M6 的第三方样本汇总。</li>
-      <li>GB2 综合分：Power Mac G5 / G4 等早期 Mac 口径（G5 1.6 GHz = 1000 基准）。</li>
       <li>Intel Mac 过渡期不列 Intel SKU 细节；完整 x86 世代见 Intel 全谱页。</li>
       <li>Cinebench R23：公开稳定样本极少，本表几乎全部留空，不编造。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Apple CPU 世代全谱》资料页<br />分析基于：Apple Newsroom + Wikipedia Apple silicon / PowerPC + EveryMac Geekbench averages + Geekbench Browser + LaptopMedia / MacRumors（近期 M5/M6），资料读取于 2026-09-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Apple CPU 世代全谱》资料页<br />分析基于：Apple Newsroom + Wikipedia Apple silicon / PowerPC + EveryMac Geekbench averages + Geekbench Browser + LaptopMedia / MacRumors（近期 M5/M6），资料读取于 2026-09-15</p>
   </footer>
 </div>
 
@@ -268,10 +265,7 @@
 const GB_META = {
   7: { tag: "GB7", label: "Geekbench 7", maxSc: 4500, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 4500, from: "2023-02-14" },
-  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" },
-  4: { tag: "GB4", label: "Geekbench 4", maxSc: 12000, from: "2016-11-10" },
-  3: { tag: "GB3", label: "Geekbench 3", maxSc: 6000, from: "2013-02-14" },
-  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" }
 };
 const R23 = "Cinebench R23";
 
@@ -317,7 +311,7 @@ desktop: [
     milestone: "1999 Power Mac G4。AltiVec 向量单元是卖点，多媒体/科学计算吃红利；但时钟长期卡在约 1.0–1.42 GHz，被 Pentium 4 / Athlon 频率战压着。双 1.42 GHz 是消费桌面顶。Geekbench 2：双 1.42 GHz G4 约 1224（Low End Mac / EveryMac 口径）。评论长期是「向量强、时钟弱」。",
     skus: [
       {tier:"主流", date:"2002–2004", name:"单核 G4 1.25 GHz 级", spec:"单核 · 约 1.25 GHz · 主流桌面 / 便携", gb:[], r23:null},
-      {tier:"旗舰", date:"2003", name:"Dual 1.42 GHz G4", spec:"双核 · 1.42 GHz · Power Mac G4 顶配", gb:[{v:2,overall:1224}], r23:null}
+      {tier:"旗舰", date:"2003", name:"Dual 1.42 GHz G4", spec:"双核 · 1.42 GHz · Power Mac G4 顶配", gb:[], r23:null}
     ]
   },
   {
@@ -327,9 +321,9 @@ desktop: [
     arch: [["微架构","64-bit PowerPC"],["工艺","130–90 nm"],["总线","高倍系统总线"],["散热","液冷顶配"],["拓扑","双路 / 后期四核 970MP"]],
     milestone: "2003-06。64-bit、高速总线，对上当时 x86 有平台代差叙事；散热与频率上限很快暴露，2.7 GHz 双路靠液冷。Geekbench 2 以 G5 1.6 GHz=1000 为基准。Quad 2.5 GHz（970MP）综合分约 3244–3316。2005–06 Jobs 宣布转 Intel：不是不想继续 PowerPC，是 IBM 交不出能效与路线图。",
     skus: [
-      {tier:"主流", date:"2003", name:"Dual 2.0 GHz G5", spec:"双路 · 2.0 GHz · 首发档", gb:[{v:2,overall:1692}], r23:null},
-      {tier:"高性能", date:"2005", name:"Dual 2.7 GHz 970FX", spec:"双路 · 2.7 GHz · 液冷顶配", gb:[{v:2,overall:2256}], r23:null},
-      {tier:"旗舰", date:"2005-10", name:"Power Mac G5 Quad 2.5 GHz", spec:"970MP · 4 核 · 2.5 GHz", gb:[{v:2,overall:3244}], r23:null}
+      {tier:"主流", date:"2003", name:"Dual 2.0 GHz G5", spec:"双路 · 2.0 GHz · 首发档", gb:[], r23:null},
+      {tier:"高性能", date:"2005", name:"Dual 2.7 GHz 970FX", spec:"双路 · 2.7 GHz · 液冷顶配", gb:[], r23:null},
+      {tier:"旗舰", date:"2005-10", name:"Power Mac G5 Quad 2.5 GHz", spec:"970MP · 4 核 · 2.5 GHz", gb:[], r23:null}
     ]
   },
   {
@@ -350,10 +344,10 @@ desktop: [
     arch: [["微架构","Apple Silicon ARMv8.5"],["工艺","TSMC 5 nm"],["内存","统一内存"],["NPU","16-core Neural Engine"],["I/O","Thunderbolt 集成"]],
     milestone: "2020-11-10。8 核（4P+4E）把笔记本续航和单核同时拉到消费级第一梯队；Rosetta 2 让 x86 软件可跑。M1 Pro/Max 加宽内存与 GPU；M1 Ultra 用 UltraFusion 粘两颗 Max。Geekbench 6 基线约 sc 2386 / mc 8571（LaptopMedia 口径）。评论：不是「ARM 笔记本能用」，是「Intel Mac 突然显得又热又慢」。",
     skus: [
-      {tier:"入门", date:"2020-11-10", name:"M1", spec:"8 核（4P+4E）· 最多 8 核 GPU · 带宽 68.25 GB/s", gb:[{v:6,sc:2386,mc:8571}], r23:null},
-      {tier:"主流", date:"2021-10-18", name:"M1 Pro", spec:"最多 10 核（8P+2E）· 最多 16 核 GPU · 带宽最高 200 GB/s · MacBook Pro 14/16", gb:[{v:6,sc:2385,mc:12338}], r23:null},
-      {tier:"高性能", date:"2021-10-18", name:"M1 Max", spec:"10 核（8P+2E）· 最多 32 核 GPU · 带宽最高 400 GB/s", gb:[{v:6,sc:2397,mc:12631}], r23:null},
-      {tier:"旗舰", date:"2022-03-08", name:"M1 Ultra", spec:"20 核 CPU（16P+4E）· 最多 64 核 GPU · 统一内存最高 128 GB · 带宽最高 800 GB/s", gb:[{v:6,sc:2405,mc:18367}], r23:null}
+      {tier:"入门", date:"2020-11-10", name:"M1", spec:"8 核（4P+4E）· 最多 8 核 GPU · 带宽 68.25 GB/s", gb:[{v:5,sc:1689,mc:7288,src:"EveryMac"},{v:6,sc:2386,mc:8571}], r23:null},
+      {tier:"主流", date:"2021-10-18", name:"M1 Pro", spec:"最多 10 核（8P+2E）· 最多 16 核 GPU · 带宽最高 200 GB/s · MacBook Pro 14/16", gb:[{v:5,sc:1719,mc:11799,src:"EveryMac"},{v:6,sc:2385,mc:12338}], r23:null},
+      {tier:"高性能", date:"2021-10-18", name:"M1 Max", spec:"10 核（8P+2E）· 最多 32 核 GPU · 带宽最高 400 GB/s", gb:[{v:5,sc:1755,mc:12330,src:"EveryMac"},{v:6,sc:2397,mc:12631}], r23:null},
+      {tier:"旗舰", date:"2022-03-08", name:"M1 Ultra", spec:"20 核 CPU（16P+4E）· 最多 64 核 GPU · 统一内存最高 128 GB · 带宽最高 800 GB/s", gb:[{v:5,sc:1757,mc:23322,src:"EveryMac"},{v:6,sc:2405,mc:18367}], r23:null}
     ]
   },
   {
@@ -363,10 +357,10 @@ desktop: [
     arch: [["微架构","Avalanche / Blizzard"],["工艺","TSMC 5 nm Enhanced"],["顶配","最高 24 核 Ultra"],["内存","统一内存最高 192 GB（Ultra）"],["媒体","AV1 decode"]],
     milestone: "2022-06 M2；Pro/Max 2023-01；Ultra 2023-06。相对 M1 单核约 +10–15%、多核视核数。M2 Ultra 24 核。媒体口径：迭代扎实，但不如 M1 那年的「世界观颠覆」。",
     skus: [
-      {tier:"入门", date:"2022-06", name:"M2", spec:"8 核（4P+4E）· 最多 10 核 GPU · 带宽 100 GB/s", gb:[{v:6,sc:2613,mc:10082}], r23:null},
-      {tier:"主流", date:"2023-01", name:"M2 Pro", spec:"最多 12 核（8P+4E）· 最多 19 核 GPU · 带宽 200 GB/s · MacBook Pro / Mac mini", gb:[{v:6,sc:2678,mc:14511}], r23:null},
-      {tier:"高性能", date:"2023-01", name:"M2 Max", spec:"12 核（8P+4E）· 最多 38 核 GPU · 带宽最高 400 GB/s", gb:[{v:6,sc:2642,mc:14621}], r23:null},
-      {tier:"旗舰", date:"2023-06", name:"M2 Ultra", spec:"24 核 · 最多 76 核 GPU · 统一内存最高 192 GB · 带宽最高 800 GB/s", gb:[{v:6,sc:2691,mc:21241}], r23:null}
+      {tier:"入门", date:"2022-06", name:"M2", spec:"8 核（4P+4E）· 最多 10 核 GPU · 带宽 100 GB/s", gb:[{v:5,sc:1931,mc:8941,src:"EveryMac"},{v:6,sc:2613,mc:10082}], r23:null},
+      {tier:"主流", date:"2023-01", name:"M2 Pro", spec:"最多 12 核（8P+4E）· 最多 19 核 GPU · 带宽 200 GB/s · MacBook Pro / Mac mini", gb:[{v:5,sc:1940,mc:14851,src:"EveryMac"},{v:6,sc:2678,mc:14511}], r23:null},
+      {tier:"高性能", date:"2023-01", name:"M2 Max", spec:"12 核（8P+4E）· 最多 38 核 GPU · 带宽最高 400 GB/s", gb:[{v:5,sc:1964,mc:14660,src:"EveryMac"},{v:6,sc:2642,mc:14621}], r23:null},
+      {tier:"旗舰", date:"2023-06", name:"M2 Ultra", spec:"24 核 · 最多 76 核 GPU · 统一内存最高 192 GB · 带宽最高 800 GB/s", gb:[{v:5,sc:2013,mc:28242,src:"EveryMac"},{v:6,sc:2691,mc:21241}], r23:null}
     ]
   },
   {
@@ -376,10 +370,10 @@ desktop: [
     arch: [["微架构","Everest / Sawtooth"],["工艺","TSMC 3 nm"],["GPU","Dynamic Caching · 硬件光追 / mesh"],["Ultra","最晚到 2025-03"],["定位","首款 3 nm PC 芯片族"]],
     milestone: "2023-10 同场发 M3/Pro/Max。首款 3 nm PC 芯片族；GPU 功能集现代化。M3 Ultra（2025）32 核 CPU / 最多 80 核 GPU，把 Studio 顶配补齐。注意：M3 Pro 内存通道相对 M2 Pro 的取舍引发「不是线性升级」讨论。",
     skus: [
-      {tier:"入门", date:"2023-10", name:"M3", spec:"8 核（4P+4E）· 最多 10 核 GPU · 带宽 100 GB/s", gb:[{v:6,sc:3135,mc:12042}], r23:null},
-      {tier:"主流", date:"2023-10", name:"M3 Pro", spec:"最多 12 核（6P+6E）· 最多 18 核 GPU · 带宽 150 GB/s · MacBook Pro", gb:[{v:6,sc:3202,mc:15831}], r23:null},
-      {tier:"高性能", date:"2023-10", name:"M3 Max", spec:"最多 16 核 · 最多 40 核 GPU · 带宽最高 400 GB/s", gb:[{v:6,sc:3270,mc:21385}], r23:null},
-      {tier:"旗舰", date:"2025-03", name:"M3 Ultra", spec:"32 核 · 最多 80 核 GPU · 带宽约 819 GB/s", gb:[{v:6,sc:3247,mc:28169}], r23:null}
+      {tier:"入门", date:"2023-10", name:"M3", spec:"8 核（4P+4E）· 最多 10 核 GPU · 带宽 100 GB/s", gb:[{v:5,sc:2345,mc:10761,src:"EveryMac"},{v:6,sc:3135,mc:12042}], r23:null},
+      {tier:"主流", date:"2023-10", name:"M3 Pro", spec:"最多 12 核（6P+6E）· 最多 18 核 GPU · 带宽 150 GB/s · MacBook Pro", gb:[{v:5,sc:2291,mc:15044,src:"EveryMac"},{v:6,sc:3202,mc:15831}], r23:null},
+      {tier:"高性能", date:"2023-10", name:"M3 Max", spec:"最多 16 核 · 最多 40 核 GPU · 带宽最高 400 GB/s", gb:[{v:5,sc:2329,mc:22649,src:"EveryMac"},{v:6,sc:3270,mc:21385}], r23:null},
+      {tier:"旗舰", date:"2025-03", name:"M3 Ultra", spec:"32 核 · 最多 80 核 GPU · 带宽约 819 GB/s", gb:[{v:5,sc:2388,mc:41856,src:"EveryMac"},{v:6,sc:3247,mc:28169}], r23:null}
     ]
   },
   {
@@ -389,9 +383,9 @@ desktop: [
     arch: [["微架构","Apple M4"],["工艺","TSMC 第二代 3 nm"],["主频","更高主频"],["NPU","Neural Engine ~38 TOPS 级（Apple 口径）"],["I/O","Thunderbolt 5（Pro/Max）"]],
     milestone: "2024-05 先上 iPad Pro，再进 Mac mini / iMac / MacBook Pro。单核 GB6 跃到约 3800 档，是 M 系列最大的单核台阶之一。M4 Max 16 核多核约 25760。无 M4 Ultra——顶配仍用 M3 Ultra 过渡。",
     skus: [
-      {tier:"主流", date:"2024-05", name:"M4", spec:"最多 10 核 · 最多 10 核 GPU · 带宽 120 GB/s · iPad Pro / Mac mini / iMac", gb:[{v:6,sc:3830,mc:14990}], r23:null},
-      {tier:"高性能", date:"2024-10", name:"M4 Pro", spec:"最多 14 核 · 最多 20 核 GPU · 带宽最高 273 GB/s · Thunderbolt 5", gb:[{v:6,sc:3943,mc:22914}], r23:null},
-      {tier:"旗舰", date:"2024-10", name:"M4 Max", spec:"最多 16 核 · 最多 40 核 GPU · 带宽最高 546 GB/s · 无 M4 Ultra", gb:[{v:6,sc:3880,mc:25760}], r23:null}
+      {tier:"主流", date:"2024-05", name:"M4", spec:"最多 10 核 · 最多 10 核 GPU · 带宽 120 GB/s · iPad Pro / Mac mini / iMac", gb:[{v:5,sc:2599,mc:13037,src:"EveryMac"},{v:6,sc:3830,mc:14990}], r23:null},
+      {tier:"高性能", date:"2024-10", name:"M4 Pro", spec:"最多 14 核 · 最多 20 核 GPU · 带宽最高 273 GB/s · Thunderbolt 5", gb:[{v:5,sc:2631,mc:22293,src:"EveryMac"},{v:6,sc:3943,mc:22914}], r23:null},
+      {tier:"旗舰", date:"2024-10", name:"M4 Max", spec:"最多 16 核 · 最多 40 核 GPU · 带宽最高 546 GB/s · 无 M4 Ultra", gb:[{v:5,sc:2685,mc:26999,src:"EveryMac"},{v:6,sc:3880,mc:25760}], r23:null}
     ]
   },
   {
@@ -401,7 +395,7 @@ desktop: [
     arch: [["微架构","Super core 命名（S+P 簇）"],["工艺","TSMC N3P"],["GPU","Neural Accelerators"],["Ultra","2026-08 与 M6 同场"],["AI","从 Neural Engine 扩到 GPU 内加速器"]],
     milestone: "2025-10 基线 M5；2026 初 Pro/Max；2026-08 M5 Ultra（最多 36 核 CPU / 80 核 GPU / 512 GB / 1.2 TB/s）。AI 算力叙事从 Neural Engine 扩到 GPU 内加速器。M5 Max GB6 约 sc 4305 / mc 29159（LaptopMedia）。",
     skus: [
-      {tier:"入门", date:"2025-10", name:"M5", spec:"最多 10 核 · 最多 10 核 GPU · 带宽约 153 GB/s", gb:[{v:6,sc:4227,mc:17802}], r23:null},
+      {tier:"入门", date:"2025-10", name:"M5", spec:"最多 10 核 · 最多 10 核 GPU · 带宽约 153 GB/s", gb:[{v:5,sc:2924,mc:15521,src:"EveryMac"},{v:6,sc:4227,mc:17802}], r23:null},
       {tier:"主流", date:"2026", name:"M5 Pro", spec:"最多 18 核（6S+12P）· 最多 20 核 GPU · 带宽约 307 GB/s · MacBook Pro", gb:[{v:6,sc:4276,mc:28030}], r23:null},
       {tier:"高性能", date:"2026", name:"M5 Max", spec:"18 核（6S+12P）· 最多 40 核 GPU · 带宽最高 614 GB/s", gb:[{v:6,sc:4305,mc:29159}], r23:null},
       {tier:"旗舰", date:"2026-08-25", name:"M5 Ultra", spec:"最多 36 核（12S+24P）· 最多 80 核 GPU · 统一内存最高 512 GB · 带宽 1.2 TB/s", gb:[], r23:null}
@@ -457,7 +451,7 @@ mobile: [
     arch: [["微架构","Cyclone"],["工艺","28 nm"],["CPU 拓扑","2 核 64-bit"],["GPU","PowerVR G6430"],["代表机型","iPhone 5s / iPad Air"]],
     milestone: "2013-09。首款量产 64-bit 消费手机 SoC，把 ARMv8 带进口袋一年多才轮到 Android 阵营跟进。Cyclone 单核相对 A6 再抬一档；M7 运动协处理器开始拆分传感器负载。Geekbench 4 样本约 sc 1267 / mc 2070（iPhone 5s）。这是「手机也能跑桌面级 ISA」叙事的起点。",
     skus: [
-      {tier:"旗舰", date:"2013-09-20", name:"A7", spec:"Cyclone 双核 · 64-bit · iPhone 5s", gb:[{v:4,sc:1267,mc:2070}], r23:null}
+      {tier:"旗舰", date:"2013-09-20", name:"A7", spec:"Cyclone 双核 · 64-bit · iPhone 5s", gb:[], r23:null}
     ]
   },
   {
@@ -467,8 +461,8 @@ mobile: [
     arch: [["微架构","Typhoon"],["工艺","20 nm"],["CPU 拓扑","2 核（A8）/ 3 核（A8X）"],["GPU","PowerVR · A8X 加宽"],["代表机型","iPhone 6 / iPad Air 2"]],
     milestone: "2014 A8 随 iPhone 6 进入 20 nm，能效与金属机身一起定义「大屏 iPhone」。A8X 给 iPad Air 2 三核 CPU 与更宽 GPU，平板性能第一次明显甩开同代手机。公开 GB 口径分散，本表留空。评论重点在工艺与整机，而不再是「会不会做核」。",
     skus: [
-      {tier:"主流", date:"2014-09", name:"A8", spec:"双核 · 20 nm · iPhone 6 / 6 Plus", gb:[], r23:null},
-      {tier:"旗舰", date:"2014-10", name:"A8X", spec:"三核 Typhoon · iPad Air 2", gb:[], r23:null}
+      {tier:"主流", date:"2014-09", name:"A8", spec:"双核 · 20 nm · iPhone 6 / 6 Plus", gb:[{v:5,sc:412,mc:602,src:"Geekbench Browser"}], r23:null},
+      {tier:"旗舰", date:"2014-10", name:"A8X", spec:"三核 Typhoon · iPad Air 2", gb:[{v:5,sc:441,mc:948,src:"Geekbench Browser"}], r23:null}
     ]
   },
   {
@@ -478,8 +472,8 @@ mobile: [
     arch: [["微架构","Twister"],["工艺","14/16 nm 双代工厂"],["CPU 拓扑","2 核（A9）/ 双核加宽（A9X）"],["GPU","PowerVR 系列"],["代表机型","iPhone 6s / iPad Pro"]],
     milestone: "2015 A9 首次双代工厂（TSMC/Samsung）量产，引发「芯片彩票」续航讨论。A9X 驱动初代 12.9 寸 iPad Pro，把平板推向生产力叙事。Twister 相对 Typhoon 又是一轮扎实 IPC。公开稳定对比样本不统一，留空。这是苹果平板第一次认真对标轻薄本。",
     skus: [
-      {tier:"主流", date:"2015-09", name:"A9", spec:"双核 · 14/16 nm · iPhone 6s", gb:[], r23:null},
-      {tier:"旗舰", date:"2015-11", name:"A9X", spec:"Twister · iPad Pro 首发", gb:[], r23:null}
+      {tier:"主流", date:"2015-09", name:"A9", spec:"双核 · 14/16 nm · iPhone 6s", gb:[{v:5,sc:605,mc:878,src:"Geekbench Browser"}], r23:null},
+      {tier:"旗舰", date:"2015-11", name:"A9X", spec:"Twister · iPad Pro 首发", gb:[{v:5,sc:749,mc:1248,src:"Geekbench Browser"}], r23:null}
     ]
   },
   {
@@ -489,7 +483,7 @@ mobile: [
     arch: [["微架构","Hurricane + Zephyr"],["工艺","16 nm"],["CPU 拓扑","2P+2E 大数据优先"],["GPU","苹果定制 6 核级叙事"],["代表机型","iPhone 7 / 7 Plus"]],
     milestone: "2016 iPhone 7。2P+2E 是苹果第一次在手机上公开大小核调度：大数据优先，小核扛后台。单核继续领跑安卓旗舰；立体声扬声器与取消 3.5 mm 同期成为产品槽点。公开 GB 口径不一，留空。融合架构为后来 A11 的更完整大小核铺路。",
     skus: [
-      {tier:"旗舰", date:"2016-09", name:"A10 Fusion", spec:"2P+2E · iPhone 7 / 7 Plus", gb:[], r23:null}
+      {tier:"旗舰", date:"2016-09", name:"A10 Fusion", spec:"2P+2E · iPhone 7 / 7 Plus", gb:[{v:5,sc:814,mc:1156,src:"Geekbench Browser"}], r23:null}
     ]
   },
   {
@@ -499,7 +493,7 @@ mobile: [
     arch: [["微架构","Monsoon + Mistral"],["工艺","TSMC 10 nm"],["CPU 拓扑","2P+4E"],["GPU","首款苹果设计三核级 GPU 叙事"],["代表机型","iPhone 8 / X · Neural Engine 2 核"]],
     milestone: "2017。2P+4E、自研 GPU 叙事、Neural Engine 2 核同场——Bionic 品牌从此绑定「端侧智能」。Face ID 与 Animoji 把 NPU 写成卖点而不只是跑分。GB6 约 sc 1097 / mc 2357，GB5 约 sc 897 / mc 2236。这是苹果把「芯片故事」从 CPU 扩展到 AI 加速的一代。",
     skus: [
-      {tier:"旗舰", date:"2017-09", name:"A11 Bionic", spec:"2P+4E · Neural Engine 2 核 · iPhone 8 / X", gb:[{v:6,sc:1097,mc:2357},{v:5,sc:897,mc:2236}], r23:null}
+      {tier:"旗舰", date:"2017-09", name:"A11 Bionic", spec:"2P+4E · Neural Engine 2 核 · iPhone 8 / X", gb:[{v:5,sc:897,mc:2236},{v:6,sc:1097,mc:2357}], r23:null}
     ]
   },
   {
@@ -509,7 +503,7 @@ mobile: [
     arch: [["微架构","Vortex + Tempest"],["工艺","TSMC 7 nm"],["CPU 拓扑","2P+4E"],["GPU","4 核"],["代表机型","iPhone XS / XR · Neural Engine 8 核"]],
     milestone: "2018 首款 7 nm 消费 SoC 之一。Neural Engine 扩到 8 核，Core ML 与摄影计算开始吃满。单核继续压着同期骁龙；XS Max 大电池把续航写回正面。公开 GB6 口径分散，本表留空以免混用版本。7 nm + 8 核 NPU 成为此后两年的基线叙事。",
     skus: [
-      {tier:"旗舰", date:"2018-09", name:"A12 Bionic", spec:"2P+4E · 7 nm · Neural Engine 8 核 · iPhone XS", gb:[], r23:null}
+      {tier:"旗舰", date:"2018-09", name:"A12 Bionic", spec:"2P+4E · 7 nm · Neural Engine 8 核 · iPhone XS", gb:[{v:6,sc:1318,mc:3134,src:"NanoReview"}], r23:null}
     ]
   },
   {
@@ -519,7 +513,7 @@ mobile: [
     arch: [["微架构","Lightning + Thunder"],["工艺","TSMC 7 nm+"],["CPU 拓扑","2P+4E"],["GPU","4 核"],["代表机型","iPhone 11 / 11 Pro"]],
     milestone: "2019 iPhone 11 系列。制程小迭代，IPC 与能效再抬一档；夜间模式与多摄像头把 ISP/NPU 协作推到台前。GB6 约 sc 1721 / mc 4373（upgreat 等口径）。评论：不是换代震感，是「每年稳稳拉开安卓旗舰单核」的惯性。A14 的 5 nm 才是下一记重锤。",
     skus: [
-      {tier:"旗舰", date:"2019-09", name:"A13 Bionic", spec:"2P+4E · 7 nm+ · iPhone 11 Pro", gb:[{v:6,sc:1721,mc:4373}], r23:null}
+      {tier:"旗舰", date:"2019-09", name:"A13 Bionic", spec:"2P+4E · 7 nm+ · iPhone 11 Pro", gb:[{v:5,sc:1327,mc:3391,src:"EveryMac"},{v:6,sc:1721,mc:4373}], r23:null}
     ]
   },
   {
@@ -529,7 +523,7 @@ mobile: [
     arch: [["微架构","Firestorm + Icestorm"],["工艺","TSMC 5 nm"],["CPU 拓扑","2P+4E"],["GPU","4 核"],["代表机型","iPhone 12 / iPad Air"]],
     milestone: "2020 首款 5 nm 手机 SoC，与 M1 同代核家族。iPhone 12 借 5G 与 MagSafe 换代；单核 GB6 约 2087 / 多核 4820，GB5 约 1477 / 3874。同一套 P/E 命名稍后出现在 M1——手机核正式「 upstream」到电脑。评论开始认真问：下次 Mac 还会用 Intel 吗？",
     skus: [
-      {tier:"旗舰", date:"2020-10", name:"A14 Bionic", spec:"2P+4E · 5 nm · iPhone 12 / iPad Air", gb:[{v:6,sc:2087,mc:4820},{v:5,sc:1477,mc:3874}], r23:null}
+      {tier:"旗舰", date:"2020-10", name:"A14 Bionic", spec:"2P+4E · 5 nm · iPhone 12 / iPad Air", gb:[{v:5,sc:1477,mc:3874},{v:6,sc:2087,mc:4820}], r23:null}
     ]
   },
   {
@@ -539,7 +533,7 @@ mobile: [
     arch: [["微架构","Avalanche + Blizzard"],["工艺","TSMC 5 nm Enhanced"],["CPU 拓扑","2P+4E"],["GPU","4/5 核分档"],["代表机型","iPhone 13 / 13 Pro / iPad mini"]],
     milestone: "2021。同代核稍后用于 M2。Pro 与非 Pro 的 GPU 核数分档成为槽点；摄影计算与 ProRes（13 Pro）继续吃 NPU/ISP。GB6 约 sc 2347 / mc 6353。单核逼近当时不少 Intel 笔记本基线——M1 已经证明这不是巧合。",
     skus: [
-      {tier:"旗舰", date:"2021-09", name:"A15 Bionic", spec:"2P+4E · 最多 5 核 GPU · iPhone 13 Pro", gb:[{v:6,sc:2347,mc:6353}], r23:null}
+      {tier:"旗舰", date:"2021-09", name:"A15 Bionic", spec:"2P+4E · 最多 5 核 GPU · iPhone 13 Pro", gb:[{v:5,sc:1728,mc:4594,src:"EveryMac"},{v:6,sc:2347,mc:6353}], r23:null}
     ]
   },
   {
@@ -549,7 +543,7 @@ mobile: [
     arch: [["微架构","Everest + Sawtooth"],["工艺","TSMC 4 nm"],["CPU 拓扑","2P+4E"],["GPU","5 核"],["代表机型","iPhone 14 Pro → 15"]],
     milestone: "2022 先给 14 Pro，次年下放到 15。4 nm 小步进，常亮显示与灵动岛才是产品记忆点。GB6 约 sc 2613 / mc 7217。与同场的 M2 相比，手机墙更紧，多核明显受限于热与电池。评论：稳健迭代，真正的 3 nm 留给 A17。",
     skus: [
-      {tier:"旗舰", date:"2022-09", name:"A16 Bionic", spec:"2P+4E · 4 nm · iPhone 14 Pro / 15", gb:[{v:6,sc:2613,mc:7217}], r23:null}
+      {tier:"旗舰", date:"2022-09", name:"A16 Bionic", spec:"2P+4E · 4 nm · iPhone 14 Pro / 15", gb:[{v:5,sc:1886,mc:5493,src:"EveryMac"},{v:6,sc:2613,mc:7217}], r23:null}
     ]
   },
   {
@@ -559,7 +553,7 @@ mobile: [
     arch: [["微架构","2P+4E"],["工艺","TSMC 3 nm"],["CPU 拓扑","2P+4E"],["GPU","6 核 · 硬件光追"],["代表机型","iPhone 15 Pro / Pro Max"]],
     milestone: "2023 首款 3 nm 手机 SoC，硬件光追与 USB-C（Pro）同场。GB6 取图表中位口径 sc 2881 / mc 7199。单核再创新高，多核受手机热墙限制，并未线性拉开。这是「Pro 独占制程一年」策略的典型：明年再下放到非 Pro。",
     skus: [
-      {tier:"旗舰", date:"2023-09", name:"A17 Pro", spec:"2P+4E · 3 nm · 硬件光追 · iPhone 15 Pro", gb:[{v:6,sc:2881,mc:7199}], r23:null}
+      {tier:"旗舰", date:"2023-09", name:"A17 Pro", spec:"2P+4E · 3 nm · 硬件光追 · iPhone 15 Pro", gb:[{v:5,sc:2136,mc:5997,src:"EveryMac"},{v:6,sc:2881,mc:7199}], r23:null}
     ]
   },
   {
@@ -569,8 +563,8 @@ mobile: [
     arch: [["微架构","A18 家族"],["工艺","TSMC N3E"],["CPU 拓扑","2P+4E"],["GPU","改进光追 / 网格着色"],["代表机型","iPhone 16 / 16 Pro"]],
     milestone: "2024 全系上 A18 品牌，Pro 与非 Pro 分硅。Apple Intelligence 把端侧模型写成系统卖点。GB6：A18 Pro 约 sc 3444 / mc 8641；A18 约 sc 3317 / mc 7506（Geekbench iOS 页近似）。单核继续贴着 M 系列入门机，但多核仍是手机墙。",
     skus: [
-      {tier:"主流", date:"2024-09", name:"A18", spec:"2P+4E · N3E · iPhone 16", gb:[{v:6,sc:3317,mc:7506}], r23:null},
-      {tier:"旗舰", date:"2024-09", name:"A18 Pro", spec:"2P+4E · N3E · iPhone 16 Pro", gb:[{v:6,sc:3444,mc:8641}], r23:null}
+      {tier:"主流", date:"2024-09", name:"A18", spec:"2P+4E · N3E · iPhone 16", gb:[{v:5,sc:2349,mc:6226,src:"EveryMac"},{v:6,sc:3317,mc:7506}], r23:null},
+      {tier:"旗舰", date:"2024-09", name:"A18 Pro", spec:"2P+4E · N3E · iPhone 16 Pro", gb:[{v:5,sc:2399,mc:6496,src:"EveryMac"},{v:6,sc:3444,mc:8641}], r23:null}
     ]
   },
   {
@@ -580,8 +574,8 @@ mobile: [
     arch: [["微架构","A19 家族"],["工艺","TSMC N3P"],["CPU 拓扑","2P+4E"],["GPU","同代强化"],["代表机型","iPhone 17 / 17 Pro"]],
     milestone: "2025 N3P 刷新。Geekbench Browser iOS 榜：A19 Pro 约 sc 3785 / mc 9837；A19 约 sc 3607 / mc 9246。单核逼近 M4 入门区，但不要直接跨设备换算场景。端侧 AI 与影像管线仍是差异化主场；纯跑分叙事已经让位给「整机智能」叙事。",
     skus: [
-      {tier:"主流", date:"2025-09", name:"A19", spec:"2P+4E · N3P · iPhone 17", gb:[{v:6,sc:3607,mc:9246}], r23:null},
-      {tier:"旗舰", date:"2025-09", name:"A19 Pro", spec:"2P+4E · N3P · iPhone 17 Pro", gb:[{v:6,sc:3785,mc:9837}], r23:null}
+      {tier:"主流", date:"2025-09", name:"A19", spec:"2P+4E · N3P · iPhone 17", gb:[{v:5,sc:2603,mc:7188,src:"EveryMac"},{v:6,sc:3607,mc:9246}], r23:null},
+      {tier:"旗舰", date:"2025-09", name:"A19 Pro", spec:"2P+4E · N3P · iPhone 17 Pro", gb:[{v:5,sc:2669,mc:7571,src:"EveryMac"},{v:6,sc:3785,mc:9837}], r23:null}
     ]
   }
 ]

@@ -196,15 +196,15 @@
     <h1>海思处理器世代全谱</h1>
     <p class="lede">只收录<strong>手机麒麟</strong>（旗舰 + 中端），从 K3V2 / 早期 Kirin 到 9030。覆盖制裁前后与回归机型。昇腾、平板 / PC 麒麟不在本表。每一代列各档最高型号；Geekbench 有实数才写，禁止编造。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-10</span>
-      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">资料读取于 2026-09-15</span>
+      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
       <span class="pill">主题色 Huawei 红 / 黑</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-mob">—</b><em>手机麒麟世代</em></div>
       <div class="stat"><b id="n-sku">—</b><em>型号行</em></div>
       <div class="stat"><b id="n-span">—</b><em>跨度</em></div>
-      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
     </div>
   </header>
 
@@ -220,7 +220,7 @@
     <ol>
       <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 拓扑 / 内存与 I/O。</li>
       <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>美国出口管制（Entity List / 外国直接产品规则）自约 2019–2020 起切断海思对 TSMC 先进节点的稳定代工；2023 起 SMIC N+2 / N+3（约 7 nm / 6 nm 级 DUV）支撑麒麟回归。里程碑栏如实简述，不演义。</li>
       <li>发布时间尽量精确到月（YYYY-MM）；公开资料仅到季度时取该季代表月，冲突时优先发布会 / Wikipedia 列表。</li>
       <li>本表仅手机麒麟：旗舰（Mate / Pura 等）与中端（nova / Honor 时代 620–985 等）按时间排在同一张表；昇腾 Ascend、平板 9000W、电脑 X90 已移除。</li>
@@ -255,12 +255,12 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：Wikipedia HiSilicon / Kirin、MoePC Kirin SKU 表、华为消费者业务公开页、TechInsights 拆解、SCMP / Tom's Hardware / GSMArena（2023–2026 回归机型），读取于 2026-09-10。</li>
-      <li>Geekbench：NanoReview SoC 页、Geekbench Browser、PhoneArena、Notebookcheck、CPUBoss / CpuTronic 公开汇总。早期未满血或样本冲突者留空。</li>
+      <li>规格与发布日：Wikipedia HiSilicon / Kirin、MoePC Kirin SKU 表、华为消费者业务公开页、TechInsights 拆解、SCMP / Tom's Hardware / GSMArena（2023–2026 回归机型），读取于 2026-09-15。</li>
+      <li>Geekbench：GB5/GB6 = CPU-Monkey / NanoReview / Notebookcheck / Geekbench Browser / Gadgetversus（回归后部分 SKU）；本页只列 GB5–GB7。早期未满血或样本冲突者留空。</li>
       <li>制裁与代工：美国 Entity List / FDPR 公开时间线；SMIC N+2（约 7 nm 级）/ N+3（约 6–5 nm 级 DUV）第三方工艺研判（TechInsights 等）。</li>
       <li>Cinebench R23：手机 SoC 公开稳定样本极少，本表全部留空，不编造。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《华为海思 CPU 世代全谱》资料页<br />分析基于：Wikipedia HiSilicon + MoePC + NanoReview / Geekbench Browser / PhoneArena + TechInsights / SCMP（制裁与回归），资料读取于 2026-09-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《华为海思 CPU 世代全谱》资料页<br />分析基于：Wikipedia HiSilicon + MoePC + NanoReview / Geekbench Browser / PhoneArena + TechInsights / SCMP（制裁与回归），资料读取于 2026-09-15</p>
   </footer>
 </div>
 
@@ -268,10 +268,7 @@
 const GB_META = {
   7: { tag: "GB7", label: "Geekbench 7", maxSc: 4500, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 4500, from: "2023-02-14" },
-  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" },
-  4: { tag: "GB4", label: "Geekbench 4", maxSc: 12000, from: "2016-11-10" },
-  3: { tag: "GB3", label: "Geekbench 3", maxSc: 6000, from: "2013-02-14" },
-  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" }
 };
 const R23 = "Cinebench R23";
 
@@ -338,8 +335,8 @@ mobile: [
     arch: [["微架构","4× A72 + 4× A53"],["工艺","TSMC 16FF+"],["GPU","Mali-T880 MP4"],["基带","Balong 720 Cat.6"],["代表机型","Mate 8 / P9"]],
     milestone: "2015 Q4。16 nm + A72 让麒麟第一次进入「能打同期旗舰」讨论。Mate 8 续航与发热口碑好；955 略抬频。GB6 约 sc 341 / mc 1294（公开汇总口径）。这是海思从「能用」到「值得买」的关键一跳。",
     skus: [
-      {tier:"主流", date:"2015-11", name:"Kirin 950", spec:"4× A72 @2.3 GHz + 4× A53 · Mate 8", gb:[{v:6,sc:341,mc:1294}], r23:null},
-      {tier:"旗舰", date:"2016-04", name:"Kirin 955", spec:"4× A72 @2.52 GHz + 4× A53 · Mali-T880 MP4 · P9 / Mate 8 顶", gb:[{v:6,sc:341,mc:1294}], r23:null}
+      {tier:"主流", date:"2015-11", name:"Kirin 950", spec:"4× A72 @2.3 GHz + 4× A53 · Mate 8", gb:[{v:6,sc:341,mc:1294},{v:5,sc:331,mc:1183}], r23:null},
+      {tier:"旗舰", date:"2016-04", name:"Kirin 955", spec:"4× A72 @2.52 GHz + 4× A53 · Mali-T880 MP4 · P9 / Mate 8 顶", gb:[{v:6,sc:341,mc:1294},{v:5,sc:330,mc:989}], r23:null}
     ]
   },
   {
@@ -350,7 +347,7 @@ mobile: [
     milestone: "16 nm 中端长寿平台，衍生 655/658/659 小迭代。拍照与双摄下放的主力芯。公开 GB6 样本不稳定，留空。",
     skus: [
       {tier:"入门", date:"2016-04", name:"Kirin 650", spec:"8× A53 · P9 Lite / Honor 5C", gb:[], r23:null},
-      {tier:"主流", date:"2017-07", name:"Kirin 659", spec:"8× A53 调频顶 · 16 nm · nova / Honor 中端", gb:[], r23:null}
+      {tier:"主流", date:"2017-07", name:"Kirin 659", spec:"8× A53 调频顶 · 16 nm · nova / Honor 中端", gb:[{v:6,sc:214,mc:809},{v:5,sc:193,mc:893}], r23:null}
     ]
   },
   {
@@ -360,7 +357,7 @@ mobile: [
     arch: [["微架构","4× A73 + 4× A53"],["工艺","TSMC 16FFC"],["GPU","Mali-G71 MP8"],["基带","Balong 750 Cat.12"],["代表机型","Mate 9 / P10"]],
     milestone: "2016 Q4。首发 Cortex-A73 消费 SoC 之一，G71 MP8 显着加宽 GPU。USB-C、双摄叙事与 Mate 9 同场。GB6 约 sc 403 / mc 1147（NanoReview 样本偏少）。评论：CPU 扎实，GPU 与能效仍有槽点，但「华为自研芯够用」已成共识。",
     skus: [
-      {tier:"旗舰", date:"2016-10", name:"Kirin 960", spec:"4× A73 @2.36 GHz + 4× A53 · Mali-G71 MP8 · Mate 9", gb:[{v:6,sc:403,mc:1147}], r23:null}
+      {tier:"旗舰", date:"2016-10", name:"Kirin 960", spec:"4× A73 @2.36 GHz + 4× A53 · Mali-G71 MP8 · Mate 9", gb:[{v:6,sc:403,mc:1147},{v:5,sc:381,mc:1521}], r23:null}
     ]
   },
   {
@@ -370,7 +367,7 @@ mobile: [
     arch: [["微架构","4× A73 + 4× A53"],["工艺","TSMC 10 nm"],["GPU","Mali-G72 MP12"],["NPU","Cambricon 独立 NPU"],["代表机型","Mate 10 / P20"]],
     milestone: "2017-09 IFA。世界首款量产独立 NPU 手机 SoC（寒武纪 IP），把「端侧 AI」写成发布会主叙事。10 nm。GB6 约 sc 420 / mc 1617。纯 CPU 相对 960 步进有限，真正的代差在 ISP/NPU 与摄影计算。此后麒麟每年都要讲 AI。",
     skus: [
-      {tier:"旗舰", date:"2017-09", name:"Kirin 970", spec:"4× A73 + 4× A53 · 10 nm · NPU · Mate 10 / P20", gb:[{v:6,sc:420,mc:1617}], r23:null}
+      {tier:"旗舰", date:"2017-09", name:"Kirin 970", spec:"4× A73 + 4× A53 · 10 nm · NPU · Mate 10 / P20", gb:[{v:6,sc:420,mc:1617},{v:5,sc:349,mc:1455}], r23:null}
     ]
   },
   {
@@ -380,7 +377,7 @@ mobile: [
     arch: [["微架构","4× A73 + 4× A53"],["工艺","12 nm"],["GPU","Mali-G51 MP4"],["定位","主流中端"],["代表机型","nova 3i / Honor 8X"]],
     milestone: "A73 中端普及芯，性价比口碑好。GB6 约 sc 348–352 / mc 1206–1244。710F 为后续改版。荣耀拆分前的「中端基本盘」。",
     skus: [
-      {tier:"主流", date:"2018-07", name:"Kirin 710 / 710F", spec:"4× A73 + 4× A53 · 12 nm · nova / Honor 8X", gb:[{v:6,sc:352,mc:1244}], r23:null}
+      {tier:"主流", date:"2018-07", name:"Kirin 710 / 710F", spec:"4× A73 + 4× A53 · 12 nm · nova / Honor 8X", gb:[{v:6,sc:352,mc:1244},{v:5,sc:322,mc:1384}], r23:null}
     ]
   },
   {
@@ -390,7 +387,7 @@ mobile: [
     arch: [["微架构","2× A76 + 2× A76 + 4× A55"],["工艺","TSMC 7 nm"],["GPU","Mali-G76 MP10"],["NPU","双核 NPU"],["代表机型","Mate 20 / P30"]],
     milestone: "2018-08。首批 7 nm 消费 SoC 之一；2+2+4 三丛集 A76。单核与能效明显上台阶。GB6 约 sc 928 / mc 2875。Mate 20 / P30 影像与续航口碑把「麒麟旗舰」推到全球安卓第一梯队讨论。",
     skus: [
-      {tier:"旗舰", date:"2018-08", name:"Kirin 980", spec:"2× A76 @2.6 + 2× A76 @1.92 + 4× A55 · 7 nm · Mate 20", gb:[{v:6,sc:928,mc:2875}], r23:null}
+      {tier:"旗舰", date:"2018-08", name:"Kirin 980", spec:"2× A76 @2.6 + 2× A76 @1.92 + 4× A55 · 7 nm · Mate 20", gb:[{v:6,sc:928,mc:2875},{v:5,sc:681,mc:2576}], r23:null}
     ]
   },
   {
@@ -400,7 +397,7 @@ mobile: [
     arch: [["微架构","2× A76 + 6× A55"],["工艺","TSMC 7 nm"],["GPU","Mali-G52 MP6"],["NPU","达芬奇"],["代表机型","nova 5 / Honor 9X"]],
     milestone: "7 nm 中端爆款。A76 让中端单核接近上代旗舰。GB6 约 sc 770–797 / mc 1983–2120（取公开区间中位约 770/1983）。证明海思中端也能吃先进节点——随后制裁让这一优势难以延续。",
     skus: [
-      {tier:"主流", date:"2019-06", name:"Kirin 810", spec:"2× A76 @2.27 + 6× A55 · 7 nm · nova 5", gb:[{v:6,sc:770,mc:1983}], r23:null}
+      {tier:"主流", date:"2019-06", name:"Kirin 810", spec:"2× A76 @2.27 + 6× A55 · 7 nm · nova 5", gb:[{v:6,sc:770,mc:1983},{v:5,sc:592,mc:1898}], r23:null}
     ]
   },
   {
@@ -410,8 +407,8 @@ mobile: [
     arch: [["微架构","2× A76 + 2× A76 + 4× A55"],["工艺","TSMC 7 nm / 7 nm+（5G）"],["GPU","Mali-G76 MP16"],["基带","Balong 5000（5G 版）"],["代表机型","Mate 30 / P40"]],
     milestone: "2019-09 IFA。990 5G 把基带堆进 SoC（7 nm+），4G 版略砍。达芬奇 NPU。GB6：5G 约 sc 1018 / mc 3387；4G 约 sc 748 / mc 3078。同期美国开始加码对华为实体清单——这是制裁前最后一代「正常全球供应链」旗舰芯之一。",
     skus: [
-      {tier:"高性能", date:"2019-09", name:"Kirin 990 4G", spec:"同架构略低配 · 外挂/无 5G 集成 · Mate 30 4G", gb:[{v:6,sc:748,mc:3078}], r23:null},
-      {tier:"旗舰", date:"2019-09", name:"Kirin 990 5G", spec:"2+2+4 A76/A55 · 7 nm+ · 集成 Balong 5000 · Mate 30 Pro 5G", gb:[{v:6,sc:1018,mc:3387}], r23:null}
+      {tier:"高性能", date:"2019-09", name:"Kirin 990 4G", spec:"同架构略低配 · 外挂/无 5G 集成 · Mate 30 4G", gb:[{v:6,sc:748,mc:3078},{v:5,sc:757,mc:2855}], r23:null},
+      {tier:"旗舰", date:"2019-09", name:"Kirin 990 5G", spec:"2+2+4 A76/A55 · 7 nm+ · 集成 Balong 5000 · Mate 30 Pro 5G", gb:[{v:6,sc:1018,mc:3387},{v:5,sc:757,mc:2855}], r23:null}
     ]
   },
   {
@@ -421,7 +418,7 @@ mobile: [
     arch: [["微架构","1× A76 + 3× A76 + 4× A55"],["工艺","7 nm"],["GPU","Mali-G57 MP6"],["基带","集成 5G"],["代表机型","nova 7 / Honor 30S"]],
     milestone: "2020-03。中端集成 5G。GB6 约 sc 836 / mc 2458。制裁阴影下仍能出货一段时间，是荣耀离开前最后一代强势麒麟中端之一。",
     skus: [
-      {tier:"主流", date:"2020-03", name:"Kirin 820", spec:"1+3 A76 + 4× A55 · 7 nm 5G · nova 7", gb:[{v:6,sc:836,mc:2458}], r23:null},
+      {tier:"主流", date:"2020-03", name:"Kirin 820", spec:"1+3 A76 + 4× A55 · 7 nm 5G · nova 7", gb:[{v:6,sc:836,mc:2458},{v:5,sc:642,mc:2434}], r23:null},
       {tier:"入门", date:"2021-01", name:"Kirin 820E", spec:"同族降配 · 部分荣耀 / nova", gb:[], r23:null}
     ]
   },
@@ -432,7 +429,7 @@ mobile: [
     arch: [["微架构","1× A76 + 3× A76 + 4× A55"],["工艺","TSMC 7 nm"],["GPU","Mali-G77 MP8"],["基带","Balong 5000"],["代表机型","Honor 30 / nova 7 Pro"]],
     milestone: "卡在 990 与 820 之间的次旗舰。GB6 约 sc 699 / mc 2593。库存清完后同类定位长期空缺，直到回归后的中端线重建。",
     skus: [
-      {tier:"高性能", date:"2020-04", name:"Kirin 985", spec:"1+3 A76 + 4× A55 · G77 MP8 · Honor 30", gb:[{v:6,sc:699,mc:2593}], r23:null}
+      {tier:"高性能", date:"2020-04", name:"Kirin 985", spec:"1+3 A76 + 4× A55 · G77 MP8 · Honor 30", gb:[{v:6,sc:699,mc:2593},{v:5,sc:684,mc:2517}], r23:null}
     ]
   },
   {
@@ -442,8 +439,8 @@ mobile: [
     arch: [["微架构","1× A77 + 3× A77 + 4× A55"],["工艺","TSMC 5 nm"],["GPU","Mali-G78 MP24 / MP22（E）"],["基带","Balong 5000 5G"],["代表机型","Mate 40 / Mate 40 Pro"]],
     milestone: "2020-10。TSMC N5，1+3+4 A77，G78 超宽。Mate 40 系列成「库存潮汐」：美国外国直接产品规则切断后续先进代工后，这是海思最后一批大规模 TSMC 5 nm 手机芯。GB6：9000 约 sc 1262 / mc 3507；9000E 约 sc 1176 / mc 3255。之后约三年旗舰麒麟缺货，华为被迫用高通 4G 等过渡。",
     skus: [
-      {tier:"旗舰", date:"2020-10", name:"Kirin 9000", spec:"1+3+4 A77/A55 · G78 MP24 · 5 nm · Mate 40 Pro", gb:[{v:6,sc:1262,mc:3507}], r23:null},
-      {tier:"高性能", date:"2020-10", name:"Kirin 9000E", spec:"同 CPU · G78 MP22 · Mate 40 / 部分 Pro", gb:[{v:6,sc:1176,mc:3255}], r23:null}
+      {tier:"旗舰", date:"2020-10", name:"Kirin 9000", spec:"1+3+4 A77/A55 · G78 MP24 · 5 nm · Mate 40 Pro", gb:[{v:6,sc:1262,mc:3507},{v:5,sc:1063,mc:3767}], r23:null},
+      {tier:"高性能", date:"2020-10", name:"Kirin 9000E", spec:"同 CPU · G78 MP22 · Mate 40 / 部分 Pro", gb:[{v:6,sc:1176,mc:3255},{v:5,sc:1063,mc:3767}], r23:null}
     ]
   },
   {
@@ -453,8 +450,8 @@ mobile: [
     arch: [["微架构","Taishan V120 + A510"],["工艺","SMIC N+2（约 7 nm 级 DUV）"],["GPU","Maleoon 910"],["NPU","Da Vinci 大小核"],["代表机型","Mate 60 / Pura 70"]],
     milestone: "2023-08 Mate 60 突然开售：麒麟 9000S，自研泰山核 + Maleoon GPU，SMIC N+2。这是制裁后第一颗大规模量产的国产先进节点手机旗舰芯，卫星通话与「回归」舆论盖过纯跑分。GB6 约 sc 1325 / mc 4118。9000S1 用于 Pura 70 基版等，略调频。诚实口径：密度/能效仍落后同期台积电 4/3 nm 竞品，但是供应链政治事件。",
     skus: [
-      {tier:"旗舰", date:"2023-08", name:"Kirin 9000S", spec:"1+3 Taishan V120 + 4× A510 · Maleoon 910 · Mate 60 / Pro", gb:[{v:6,sc:1325,mc:4118}], r23:null},
-      {tier:"主流", date:"2024-05", name:"Kirin 9000S1", spec:"同族调频 · Pura 70 等", gb:[], r23:null}
+      {tier:"旗舰", date:"2023-08", name:"Kirin 9000S", spec:"1+3 Taishan V120 + 4× A510 · Maleoon 910 · Mate 60 / Pro", gb:[{v:6,sc:1325,mc:4118},{v:5,sc:918,mc:3438}], r23:null},
+      {tier:"主流", date:"2024-05", name:"Kirin 9000S1", spec:"同族调频 · Pura 70 等", gb:[{v:6,sc:1251,mc:4032},{v:5,sc:928,mc:3833}], r23:null}
     ]
   },
   {
@@ -464,7 +461,7 @@ mobile: [
     arch: [["微架构","Taishan V121 / V120 + A510"],["工艺","SMIC N+2"],["拓扑","1+3+4（逻辑多线程叙事 2+6+4）"],["GPU","Maleoon 910 系"],["代表机型","Pura 70 Pro / Ultra · Mate XT"]],
     milestone: "2024-04 Pura 70 系列。新增大核 Taishan V121，相对 9000S 单核/多核再抬一档。GB6 约 sc 1421 / mc 4323（NanoReview）。Mate XT 三折叠早期亦用此芯。评论：仍是 N+2 上的架构微迭代，重点在影像、折叠形态与鸿蒙，而非追平骁龙 8 Gen 3 跑分。",
     skus: [
-      {tier:"旗舰", date:"2024-04", name:"Kirin 9010", spec:"Taishan V121 @2.3 + V120 @2.18 + A510 · Pura 70 Pro / Ultra", gb:[{v:6,sc:1421,mc:4323}], r23:null}
+      {tier:"旗舰", date:"2024-04", name:"Kirin 9010", spec:"Taishan V121 @2.3 + V120 @2.18 + A510 · Pura 70 Pro / Ultra", gb:[{v:6,sc:1421,mc:4323},{v:5,sc:1043,mc:4041}], r23:null}
     ]
   },
   {
@@ -474,7 +471,7 @@ mobile: [
     arch: [["微架构","Taishan V123 / V120 + Taishan-Little"],["工艺","SMIC N+2（约 7 nm）"],["GPU","Maleoon 920"],["基带","Balong 6000 5G Rel.17"],["代表机型","Mate 70 / Pura 80 / Mate XTs"]],
     milestone: "2024 Q4 Mate 70；2025 官方逐步公开芯片名（Pura 80 / Mate XTs 发布会）。自研小核替换 A510，Maleoon 920 + Balong 6000。TechInsights：仍为 SMIC 7N+2，非传闻「9100 / 5 nm」。GB6 约 sc 1370 / mc 4446。2025-08 起华为不再讳言麒麟型号——制裁叙事从「藏芯」转向「亮芯」。",
     skus: [
-      {tier:"旗舰", date:"2024-11", name:"Kirin 9020", spec:"1× Taishan @2.5 + 3× @2.15 + 4× Little @1.6 · Maleoon 920 · Mate 70 Pro / Pura 80", gb:[{v:6,sc:1370,mc:4446}], r23:null}
+      {tier:"旗舰", date:"2024-11", name:"Kirin 9020", spec:"1× Taishan @2.5 + 3× @2.15 + 4× Little @1.6 · Maleoon 920 · Mate 70 Pro / Pura 80", gb:[{v:6,sc:1370,mc:4446},{v:5,sc:1016,mc:4287}], r23:null}
     ]
   },
   {
@@ -484,7 +481,7 @@ mobile: [
     arch: [["微架构","Taishan V124 族"],["工艺","SMIC N+3（约 6–5 nm 级 DUV）"],["GPU","Maleoon 935"],["拓扑","9030：8 核；9030 Pro：9 核"],["代表机型","Mate 80 Pro / Pro Max / RS · Mate X7"]],
     milestone: "2025-11 Mate 80。华为官网列出 9030 / 9030 Pro：Pro 为 1+4+4（9 核），标准版 1+3+4；宣称相对上代有约 35–45% 整机性能提升（华为自己口径）。TechInsights：N+3 仍是 DUV 多重图形，密度追平全球顶尖 EUV 节点仍有差距。早期 Geekbench 泄露样本被指未满血，本表留空以免误导。2026 传 Pura 90 系或 9030S——未获稳定公开规格前不单列。",
     skus: [
-      {tier:"主流", date:"2025-11", name:"Kirin 9020（Mate 80 基版）", spec:"上代芯下放 · Mate 80 标准版", gb:[{v:6,sc:1370,mc:4446}], r23:null},
+      {tier:"主流", date:"2025-11", name:"Kirin 9020（Mate 80 基版）", spec:"上代芯下放 · Mate 80 标准版", gb:[{v:6,sc:1370,mc:4446},{v:5,sc:1016,mc:4287}], r23:null},
       {tier:"高性能", date:"2025-11", name:"Kirin 9030", spec:"8 核 · 同族时钟 · Mate 80 Pro 12 GB 等", gb:[], r23:null},
       {tier:"旗舰", date:"2025-11", name:"Kirin 9030 Pro", spec:"9 核 · Taishan V124 · Maleoon 935 · Mate 80 Pro Max / RS / Mate X7", gb:[], r23:null}
     ]

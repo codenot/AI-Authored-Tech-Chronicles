@@ -196,15 +196,15 @@
     <h1>联发科处理器世代全谱</h1>
     <p class="lede">从 Helio 时代讲到天玑 Dimensity 旗舰与中端系列（含 2026 最新）。以移动 SoC 为主；每一代列各档最高型号。Geekbench 有哪个版本列哪个，不可换算；找不到留空，禁止编造。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-10</span>
-      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">资料读取于 2026-09-15</span>
+      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
       <span class="pill">品牌色 · MediaTek 蓝 / 黄</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-flag">—</b><em>旗舰世代</em></div>
       <div class="stat"><b id="n-mid">—</b><em>中高端世代</em></div>
       <div class="stat"><b id="n-pc">—</b><em>PC / 平板世代</em></div>
-      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
     </div>
   </header>
 
@@ -222,7 +222,7 @@
     <ol>
       <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 拓扑 / 内存与 I/O。</li>
       <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>旗舰端：Helio X 系列与天玑 1000 / 1200 / 9000 系（含 9500）。中高端：Helio P/G 与天玑 7000 / 8000 系。PC/平板：Kompanio Chromebook / 平板芯片。</li>
       <li>分数来源：NanoReview、Geekbench Browser、Notebookcheck、MediaTek 官网 / 新闻稿、Beebom / Gizmochina 等第三方评测。编造分数不会出现，找不到就留空。</li>
       <li>本表不把 AnTuTu 与 Geekbench 混算；发布会官方 GB 数字若与零售机独立样本差距大，优先列独立样本，并在里程碑注明。</li>
@@ -255,13 +255,13 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：MediaTek 官网产品页 / 新闻稿（含 Dimensity 9500 2025-09-22 发布）、Wikipedia MediaTek / Dimensity 列表，读取于 2026-09-10。</li>
-      <li>Geekbench：NanoReview SoC 页汇总、Geekbench Browser、Notebookcheck、Beebom / Gizmochina 对 Dimensity 9500 等的独立零售机样本。</li>
+      <li>规格与发布日：MediaTek 官网产品页 / 新闻稿（含 Dimensity 9500 2025-09-22 发布）、Wikipedia MediaTek / Dimensity 列表，读取于 2026-09-15。</li>
+      <li>Geekbench：GB5/GB6 = CPU-Monkey / NanoReview / Notebookcheck / Geekbench Browser；Dimensity 9500 等独立零售样本见 Beebom / Gizmochina。本页只列 GB5–GB7。</li>
       <li>Dimensity 9500：独立样本约 GB6 3315 / 9914（Beebom）；发布会宣称 GB6.4 约 4007 / 11217——本表优先独立样本，不混用版本口径。</li>
       <li>Helio 早期（X20 等）公开稳定 GB5/GB6 样本稀缺，宁缺毋滥，留空。</li>
       <li>Cinebench R23：移动 SoC 公开稳定样本极少，本表几乎全部留空，不编造。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《联发科 CPU 世代全谱》资料页<br />分析基于：MediaTek 官网 + NanoReview + Geekbench Browser + Notebookcheck + Beebom / Gizmochina，资料读取于 2026-09-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《联发科 CPU 世代全谱》资料页<br />分析基于：MediaTek 官网 + NanoReview + Geekbench Browser + Notebookcheck + Beebom / Gizmochina，资料读取于 2026-09-15</p>
   </footer>
 </div>
 
@@ -269,10 +269,7 @@
 const GB_META = {
   7: { tag: "GB7", label: "Geekbench 7", maxSc: 4500, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 4500, from: "2023-02-14" },
-  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" },
-  4: { tag: "GB4", label: "Geekbench 4", maxSc: 12000, from: "2016-11-10" },
-  3: { tag: "GB3", label: "Geekbench 3", maxSc: 6000, from: "2013-02-14" },
-  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2800, from: "2019-09-03" }
 };
 const R23 = "Cinebench R23";
 
@@ -285,7 +282,7 @@ flagship: [
     arch: [["微架构","2×A72 + 4×A53 + 4×A53 三簇"],["工艺","TSMC 20 nm"],["CPU 拓扑","10 核"],["GPU","Mali-T880 MP4"],["定位","Helio 时代旗舰"]],
     milestone: "2015 发布、2016 量产。世界首款量产十核手机 SoC，三簇大小核叙事一时很响；单核仍落后同期 Kryo / Twister。公开稳定的现代 GB5/GB6 零售样本稀缺，本表留空（2015–16 年 Geekbench 截图多为旧大版本，不可与 GB6 混用）。Helio X 系列是联发科冲击旗舰的第一次认真尝试。",
     skus: [
-      {tier:"旗舰", date:"2016", name:"Helio X20", spec:"10 核 · 最高约 2.5 GHz A72 · Mali-T880 MP4 · 20 nm", gb:[], r23:null}
+      {tier:"旗舰", date:"2016", name:"Helio X20", spec:"10 核 · 最高约 2.5 GHz A72 · Mali-T880 MP4 · 20 nm", gb:[{v:5,sc:203,mc:802}], r23:null}
     ]
   },
   {
@@ -295,7 +292,7 @@ flagship: [
     arch: [["微架构","2×A73 + 4×A53 + 4×A35"],["工艺","TSMC 10 nm"],["CPU 拓扑","10 核"],["GPU","PowerVR GT7400 Plus"],["定位","Helio 最后一颗真旗舰"]],
     milestone: "2017。10 nm、十核再冲旗舰，但生态与调校跟不上骁龙 835 一代。GB6 约 sc 336 / mc 1115（第三方汇总口径）。此后联发科旗舰线沉寂数年，直到 Dimensity 1000 / 9000。评论：规格表漂亮，零售体验与驱动成槽点。",
     skus: [
-      {tier:"旗舰", date:"2017-02", name:"Helio X30", spec:"10 核 · 最高约 2.6 GHz · PowerVR GT7400 Plus · 10 nm", gb:[{v:6,sc:336,mc:1115}], r23:null}
+      {tier:"旗舰", date:"2017-02", name:"Helio X30", spec:"10 核 · 最高约 2.6 GHz · PowerVR GT7400 Plus · 10 nm", gb:[{v:6,sc:336,mc:1115},{v:5,sc:304,mc:1295}], r23:null}
     ]
   },
   {
@@ -305,8 +302,8 @@ flagship: [
     arch: [["微架构","4×A77 + 4×A55"],["工艺","TSMC 7 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G77 MP9"],["5G","集成 5G 调制解调器"]],
     milestone: "2019-11 宣布 Dimensity 品牌；1000+ 为 2020 刷新。联发科重回「能打旗舰」叙事的起点：集成 5G、Mali-G77。GB6：1000+ 约 sc 1031 / mc 3123（NanoReview）。尚未对上骁龙 865/888 的绝对顶，但性价比与 5G 普及战里站稳脚跟。",
     skus: [
-      {tier:"主流", date:"2019-11", name:"Dimensity 1000", spec:"4×A77 + 4×A55 · 首发天玑旗舰编号", gb:[], r23:null},
-      {tier:"旗舰", date:"2020-05", name:"Dimensity 1000+", spec:"4×A77 + 4×A55 · Mali-G77 MP9 · 7 nm · 5G", gb:[{v:6,sc:1031,mc:3123}], r23:null}
+      {tier:"主流", date:"2019-11", name:"Dimensity 1000", spec:"4×A77 + 4×A55 · 首发天玑旗舰编号", gb:[{v:5,sc:796,mc:2976}], r23:null},
+      {tier:"旗舰", date:"2020-05", name:"Dimensity 1000+", spec:"4×A77 + 4×A55 · Mali-G77 MP9 · 7 nm · 5G", gb:[{v:6,sc:1031,mc:3123},{v:5,sc:796,mc:2762}], r23:null}
     ]
   },
   {
@@ -316,8 +313,8 @@ flagship: [
     arch: [["微架构","1×A78 + 3×A78 + 4×A55"],["工艺","TSMC 6 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G77 MP9"],["定位","9000 系登场前的顶配天玑"]],
     milestone: "2021 初 Dimensity 1200；1300 为 2022 小刷新。6 nm、A78 大核把中上旗舰体验铺开。GB6：1200 约 sc 1143 / mc 3353；1300 约 sc 1114 / mc 3281（NanoReview）。同年年底 9000 用 4 nm + X2 真正改写联发科旗舰地位，1200/1300 成为「过渡顶配」一代。",
     skus: [
-      {tier:"旗舰", date:"2021-01", name:"Dimensity 1200", spec:"1+3×A78 + 4×A55 · Mali-G77 MP9 · 6 nm", gb:[{v:6,sc:1143,mc:3353}], r23:null},
-      {tier:"高性能", date:"2022-03", name:"Dimensity 1300", spec:"同族小刷新 · 时钟/调校微调", gb:[{v:6,sc:1114,mc:3281}], r23:null}
+      {tier:"旗舰", date:"2021-01", name:"Dimensity 1200", spec:"1+3×A78 + 4×A55 · Mali-G77 MP9 · 6 nm", gb:[{v:6,sc:1143,mc:3353},{v:5,sc:868,mc:3075}], r23:null},
+      {tier:"高性能", date:"2022-03", name:"Dimensity 1300", spec:"同族小刷新 · 时钟/调校微调", gb:[{v:6,sc:1114,mc:3281},{v:5,sc:878,mc:3225}], r23:null}
     ]
   },
   {
@@ -327,8 +324,8 @@ flagship: [
     arch: [["微架构","1×X2 + 3×A710 + 4×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核 ARMv9"],["GPU","Mali-G710 MP10"],["内存","LPDDR5X"]],
     milestone: "2021-11-18。联发科现代旗舰的真正分水岭：首发级 Armv9、4 nm、对标骁龙 8 Gen 1 的叙事第一次站得住。GB6 约 sc 1693 / mc 4384（NanoReview）。9000+ 拉高时钟。vivo / OPPO / 一加等开始认真把天玑放进高端机。评论：从「性价比 5G」变成「能跟旗舰打」。",
     skus: [
-      {tier:"主流", date:"2021-11-18", name:"Dimensity 9000", spec:"1×X2@3.05 + 3×A710 + 4×A510 · LPDDR5X", gb:[{v:6,sc:1693,mc:4384}], r23:null},
-      {tier:"旗舰", date:"2022", name:"Dimensity 9000+", spec:"X2 提频刷新 · Mali-G710 MP10 · 4 nm", gb:[], r23:null}
+      {tier:"主流", date:"2021-11-18", name:"Dimensity 9000", spec:"1×X2@3.05 + 3×A710 + 4×A510 · LPDDR5X", gb:[{v:6,sc:1693,mc:4384},{v:5,sc:1270,mc:4335}], r23:null},
+      {tier:"旗舰", date:"2022", name:"Dimensity 9000+", spec:"X2 提频刷新 · Mali-G710 MP10 · 4 nm", gb:[{v:6,sc:1967,mc:5401},{v:5,sc:1380,mc:4645}], r23:null}
     ]
   },
   {
@@ -338,8 +335,8 @@ flagship: [
     arch: [["微架构","1×X3 + 3×A715 + 4×A510"],["工艺","TSMC 第二代 4 nm"],["CPU 拓扑","8 核"],["GPU","Immortalis-G715 MP11 · 硬件光追"],["连接","Wi-Fi 7 叙事"]],
     milestone: "2022-11。X3 + Immortalis 光追 GPU，把「旗舰功能集」写进天玑。GB6 约 sc 1745 / mc 4351（NanoReview）。9200+ 小幅提频。多核相对 9000 提升有限，卖点更多在 GPU/影像/连接。评论：稳迭代，真正的架构胆识留给次年全大核 9300。",
     skus: [
-      {tier:"主流", date:"2022-11", name:"Dimensity 9200", spec:"1×X3 + 3×A715 + 4×A510 · 光追 GPU", gb:[{v:6,sc:1745,mc:4351}], r23:null},
-      {tier:"旗舰", date:"2023", name:"Dimensity 9200+", spec:"X3 提频 · Immortalis-G715 · 第二代 4 nm", gb:[], r23:null}
+      {tier:"主流", date:"2022-11", name:"Dimensity 9200", spec:"1×X3 + 3×A715 + 4×A510 · 光追 GPU", gb:[{v:6,sc:1745,mc:4351},{v:5,sc:1378,mc:4215}], r23:null},
+      {tier:"旗舰", date:"2023", name:"Dimensity 9200+", spec:"X3 提频 · Immortalis-G715 · 第二代 4 nm", gb:[{v:6,sc:1917,mc:4509},{v:5,sc:1534,mc:4946}], r23:null}
     ]
   },
   {
@@ -349,8 +346,8 @@ flagship: [
     arch: [["微架构","4×X4 + 4×A720 全大核"],["工艺","TSMC N4P（第三代 4 nm）"],["CPU 拓扑","8 核全大核"],["GPU","Immortalis-G720 MP12"],["NPU","NPU 790"]],
     milestone: "2023-11-06。砍掉小核、上全大核（1+3×X4 + 4×A720），多核暴涨成为安卓阵营话题。GB6：9300 约 sc 2186 / mc 7422；9300+（2024-05，X4 至约 3.4 GHz）约 sc 2250 / mc 7315（NanoReview）。vivo X100 / iQOO 等机型把天玑重新推到「敢选旗舰」心智。争议点：峰值功耗与持续性能调度。",
     skus: [
-      {tier:"主流", date:"2023-11-06", name:"Dimensity 9300", spec:"1×X4@3.25 + 3×X4@2.85 + 4×A720@2.0 · N4P", gb:[{v:6,sc:2186,mc:7422}], r23:null},
-      {tier:"旗舰", date:"2024-05", name:"Dimensity 9300+", spec:"X4 提至约 3.4 GHz · Immortalis-G720 MP12", gb:[{v:6,sc:2250,mc:7315}], r23:null}
+      {tier:"主流", date:"2023-11-06", name:"Dimensity 9300", spec:"1×X4@3.25 + 3×X4@2.85 + 4×A720@2.0 · N4P", gb:[{v:6,sc:2186,mc:7422},{v:5,sc:1608,mc:6702}], r23:null},
+      {tier:"旗舰", date:"2024-05", name:"Dimensity 9300+", spec:"X4 提至约 3.4 GHz · Immortalis-G720 MP12", gb:[{v:6,sc:2250,mc:7315},{v:5,sc:1619,mc:6789}], r23:null}
     ]
   },
   {
@@ -383,7 +380,7 @@ mid: [
     arch: [["微架构","4×A73 + 4×A53"],["工艺","TSMC 12 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G72 MP3"],["定位","中端 AI / 性价比"]],
     milestone: "2018。P 系列把「能效 + APU 叙事」卖进千元机。GB6 约 sc 341 / mc 779（NanoReview 少样本口径）。不是性能猛兽，但铺货量巨大，是 Helio 中端心智的代表作之一。",
     skus: [
-      {tier:"主流", date:"2018-02", name:"Helio P60", spec:"4×A73 + 4×A53 · Mali-G72 MP3 · 12 nm", gb:[{v:6,sc:341,mc:779}], r23:null}
+      {tier:"主流", date:"2018-02", name:"Helio P60", spec:"4×A73 + 4×A53 · Mali-G72 MP3 · 12 nm", gb:[{v:6,sc:341,mc:779},{v:5,sc:286,mc:1364}], r23:null}
     ]
   },
   {
@@ -393,8 +390,8 @@ mid: [
     arch: [["微架构","2×A76 + 6×A55"],["工艺","TSMC 12 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G76 MP4"],["定位","游戏向中端"]],
     milestone: "2019 G90 系列把「游戏手机下沉」做成 Helio G 品牌。G95（2020）小幅提频。GB6：G95 约 sc 673 / mc 1881（NanoReview）。Redmi Note 等机型出货海量。评论：GPU/触摸采样率叙事强于绝对 CPU 单核。",
     skus: [
-      {tier:"主流", date:"2019", name:"Helio G90 / G90T", spec:"2×A76 + 6×A55 · 游戏向中端", gb:[], r23:null},
-      {tier:"高性能", date:"2020", name:"Helio G95", spec:"2×A76 提频 · Mali-G76 MP4 · 12 nm", gb:[{v:6,sc:673,mc:1881}], r23:null}
+      {tier:"主流", date:"2019", name:"Helio G90 / G90T", spec:"2×A76 + 6×A55 · 游戏向中端", gb:[{v:6,sc:637,mc:1749},{v:5,sc:485,mc:1639}], r23:null},
+      {tier:"高性能", date:"2020", name:"Helio G95", spec:"2×A76 提频 · Mali-G76 MP4 · 12 nm", gb:[{v:6,sc:673,mc:1881},{v:5,sc:517,mc:1639}], r23:null}
     ]
   },
   {
@@ -404,7 +401,7 @@ mid: [
     arch: [["微架构","2×A76 + 6×A55"],["工艺","TSMC 6 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G57 MP2"],["定位","长青中端 4G"]],
     milestone: "2022-05。6 nm 把 G95 架构搬进更省电的节点，成为 2022–2025 千元机常青树（含 G99 Ultimate 等营销后缀）。GB6 约 sc 727 / mc 2047（NanoReview）。无 5G——5G 中端交给天玑 7000 系。",
     skus: [
-      {tier:"主流", date:"2022-05", name:"Helio G99", spec:"2×A76@2.2 + 6×A55 · Mali-G57 MP2 · 6 nm · 4G", gb:[{v:6,sc:727,mc:2047}], r23:null}
+      {tier:"主流", date:"2022-05", name:"Helio G99", spec:"2×A76@2.2 + 6×A55 · Mali-G57 MP2 · 6 nm · 4G", gb:[{v:6,sc:727,mc:2047},{v:5,sc:543,mc:1814}], r23:null}
     ]
   },
   {
@@ -414,8 +411,8 @@ mid: [
     arch: [["微架构","4×A78 + 4×A55"],["工艺","TSMC 5 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G610 MP6"],["定位","次旗舰 / 高性能中端"]],
     milestone: "2022。8000/8100 把「旗舰级体验下探」做成天玑第二曲线：5 nm、A78 四丛集。GB6：8100 约 sc 1139 / mc 3842（NanoReview）。Redmi / realme / OPPO 次旗舰大量采用。评论：性能接近上一代旗舰，价格在中端——联发科份额暴涨的关键一代。",
     skus: [
-      {tier:"主流", date:"2022", name:"Dimensity 8000", spec:"4×A78 + 4×A55 · 同族基线", gb:[], r23:null},
-      {tier:"旗舰", date:"2022", name:"Dimensity 8100", spec:"4×A78 提频 · Mali-G610 MP6 · 5 nm", gb:[{v:6,sc:1139,mc:3842}], r23:null}
+      {tier:"主流", date:"2022", name:"Dimensity 8000", spec:"4×A78 + 4×A55 · 同族基线", gb:[{v:6,sc:1097,mc:3309},{v:5,sc:845,mc:3460}], r23:null},
+      {tier:"旗舰", date:"2022", name:"Dimensity 8100", spec:"4×A78 提频 · Mali-G610 MP6 · 5 nm", gb:[{v:6,sc:1139,mc:3842},{v:5,sc:941,mc:3765}], r23:null}
     ]
   },
   {
@@ -425,7 +422,7 @@ mid: [
     arch: [["微架构","1+3×A78 + 4×A55"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G610 MP6"],["定位","8000 系进化"]],
     milestone: "2022 末–2023。4 nm 版 8000 系，单核再抬。GB6 约 sc 1230 / mc 3297（NanoReview；多核样本受机型调度影响波动大）。Xiaomi 13T 等机型代表「中端也能用上接近旗舰的节点」。",
     skus: [
-      {tier:"高性能", date:"2022-12", name:"Dimensity 8200", spec:"1×A78@3.1 + 3×A78 + 4×A55 · Mali-G610 MC6 · 4 nm", gb:[{v:6,sc:1230,mc:3297}], r23:null}
+      {tier:"高性能", date:"2022-12", name:"Dimensity 8200", spec:"1×A78@3.1 + 3×A78 + 4×A55 · Mali-G610 MC6 · 4 nm", gb:[{v:6,sc:1230,mc:3297},{v:5,sc:987,mc:3699}], r23:null}
     ]
   },
   {
@@ -435,7 +432,7 @@ mid: [
     arch: [["微架构","2×A715 + 6×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G610"],["定位","7000 系中端"]],
     milestone: "2023。7000 系吃下主流 5G 市场。7200 Ultra 等变种拉高 GPU/时钟。GB6：7200 Ultra 约 sc 1193 / mc 2693（NanoReview）。定位清晰：日常流畅 + 能效，不跟 8000/9000 抢峰值。",
     skus: [
-      {tier:"入门", date:"2023", name:"Dimensity 7200", spec:"同族基线 · 主流 5G", gb:[], r23:null},
+      {tier:"入门", date:"2023", name:"Dimensity 7200", spec:"同族基线 · 主流 5G", gb:[{v:6,sc:1167,mc:2577},{v:5,sc:889,mc:2376}], r23:null},
       {tier:"主流", date:"2023-09", name:"Dimensity 7200 Ultra", spec:"2×A715 级 + A510 · Mali-G610 · 4 nm", gb:[{v:6,sc:1193,mc:2693}], r23:null}
     ]
   },
@@ -467,7 +464,7 @@ mid: [
     arch: [["微架构","A78 / A76 中端簇"],["工艺","多为 6–4 nm"],["CPU 拓扑","8 核"],["GPU","Mali-G615 / G57 等"],["定位","主流与入门 5G"]],
     milestone: "2025-02 前后 Dimensity 7400 / 6400 等继续刷新 7000/6000 系。GB6：7400 约 sc 1061 / mc 3185（NanoReview）。7020 等更偏入门 5G。评论：迭代细碎、同质化严重，但对出货量与 5G 普及贡献最大。",
     skus: [
-      {tier:"入门", date:"2023–2024", name:"Dimensity 7020 等", spec:"入门 5G · 日常通讯与轻负载", gb:[], r23:null},
+      {tier:"入门", date:"2023–2024", name:"Dimensity 7020 等", spec:"入门 5G · 日常通讯与轻负载", gb:[{v:6,sc:912,mc:2244},{v:5,sc:696,mc:1877}], r23:null},
       {tier:"主流", date:"2025-02", name:"Dimensity 7400", spec:"A78 级中端簇 · Mali-G615 MP2 · 4 nm 级", gb:[{v:6,sc:1061,mc:3185}], r23:null}
     ]
   }

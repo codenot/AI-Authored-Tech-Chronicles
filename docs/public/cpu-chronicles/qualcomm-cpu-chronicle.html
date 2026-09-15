@@ -196,15 +196,15 @@
     <h1>高通处理器世代全谱</h1>
     <p class="lede">从早期 Snapdragon S1/S2 讲到骁龙 8 Elite 系列与 Snapdragon X 系列 PC 平台。移动 / PC（笔记本）分表；每一代列各档最高型号。Geekbench 有哪个大版本就列哪个，不可换算；找不到留空，禁止编造分数。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-10</span>
-      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">资料读取于 2026-09-15</span>
+      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
       <span class="pill">品牌色 · Snapdragon 红 / 青</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
       <div class="stat"><b id="n-desk">—</b><em>PC 世代</em></div>
       <div class="stat"><b id="n-span">—</b><em>跨度</em></div>
-      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
     </div>
   </header>
 
@@ -221,7 +221,7 @@
     <ol>
       <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / CPU 拓扑 / GPU / 基带。</li>
       <li>第 3–5 列按型号分行：同一世代下列出该代各主要型号（不再按旗舰/高性能/主流/入门分档显示）。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>移动栏以手机 / 平板 Snapdragon 为主；PC 栏以 Windows on Arm（SQ / 8cx / X / X2）为主。不列服务器 SoC。</li>
       <li>中端 7 / 6 系列只记关键节点，不穷举每一 SKU。分数来源 Notebookcheck / Geekbench Browser / CPU-Monkey / NanoReview 等公开样本；找不到就留空，不编造。</li>
       <li>Cinebench R23 对多数移动 SoC 无稳定公开样本，默认留空（null）。</li>
@@ -254,12 +254,12 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：Qualcomm Newsroom / Snapdragon Summit、Wikipedia Snapdragon 处理器列表、产品 brief（含 X2 Elite），读取于 2026-09-10。</li>
-      <li>Geekbench：Geekbench Browser、Notebookcheck CPU 数据库、CPU-Monkey、NanoReview 公开样本汇总。版本之间不可换算。</li>
+      <li>规格与发布日：Qualcomm Newsroom / Snapdragon Summit、Wikipedia Snapdragon 处理器列表、产品 brief（含 X2 Elite），读取于 2026-09-15。</li>
+      <li>Geekbench：GB5/GB6 = CPU-Monkey、NanoReview、Geekbench Browser、Notebookcheck 公开样本。版本之间不可换算；本页只收录 GB5/GB6/GB7。</li>
       <li>近期旗舰：Snapdragon 8 Elite / 8 Elite Gen 5 参考机与零售机（S25 / Xiaomi 17 / Honor Magic8 等）第三方样本；PC 端 X Elite / X2 Elite Extreme 参考 Notebookcheck 与产品 brief。</li>
       <li>Cinebench R23：公开稳定样本极少，本表几乎全部留空，不编造。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《高通 CPU 世代全谱》资料页<br />分析基于：Qualcomm Newsroom + Wikipedia Snapdragon + Geekbench Browser + Notebookcheck + CPU-Monkey，资料读取于 2026-09-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《高通 CPU 世代全谱》资料页<br />分析基于：Qualcomm Newsroom + Wikipedia Snapdragon + Geekbench Browser + Notebookcheck + CPU-Monkey，资料读取于 2026-09-15</p>
   </footer>
 </div>
 
@@ -267,10 +267,7 @@
 const GB_META = {
   7: { tag: "GB7", label: "Geekbench 7", maxSc: 4200, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 4200, from: "2023-02-14" },
-  5: { tag: "GB5", label: "Geekbench 5", maxSc: 1800, from: "2019-09-03" },
-  4: { tag: "GB4", label: "Geekbench 4", maxSc: 6000, from: "2016-11-10" },
-  3: { tag: "GB3", label: "Geekbench 3", maxSc: 4000, from: "2013-02-14" },
-  2: { tag: "GB2", label: "Geekbench 2", maxSc: 8000, from: "2008-08-01" }
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 1800, from: "2019-09-03" }
 };
 const R23 = "Cinebench R23";
 
@@ -348,8 +345,8 @@ mobile: [
     arch: [["微架构","自研 Kryo（4 核）"],["工艺","Samsung 14 nm"],["CPU 拓扑","2×高性能 + 2×高效"],["GPU","Adreno 530"],["基带","X12 LTE"]],
     milestone: "2016 用自研 Kryo 四核翻盘 810 的口碑。820 把能效与 GPU 拉回第一梯队；821 小幅升频。Geekbench 5 约 sc 344 / mc 903；GB6 约 sc 334 / mc 685（CPU-Monkey / GadgetVersus 口径）。评论：不是核数最多，是「终于不再烫到降频」。",
     skus: [
-      {tier:"高性能", date:"2015-11", name:"Snapdragon 820", spec:"4 核 Kryo · 14 nm · 旗舰基线", gb:[{v:6,sc:334,mc:685},{v:5,sc:344,mc:903}], r23:null},
-      {tier:"旗舰", date:"2016-07", name:"Snapdragon 821", spec:"Kryo 升频 · Adreno 530 · 821 刷新", gb:[], r23:null}
+      {tier:"高性能", date:"2015-11", name:"Snapdragon 820", spec:"4 核 Kryo · 14 nm · 旗舰基线", gb:[{v:5,sc:344,mc:903},{v:6,sc:334,mc:685}], r23:null},
+      {tier:"旗舰", date:"2016-07", name:"Snapdragon 821", spec:"Kryo 升频 · Adreno 530 · 821 刷新", gb:[{v:6,sc:390,mc:792,src:"NanoReview"}], r23:null}
     ]
   },
   {
@@ -359,7 +356,7 @@ mobile: [
     arch: [["微架构","Kryo 280（A73/A53 定制）"],["工艺","Samsung 10 nm"],["CPU 拓扑","4×金 + 4×银"],["GPU","Adreno 540"],["基带","X16 LTE · 首款量产级 Gigabit"]],
     milestone: "2017 Galaxy S8 / Pixel 2 等。10 nm + 八核重新回到「能效旗舰」叙事；快速充电与相机 ISP 同期强化。GB5 约 sc 384 / mc 1685；GB6 约 sc 406 / mc 1367。评论：稳，不炸——相对 810 是信任修复。",
     skus: [
-      {tier:"旗舰", date:"2017-03", name:"Snapdragon 835", spec:"8 核 Kryo 280 · Adreno 540 · 10 nm", gb:[{v:6,sc:406,mc:1367},{v:5,sc:384,mc:1685}], r23:null}
+      {tier:"旗舰", date:"2017-03", name:"Snapdragon 835", spec:"8 核 Kryo 280 · Adreno 540 · 10 nm", gb:[{v:5,sc:384,mc:1685},{v:6,sc:406,mc:1367}], r23:null}
     ]
   },
   {
@@ -369,7 +366,7 @@ mobile: [
     arch: [["微架构","Kryo 385（A75/A55 定制）"],["工艺","Samsung 10 nm LPP"],["CPU 拓扑","4×金 + 4×银"],["GPU","Adreno 630"],["基带","X20 LTE"]],
     milestone: "2018 旗舰标配。AI 引擎与 Spectra ISP 写成摄影卖点；Adreno 630 游戏口碑好。GB5 约 sc 504 / mc 2165（CPU-Monkey）。评论：扎实一代，真正的「换代震感」留给次年 855 的 A76 级大核。",
     skus: [
-      {tier:"旗舰", date:"2018-02", name:"Snapdragon 845", spec:"8 核 Kryo 385 · Adreno 630", gb:[{v:5,sc:504,mc:2165}], r23:null}
+      {tier:"旗舰", date:"2018-02", name:"Snapdragon 845", spec:"8 核 Kryo 385 · Adreno 630", gb:[{v:5,sc:504,mc:2165},{v:6,sc:563,mc:2006,src:"NanoReview"}], r23:null}
     ]
   },
   {
@@ -379,8 +376,8 @@ mobile: [
     arch: [["微架构","Kryo 485（A76 级 Prime）"],["工艺","TSMC 7 nm"],["CPU 拓扑","1+3+4"],["GPU","Adreno 640"],["基带","X24 LTE · 外挂 X50 5G"]],
     milestone: "2019 首款量产 7 nm 骁龙旗舰；1+3+4 拓扑定型。855+ 升 GPU/CPU 频率打游戏机。GB6 约 sc 968 / mc 2731（NanoReview）。5G 靠外挂 X50，整机厚度与发热成为产品槽点——真正的 SoC 内集成 5G 留给 865。",
     skus: [
-      {tier:"高性能", date:"2018-12", name:"Snapdragon 855", spec:"1+3+4 · 7 nm · 可外挂 X50 5G", gb:[{v:6,sc:968,mc:2731}], r23:null},
-      {tier:"旗舰", date:"2019-07", name:"Snapdragon 855+", spec:"855 升频 · Adreno 640 更高主频 · 游戏机", gb:[], r23:null}
+      {tier:"高性能", date:"2018-12", name:"Snapdragon 855", spec:"1+3+4 · 7 nm · 可外挂 X50 5G", gb:[{v:5,sc:724,mc:2578,src:"CPU-Monkey"},{v:6,sc:968,mc:2731}], r23:null},
+      {tier:"旗舰", date:"2019-07", name:"Snapdragon 855+", spec:"855 升频 · Adreno 640 更高主频 · 游戏机", gb:[{v:5,sc:731,mc:2632,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -390,8 +387,8 @@ mobile: [
     arch: [["微架构","Kryo 585"],["工艺","TSMC 7 nm+"],["CPU 拓扑","1+3+4"],["GPU","Adreno 650"],["基带","外挂 X55 5G"]],
     milestone: "2019-12 发布。性能相对 855 再抬一档，但 5G 仍外挂 X55——「旗舰却要外挂」成为年度吐槽。865+ / 870 继续升频。GB6 约 sc 1128 / mc 3277。评论：CPU/GPU 强，模组方案拖累轻薄与成本。",
     skus: [
-      {tier:"高性能", date:"2019-12", name:"Snapdragon 865", spec:"1+3+4 · Adreno 650 · 外挂 X55", gb:[{v:6,sc:1128,mc:3277}], r23:null},
-      {tier:"旗舰", date:"2020-07", name:"Snapdragon 865+", spec:"升频版 · 游戏旗舰", gb:[], r23:null}
+      {tier:"高性能", date:"2019-12", name:"Snapdragon 865", spec:"1+3+4 · Adreno 650 · 外挂 X55", gb:[{v:5,sc:886,mc:3295,src:"CPU-Monkey"},{v:6,sc:1128,mc:3277}], r23:null},
+      {tier:"旗舰", date:"2020-07", name:"Snapdragon 865+", spec:"升频版 · 游戏旗舰", gb:[{v:6,sc:1248,mc:3129,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -401,8 +398,8 @@ mobile: [
     arch: [["微架构","Kryo 680（X1+A78+A55）"],["工艺","Samsung 5 nm"],["CPU 拓扑","1+3+4"],["GPU","Adreno 660"],["基带","首款集成 X60 5G"]],
     milestone: "2020-12。终于集成 5G（X60），同时引入 Cortex-X1 超级核。三星 5 nm 能效与持续性能引发「又热又降频」讨论，888+ 小幅抬频。GB6 约 sc 1488 / mc 3373（NanoReview）。评论：单核上台阶，能效口碑不如同期台积电竞品。",
     skus: [
-      {tier:"高性能", date:"2020-12", name:"Snapdragon 888", spec:"1×X1+3×A78+4×A55 · 集成 X60", gb:[{v:6,sc:1488,mc:3373}], r23:null},
-      {tier:"旗舰", date:"2021-06", name:"Snapdragon 888+", spec:"888 升频 · 游戏 / 超旗舰", gb:[], r23:null}
+      {tier:"高性能", date:"2020-12", name:"Snapdragon 888", spec:"1×X1+3×A78+4×A55 · 集成 X60", gb:[{v:5,sc:1088,mc:3250,src:"CPU-Monkey"},{v:6,sc:1488,mc:3373}], r23:null},
+      {tier:"旗舰", date:"2021-06", name:"Snapdragon 888+", spec:"888 升频 · 游戏 / 超旗舰", gb:[{v:6,sc:1605,mc:3996,src:"NanoReview"}], r23:null}
     ]
   },
   {
@@ -412,8 +409,8 @@ mobile: [
     arch: [["微架构","Kryo · X2 超级核"],["工艺","Gen1：Samsung 4 nm → 8+：TSMC 4 nm"],["CPU 拓扑","1+3+4"],["GPU","Adreno 730"],["基带","X65 5G"]],
     milestone: "2021-12 改名「8 Gen 1」。三星 4 nm 首发能效再次挨打；2022-05 8+ Gen 1 转 TSMC 4 nm，性能与温度口碑立刻翻盘——证明代工厂比命名更重要。GB6：8 Gen 1 约 sc 1675 / mc 4453；8+ 约 sc 1761 / mc 4688（NanoReview）。",
     skus: [
-      {tier:"高性能", date:"2021-12", name:"Snapdragon 8 Gen 1", spec:"Samsung 4 nm · X2 超级核 · 集成 X65", gb:[{v:6,sc:1675,mc:4453}], r23:null},
-      {tier:"旗舰", date:"2022-05", name:"Snapdragon 8+ Gen 1", spec:"TSMC 4 nm · 升频 · 口碑翻盘", gb:[{v:6,sc:1761,mc:4688}], r23:null}
+      {tier:"高性能", date:"2021-12", name:"Snapdragon 8 Gen 1", spec:"Samsung 4 nm · X2 超级核 · 集成 X65", gb:[{v:5,sc:1229,mc:3722,src:"CPU-Monkey"},{v:6,sc:1675,mc:4453}], r23:null},
+      {tier:"旗舰", date:"2022-05", name:"Snapdragon 8+ Gen 1", spec:"TSMC 4 nm · 升频 · 口碑翻盘", gb:[{v:5,sc:1228,mc:3924,src:"CPU-Monkey"},{v:6,sc:1761,mc:4688}], r23:null}
     ]
   },
   {
@@ -424,7 +421,7 @@ mobile: [
     milestone: "7 系承接「买不起每年旗舰、又不愿掉到 6 系」的用户。7+ Gen 2 一度接近上代旗舰体验；7 Gen 3 / 7s 继续堆影像与能效。不穷举 SKU：每档只记代表最高型号。多数公开 GB 样本分散，本表仅列有较稳口径者，其余留空。",
     skus: [
       {tier:"入门", date:"2023–2024", name:"Snapdragon 7s Gen 2 / 7s Gen 3", spec:"7 系入门切割 · 走量机型", gb:[], r23:null},
-      {tier:"旗舰", date:"2023", name:"Snapdragon 7+ Gen 2", spec:"次旗舰天花板 · 接近上代 8 系体验", gb:[], r23:null},
+      {tier:"旗舰", date:"2023", name:"Snapdragon 7+ Gen 2", spec:"次旗舰天花板 · 接近上代 8 系体验", gb:[{v:6,sc:1653,mc:4349,src:"NanoReview"}], r23:null},
       {tier:"主流", date:"2024", name:"Snapdragon 7 Gen 3", spec:"均衡中端 · 影像 / 续航向", gb:[], r23:null}
     ]
   },
@@ -446,8 +443,8 @@ mobile: [
     arch: [["微架构","1×X3 + 2×A715 + 2×A710 + 3×A510"],["工艺","TSMC 4 nm"],["CPU 拓扑","1+2+2+3"],["GPU","Adreno 740 · 硬件光追叙事"],["基带","X70 5G"]],
     milestone: "2022-11。拓扑改为更均衡的 1+2+2+3；AI 与光追写成游戏卖点。Leading Version / for Galaxy 小幅升频。GB6 约 sc 2004 / mc 5311（NanoReview）。评论：回到「能效+性能双在线」的旗舰常态，为 8 Gen 3 铺路。",
     skus: [
-      {tier:"高性能", date:"2022-11", name:"Snapdragon 8 Gen 2", spec:"1+2+2+3 · Adreno 740 · TSMC 4 nm", gb:[{v:6,sc:2004,mc:5311}], r23:null},
-      {tier:"旗舰", date:"2023", name:"Snapdragon 8 Gen 2 Leading / for Galaxy", spec:"升频版 · 部分三星 / 国行旗舰", gb:[], r23:null}
+      {tier:"高性能", date:"2022-11", name:"Snapdragon 8 Gen 2", spec:"1+2+2+3 · Adreno 740 · TSMC 4 nm", gb:[{v:5,sc:1502,mc:5089,src:"CPU-Monkey"},{v:6,sc:2004,mc:5311}], r23:null},
+      {tier:"旗舰", date:"2023", name:"Snapdragon 8 Gen 2 Leading / for Galaxy", spec:"升频版 · 部分三星 / 国行旗舰", gb:[{v:5,sc:1573,mc:5017,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -457,7 +454,7 @@ mobile: [
     arch: [["微架构","1×X4 + 5×A720 + 2×A520"],["工艺","TSMC 4 nm（N4P）"],["CPU 拓扑","1+5+2"],["GPU","Adreno 750"],["基带","X75 5G"]],
     milestone: "2023-10。大核 Cortex-X4，中核加到五颗，多核吞吐明显上台阶。for Galaxy 再抬 100 MHz 级。GB6 约 sc 2193 / mc 7304（NanoReview）。评论：安卓多核继续压苹果手机；单核仍被 A17/A18 压着——直到次年 Oryon。",
     skus: [
-      {tier:"高性能", date:"2023-10", name:"Snapdragon 8 Gen 3", spec:"1+5+2 · Adreno 750 · X75", gb:[{v:6,sc:2193,mc:7304}], r23:null},
+      {tier:"高性能", date:"2023-10", name:"Snapdragon 8 Gen 3", spec:"1+5+2 · Adreno 750 · X75", gb:[{v:5,sc:1701,mc:6280,src:"CPU-Monkey"},{v:6,sc:2193,mc:7304}], r23:null},
       {tier:"旗舰", date:"2023-10", name:"Snapdragon 8 Gen 3 for Galaxy", spec:"升频 · S24 系列部分市场", gb:[{v:6,sc:2275,mc:7147}], r23:null}
     ]
   },
@@ -468,7 +465,7 @@ mobile: [
     arch: [["微架构","第二代 Oryon（自研）"],["工艺","TSMC N3E 3 nm"],["CPU 拓扑","2+6（Prime + Performance）"],["GPU","Adreno 830"],["基带","X80 5G"]],
     milestone: "2024-10 Snapdragon Summit。手机端首次用上自研 Oryon（源自 Nuvia），放弃公版 Cortex 超级核叙事。参考机 GB6 约 sc 3222 / mc 10444；Galaxy 零售中位约 sc 3105 / mc 9941（Notebookcheck）。单核第一次认真咬住同期 A18 Pro，多核过万成为安卓新常态。",
     skus: [
-      {tier:"高性能", date:"2024-10", name:"Snapdragon 8 Elite", spec:"2+6 Oryon · Adreno 830 · N3E", gb:[{v:6,sc:3222,mc:10444}], r23:null},
+      {tier:"高性能", date:"2024-10", name:"Snapdragon 8 Elite", spec:"2+6 Oryon · Adreno 830 · N3E", gb:[{v:5,sc:2236,mc:9015,src:"CPU-Monkey"},{v:6,sc:3222,mc:10444}], r23:null},
       {tier:"旗舰", date:"2025", name:"Snapdragon 8 Elite for Galaxy", spec:"双 Prime 升频 · S25 系列", gb:[{v:6,sc:3105,mc:9941}], r23:null}
     ]
   },
