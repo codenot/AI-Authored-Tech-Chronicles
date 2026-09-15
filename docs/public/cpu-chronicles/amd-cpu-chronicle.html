@@ -196,14 +196,14 @@
     <h1>AMD 处理器世代全谱</h1>
     <p class="lede">从 <b>Am8086 第二源</b> 讲到 Ryzen 9000 / EPYC Venice。桌面、移动、服务器分表；每一代列出各档最高型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-10</span>
-      <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
+      <span class="pill">资料读取于 2026-09-15</span>
+      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-desk">—</b><em>桌面世代</em></div>
       <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
       <div class="stat"><b id="n-srv">—</b><em>服务器世代</em></div>
-      <div class="stat"><b>GB2–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
     </div>
   </header>
 
@@ -221,9 +221,8 @@
     <ol>
       <li>第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 插槽 / 内存 / I/O。</li>
       <li>第 3–5 列按档次分行：旗舰、高性能、主流、入门（若该代无独立入门线则省略）。每一档只列该档最高型号。Threadripper 记为 HEDT。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：GB2（2008-08）→ GB3（2013-02）→ GB4（2016-11）→ GB5（2019-09）→ GB6（2023-02）→ GB7（2026-07）。版本之间不可换算。</li>
+      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>分数来源：GB7 优先 Browser 官方榜；没有官方榜的型号用 CPU-Monkey / Notebookcheck / 实验室评测 / Geekbench 博客。编造分数不会出现，找不到就留空。</li>
-      <li>Geekbench 2 只公布 <b>综合分</b>（相对 Power Mac G5 1.6 GHz = 1000），没有单核/多核拆分，不可与 GB3 之后的分核分数换算。</li>
       <li>Cinebench R23 于 2020-11 发布。笔记本受功耗墙影响；服务器超高核心数 Geekbench 线程扩展有限（192 核 GB 多核往往远低于按核线性外推）。</li>
     </ol>
   </section>
@@ -232,7 +231,6 @@
     <span class="chip hi">高性能</span>
     <span class="chip mid">主流</span>
     <span class="chip lo">入门</span>
-    <span class="chip">GB2 综合分 = 无分核，不可与 GB3+ 换算</span>
     <span class="chip">R23 = Cinebench R23</span>
   </div>
 
@@ -258,13 +256,12 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：AMD 产品规格、新闻稿、Wikipedia 处理器/微架构/EPYC 列表（Am8086 至 EPYC 9006 Venice），读取于 2026-09-10。</li>
-      <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/5 = Notebookcheck 中位、CPU-Monkey、Digital Trends / StorageReview 实验室。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
-      <li>GB2 综合分：<a href="https://www.geekbench.com/blog/2009/01/pc-performance-january-2009/">Geekbench 博客 PC Performance 2009-01</a>。</li>
+      <li>规格与发布日：AMD 产品规格、新闻稿、Wikipedia 处理器/微架构/EPYC 列表（Am8086 至 EPYC 9006 Venice），读取于 2026-09-15。</li>
+      <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/GB5 = Notebookcheck 中位、CPU-Monkey、Technical City、NanoReview、实验室评测。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
       <li>1978–2008-07 的 CPU：Geekbench 尚未发布。K5/K6/Athlon 早期在公开网上几乎没有可引用的 GB 分数。</li>
       <li>Cinebench R23：Maxon 无公开全量榜；CPU-Monkey / Notebookcheck / 实验室。R23 于 2020-11 发布。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿 + Wikipedia 处理器列表 + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck/实验室评测（GB2–GB6）+ Geekbench 博客 PC Performance 2009-01（GB2 综合分），资料读取于 2026-09-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿 + Wikipedia 处理器列表 + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck/Technical City/NanoReview（官方榜缺失 SKU 的 GB5/GB6），资料读取于 2026-09-15</p>
   </footer>
 </div>
 
@@ -272,10 +269,7 @@
 const GB_META = {
   7: { tag: "GB7", label: "Geekbench 7", maxSc: 3164, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 3400, from: "2023-02-14" },
-  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2400, from: "2019-09-03" },
-  4: { tag: "GB4", label: "Geekbench 4", maxSc: 9900, from: "2016-11-10" },
-  3: { tag: "GB3", label: "Geekbench 3", maxSc: 5000, from: "2013-02-14" },
-  2: { tag: "GB2", label: "Geekbench 2", maxSc: 15000, from: "2008-08-01" }
+  5: { tag: "GB5", label: "Geekbench 5", maxSc: 2600, from: "2019-09-03" }
 };
 const R23 = "Cinebench R23";
 
@@ -376,7 +370,7 @@ desktop: [
     arch: [["微架构","K8 Hammer"],["工艺","130–90 nm"],["插槽","754 / 939 / 940"],["内存","片上 IMC · DDR"],["指令","AMD64"]],
     milestone: "2003-09-23。K8 把内存控制器搬进 CPU，并推出 AMD64——后来 Intel 也只能跟。同频 IPC 相对 Barton 大约 +15–20%，相对 Prescott 的领先更明显，因为 IMC 把内存延迟打下来。FX-55 / FX-57 是单核旗舰。HyperTransport 替代 FSB。这一代被写成「AMD 的平台代差」：不是多几个 MHz，是把北桥瓶颈拆掉。64-bit 桌面软件当时几乎没有，真正吃到红利的是服务器 Opteron。",
     skus: [
-      {tier:"旗舰", date:"2005-06-27", name:"Athlon 64 FX-57", spec:"San Diego · 1 核 · 2.80 GHz · L2 1 MB · Socket 939", gb:[{v:2,overall:1879}], r23:null},
+      {tier:"旗舰", date:"2005-06-27", name:"Athlon 64 FX-57", spec:"San Diego · 1 核 · 2.80 GHz · L2 1 MB · Socket 939", gb:[], r23:null},
       {tier:"主流", date:"2003-09-23", name:"Athlon 64 3200+", spec:"Clawhammer · 2.00 GHz · Socket 754 · IMC DDR", gb:[], r23:null}
     ]
   },
@@ -385,10 +379,10 @@ desktop: [
     code: "Manchester / Toledo / Windsor",
     year: "2005–2008",
     arch: [["微架构","K8 双核"],["工艺","90 / 65 nm"],["插槽","939 / AM2"],["缓存","每核独立 L2"],["内存","AM2 起 DDR2"]],
-    milestone: "2005-05 消费级双核。两颗 K8 核共享 IMC，不像 Pentium D 那样走 FSB 粘核，多核效率明显更高：相对单核大约 1.7–1.9 倍而不是 1.6。6400+（3.20 GHz / 2×1 MB L2）在 Geekbench 2 综合分约 3307。AM2 把内存换成 DDR2。2006 年 Conroe 上市后，X2 在整数和功耗上被正面超过，K8 双核的窗口只有一年多。",
+    milestone: "2005-05 消费级双核。两颗 K8 核共享 IMC，不像 Pentium D 那样走 FSB 粘核，多核效率明显更高：相对单核大约 1.7–1.9 倍而不是 1.6。6400+（3.20 GHz / 2×1 MB L2）是消费级双核顶峰之一。AM2 把内存换成 DDR2。2006 年 Conroe 上市后，X2 在整数和功耗上被正面超过，K8 双核的窗口只有一年多。",
     skus: [
-      {tier:"旗舰", date:"2007-08-20", name:"Athlon 64 X2 6400+", spec:"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W", gb:[{v:2,overall:3307}], r23:null},
-      {tier:"主流", date:"2005-05-31", name:"Athlon 64 X2 4800+", spec:"Toledo · 2.40 GHz · Socket 939", gb:[{v:2,overall:2416}], r23:null}
+      {tier:"旗舰", date:"2007-08-20", name:"Athlon 64 X2 6400+", spec:"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W", gb:[], r23:null},
+      {tier:"主流", date:"2005-05-31", name:"Athlon 64 X2 4800+", spec:"Toledo · 2.40 GHz · Socket 939", gb:[], r23:null}
     ]
   },
   {
@@ -396,10 +390,10 @@ desktop: [
     code: "Agena / Toliman",
     year: "2007–2008",
     arch: [["微架构","K10 Stars"],["工艺","65 nm"],["插槽","AM2+"],["核心","真四核原生"],["缺陷","TLB errata"]],
-    milestone: "2007-11 Phenom 是 AMD 第一颗原生四核（不是双模粘核）。K10 相对 K8 的 IPC 大约 +10–15%，共享 L3、HT 3.0。9950（2.60 GHz）Geekbench 2 综合分约 4724。上市即被 TLB errata 打断：BIOS 关掉快速路径后性能再掉一截，对上 Q6600/QX9650 几乎没有胜局。这一代口碑被缺陷改写，K10 的架构故事要等 Phenom II 才讲完。",
+    milestone: "2007-11 Phenom 是 AMD 第一颗原生四核（不是双模粘核）。K10 相对 K8 的 IPC 大约 +10–15%，共享 L3、HT 3.0。9950（2.60 GHz）是这一代桌面旗舰。上市即被 TLB errata 打断：BIOS 关掉快速路径后性能再掉一截，对上 Q6600/QX9650 几乎没有胜局。这一代口碑被缺陷改写，K10 的架构故事要等 Phenom II 才讲完。",
     skus: [
-      {tier:"旗舰", date:"2008-03-27", name:"Phenom X4 9950", spec:"Agena · 4 核 / 4 线程 · 2.60 GHz · L3 2 MB · TDP 140 W · AM2+", gb:[{v:2,overall:4724}], r23:null},
-      {tier:"主流", date:"2007-11-19", name:"Phenom X4 9600", spec:"4 核 · 2.30 GHz · 首发原生四核", gb:[{v:2,overall:3851}], r23:null}
+      {tier:"旗舰", date:"2008-03-27", name:"Phenom X4 9950", spec:"Agena · 4 核 / 4 线程 · 2.60 GHz · L3 2 MB · TDP 140 W · AM2+", gb:[], r23:null},
+      {tier:"主流", date:"2007-11-19", name:"Phenom X4 9600", spec:"4 核 · 2.30 GHz · 首发原生四核", gb:[], r23:null}
     ]
   },
   {
@@ -409,8 +403,8 @@ desktop: [
     arch: [["微架构","K10 刷新"],["工艺","45 nm"],["插槽","AM2+ / AM3"],["L3","6 MB"],["顶配","六核 Thuban"]],
     milestone: "2009-01 Deneb 修好 TLB、加大 L3 到 6 MB，45 nm 降漏电。IPC 相对 Phenom 大约 +10–15%（含缓存），仍落后 Nehalem 约 10–20%。X4 965（3.40 GHz）是四核旗舰；2010 X6 1100T 把消费级推到 6 核。AM3 引入 DDR3。Unlock 核心（某些 555 能开第四核）成为社区传说。这一代能打主流，打不赢 i7-920/980X 的高端——直到 2011 Bulldozer 把局面变得更差。",
     skus: [
-      {tier:"旗舰", date:"2010-12-07", name:"Phenom II X6 1100T", spec:"Thuban · 6 核 / 6 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 125 W · AM3", gb:[], r23:null},
-      {tier:"高性能", date:"2009-08-13", name:"Phenom II X4 965 BE", spec:"Deneb · 4 核 · 3.40 GHz · TDP 125 W · 可超频", gb:[], r23:null}
+      {tier:"旗舰", date:"2010-12-07", name:"Phenom II X6 1100T", spec:"Thuban · 6 核 / 6 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 125 W · AM3", gb:[{v:5,sc:508,mc:2225,src:"CPU-Monkey"}], r23:null},
+      {tier:"高性能", date:"2009-08-13", name:"Phenom II X4 965 BE", spec:"Deneb · 4 核 · 3.40 GHz · TDP 125 W · 可超频", gb:[{v:5,sc:441,mc:1486,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -420,9 +414,9 @@ desktop: [
     arch: [["微架构","模块化双整数 / 共享 FPU"],["工艺","32 nm SOI"],["插槽","AM3+"],["顶配","8 模块整数 = 8「核」"],["功耗","TDP 125–220 W"]],
     milestone: "2011-10 Bulldozer：一个模块两套整数、一套共享 FPU，官方叫 8 核，评测当 4 个「胖核」看。同频 IPC 相对 K10 不升反降，单线程明显弱于 Sandy Bridge（常见 20–30%）。8150 多核只能打平 2600K 的一部分负载。2012 Piledriver 8350/9590 把 IPC 拉回约 +10–15%，9590 靠 4.7/5.0 GHz 和 220 W 堆频率，被写成「最后的 FX」。Steamroller/Excavator 几乎没进桌面旗舰。这一代把 AM3+ 钉死四年，Ryzen 的「52% IPC」叙事正是对它而来。",
     skus: [
-      {tier:"旗舰", date:"2013-06-11", name:"FX-9590", spec:"Vishera · 8 核 / 8 线程 · 4.70 / 5.00 GHz · L3 8 MB · TDP 220 W · AM3+", gb:[], r23:null},
+      {tier:"旗舰", date:"2013-06-11", name:"FX-9590", spec:"Vishera · 8 核 / 8 线程 · 4.70 / 5.00 GHz · L3 8 MB · TDP 220 W · AM3+", gb:[{v:5,sc:634,mc:3020,src:"CPU-Monkey"}], r23:null},
       {tier:"高性能", date:"2012-10-23", name:"FX-8350", spec:"8 核 · 4.00 / 4.20 GHz · TDP 125 W", gb:[{v:6,sc:576,mc:2361},{v:5,sc:573,mc:2777}], r23:[579,3803]},
-      {tier:"主流", date:"2011-10-12", name:"FX-8150", spec:"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer", gb:[], r23:null}
+      {tier:"主流", date:"2011-10-12", name:"FX-8150", spec:"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer", gb:[{v:5,sc:512,mc:2431,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -432,8 +426,8 @@ desktop: [
     arch: [["微架构","Stars / Piledriver / Steamroller / Excavator"],["工艺","32 nm → 28 nm"],["插槽","FM1 / FM2 / FM2+"],["定位","CPU+核显一体"],["对手","入门独显 + Pentium/i3"]],
     milestone: "2011 Llano 把 K10 四核和能打的核显封进 FM1，A8-3850 让「无独显也能 1080p 低画质」第一次在桌面成立。CPU IPC 仍是 2010 年的 Stars，对上 Sandy Bridge 单核大约落后 20%+。Trinity/Richland 换 Piledriver，Kaveri（2014）上 Steamroller 和 HSA，Godavari A10-7890K（2016，4.1/4.3 GHz、95 W）是 FM2+ 收官。评论口径稳定：核显赢入门独显，CPU 只够办公。这条线与 FX 并行四年，Ryzen 到来后桌面 APU 才重新有单核故事（2400G 起）。",
     skus: [
-      {tier:"旗舰", date:"2016-02-16", name:"A10-7890K", spec:"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7", gb:[], r23:null},
-      {tier:"高性能", date:"2014-01-14", name:"A10-7850K", spec:"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+", gb:[], r23:null},
+      {tier:"旗舰", date:"2016-02-16", name:"A10-7890K", spec:"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7", gb:[{v:5,sc:538,mc:1411,src:"CpuTronic"}], r23:null},
+      {tier:"高性能", date:"2014-01-14", name:"A10-7850K", spec:"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+", gb:[{v:5,sc:506,mc:1541,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2011-06-30", name:"A8-3850", spec:"Llano · 4 核 · 2.90 GHz · FM1 · 核显 HD 6550D", gb:[], r23:null}
     ]
   },
@@ -444,9 +438,9 @@ desktop: [
     arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","AM4 / TR4"],["内存","DDR4 双通道 / TR 四通道"],["SMT","同时多线程回归"]],
     milestone: "2017-03-02。Zen 宣称相对 Excavator IPC +52%，评测整数大约 +50% 量级，单核追上 7700K 附近、多核 8 核 16 线程直接超过。1800X（3.6/4.0 GHz、95 W）把 8 核做进 500 美元档。Infinity Fabric + CCX（4 核一组）的跨 CCX 延迟成为新槽点。Threadripper 1950X 16 核打开 HEDT。AM4 承诺多代兼容。这一代把 AMD 从 FX 的口碑坑里拉出来，Intel 被迫在同年把 i7 改成 6 核。",
     skus: [
-      {tier:"旗舰", date:"2017-03-02", name:"Ryzen 7 1800X", spec:"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4", gb:[{v:6,sc:1167,mc:5932},{v:5,sc:932,mc:6344},{v:4,sc:4499,mc:22009}], r23:[969,9314]},
-      {tier:"HEDT", date:"2017-08-10", name:"Threadripper 1950X", spec:"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4", gb:[], r23:null},
-      {tier:"主流", date:"2017-04-11", name:"Ryzen 5 1600X", spec:"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W", gb:[], r23:null}
+      {tier:"旗舰", date:"2017-03-02", name:"Ryzen 7 1800X", spec:"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4", gb:[{v:6,sc:1167,mc:5932},{v:5,sc:932,mc:6344}], r23:[969,9314]},
+      {tier:"HEDT", date:"2017-08-10", name:"Threadripper 1950X", spec:"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4", gb:[{v:6,sc:1181,mc:8000,src:"Geekbench Browser"},{v:5,sc:1040,mc:11370,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2017-04-11", name:"Ryzen 5 1600X", spec:"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W", gb:[{v:6,sc:1167,mc:5089,src:"CPU-Monkey"},{v:5,sc:950,mc:5220,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -456,9 +450,9 @@ desktop: [
     arch: [["微架构","Zen+"],["工艺","12 nm"],["插槽","AM4 / TR4"],["内存","DDR4-2933"],["缓存","更好的延迟"]],
     milestone: "2018-04。Zen+ 是 12 nm 优化，IPC 大约 +3–5%，频率和缓存延迟改善。2700X（3.7/4.3 GHz、105 W）Precision Boost 2 让加速更跟得上负载，游戏相对 1800X 大约 +10–12%。对上已经上市的 8700K 仍然单核落后。Threadripper 2990WX 32 核把 NUMA 式四 die 延迟问题公开化，评测常写成「核数够、跨 die 痛」。这一代没有架构故事，有的是价格和平台成熟。",
     skus: [
-      {tier:"旗舰", date:"2018-04-19", name:"Ryzen 7 2700X", spec:"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4", gb:[{v:6,sc:1294,mc:null},{v:5,sc:1062,mc:7100}], r23:[1071,9971]},
+      {tier:"旗舰", date:"2018-04-19", name:"Ryzen 7 2700X", spec:"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4", gb:[{v:6,sc:1294,mc:6789,src:"CPU-Monkey"},{v:5,sc:1062,mc:7100}], r23:[1071,9971]},
       {tier:"HEDT", date:"2018-08-13", name:"Threadripper 2990WX", spec:"32 核 / 64 线程 · 3.00 / 4.20 GHz · TDP 250 W", gb:[], r23:null},
-      {tier:"主流", date:"2018-04-19", name:"Ryzen 5 2600X", spec:"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W", gb:[], r23:null}
+      {tier:"主流", date:"2018-04-19", name:"Ryzen 5 2600X", spec:"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W", gb:[{v:6,sc:1287,mc:5598,src:"CPU-Monkey"},{v:5,sc:1052,mc:5782,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -468,10 +462,10 @@ desktop: [
     arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 12 nm I/O"],["插槽","AM4 / sTRX4"],["结构","Chiplet：CCD + cIOD"],["AVX","256-bit 满速"]],
     milestone: "2019-07。Zen 2 官方 IPC +15%，评测整数大约 +12–18%。Chiplet 把 7 nm 计算和 12 nm I/O 拆开，主流桌面第一次出现 16 核（3950X）。3900X 12 核在上市时就把 9900K 的多核甩开，单核仍略落后。Notebookcheck：3950X GB6 约 1840 / 11870。Threadripper 3990X 64 核把 HEDT 做成「半颗 EPYC」。跨 CCD 延迟仍在，游戏调度需要 BIOS 和 Windows 补丁。这一代是 AMD 在多核上确立默认选项的转折。",
     skus: [
-      {tier:"旗舰", date:"2019-11-25", name:"Ryzen 9 3950X", spec:"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4", gb:[{v:6,sc:1840,mc:11870}], r23:null},
-      {tier:"HEDT", date:"2020-02-07", name:"Threadripper 3990X", spec:"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4", gb:[], r23:null},
-      {tier:"高性能", date:"2019-07-07", name:"Ryzen 9 3900X", spec:"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W", gb:[], r23:null},
-      {tier:"主流", date:"2019-07-07", name:"Ryzen 5 3600", spec:"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W", gb:[], r23:null}
+      {tier:"旗舰", date:"2019-11-25", name:"Ryzen 9 3950X", spec:"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4", gb:[{v:6,sc:1840,mc:11870},{v:5,sc:1408,mc:14322,src:"CPU-Monkey"}], r23:null},
+      {tier:"HEDT", date:"2020-02-07", name:"Threadripper 3990X", spec:"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4", gb:[{v:6,sc:1614,mc:13830,src:"Geekbench Browser"}], r23:null},
+      {tier:"高性能", date:"2019-07-07", name:"Ryzen 9 3900X", spec:"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W", gb:[{v:6,sc:1714,mc:10689,src:"CPU-Monkey"},{v:5,sc:1300,mc:12454,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2019-07-07", name:"Ryzen 5 3600", spec:"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W", gb:[{v:6,sc:1542,mc:6784,src:"CPU-Monkey"},{v:5,sc:1183,mc:6821,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -482,9 +476,9 @@ desktop: [
     milestone: "2020-11-05。Zen 3 官方 IPC +19%，每个 CCD 从两个 4 核 CCX 合成一个 8 核 CCX，L3 对游戏延迟的改善比纸面 IPC 更明显。Tom's Hardware：5950X 终于在单核上超过 Intel 的长期领先。CPU-Monkey R23 1644 / 28577；GB5 实验室约 1726 / 14239；GB6 约 2226。2022-04 5800X3D 把 64 MB 堆叠缓存放进 8 核，游戏帧率超过当时所有非 X3D 旗舰，开启「游戏买缓存」路线。AM4 在这一代收官，升级理由从核数变成单核+缓存。",
     skus: [
       {tier:"旗舰", date:"2020-11-05", name:"Ryzen 9 5950X", spec:"16 核 / 32 线程 · 3.40 / 4.90 GHz · L3 64 MB · TDP 105 W · AM4", gb:[{v:6,sc:2226,mc:13355},{v:5,sc:1726,mc:14239}], r23:[1644,28577]},
-      {tier:"刷新旗舰", date:"2022-04-20", name:"Ryzen 7 5800X3D", spec:"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W", gb:[{v:5,sc:1622,mc:10856}], r23:[1452,14317]},
+      {tier:"刷新旗舰", date:"2022-04-20", name:"Ryzen 7 5800X3D", spec:"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W", gb:[{v:6,sc:2104,mc:11646,src:"CPU-Monkey"},{v:5,sc:1622,mc:10856}], r23:[1452,14317]},
       {tier:"高性能", date:"2020-11-05", name:"Ryzen 9 5900X", spec:"12 核 / 24 线程 · 3.70 / 4.80 GHz · TDP 105 W", gb:[{v:6,sc:2200,mc:null},{v:5,sc:1700,mc:12839}], r23:[1636,21642]},
-      {tier:"主流", date:"2020-11-05", name:"Ryzen 5 5600X", spec:"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W", gb:[{v:5,sc:1641,mc:8177}], r23:[1544,11120]}
+      {tier:"主流", date:"2020-11-05", name:"Ryzen 5 5600X", spec:"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W", gb:[{v:6,sc:2113,mc:9281,src:"CPU-Monkey"},{v:5,sc:1641,mc:8177}], r23:[1544,11120]}
     ]
   },
   {
@@ -495,11 +489,11 @@ desktop: [
     milestone: "2022-09-27。Zen 4 官方 IPC +13%，加上 5 nm 频率（7950X 加速 5.7 GHz），Digital Trends 测得相对 5950X 单核 R23 +31%、GB5 +25%。R23 约 2018 / 37182；GB5 约 2149 / 23764；GB6 约 2977 / 19221；GB7 单核 2592。AM5 换 LGA 1718、DDR5、PCIe 5.0，平台税一次付清。2023-02 7950X3D / 7800X3D 把 V-Cache 带上 AM5，7800X3D 成为 2023–2024 游戏默认推荐。Threadripper 7980X 64 核走 sTR5。能效比 5000 明显好，170 W TDP 是新的满载账单。",
     skus: [
       {tier:"旗舰", date:"2022-09-27", name:"Ryzen 9 7950X", spec:"16 核 / 32 线程 · 4.50 / 5.70 GHz · L3 64 MB · TDP 170 W · AM5", gb:[{v:7,sc:2592,mc:null},{v:6,sc:2977,mc:19221},{v:5,sc:2149,mc:23764}], r23:[2018,37182]},
-      {tier:"刷新旗舰", date:"2023-02-28", name:"Ryzen 9 7950X3D", spec:"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W", gb:[{v:7,sc:2527,mc:null},{v:6,sc:null,mc:19642}], r23:null},
+      {tier:"刷新旗舰", date:"2023-02-28", name:"Ryzen 9 7950X3D", spec:"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W", gb:[{v:7,sc:2527,mc:null},{v:6,sc:2990,mc:19642,src:"Technical City Geekbench 6.4"},{v:5,sc:2311,mc:24343,src:"Technical City Geekbench 5.5"}], r23:null},
       {tier:"HEDT", date:"2023-11-21", name:"Threadripper 7980X", spec:"64 核 / 128 线程 · 3.20 / 5.10 GHz · TDP 350 W · sTR5", gb:[{v:7,sc:2541,mc:null}], r23:null},
-      {tier:"高性能", date:"2023-04-06", name:"Ryzen 7 7800X3D", spec:"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐", gb:[{v:7,sc:2422,mc:null},{v:6,sc:2731,mc:14229}], r23:[1811,17762]},
-      {tier:"主流", date:"2022-09-27", name:"Ryzen 9 7900X", spec:"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W", gb:[{v:7,sc:2609,mc:null},{v:6,sc:2946,mc:null},{v:5,sc:2274,mc:19987}], r23:[2039,29480]},
-      {tier:"入门", date:"2022-09-27", name:"Ryzen 5 7600X", spec:"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W", gb:[{v:7,sc:2599,mc:null},{v:5,sc:2205,mc:11917}], r23:[1967,15322]}
+      {tier:"高性能", date:"2023-04-06", name:"Ryzen 7 7800X3D", spec:"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐", gb:[{v:7,sc:2422,mc:null},{v:6,sc:2731,mc:14229},{v:5,sc:1920,mc:12715,src:"Technical City Geekbench 5.5"}], r23:[1811,17762]},
+      {tier:"主流", date:"2022-09-27", name:"Ryzen 9 7900X", spec:"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W", gb:[{v:7,sc:2609,mc:null},{v:6,sc:2946,mc:18300,src:"Technical City Geekbench 6.4"},{v:5,sc:2274,mc:19987}], r23:[2039,29480]},
+      {tier:"入门", date:"2022-09-27", name:"Ryzen 5 7600X", spec:"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W", gb:[{v:7,sc:2599,mc:null},{v:6,sc:2846,mc:12714,src:"CPU-Monkey"},{v:5,sc:2205,mc:11917}], r23:[1967,15322]}
     ]
   },
   {
@@ -510,15 +504,14 @@ desktop: [
     milestone: "2024-08-15。Zen 5 官方 IPC +16%，评测在 Cinebench 上大约 +12%，应用负载 10–16% 看代码。满宽 AVX-512 让部分吞吐翻倍。9950X GB7 3034 / 25540，GB6 约 3385 / 21758，R23 约 2243 / 42103。游戏提升小于生产力，X3D 才是游戏主线：9800X3D（2024-11）8 核单 CCD 缓存成为默认推荐；9950X3D（2025-03）双 CCD；9950X3D2（2026-04，192 MB L3 / 200 W）再叠一层。9850X3D（2026-01）把 8 核 X3D 再提频。Threadripper 9980X 64 核 / GB7 单核 2725。桌面 Zen 6（Medusa）在 2026-09 尚未作为消费旗舰放量，9000 仍是 AM5 主战场。",
     skus: [
       {tier:"刷新旗舰", date:"2026-04-22", name:"Ryzen 9 9950X3D2", spec:"16 核 / 32 线程 · 4.30 / 5.60 GHz · L3 192 MB · TDP 200 W · AM5", gb:[{v:7,sc:3164,mc:28217}], r23:null},
-      {tier:"旗舰", date:"2024-08-15", name:"Ryzen 9 9950X", spec:"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W", gb:[{v:7,sc:3034,mc:25540},{v:6,sc:3385,mc:21758}], r23:[2243,42103]},
+      {tier:"旗舰", date:"2024-08-15", name:"Ryzen 9 9950X", spec:"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W", gb:[{v:7,sc:3034,mc:25540},{v:6,sc:3385,mc:21758},{v:5,sc:2548,mc:23982,src:"Technical City Geekbench 5.5"}], r23:[2243,42103]},
       {tier:"高性能", date:"2025-03-12", name:"Ryzen 9 9950X3D", spec:"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 128 MB · TDP 170 W", gb:[{v:7,sc:3060,mc:26576},{v:6,sc:3363,mc:20465}], r23:null},
       {tier:"HEDT", date:"2025-08-30", name:"Threadripper 9980X", spec:"64 核 / 128 线程 · 3.20 / 5.40 GHz · TDP 350 W · sTR5", gb:[{v:7,sc:2725,mc:null}], r23:null},
       {tier:"主流", date:"2024-11-07", name:"Ryzen 7 9800X3D", spec:"8 核 / 16 线程 · 4.70 / 5.20 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐", gb:[{v:7,sc:2970,mc:null},{v:6,sc:3315,mc:18350}], r23:[2087,22992]},
-      {tier:"入门", date:"2024-08-15", name:"Ryzen 5 9600X", spec:"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W", gb:[{v:7,sc:2918,mc:14399},{v:6,sc:3343,mc:null}], r23:null}
+      {tier:"入门", date:"2024-08-15", name:"Ryzen 5 9600X", spec:"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W", gb:[{v:7,sc:2918,mc:14399},{v:6,sc:3343,mc:15378,src:"Technical City Geekbench 6.4"},{v:5,sc:2507,mc:12840,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   }
 ],
-
 mobile: [
   {
     gen: "早期移动 x86",
@@ -597,8 +590,8 @@ mobile: [
     arch: [["微架构","Zen + Vega"],["工艺","14 nm"],["封装","FP5"],["TDP","15–35 W"],["核显","Vega 10/11"]],
     milestone: "2017-10 Raven Ridge 把 Zen 和 Vega 放进笔记本。2700U（4 核 8 线程、15 W）相对 Bristol Ridge 单核大约 +50% 量级，核显在 1080p 低画质能打独显 MX 入门。15 W 墙让全核频率掉得很快，评测必须看 PL1/PL2。这一代让 AMD 笔记本重新出现在推荐列表里：不是因为核显，是因为 CPU 终于不再是拖后腿的那个。",
     skus: [
-      {tier:"旗舰", date:"2017-10-26", name:"Ryzen 7 2700U", spec:"4 核 / 8 线程 · 2.20 / 3.80 GHz · 15 W · Vega 10", gb:[], r23:null},
-      {tier:"主流", date:"2018-01", name:"Ryzen 5 2500U", spec:"4 核 / 8 线程 · 2.00 / 3.60 GHz · 15 W · Vega 8", gb:[], r23:null}
+      {tier:"旗舰", date:"2017-10-26", name:"Ryzen 7 2700U", spec:"4 核 / 8 线程 · 2.20 / 3.80 GHz · 15 W · Vega 10", gb:[{v:5,sc:813,mc:2969,src:"Technical City Geekbench 5.5"}], r23:null},
+      {tier:"主流", date:"2018-01", name:"Ryzen 5 2500U", spec:"4 核 / 8 线程 · 2.00 / 3.60 GHz · 15 W · Vega 8", gb:[{v:5,sc:831,mc:2515,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -608,7 +601,7 @@ mobile: [
     arch: [["微架构","Zen+ + Vega"],["工艺","12 nm"],["封装","FP5"],["变化","提频与延迟"]],
     milestone: "2019 Picasso 是 12 nm Zen+ 刷新，IPC 约 +3–5%，3750H / 3700U 把频率再挤一档。核显仍是 Vega。真正的移动核数跃迁是 2020 Renoir（4000 系列，Zen 2 7 nm 8 核）。Picasso 被写成「Raven Ridge 的 Optimization」：能买，但等 4800H 的人更多。",
     skus: [
-      {tier:"旗舰", date:"2019-01-06", name:"Ryzen 7 3750H", spec:"4 核 / 8 线程 · 2.30 / 4.00 GHz · 35 W · Vega 10", gb:[], r23:null}
+      {tier:"旗舰", date:"2019-01-06", name:"Ryzen 7 3750H", spec:"4 核 / 8 线程 · 2.30 / 4.00 GHz · 35 W · Vega 10", gb:[{v:6,sc:1125,mc:3303,src:"NanoReview"},{v:5,sc:874,mc:3537,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -619,8 +612,8 @@ mobile: [
     milestone: "2020-01 CES。Renoir 把 Zen 2 8 核 16 线程塞进 15–45 W：4800H / 4900HS 是游戏本和创作者本的分水岭。IPC 相对 Picasso 大约 +15%，核数翻倍，多核是断层。Vega 核显没有同步升级到 RDNA，核显故事暂时让路给 CPU。15 W 4800U 的 PL2 短时加速成为新槽点。这一代让 AMD 在轻薄本多核上第一次明显领先同价 Intel 10 代。",
     skus: [
       {tier:"旗舰", date:"2020-03-16", name:"Ryzen 9 4900HS", spec:"8 核 / 16 线程 · 3.00 / 4.30 GHz · 35 W · Vega 8", gb:[{v:5,sc:1452,mc:6379}], r23:null},
-      {tier:"高性能", date:"2020-03-16", name:"Ryzen 7 4800H", spec:"8 核 / 16 线程 · 2.90 / 4.20 GHz · 45 W", gb:[], r23:null},
-      {tier:"主流", date:"2020-03-16", name:"Ryzen 7 4800U", spec:"8 核 / 16 线程 · 1.80 / 4.20 GHz · 15 W", gb:[], r23:null}
+      {tier:"高性能", date:"2020-03-16", name:"Ryzen 7 4800H", spec:"8 核 / 16 线程 · 2.90 / 4.20 GHz · 45 W", gb:[{v:6,sc:1624,mc:7307,src:"NanoReview"},{v:5,sc:1147,mc:7886,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2020-03-16", name:"Ryzen 7 4800U", spec:"8 核 / 16 线程 · 1.80 / 4.20 GHz · 15 W", gb:[{v:6,sc:1573,mc:6147,src:"NanoReview"},{v:5,sc:1157,mc:6137,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -631,7 +624,7 @@ mobile: [
     milestone: "2021-01。Cézanne 把 Zen 3 带进笔记本，IPC 相对 Renoir 大约 +19% 的桌面口径在 15–45 W 墙上打了折扣，单核仍然明显强于 4800H。5900HX（8 核、45 W、4.6 GHz 加速）是游戏本旗舰。核显仍是 Vega，RDNA 要等 6000。Barcelo 是 2022 的 15 W 刷新。这一代赢在 CPU 单核和能效，核显开始成为短板。",
     skus: [
       {tier:"旗舰", date:"2021-01-12", name:"Ryzen 9 5900HX", spec:"8 核 / 16 线程 · 3.30 / 4.60 GHz · 45 W · Vega 8", gb:[{v:6,sc:1992,mc:7255},{v:5,sc:1510,mc:8432}], r23:null},
-      {tier:"主流", date:"2021-01-12", name:"Ryzen 7 5800U", spec:"8 核 / 16 线程 · 1.90 / 4.40 GHz · 15 W", gb:[], r23:null}
+      {tier:"主流", date:"2021-01-12", name:"Ryzen 7 5800U", spec:"8 核 / 16 线程 · 1.90 / 4.40 GHz · 15 W", gb:[{v:6,sc:1837,mc:6967,src:"CPU-Monkey"},{v:5,sc:1414,mc:6880,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -641,8 +634,8 @@ mobile: [
     arch: [["微架构","Zen 3+ + RDNA 2"],["工艺","TSMC 6 nm"],["封装","FP7"],["内存","DDR5 / LPDDR5"],["核显","RDNA 2"]],
     milestone: "2022-01。Rembrandt 是 Zen 3+（6 nm）加 RDNA 2 核显，IPC 大约 +0–5%，真正的跃迁是核显：6900HS 的 680M 在 1080p 低中画质第一次能正经打游戏。DDR5/LPDDR5、PCIe 4.0、USB4 是平台升级。对上 Alder Lake-P 的核显互有胜负，CPU 多核 8 核打 12/14 核混合架构开始吃力。这一代把「APU 游戏本」重新写进推荐。",
     skus: [
-      {tier:"旗舰", date:"2022-01-04", name:"Ryzen 9 6900HX", spec:"8 核 / 16 线程 · 3.30 / 4.90 GHz · 45 W · Radeon 680M", gb:[{v:6,sc:1980,mc:null}], r23:null},
-      {tier:"主流", date:"2022-01-04", name:"Ryzen 7 6800U", spec:"8 核 / 16 线程 · 2.70 / 4.70 GHz · 15–28 W · 680M", gb:[], r23:null}
+      {tier:"旗舰", date:"2022-01-04", name:"Ryzen 9 6900HX", spec:"8 核 / 16 线程 · 3.30 / 4.90 GHz · 45 W · Radeon 680M", gb:[{v:6,sc:1980,mc:10340,src:"Technical City Geekbench 6.4"},{v:5,sc:1589,mc:9647,src:"Technical City Geekbench 5.5"}], r23:null},
+      {tier:"主流", date:"2022-01-04", name:"Ryzen 7 6800U", spec:"8 核 / 16 线程 · 2.70 / 4.70 GHz · 15–28 W · 680M", gb:[{v:6,sc:2028,mc:8771,src:"Technical City Geekbench 6.4"},{v:5,sc:1514,mc:7678,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -653,7 +646,7 @@ mobile: [
     milestone: "2023-01 Phoenix（7040）把 Zen 4 和 RDNA 3 放进 15–45 W，IPC 相对 Rembrandt 大约 +10–15% 加频率。7840U / 7940HS 是轻薄创作者默认。NPU 10–16 TOPS 第一次出现，软件几乎接不上。2024 Hawk Point（8040）主要是 NPU 和频率刷新。核显 780M/890M 继续打 1080p。这一代的购买点是 CPU+核显组合，不是 AI 品牌。",
     skus: [
       {tier:"旗舰", date:"2023-03", name:"Ryzen 9 7940HS", spec:"8 核 / 16 线程 · 4.00 / 5.20 GHz · 35–54 W · Radeon 780M", gb:[{v:7,sc:2110,mc:null},{v:6,sc:2617,mc:12447},{v:5,sc:1974,mc:11600}], r23:null},
-      {tier:"主流", date:"2023-03", name:"Ryzen 7 7840U", spec:"8 核 / 16 线程 · 3.30 / 5.10 GHz · 15–30 W · 780M", gb:[{v:7,sc:2204,mc:null}], r23:null}
+      {tier:"主流", date:"2023-03", name:"Ryzen 7 7840U", spec:"8 核 / 16 线程 · 3.30 / 5.10 GHz · 15–30 W · 780M", gb:[{v:7,sc:2204,mc:null},{v:6,sc:2394,mc:10584,src:"Technical City Geekbench 6.4"},{v:5,sc:1738,mc:9382,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -664,7 +657,7 @@ mobile: [
     milestone: "2023-01 Dragon Range 把 Raphael 桌面 CCD 塞进 55–75 W+ 厚本：7945HX 16 核 32 线程，多核接近桌面 7950X 的降压版。Notebookcheck GB6 约 2784 / 15473（8945HX 刷新）。单核强、全核看模具功耗墙。与 Phoenix 的分工很清楚：HX 拼核数，HS/U 拼核显和厚度。Intel HX 混合架构是直接对手，16 颗完整 Zen 4 对 8P+16E 各有胜场。",
     skus: [
       {tier:"旗舰", date:"2024", name:"Ryzen 9 8945HX", spec:"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55 W+ · Dragon Range 刷新", gb:[{v:6,sc:2784,mc:15473}], r23:null},
-      {tier:"高性能", date:"2023-02", name:"Ryzen 9 7945HX", spec:"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55–75 W", gb:[{v:7,sc:2432,mc:null}], r23:null}
+      {tier:"高性能", date:"2023-02", name:"Ryzen 9 7945HX", spec:"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55–75 W", gb:[{v:7,sc:2432,mc:null},{v:6,sc:2876,mc:16765,src:"Technical City Geekbench 6.4"},{v:5,sc:2124,mc:19745,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -674,8 +667,8 @@ mobile: [
     arch: [["微架构","Zen 5 + Zen 5c 混合"],["工艺","TSMC 4 nm"],["NPU","XDNA 2 · 50 TOPS"],["核显","RDNA 3.5 890M"],["封装","FP8"]],
     milestone: "2024-07。Strix Point 是 AMD 的 Copilot+ 答卷：Zen 5 + Zen 5c 混合、NPU 50 TOPS、890M。AI 9 HX 370（4P+8c / 12 核）单核接近桌面 Zen 5 降频版。混合调度比 Intel 的 P/E 更同构（都是 Zen 5 家族）。NPU 终于跨过 40 TOPS 门槛，应用仍薄。核显继续打 1080p。这一代把品牌从 Ryzen 7040 换成 Ryzen AI，卖点顺序变成 NPU → 核显 → CPU。",
     skus: [
-      {tier:"旗舰", date:"2024-07-17", name:"Ryzen AI 9 HX 370", spec:"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.10 GHz · 28–54 W · 890M · NPU 50 TOPS", gb:[{v:7,sc:2364,mc:null}], r23:null},
-      {tier:"主流", date:"2024-07-17", name:"Ryzen AI 9 365", spec:"10 核 / 20 线程 · 28 W 级 · 880M", gb:[{v:7,sc:2234,mc:null}], r23:null}
+      {tier:"旗舰", date:"2024-07-17", name:"Ryzen AI 9 HX 370", spec:"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.10 GHz · 28–54 W · 890M · NPU 50 TOPS", gb:[{v:7,sc:2364,mc:null},{v:6,sc:2875,mc:14749,src:"Technical City Geekbench 6.4"},{v:5,sc:2072,mc:14211,src:"Technical City Geekbench 5.5"}], r23:null},
+      {tier:"主流", date:"2024-07-17", name:"Ryzen AI 9 365", spec:"10 核 / 20 线程 · 28 W 级 · 880M", gb:[{v:7,sc:2234,mc:null},{v:6,sc:2814,mc:14189,src:"Technical City Geekbench 6.4"},{v:5,sc:2080,mc:13009,src:"Technical City Geekbench 5.5"}], r23:null}
     ]
   },
   {
@@ -685,7 +678,7 @@ mobile: [
     arch: [["微架构","Zen 5 + RDNA 3.5 大核显"],["工艺","TSMC 4 nm"],["内存","256-bit LPDDR5X"],["核显","最多 40 CU"],["定位","迷你工作站 / 掌机级"]],
     milestone: "2025。Strix Halo 把 16 核 Zen 5 和最多 40 CU 核显、256-bit 内存封进 BGA，对标苹果统一内存和 Intel 独显轻薄本。AI Max+ 395（16 核）GB7 单核 2438；PRO 390 单核 2511。多核受 55–120 W 墙限制。核显在 1080p/1440p 上第一次接近入门独显。封装内存不可升级。这一代是「APU 当工作站」的极限尝试，不是常规轻薄本。",
     skus: [
-      {tier:"旗舰", date:"2025-01", name:"Ryzen AI Max+ 395", spec:"16 核 / 32 线程 · 最高 5.1 GHz · 55–120 W · Radeon 8060S · 256-bit LPDDR5X", gb:[{v:7,sc:2438,mc:null}], r23:null},
+      {tier:"旗舰", date:"2025-01", name:"Ryzen AI Max+ 395", spec:"16 核 / 32 线程 · 最高 5.1 GHz · 55–120 W · Radeon 8060S · 256-bit LPDDR5X", gb:[{v:7,sc:2438,mc:null},{v:6,sc:2978,mc:21269,src:"Technical City Geekbench 6.4"}], r23:null},
       {tier:"高性能", date:"2025-01", name:"Ryzen AI Max PRO 390", spec:"12 核 / 24 线程 · 3.20 / 5.00 GHz · 55 W", gb:[{v:7,sc:2511,mc:null}], r23:null}
     ]
   },
@@ -713,7 +706,6 @@ mobile: [
     ]
   }
 ],
-
 server: [
   {
     gen: "Opteron（K8）",
