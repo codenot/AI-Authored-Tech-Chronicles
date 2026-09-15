@@ -197,7 +197,7 @@
     <h1>Intel 处理器世代全谱</h1>
     <p class="lede">从 <b>8086（1978）</b> 讲到 Core Ultra / Xeon 6。桌面、移动、服务器分表；每一代列出各档最高型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-10</span>
+      <span class="pill">资料读取于 2026-09-15</span>
       <span class="pill">GB2 2008 · GB3 2013 · GB4 2016 · GB5 2019 · GB6 2023 · GB7 2026</span>
     </div>
     <div class="stats">
@@ -445,9 +445,9 @@ desktop: [
     milestone: "2011-01。环形总线把 CPU、核显、L3 放进同一环；AVX 256-bit 第一次进消费桌面。内核 IPC 相对 Nehalem/Westmere 大约 +10–15%（AnandTech 整数约 8–15%，AVX 代码更高）。i7-2600K（3.4/3.8 GHz、95 W）钎焊、超频潜力大，成为此后十年的对照物：直到 12 代之前，很多工作站仍在跑这一代。核显 HD 3000 只够桌面，独立显卡仍是游戏刚需。LGA 1155 平台寿命被反复验证，是 Intel 口碑最好的一代之一。",
     skus: [
       {tier:"旗舰", date:"2011-01-09", name:"Core i7-2600K", spec:"4 核 / 8 线程 · 3.40 / 3.80 GHz · L3 8 MB · TDP 95 W · HD 3000", gb:[{v:7,sc:770,mc:2631},{v:6,sc:705,mc:2457},{v:5,sc:807,mc:3097},{v:4,sc:3791,mc:12427}], r23:null},
-      {tier:"高性能", date:"2011-10-24", name:"Core i7-2700K", spec:"4 核 / 8 线程 · 3.50 / 3.90 GHz · L3 8 MB · TDP 95 W", gb:[{v:7,sc:822,mc:2971}], r23:null},
-      {tier:"主流", date:"2011-01-09", name:"Core i5-2500K", spec:"4 核 / 4 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 95 W", gb:[{v:7,sc:811,mc:2457}], r23:null},
-      {tier:"入门", date:"2011-02-20", name:"Core i3-2100", spec:"2 核 / 4 线程 · 3.10 GHz · L3 3 MB · TDP 65 W", gb:[{v:7,sc:511,mc:951}], r23:null}
+      {tier:"高性能", date:"2011-10-24", name:"Core i7-2700K", spec:"4 核 / 8 线程 · 3.50 / 3.90 GHz · L3 8 MB · TDP 95 W", gb:[{v:7,sc:822,mc:2971},{v:5,sc:782,mc:2894,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2011-01-09", name:"Core i5-2500K", spec:"4 核 / 4 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 95 W", gb:[{v:7,sc:811,mc:2457},{v:5,sc:760,mc:2537,src:"CPU-Monkey"}], r23:null},
+      {tier:"入门", date:"2011-02-20", name:"Core i3-2100", spec:"2 核 / 4 线程 · 3.10 GHz · L3 3 MB · TDP 65 W", gb:[{v:7,sc:511,mc:951},{v:5,sc:575,mc:1262,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -464,7 +464,7 @@ desktop: [
     milestone: "2012-04。首代 22 nm 三栅极（Tri-Gate），官方强调漏电下降、功耗优于 32 nm。内核 IPC 相对 Sandy Bridge 大约 +5–10%，Intel 口径偏 10%，评测整数多在 5% 上下。PCIe 3.0 从这一代成为桌面默认。桌面版把 TIM 从钎焊改成硅脂，超频温度明显高于 2600K，社区称之为「Ivy Bridge 掉焊」——同频能效更好，但 K 系列超频体验退步。HD 4000 核显可用度高于 HD 3000，仍不是游戏方案。",
     skus: [
       {tier:"旗舰", date:"2012-04-23", name:"Core i7-3770K", spec:"4 核 / 8 线程 · 3.50 / 3.90 GHz · L3 8 MB · TDP 77 W · HD 4000", gb:[{v:7,sc:826,mc:2952},{v:6,sc:736,mc:2527},{v:5,sc:872,mc:3409}], r23:null},
-      {tier:"主流", date:"2012-04-23", name:"Core i5-3570K", spec:"4 核 / 4 线程 · 3.40 / 3.80 GHz · L3 6 MB · TDP 77 W", gb:[{v:6,sc:741,mc:null}], r23:null},
+      {tier:"主流", date:"2012-04-23", name:"Core i5-3570K", spec:"4 核 / 4 线程 · 3.40 / 3.80 GHz · L3 6 MB · TDP 77 W", gb:[{v:6,sc:741,mc:null},{v:5,sc:835,mc:2866,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2012-09-03", name:"Core i3-3220", spec:"2 核 / 4 线程 · 3.30 GHz · L3 3 MB · TDP 55 W", gb:[{v:6,sc:558,mc:1195,src:"CPU-Monkey"},{v:5,sc:648,mc:1376,src:"CPU-Monkey"}], r23:null}
     ]
   },
@@ -482,8 +482,8 @@ desktop: [
     milestone: "2013-06 Haswell：FIVR 把电压调节搬进封装，低载功耗明显改善，高载发热上升，超频墙比 2600K 更烫。内核 IPC 相对 Ivy Bridge 大约 +8–15%（整数偏 10%，AVX2/FMA3 代码更高）。AVX2 从此成为多媒体和 HPC 基线。2014 Devil's Canyon（4790K，4.0/4.4 GHz）改 TIM 并拉高频率，被看成 LGA 1150 的真正旗舰。Haswell-E 5960X 把消费 HEDT 推到 8 核。TSX 随后因 errata 被关掉，对当时消费软件几乎无感。",
     skus: [
       {tier:"旗舰", date:"2014-06-02", name:"Core i7-4790K", spec:"Devil's Canyon · 4 核 / 8 线程 · 4.00 / 4.40 GHz · L3 8 MB · TDP 88 W", gb:[{v:7,sc:1354,mc:4497},{v:6,sc:1387,mc:4674},{v:5,sc:1073,mc:4001},{v:3,sc:4418,mc:15557,src:"Notebookcheck GB3 中位"},{v:4,sc:4940,mc:17483,src:"Notebookcheck GB4.4"}], r23:[1069,4936]},
-      {tier:"HEDT", date:"2014-08-29", name:"Core i7-5960X", spec:"Haswell-E · 8 核 / 16 线程 · 3.00 / 3.50 GHz · L3 20 MB · TDP 140 W · LGA 2011-3", gb:[{v:7,sc:null,mc:5692}], r23:null},
-      {tier:"主流", date:"2014-06-02", name:"Core i5-4690K", spec:"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 88 W", gb:[{v:7,sc:null,mc:3849}], r23:null}
+      {tier:"HEDT", date:"2014-08-29", name:"Core i7-5960X", spec:"Haswell-E · 8 核 / 16 线程 · 3.00 / 3.50 GHz · L3 20 MB · TDP 140 W · LGA 2011-3", gb:[{v:7,sc:null,mc:5692},{v:5,sc:1002,mc:7843,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2014-06-02", name:"Core i5-4690K", spec:"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 88 W", gb:[{v:7,sc:null,mc:3849},{v:5,sc:1082,mc:3723,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -499,8 +499,8 @@ desktop: [
     ],
     milestone: "14 nm 首发几乎只给移动和核显，桌面只剩 5775C / 5675C 这种「核显特化」SKU。内核 IPC 相对 Haswell 大约 +5%，真正的卖点是 Iris Pro 6200 + 128 MB eDRAM：当时核显打独显入门卡的唯一一代 Intel 桌面。14 nm 量产延迟被看成 Tick-Tock 破裂的起点。2016 Broadwell-E 6950X 把消费 HEDT 推到 10 核 20 线程，LGA 2011-3 继续吃四通道。主流桌面用户这一年几乎无升级理由，直接等 Skylake。",
     skus: [
-      {tier:"旗舰", date:"2015-06-02", name:"Core i7-5775C", spec:"4 核 / 8 线程 · 3.30 / 3.70 GHz · L3 6 MB + 128 MB eDRAM · TDP 65 W · Iris Pro 6200", gb:[{v:7,sc:1324,mc:4940}], r23:null},
-      {tier:"HEDT", date:"2016-05-30", name:"Core i7-6950X", spec:"Broadwell-E · 10 核 / 20 线程 · 3.00 / 3.50 GHz · L3 25 MB · TDP 140 W · LGA 2011-3", gb:[{v:7,sc:1345,mc:null}], r23:null}
+      {tier:"旗舰", date:"2015-06-02", name:"Core i7-5775C", spec:"4 核 / 8 线程 · 3.30 / 3.70 GHz · L3 6 MB + 128 MB eDRAM · TDP 65 W · Iris Pro 6200", gb:[{v:7,sc:1324,mc:4940},{v:5,sc:997,mc:3897,src:"CPU-Monkey"}], r23:null},
+      {tier:"HEDT", date:"2016-05-30", name:"Core i7-6950X", spec:"Broadwell-E · 10 核 / 20 线程 · 3.00 / 3.50 GHz · L3 25 MB · TDP 140 W · LGA 2011-3", gb:[{v:7,sc:1345,mc:null},{v:5,sc:974,mc:8993,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -516,8 +516,8 @@ desktop: [
     ],
     milestone: "2015-08。Skylake 是此后六年消费内核的祖宗，也是最后一次「干净」的架构跃迁。内核 IPC 相对 Haswell 大约 +8–11%，相对 Broadwell 约 +5%。DDR4-2133 成为默认，DMI 3.0 提高芯片组带宽。6700K（4.0/4.2 GHz、91 W）把 4 核 8 线程再挤一档频率。消费级 4 核一直维持到 2017，给了 Ryzen 切入窗口。Meltdown/Spectre 微码修复从这一代开始长期背锅，KPTI 对系统调用密集负载的回退在服务器上更明显。",
     skus: [
-      {tier:"旗舰", date:"2015-08-05", name:"Core i7-6700K", spec:"4 核 / 8 线程 · 4.00 / 4.20 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1445,mc:5034},{v:6,sc:1347,mc:4600},{v:3,sc:4598,mc:17122,src:"Notebookcheck GB3 64-bit 中位"}], r23:[1124,5640]},
-      {tier:"主流", date:"2015-08-05", name:"Core i5-6600K", spec:"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 91 W", gb:[{v:7,sc:1345,mc:3850}], r23:null},
+      {tier:"旗舰", date:"2015-08-05", name:"Core i7-6700K", spec:"4 核 / 8 线程 · 4.00 / 4.20 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1445,mc:5034},{v:6,sc:1347,mc:4600},{v:5,sc:1151,mc:4459,src:"CPU-Monkey"},{v:3,sc:4598,mc:17122,src:"Notebookcheck GB3 64-bit 中位"}], r23:[1124,5640]},
+      {tier:"主流", date:"2015-08-05", name:"Core i5-6600K", spec:"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 91 W", gb:[{v:7,sc:1345,mc:3850},{v:5,sc:1106,mc:3631,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2015-09-01", name:"Core i3-6320", spec:"2 核 / 4 线程 · 3.90 GHz · L3 4 MB · TDP 51 W", gb:[{v:6,sc:1311,mc:2730,src:"CPU-Monkey"},{v:5,sc:1011,mc:2331,src:"CPU-Monkey"}], r23:null}
     ]
   },
@@ -534,8 +534,8 @@ desktop: [
     ],
     milestone: "2017-01。官方把 Tick-Tock 改成 PAO（Process–Architecture–Optimization）。Kaby Lake 是 Optimization：内核 IPC 基本为 0，7700K 把频率从 4.2 拉到 4.5 GHz，单核大约 +5–8%，全靠时钟。Speed Shift 硬件 P-state 改善轻载响应；HEVC 10-bit / VP9 硬解是体感最大的功能项。10 nm 缺席被坐实，14 nm 开始进入「再优化」循环。同代 7350K 把可超频 i3 做成 2 核 4.2 GHz 的怪 SKU，说明这一年桌面真的没有架构故事可讲。",
     skus: [
-      {tier:"旗舰", date:"2017-01-03", name:"Core i7-7700K", spec:"4 核 / 8 线程 · 4.20 / 4.50 GHz · L3 8 MB · TDP 91 W · HD 630", gb:[{v:7,sc:1553,mc:5455},{v:6,sc:1463,mc:5149},{v:3,sc:4700,mc:18800,src:"Notebookcheck GB3 64-bit"},{v:4,sc:5480,mc:17800,src:"Notebookcheck GB4.0"}], r23:[1216,6055]},
-      {tier:"主流", date:"2017-01-03", name:"Core i5-7600K", spec:"4 核 / 4 线程 · 3.80 / 4.20 GHz · L3 6 MB · TDP 91 W", gb:[{v:7,sc:1424,mc:null}], r23:null},
+      {tier:"旗舰", date:"2017-01-03", name:"Core i7-7700K", spec:"4 核 / 8 线程 · 4.20 / 4.50 GHz · L3 8 MB · TDP 91 W · HD 630", gb:[{v:7,sc:1553,mc:5455},{v:6,sc:1463,mc:5149},{v:5,sc:1229,mc:4719,src:"CPU-Monkey"},{v:4,sc:5480,mc:17800,src:"Notebookcheck GB4.0"},{v:3,sc:4700,mc:18800,src:"Notebookcheck GB3 64-bit"}], r23:[1216,6055]},
+      {tier:"主流", date:"2017-01-03", name:"Core i5-7600K", spec:"4 核 / 4 线程 · 3.80 / 4.20 GHz · L3 6 MB · TDP 91 W", gb:[{v:7,sc:1424,mc:null},{v:5,sc:1174,mc:3855,src:"CPU-Monkey"}], r23:null},
       {tier:"入门", date:"2017-01-03", name:"Core i3-7350K", spec:"2 核 / 4 线程 · 4.20 GHz · L3 4 MB · TDP 60 W · 可超频", gb:[{v:6,sc:1298,mc:2740,src:"CPU-Monkey"},{v:5,sc:1176,mc:2557,src:"CPU-Monkey"}], r23:[1251,3136]}
     ]
   },
@@ -552,10 +552,10 @@ desktop: [
     ],
     milestone: "2017-10。Ryzen 上市后的直接回应：内核仍是 Skylake，i7 从 4 核改 6 核。8700K 对比 7700K，单核几乎持平（频率接近），多核大约 +40–50%。必须配 300 系主板，LGA 1151 针脚兼容但芯片组锁代，引发社区反感。i5 首次 6 核无 HT，i3 变成 4 核。HEDT 侧 Skylake-X 引入消费 i9，7980XE 18 核 / 165 W，网格互连和网格延迟成为新槽点。这一代赢的是核数，不是 IPC。",
     skus: [
-      {tier:"旗舰", date:"2017-10-05", name:"Core i7-8700K", spec:"6 核 / 12 线程 · 3.70 / 4.70 GHz · L3 12 MB · TDP 95 W", gb:[{v:7,sc:1570,mc:7222},{v:6,sc:1486,mc:6750},{v:4,sc:5754,mc:23209,src:"Notebookcheck GB4.0 中位"}], r23:[1209,8960]},
+      {tier:"旗舰", date:"2017-10-05", name:"Core i7-8700K", spec:"6 核 / 12 线程 · 3.70 / 4.70 GHz · L3 12 MB · TDP 95 W", gb:[{v:7,sc:1570,mc:7222},{v:6,sc:1486,mc:6750},{v:5,sc:1242,mc:6693,src:"CPU-Monkey"},{v:4,sc:5754,mc:23209,src:"Notebookcheck GB4.0 中位"}], r23:[1209,8960]},
       {tier:"HEDT", date:"2017-09-25", name:"Core i9-7980XE", spec:"Skylake-X · 18 核 / 36 线程 · 2.60 / 4.20 GHz · L3 24.75 MB · TDP 165 W · LGA 2066", gb:[{v:6,sc:1394,mc:11708,src:"CPU-Monkey"},{v:5,sc:1121,mc:16495,src:"CPU-Monkey"}], r23:[1281,28196]},
-      {tier:"主流", date:"2017-10-05", name:"Core i5-8600K", spec:"6 核 / 6 线程 · 3.60 / 4.30 GHz · L3 9 MB · TDP 95 W", gb:[{v:7,sc:1505,mc:null}], r23:null},
-      {tier:"入门", date:"2017-10-05", name:"Core i3-8350K", spec:"4 核 / 4 线程 · 4.00 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1564,mc:null}], r23:null}
+      {tier:"主流", date:"2017-10-05", name:"Core i5-8600K", spec:"6 核 / 6 线程 · 3.60 / 4.30 GHz · L3 9 MB · TDP 95 W", gb:[{v:7,sc:1505,mc:null},{v:5,sc:1251,mc:5631,src:"CPU-Monkey"}], r23:null},
+      {tier:"入门", date:"2017-10-05", name:"Core i3-8350K", spec:"4 核 / 4 线程 · 4.00 GHz · L3 8 MB · TDP 91 W", gb:[{v:7,sc:1564,mc:null},{v:5,sc:1172,mc:3855,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -573,7 +573,7 @@ desktop: [
     skus: [
       {tier:"旗舰", date:"2018-10-19", name:"Core i9-9900K", spec:"8 核 / 16 线程 · 3.60 / 5.00 GHz · L3 16 MB · TDP 95 W（实际远高于此）", gb:[{v:7,sc:1670,mc:9118},{v:6,sc:1670,mc:null},{v:5,sc:1342,mc:8779},{v:4,sc:6049,mc:32981,src:"Notebookcheck GB4.4 中位"}], r23:[1343,12470]},
       {tier:"高性能", date:"2018-10-19", name:"Core i7-9700K", spec:"8 核 / 8 线程 · 3.60 / 4.90 GHz · L3 12 MB · TDP 95 W · 无 HT", gb:[{v:7,sc:1648,mc:7896},{v:6,sc:1746,mc:7361},{v:5,sc:1300,mc:7440},{v:4,sc:5984,mc:null}], r23:[1285,9428]},
-      {tier:"主流", date:"2018-10-19", name:"Core i5-9600K", spec:"6 核 / 6 线程 · 3.70 / 4.60 GHz · L3 9 MB · TDP 95 W", gb:[{v:7,sc:1559,mc:null}], r23:[1187,6596]}
+      {tier:"主流", date:"2018-10-19", name:"Core i5-9600K", spec:"6 核 / 6 线程 · 3.70 / 4.60 GHz · L3 9 MB · TDP 95 W", gb:[{v:7,sc:1559,mc:null},{v:5,sc:1244,mc:5643,src:"CPU-Monkey"}], r23:[1187,6596]}
     ]
   },
   {
@@ -590,8 +590,8 @@ desktop: [
     milestone: "2020-05。同一 Skylake 内核扩到 10 核 20 线程，社区称之为 14 nm 最后一次扩核。IPC 为 0，10900K 单核相对 9900K 大约 +3–6%（5.3 GHz vs 5.0 GHz），多核大约 +20–25%。TDP 标称改成 125 W（PBP），PL2 仍可到 250 W 级，Z490 主板供电开始两极分化。插槽换成 LGA 1200，只为再撑一年。对比同期 Zen 2 的 12/16 核，Intel 用更高单核频率守游戏，把多核交给线程数硬堆。",
     skus: [
       {tier:"旗舰", date:"2020-05-20", name:"Core i9-10900K", spec:"10 核 / 20 线程 · 3.70 / 5.30 GHz · L3 20 MB · PBP 125 W", gb:[{v:7,sc:1720,mc:10612},{v:6,sc:1743,mc:8990},{v:5,sc:1362,mc:10715,src:"Digital Trends 实验室 GB5"}], r23:[1382,15945]},
-      {tier:"高性能", date:"2020-05-20", name:"Core i7-10700K", spec:"8 核 / 16 线程 · 3.80 / 5.10 GHz · L3 16 MB · PBP 125 W", gb:[{v:7,sc:1674,mc:null},{v:6,sc:1864,mc:9331}], r23:[1345,13302]},
-      {tier:"主流", date:"2020-05-20", name:"Core i5-10600K", spec:"6 核 / 12 线程 · 4.10 / 4.80 GHz · L3 12 MB · PBP 125 W", gb:[{v:7,sc:1621,mc:null}], r23:null}
+      {tier:"高性能", date:"2020-05-20", name:"Core i7-10700K", spec:"8 核 / 16 线程 · 3.80 / 5.10 GHz · L3 16 MB · PBP 125 W", gb:[{v:7,sc:1674,mc:null},{v:6,sc:1864,mc:9331},{v:5,sc:1347,mc:9268,src:"CPU-Monkey"}], r23:[1345,13302]},
+      {tier:"主流", date:"2020-05-20", name:"Core i5-10600K", spec:"6 核 / 12 线程 · 4.10 / 4.80 GHz · L3 12 MB · PBP 125 W", gb:[{v:7,sc:1621,mc:null},{v:5,sc:1254,mc:6877,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -608,8 +608,8 @@ desktop: [
     milestone: "2021-03。Cypress Cove 把 Ice Lake 的 Sunny Cove 硬搬回 14 nm。Intel 口径 IPC 相对 Skylake 约 +19%，评测对 10900K 大约 +10–19%（整数偏 14–19%），AVX-512 负载更高。代价是旗舰从 10 核退回 8 核，11900K 全核功耗和温度是这一代的主标签。PCIe 4.0 ×20 和 Xe 核显是平台加分。TechSpot 后续十年回顾把它写成 12 代之前的低谷：IPC 终于动了，能效和核数却同时退步。寿命只有半年，LGA 1200 到此结束。",
     skus: [
       {tier:"旗舰", date:"2021-03-30", name:"Core i9-11900K", spec:"8 核 / 16 线程 · 3.50 / 5.30 GHz · L3 16 MB · PBP 125 W", gb:[{v:7,sc:2251,mc:13348},{v:6,sc:2491,mc:12679},{v:5,sc:1650,mc:8500,src:"综合评测 GB5 约值，非官方榜"}], r23:[1686,16211]},
-      {tier:"高性能", date:"2021-03-30", name:"Core i7-11700K", spec:"8 核 / 16 线程 · 3.60 / 5.00 GHz · L3 16 MB · PBP 125 W", gb:[{v:7,sc:1985,mc:null}], r23:null},
-      {tier:"主流", date:"2021-03-30", name:"Core i5-11600K", spec:"6 核 / 12 线程 · 3.90 / 4.90 GHz · L3 12 MB · PBP 125 W", gb:[{v:7,sc:1971,mc:null},{v:6,sc:2284,mc:9480}], r23:[1564,11277]}
+      {tier:"高性能", date:"2021-03-30", name:"Core i7-11700K", spec:"8 核 / 16 线程 · 3.60 / 5.00 GHz · L3 16 MB · PBP 125 W", gb:[{v:7,sc:1985,mc:null},{v:5,sc:1794,mc:10765,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2021-03-30", name:"Core i5-11600K", spec:"6 核 / 12 线程 · 3.90 / 4.90 GHz · L3 12 MB · PBP 125 W", gb:[{v:7,sc:1971,mc:null},{v:6,sc:2284,mc:9480},{v:5,sc:1721,mc:8312,src:"CPU-Monkey"}], r23:[1564,11277]}
     ]
   },
   {
@@ -626,9 +626,9 @@ desktop: [
     milestone: "2021-11。Golden Cove P 核 + Gracemont E 核，混合架构第一次在 x86 桌面落地。P 核 IPC 相对 Cypress Cove 大约 +15–20%，相对 Skylake 约 +25–30%；E 核单核大约相当于 Skylake 级，靠数量堆多核。Digital Trends 标题是 Call it a comeback：12900K 单核大幅拉开 Zen 3，多核追上 5950X。R23 多核约 2.6 万。新插槽 LGA 1700、DDR5/DDR4 双支持、PCIe 5.0、Thread Director。Windows 11 调度成为必选项，Win10 上 E 核经常帮倒忙。MTP 241 W 重新定义「125 W」。",
     skus: [
       {tier:"旗舰", date:"2021-11-04", name:"Core i9-12900K", spec:"8P+8E / 24 线程 · P 3.2–5.2 GHz · L3 30 MB · PBP 125 W / MTP 241 W", gb:[{v:7,sc:2243,mc:16759},{v:6,sc:2715,mc:17450},{v:5,sc:2006,mc:17828}], r23:[2005,26125]},
-      {tier:"高性能", date:"2021-11-04", name:"Core i7-12700K", spec:"8P+4E / 20 线程 · P 3.6–5.0 GHz · L3 25 MB · PBP 125 W / MTP 190 W", gb:[{v:7,sc:2295,mc:null}], r23:[1939,22861]},
-      {tier:"主流", date:"2021-11-04", name:"Core i5-12600K", spec:"6P+4E / 16 线程 · P 3.7–4.9 GHz · L3 20 MB · PBP 125 W / MTP 150 W", gb:[{v:7,sc:2240,mc:12983}], r23:[1889,17626]},
-      {tier:"入门", date:"2022-01-04", name:"Core i3-12100", spec:"4P / 8 线程 · 3.3–4.3 GHz · L3 12 MB · PBP 60 W", gb:[{v:7,sc:1944,mc:null}], r23:[1647,12344]}
+      {tier:"高性能", date:"2021-11-04", name:"Core i7-12700K", spec:"8P+4E / 20 线程 · P 3.6–5.0 GHz · L3 25 MB · PBP 125 W / MTP 190 W", gb:[{v:7,sc:2295,mc:null},{v:5,sc:1872,mc:14992,src:"CPU-Monkey"}], r23:[1939,22861]},
+      {tier:"主流", date:"2021-11-04", name:"Core i5-12600K", spec:"6P+4E / 16 线程 · P 3.7–4.9 GHz · L3 20 MB · PBP 125 W / MTP 150 W", gb:[{v:7,sc:2240,mc:12983},{v:5,sc:1854,mc:11912,src:"CPU-Monkey"}], r23:[1889,17626]},
+      {tier:"入门", date:"2022-01-04", name:"Core i3-12100", spec:"4P / 8 线程 · 3.3–4.3 GHz · L3 12 MB · PBP 60 W", gb:[{v:7,sc:1944,mc:null},{v:5,sc:1716,mc:6422,src:"CPU-Monkey"}], r23:[1647,12344]}
     ]
   },
   {
@@ -645,8 +645,8 @@ desktop: [
     milestone: "2022-10。同插槽、同 Intel 7，Raptor Cove 把 P 核 L2 加倍到 2 MB，IPC 相对 Alder Lake 大约 +0–5%（缓存敏感代码更高），真正的跃迁是 E 核 8→16。13900K 变成 8P+16E / 32 线程，R23 多核跳到约 3.8 万，单核约 +8–12%（5.8 GHz）。13900KS 首次消费级 6.0 GHz。代价是持续全核功耗与温度：高功率主板默认解锁 PL，250 W+ 烤机成为常态。游戏帧率相对 12900K 有个位数提升，生产力才是这一代的购买理由。",
     skus: [
       {tier:"旗舰", date:"2022-10-20", name:"Core i9-13900K", spec:"8P+16E / 32 线程 · P 3.0–5.8 GHz · L3 36 MB · PBP 125 W / MTP 253 W", gb:[{v:7,sc:2603,mc:22753},{v:6,sc:3070,mc:20800},{v:5,sc:2169,mc:25569,src:"The Verge 实验室 GB5"}], r23:[2239,38272]},
-      {tier:"高性能", date:"2022-10-20", name:"Core i7-13700K", spec:"8P+8E / 24 线程 · P 3.4–5.4 GHz · L3 30 MB · PBP 125 W / MTP 253 W", gb:[{v:7,sc:2512,mc:null},{v:6,sc:2962,mc:19249}], r23:[2112,30745]},
-      {tier:"主流", date:"2022-10-20", name:"Core i5-13600K", spec:"6P+8E / 20 线程 · P 3.5–5.1 GHz · L3 24 MB · PBP 125 W / MTP 181 W", gb:[{v:7,sc:2287,mc:null},{v:6,sc:2750,mc:15890}], r23:[2011,24221]}
+      {tier:"高性能", date:"2022-10-20", name:"Core i7-13700K", spec:"8P+8E / 24 线程 · P 3.4–5.4 GHz · L3 30 MB · PBP 125 W / MTP 253 W", gb:[{v:7,sc:2512,mc:null},{v:6,sc:2962,mc:19249},{v:5,sc:2065,mc:18402,src:"CPU-Monkey"}], r23:[2112,30745]},
+      {tier:"主流", date:"2022-10-20", name:"Core i5-13600K", spec:"6P+8E / 20 线程 · P 3.5–5.1 GHz · L3 24 MB · PBP 125 W / MTP 181 W", gb:[{v:7,sc:2287,mc:null},{v:6,sc:2750,mc:15890},{v:5,sc:1955,mc:16227,src:"CPU-Monkey"}], r23:[2011,24221]}
     ]
   },
   {
@@ -664,7 +664,7 @@ desktop: [
     skus: [
       {tier:"旗舰", date:"2023-10-17", name:"Core i9-14900K", spec:"8P+16E / 32 线程 · P 3.2–6.0 GHz · L3 36 MB · PBP 125 W / MTP 253 W", gb:[{v:7,sc:2650,mc:21812},{v:6,sc:3243,mc:21397},{v:5,sc:2347,mc:25199}], r23:[2263,39400]},
       {tier:"高性能", date:"2023-10-17", name:"Core i7-14700K", spec:"8P+12E / 28 线程 · P 3.4–5.6 GHz · L3 33 MB · PBP 125 W / MTP 253 W", gb:[{v:7,sc:2569,mc:20665},{v:6,sc:2922,mc:19147},{v:5,sc:2107,mc:21565}], r23:[2228,33441]},
-      {tier:"主流", date:"2023-10-17", name:"Core i5-14600K", spec:"6P+8E / 20 线程 · P 3.5–5.3 GHz · L3 24 MB · PBP 125 W / MTP 181 W", gb:[{v:7,sc:2513,mc:16858}], r23:[2097,24683]}
+      {tier:"主流", date:"2023-10-17", name:"Core i5-14600K", spec:"6P+8E / 20 线程 · P 3.5–5.3 GHz · L3 24 MB · PBP 125 W / MTP 181 W", gb:[{v:7,sc:2513,mc:16858},{v:5,sc:2027,mc:16712,src:"CPU-Monkey"}], r23:[2097,24683]}
     ]
   },
   {
@@ -680,9 +680,9 @@ desktop: [
     ],
     milestone: "2024-10 Arrow Lake-S：计算贴片 TSMC N3B，Lion Cove P + Skymont E，桌面进入 Core Ultra 与拆分芯片。Intel 宣称 P 核 IPC 相对 Raptor Cove 约 +16%，但取消 HT，同核数线程减半。The Verge：生产力略强、整机更凉快，游戏相对 14900K 回退（常见 5–15%），成为这代核心争议。NPU 13 TOPS 在桌面几乎无感。285K 全核功耗低于 14900K，能效是真正加分。2026-03 的 270K Plus / 250K Plus 用提频修补游戏口碑，架构故事仍未改写。",
     skus: [
-      {tier:"旗舰", date:"2024-10-24", name:"Core Ultra 9 285K", spec:"8P+16E / 24 线程 · P 3.7–5.7 GHz · L3 36 MB · PBP 125 W / MTP 250 W · NPU 13 TOPS", gb:[{v:7,sc:2826,mc:25879},{v:6,sc:3283,mc:21598}], r23:[2358,42404]},
-      {tier:"高性能", date:"2024-10-24", name:"Core Ultra 7 265K", spec:"8P+12E / 20 线程 · P 3.9–5.5 GHz · L3 30 MB · PBP 125 W / MTP 250 W", gb:[{v:7,sc:2723,mc:23293}], r23:[null,35850]},
-      {tier:"主流", date:"2024-10-24", name:"Core Ultra 5 245K", spec:"6P+8E / 14 线程 · P 4.2–5.2 GHz · L3 24 MB · PBP 125 W / MTP 159 W", gb:[{v:6,sc:3056,mc:17863}], r23:[2132,25066]},
+      {tier:"旗舰", date:"2024-10-24", name:"Core Ultra 9 285K", spec:"8P+16E / 24 线程 · P 3.7–5.7 GHz · L3 36 MB · PBP 125 W / MTP 250 W · NPU 13 TOPS", gb:[{v:7,sc:2826,mc:25879},{v:6,sc:3283,mc:21598},{v:5,sc:2458,mc:27376,src:"CPU-Monkey"}], r23:[2358,42404]},
+      {tier:"高性能", date:"2024-10-24", name:"Core Ultra 7 265K", spec:"8P+12E / 20 线程 · P 3.9–5.5 GHz · L3 30 MB · PBP 125 W / MTP 250 W", gb:[{v:7,sc:2723,mc:23293},{v:5,sc:2318,mc:24273,src:"GadgetVersus"}], r23:[null,35850]},
+      {tier:"主流", date:"2024-10-24", name:"Core Ultra 5 245K", spec:"6P+8E / 14 线程 · P 4.2–5.2 GHz · L3 24 MB · PBP 125 W / MTP 159 W", gb:[{v:6,sc:3056,mc:17863},{v:5,sc:2251,mc:18364,src:"CPU-Monkey"}], r23:[2132,25066]},
       {tier:"刷新旗舰", date:"2026-03", name:"Core Ultra 7 270K Plus", spec:"Arrow Lake 刷新 · 8P+16E / 24 线程 · PBP 125 W / MTP 250 W", gb:[{v:7,sc:2945,mc:null}], r23:null}
     ]
   }
@@ -778,9 +778,9 @@ mobile: [
     ],
     milestone: "2011 Sandy Bridge 移动版。内核 IPC 相对 Arrandale/Clarksfield 大约 +10–15%，环形总线把核显拉进同一环。HD 3000 第一次能应付 1080p 日常视频和轻度加速，独显本仍是游戏刚需。2960XM（2.7/3.7 GHz、55 W）是移动旗舰；四核 QM 成为高端本标准配置。超极本概念同期出现，但真正能效薄本要等 Ivy Bridge 的 22 nm。2600K 在桌面的神话，在笔记本这边对应的是「终于不用为核显找台独显本」。",
     skus: [
-      {tier:"旗舰", date:"2011-01-09", name:"Core i7-2960XM", spec:"4 核 / 8 线程 · 2.70 / 3.70 GHz · TDP 55 W", gb:[], r23:null},
-      {tier:"高性能", date:"2011-01-09", name:"Core i7-2820QM", spec:"4 核 / 8 线程 · 2.30 / 3.40 GHz · TDP 45 W", gb:[{v:7,sc:690,mc:1921}], r23:null},
-      {tier:"主流", date:"2011-02-20", name:"Core i5-2540M", spec:"2 核 / 4 线程 · 2.60 / 3.30 GHz · TDP 35 W", gb:[{v:7,sc:630,mc:1056}], r23:null}
+      {tier:"旗舰", date:"2011-01-09", name:"Core i7-2960XM", spec:"4 核 / 8 线程 · 2.70 / 3.70 GHz · TDP 55 W", gb:[{v:5,sc:733,mc:2710,src:"CPU-Monkey"}], r23:null},
+      {tier:"高性能", date:"2011-01-09", name:"Core i7-2820QM", spec:"4 核 / 8 线程 · 2.30 / 3.40 GHz · TDP 45 W", gb:[{v:7,sc:690,mc:1921},{v:5,sc:688,mc:2449,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2011-02-20", name:"Core i5-2540M", spec:"2 核 / 4 线程 · 2.60 / 3.30 GHz · TDP 35 W", gb:[{v:7,sc:630,mc:1056},{v:5,sc:615,mc:1414,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -797,8 +797,8 @@ mobile: [
     milestone: "2012。22 nm 三栅极让 35 W 双核和 45 W 四核同时降功耗，IPC 相对 Sandy Bridge 大约 +5–10%。3920XM（2.9/3.8 GHz、55 W）和 3840QM 把四核旗舰再提一档频率。HD 4000 核显比 HD 3000 可用，Quick Sync 转码成为移动卖点。Ultrabook 在这一年放量：22 nm 漏电下降是薄本续航故事的物理基础。桌面 Ivy Bridge 因掉焊被骂，移动端却是这一工艺最说得通的战场。",
     skus: [
       {tier:"旗舰", date:"2012-04-29", name:"Core i7-3920XM", spec:"4 核 / 8 线程 · 2.90 / 3.80 GHz · TDP 55 W", gb:[{v:6,sc:686,mc:2632,src:"CPU-Monkey"},{v:5,sc:793,mc:3270,src:"CPU-Monkey"}], r23:null},
-      {tier:"高性能", date:"2012-04-29", name:"Core i7-3840QM", spec:"4 核 / 8 线程 · 2.80 / 3.80 GHz · TDP 45 W", gb:[], r23:null},
-      {tier:"主流", date:"2012-06-01", name:"Core i5-3320M", spec:"2 核 / 4 线程 · 2.60 / 3.30 GHz · TDP 35 W", gb:[], r23:null}
+      {tier:"高性能", date:"2012-04-29", name:"Core i7-3840QM", spec:"4 核 / 8 线程 · 2.80 / 3.80 GHz · TDP 45 W", gb:[{v:5,sc:793,mc:3089,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2012-06-01", name:"Core i5-3320M", spec:"2 核 / 4 线程 · 2.60 / 3.30 GHz · TDP 35 W", gb:[{v:5,sc:702,mc:1465,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -815,8 +815,8 @@ mobile: [
     milestone: "2013–2014。Haswell-U 把 15 W 双核做成超薄本默认（4500U 1.8/3.0 GHz），FIVR + 更细的 C-state 让续航明显好于 Ivy Bridge-U。内核 IPC 相对 IB 大约 +8–12%。4940MX / 4900MQ 仍是 47–57 W 四核工作站本主力，AVX2 开始出现在移动创作负载里。这一代的分裂很清楚：U 系列赢续航和厚度，HQ/MX 赢核数，中间没有 28 W 这种后来的 P 档。TSX 对笔记本软件几乎无感。",
     skus: [
       {tier:"旗舰", date:"2013-06-04", name:"Core i7-4940MX", spec:"4 核 / 8 线程 · 3.10 / 4.00 GHz · TDP 57 W", gb:[{v:6,sc:1091,mc:4303,src:"CPU-Monkey"},{v:5,sc:910,mc:3538,src:"CPU-Monkey"}], r23:null},
-      {tier:"高性能", date:"2013-06-04", name:"Core i7-4900MQ", spec:"4 核 / 8 线程 · 2.80 / 3.80 GHz · TDP 47 W", gb:[], r23:null},
-      {tier:"主流", date:"2013-06-04", name:"Core i7-4500U", spec:"2 核 / 4 线程 · 1.80 / 3.00 GHz · TDP 15 W", gb:[], r23:null}
+      {tier:"高性能", date:"2013-06-04", name:"Core i7-4900MQ", spec:"4 核 / 8 线程 · 2.80 / 3.80 GHz · TDP 47 W", gb:[{v:5,sc:874,mc:3268,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2013-06-04", name:"Core i7-4500U", spec:"2 核 / 4 线程 · 1.80 / 3.00 GHz · TDP 15 W", gb:[{v:5,sc:762,mc:1264,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -832,9 +832,9 @@ mobile: [
     ],
     milestone: "2014–2015。14 nm 首发在笔记本，Broadwell 内核 IPC 相对 Haswell 大约 +5%。Core M-5Y71（4.5 W、1.2/2.9 GHz）冲击无风扇，实测常常要牺牲频率才能压进温度墙，评测口径是「能做无风扇，但不能当性能本」。5950HQ（47 W）带 Iris Pro 6200 + 128 MB eDRAM，是当时核显最强的 Intel 移动 SKU，能打入门独显。桌面几乎缺席，移动端却把 14 nm 的核显故事讲完。Y 系列的功耗墙经验直接传给后来的 Lakefield / Lunar Lake。",
     skus: [
-      {tier:"旗舰", date:"2015-06-02", name:"Core i7-5950HQ", spec:"4 核 / 8 线程 · 2.90 / 3.80 GHz · TDP 47 W · Iris Pro 6200 + 128 MB eDRAM", gb:[{v:6,sc:1180,mc:3685,src:"CPU-Monkey"}], r23:null},
-      {tier:"高性能", date:"2015-01-05", name:"Core i7-5650U", spec:"2 核 / 4 线程 · 2.20 / 3.20 GHz · TDP 15 W", gb:[], r23:null},
-      {tier:"入门", date:"2014-09-05", name:"Core M-5Y71", spec:"2 核 / 4 线程 · 1.20 / 2.90 GHz · TDP 4.5 W · 无风扇定位", gb:[], r23:null}
+      {tier:"旗舰", date:"2015-06-02", name:"Core i7-5950HQ", spec:"4 核 / 8 线程 · 2.90 / 3.80 GHz · TDP 47 W · Iris Pro 6200 + 128 MB eDRAM", gb:[{v:6,sc:1180,mc:3685,src:"CPU-Monkey"},{v:5,sc:1174,mc:4817,src:"CPU-Monkey"}], r23:null},
+      {tier:"高性能", date:"2015-01-05", name:"Core i7-5650U", spec:"2 核 / 4 线程 · 2.20 / 3.20 GHz · TDP 15 W", gb:[{v:5,sc:691,mc:1750,src:"CPU-Monkey"}], r23:null},
+      {tier:"入门", date:"2014-09-05", name:"Core M-5Y71", spec:"2 核 / 4 线程 · 1.20 / 2.90 GHz · TDP 4.5 W · 无风扇定位", gb:[{v:5,sc:733,mc:1458,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -850,9 +850,9 @@ mobile: [
     ],
     milestone: "2015-09。Skylake 移动版 IPC 相对 Broadwell 大约 +5–10%，相对 Haswell 约 +10%。6700HQ / 6920HQ（2.6–2.9 GHz 基频、45 W）+ DDR4 成为 2016–2017 游戏本默认平台。Speed Shift 硬件 P-state 改善轻载响应，从「跳两档变频」变成毫秒级调频。6600U 仍是 15 W 双核 4 线程，超薄本核数还没动。这一代的问题不是 IPC，而是 4 核游戏本要再等两年才扩核——和桌面一样，给了后来的 Ryzen 移动线窗口。",
     skus: [
-      {tier:"旗舰", date:"2016-01-01", name:"Core i7-6920HQ", spec:"4 核 / 8 线程 · 2.90 / 3.80 GHz · TDP 45 W", gb:[{v:6,sc:1173,mc:3876,src:"CPU-Monkey"}], r23:null},
+      {tier:"旗舰", date:"2016-01-01", name:"Core i7-6920HQ", spec:"4 核 / 8 线程 · 2.90 / 3.80 GHz · TDP 45 W", gb:[{v:6,sc:1173,mc:3876,src:"CPU-Monkey"},{v:5,sc:866,mc:3370,src:"CPU-Monkey"}], r23:null},
       {tier:"高性能", date:"2015-09-01", name:"Core i7-6700HQ", spec:"4 核 / 8 线程 · 2.60 / 3.50 GHz · TDP 45 W", gb:[{v:6,sc:1128,mc:3894,src:"CPU-Monkey"},{v:5,sc:806,mc:3079,src:"CPU-Monkey"}], r23:[896,4193]},
-      {tier:"主流", date:"2015-09-01", name:"Core i7-6600U", spec:"2 核 / 4 线程 · 2.60 / 3.40 GHz · TDP 15 W", gb:[], r23:null}
+      {tier:"主流", date:"2015-09-01", name:"Core i7-6600U", spec:"2 核 / 4 线程 · 2.60 / 3.40 GHz · TDP 15 W", gb:[{v:5,sc:820,mc:1513,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -868,7 +868,7 @@ mobile: [
     ],
     milestone: "2016–2017。Kaby Lake 移动版 IPC 为 0，7700HQ（2.8/3.8 GHz、45 W）相对 6700HQ 大约 +5–8%，全靠频率。HEVC 10-bit / VP9 硬解是主要体感升级，4K 视频终于不太靠 CPU。7500U 仍是 15 W 双核。官方 PAO 的 Optimization 在笔记本上更直白：同一 14 nm 再挤一档，真正的核数跃迁要等到 2017 下半年 Kaby Lake-R（8550U 四核）和 2018 的 Coffee Lake-H 六核。7700HQ 因此成为「最后一代四核游戏本神 U」。",
     skus: [
-      {tier:"旗舰", date:"2017-01-03", name:"Core i7-7920HQ", spec:"4 核 / 8 线程 · 3.10 / 4.10 GHz · TDP 45 W", gb:[], r23:null},
+      {tier:"旗舰", date:"2017-01-03", name:"Core i7-7920HQ", spec:"4 核 / 8 线程 · 3.10 / 4.10 GHz · TDP 45 W", gb:[{v:5,sc:1014,mc:3627,src:"CPU-Monkey"}], r23:null},
       {tier:"高性能", date:"2017-01-03", name:"Core i7-7700HQ", spec:"4 核 / 8 线程 · 2.80 / 3.80 GHz · TDP 45 W", gb:[{v:6,sc:1178,mc:3689,src:"CPU-Monkey"},{v:5,sc:883,mc:3324,src:"CPU-Monkey"}], r23:[921,4271]},
       {tier:"主流", date:"2016-08-30", name:"Core i7-7500U", spec:"2 核 / 4 线程 · 2.70 / 3.50 GHz · TDP 15 W", gb:[{v:6,sc:1178,mc:2274,src:"CPU-Monkey"},{v:5,sc:842,mc:1826,src:"CPU-Monkey"}], r23:null}
     ]
@@ -887,7 +887,7 @@ mobile: [
     milestone: "2017–2018。笔记本最大的一次核数跃迁，内核仍是 Skylake IPC。Kaby Lake-R 8550U 把超薄本从 2 核 4 线程改成 4 核 8 线程，多核大约 +70–100%（受 15 W 墙限制，实际常在 +50% 上下）。Coffee Lake-H 把游戏本从 4 核改 6 核，8950HK（2.9/4.8 GHz、可超频）引入移动 i9。对比 7700HQ，六核全核大约 +40–60%。15 W 四核的散热和 PL2 短时加速成为新槽点：标称 15 W，短时可到 40 W+。多核体验是断层，单核几乎没动。",
     skus: [
       {tier:"旗舰", date:"2018-04-02", name:"Core i9-8950HK", spec:"6 核 / 12 线程 · 2.90 / 4.80 GHz · TDP 45 W · 可超频", gb:[{v:6,sc:1445,mc:5568,src:"CPU-Monkey"},{v:5,sc:1124,mc:5146,src:"CPU-Monkey"}], r23:null},
-      {tier:"高性能", date:"2018-04-02", name:"Core i7-8850H", spec:"6 核 / 12 线程 · 2.60 / 4.30 GHz · TDP 45 W", gb:[{v:7,sc:1313,mc:4933}], r23:null},
+      {tier:"高性能", date:"2018-04-02", name:"Core i7-8850H", spec:"6 核 / 12 线程 · 2.60 / 4.30 GHz · TDP 45 W", gb:[{v:7,sc:1313,mc:4933},{v:5,sc:1034,mc:4781,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2017-08-21", name:"Core i7-8550U", spec:"Kaby Lake-R · 4 核 / 8 线程 · 1.80 / 4.00 GHz · TDP 15 W", gb:[{v:6,sc:1296,mc:3419,src:"CPU-Monkey"},{v:5,sc:1037,mc:2967,src:"CPU-Monkey"}], r23:[1032,4626]}
     ]
   },
@@ -904,8 +904,8 @@ mobile: [
     ],
     milestone: "2018-08 起 Coffee Lake-H 刷新。笔记本第一次量产 8 核（9980HK / 9880H），IPC 仍为 0。同样 45 W 标称，8 核全核频率往往低于 6 核，散热墙立刻成为瓶颈：评测里 8 核本多核赢、持续烤机频率掉，6 核本有时更「满血」。8565U（Whiskey Lake）把 15 W 四核再提加速频率到 4.6 GHz，单核大约 +5–10%。这一代的评论高度一致：核数够了，风扇和热管才是规格表外的真实 SKU。",
     skus: [
-      {tier:"旗舰", date:"2019-04-23", name:"Core i9-9980HK", spec:"8 核 / 16 线程 · 2.40 / 5.00 GHz · L3 16 MB · TDP 45 W", gb:[{v:7,sc:1379,mc:6220},{v:6,sc:null,mc:7256}], r23:null},
-      {tier:"高性能", date:"2019-04-23", name:"Core i7-9750H", spec:"6 核 / 12 线程 · 2.60 / 4.50 GHz · L3 12 MB · TDP 45 W", gb:[{v:7,sc:1309,mc:null}], r23:null},
+      {tier:"旗舰", date:"2019-04-23", name:"Core i9-9980HK", spec:"8 核 / 16 线程 · 2.40 / 5.00 GHz · L3 16 MB · TDP 45 W", gb:[{v:7,sc:1379,mc:6220},{v:6,sc:null,mc:7256},{v:5,sc:1183,mc:7301,src:"CPU-Monkey"}], r23:null},
+      {tier:"高性能", date:"2019-04-23", name:"Core i7-9750H", spec:"6 核 / 12 线程 · 2.60 / 4.50 GHz · L3 12 MB · TDP 45 W", gb:[{v:7,sc:1309,mc:null},{v:5,sc:1132,mc:5149,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2018-08-28", name:"Core i7-8565U", spec:"4 核 / 8 线程 · 1.80 / 4.60 GHz · TDP 15 W", gb:[{v:6,sc:1376,mc:3660,src:"CPU-Monkey"},{v:5,sc:1092,mc:3279,src:"CPU-Monkey"}], r23:null}
     ]
   },
@@ -922,7 +922,7 @@ mobile: [
     milestone: "2019–2020 双线并行。Comet Lake-H 10980HK 把 14 nm 8 核做到 5.3 GHz 单核加速，IPC 仍是 Skylake，多核相对 9980HK 大约 +10% 量级（频率+功耗墙）。Ice Lake（10 nm Sunny Cove，1065G7）才是架构跃迁：内核 IPC 相对 Skylake 大约 +15–20%，Iris Plus G7 核显明显强于 UHD 620。频率和供货限制了声量，15–25 W 墙让多核赢不过同价 14 nm 四核/六核。轻薄本第一次在 IPC 和核显上同时有故事，游戏本还在挤 14 nm。",
     skus: [
       {tier:"旗舰", date:"2020-04-02", name:"Core i9-10980HK", spec:"Comet Lake-H · 8 核 / 16 线程 · 2.40 / 5.30 GHz · TDP 45 W", gb:[{v:6,sc:1676,mc:7540,src:"CPU-Monkey"},{v:5,sc:1299,mc:7767,src:"CPU-Monkey"}], r23:[1294,9923]},
-      {tier:"高性能", date:"2020-04-02", name:"Core i7-10750H", spec:"6 核 / 12 线程 · 2.60 / 5.00 GHz · TDP 45 W", gb:[{v:7,sc:1439,mc:5621}], r23:null},
+      {tier:"高性能", date:"2020-04-02", name:"Core i7-10750H", spec:"6 核 / 12 线程 · 2.60 / 5.00 GHz · TDP 45 W", gb:[{v:7,sc:1439,mc:5621},{v:5,sc:1264,mc:6243,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2019-08-01", name:"Core i7-1065G7", spec:"Ice Lake · 4 核 / 8 线程 · 1.30 / 3.90 GHz · TDP 15 W · Iris Plus", gb:[{v:6,sc:1564,mc:4410,src:"CPU-Monkey"},{v:5,sc:1184,mc:3786,src:"CPU-Monkey"}], r23:[1153,4475]}
     ]
   },
@@ -939,9 +939,9 @@ mobile: [
     ],
     milestone: "2020-09 Tiger Lake。Willow Cove IPC 相对 Sunny Cove 大约 +5–10%，相对 Skylake 约 +20–25%。Xe（96 EU）让轻薄本核显游戏第一次可玩：1080p 低画质能进 50–60 fps 的网游，不再只是「能看视频」。2021 H45（11800H / 11980HK）把 8 核 Willow Cove 送进游戏本，单核明显强于 10980HK（常见 +15–25%），全核受 45–65 W 墙限制，多核不一定打赢同功耗的 8 核 14 nm。AVX-512 在移动端的功耗代价立刻可见。",
     skus: [
-      {tier:"旗舰", date:"2021-05-11", name:"Core i9-11980HK", spec:"8 核 / 16 线程 · 2.60 / 5.00 GHz · L3 24 MB · TDP 45–65 W", gb:[{v:6,sc:2250,mc:9970}], r23:[1559,10923]},
-      {tier:"高性能", date:"2021-05-11", name:"Core i9-11900H", spec:"8 核 / 16 线程 · 2.50 / 4.90 GHz · TDP 45 W", gb:[{v:6,sc:2355,mc:9401}], r23:[1581,12144]},
-      {tier:"主流", date:"2020-09-02", name:"Core i7-1185G7", spec:"4 核 / 8 线程 · 3.00 / 4.80 GHz · TDP 12–28 W · Iris Xe 96 EU", gb:[{v:7,sc:1554,mc:4719}], r23:null}
+      {tier:"旗舰", date:"2021-05-11", name:"Core i9-11980HK", spec:"8 核 / 16 线程 · 2.60 / 5.00 GHz · L3 24 MB · TDP 45–65 W", gb:[{v:6,sc:2250,mc:9970},{v:5,sc:1645,mc:8418,src:"CPU-Monkey"}], r23:[1559,10923]},
+      {tier:"高性能", date:"2021-05-11", name:"Core i9-11900H", spec:"8 核 / 16 线程 · 2.50 / 4.90 GHz · TDP 45 W", gb:[{v:6,sc:2355,mc:9401},{v:5,sc:1599,mc:9436,src:"CPU-Monkey"}], r23:[1581,12144]},
+      {tier:"主流", date:"2020-09-02", name:"Core i7-1185G7", spec:"4 核 / 8 线程 · 3.00 / 4.80 GHz · TDP 12–28 W · Iris Xe 96 EU", gb:[{v:7,sc:1554,mc:4719},{v:5,sc:1578,mc:6102,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -958,7 +958,7 @@ mobile: [
     milestone: "2022。Alder Lake 混合架构登陆笔记本。P 核 IPC 相对 Willow Cove 大约 +10–20%。12900HX 把桌面 8P+8E / 24 线程塞进厚本，55–157 W 区间多核远超 11980HK（R23 可到 2 万上下）。H 系列 45–115 W；P 系列 28 W（1260P 4P+8E）成为轻薄高性能新档，U 系列 1255U（2P+8E）接 15 W。Thread Director + Win11 再次成为必选项。E 核让轻薄本多核第一次像样，也让 15 W 机器的 PL2 短时功耗更容易击穿电源适配器标称。",
     skus: [
       {tier:"旗舰", date:"2022-05-10", name:"Core i9-12900HX", spec:"8P+8E / 24 线程 · P 最高 5.0 GHz · 55–157 W", gb:[{v:6,sc:2425,mc:14620,src:"CPU-Monkey"},{v:5,sc:1861,mc:15474,src:"CPU-Monkey"}], r23:[1902,18845]},
-      {tier:"高性能", date:"2022-01-04", name:"Core i9-12900HK", spec:"6P+8E / 20 线程 · P 最高 5.0 GHz · 45–115 W", gb:[{v:6,sc:2304,mc:10285}], r23:[1909,18288]},
+      {tier:"高性能", date:"2022-01-04", name:"Core i9-12900HK", spec:"6P+8E / 20 线程 · P 最高 5.0 GHz · 45–115 W", gb:[{v:6,sc:2304,mc:10285},{v:5,sc:1754,mc:12662,src:"CPU-Monkey"}], r23:[1909,18288]},
       {tier:"主流", date:"2022-01-04", name:"Core i7-1260P", spec:"4P+8E / 16 线程 · TDP 28 W", gb:[{v:6,sc:2151,mc:7655,src:"CPU-Monkey"},{v:5,sc:1607,mc:9088,src:"CPU-Monkey"}], r23:[1773,11420]},
       {tier:"入门", date:"2022-01-04", name:"Core i7-1255U", spec:"2P+8E / 12 线程 · TDP 15 W", gb:[{v:6,sc:2136,mc:6908,src:"CPU-Monkey"},{v:5,sc:1603,mc:7612,src:"CPU-Monkey"}], r23:[1761,7545]}
     ]
@@ -976,10 +976,10 @@ mobile: [
     ],
     milestone: "2023-01 Raptor Lake 移动版。P 核 IPC 相对 Alder Lake 大约 +0–5%，13900H 把 6P+8E 做成 45 W 旗舰主流，HX 把 8P+16E 做成 24 核。AnandTech：笔记本第一次出现 24 核（13980HX），多核 R23 中位约 3.0 万，接近桌面 12900K。13900H 单核常见 5.4 GHz，GB6 单核约 2600 级。厚本与轻薄本体感彻底分家：HX 拼桌面，P/U 拼续航。代价与桌面相同——持续功耗和温度，高配模具才能喂饱标称加速。",
     skus: [
-      {tier:"旗舰", date:"2023-01-03", name:"Core i9-13980HX", spec:"8P+16E / 32 线程 · P 2.2–5.6 GHz · L3 36 MB · 55–157 W", gb:[{v:6,sc:2882,mc:17564}], r23:[2110,30273]},
+      {tier:"旗舰", date:"2023-01-03", name:"Core i9-13980HX", spec:"8P+16E / 32 线程 · P 2.2–5.6 GHz · L3 36 MB · 55–157 W", gb:[{v:6,sc:2882,mc:17564},{v:5,sc:2117,mc:19763,src:"CPU-Monkey"}], r23:[2110,30273]},
       {tier:"高性能", date:"2023-01-03", name:"Core i9-13900H", spec:"6P+8E / 20 线程 · P 最高 5.4 GHz · 45–115 W", gb:[{v:6,sc:2617,mc:13629,src:"CPU-Monkey"},{v:5,sc:1919,mc:14632,src:"CPU-Monkey"}], r23:[2016,18760]},
       {tier:"主流", date:"2023-01-03", name:"Core i7-13700H", spec:"6P+8E / 20 线程 · 45–115 W", gb:[{v:6,sc:2531,mc:13360,src:"CPU-Monkey"},{v:5,sc:1893,mc:11848,src:"CPU-Monkey"}], r23:[1798,null]},
-      {tier:"入门", date:"2023-01-03", name:"Core i7-1360P", spec:"4P+8E / 16 线程 · 28 W", gb:[], r23:[1787,null]}
+      {tier:"入门", date:"2023-01-03", name:"Core i7-1360P", spec:"4P+8E / 16 线程 · 28 W", gb:[{v:5,sc:1756,mc:8814,src:"CPU-Monkey"}], r23:[1787,null]}
     ]
   },
   {
@@ -995,8 +995,8 @@ mobile: [
     ],
     milestone: "2023 下半年 / 2024 初。Raptor Lake-HX 刷新，IPC 为 0。Notebookcheck：14900HX 单核比 13980HX 大约 +3%，多核几乎持平，取决于机型功耗墙和 BIOS 策略。与桌面 14 代一样是提频而非新架构。这一代的购买决策几乎完全变成「哪台模具能把 55–157 W 喂满」，SKU 数字本身信息量很小。Intel 已经把精力转到 Meteor Lake / Arrow Lake 的拆分芯片，14 代移动刷新只是 LGA 与 BGA 产品线的同步收尾。",
     skus: [
-      {tier:"旗舰", date:"2024-01-08", name:"Core i9-14900HX", spec:"8P+16E / 32 线程 · P 最高 5.8 GHz · L3 36 MB · 55–157 W", gb:[{v:7,sc:2315,mc:17049},{v:6,sc:3013,mc:17607}], r23:[2182,30055]},
-      {tier:"高性能", date:"2024-01-08", name:"Core i7-14700HX", spec:"8P+12E / 28 线程 · 55–157 W", gb:[{v:7,sc:2129,mc:null}], r23:[null,24595]}
+      {tier:"旗舰", date:"2024-01-08", name:"Core i9-14900HX", spec:"8P+16E / 32 线程 · P 最高 5.8 GHz · L3 36 MB · 55–157 W", gb:[{v:7,sc:2315,mc:17049},{v:6,sc:3013,mc:17607},{v:5,sc:2161,mc:21560,src:"CPU-Monkey"}], r23:[2182,30055]},
+      {tier:"高性能", date:"2024-01-08", name:"Core i7-14700HX", spec:"8P+12E / 28 线程 · 55–157 W", gb:[{v:7,sc:2129,mc:null},{v:5,sc:2016,mc:17726,src:"CPU-Monkey"}], r23:[null,24595]}
     ]
   },
   {
@@ -1012,9 +1012,9 @@ mobile: [
     ],
     milestone: "2023-12 Meteor Lake。计算/SOC/核显拆分芯片，NPU 第一次成为客户端卖点，品牌从 Core i 换成 Core Ultra。P 核 Redwood Cove IPC 相对 Raptor Cove 大约持平到小幅领先，LP-E 核负责低载。165H（6P+8E+2LP-E、28–64 W）能效优于同档 13900H，绝对多核不如 HX。155U 把 15 W 做成 2P+8E+2LP-E。桌面缺席。评测共识：AI PC 的 NPU 当时软件几乎接不上，买点是核显和低载功耗，不是 10 TOPS 这个数字。",
     skus: [
-      {tier:"旗舰", date:"2023-12-14", name:"Core Ultra 9 185H", spec:"6P+8E+2LP-E / 16 核 22 线程 · P 最高 5.1 GHz · 45–115 W · Arc 8 Xe", gb:[{v:7,sc:1842,mc:null}], r23:[1805,17427]},
+      {tier:"旗舰", date:"2023-12-14", name:"Core Ultra 9 185H", spec:"6P+8E+2LP-E / 16 核 22 线程 · P 最高 5.1 GHz · 45–115 W · Arc 8 Xe", gb:[{v:7,sc:1842,mc:null},{v:5,sc:1862,mc:13430,src:"CPU-Monkey"}], r23:[1805,17427]},
       {tier:"高性能", date:"2023-12-14", name:"Core Ultra 7 165H", spec:"6P+8E+2LP-E / 16 核 22 线程 · 28–64 W", gb:[{v:6,sc:2502,mc:12545,src:"CPU-Monkey"},{v:5,sc:1866,mc:13192,src:"CPU-Monkey"}], r23:null},
-      {tier:"主流", date:"2023-12-14", name:"Core Ultra 7 155U", spec:"2P+8E+2LP-E / 12 核 14 线程 · 15–57 W", gb:[{v:6,sc:2354,mc:9602,src:"CPU-Monkey"}], r23:[1690,9972]}
+      {tier:"主流", date:"2023-12-14", name:"Core Ultra 7 155U", spec:"2P+8E+2LP-E / 12 核 14 线程 · 15–57 W", gb:[{v:6,sc:2354,mc:9602,src:"CPU-Monkey"},{v:5,sc:1706,mc:7727,src:"GadgetVersus"}], r23:[1690,9972]}
     ]
   },
   {
@@ -1030,9 +1030,9 @@ mobile: [
     ],
     milestone: "2024-09 Lunar Lake。Intel 明确对标 Arm 能效：板载 LPDDR5X、17–37 W、Lion Cove P + 4 个 LP-E，没有传统 E 核集群。288V 8 线程，GB6 单核约 2770、多核约 1.1 万——多核绝对分数不高，单核和能效是卖点。Xe2（Arc 140V）核显是 2024 轻薄本高点，1080p 核显游戏明显强于 Meteor Lake。NPU 48 TOPS 终于对上 Copilot+ 门槛。封装内存不可升级，32 GB 封顶，这是用容量换能效的明确取舍。",
     skus: [
-      {tier:"旗舰", date:"2024-09-03", name:"Core Ultra 9 288V", spec:"4P+4LP-E / 8 线程 · P 最高 5.1 GHz · 17–37 W · Arc 140V 8 Xe · 板载最高 32 GB", gb:[{v:6,sc:2770,mc:11050,src:"CPU-Monkey"}], r23:[1984,9300]},
+      {tier:"旗舰", date:"2024-09-03", name:"Core Ultra 9 288V", spec:"4P+4LP-E / 8 线程 · P 最高 5.1 GHz · 17–37 W · Arc 140V 8 Xe · 板载最高 32 GB", gb:[{v:6,sc:2770,mc:11050,src:"CPU-Monkey"},{v:5,sc:2094,mc:9626,src:"GadgetVersus"}], r23:[1984,9300]},
       {tier:"高性能", date:"2024-09-03", name:"Core Ultra 7 268V", spec:"4P+4LP-E / 8 线程 · P 最高 5.0 GHz · 8–37 W · 32 GB", gb:[{v:7,sc:2220,mc:null}], r23:null},
-      {tier:"主流", date:"2024-09-03", name:"Core Ultra 7 258V", spec:"4P+4LP-E / 8 线程 · P 最高 4.8 GHz · 8–37 W", gb:[{v:7,sc:2079,mc:null},{v:6,sc:2609,mc:10690}], r23:null}
+      {tier:"主流", date:"2024-09-03", name:"Core Ultra 7 258V", spec:"4P+4LP-E / 8 线程 · P 最高 4.8 GHz · 8–37 W", gb:[{v:7,sc:2079,mc:null},{v:6,sc:2609,mc:10690},{v:5,sc:1834,mc:9583,src:"GadgetVersus"}], r23:null}
     ]
   },
   {
@@ -1048,10 +1048,10 @@ mobile: [
     ],
     milestone: "2025-01 Arrow Lake 移动版。Lion Cove P + Skymont E，取消 HT。HX 多核接近 14900HX，能效更好；H 系列面向创作轻薄本，核显 Xe-LPG+。P 核 IPC 相对 Raptor Cove 官方约 +16%，无 HT 后线程数下降，游戏和部分创作软件出现「单核更快、多线程持平或回退」的分裂。265U 接 15 W。这一代把 Lunar Lake 的能效叙事和 Meteor Lake 的拆分芯片收进更完整的 SKU 树，桌面 285K 的游戏争议在笔记本上被功耗墙掩盖了一部分。",
     skus: [
-      {tier:"旗舰", date:"2025-01-06", name:"Core Ultra 9 285HX", spec:"8P+16E / 24 线程 · P 最高 5.5 GHz · L3 36 MB · 55–160 W", gb:[{v:6,sc:3026,mc:20758}], r23:[null,35391]},
-      {tier:"高性能", date:"2025-01-06", name:"Core Ultra 9 285H", spec:"6P+8E+2LP-E / 16 线程 · P 最高 5.4 GHz · 28–115 W · Arc 8 Xe", gb:[{v:7,sc:2211,mc:null}], r23:null},
-      {tier:"主流", date:"2025-01-06", name:"Core Ultra 7 255H", spec:"6P+8E+2LP-E / 16 线程 · 28–115 W", gb:[{v:7,sc:2298,mc:null}], r23:null},
-      {tier:"入门", date:"2025-01-06", name:"Core Ultra 7 265U", spec:"2P+8E+2LP-E / 14 线程 · 15–57 W", gb:[], r23:[1749,10623]}
+      {tier:"旗舰", date:"2025-01-06", name:"Core Ultra 9 285HX", spec:"8P+16E / 24 线程 · P 最高 5.5 GHz · L3 36 MB · 55–160 W", gb:[{v:6,sc:3026,mc:20758},{v:5,sc:2204,mc:25799,src:"GadgetVersus"}], r23:[null,35391]},
+      {tier:"高性能", date:"2025-01-06", name:"Core Ultra 9 285H", spec:"6P+8E+2LP-E / 16 线程 · P 最高 5.4 GHz · 28–115 W · Arc 8 Xe", gb:[{v:7,sc:2211,mc:null},{v:5,sc:2118,mc:15505,src:"GadgetVersus"}], r23:null},
+      {tier:"主流", date:"2025-01-06", name:"Core Ultra 7 255H", spec:"6P+8E+2LP-E / 16 线程 · 28–115 W", gb:[{v:7,sc:2298,mc:null},{v:5,sc:2122,mc:14445,src:"GadgetVersus"}], r23:null},
+      {tier:"入门", date:"2025-01-06", name:"Core Ultra 7 265U", spec:"2P+8E+2LP-E / 14 线程 · 15–57 W", gb:[{v:5,sc:1699,mc:8529,src:"GadgetVersus"}], r23:[1749,10623]}
     ]
   },
   {
@@ -1067,7 +1067,7 @@ mobile: [
     ],
     milestone: "CES 2026 Panther Lake，Intel 第一款量产 18A 客户端。The Verge：把 Lunar Lake 能效和 Arrow Lake-H 算力收进同一平台。X9 388H 为 4P+8E+4LP-E、25–80 W，核显 12 Xe3。P 核走 Cougar Cove，官方强调同功耗下相对 Arrow Lake-H 的多核和核显提升，具体 IPC 数字随 SKU 和 TDP 档变化，评测仍在展开。386H 接独显轻薄/创作者本，365 接 200V 能效档。这是 2026 年移动端主战场：18A 是否真能同时喂饱性能档和续航档，比品牌换名更关键。",
     skus: [
-      {tier:"旗舰", date:"2026-01-05", name:"Core Ultra X9 388H", spec:"4P+8E+4LP-E / 16 线程 · P 2.1–5.1 GHz · 15–80 W · Arc B390 12 Xe · LPDDR5X-9600", gb:[{v:6,sc:3009,mc:17268}], r23:[2210,19224]},
+      {tier:"旗舰", date:"2026-01-05", name:"Core Ultra X9 388H", spec:"4P+8E+4LP-E / 16 线程 · P 2.1–5.1 GHz · 15–80 W · Arc B390 12 Xe · LPDDR5X-9600", gb:[{v:6,sc:3009,mc:17268},{v:5,sc:2356,mc:18758,src:"CPU-Monkey"}], r23:[2210,19224]},
       {tier:"高性能", date:"2026-01-05", name:"Core Ultra 9 386H", spec:"16 核档 · 面向独显轻薄/创作者本，接替 285H", gb:[], r23:null},
       {tier:"主流", date:"2026-01-05", name:"Core Ultra 7 365", spec:"偏能效档 · 接替 Lunar Lake 200V", gb:[], r23:null}
     ]
@@ -1194,8 +1194,8 @@ server: [
     ],
     milestone: "2013 Ivy Bridge-EP。22 nm，同插槽（LGA 2011）扩到 12 核。内核 IPC 相对 Sandy Bridge-EP 大约 +5–10%，能效明显优于 32 nm。E5-2690 v2 / 2670 v2（10 核 / 115 W）是很多企业 2014–2016 的标准双路。没有新互连，没有新内存，纯 Tick。对云厂商来说，这一代的价值是同机箱功耗下多卖几核，而不是单线程跑分。PCIe 3.0 车道数和双路 QPI 仍是这一平台的天花板。",
     skus: [
-      {tier:"旗舰", date:"2013-09-10", name:"Xeon E5-2697 v2", spec:"12 核 / 24 线程 · 2.70 GHz · TDP 130 W", gb:[{v:7,sc:null,mc:5542}], r23:null},
-      {tier:"主流", date:"2013-09-10", name:"Xeon E5-2670 v2", spec:"10 核 / 20 线程 · 2.50 GHz · TDP 115 W", gb:[], r23:null}
+      {tier:"旗舰", date:"2013-09-10", name:"Xeon E5-2697 v2", spec:"12 核 / 24 线程 · 2.70 GHz · TDP 130 W", gb:[{v:7,sc:null,mc:5542},{v:5,sc:762,mc:7782,src:"CPU-Monkey"}], r23:null},
+      {tier:"主流", date:"2013-09-10", name:"Xeon E5-2670 v2", spec:"10 核 / 20 线程 · 2.50 GHz · TDP 115 W", gb:[{v:5,sc:748,mc:5688,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -1212,7 +1212,7 @@ server: [
     milestone: "2014-09 Haswell-EP。内核 IPC 相对 Ivy Bridge-EP 大约 +10–15%，DDR4 进入双路，AVX2 成为科学计算默认。E5-2699 v3 18 核 36 线程 / 145 W 把单路线程推到新高，E5-2680 v3 12 核是性价比料。FIVR 和环上 18 核让全核频率和 AVX 降频成为运维必须看的项：标称 2.3 GHz，AVX 重载会再掉一档。这一代出货周期长，很多机房 2017 年还在买 v3。",
     skus: [
       {tier:"旗舰", date:"2014-09-08", name:"Xeon E5-2699 v3", spec:"18 核 / 36 线程 · 2.30 GHz · TDP 145 W", gb:[], r23:null},
-      {tier:"主流", date:"2014-09-08", name:"Xeon E5-2680 v3", spec:"12 核 / 24 线程 · 2.50 GHz · TDP 120 W", gb:[], r23:null}
+      {tier:"主流", date:"2014-09-08", name:"Xeon E5-2680 v3", spec:"12 核 / 24 线程 · 2.50 GHz · TDP 120 W", gb:[{v:5,sc:908,mc:9658,src:"CPU-Monkey"}], r23:null}
     ]
   },
   {
@@ -1228,7 +1228,7 @@ server: [
     ],
     milestone: "2016 Broadwell-EP。14 nm，IPC 相对 Haswell-EP 大约 +5%，同插槽最后一次扩核到 22（2699 v4）。E5-2680 v4 14 核 / 120 W 是出货量最大的料之一。没有新平台，纯扩核 + 降漏电。Skylake-SP 的网格和 AVX-512 还没来，企业继续在 LGA 2011-3 上买「多 4 核」的刷新。评测口径很稳定：单线程几乎没变，虚拟机密度和编译吞吐随核数走。这是 FSB 时代之后、网格时代之前，环形总线双路的收官。",
     skus: [
-      {tier:"旗舰", date:"2016-03-20", name:"Xeon E5-2699 v4", spec:"22 核 / 44 线程 · 2.20 GHz · TDP 145 W", gb:[{v:7,sc:null,mc:null}], r23:null},
+      {tier:"旗舰", date:"2016-03-20", name:"Xeon E5-2699 v4", spec:"22 核 / 44 线程 · 2.20 GHz · TDP 145 W", gb:[{v:7,sc:null,mc:null},{v:5,sc:994,mc:13547,src:"CPU-Monkey"}], r23:null},
       {tier:"主流", date:"2016-03-20", name:"Xeon E5-2680 v4", spec:"14 核 / 28 线程 · 2.40 GHz · TDP 120 W", gb:[], r23:null}
     ]
   },
@@ -1245,7 +1245,7 @@ server: [
     ],
     milestone: "2017-07 Skylake-SP。放弃 E5/E7，改 Platinum/Gold/Silver。网格互连替换环形，六通道 DDR4，AVX-512。内核 IPC 相对 Broadwell 大约 +10%（标量），AVX-512 吞吐是另一条曲线，降频也是。Platinum 8180 28 核 / 205 W。同期 EPYC Naples 以 32 核 / 8 通道切入，服务器竞争格局改变：Intel 第一次在核数和内存通道上同时被压。网格延迟和 UPI 拓扑成为新的调优项。这一代的评论从「Xeon 默认选项」变成「要对着 EPYC 算 TCO」。",
     skus: [
-      {tier:"旗舰", date:"2017-07-11", name:"Xeon Platinum 8180", spec:"28 核 / 56 线程 · 2.50 GHz · L3 38.5 MB · TDP 205 W", gb:[], r23:null},
+      {tier:"旗舰", date:"2017-07-11", name:"Xeon Platinum 8180", spec:"28 核 / 56 线程 · 2.50 GHz · L3 38.5 MB · TDP 205 W", gb:[{v:5,sc:1083,mc:22158,src:"CPU-Monkey"}], r23:null},
       {tier:"高性能", date:"2017-07-11", name:"Xeon Gold 6154", spec:"18 核 / 36 线程 · 3.00 GHz · TDP 200 W", gb:[], r23:null},
       {tier:"主流", date:"2017-07-11", name:"Xeon Silver 4116", spec:"12 核 / 24 线程 · 2.10 GHz · TDP 85 W", gb:[], r23:null}
     ]
@@ -1280,7 +1280,7 @@ server: [
     ],
     milestone: "2021-04 Ice Lake-SP。服务器 10 nm 迟到四年。Sunny Cove IPC 相对 Skylake-SP 大约 +18–20%（Intel 口径约 20%），8380 40 核 80 线程 / 270 W。8 通道 DDR4 与 PCIe 4.0 补上与 EPYC Rome/Milan 的部分 I/O 差距，核数仍落后（Milan 64 核）。Cooper Lake 8380HL 用 14 nm 填四路/八路和 BF16。评测共识：单线程和 AVX-512 有故事，整机密度仍要靠双路堆。10 nm 迟到的四年，正好是 EPYC 抢走双路默认选项的四年。",
     skus: [
-      {tier:"旗舰", date:"2021-04-06", name:"Xeon Platinum 8380", spec:"Ice Lake-SP · 40 核 / 80 线程 · 2.30 / 3.40 GHz · L3 60 MB · TDP 270 W", gb:[], r23:null},
+      {tier:"旗舰", date:"2021-04-06", name:"Xeon Platinum 8380", spec:"Ice Lake-SP · 40 核 / 80 线程 · 2.30 / 3.40 GHz · L3 60 MB · TDP 270 W", gb:[{v:5,sc:1075,mc:39775,src:"CpuTronic"}], r23:null},
       {tier:"高性能", date:"2021-04-06", name:"Xeon Gold 6354", spec:"18 核 / 36 线程 · 3.00 GHz · TDP 205 W", gb:[], r23:null},
       {tier:"4S/8S", date:"2020-06-18", name:"Xeon Platinum 8380HL", spec:"Cooper Lake · 28 核 · 14 nm · 针对四路八路与 BF16", gb:[], r23:null}
     ]
