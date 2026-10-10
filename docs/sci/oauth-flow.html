@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth 2.0 授权码流程</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #ffffff;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #1a1a2e;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .mermaid {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>OAuth 2.0 授权码流程（Authorization Code Flow）</h1>
+    <div class="mermaid">
+sequenceDiagram
+    participant User as 资源所有者<br/>(用户/浏览器)
+    participant ClientFE as 客户端前端<br/>(SPA/Web页面)
+    participant ClientBE as 客户端后端<br/>(应用服务器)
+    participant AuthServer as 授权服务器<br/>(Authorization Server)
+    participant ResourceServer as 资源服务器<br/>(Resource Server)
+
+    Note over User,ClientFE: ① 发起授权请求
+    User->>ClientFE: 点击"登录"按钮
+    ClientFE->>User: 302重定向至 /authorize
+    Note right of ClientFE: response_type=code<br/>client_id=xxx<br/>redirect_uri=xxx<br/>scope=read write<br/>state=随机字符串(防CSRF)
+
+    User->>AuthServer: GET /authorize ...
+    AuthServer->>User: 返回登录/授权页面
+
+    Note over User,AuthServer: ② 用户认证与授权同意
+    User->>AuthServer: 输入凭证登录 + 点击"同意授权"
+    AuthServer->>AuthServer: 验证身份 + 生成授权码<br/>(一次性、短时效 < 10min)
+
+    Note over User,ClientBE: ③ 授权码回传
+    AuthServer->>User: 302重定向至 redirect_uri
+    Note right of AuthServer: code=AUTH_CODE<br/>state=原随机字符串
+    User->>ClientFE: 携带 code 访问回调页
+    ClientFE->>ClientBE: 将 code 转发至后端
+
+    Note over ClientBE,AuthServer: ④ 授权码换令牌(后端到后端)
+    ClientBE->>AuthServer: POST /token
+    Note right of ClientBE: grant_type=authorization_code<br/>code=AUTH_CODE<br/>client_id=xxx<br/>client_secret=xxx<br/>redirect_uri=xxx
+    AuthServer->>AuthServer: 验证client身份<br/>验证授权码有效性<br/>验证redirect_uri匹配
+    AuthServer->>ClientBE: 返回令牌响应
+    Note right of AuthServer: access_token (短时 ~15min)<br/>refresh_token (长时 ~7天)<br/>expires_in<br/>token_type=Bearer<br/>scope
+
+    Note over ClientBE,ResourceServer: ⑤ 访问受保护资源
+    ClientBE->>ResourceServer: GET /api/resource
+    Note right of ClientBE: Authorization: Bearer [access_token]
+    ResourceServer->>ResourceServer: 验证access_token<br/>(本地JWT验签 或 远程introspection)
+    ResourceServer->>ClientBE: 200 OK + 资源数据
+    ClientBE->>User: 返回业务页面/数据
+
+    Note over ClientBE,AuthServer: ⑥ Token过期后的静默刷新
+    ClientBE->>AuthServer: POST /token
+    Note right of ClientBE: grant_type=refresh_token<br/>refresh_token=xxx<br/>client_id=xxx<br/>client_secret=xxx
+    AuthServer->>ClientBE: 返回新的 access_token<br/>(可选: 新refresh_token, 即轮换)
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            sequence: {
+                diagramMarginX: 30,
+                diagramMarginY: 10,
+                actorMargin: 50,
+                width: 140,
+                height: 35,
+                boxTextMargin: 5,
+                noteMargin: 8,
+                messageMargin: 25,
+                mirrorActors: true,
+                useMaxWidth: false,
+                wrap: true,
+                wrapPadding: 5,
+                actorFontSize: 12,
+                messageFontSize: 12,
+                noteFontSize: 11
+            },
+            themeVariables: {
+                primaryColor: '#e3f2fd',
+                primaryTextColor: '#1a237e',
+                primaryBorderColor: '#1976d2',
+                lineColor: '#424242',
+                secondaryColor: '#f3e5f5',
+                tertiaryColor: '#e8f5e9',
+                noteBkgColor: '#fff9c4',
+                noteTextColor: '#333',
+                noteBorderColor: '#fbc02d',
+                actorBkg: '#bbdefb',
+                actorBorder: '#1976d2',
+                actorTextColor: '#0d47a1'
+            }
+        });
+    </script>
+</body>
+</html>
