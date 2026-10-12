@@ -141,7 +141,11 @@
   .date-cell { width: 100px; min-width: 100px; max-width: 100px; }
   .date { color: #dfe7f3; font-family: "IBM Plex Mono", monospace; font-size: 12px; white-space: nowrap; }
   .date-note { margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.45; white-space: normal; overflow-wrap: anywhere; }
-  .date-entry + .date-entry { margin-top: 8px; }
+  .date-price { margin-top: 5px; font-size: 11px; line-height: 1.45; color: var(--teal); white-space: normal; overflow-wrap: anywhere; }
+  .price-value { display: block; font-family: "IBM Plex Mono", monospace; white-space: nowrap; }
+  .price-basis { display: block; color: var(--muted); font-size: 10.5px; }
+  .price-missing { color: var(--muted); }
+  .date-entry + .date-entry { margin-top: 10px; }
   .tier {
     display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em;
     padding: 2px 6px; border-radius: 999px; margin-bottom: 6px;
@@ -224,6 +228,7 @@
     <ol>
       <li>早期产品按家族合并，Ryzen 桌面 CPU 与 G 系列 APU 分列；系列年份不是每个型号的精确上市日期；2025、2026 年桌面新品按发布批次单列，仍属 Zen 5。第 1 列是产品世代；第 2 列是这一代共用的微架构 / 工艺 / 插槽 / 内存 / I/O。</li>
       <li>日期优先采用 AMD 产品页的 Launch Date，已核实日期至少精确到月；仅能核实公告时标注“公布”。OEM 与零售时间不同时分别标明。早期档案未能确认月份的型号明确标注“发布月份未核实”，不以系列日期或授权协议日期代替。</li>
+      <li>日期下方列中国大陆发布价格，以人民币（¥）表示，并区分国行建议零售价、首发标价与预售标价。仅查到厂商公布的首发活动价时单独注明；有预售定金抵扣时优先列优惠前标价。发布日期沿用各型号的原始记录，国行晚于全球上市的价格另注国行时间；OEM 与零售分批上市时价格对应各自日期。中国首发价未核实的条目明确标注，不以美元换算、现价、后续降价或整机售价代替。数字价格可点击查看来源。</li>
       <li>第 3–5 列直接列出代表型号、规格和跑分，不附加性能档次标签。Ryzen 按 3 / 5 / 7 / 9 产品线选取代表；早期 CPU 按产品家族、服务器按核心规模与用途选取代表。</li>
       <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
       <li>型号与日期核对（2026-10-10）：<a href="https://www.amd.com/en/products/specifications/processors.html">AMD 产品规格表</a>、<a href="https://www.amd.com/en/products/processors/server/epyc/9004-series.html">EPYC 9004 型号表</a>。补充代表型号读取于 2026-10-10；无已核验跑分的条目留空。</li>
@@ -246,7 +251,7 @@
           <tr>
             <th style="width:168px">产品世代</th>
             <th style="width:230px">架构 · 工艺 · 规格</th>
-            <th class="date-cell">发布日期 /<br>上市时间</th>
+            <th class="date-cell">发布日期 /<br>国行发布价</th>
             <th>代表型号与规格</th>
             <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
             <th style="width:380px">里程碑与当时评论</th>
@@ -262,11 +267,12 @@
     <h3>数据来源</h3>
     <ul>
       <li>规格与发布日：AMD 产品规格、新闻稿与历史处理器列表；2025–2026 年桌面新品的日期可点击查看 AMD 原始来源。日期补充核对于 2026-10-10；7 个早期型号的发布月份仍未核实。</li>
+      <li>国行发布价格：AMD 中国官方公告、厂商首发供稿、发布会现场记录与官方店首发页面的存档；部分链接为上述材料的媒体转载或首发实测记录，核对于 2026-10-12。价格仅指中国大陆市场，早期 CPU、移动端、OEM 与服务器型号未核实的中国首发报价不作推算。</li>
       <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/GB5 = Notebookcheck 中位、CPU-Monkey、Technical City、NanoReview、实验室评测。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
       <li>1978–2008-07 的 CPU：Geekbench 尚未发布。K5/K6/Athlon 早期在公开网上几乎没有可引用的 GB 分数。</li>
       <li>Cinebench R23：Maxon 无公开全量榜；CPU-Monkey / Notebookcheck / 实验室。R23 于 2020-11 发布。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿 + Wikipedia 处理器列表 + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck/Technical City/NanoReview（官方榜缺失 SKU 的 GB5/GB6），资料读取于 2026-09-15；代表型号与发布批次更新于 2026-10-10</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿与中国首发公告、厂商供稿及首发记录 + Wikipedia 处理器列表 + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck/Technical City/NanoReview（官方榜缺失 SKU 的 GB5/GB6），资料读取于 2026-09-15；代表型号与发布批次更新于 2026-10-10；中国大陆发布价格核对于 2026-10-12</p>
   </footer>
 </div>
 
@@ -391,7 +397,7 @@ const DATA = {
       arch: [["微架构","K8 双核"],["工艺","90 / 65 nm"],["插槽","939 / AM2"],["缓存","每核独立 L2"],["内存","AM2 起 DDR2"]],
       milestone: "2005-05 消费级双核。两颗 K8 核共享 IMC，不像 Pentium D 那样走 FSB 粘核，多核效率明显更高：相对单核大约 1.7–1.9 倍而不是 1.6。6400+（3.20 GHz / 2×1 MB L2）是消费级双核顶峰之一。AM2 把内存换成 DDR2。2006 年 Conroe 上市后，X2 在整数和功耗上被正面超过，K8 双核的窗口只有一年多。",
       skus: [
-        {"date":"2007-08-20","name":"Athlon 64 X2 6400+","spec":"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W","gb":[],"r23":null},
+        {"date":"2007-08-20","name":"Athlon 64 X2 6400+","spec":"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
         {"date":"2005-05-31","name":"Athlon 64 X2 4800+","spec":"Toledo · 2.40 GHz · Socket 939","gb":[],"r23":null},
         {"date":"2005-08","name":"Athlon 64 X2 3800+","spec":"2 核 / 2 线程 · Socket 939","gb":[],"r23":null}
       ]
@@ -404,7 +410,7 @@ const DATA = {
       milestone: "2007-11 Phenom 是 AMD 第一颗原生四核（不是双模粘核）。K10 相对 K8 的 IPC 大约 +10–15%，共享 L3、HT 3.0。9950（2.60 GHz）是这一代桌面旗舰。上市即被 TLB errata 打断：BIOS 关掉快速路径后性能再掉一截，对上 Q6600/QX9650 几乎没有胜局。这一代口碑被缺陷改写，K10 的架构故事要等 Phenom II 才讲完。",
       skus: [
         {"date":"2008-07","name":"Phenom X4 9950","spec":"Agena · 4 核 / 4 线程 · 2.60 GHz · L3 2 MB · TDP 140 W · AM2+","gb":[],"r23":null},
-        {"date":"2007-11-19","name":"Phenom X4 9600","spec":"4 核 · 2.30 GHz · 首发原生四核","gb":[],"r23":null},
+        {"date":"2007-11-19","name":"Phenom X4 9600","spec":"4 核 · 2.30 GHz · 首发原生四核","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
         {"date":"2008-04","name":"Phenom X3 8750","spec":"3 核 / 3 线程 · 2.40 GHz · AM2+","gb":[],"r23":null}
       ]
     },
@@ -431,10 +437,10 @@ const DATA = {
       milestone: "2011-10 Bulldozer：一个模块两套整数、一套共享 FPU，官方叫 8 核，评测当 4 个「胖核」看。同频 IPC 相对 K10 不升反降，单线程明显弱于 Sandy Bridge（常见 20–30%）。8150 多核只能打平 2600K 的一部分负载。2012 Piledriver 8350/9590 把 IPC 拉回约 +10–15%，9590 靠 4.7/5.0 GHz 和 220 W 堆频率，被写成「最后的 FX」。Steamroller/Excavator 几乎没进桌面旗舰。这一代把 AM3+ 钉死四年，Ryzen 的「52% IPC」叙事正是对它而来。",
       skus: [
         {"date":"2013-06-11","name":"FX-9590","spec":"Vishera · 8 核 / 8 线程 · 4.70 / 5.00 GHz · L3 8 MB · TDP 220 W · AM3+","gb":[{"v":5,"sc":634,"mc":3020,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2012-10-23","name":"FX-8350","spec":"8 核 · 4.00 / 4.20 GHz · TDP 125 W","gb":[{"v":6,"sc":576,"mc":2361},{"v":5,"sc":573,"mc":2777}],"r23":[579,3803]},
-        {"date":"2011-10-12","name":"FX-8150","spec":"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer","gb":[{"v":5,"sc":512,"mc":2431,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2012-10","name":"FX-6300","spec":"6 整数核心（3 模块）· Piledriver · AM3+","gb":[],"r23":null},
-        {"date":"2012-10","name":"FX-4300","spec":"4 整数核心（2 模块）· Piledriver · AM3+","gb":[],"r23":null}
+        {"date":"2012-10-23","name":"FX-8350","spec":"8 核 · 4.00 / 4.20 GHz · TDP 125 W","gb":[{"v":6,"sc":576,"mc":2361},{"v":5,"sc":573,"mc":2777}],"r23":[579,3803],"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2011-10-12","name":"FX-8150","spec":"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer","gb":[{"v":5,"sc":512,"mc":2431,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2012-10","name":"FX-6300","spec":"6 整数核心（3 模块）· Piledriver · AM3+","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2012-10","name":"FX-4300","spec":"4 整数核心（2 模块）· Piledriver · AM3+","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -444,10 +450,10 @@ const DATA = {
       arch: [["微架构","Stars / Piledriver / Steamroller / Excavator"],["工艺","32 nm → 28 nm"],["插槽","FM1 / FM2 / FM2+"],["定位","CPU+核显一体"],["对手","入门独显 + Pentium/i3"]],
       milestone: "2011 Llano 把 K10 四核和能打的核显封进 FM1，A8-3850 让「无独显也能 1080p 低画质」第一次在桌面成立。CPU IPC 仍是 2010 年的 Stars，对上 Sandy Bridge 单核大约落后 20%+。Trinity/Richland 换 Piledriver，Kaveri（2014）上 Steamroller 和 HSA，Godavari A10-7890K（2016，4.1/4.3 GHz、95 W）是 FM2+ 收官。评论口径稳定：核显赢入门独显，CPU 只够办公。这条线与 FX 并行四年，Ryzen 到来后桌面 APU 才重新有单核故事（2400G 起）。",
       skus: [
-        {"date":"2016-02-16","name":"A10-7890K","spec":"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7","gb":[{"v":5,"sc":538,"mc":1411,"src":"CpuTronic"}],"r23":null},
-        {"date":"2014-01-14","name":"A10-7850K","spec":"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+","gb":[{"v":5,"sc":506,"mc":1541,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2011-06-30","name":"A8-3850","spec":"Llano · 4 核 · 2.90 GHz · FM1 · 核显 HD 6550D","gb":[],"r23":null},
-        {"date":"2011-06","name":"A6-3650","spec":"4 核 / 4 线程 · Llano · FM1","gb":[],"r23":null},
+        {"date":"2016-03（零售）","name":"A10-7890K","spec":"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7","gb":[{"v":5,"sc":538,"mc":1411,"src":"CpuTronic"}],"r23":null,"dateSource":"https://ir.amd.com/news-events/press-releases/detail/669/amd-enhances-its-desktop-processor-line-up-with-new-a10-7890k-and-athlontm-x4-880k-processors-delivering-superior-performance-features-and-near-silent-operation","launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2014-01-14","name":"A10-7850K","spec":"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+","gb":[{"v":5,"sc":506,"mc":1541,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2011-06-30","name":"A8-3850","spec":"Llano · 4 核 · 2.90 GHz · FM1 · 核显 HD 6550D","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2011-06","name":"A6-3650","spec":"4 核 / 4 线程 · Llano · FM1","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
         {"date":"2011-09","name":"A4-3400","spec":"2 核 / 2 线程 · Llano · FM1","gb":[],"r23":null}
       ]
     },
@@ -458,10 +464,10 @@ const DATA = {
       arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","AM4 / TR4"],["内存","DDR4 双通道 / TR 四通道"],["SMT","同时多线程回归"]],
       milestone: "2017-03-02。Zen 宣称相对 Excavator IPC +52%，评测整数大约 +50% 量级，单核追上 7700K 附近、多核 8 核 16 线程直接超过。1800X（3.6/4.0 GHz、95 W）把 8 核做进 500 美元档。Infinity Fabric + CCX（4 核一组）的跨 CCX 延迟成为新槽点。Threadripper 1950X 16 核打开 HEDT。AM4 承诺多代兼容。这一代把 AMD 从 FX 的口碑坑里拉出来，Intel 被迫在同年把 i7 改成 6 核。",
       skus: [
-        {"date":"2017-03-02","name":"Ryzen 7 1800X","spec":"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4","gb":[{"v":6,"sc":1167,"mc":5932},{"v":5,"sc":932,"mc":6344}],"r23":[969,9314]},
-        {"date":"2017-08-10","name":"Threadripper 1950X","spec":"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4","gb":[{"v":6,"sc":1181,"mc":8000,"src":"Geekbench Browser"},{"v":5,"sc":1040,"mc":11370,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2017-04-11","name":"Ryzen 5 1600X","spec":"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W","gb":[{"v":6,"sc":1167,"mc":5089,"src":"CPU-Monkey"},{"v":5,"sc":950,"mc":5220,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2017-07-27","name":"Ryzen 3 1200","spec":"4 核 / 4 线程 · Zen · AM4","gb":[],"r23":null}
+        {"date":"2017-03-02","name":"Ryzen 7 1800X","spec":"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4","gb":[{"v":6,"sc":1167,"mc":5932},{"v":5,"sc":932,"mc":6344}],"r23":[969,9314],"launchPrices":[{"cny":3999,"basis":"国行建议零售价","source":"cn-ryzen7-2017"}]},
+        {"date":"2017-08-10","name":"Threadripper 1950X","spec":"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4","gb":[{"v":6,"sc":1181,"mc":8000,"src":"Geekbench Browser"},{"v":5,"sc":1040,"mc":11370,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":8499,"basis":"国行预售标价","source":"cn-tr-2017"}]},
+        {"date":"2017-04-11","name":"Ryzen 5 1600X","spec":"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W","gb":[{"v":6,"sc":1167,"mc":5089,"src":"CPU-Monkey"},{"v":5,"sc":950,"mc":5220,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":1999,"basis":"国行建议零售价","source":"cn-ryzen5-2017"}]},
+        {"date":"2017-07-27","name":"Ryzen 3 1200","spec":"4 核 / 4 线程 · Zen · AM4","gb":[],"r23":null,"launchPrices":[{"cny":779,"basis":"国行首发标价","source":"cn-ryzen3-2017"}]}
       ]
     },
     {
@@ -471,8 +477,8 @@ const DATA = {
       arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 2000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2018-02-12","name":"Ryzen 5 2400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null},
-        {"date":"2018-02-12","name":"Ryzen 3 2200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[],"r23":null}
+        {"date":"2018-02-12","name":"Ryzen 5 2400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1299,"basis":"国行首发标价","source":"cn-apu-2018"}]},
+        {"date":"2018-02-12","name":"Ryzen 3 2200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":779,"basis":"国行首发标价","source":"cn-apu-2018"}]}
       ]
     },
     {
@@ -482,10 +488,10 @@ const DATA = {
       arch: [["微架构","Zen+"],["工艺","12 nm"],["插槽","AM4 / TR4"],["内存","DDR4-2933"],["缓存","更好的延迟"]],
       milestone: "2018-04。Zen+ 是 12 nm 优化，IPC 大约 +3–5%，频率和缓存延迟改善。2700X（3.7/4.3 GHz、105 W）Precision Boost 2 让加速更跟得上负载，游戏相对 1800X 大约 +10–12%。对上已经上市的 8700K 仍然单核落后。Threadripper 2990WX 32 核把 NUMA 式四 die 延迟问题公开化，评测常写成「核数够、跨 die 痛」。这一代没有架构故事，有的是价格和平台成熟。",
       skus: [
-        {"date":"2018-04-19","name":"Ryzen 7 2700X","spec":"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":1294,"mc":6789,"src":"CPU-Monkey"},{"v":5,"sc":1062,"mc":7100}],"r23":[1071,9971]},
-        {"date":"2018-08-13","name":"Threadripper 2990WX","spec":"32 核 / 64 线程 · 3.00 / 4.20 GHz · TDP 250 W","gb":[],"r23":null},
-        {"date":"2018-04-19","name":"Ryzen 5 2600X","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W","gb":[{"v":6,"sc":1287,"mc":5598,"src":"CPU-Monkey"},{"v":5,"sc":1052,"mc":5782,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2018-04-19","name":"Ryzen 5 2600","spec":"6 核 / 12 线程 · Zen+ · AM4","gb":[],"r23":null}
+        {"date":"2018-04-19","name":"Ryzen 7 2700X","spec":"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":1294,"mc":6789,"src":"CPU-Monkey"},{"v":5,"sc":1062,"mc":7100}],"r23":[1071,9971],"launchPrices":[{"cny":2699,"basis":"国行建议零售价","source":"cn-ryzen-2018"}]},
+        {"date":"2018-08-13","name":"Threadripper 2990WX","spec":"32 核 / 64 线程 · 3.00 / 4.20 GHz · TDP 250 W","gb":[],"r23":null,"launchPrices":[{"cny":13999,"basis":"国行建议零售价","source":"cn-tr-2018"}]},
+        {"date":"2018-04-19","name":"Ryzen 5 2600X","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W","gb":[{"v":6,"sc":1287,"mc":5598,"src":"CPU-Monkey"},{"v":5,"sc":1052,"mc":5782,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":1799,"basis":"国行建议零售价","source":"cn-ryzen-2018"}]},
+        {"date":"2018-04-19","name":"Ryzen 5 2600","spec":"6 核 / 12 线程 · Zen+ · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1599,"basis":"国行首发标价","source":"cn-2600"}]}
       ]
     },
     {
@@ -495,8 +501,8 @@ const DATA = {
       arch: [["微架构","Zen+"],["工艺","12 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 3000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2019-07-07","name":"Ryzen 5 3400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null},
-        {"date":"2019-07-07","name":"Ryzen 3 3200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[],"r23":null}
+        {"date":"2019-07-07","name":"Ryzen 5 3400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1199,"basis":"国行首发标价","source":"cn-3400g","chinaDate":"2019-09"}]},
+        {"date":"2019-07-07","name":"Ryzen 3 3200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -506,12 +512,12 @@ const DATA = {
       arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 12 nm I/O"],["插槽","AM4 / sTRX4"],["结构","Chiplet：CCD + cIOD"],["AVX","256-bit 满速"]],
       milestone: "2019-07。Zen 2 官方 IPC +15%，评测整数大约 +12–18%。Chiplet 把 7 nm 计算和 12 nm I/O 拆开，主流桌面第一次出现 16 核（3950X）。3900X 12 核在上市时就把 9900K 的多核甩开，单核仍略落后。Notebookcheck：3950X GB6 约 1840 / 11870。Threadripper 3990X 64 核把 HEDT 做成「半颗 EPYC」。跨 CCD 延迟仍在，游戏调度需要 BIOS 和 Windows 补丁。这一代是 AMD 在多核上确立默认选项的转折。",
       skus: [
-        {"date":"2019-11-25","name":"Ryzen 9 3950X","spec":"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":1840,"mc":11870},{"v":5,"sc":1408,"mc":14322,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2020-02-07","name":"Threadripper 3990X","spec":"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4","gb":[{"v":6,"sc":1614,"mc":13830,"src":"Geekbench Browser"}],"r23":null},
-        {"date":"2019-07-07","name":"Ryzen 9 3900X","spec":"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W","gb":[{"v":6,"sc":1714,"mc":10689,"src":"CPU-Monkey"},{"v":5,"sc":1300,"mc":12454,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2019-07-07","name":"Ryzen 5 3600","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W","gb":[{"v":6,"sc":1542,"mc":6784,"src":"CPU-Monkey"},{"v":5,"sc":1183,"mc":6821,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2019-07-07","name":"Ryzen 7 3700X","spec":"8 核 / 16 线程 · Zen 2 · AM4","gb":[],"r23":null},
-        {"date":"2020-05","name":"Ryzen 3 3300X","spec":"4 核 / 8 线程 · Zen 2 · AM4","gb":[],"r23":null}
+        {"date":"2019-11-25","name":"Ryzen 9 3950X","spec":"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":1840,"mc":11870},{"v":5,"sc":1408,"mc":14322,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":5749,"basis":"国行首发标价","source":"cn-3950x"}]},
+        {"date":"2020-02-07","name":"Threadripper 3990X","spec":"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4","gb":[{"v":6,"sc":1614,"mc":13830,"src":"Geekbench Browser"}],"r23":null,"launchPrices":[{"cny":29999,"basis":"国行首发标价","source":"cn-3990x"}]},
+        {"date":"2019-07-07","name":"Ryzen 9 3900X","spec":"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W","gb":[{"v":6,"sc":1714,"mc":10689,"src":"CPU-Monkey"},{"v":5,"sc":1300,"mc":12454,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":3999,"basis":"国行建议零售价","source":"cn-ryzen-2019"}]},
+        {"date":"2019-07-07","name":"Ryzen 5 3600","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W","gb":[{"v":6,"sc":1542,"mc":6784,"src":"CPU-Monkey"},{"v":5,"sc":1183,"mc":6821,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":1599,"basis":"国行建议零售价","source":"cn-ryzen-2019"}]},
+        {"date":"2019-07-07","name":"Ryzen 7 3700X","spec":"8 核 / 16 线程 · Zen 2 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":2599,"basis":"国行建议零售价","source":"cn-ryzen-2019"}]},
+        {"date":"2020-05","name":"Ryzen 3 3300X","spec":"4 核 / 8 线程 · Zen 2 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":899,"basis":"国行首发标价","source":"cn-3300x"}]}
       ]
     },
     {
@@ -521,9 +527,9 @@ const DATA = {
       arch: [["微架构","Zen 2"],["工艺","7 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 4000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2020-07-21","name":"Ryzen 7 4700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[],"r23":null},
-        {"date":"2020-07-21","name":"Ryzen 5 4600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[],"r23":null},
-        {"date":"2020-07-21","name":"Ryzen 3 4300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null}
+        {"date":"2020-07-21","name":"Ryzen 7 4700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]},
+        {"date":"2020-07（OEM） / 2022-04（零售）","name":"Ryzen 5 4600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"},{"status":"中国首发价未核实"}]},
+        {"date":"2020-07-21","name":"Ryzen 3 4300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
       ]
     },
     {
@@ -533,13 +539,13 @@ const DATA = {
       arch: [["微架构","Zen 3"],["工艺","TSMC 7 nm"],["插槽","AM4 / sWRX8"],["CCX","每 CCD 8 核共享 32 MB L3"],["X3D","5800X3D 3D V-Cache"]],
       milestone: "2020-11-05。Zen 3 官方 IPC +19%，每个 CCD 从两个 4 核 CCX 合成一个 8 核 CCX，L3 对游戏延迟的改善比纸面 IPC 更明显。Tom's Hardware：5950X 终于在单核上超过 Intel 的长期领先。CPU-Monkey R23 1644 / 28577；GB5 实验室约 1726 / 14239；GB6 约 2226。2022-04 5800X3D 把 64 MB 堆叠缓存放进 8 核，游戏帧率超过当时所有非 X3D 旗舰，开启「游戏买缓存」路线。AM4 在这一代收官，升级理由从核数变成单核+缓存。",
       skus: [
-        {"date":"2020-11-05","name":"Ryzen 9 5950X","spec":"16 核 / 32 线程 · 3.40 / 4.90 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":2226,"mc":13355},{"v":5,"sc":1726,"mc":14239}],"r23":[1644,28577]},
-        {"date":"2022-04-20","name":"Ryzen 7 5800X3D","spec":"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W","gb":[{"v":6,"sc":2104,"mc":11646,"src":"CPU-Monkey"},{"v":5,"sc":1622,"mc":10856}],"r23":[1452,14317]},
-        {"date":"2020-11-05","name":"Ryzen 9 5900X","spec":"12 核 / 24 线程 · 3.70 / 4.80 GHz · TDP 105 W","gb":[{"v":6,"sc":2200,"mc":null},{"v":5,"sc":1700,"mc":12839}],"r23":[1636,21642]},
-        {"date":"2020-11-05","name":"Ryzen 5 5600X","spec":"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W","gb":[{"v":6,"sc":2113,"mc":9281,"src":"CPU-Monkey"},{"v":5,"sc":1641,"mc":8177}],"r23":[1544,11120]},
-        {"date":"2020-11-05","name":"Ryzen 7 5800X","spec":"8 核 / 16 线程 · Zen 3 · AM4","gb":[],"r23":null},
-        {"date":"2022-04","name":"Ryzen 5 5600","spec":"6 核 / 12 线程 · Zen 3 · AM4","gb":[],"r23":null},
-        {"date":"2022-03-08","name":"Threadripper PRO 5995WX","spec":"64 核 / 128 线程 · Zen 3 · sWRX8","gb":[],"r23":null}
+        {"date":"2020-11-05","name":"Ryzen 9 5950X","spec":"16 核 / 32 线程 · 3.40 / 4.90 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":2226,"mc":13355},{"v":5,"sc":1726,"mc":14239}],"r23":[1644,28577],"launchPrices":[{"cny":6049,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
+        {"date":"2022-04-20","name":"Ryzen 7 5800X3D","spec":"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W","gb":[{"v":6,"sc":2104,"mc":11646,"src":"CPU-Monkey"},{"v":5,"sc":1622,"mc":10856}],"r23":[1452,14317],"launchPrices":[{"cny":3099,"basis":"国行首发标价","source":"cn-5800x3d"}]},
+        {"date":"2020-11-05","name":"Ryzen 9 5900X","spec":"12 核 / 24 线程 · 3.70 / 4.80 GHz · TDP 105 W","gb":[{"v":6,"sc":2200,"mc":null},{"v":5,"sc":1700,"mc":12839}],"r23":[1636,21642],"launchPrices":[{"cny":4099,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
+        {"date":"2020-11-05","name":"Ryzen 5 5600X","spec":"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W","gb":[{"v":6,"sc":2113,"mc":9281,"src":"CPU-Monkey"},{"v":5,"sc":1641,"mc":8177}],"r23":[1544,11120],"launchPrices":[{"cny":2129,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
+        {"date":"2020-11-05","name":"Ryzen 7 5800X","spec":"8 核 / 16 线程 · Zen 3 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":3199,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
+        {"date":"2022-04","name":"Ryzen 5 5600","spec":"6 核 / 12 线程 · Zen 3 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1359,"basis":"国行首发标价","source":"cn-5600"}]},
+        {"date":"2022-03-08","name":"Threadripper PRO 5995WX","spec":"64 核 / 128 线程 · Zen 3 · sWRX8","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
       ]
     },
     {
@@ -549,9 +555,9 @@ const DATA = {
       arch: [["微架构","Zen 3"],["工艺","7 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 5000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 7 5700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[],"r23":null},
-        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 5 5600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[],"r23":null},
-        {"date":"2021-04（OEM）","name":"Ryzen 3 5300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4 · OEM 产品","gb":[],"r23":null}
+        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 7 5700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"},{"cny":2599,"basis":"国行首发标价","source":"cn-apu-5000"}]},
+        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 5 5600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"},{"cny":1899,"basis":"国行首发标价","source":"cn-apu-5000"}]},
+        {"date":"2021-04（OEM）","name":"Ryzen 3 5300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4 · OEM 产品","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
       ]
     },
     {
@@ -561,13 +567,13 @@ const DATA = {
       arch: [["微架构","Zen 4"],["工艺","TSMC N5 CCD + N6 I/O"],["插槽","AM5 / sTR5"],["内存","DDR5"],["I/O","PCIe 5.0 · AVX-512"]],
       milestone: "2022-09-27。Zen 4 官方 IPC +13%，加上 5 nm 频率（7950X 加速 5.7 GHz），Digital Trends 测得相对 5950X 单核 R23 +31%、GB5 +25%。R23 约 2018 / 37182；GB5 约 2149 / 23764；GB6 约 2977 / 19221；GB7 单核 2592。AM5 换 LGA 1718、DDR5、PCIe 5.0，平台税一次付清。2023-02 7950X3D / 7800X3D 把 V-Cache 带上 AM5，7800X3D 成为 2023–2024 游戏默认推荐。Threadripper 7980X 64 核走 sTR5。能效比 5000 明显好，170 W TDP 是新的满载账单。",
       skus: [
-        {"date":"2022-09-27","name":"Ryzen 9 7950X","spec":"16 核 / 32 线程 · 4.50 / 5.70 GHz · L3 64 MB · TDP 170 W · AM5","gb":[{"v":7,"sc":2592,"mc":null},{"v":6,"sc":2977,"mc":19221},{"v":5,"sc":2149,"mc":23764}],"r23":[2018,37182]},
-        {"date":"2023-02-28","name":"Ryzen 9 7950X3D","spec":"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W","gb":[{"v":7,"sc":2527,"mc":null},{"v":6,"sc":2990,"mc":19642,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2311,"mc":24343,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2023-11-21","name":"Threadripper 7980X","spec":"64 核 / 128 线程 · 3.20 / 5.10 GHz · TDP 350 W · sTR5","gb":[{"v":7,"sc":2541,"mc":null}],"r23":null},
-        {"date":"2023-04-06","name":"Ryzen 7 7800X3D","spec":"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":7,"sc":2422,"mc":null},{"v":6,"sc":2731,"mc":14229},{"v":5,"sc":1920,"mc":12715,"src":"Technical City Geekbench 5.5"}],"r23":[1811,17762]},
-        {"date":"2022-09-27","name":"Ryzen 9 7900X","spec":"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W","gb":[{"v":7,"sc":2609,"mc":null},{"v":6,"sc":2946,"mc":18300,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2274,"mc":19987}],"r23":[2039,29480]},
-        {"date":"2022-09-27","name":"Ryzen 5 7600X","spec":"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W","gb":[{"v":7,"sc":2599,"mc":null},{"v":6,"sc":2846,"mc":12714,"src":"CPU-Monkey"},{"v":5,"sc":2205,"mc":11917}],"r23":[1967,15322]},
-        {"date":"2022-09-27","name":"Ryzen 7 7700X","spec":"8 核 / 16 线程 · Zen 4 · AM5","gb":[],"r23":null}
+        {"date":"2022-09-27","name":"Ryzen 9 7950X","spec":"16 核 / 32 线程 · 4.50 / 5.70 GHz · L3 64 MB · TDP 170 W · AM5","gb":[{"v":7,"sc":2592,"mc":null},{"v":6,"sc":2977,"mc":19221},{"v":5,"sc":2149,"mc":23764}],"r23":[2018,37182],"launchPrices":[{"cny":5499,"basis":"国行首发标价","source":"cn-ryzen-7000"}]},
+        {"date":"2023-02-28","name":"Ryzen 9 7950X3D","spec":"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W","gb":[{"v":7,"sc":2527,"mc":null},{"v":6,"sc":2990,"mc":19642,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2311,"mc":24343,"src":"Technical City Geekbench 5.5"}],"r23":null,"launchPrices":[{"cny":5299,"basis":"国行建议零售价","source":"cn-7950x3d"}]},
+        {"date":"2023-11-21","name":"Threadripper 7980X","spec":"64 核 / 128 线程 · 3.20 / 5.10 GHz · TDP 350 W · sTR5","gb":[{"v":7,"sc":2541,"mc":null}],"r23":null,"launchPrices":[{"cny":45999,"basis":"国行首发标价","source":"cn-tr-7000"}]},
+        {"date":"2023-04-06","name":"Ryzen 7 7800X3D","spec":"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":7,"sc":2422,"mc":null},{"v":6,"sc":2731,"mc":14229},{"v":5,"sc":1920,"mc":12715,"src":"Technical City Geekbench 5.5"}],"r23":[1811,17762],"launchPrices":[{"cny":3299,"basis":"国行首发标价","source":"cn-7800x3d"}]},
+        {"date":"2022-09-27","name":"Ryzen 9 7900X","spec":"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W","gb":[{"v":7,"sc":2609,"mc":null},{"v":6,"sc":2946,"mc":18300,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2274,"mc":19987}],"r23":[2039,29480],"launchPrices":[{"cny":4299,"basis":"国行首发标价","source":"cn-ryzen-7000"}]},
+        {"date":"2022-09-27","name":"Ryzen 5 7600X","spec":"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W","gb":[{"v":7,"sc":2599,"mc":null},{"v":6,"sc":2846,"mc":12714,"src":"CPU-Monkey"},{"v":5,"sc":2205,"mc":11917}],"r23":[1967,15322],"launchPrices":[{"cny":2249,"basis":"国行首发标价","source":"cn-ryzen-7000"}]},
+        {"date":"2022-09-27","name":"Ryzen 7 7700X","spec":"8 核 / 16 线程 · Zen 4 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":2999,"basis":"国行首发标价","source":"cn-ryzen-7000"}]}
       ]
     },
     {
@@ -577,10 +583,10 @@ const DATA = {
       arch: [["微架构","Zen 4 / Zen 4c"],["工艺","4 nm"],["插槽","AM5"],["内存","DDR5"],["核显","RDNA 3"]],
       milestone: "Ryzen 8000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。8500G / 8300G 使用 Zen 4 + Zen 4c；8600G / 8700G 使用 Zen 4。",
       skus: [
-        {"date":"2024-01-31","name":"Ryzen 7 8700G","spec":"8 核 / 16 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null},
-        {"date":"2024-01-31","name":"Ryzen 5 8600G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null},
-        {"date":"2024-01-31","name":"Ryzen 5 8500G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null},
-        {"date":"2024-01（公布；OEM 供货为 Q2）","name":"Ryzen 3 8300G","spec":"4 核 / 8 线程 · RDNA 3 核显 · AM5 · OEM 产品","gb":[],"r23":null}
+        {"date":"2024-01-31","name":"Ryzen 7 8700G","spec":"8 核 / 16 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":2499,"basis":"国行首发活动价","source":"cn-apu-8000"}]},
+        {"date":"2024-01-31","name":"Ryzen 5 8600G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":1699,"basis":"国行首发活动价","source":"cn-apu-8000"}]},
+        {"date":"2024-01-31","name":"Ryzen 5 8500G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":1329,"basis":"国行首发活动价","source":"cn-apu-8000"}]},
+        {"date":"2024-01（公布；OEM 供货为 Q2）","name":"Ryzen 3 8300G","spec":"4 核 / 8 线程 · RDNA 3 核显 · AM5 · OEM 产品","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
       ]
     },
     {
@@ -590,11 +596,11 @@ const DATA = {
       arch: [["微架构","Zen 5"],["工艺","TSMC N4X CCD + N6 I/O"],["插槽","AM5"],["AVX","满宽 AVX-512"]],
       milestone: "2024-08：9600X / 9700X 于 8 月 8 日上市，9900X / 9950X 于 8 月 15 日上市。11 月补充 9800X3D。均属 Zen 5；2025、2026 年的 X3D 扩展仍使用这一架构，下面按发布批次单列，不计作新的微架构世代。",
       skus: [
-        {"date":"2024-08-15","name":"Ryzen 9 9950X","spec":"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W","gb":[{"v":7,"sc":3034,"mc":25540},{"v":6,"sc":3385,"mc":21758},{"v":5,"sc":2548,"mc":23982,"src":"Technical City Geekbench 5.5"}],"r23":[2243,42103]},
-        {"date":"2024-11-07","name":"Ryzen 7 9800X3D","spec":"8 核 / 16 线程 · 4.70 / 5.20 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":7,"sc":2970,"mc":null},{"v":6,"sc":3315,"mc":18350}],"r23":[2087,22992]},
-        {"date":"2024-08-08","name":"Ryzen 5 9600X","spec":"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W","gb":[{"v":7,"sc":2918,"mc":14399},{"v":6,"sc":3343,"mc":15378,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2507,"mc":12840,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2024-08-15","name":"Ryzen 9 9900X","spec":"12 核 / 24 线程 · Zen 5 · AM5","gb":[],"r23":null},
-        {"date":"2024-08-08","name":"Ryzen 7 9700X","spec":"8 核 / 16 线程 · Zen 5 · AM5","gb":[],"r23":null}
+        {"date":"2024-08-15","name":"Ryzen 9 9950X","spec":"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W","gb":[{"v":7,"sc":3034,"mc":25540},{"v":6,"sc":3385,"mc":21758},{"v":5,"sc":2548,"mc":23982,"src":"Technical City Geekbench 5.5"}],"r23":[2243,42103],"launchPrices":[{"cny":4899,"basis":"国行首发标价","source":"cn-ryzen-9000-high"}]},
+        {"date":"2024-11-07","name":"Ryzen 7 9800X3D","spec":"8 核 / 16 线程 · 4.70 / 5.20 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":7,"sc":2970,"mc":null},{"v":6,"sc":3315,"mc":18350}],"r23":[2087,22992],"launchPrices":[{"cny":3799,"basis":"国行预售标价","source":"cn-9800x3d","note":"预售抵扣后 3699 元"}]},
+        {"date":"2024-08-08","name":"Ryzen 5 9600X","spec":"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W","gb":[{"v":7,"sc":2918,"mc":14399},{"v":6,"sc":3343,"mc":15378,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2507,"mc":12840,"src":"Technical City Geekbench 5.5"}],"r23":null,"launchPrices":[{"cny":1949,"basis":"国行建议零售价","source":"cn-ryzen-9000-low"}]},
+        {"date":"2024-08-15","name":"Ryzen 9 9900X","spec":"12 核 / 24 线程 · Zen 5 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":3399,"basis":"国行首发标价","source":"cn-ryzen-9000-high"}]},
+        {"date":"2024-08-08","name":"Ryzen 7 9700X","spec":"8 核 / 16 线程 · Zen 5 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":2549,"basis":"国行建议零售价","source":"cn-ryzen-9000-low"}]}
       ]
     },
     {
@@ -604,8 +610,8 @@ const DATA = {
       arch: [["微架构","Zen 5"],["插槽","AM5"],["内存","DDR5"],["缓存","第二代 3D V-Cache"]],
       milestone: "2025 年 3 月补充 12 核与 16 核 X3D 型号。双 CCD 设计中一个 CCD 带堆叠缓存；游戏调度与多核应用需要分别考虑。属于 Ryzen 9000 的产品扩展。",
       skus: [
-        {"date":"2025-03-12","name":"Ryzen 9 9950X3D","spec":"16 核 / 32 线程 · L3 128 MB · TDP 170 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html"},
-        {"date":"2025-03-12","name":"Ryzen 9 9900X3D","spec":"12 核 / 24 线程 · L3 128 MB · TDP 120 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html"}
+        {"date":"2025-03-12","name":"Ryzen 9 9950X3D","spec":"16 核 / 32 线程 · L3 128 MB · TDP 170 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html","launchPrices":[{"cny":5599,"basis":"国行建议零售价","source":"cn-ryzen-9000x3d"}]},
+        {"date":"2025-03-12","name":"Ryzen 9 9900X3D","spec":"12 核 / 24 线程 · L3 128 MB · TDP 120 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html","launchPrices":[{"cny":4599,"basis":"国行建议零售价","source":"cn-ryzen-9000x3d"}]}
       ]
     },
     {
@@ -615,9 +621,9 @@ const DATA = {
       arch: [["微架构","Zen 5"],["插槽","sTR5"],["内存","DDR5 RDIMM · 四通道"],["TDP","350 W"]],
       milestone: "2025 年 7 月 31 日开始供货。与 AM5 Ryzen 分列：平台采用 sTR5 与 RDIMM，适合需要更多核心、内存通道和 PCIe 通道的桌面工作负载。",
       skus: [
-        {"date":"2025-07-31","name":"Threadripper 9980X","spec":"64 核 / 128 线程 · 3.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[{"v":7,"sc":2725,"mc":null}],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html"},
-        {"date":"2025-07-31","name":"Threadripper 9970X","spec":"32 核 / 64 线程 · 4.00 / 5.40 GHz · TDP 350 W · sTR5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html"},
-        {"date":"2025-07-31","name":"Threadripper 9960X","spec":"24 核 / 48 线程 · 4.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html"}
+        {"date":"2025-07-31","name":"Threadripper 9980X","spec":"64 核 / 128 线程 · 3.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[{"v":7,"sc":2725,"mc":null}],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":40980,"basis":"国行建议零售价","source":"cn-tr-9000"}]},
+        {"date":"2025-07-31","name":"Threadripper 9970X","spec":"32 核 / 64 线程 · 4.00 / 5.40 GHz · TDP 350 W · sTR5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":20970,"basis":"国行建议零售价","source":"cn-tr-9000"}]},
+        {"date":"2025-07-31","name":"Threadripper 9960X","spec":"24 核 / 48 线程 · 4.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":12960,"basis":"国行建议零售价","source":"cn-tr-9000"}]}
       ]
     },
     {
@@ -627,8 +633,8 @@ const DATA = {
       arch: [["微架构","Zen 5"],["插槽","AM5"],["内存","DDR5"],["缓存","9850X3D 单 CCD；9950X3D2 双 CCD 堆叠"]],
       milestone: "9850X3D 于 2026 年 1 月 29 日上市，8 核 X3D 提升加速频率；9950X3D2 Dual Edition 于 4 月 22 日上市，两个 CCD 均配备堆叠缓存。这是同一架构的产品刷新，不能把 2024 年的首发年份当成整个系列的截止年份。",
       skus: [
-        {"date":"2026-01-29","name":"Ryzen 7 9850X3D","spec":"8 核 / 16 线程 · 最高 5.6 GHz · L3 96 MB · TDP 120 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9850x3d.html"},
-        {"date":"2026-04-22","name":"Ryzen 9 9950X3D2 Dual Edition","spec":"16 核 / 32 线程 · 4.30 / 5.60 GHz · L3 192 MB · TDP 200 W · AM5","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-launches-ryzen-9-9950x3d2-dual-edition-processor/"}
+        {"date":"2026-01-29","name":"Ryzen 7 9850X3D","spec":"8 核 / 16 线程 · 最高 5.6 GHz · L3 96 MB · TDP 120 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9850x3d.html","launchPrices":[{"cny":3699,"basis":"国行建议零售价","source":"cn-9850x3d"}]},
+        {"date":"2026-04-22","name":"Ryzen 9 9950X3D2 Dual Edition","spec":"16 核 / 32 线程 · 4.30 / 5.60 GHz · L3 192 MB · TDP 200 W · AM5","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-launches-ryzen-9-9950x3d2-dual-edition-processor/","launchPrices":[{"cny":6999,"basis":"国行建议零售价","source":"cn-9950x3d2"}]}
       ]
     },
     {
@@ -638,10 +644,10 @@ const DATA = {
       arch: [["微架构","Zen 5 / Zen 5c"],["插槽","AM5"],["内存","DDR5"],["核显","RDNA 3.5"],["NPU","XDNA 2 · 最高 50 TOPS"]],
       milestone: "2026 年 3 月 2 日公布桌面产品系列；AMD 宣布 OEM 整机从第二季度起供货，未在这份公告中给出具体月份。G 为 65 W，GE 为 35 W。此处日期指公布日期，不等于零售上市或整机供货日期。",
       skus: [
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450G","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 65 W · Radeon 860M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/"},
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450GE","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 35 W · Radeon 860M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/"},
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 440G","spec":"6 核 / 12 线程 · 2.00 / 4.80 GHz · 65 W · Radeon 840M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/"},
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 435G","spec":"6 核 / 12 线程 · 2.00 / 4.50 GHz · 65 W · Radeon 840M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/"}
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450G","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 65 W · Radeon 860M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]},
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450GE","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 35 W · Radeon 860M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]},
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 440G","spec":"6 核 / 12 线程 · 2.00 / 4.80 GHz · 65 W · Radeon 840M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]},
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 435G","spec":"6 核 / 12 线程 · 2.00 / 4.50 GHz · 65 W · Radeon 840M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]}
       ]
     }
   ],
@@ -923,10 +929,10 @@ const DATA = {
       arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 14 nm I/O"],["插槽","SP3"],["核心","最高 64"],["PCIe","128 条 4.0"]],
       milestone: "2019-08。Rome 把 chiplet 做成 8 个 8 核 CCD + 中央 I/O die，64 核 128 线程。IPC +15% 量级，PCIe 4.0 和 8 通道继续拉大与 Cascade Lake 的 I/O 差距。7742 / 7H12 是顶配。云厂商第一次能在单路里放下「一台虚拟化主机」。跨 CCD 延迟仍在，但核密度和通道数已经足够改写 TCO 表格。SP3 插槽两代兼容是采购加分。",
       skus: [
-        {"date":"2019-08-07","name":"EPYC 7742","spec":"64 核 / 128 线程 · 2.25 / 3.40 GHz · TDP 225 W · SP3","gb":[{"v":6,"sc":1278,"mc":13647}],"r23":null},
-        {"date":"2019-08-07","name":"EPYC 7642","spec":"48 核 / 96 线程 · 2.30 / 3.30 GHz · TDP 225 W","gb":[],"r23":null},
-        {"date":"2019-08-07","name":"EPYC 7502","spec":"32 核 / 64 线程 · Zen 2 · SP3","gb":[],"r23":null},
-        {"date":"2019-08-07","name":"EPYC 7302","spec":"16 核 / 32 线程 · Zen 2 · SP3","gb":[],"r23":null}
+        {"date":"2019-08-07","name":"EPYC 7742","spec":"64 核 / 128 线程 · 2.25 / 3.40 GHz · TDP 225 W · SP3","gb":[{"v":6,"sc":1278,"mc":13647}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2019-08-07","name":"EPYC 7642","spec":"48 核 / 96 线程 · 2.30 / 3.30 GHz · TDP 225 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2019-08-07","name":"EPYC 7502","spec":"32 核 / 64 线程 · Zen 2 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2019-08-07","name":"EPYC 7302","spec":"16 核 / 32 线程 · Zen 2 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -936,10 +942,10 @@ const DATA = {
       arch: [["微架构","Zen 3"],["工艺","TSMC 7 nm"],["插槽","SP3 末代"],["核心","最高 64"],["X","Milan-X 3D V-Cache"]],
       milestone: "2021-03-15 Milan。Zen 3 每 CCD 8 核共享 L3，IPC +19% 的桌面口径在服务器上同样成立。7763 64 核 / 280 W 是 SP3 收官旗舰。2022 Milan-X 把 3D V-Cache 堆进服务器，对技术计算和缓存敏感负载提升显著。对上 Ice Lake-SP 40 核，核数和通道继续领先，单核互有胜负。这是 AMD 在通用双路上变成「默认选项」的一代。",
       skus: [
-        {"date":"2021-03-15","name":"EPYC 7763","spec":"64 核 / 128 线程 · 2.45 / 3.50 GHz · TDP 280 W · SP3","gb":[{"v":6,"sc":1612,"mc":16042},{"v":5,"sc":1305,"mc":null}],"r23":null},
-        {"date":"2022-03-21","name":"EPYC 7773X","spec":"Milan-X · 64 核 · 3D V-Cache · TDP 280 W","gb":[],"r23":null},
-        {"date":"2021-03-15","name":"EPYC 7543","spec":"32 核 / 64 线程 · Zen 3 · SP3","gb":[],"r23":null},
-        {"date":"2021-03-15","name":"EPYC 7313","spec":"16 核 / 32 线程 · Zen 3 · SP3","gb":[],"r23":null}
+        {"date":"2021-03-15","name":"EPYC 7763","spec":"64 核 / 128 线程 · 2.45 / 3.50 GHz · TDP 280 W · SP3","gb":[{"v":6,"sc":1612,"mc":16042},{"v":5,"sc":1305,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2022-03-21","name":"EPYC 7773X","spec":"Milan-X · 64 核 · 3D V-Cache · TDP 280 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2021-03-15","name":"EPYC 7543","spec":"32 核 / 64 线程 · Zen 3 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2021-03-15","name":"EPYC 7313","spec":"16 核 / 32 线程 · Zen 3 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -949,11 +955,11 @@ const DATA = {
       arch: [["微架构","Zen 4"],["工艺","TSMC N5 CCD + N6 I/O"],["插槽","SP5"],["核心","最高 96"],["内存","12 通道 DDR5 · PCIe 5.0 · CXL"]],
       milestone: "2022-11-10 Genoa。96 核 192 线程、12 通道 DDR5、PCIe 5.0、CXL，SP5 新插座。IPC 相对 Milan 大约 +13% 加频率。9654（2.4/3.7 GHz、360 W）是通用旗舰。Genoa-X 再堆 V-Cache。Tom's Hardware：5 nm 数据中心 x86 第一次。对上 Sapphire Rapids 56 核，核密度和通道数继续压着打。12 通道把内存带宽写成规格的一部分，不再是「8 通道也够」。",
       skus: [
-        {"date":"2022-11-10","name":"EPYC 9654","spec":"96 核 / 192 线程 · 2.40 / 3.70 GHz · L3 384 MB · TDP 360 W · SP5","gb":[{"v":6,"sc":1981,"mc":21232}],"r23":null},
-        {"date":"2022-11-10","name":"EPYC 9554","spec":"64 核 / 128 线程 · 3.10 / 3.75 GHz · TDP 360 W","gb":[],"r23":null},
-        {"date":"2022-11-10","name":"EPYC 9454","spec":"48 核 / 96 线程 · Zen 4 · SP5","gb":[],"r23":null},
-        {"date":"2022-11-10","name":"EPYC 9354","spec":"32 核 / 64 线程 · Zen 4 · SP5","gb":[],"r23":null},
-        {"date":"2022-11-10","name":"EPYC 9124","spec":"16 核 / 32 线程 · Zen 4 · SP5","gb":[],"r23":null}
+        {"date":"2022-11-10","name":"EPYC 9654","spec":"96 核 / 192 线程 · 2.40 / 3.70 GHz · L3 384 MB · TDP 360 W · SP5","gb":[{"v":6,"sc":1981,"mc":21232}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2022-11-10","name":"EPYC 9554","spec":"64 核 / 128 线程 · 3.10 / 3.75 GHz · TDP 360 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2022-11-10","name":"EPYC 9454","spec":"48 核 / 96 线程 · Zen 4 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2022-11-10","name":"EPYC 9354","spec":"32 核 / 64 线程 · Zen 4 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2022-11-10","name":"EPYC 9124","spec":"16 核 / 32 线程 · Zen 4 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -986,11 +992,11 @@ const DATA = {
       arch: [["微架构","Zen 5"],["工艺","TSMC N4X"],["插槽","SP5"],["核心","最高 128"],["AVX","满宽 AVX-512"]],
       milestone: "2024-10 Turin。Zen 5 128 核（9755，2.7/4.1 GHz、512 MB L3、500 W）把满血 P 核密度再推一档。StorageReview：GB6 单核 1641 / 多核 11800（GB 对超高核数扩展有限）；R23 多核 131846 / 单核 1400。对上 128 核 Bergamo，整数压缩类负载可到约 2 倍（更高频率+更大 L3+Zen 5 IPC）。9575F 把 64 核推到 5.0 GHz。SP5 插槽两代兼容。500 W 把机柜供电写成规格。",
       skus: [
-        {"date":"2024-10-10","name":"EPYC 9755","spec":"128 核 / 256 线程 · 2.70 / 4.10 GHz · L3 512 MB · TDP 500 W · SP5","gb":[{"v":6,"sc":1641,"mc":11800}],"r23":[1400,131846]},
-        {"date":"2024-10-10","name":"EPYC 9655","spec":"96 核 / 192 线程 · 2.50 / 4.50 GHz · TDP 400 W","gb":[],"r23":null},
-        {"date":"2024-10-10","name":"EPYC 9575F","spec":"64 核 / 128 线程 · 3.30 / 5.00 GHz · TDP 400 W · 高频","gb":[{"v":6,"sc":1865,"mc":13219}],"r23":[1052,111149]},
-        {"date":"2024-10-10","name":"EPYC 9355","spec":"32 核 / 64 线程 · Zen 5 · SP5","gb":[],"r23":null},
-        {"date":"2024-10-10","name":"EPYC 9255","spec":"24 核 / 48 线程 · Zen 5 · SP5","gb":[],"r23":null}
+        {"date":"2024-10-10","name":"EPYC 9755","spec":"128 核 / 256 线程 · 2.70 / 4.10 GHz · L3 512 MB · TDP 500 W · SP5","gb":[{"v":6,"sc":1641,"mc":11800}],"r23":[1400,131846],"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2024-10-10","name":"EPYC 9655","spec":"96 核 / 192 线程 · 2.50 / 4.50 GHz · TDP 400 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2024-10-10","name":"EPYC 9575F","spec":"64 核 / 128 线程 · 3.30 / 5.00 GHz · TDP 400 W · 高频","gb":[{"v":6,"sc":1865,"mc":13219}],"r23":[1052,111149],"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2024-10-10","name":"EPYC 9355","spec":"32 核 / 64 线程 · Zen 5 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2024-10-10","name":"EPYC 9255","spec":"24 核 / 48 线程 · Zen 5 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -1000,8 +1006,8 @@ const DATA = {
       arch: [["微架构","Zen 5c"],["工艺","TSMC N3E"],["插槽","SP5"],["核心","最高 192"],["定位","云密度"]],
       milestone: "2024-10 Turin Dense 用 Zen 5c 做到 192 核（9965，2.25/3.7 GHz、384 MB L3、500 W）。StorageReview GB6 1453 / 11199——单核低于 9755，多核在 GB 里也不按 192 核线性涨，说明这类负载的扩展墙。卖点是虚拟机密度和每瓦线程，不是 Cinebench 单核。9845 160 核、9825 144 核填中间档。和 9755 的分工：要单核和 AVX 选 Turin，要线程密度选 Dense。",
       skus: [
-        {"date":"2024-10-10","name":"EPYC 9965","spec":"192 核 / 384 线程 · 2.25 / 3.70 GHz · L3 384 MB · TDP 500 W · Zen 5c","gb":[{"v":6,"sc":1453,"mc":11199}],"r23":null},
-        {"date":"2024-10-10","name":"EPYC 9845","spec":"160 核 / 320 线程 · 2.10 / 3.70 GHz · TDP 390 W","gb":[],"r23":null}
+        {"date":"2024-10-10","name":"EPYC 9965","spec":"192 核 / 384 线程 · 2.25 / 3.70 GHz · L3 384 MB · TDP 500 W · Zen 5c","gb":[{"v":6,"sc":1453,"mc":11199}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
+        {"date":"2024-10-10","name":"EPYC 9845","spec":"160 核 / 320 线程 · 2.10 / 3.70 GHz · TDP 390 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
       ]
     },
     {
@@ -1017,6 +1023,39 @@ const DATA = {
       ]
     }
   ]
+};
+
+// 中国大陆发布价格来源：官方公告、厂商供稿、发布会现场记录及首发商品页面的存档。
+const PRICE_SOURCES = {
+  "cn-ryzen7-2017": "https://www.gamersky.com/hardware/201702/871614.shtml",
+  "cn-ryzen5-2017": "https://www.geekpark.net/news/218235",
+  "cn-ryzen3-2017": "https://tech.sina.com.cn/roll/2017-07-29/doc-ifyinryq6828425.shtml",
+  "cn-tr-2017": "https://www.itheat.com/view/3094.html",
+  "cn-apu-2018": "https://m.ithome.com/html/347421.htm",
+  "cn-ryzen-2018": "https://www.itheat.com/view/5056.html",
+  "cn-2600": "https://www.ithome.com/0/355/293.htm",
+  "cn-tr-2018": "https://news.mydrivers.com/1/589/589722.htm",
+  "cn-ryzen-2019": "https://news.mydrivers.com/blog/20190527.htm",
+  "cn-3950x": "https://news.mydrivers.com/1/659/659110.htm",
+  "cn-3990x": "https://diy.pconline.com.cn/13370465.html",
+  "cn-3300x": "https://news.mydrivers.com/blog/20200511.htm",
+  "cn-3400g": "https://tech.ifeng.com/c/7pg1isPuVCn",
+  "cn-ryzen-2020": "https://www.anzhuo.cn/news/p_43119",
+  "cn-5800x3d": "https://news.zol.com.cn/790/7907760.html",
+  "cn-5600": "https://post.smzdm.com/p/az6p9qwo/",
+  "cn-apu-5000": "https://diy.zol.com.cn/772/7729304.html",
+  "cn-ryzen-7000": "https://www.itheat.com/index.php/view/33678.html",
+  "cn-7950x3d": "https://www.ithome.com/0/676/477.htm",
+  "cn-7800x3d": "https://www.ithome.com/0/683/647.htm",
+  "cn-tr-7000": "https://www.ithome.com/0/735/572.htm",
+  "cn-apu-8000": "https://beareyes.com.cn/2/lib/202401/31/20240131010.htm",
+  "cn-ryzen-9000-low": "https://www.gamersky.com/hardware/202408/1798933.shtml",
+  "cn-ryzen-9000-high": "https://www.ithome.com/0/788/528.htm",
+  "cn-9800x3d": "https://news.zol.com.cn/914/9141043.html",
+  "cn-ryzen-9000x3d": "https://www.sina.cn/news/detail/5143331626288634.html",
+  "cn-tr-9000": "https://www.ithome.com/0/871/576.htm",
+  "cn-9850x3d": "https://www.ithome.com/0/917/682.htm",
+  "cn-9950x3d2": "https://www.amd.com/zh-cn/newsroom/press-releases/2026-4-22-amd-launches-ryzen-9-9950x3d2-dual-edition-processor.html"
 };
 
 function fmt(n) {
@@ -1064,9 +1103,20 @@ function scoreBox(sku) {
 function archList(arr) {
   return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
 }
+function launchPriceBox(sku, index) {
+  // 多个上市日期的价格按索引对应；OEM 首发与后续零售价分别保存。
+  const price = sku.launchPrices?.[index];
+  if (!price) return `<div class="date-price price-missing">中国首发价未核实</div>`;
+  const source = PRICE_SOURCES[price.source];
+  const label = price.cny != null ? `¥${fmt(price.cny)}` : price.status;
+  const value = source
+    ? `<a href="${source}" target="_blank" rel="noopener noreferrer">${label}</a>`
+    : label;
+  return `<div class="date-price${price.cny == null ? " price-missing" : ""}"><span class="${price.cny != null ? "price-value" : "price-status"}">${value}</span>${price.basis ? `<span class="price-basis">${price.basis}</span>` : ""}${price.chinaDate ? `<span class="price-basis">国行 ${price.chinaDate}</span>` : ""}${price.note ? `<span class="price-basis">${price.note}</span>` : ""}</div>`;
+}
 function dateBox(sku) {
-  // OEM 与零售日期各占一组，日期和说明分行，防止说明撑宽整列。
-  return sku.date.split(/\s+\/\s+/).map(entry => {
+  // 每组第一行只放日期，价格紧随其后，上市说明另起一行。
+  return sku.date.split(/\s+\/\s+/).map((entry, index) => {
     const match = entry.match(/^(?:约\s*)?(\d{4}(?:-\d{2}){0,2})(.*)$/);
     const date = match ? match[1] : "—";
     const note = match
@@ -1075,7 +1125,7 @@ function dateBox(sku) {
     const label = sku.dateSource
       ? `<a href="${sku.dateSource}" target="_blank" rel="noopener noreferrer">${date}</a>`
       : date;
-    return `<div class="date-entry"><div class="date">${label}</div>${note ? `<div class="date-note">${note}</div>` : ""}</div>`;
+    return `<div class="date-entry"><div class="date">${label}</div>${launchPriceBox(sku, index)}${note ? `<div class="date-note">${note}</div>` : ""}</div>`;
   }).join("");
 }
 function matchQuery(gen, q) {
