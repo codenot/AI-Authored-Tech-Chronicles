@@ -1,0 +1,937 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="沿 AS 边界、BGP 与运营商线路，建立 VPS 网络选购的判断依据。">
+<title>买 VPS 前，先看懂 ASN：商家说的“线路优化”到底优化了什么 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<link rel="stylesheet" href="../assets/css/technical.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices technical theme-debt">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">网络与认证 / 系列目录</a><a href="../ai-programming-practices/index.html#research">研究资料</a></nav>
+</div></header>
+
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">网络与认证</a> / 第 1 篇</p>
+
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>网络与认证</span><span>CHAPTER 01</span></p>
+<h1>买 VPS 前，先看懂 ASN<span class="title-detail">商家说的“线路优化”到底优化了什么</span></h1>
+<p class="lead">沿 AS 边界、BGP 与运营商线路，建立 VPS 网络选购的判断依据。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-07-30">2026-07-30</time></span><span>第 1 / 1 篇</span><span>网页整理于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">01</span><p class="guide-label">阅读路径</p>
+
+<nav>
+<a href="#section-1"><span>01</span>什么是 AS<span aria-hidden="true">↗</span></a><a href="#section-4"><span>02</span>普通线路差在哪里，以及怎样选择<span aria-hidden="true">↗</span></a><a href="#section-6"><span>03</span>参考资料<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout">
+<article class="article-body">
+
+<figure class="native-figure">
+<div class="figure-heading"><span class="figure-label">阅读概览 / 01</span><strong>一次访问跨越多个 AS</strong></div><ol class="overview-flow "><li><span>01</span><strong>终端与接入网络</strong><small>进入运营商 AS</small></li>
+<li><span>02</span><strong>AS 间连接</strong><small>Transit / Peering</small></li>
+<li><span>03</span><strong>跨境与骨干</strong><small>路由策略决定路径</small></li>
+<li><span>04</span><strong>VPS 所在 AS</strong><small>到达目标网络</small></li>
+</ol>
+<figcaption>依据本篇原文整理；具体实现、状态转换与取舍见正文。</figcaption>
+</figure>
+<div class="article-opening"><p>过去一个月，为了选一台网络合适的 VPS，我陆续花了几百元，也查了大量资料。</p>
+
+<p>真正让人困惑的不是 CPU、内存和硬盘，而是商家对网络的描述：</p>
+
+<ul>
+<li>国际线路；</li>
+
+<li>CN2、CN2 GIA、CN2 GT；</li>
+
+<li>三网优化、三网 CMI；</li>
+
+<li>联通 9929、移动 CMIN2；</li>
+
+<li>BGP 多线、精品网、直连线路。</li>
+
+</ul>
+
+<p>这些名称看起来都与“更快”有关，但它们究竟优化了什么？一台普通国际线路的 VPS，实际 <code>ping</code> 值有时也很好，为什么“优化线路”还要贵几倍？</p>
+
+<p>问题的根源不在于商家的名词太多，而在于没有先弄清互联网最基本的组成方式。</p>
+
+<p>互联网并不是一张由某个机构统一管理的巨型网络。它是由许多独立网络连接起来的“网络之网”。这些独立网络就是 <strong>AS</strong>。理解 AS 之后，CN2、CMI、Peering 和国际线路等名词才能落到同一张地图上。</p>
+
+<p>本文从四个问题展开：</p>
+
+<ol>
+<li>什么是 AS？</li>
+
+<li>AS 之间怎样通信？</li>
+
+<li>常见 ASN 和 VPS 商家术语分别指什么？</li>
+
+<li>普通线路差在哪里，应该怎样比较和选择？</li>
+
+</ol>
+
+<hr>
+</div>
+<section class="essay-section" aria-labelledby="section-1">
+<h2 id="section-1">一、什么是 AS</h2>
+
+<h3 id="section-1-1">1.1 从一次普通的网页访问说起</h3>
+
+<p>家里的电脑访问一台海外 VPS 时，数据并不是直接从电脑“飞到”服务器。它需要依次经过多个网络：</p>
+
+
+<figure class="native-figure static-diagram">
+<div class="figure-heading"><span class="figure-label">原文图解 / 1</span><strong>流程与状态关系</strong></div><div class="diagram-scroll" role="region" aria-label="可横向滚动的流程图" tabindex="0"><img style="width:1092px;min-width:1092px" src="../assets/images/sci/vps-asn-1.svg" alt="原文流程与状态关系；完整节点与连接见图解源文本"></div><figcaption>保留原文节点与连接，小屏可横向滚动查看。</figcaption>
+<details class="diagram-source"><summary>查看图解源文本</summary>
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>mermaid</span></div><pre><code class="language-mermaid">flowchart LR
+    A[&quot;家庭路由器&quot;] --&gt; B[&quot;本地接入网&quot;]
+    B --&gt; C[&quot;国内骨干网&quot;]
+    C --&gt; D[&quot;国际网络&quot;]
+    D --&gt; E[&quot;VPS 所在网络&quot;]
+    E --&gt; F[&quot;目标 VPS&quot;]
+</code></pre>
+</div></details>
+</figure>
+<p>这些网络可能分别属于不同运营商，也可能采用完全不同的内部结构和选路策略。</p>
+
+<p>例如，中国电信需要决定用户流量从哪个国际出口离开；海外运营商需要决定流量经过哪条海缆、在哪座城市交给下一个网络；VPS 所在网络则要决定从哪个上游接收流量。</p>
+
+<p>要让这些独立网络互相识别，首先需要给每个网络划定一个路由管理边界。这就是 AS。</p>
+
+<h3 id="section-1-2">1.2 AS 是一个对外统一选路的网络</h3>
+
+<p>AS 是 Autonomous System 的缩写，中文译为“自治系统”。根据 <a href="https://www.rfc-editor.org/rfc/rfc4271.html">RFC 4271</a> 的定义，它是一组处于同一技术管理体系下、对外呈现一致路由策略的网络和路由器。</p>
+
+<p>这个定义包含两个重点：</p>
+
+<ol>
+<li><strong>内部由自己管理</strong>：使用什么路由器、怎样连接各城市、内部怎样选路，其他 AS 不需要知道；</li>
+
+<li><strong>对外呈现统一策略</strong>：它需要告诉其他网络“哪些 IP 地址可以通过我到达”，以及“我愿意把哪些流量转交给谁”。</li>
+
+</ol>
+
+<p>因此，AS 不是一台路由器，也不一定是一家公司。它是一个<strong>路由策略域</strong>。</p>
+
+<p>大型运营商通常拥有多个 AS。一家公司可以根据公众互联网、政企业务、国际网络或历史网络划分不同的路由策略域。反过来，一家小型 VPS 商家也可能没有自己的 AS，而是直接使用上游机房提供的 IP 和网络。</p>
+
+<h3 id="section-1-3">1.3 ASN 是 AS 的编号</h3>
+
+<p>每个需要在公网 BGP 中独立运行的 AS，都需要一个唯一编号，称为 ASN（Autonomous System Number）。常见写法是在编号前加上 <code>AS</code>：</p>
+
+<ul>
+<li><code>AS4134</code>；</li>
+
+<li><code>AS4809</code>；</li>
+
+<li><code>AS58453</code>。</li>
+
+</ul>
+
+<p>ASN 由全球区域互联网注册管理机构体系分配。编号只是标识，没有等级关系。<code>AS4809</code> 不比 <code>AS4134</code> 高一级，也不能只根据数字大小判断网络规模和质量。</p>
+
+<h3 id="section-1-4">1.4 IP 与 AS 到底是什么关系</h3>
+
+<p>入门时经常听到“每个 IP 都属于一个 AS”。这句话可以帮助建立直觉，但不够严谨。</p>
+
+<p>互联网路由的基本单位不是单个 IP，而是 <strong>IP 前缀</strong>。例如：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>text</span></div><pre><code class="language-text">146.88.129.0/24
+</code></pre>
+</div><p>这个前缀包含从 <code>146.88.129.0</code> 到 <code>146.88.129.255</code> 的一组 IPv4 地址。某个 AS 通过 BGP 向外宣布：“这一段地址可以从我这里到达。”位于 BGP 路径末端的 AS，称为这段前缀的<strong>起源 AS（Origin AS）</strong>。</p>
+
+<p>所以，更准确的关系是：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>text</span></div><pre><code class="language-text">目标 IP
+  -&gt; 匹配到一个公网 IP 前缀
+  -&gt; 该前缀由一个或多个起源 AS 发布
+  -&gt; 其他 AS 学习如何到达这个前缀
+</code></pre>
+</div><p>IP 地址的注册持有者、BGP 起源 AS 和实际销售 VPS 的公司，也可能不是同一主体。商家租用上游网络的地址时，这种情况十分常见。</p>
+
+<h3 id="section-1-5">1.5 互联网本来就是“很多小网络互联”</h3>
+
+<p>过去有人把中国互联网概括为一个“巨大的局域网”。从 AS 的角度看，这种描述并不准确。</p>
+
+<p>无论中国境内还是全球互联网，基础结构都是不同网络之间的互联。家庭宽带、城域网、骨干网、内容网络、云服务商和国际运营商分别管理自己的网络，再通过路由协议交换可达性。</p>
+
+<p>网络访问控制、跨境管理和运营许可是另外一个层面的问题，不会改变互联网由多个 AS 互联而成这一基本事实。</p>
+
+<p>中国电信、中国联通、中国移动和中国广电是普通用户最常接触的基础电信运营商，但这不代表中国只有四个 AS。云厂商、内容平台、高校和科研机构也可以拥有自己的 ASN 和骨干网络；它们仍需要与其他运营商互联，才能让用户访问到自己的服务。</p>
+
+</section>
+
+<section class="essay-section" aria-labelledby="section-2">
+<h2 id="section-2">二、AS 之间是怎样通信的</h2>
+
+<p>理解了 AS，还需要回答一个更实际的问题：一台中国电脑怎样知道，前往海外 VPS 的数据应该交给哪个网络？</p>
+
+<p>答案由路由表和 BGP 共同给出。</p>
+
+<h3 id="section-2-1">2.1 路由表：为数据寻找下一站</h3>
+
+<p>路由器收到一个数据包后，会查看目标 IP，再查询自己的路由表。路由表可以简化为一组规则：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>text</span></div><pre><code class="language-text">如果目标属于前缀 A，把数据交给下一跳 X；
+如果目标属于前缀 B，把数据交给下一跳 Y；
+如果没有更具体的匹配，使用默认路由 Z。
+</code></pre>
+</div><p>路由器使用“最长前缀匹配”选择最具体的规则。它不需要知道数据包的完整旅程，只需要知道下一站应该交给谁。</p>
+
+<p>这种转发方式与快递不同：数据包出发时并没有写好完整的中转站列表。每一段网络都根据自己的路由表继续作出决定。</p>
+
+<h3 id="section-2-2">2.2 BGP：AS 之间交换“哪里可以到达”</h3>
+
+<p>BGP（Border Gateway Protocol，边界网关协议）是 AS 之间交换路由信息的协议。</p>
+
+<p>当一个 AS 发布某段 IP 前缀时，邻居 AS 会学习这条路由，再根据策略决定是否继续告诉其他邻居。路由信息由此逐步传播到互联网的其他部分。</p>
+
+<p>一条简化的 BGP 路由可能是：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>text</span></div><pre><code class="language-text">目标前缀: 146.88.129.0/24
+AS_PATH:  58453 3491 963
+</code></pre>
+</div><p>这表示从当前观察位置到目标前缀，需要沿 BGP 路径经过 <code>AS58453</code>、<code>AS3491</code>，最终到达起源 <code>AS963</code>。</p>
+
+<p><code>AS_PATH</code> 还有一个重要作用：防止路由循环。如果一个 AS 在收到的路径中发现了自己的 ASN，就知道这条路由已经绕回自己，不应继续采用。</p>
+
+<h3 id="section-2-3">2.3 BGP 选择的不是“最快路径”</h3>
+
+<p>BGP 解决的是“数据可以从哪里到达”，而不是“哪条路径延迟最低”。</p>
+
+<p>一个网络同时收到多条路径时，通常会综合考虑：</p>
+
+<ul>
+<li>哪条路径来自自己的客户；</li>
+
+<li>哪条路径来自免费或低成本的互联；</li>
+
+<li>网络管理员设置的本地优先级；</li>
+
+<li><code>AS_PATH</code> 长度；</li>
+
+<li>故障切换与流量调度策略。</li>
+
+</ul>
+
+<p>商业成本往往比物理距离更早进入选路决策。因此，东京 VPS 的数据可能先去美国再回到亚洲；一条只经过两个 AS 的路径，也可能比经过四个 AS 的路径更拥塞。</p>
+
+<p>这正是 VPS “绕路”现象的来源：路径在 BGP 策略上合理，但在地理距离和用户体验上未必理想。</p>
+
+<h3 id="section-2-4">2.4 Upstream、Downstream 与 IP Transit</h3>
+
+<p>AS 之间虽然在编号上没有高低级，但在商业关系上并不平级。</p>
+
+<p>假设一家 VPS 网络没有能力与全球所有网络分别连接。它可以向大型运营商购买“访问整个互联网”的服务，这项服务称为 <strong>IP Transit</strong>。</p>
+
+<p>在这段关系中：</p>
+
+<ul>
+<li>出售互联网可达性的网络是 <strong>Upstream（上游）</strong>；</li>
+
+<li>购买服务的 VPS 网络是上游的 <strong>Downstream 或 Customer（下游/客户）</strong>；</li>
+
+<li>上游不仅告诉客户自己的路由，还帮助客户到达其他网络。</li>
+
+</ul>
+
+<p>一个 VPS 网络可以同时购买多个上游。这样既能增加可达性，也能在某条链路故障时切换。但“多上游”不等于一定更快，因为最终仍取决于路由策略、端口容量和拥塞情况。</p>
+
+<h3 id="section-2-5">2.5 Peering：两个网络直接交换彼此流量</h3>
+
+<p>如果两个网络之间流量很大，每次都绕过第三方 Transit，不仅成本高，路径也可能更长。它们可以建立 Peering（对等互联），直接交换双方及各自客户的流量。</p>
+
+<p>Peering 与 Transit 的主要区别是：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>互联方式</th>
+<th>能到达的范围</th>
+<th>常见商业关系</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>IP Transit</td>
+<td>上游帮助客户到达整个互联网</td>
+<td>客户向上游付费</td>
+</tr>
+
+<tr>
+<td>Peering</td>
+<td>通常只交换双方及双方客户的流量</td>
+<td>可免费，也可付费</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>Peering 不是“两个 ASN 之间接了一根线”这么简单。双方还需要约定接入地点、端口容量、可发布的路由和流量比例。</p>
+
+<h3 id="section-2-6">2.6 IX：让许多 AS 集中互联的交换中心</h3>
+
+<p>IX 或 IXP 是 Internet Exchange Point 的缩写，即互联网交换中心。</p>
+
+<p>它通常提供一套共享的二层交换网络，让多家 AS 在同一个地点建立 Peering。这样，每家网络不必分别铺设大量点对点线路，就能更方便地与其他成员互联。</p>
+
+<p>需要区分两个概念：</p>
+
+<ul>
+<li><strong>IX 是互联设施和场所</strong>；</li>
+
+<li><strong>Peering 是网络之间的路由关系</strong>。</li>
+
+</ul>
+
+<p>两家网络同时接入一个 IX，不代表它们一定会互相交换流量。是否建立 Peering，仍由双方策略决定。</p>
+
+<h3 id="section-2-7">2.7 POP：运营商在一座城市的网络落点</h3>
+
+<p>POP 是 Point of Presence 的缩写，可以理解为某个网络在一座城市或机房中的服务节点。</p>
+
+<p>香港、东京、新加坡、洛杉矶等城市拥有大量运营商 POP、数据中心、海缆资源和 IX，所以经常出现在 VPS 宣传中。网络在这些地点拥有 POP，意味着它有更多建立互联的可能，但不表示所有线路都会自动变好。</p>
+
+</section>
+
+<section class="essay-section" aria-labelledby="section-3">
+<h2 id="section-3">三、常见 ASN 与 VPS 商家术语</h2>
+
+<p>建立了 AS、BGP 和网络互联的基础后，再看 VPS 商家的线路名称就容易得多。</p>
+
+<h3 id="section-3-1">3.1 中国用户经常遇到的 ASN</h3>
+
+<p>下表只列出 VPS 路由中常见的骨干和国际网络，不代表运营商拥有的全部 ASN。</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>体系</th>
+<th style="text-align:right">ASN</th>
+<th>公开名称</th>
+<th>常见称呼</th>
+<th>主要角色</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>中国电信</td>
+<td style="text-align:right"><code>AS4134</code></td>
+<td><code>CHINANET-BACKBONE</code></td>
+<td>电信 163、ChinaNet</td>
+<td>公众互联网骨干</td>
+</tr>
+
+<tr>
+<td>中国电信</td>
+<td style="text-align:right"><code>AS4809</code></td>
+<td><code>CHINATELECOM-CORE-WAN-CN2</code></td>
+<td>CN2</td>
+<td>下一代承载网络</td>
+</tr>
+
+<tr>
+<td>中国电信国际</td>
+<td style="text-align:right"><code>AS23764</code></td>
+<td><code>CTGNet</code></td>
+<td>CTGNet</td>
+<td>全球网络之一</td>
+</tr>
+
+<tr>
+<td>中国联通</td>
+<td style="text-align:right"><code>AS4837</code></td>
+<td><code>CHINA169-Backbone</code></td>
+<td>联通 169、China169</td>
+<td>公众互联网骨干</td>
+</tr>
+
+<tr>
+<td>中国联通</td>
+<td style="text-align:right"><code>AS9929</code></td>
+<td><code>CUII</code></td>
+<td>联通 9929、A 网</td>
+<td>Premium 承载网络</td>
+</tr>
+
+<tr>
+<td>中国联通国际</td>
+<td style="text-align:right"><code>AS10099</code></td>
+<td><code>UNICOM-Global</code></td>
+<td>CUG、联通国际</td>
+<td>国际网络</td>
+</tr>
+
+<tr>
+<td>中国移动</td>
+<td style="text-align:right"><code>AS9808</code></td>
+<td><code>CHINAMOBILE-CN</code></td>
+<td>CMNET、移动 9808</td>
+<td>公众互联网骨干</td>
+</tr>
+
+<tr>
+<td>中国移动国际</td>
+<td style="text-align:right"><code>AS58453</code></td>
+<td><code>CMI-INT-HK</code></td>
+<td>CMI</td>
+<td>国际 IP 网络</td>
+</tr>
+
+<tr>
+<td>中国移动国际</td>
+<td style="text-align:right"><code>AS58807</code></td>
+<td><code>CMI-INT-AS</code></td>
+<td>CMIN2</td>
+<td>另一张国际网络</td>
+</tr>
+
+<tr>
+<td>教育网</td>
+<td style="text-align:right"><code>AS4538</code></td>
+<td><code>ERX-CERNET-BKB</code></td>
+<td>CERNET</td>
+<td>教育科研骨干网</td>
+</tr>
+
+<tr>
+<td>科技网</td>
+<td style="text-align:right"><code>AS7497</code></td>
+<td><code>CSTNET-AS-AP</code></td>
+<td>CSTNET</td>
+<td>科技网骨干</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>这张表首先说明：电信、联通和移动都不只有一张网络。</p>
+
+<p>以中国电信为例</p>
+
+<p>早期（90年代末-2000年代初）：中国电信主要使用 AS4134 (ChinaNet 163) 作为全国统一的骨干网AS号。各省节点（包括上海）通常都在AS4134内部运行，或通过特定的内部协议互联
+2004年左右，中国电信为了提供高质量的国际出口和政企专线服务，建设了完全独立于163网（AS4134）之外的CN2（AS4809）网络。这标志着中国电信正式进入“双骨干”时代。AS4809与AS4134是并行关系，而非继承关系。
+2017年，CTGNet（AS23764） 开始作为独立于 ChinaNet (AS4134) 和 CN2 (AS4809) 之外的第三张骨干网，专门面向国际业务和跨境政企客户提供服务。</p>
+
+<p>在骨干网之外，电信还有很多专门目的的网络，比如 中国电信上海骨干网<code>AS4812</code>, 广东骨干网<code>AS58466</code></p>
+
+<p>这些 AS 都是独立的一张网络，根据电信自己的路由策略，上海、广东骨干网，会跳入 全国骨干网（163、CN2），然后接入全球。</p>
+
+<p>这里要注意，中国电信全国骨干网(163,CN2) 是直接接入全球的，国内骨干网这个说法有点让让以为它只在国内部署，只是不是这样的，它会在全球是到处部署的都有路由器节点，比如著名的美西洛杉矶、东京、法兰克福等等，它会跟其他 tier1 运营商机型对等交互流量，或者采购其他运营商的 ip transmit，来增强它的全球触达能力。163 、CN2、CTGNet都是电信的骨干网络，只不过 163、CN2 绝大部分 ip 都在中国，主要服务于中国大陆用户，CTGNet服务于国际用户，</p>
+
+<p>CN2(AS4809) 的 IP 地址覆盖范围</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>地区</th>
+<th>ip 比例</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>China</td>
+<td>95.9%</td>
+</tr>
+
+<tr>
+<td>Hong Kong</td>
+<td>2.3%</td>
+</tr>
+
+<tr>
+<td>United States</td>
+<td>0.4%</td>
+</tr>
+
+<tr>
+<td>Australia</td>
+<td>0.2%</td>
+</tr>
+
+<tr>
+<td>Germany</td>
+<td>0.2%</td>
+</tr>
+
+<tr>
+<td>United Kingdom</td>
+<td>0.2%</td>
+</tr>
+
+<tr>
+<td>Singapore</td>
+<td>0.2%</td>
+</tr>
+
+<tr>
+<td>France</td>
+<td>0.1%</td>
+</tr>
+
+<tr>
+<td>Japan</td>
+<td>0.1%</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>CTGNet（AS23764）的 IP 地址覆盖</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>地区</th>
+<th>ip 比例</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>Hong Kong</td>
+<td>36.2%</td>
+</tr>
+
+<tr>
+<td>China</td>
+<td>12.4%</td>
+</tr>
+
+<tr>
+<td>Singapore</td>
+<td>11.5%</td>
+</tr>
+
+<tr>
+<td>United Kingdom</td>
+<td>7.4%</td>
+</tr>
+
+<tr>
+<td>Germany</td>
+<td>6.8%</td>
+</tr>
+
+<tr>
+<td>South Africa</td>
+<td>4.5%</td>
+</tr>
+
+<tr>
+<td>Japan</td>
+<td>4.2%</td>
+</tr>
+
+<tr>
+<td>Kenya</td>
+<td>3.9%</td>
+</tr>
+
+<tr>
+<td>United Arab Emirates</td>
+<td>3.1%</td>
+</tr>
+
+<tr>
+<td>Brazil</td>
+<td>2.6%</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>通过 ip 覆盖范围可以看出，都是骨干网，都是全球部署，但是重点不一样而已。</p>
+
+<p>163 作为基础网络，国际上基本不会有别人直接采购它，163 基本只要保证国内能触达全球就好。
+但是CN2网络，因为国际上的一些 vps，为了增加让跟中国大陆网络更加稳定，所以会花钱采购，所以 CN2 的线路就会单独收费。</p>
+
+<p>至于CTGNet，就类似于 NTT、IIJ 一样只是一个国际网络运营商，中国电信想扩展国际生意，比如提供新加坡到日本的国际路由能力，于是提供了这样的一张骨干网。
+163、CN2 的国际触达不靠CTGNet。</p>
+
+<p>但是如果你在国际上买了 CTGNet 的接入，你会发现在中国电信用户访问的延迟以及稳定一般都是不错，这是因为都是电信内部的网络，从163 跳到 CTGNet，有内部优先级优化。
+但是 CTGNet 接入的 vps 很少见，至少我没有见过</p>
+
+<p>同理，中国联通的 <code>AS4837</code>、<code>AS9929</code> 和 <code>AS10099</code>， 完全一一对对应电信的 <code>AS4134</code> <code>AS4809</code> <code>AS23764</code>
+联通国际的AS10099 接入的 vps，我还是见过一些</p>
+
+<p>中国移动特别点，国内承载的骨干网只有一个CMNET<code>AS9808</code>， 国际上却有两个分别是CMI<code>AS58453</code> 和 CMIN2<code>AS58807</code>，然后，CMNET 不直接触达全球，它会把流量交付到 CMI 或者 CMIN2 上。
+CMNET 怎么触达全球是移动自己内部的策略，也许哪一天，CMNET就直接跟全球其他 AS 交互了。
+其中 CMI是普通骨干网，CMIN2 是精品骨干网。</p>
+
+<p>所以 vps说的普通三往优化，定是流量最终到流向电信 163（AS4134）｜ 联通 169（AS4387）｜ 移动 CMI (AS58453-&gt;AS9808), 然后跳入最终终端用户</p>
+
+<p>三网精品优化线路那就是流量会经过 电信 CN2（AS4809）｜ 联通（AS9929）｜ 移动 CMINN2(AS23764 -&gt; AS9808), 然后跳入最后终端用户</p>
+
+<h3 id="section-3-2">3.2 “普通国际线路”普通在哪里</h3>
+
+<p>商家所说的普通国际线路，通常没有统一技术定义。它往往表示 VPS 使用常见国际 Transit，上游根据成本和自己的 BGP 策略把流量送往中国。</p>
+
+<p>这种线路不一定慢。在网络空闲、路由较短时，它同样可能得到不错的 <code>ping</code>。它真正的不确定性通常体现在：</p>
+
+<ul>
+<li>没有针对中国电信、联通、移动分别安排入口；</li>
+
+<li>去程看起来正常，回程却可能绕路；</li>
+
+<li>国际互联端口在晚高峰更容易排队；</li>
+
+<li>上游调整路由后，线路可能突然改变；</li>
+
+<li>三家运营商的体验差异很大。</li>
+
+</ul>
+
+<p>所以，“普通”不是指每个时刻都慢，而是指<strong>面向特定中国网络的路由与容量保障通常更少</strong>。</p>
+
+<h3 id="section-3-3">3.3 产品名字跟术语</h3>
+
+<p><strong>CN2 GIA</strong> 是 Global Internet Access 的缩写，这是产品名称，表明在中国电信内部的网络，都会全程使用CN2 网络。</p>
+
+<p><strong>CN2 GT</strong> 也是一种产品名称，中国电信提供的一种产品， 表明国内段使用163 骨干，然后国际段使用 CN2 骨干。</p>
+
+<p><strong>联通 9929</strong> 就是指</p>
+
+<p><code>AS9929</code> 的公开名称是 CUII。中国联通国际的产品资料将它描述为 Premium bearer network，即精品承载网络。</p>
+
+<p>VPS 商家宣传“联通 9929”，通常是指中国方向的部分路径接入这张网络。它对联通用户往往更有针对性，但不能据此假设电信和移动用户一定获得同样的路径质量。</p>
+
+<h3 id="section-3-4">3.5 CMI 与 CMIN2</h3>
+
+<p>CMI 是中国移动国际运营的网络，对应常见的 <code>AS58453</code>。CMIN2 则在中国移动国际公开 SLA 中对应 <code>AS58807</code>。</p>
+
+<p>海外 VPS 接入 CMI 后，进入中国移动网络通常比随机选择其他国际 Transit 更直接。这就是商家强调“移动 CMI”的原因。</p>
+
+<p>但“三网 CMI 优化”需要更谨慎地理解。它通常表示商家尝试让电信、联通和移动用户都利用 CMI 或相关互联进入 VPS，并不是统一的行业标准。</p>
+
+<p>要证明“三网 CMI”，至少需要分别观察电信、联通、移动的实际路径。只测移动宽带，不能替电信和联通得出结论。</p>
+
+<h3 id="section-3-5">3.6 BGP 多线</h3>
+
+<p>“BGP 多线”通常表示 VPS 所在网络连接了多个上游，并通过 BGP 发布路由。</p>
+
+<p>它能带来两个潜在收益：</p>
+
+<ul>
+<li>一个上游故障时，可以切换到另一个上游；</li>
+
+<li>可以针对不同目标网络选择不同出口。</li>
+
+</ul>
+
+<p>但多线只是能力，不是效果保证。若多个上游都拥塞，或者商家的路由策略只追求低成本，多线仍然可能很慢。</p>
+
+<h3 id="section-3-6">3.7 用一个公开测试 IP 看懂“ASN 不等于完整线路”</h3>
+
+<p>以 XLC Looking Glass 在 2026-07-30 公开的东京测试 IP <code>146.88.129.226</code> 为例，RIPEstat 当日查询结果为：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>json</span></div><pre><code class="language-json">{
+  &quot;prefix&quot;: &quot;146.88.129.0/24&quot;,
+  &quot;asns&quot;: [&quot;963&quot;]
+}
+</code></pre>
+</div><p>这表示该测试 IP 所属的 <code>146.88.129.0/24</code> 前缀由 <code>AS963</code> 起源。</p>
+
+<p>继续查看不同 BGP 采集点，可以同时看到多条路径：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>text</span></div><pre><code class="language-text">AS55720 -&gt; AS6939  -&gt; AS963
+AS7018  -&gt; AS3491  -&gt; AS963
+AS8529  -&gt; AS58453 -&gt; AS3491 -&gt; AS963
+</code></pre>
+</div><p>同一个目标前缀，在不同网络眼中可以有不同的到达方式。其中一条路径经过 CMI <code>AS58453</code>，另外两条没有。</p>
+
+<p>这正好说明：</p>
+
+<ul>
+<li>起源 ASN 只说明路径最终到达哪个 AS；</li>
+
+<li>上游和中转 AS 才构成完整线路；</li>
+
+<li>从其他地区观察到的 BGP 路径，不能代替自己的实际访问路径。</li>
+
+</ul>
+
+</section>
+
+<section class="essay-section" aria-labelledby="section-4">
+<h2 id="section-4">四、普通线路差在哪里，以及怎样选择</h2>
+
+<h3 id="section-4-1">4.1 网络质量不是一个数字</h3>
+
+<p>比较 VPS 线路时，至少要拆成四个指标：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>指标</th>
+<th>它反映的问题</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>延迟</td>
+<td>一次往返需要多长时间</td>
+</tr>
+
+<tr>
+<td>抖动</td>
+<td>延迟是否忽高忽低</td>
+</tr>
+
+<tr>
+<td>丢包</td>
+<td>数据是否需要重传，实时业务是否会卡顿</td>
+</tr>
+
+<tr>
+<td>吞吐</td>
+<td>持续传输实际能达到多少带宽</td>
+</tr>
+
+</tbody>
+</table>
+</div><p><code>ping</code> 主要观察延迟和丢包，不能直接代表吞吐。端口标注 <code>1 Gbps</code>，也只表示接口上限，不表示中国用户随时能以 <code>1 Gbps</code> 下载。</p>
+
+<p>一条线路可能平均延迟只有 <code>40 ms</code>，但晚高峰频繁跳到 <code>200 ms</code>；也可能 <code>ping</code> 稳定，却因为丢包导致单连接下载很慢。</p>
+
+<h3 id="section-4-2">4.2 三网可达性</h3>
+
+<p>中国电信、联通和移动拥有不同的骨干、国际网络与互联策略。一台 VPS 对移动用户表现很好，不代表电信用户也一样。</p>
+
+<p>面向中国用户提供服务时，至少要分别回答：</p>
+
+<ul>
+<li>电信怎样到达 VPS？</li>
+
+<li>联通怎样到达 VPS？</li>
+
+<li>移动怎样到达 VPS？</li>
+
+</ul>
+
+<p>如果实际用户只来自某一家运营商，就没有必要为“三网精品”支付全部溢价。线路选择应从用户分布出发，而不是从宣传等级出发。</p>
+
+<h3 id="section-4-3">4.3 去程和回程必须分开看</h3>
+
+<p>从家里运行 <code>traceroute</code> 或 <code>mtr</code>，看到的是本地到 VPS 的去程。VPS 返回本地的回程由另一侧网络选择，可能完全不同。</p>
+
+
+<figure class="native-figure static-diagram">
+<div class="figure-heading"><span class="figure-label">原文图解 / 2</span><strong>流程与状态关系</strong></div><div class="diagram-scroll" role="region" aria-label="可横向滚动的流程图" tabindex="0"><img style="width:913px;min-width:913px" src="../assets/images/sci/vps-asn-2.svg" alt="原文流程与状态关系；完整节点与连接见图解源文本"></div><figcaption>保留原文节点与连接，小屏可横向滚动查看。</figcaption>
+<details class="diagram-source"><summary>查看图解源文本</summary>
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>mermaid</span></div><pre><code class="language-mermaid">flowchart LR
+    U[&quot;国内用户&quot;] --&gt;|&quot;去程：本地运营商决定出口&quot;| V[&quot;海外 VPS&quot;]
+    V --&gt;|&quot;回程：VPS 网络决定出口&quot;| X[&quot;另一条国际路径&quot;]
+    X --&gt; U
+</code></pre>
+</div></details>
+</figure>
+<p>一条常见的“半程优化”线路，可能只有回程经过精品网，去程仍走普通骨干；也可能只优化移动，电信和联通继续走普通 Transit。</p>
+
+<p>商家只说“接入 CN2”而不说明运营商和方向时，信息是不完整的。</p>
+
+<h3 id="section-4-4">4.4 为什么晚高峰特别重要</h3>
+
+<p>光纤传播距离不会在晚上改变，但链路上的排队会改变。</p>
+
+<p>当跨境链路或互联端口接近容量上限时，新到达的数据包必须等待，队列装满后还会丢包。此时会出现：</p>
+
+<ul>
+<li>RTT 明显升高；</li>
+
+<li>延迟波动增大；</li>
+
+<li>TCP 触发拥塞控制，下载速度下降；</li>
+
+<li>SSH、游戏和实时音视频出现卡顿。</li>
+
+</ul>
+
+<p>白天 <code>ping</code> 一次只能证明白天的瞬时状态。面向国内用户的线路，至少应该在工作日 <code>20:00</code> 至 <code>23:00</code> 再测一次。</p>
+
+<h3 id="section-4-5">4.5 香港、日本、新加坡和美国西岸怎样选</h3>
+
+<p>机房位置首先决定物理距离，但最终体验仍由线路决定。</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>地区</th>
+<th>对中国用户的直观特点</th>
+<th>需要警惕的问题</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>香港</td>
+<td>距离近，理论延迟最低</td>
+<td>优质跨境容量昂贵，低价线路可能拥塞</td>
+</tr>
+
+<tr>
+<td>日本</td>
+<td>华东、华北距离较近，机房选择多</td>
+<td>不同上游差异大，也可能绕路</td>
+</tr>
+
+<tr>
+<td>新加坡</td>
+<td>适合东南亚业务，国际互联丰富</td>
+<td>到中国的物理距离高于香港、日本</td>
+</tr>
+
+<tr>
+<td>洛杉矶等美国西岸</td>
+<td>套餐多、带宽和流量通常更便宜</td>
+<td>跨太平洋传播下限更高</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>“香港一定最好”或“洛杉矶一定最慢”都不成立。香港普通线路可能在晚高峰严重拥塞，优质美国西岸线路则可能保持稳定。位置决定起点，互联和容量决定最终表现。</p>
+
+<h3 id="section-4-6">4.6 初学者只需要完成这组最小测试</h3>
+
+<p>购买前向商家索取测试 IP 和 Looking Glass。没有测试入口时，线路描述无法在购买前验证。</p>
+
+<p>在自己的网络执行：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>bash</span></div><pre><code class="language-bash"># 连续探测路径，-z 会在支持的版本中显示 ASN，-c 100 表示发送 100 次。
+mtr -4 -r -w -z -c 100 商家测试IP
+</code></pre>
+</div><p>初次查看结果时只抓住三点：</p>
+
+<ol>
+<li><strong>看路径经过哪些 ASN</strong>：核对是否出现商家声称的 <code>AS4809</code>、<code>AS9929</code>、<code>AS58453</code> 或 <code>AS58807</code>；</li>
+
+<li><strong>看问题是否延续到终点</strong>：中间某一跳显示高丢包，但后续和终点正常，通常只是路由器限制 ICMP 响应；</li>
+
+<li><strong>换时段重复测试</strong>：白天和晚高峰差异，比单次最低延迟更有价值。</li>
+
+</ol>
+
+<p>购买后，再从 VPS 向自己的公网 IP 运行一次 <code>mtr</code>，观察回程。家庭宽带若使用 CGNAT 或屏蔽 ICMP，终点可能不响应，此时可以借助商家的 Looking Glass 或不同运营商的公开测试节点辅助判断。</p>
+
+<h3 id="section-4-7">4.7 最终选择顺序</h3>
+
+<p>对初次购买者，一套更可靠的决策顺序是：</p>
+
+<ol>
+<li><strong>先确定用户在哪里、使用哪家运营商</strong>；</li>
+
+<li><strong>再根据物理距离筛选香港、日本、新加坡或美国西岸等地区</strong>；</li>
+
+<li><strong>取得测试 IP，检查实际 ASN 路径</strong>；</li>
+
+<li><strong>分别观察去程和回程，不把单向优化当作双向优化</strong>；</li>
+
+<li><strong>在晚高峰重复测试延迟、抖动和终点丢包</strong>；</li>
+
+<li><strong>先买月付或短周期套餐，再考虑长期付款</strong>。</li>
+
+</ol>
+
+<p>线路优化的价值也由业务决定：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>使用场景</th>
+<th>更应关注什么</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>SSH、远程开发</td>
+<td>低抖动、低丢包、晚高峰稳定</td>
+</tr>
+
+<tr>
+<td>面向国内用户的网站</td>
+<td>用户所属运营商的双向路径</td>
+</tr>
+
+<tr>
+<td>大文件下载与备份</td>
+<td>持续吞吐、月流量和限速规则</td>
+</tr>
+
+<tr>
+<td>游戏、语音和视频</td>
+<td>长尾延迟、抖动和丢包</td>
+</tr>
+
+<tr>
+<td>主要访问海外服务</td>
+<td>海外互联质量，不必盲目购买回国精品线</td>
+</tr>
+
+</tbody>
+</table>
+</div></section>
+
+<section class="essay-section" aria-labelledby="section-5">
+<h2 id="section-5">结语</h2>
+
+<p>看懂 VPS 线路，不需要先成为网络工程师。只需要建立一条从概念到事实的推理链：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>text</span></div><pre><code class="language-text">互联网由许多 AS 组成
+  -&gt; ASN 标识不同的路由策略域
+  -&gt; BGP 决定 AS 之间如何传播路由
+  -&gt; Transit、Peering 和 IX 决定网络怎样互联
+  -&gt; CN2、9929、CMI 等名称对应具体网络
+  -&gt; 去程、回程、拥塞和容量共同决定实际体验
+</code></pre>
+</div><p>商家的线路名称不是完全没有价值，但它只能作为调查入口，不能作为最终结论。</p>
+
+<p>真正可靠的选购方法，是把“CN2 GIA”“三网 CMI”“国际优化”等宣传词还原为三个可以验证的问题：经过哪个 AS、在哪个方向经过、晚高峰表现如何。</p>
+
+<p>理解这三个问题之后，VPS 网络不再是一串需要死记的黑话，而是一张可以逐段读懂的互联网连接图。</p>
+
+</section>
+
+<section class="essay-section" aria-labelledby="section-6">
+<h2 id="section-6">参考资料</h2>
+
+<ol>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4271.html">RFC 4271：A Border Gateway Protocol 4</a></li>
+
+<li><a href="https://blog.apnic.net/2021/03/19/how-do-we-count-asns/">APNIC：How do we count ASNs?</a></li>
+
+<li><a href="https://blog.apnic.net/2022/03/28/how-to-properly-interpret-a-traceroute-or-mtr/">APNIC：How to properly interpret a traceroute or MTR</a></li>
+
+<li><a href="https://ipms.chinatelecomglobal.com/">中国电信国际：IP Network Management System / Looking Glass</a></li>
+
+<li><a href="https://eu.chinaunicomglobal.com/products-ipt-and-peering">中国联通国际：IP Transit and Peering</a></li>
+
+<li><a href="https://www.cmi.chinamobile.com/pdf/zaqxwwtgblephes/Peering_Policy_For_External.pdf">中国移动国际：Settlement-Free Peering Policy — AS58453</a></li>
+
+<li><a href="https://mainwebapi.cmi.chinamobile.com/uploads/template/20251216272c9a10af6d23e3b7c459e04e91bf4b.pdf">中国移动国际：CMI / CMIN2 SLA Terms</a></li>
+
+<li><a href="https://stat.ripe.net/docs/data_api">RIPEstat Data API</a></li>
+
+</ol>
+
+</section>
+</article>
+</div>
+<nav class="article-pagination" aria-label="系列阅读导航">
+<a href="index.html">返回系列目录</a><a href="index.html">返回系列目录</a></nav>
+
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+
+<em>系列：《VPS 网络选购入门》第一篇</em>
+
+<em>分析基于：IETF RFC 4271、APNIC、中国电信国际、中国联通国际、中国移动国际与 RIPEstat，资料读取于 2026-07-30</em>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 680" role="img" aria-labelledby="title desc">
+<title id="title">异步同步逻辑状态图</title><desc id="desc">开始同步后判断是否收到 Data Chunk。收到后判断类型，STATE_UPDATE 异步更新数据库，REVALIDATION 触发外部校验。数据库更新失败时判断剩余重试次数，大于零则回到开始，否则抛出错误。流结束时清除定时器并返回。图示保持原文的简化路径。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#527466"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#192c3b;font-size:16px}.edge{fill:none;stroke:#527466;stroke-width:2;marker-end:url(#arrow)}.node{fill:#eaf3ef;stroke:#9ebaae;stroke-width:1.5}.label{fill:#5b6b78;font-size:14px}</style>
+<rect width="780" height="680" fill="#fff"/>
+<path class="edge" d="M380 80 V112"/>
+<path class="edge" d="M380 212 V254"/>
+<text class="label" x="392" y="238">是</text>
+<path class="edge" d="M500 162 H645 V255"/>
+<text class="label" x="555" y="150">流结束</text>
+<path class="edge" d="M275 304 H195 V418"/>
+<text class="label" x="58" y="291">STATE_UPDATE</text>
+<path class="edge" d="M485 304 H505 V418"/>
+<text class="label" x="525" y="390">REVALIDATION</text>
+<path class="edge" d="M195 478 V514"/>
+<text class="label" x="210" y="503">失败</text>
+<path class="edge" d="M85 564 H25 V50 H255"/>
+<text class="label" x="37" y="550">是</text>
+<path class="edge" d="M305 564 H475 V586"/>
+<text class="label" x="334" y="550">否</text>
+<rect class="node" x="255" y="20" width="250" height="60" rx="8"/><text x="380.0" y="56.0" text-anchor="middle">开始同步</text>
+<path class="node" d="M380.0 112 L500 162.0 L380.0 212 L260 162.0 Z"/><text x="380.0" y="168.0" text-anchor="middle">收到 Data Chunk?</text>
+<path class="node" d="M380.0 254 L485 304.0 L380.0 354 L275 304.0 Z"/><text x="380.0" y="310.0" text-anchor="middle">判断类型</text>
+<rect class="node" x="550" y="255" width="210" height="70" rx="8"/><text x="655.0" y="296.0" text-anchor="middle">清除定时器并返回</text>
+<rect class="node" x="75" y="418" width="240" height="60" rx="8"/><text x="195.0" y="454.0" text-anchor="middle">异步更新数据库</text>
+<rect class="node" x="385" y="418" width="240" height="60" rx="8"/><text x="505.0" y="454.0" text-anchor="middle">触发外部校验</text>
+<path class="node" d="M195.0 514 L305 564.0 L195.0 614 L85 564.0 Z"/><text x="195.0" y="570.0" text-anchor="middle">重试次数 &gt; 0?</text>
+<rect class="node" x="375" y="586" width="200" height="60" rx="8"/><text x="475.0" y="622.0" text-anchor="middle">抛出错误</text>
+</svg>

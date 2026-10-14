@@ -1,0 +1,152 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="面向流媒体工程师的技术回顾：延迟与带宽口径、BBR 与 GCC 原理、RTCP/TWCC 反馈、逐包闭环示例及拥塞控制算法编年史。">
+<title>第一章：RTC 拥塞控制：原理、反馈与算法演进 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<link rel="stylesheet" href="../assets/css/technical.css">
+<link rel="stylesheet" href="../assets/css/rtc-intro.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices technical rtc-intro theme-agent">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">实时音视频算法 / 系列目录</a><a href="../ai-programming-practices/index.html#research">研究资料</a></nav>
+</div></header>
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">实时音视频算法</a> / 第 1 篇</p>
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>实时音视频算法</span><span>CHAPTER 01</span></p>
+<h1>RTC 拥塞控制<span class="title-subline">原理、反馈与算法演进</span></h1>
+<p class="lead">面向流媒体工程师的技术回顾：延迟与带宽口径、BBR 与 GCC 原理、RTCP/TWCC 反馈、逐包闭环示例及拥塞控制算法编年史。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-04-22">2026-04-22</time></span><span>第 1 / 8 篇</span><span>内容重构于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">01</span><p class="guide-label">阅读路径</p>
+<nav><a href="#section-1"><span>01</span>概念与算法原理<span aria-hidden="true">↗</span></a><a href="#section-5"><span>02</span>逐包反馈与控制示例<span aria-hidden="true">↗</span></a><a href="#section-6"><span>03</span>TCP / UDP 算法演进<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout"><article class="article-body"><div class="reader-note"><strong>技术回顾 / 面向专业流媒体人员</strong><p>默认熟悉 RTP 媒体传输、编码码率与播放缓冲。本文统一网络观测口径，串联算法、反馈协议和媒体执行链，最后按时间回顾主要算法家族。示例采用可复算的合成数据，工程实现以固定版本的标准与 WebRTC 源码为锚点。</p></div>
+<section class="essay-section" aria-labelledby="section-1"><h2 id="section-1">一、延迟与带宽：先统一测量口径</h2>
+<p>流媒体系统的拥塞控制同时约束<strong>交付速率、排队时间和媒体有效期限</strong>。传输层交付成功不等于帧仍有播放价值；码率达到目标也不等于链路没有积压。分析之前，需要把端到端延迟和网络控制器实际可观察的量分开。</p>
+<h3>1.1 延迟、RTT 与 jitter 分别描述什么</h3>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 01</span><strong>端到端媒体延迟：网络排队只占其中一段</strong></div><div class="latency-strip"><div><b>采集 / 编码</b><span>帧产生与编码等待</span></div><div><b>发送队列</b><span>pacer 调度等待</span></div><div class="highlight"><b>网络路径</b><span>传播 + 串行化 + 排队</span></div><div><b>接收 / 播放</b><span>组帧 + jitter buffer</span></div><div><b>解码 / 渲染</b><span>设备与显示调度</span></div></div><figcaption>各阶段预算由业务确定；网络控制器无法单独保证端到端时延目标。</figcaption></figure><div class="table-scroll" role="region" aria-label="时延指标与工程口径" tabindex="0"><table><thead><tr><th>指标</th><th>定义与使用</th><th>常见误读</th></tr></thead><tbody><tr><td>单向网络时延</td><td>从实际发包到接收；跨端绝对时间相减需要时钟同步或偏移校准</td><td>直接用接收时间 − 发送时间，忽略两端时钟偏移</td></tr><tr><td>RTT</td><td>一次往返测量；具体是否扣除反馈等待取决于协议和测量点</td><td>RTT / 2 就是当前去程时延</td></tr><tr><td>排队时延</td><td>链路或端点缓冲中的等待；可观测本地 pacer 队列，网络内部通常需估计</td><td>RTT − minRTT 精确等于去程队列</td></tr><tr><td>jitter</td><td>包间传输时延的变化；RTP RR 的 interarrival jitter 为平滑后的统计量</td><td>jitter 数值就是 jitter buffer 当前长度</td></tr><tr><td>媒体端到端延迟</td><td>采集到呈现，包含网络之外的处理与缓冲</td><td>网络 RTT 良好就能排除编码、组帧和渲染积压</td></tr></tbody></table></div>
+<p>在路径稳定时，较低 RTT 可以用作传播与端点开销的近似基线；但反向拥塞、路由切换和处理延迟都会改变差值。判断网络积压还应联合到达趋势、实际交付速率与本地队列。RTP 的时间戳是媒体时钟，不能直接拿来替代网络发送时间。</p>
+<h3>1.2 容量、可用带宽、吞吐量与 goodput</h3>
+<div class="table-scroll" role="region" aria-label="带宽口径" tabindex="0"><table><thead><tr><th>术语</th><th>工程含义</th><th>控制器需要注意</th></tr></thead><tbody><tr><td>路径容量 capacity</td><td>路径瓶颈在给定口径下可提供的服务速率 C</td><td>多跳、无线调度和速率限制器使 C 随时间变化</td></tr><tr><td>可用带宽 available bandwidth</td><td>扣除竞争流量后，特定时间尺度内剩余的服务能力</td><td>剩余量与本流实际能竞争到的公平份额并不完全相同</td></tr><tr><td>交付吞吐量 delivery rate</td><td>观测窗口内实际到达或被确认的字节 / 时间</td><td>应用受限、ACK 压缩和窗口选择会影响样本</td></tr><tr><td>媒体有效吞吐 goodput</td><td>去除重复、修复等开销后的有效媒体交付</td><td>到达但赶不上解码时限的帧仍可能没有业务价值</td></tr><tr><td>编码码率 / 线上码率</td><td>编码器输出与实际网络发送分别计量</td><td>RTP/UDP/IP、RTX、FEC、padding、探测流量都可能占预算</td></tr></tbody></table></div>
+<h3>1.3 BDP、inflight 与队列：速率之外还有存量</h3>
+<div class="formula-card"><span>固定服务速率的近似模型</span><code>BDP = BtlBw × RTprop</code><code>dQ / dt = R − C（Q &gt; 0；空队列处不继续减小）</code><code>queue_delay ≈ Q / C</code><p>速率用 bit/s，时间用 s，BDP 与 Q 用 bit。inflight 指已发出但尚未被确认的数据；它包含路径在途数据，不能全部视为排队。</p></div>
+<p>例如 <strong>1 Mbps × 60 ms = 60 kbit = 7.5 kB</strong>。理想模型中，这些数据足以维持管道工作；在相同服务速率下额外堆积 30 kB，会增加约 240 ms 的等待。即便发送速率已经等于出口速率，既有队列也可以保持不变。控制器因此既要考虑速率，也要考虑在途量及队列状态。</p>
+<p>媒体应用还可能在低运动场景中产生不足流量，进入 application-limited 状态。此时低接收速率说明样本供给不足，不能据此把路径容量直接下调。上述媒体时限要求可对照 <a href="https://datatracker.ietf.org/doc/html/rfc8836">RFC8836</a>。</p></section>
+<section class="essay-section" aria-labelledby="section-2"><h2 id="section-2">二、BBR：用带宽与传播时延建立路径模型</h2>
+<p>BBR 的基本思路是估计<strong>瓶颈带宽 BtlBw</strong>与<strong>往返传播时延 RTprop</strong>，据此控制 pacing rate 和在途量。它不必等到缓冲溢出才获得容量线索：交付速率提供服务能力样本，较低 RTT 提供路径时延基线。两个估计都带有观测窗口和样本有效性条件。</p>
+<div class="formula-card"><span>概念模型；具体增益与上限取决于版本和状态</span><code>pacing_rate ≈ pacing_gain × estimated_BtlBw</code><code>inflight_target ≈ cwnd_gain × estimated_BtlBw × estimated_RTprop</code><p>不能同时把带宽峰值和 RTT 最小值视为随时可读的真值。模型需要通过探测获得新样本，也需要防止受限发送与聚合反馈污染估计。</p></div>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 02</span><strong>BBR 的四个基本状态：建模、排空、探测、刷新</strong></div><ol class="overview-flow "><li><span>01</span><strong>Startup</strong><small>提高发送强度，寻找带宽平台</small></li><li><span>02</span><strong>Drain</strong><small>降低发送强度，排空启动积压</small></li><li><span>03</span><strong>ProbeBW</strong><small>周期探测可用服务能力</small></li><li><span>04</span><strong>ProbeRTT</strong><small>减少在途量，刷新低 RTT 样本</small></li></ol><div class="loop-return">ProbeBW 持续运行；满足条件时进入 ProbeRTT，之后返回带宽探测或相应启动状态</div><figcaption>这是基本状态职责，不是严格按四格循环一次。不同版本的 ProbeBW 子阶段、增益和进入条件不同。</figcaption></figure>
+<p>Startup 解决冷启动时缺少容量估计的问题；Drain 补偿探测期间产生的积压；ProbeBW 在利用链路与寻找新容量之间切换；ProbeRTT 尝试避免 RTT 基线被持续排队长期抬高。原始设计可见 <a href="https://queue.acm.org/detail.cfm?id=3022184">2016 年 BBR 论文</a>。</p>
+<p><strong>版本边界：</strong>BBRv1、v2、v3 不能只用同一组固定 gain 概括。后续版本引入或调整带宽、在途量的边界以及对丢包、ECN 的响应，改善过度探测与共存问题。本文模型说明参考 <a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccwg-bbr-06">BBR 工作草案 -06</a>，版本入口见 <a href="https://github.com/google/bbr">Google BBR 项目</a>；工作草案并非已发布 RFC。</p>
+<blockquote><p><strong>工程取舍：</strong>BBR 需要探测才能发现容量提升，探测可能制造短时队列。最小 RTT 会受到路由变化影响，交付速率也可能受 ACK 聚合影响；模型与竞争流的交互需按版本和网络条件验证。BBR 本身不理解视频帧依赖或播放截止时间，接入媒体栈仍需码率分配和过期数据策略。</p></blockquote>
+</section>
+<section class="essay-section" aria-labelledby="section-3"><h2 id="section-3">三、GCC：从到达时序推断拥塞趋势</h2>
+<p>GCC（Google Congestion Control）把媒体发送速率适配与实时传输结合。延迟分支的核心输入是<strong>相邻包组的发送间隔与到达间隔之差</strong>；交付速率、丢包、探测结果等共同参与最终速率决策。它控制的是预算与发送行为，反馈数据可由接收端通过 RTCP 返回。</p>
+<div class="formula-card"><span>发送时间 s 与到达时间 a，各自在本端时钟下取差分</span><code>Δdᵢ = (aᵢ − aᵢ₋₁) − (sᵢ − sᵢ₋₁)</code><code>accumulated_delayᵢ = accumulated_delayᵢ₋₁ + Δdᵢ</code><p>固定时钟偏移被消去，频率误差仍然存在。包组聚合、乱序处理与突发过滤会影响进入估计器的有效样本。</p></div>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 03</span><strong>延迟分支与其他信号在发送端汇合</strong></div><div class="pipeline-stack"><div class="pipeline-row"><b>逐包到达反馈</b><span>发送历史匹配 → 包组间隔 → 延迟变化</span></div><div class="pipeline-row"><b>趋势估计</b><span>累积变化 → 平滑 → 时间窗口拟合</span></div><div class="pipeline-row"><b>拥塞状态</b><span>overuse / normal / underuse → 延迟分支速率</span></div><div class="pipeline-row"><b>综合速率决策</b><span>交付速率、探测、丢包、RTT、应用受限与配置约束</span></div><div class="pipeline-row highlight"><b>执行输出</b><span>目标码率、pacing 配置、探测请求及在途约束</span></div></div><figcaption>趋势持续为正提供队列增长线索；normal 不代表队列绝对为空。综合决策不是一个对所有版本都成立的固定 min() 公式。</figcaption></figure>
+<h3>3.1 不能把历史 Kalman 模型等同于当前实现</h3>
+<p><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rmcat-gcc-02">2016 年 GCC 草案 -02</a> 描述了包括 Kalman 到达滤波器在内的历史设计。本文读取的 WebRTC 源码中，<a href="https://webrtc.googlesource.com/src/+/0d3c711211f7892437df1837388976ef8db4549c/modules/congestion_controller/goog_cc/trendline_estimator.cc">TrendlineEstimator</a> 的路径是：累积延迟变化，经指数平滑，在窗口内拟合斜率，再结合阈值与持续性判断过载。</p>
+<p><a href="https://webrtc.googlesource.com/src/+/0d3c711211f7892437df1837388976ef8db4549c/modules/congestion_controller/goog_cc/goog_cc_network_control.cc">GoogCcNetworkController</a> 还连接 acknowledged bitrate、delay-based BWE、loss-based BWE、probe controller 与约束处理。<a href="https://webrtc.googlesource.com/src/+/0d3c711211f7892437df1837388976ef8db4549c/modules/congestion_controller/goog_cc/delay_based_bwe.cc">DelayBasedBwe</a> 是其中一个分支。这里固定到源码提交 <code>0d3c711211f7</code>；具体产品还取决于其依赖版本与 field trial 配置。</p>
+<h3>3.2 BBR 与 GCC 的区别在于模型与执行上下文</h3>
+<div class="table-scroll" role="region" aria-label="BBR 与 GCC 原理对照" tabindex="0"><table><thead><tr><th>维度</th><th>BBR</th><th>GCC / GoogCC</th></tr></thead><tbody><tr><td>主要抽象</td><td>交付速率与低 RTT 建立带宽 / 时延模型</td><td>到达时序趋势与多路估计器共同更新目标速率</td></tr><tr><td>典型观测</td><td>确认、交付样本、RTT，以及版本相关的丢包 / ECN</td><td>包级反馈、发送历史、交付速率、丢包与探测结果</td></tr><tr><td>控制出口</td><td>pacing 与在途量 / 拥塞窗口</td><td>媒体目标速率、pacing 与探测 / 约束更新</td></tr><tr><td>对媒体的衔接</td><td>需要媒体应用另外管理帧时限与编码输出</td><td>通常嵌入媒体发送栈，但仍需码率分配和队列策略</td></tr><tr><td>共同难点</td><td>容量突变、样本污染、竞争公平性</td><td>反馈滞后、无线突发、趋势噪声、媒体输出响应滞后</td></tr></tbody></table></div>
+<p><strong>GCC 的代价：</strong>趋势滤波与过载持续性判断可以减少误判，却也增加反应滞后；激进降速有利于排空，但会影响画质和利用率。容量下降、无线调度成批交付、路由切换与反向反馈拥塞，需要分别分析，不能用“延迟变大”一条规则覆盖。</p></section>
+<section class="essay-section" aria-labelledby="section-4"><h2 id="section-4">四、RTCP 与 TWCC：反馈协议如何支撑估计器</h2>
+<p><strong>RTCP 是控制报文体系，TWCC 是一套传输范围的包级反馈机制，GCC 是控制算法。</strong>三者处在不同层次。传统 SR/RR 给出周期性会话与接收统计；拥塞控制需要更细的包级到达信息时，可以协商相应 RTP 扩展和 RTCP 反馈格式。</p>
+<div class="table-scroll" role="region" aria-label="反馈与算法的层次" tabindex="0"><table><thead><tr><th>机制</th><th>携带的信息</th><th>不承担的职责</th></tr></thead><tbody><tr><td>RTCP SR / RR</td><td>SR 的 NTP/RTP 时间映射；报告块的 fraction lost、累计丢失、最高序号、jitter、LSR/DLSR 等</td><td>不直接给出完整逐包到达时间或可用带宽真值</td></tr><tr><td>NACK / PLI</td><td>请求包重传或图像恢复的反馈</td><td>不是网络容量估计，也不免除修复流量预算</td></tr><tr><td>REMB</td><td>接收端估计的最大接收码率及相关 SSRC</td><td>不是到达时序明细；估计逻辑更多留在接收端</td></tr><tr><td>TWCC</td><td>transport-wide 序号对应的接收状态与到达时间差</td><td>不决定降速幅度，也不完成媒体预算分配</td></tr><tr><td>GCC / BBR</td><td>使用反馈与发送状态，计算控制目标</td><td>不能替代反馈编码与媒体执行模块</td></tr></tbody></table></div>
+<p>SR/RR 字段及 jitter 定义见 <a href="https://datatracker.ietf.org/doc/html/rfc3550">RFC3550</a>；基于反馈的 RTP/AVPF 框架见 <a href="https://datatracker.ietf.org/doc/html/rfc4585">RFC4585</a>。LSR/DLSR 可用于 SR/RR 往返测量并扣除接收端报告等待，但仍不提供单向路径的精确分解。</p>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 04</span><strong>TWCC：给传输上的包编号，把到达记录带回发送端</strong></div><div class="transport-lanes"><div><span>RTP 媒体方向 →</span><strong>发送历史</strong><p>transport seq → 发包时间 / 长度 / 探测标记</p><div class="wire-packet"><b>RTP 头扩展</b><code>transport-wide sequence number</code></div></div><div><span>← RTCP 反馈方向</span><strong>接收记录</strong><p>transport seq → 接收状态 / 到达时间</p><div class="wire-packet"><b>TWCC 反馈内容</b><code>base seq · status count · reference time<br>packet status chunks · receive deltas</code></div></div></div><div class="loop-return">发送端重建到达时间 → 与本地发送历史匹配 → 输入估计器</div><figcaption>同一个传输上的多个媒体 SSRC 可共享 transport-wide 序号空间；它不同于各 SSRC 内的 RTP sequence number。</figcaption></figure>
+<h3>4.1 解码后的时间比“反馈包到了”更重要</h3>
+<p>反馈包包含覆盖范围、接收状态与压缩后的到达时间差，发送端重建接收时间序列，并查找对应的本地发送记录。丢失发送历史、序号回绕处理错误，或把 RTCP 报文到达时间当成媒体包到达时间，都会污染估计器输入。乱序包和暂未到达的包也应按反馈语义与后续信息处理。</p>
+<h3>4.2 TWCC 与 RFC 8888 CCFB 是不同线格式</h3>
+<p>常见 TWCC 反馈采用 <code>RTPFB / PT=205 / FMT=15</code>，源于 <a href="https://datatracker.ietf.org/doc/html/draft-holmer-rmcat-transport-wide-cc-extensions-01#section-3.1">transport-wide CC 草案的格式与字段定义</a>。该历史草案正文存在 PT 表述不一致，应以格式图与字段定义结合实现核对。<a href="https://datatracker.ietf.org/doc/html/rfc8888">RFC 8888 的 CCFB</a> 使用 <code>RTPFB / PT=205 / FMT=11</code>，按 SSRC 与 RTP 序号反馈，不能当成 TWCC 同一个格式的更名版本。</p>
+<p>排障时需核对 SDP 中协商的 <code>extmap</code>、<code>rtcp-fb</code>、双方实际支持的反馈格式及统计口径。反馈频率本身也有成本：周期过长会扩大控制滞后，过密则增加反向开销，反向队列还可能进一步延缓决策。</p></section>
+<section class="essay-section" aria-labelledby="section-5"><h2 id="section-5">五、完整示例：从逐包反馈到码率与队列变化</h2>
+<p>用一条上行视频流演示<strong>测量 → 反馈 → 判断 → 决策 → 执行 → 再测量</strong>。下列时间与报文均为合成数据，叙述采用统一参考时轴；实际端点时钟不必同步，估计器使用各自时间差。这组数据用于复算控制环路，实际 GCC 状态需从实现日志确认。</p>
+<div class="constraint-grid"><div><span>网络条件</span><strong>4 Mbps → 1 Mbps</strong><p>t=0 时瓶颈服务能力降至 1 Mbps；发送维持 4 Mbps，队列初始为空，无竞争流与丢包。</p></div><div><span>包与反馈条件</span><strong>1250 B / 包</strong><p>只计本例服务字节，不另加头部开销。瓶颈后的固定单向传播 30 ms，反馈返回另需 30 ms，忽略处理耗时。</p></div></div>
+<h3>5.1 包间隔被拉长，反馈揭示持续的正延迟变化</h3>
+<p>发送间隔为 <code>1250 × 8 / 4 Mbps = 2.5 ms</code>；瓶颈服务每包需要 <code>1250 × 8 / 1 Mbps = 10 ms</code>。第一个包在 t=0 进入瓶颈，串行化 10 ms 后再传播 30 ms，因此在 t=40 ms 到达。后续包开始排队，按 10 ms 间隔离开瓶颈。</p>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 05</span><strong>同一批包：发送间隔 2.5 ms，到达间隔 10 ms</strong></div><div class="packet-chart" role="img" aria-label="六个发送包从零到12.5毫秒；接收从40到90毫秒，各自以真实间隔比例绘制"><div class="packet-row"><b>发送</b><div class="packet-axis send-axis"><i style="--x:0%">0</i><i style="--x:5%">2.5</i><i style="--x:10%">5</i><i style="--x:15%">7.5</i><i style="--x:20%">10</i><i style="--x:25%">12.5</i></div></div><div class="packet-row"><b>到达</b><div class="packet-axis"><i style="--x:0%">40</i><i style="--x:20%">50</i><i style="--x:40%">60</i><i style="--x:60%">70</i><i style="--x:80%">80</i><i style="--x:100%">90</i></div></div></div><figcaption>两条轴均展示 50 ms 宽度，各自以首包为相对起点；标注单位为 ms。横向固定偏移不用于计算单向时延。</figcaption></figure><div class="table-scroll" role="region" aria-label="逐包发送与接收账本" tabindex="0"><table><thead><tr><th>transport seq</th><th>发送 ms</th><th>到达 ms</th><th>Δ发送 ms</th><th>Δ到达 ms</th><th>Δd ms</th></tr></thead><tbody><tr><td>1000</td><td>0</td><td>40</td><td>—</td><td>—</td><td>—</td></tr><tr><td>1001</td><td>2.5</td><td>50</td><td>2.5</td><td>10</td><td>+7.5</td></tr><tr><td>1002</td><td>5</td><td>60</td><td>2.5</td><td>10</td><td>+7.5</td></tr><tr><td>1003</td><td>7.5</td><td>70</td><td>2.5</td><td>10</td><td>+7.5</td></tr><tr><td>1004</td><td>10</td><td>80</td><td>2.5</td><td>10</td><td>+7.5</td></tr><tr><td>1005</td><td>12.5</td><td>90</td><td>2.5</td><td>10</td><td>+7.5</td></tr></tbody></table></div>
+<p>每个相邻间隔的 <code>Δd = 10 − 2.5 = +7.5 ms</code>，五个间隔累计 +37.5 ms。以首末包之间的 50 ms 统计随后五包，得到 <code>5 × 1250 × 8 / 0.05 = 1 Mbps</code> 的交付样本。这里的逐包差分用于理解信号，实际 GCC 先进行包组聚合，不能把这六行直接当作完整的过载判定。</p>
+<h3>5.2 RTCP 返回的是到达记录，发送端完成推断</h3>
+<p>接收端在 t=90 ms 形成反馈，覆盖 <code>base_seq=1000、status_count=6</code>，六包状态均为 received。解码后的到达时间为 <code>[40, 50, 60, 70, 80, 90] ms</code>。这是逻辑字段展示：实际 TWCC 用 reference time、状态 chunks 与 recv deltas 压缩编码；完整 RTCP 头、填充和量化需由协议实现处理。</p>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 06</span><strong>一次反馈如何穿过控制与执行链</strong></div><ol class="overview-flow "><li><span>01</span><strong>t=0–12.5 ms</strong><small>发送端编号并记录六包</small></li><li><span>02</span><strong>t=40–90 ms</strong><small>接收端记录到达并发反馈</small></li><li><span>03</span><strong>t=120 ms</strong><small>发送端收到反馈、匹配历史</small></li><li><span>04</span><strong>下一轮反馈</strong><small>确认目标落实及队列变化</small></li></ol><div class="pipeline-stack"><div class="pipeline-row"><b>测量</b><span>到达趋势为正 + 交付样本 1 Mbps → 输入状态估计</span></div><div class="pipeline-row"><b>决策</b><span>假设过载判定成立；示例选择总发送目标 0.8 Mbps</span></div><div class="pipeline-row highlight"><b>执行</b><span>码率分配 → 编码器降低产生量；pacer 调整节奏 → 检查队列</span></div></div><figcaption>真实控制器需要更长的有效观测、阈值与其他分支判断。0.8 Mbps 为演示指定值，不声称六包必然触发这一 GCC 输出。</figcaption></figure>
+<p>若总网络预算为 800 kbps，一种明确的分配示例是：音频 64 kbps、视频 656 kbps、协议与修复预留 80 kbps。计费口径必须与控制器一致。pacer 可能为了排空本地队列暂时采用不同于媒体目标的速率；不能把它的配置机械地等同于编码码率。</p>
+<h3>5.3 降速已经生效，网络积压仍然存在</h3>
+<p>按流体近似，t=120 ms 时积压为 <code>(4 − 1) Mbps × 0.12 s = 360 kbit = 45 kB</code>，对应 360 ms 队列等待。随后总发送立即变为 0.8 Mbps，净排空速度只有 0.2 Mbps，因此需 <strong>1.8 s</strong> 才能排空。离散包模型存在约一个服务包的粒度差异；编码器与 pacer 响应滞后则可能继续增加峰值。</p>
+<figure class="native-figure "><div class="figure-heading"><span class="figure-label">图 07</span><strong>反馈滞后形成峰值，低于容量才开始排空</strong></div><div class="plot-scroll"><svg class="queue-plot" viewBox="0 0 720 290" role="img" aria-labelledby="queue-title queue-desc"><title id="queue-title">队列积压随时间变化</title><desc id="queue-desc">零到120毫秒队列升至45千字节；目标降为0.8兆比特每秒后，到1.92秒队列排空。若目标仅降至1兆比特每秒，积压保持45千字节。</desc><path d="M70 32V220H665" fill="none" stroke="#8a8981"/><path d="M70 60H665" stroke="#dedbd1" stroke-dasharray="5 5"/><path d="M104 60H650" stroke="#ac8261" stroke-dasharray="6 5" fill="none"/><path d="M70 220L104 60L650 220" fill="none" stroke="#417464" stroke-width="4"/><circle cx="104" cy="60" r="5" fill="#417464"/><text x="8" y="32">Q / kB</text><text x="35" y="65">45</text><text x="45" y="225">0</text><text x="68" y="247">0</text><text x="95" y="268">0.12 s</text><text x="610" y="247">1.92 s</text><text x="192" y="47" fill="#896041">目标 1 Mbps：队列不再增长，但保留积压</text><text x="270" y="205" fill="#356454">目标 0.8 Mbps：净排空 0.2 Mbps</text><text x="470" y="282">时间 / s（线性轴）</text></svg></div><figcaption>忽略队列上限、丢包、竞争流和媒体丢弃；该曲线是指定条件下的计算结果，不是浏览器性能测试。</figcaption></figure>
+<p>如果帧已经无法赶上播放时限，降低未来码率不能挽救在网络中的旧数据。本地可按媒体依赖关系丢弃尚未发送的过期数据，必要时请求恢复帧；正在网络队列里的包通常无法由发送端撤回。RTX 与 FEC 也必须计入负载，并结合剩余时限使用，见 <a href="https://datatracker.ietf.org/doc/html/rfc4588">RFC4588</a>。</p>
+<h3>5.4 用脚本复算观测与队列，和实现日志对齐</h3>
+<div class="code-panel"><pre><code class="language-python"># 可复算的合成记录；长度按示例瓶颈服务的字节口径计量。
+packets = [
+    # transport 序号, 发送 ms, 到达 ms, 字节数
+    (1000,  0.0, 40.0, 1250),
+    (1001,  2.5, 50.0, 1250),
+    (1002,  5.0, 60.0, 1250),
+    (1003,  7.5, 70.0, 1250),
+    (1004, 10.0, 80.0, 1250),
+    (1005, 12.5, 90.0, 1250),
+]
+# 相邻差分消去固定时钟偏移；没有在此实现 GCC 的分组或滤波。
+delay_deltas = [
+    (cur[2] - prev[2]) - (cur[1] - prev[1])
+    for prev, cur in zip(packets, packets[1:])
+]
+# 用首包到末包的时间跨度，仅计随后五个包，避免窗口边界多算一个包。
+span_s = (packets[-1][2] - packets[0][2]) / 1000
+rate_bps = sum(p[3] for p in packets[1:]) * 8 / span_s
+# 以下为流体队列模型；0.8 Mbps 是显式选定的演示目标，不是 GCC 输出。
+send_bps, capacity_bps, target_bps = 4e6, 1e6, 0.8e6
+feedback_time_s = 0.120
+queue_bits = (send_bps - capacity_bps) * feedback_time_s
+drain_s = queue_bits / (capacity_bps - target_bps)
+print(f&quot;delay deltas (ms): {delay_deltas}&quot;)
+print(f&quot;delivery rate: {rate_bps / 1e6:.2f} Mbps&quot;)
+print(f&quot;queue at feedback: {queue_bits / 8 / 1000:.1f} kB&quot;)
+print(f&quot;drain time after reduction: {drain_s:.2f} s&quot;)
+</code></pre></div>
+<div class="code-panel"><pre><code>delay deltas (ms): [7.5, 7.5, 7.5, 7.5, 7.5]
+delivery rate: 1.00 Mbps
+queue at feedback: 45.0 kB
+drain time after reduction: 1.80 s
+</code></pre></div>
+<p>脚本验证的是字节与时间口径、差分信号及排空时间，没有实现 BBR 或 GCC。复现到实际系统时，应同时记录<strong>发包历史、反馈覆盖范围、估计器状态、target bitrate、实际编码输出、pacer 队列与帧丢弃</strong>。只有最后两项恢复，才说明控制目标已经落实到媒体流水线；单独观察 target bitrate 曲线不够。</p></section>
+<section class="essay-section" aria-labelledby="section-6"><h2 id="section-6">六、拥塞控制算法演进：TCP 与 UDP 两条主线</h2>
+<p>按传输栈回顾算法，更容易看清反馈从哪里来、控制逻辑在哪里执行，以及如何影响媒体。<strong>TCP 由传输层提供可靠传输与拥塞控制；UDP 本身没有拥塞控制，需由上层协议或应用补齐。</strong>以下分别回顾 TCP 和 UDP 上层的主要算法与代表实现，年份仍区分论文、技术报告与 RFC 节点。</p>
+<figure class="native-figure"><div class="figure-heading"><span class="figure-label">图 08</span><strong>两种传输栈，把控制环路放在不同位置</strong></div><div class="history-families"><div><span>TCP / 传输层控制</span><strong>ACK → 控制器 → cwnd / pacing</strong><p>从 Tahoe、Reno 的丢包与窗口控制，发展到 CUBIC 的窗口增长曲线，以及 BBR 的路径模型。可靠交付、重传与拥塞控制由传输栈协同执行。</p></div><div><span>UDP / 上层协议与媒体控制</span><strong>反馈 → 估计器 → 码率 / 发送调度</strong><p>RTP/RTCP 媒体栈采用 GCC、SCReAM、NADA 等方案，协调编码与发送；QUIC 等通用传输协议则自行实现 ACK、恢复与拥塞控制。</p></div></div><figcaption>按承载与实现上下文分组，不表示算法只能用于某一种传输协议；BBR 可用于 TCP，也可用于 QUIC。</figcaption></figure>
+<h3 id="tcp-evolution">6.1 TCP 主线：从丢包驱动的窗口调整到路径建模</h3>
+<p>TCP 的 ACK 既确认交付，也提供反馈时钟。控制器根据丢包、RTT、交付速率或 ECN 更新拥塞窗口与发送节奏；实际发送还受到接收窗口和应用供给约束。应用写入 socket 的速度不等于线上发送速度，TCP send buffer 也可能成为媒体延迟的一部分。</p>
+<p>这条线的关键问题依次是：<strong>防止拥塞崩溃、改善丢包恢复、提高高 BDP 链路利用率、提前感知排队、减少对丢包触发的依赖</strong>。这些方向并存，而非简单的新算法替代旧算法；例如 NewReno 主要改进恢复流程，BBR 则改变路径估计与控制方法。</p>
+<div class="table-scroll" role="region" aria-label="TCP 拥塞控制算法演进" tabindex="0"><table><thead><tr><th>时间 / 节点性质</th><th>算法或家族</th><th>主要机制</th><th>工程取舍</th><th>原始资料</th></tr></thead><tbody><tr><td>1988 / 论文</td><td>Jacobson / Tahoe 基础</td><td>慢启动、拥塞避免、ACK 时钟与超时退避，建立 TCP 控制主线</td><td>丢包之后回退；大缓冲可能先形成长队列</td><td><a href="https://people.cs.vt.edu/~hamid/Mobile_Computing/papers/jacobson88congestion.pdf">Congestion Avoidance and Control</a></td></tr><tr><td>1990 年代 / 演进；2009 / RFC</td><td>Reno</td><td>AIMD、快速重传与快速恢复；在 ACK 驱动下调整窗口</td><td>单窗口多丢包恢复受限；吞吐和 RTT、丢包相关</td><td><a href="https://datatracker.ietf.org/doc/html/rfc5681">RFC5681</a></td></tr><tr><td>1994 / 论文</td><td>Vegas</td><td>比较期望与实际速率，尝试以时延线索控制排队</td><td>基线估计与和激进丢包流共存是难点</td><td><a href="https://www2.cs.arizona.edu/projects/protocols/">Vegas 项目与原论文</a></td></tr><tr><td>1999 / RFC；2012 / 更新</td><td>NewReno</td><td>改进快速恢复，用 partial ACK 继续恢复多处丢失</td><td>主要改进恢复流程，并非独立的全新带宽模型</td><td><a href="https://datatracker.ietf.org/doc/html/rfc6582">RFC6582</a></td></tr><tr><td>2001 / 论文</td><td>Westwood</td><td>用 ACK 测量带宽，辅助丢包后的窗口与阈值选择</td><td>ACK 压缩、回程与样本过滤影响估计</td><td><a href="https://web.cs.ucla.edu/classes/fall03/cs218/paper/p287-mascolo.pdf">TCP Westwood</a></td></tr><tr><td>2003 / RFC</td><td>HighSpeed TCP</td><td>在大窗口条件下改变增减参数，提高高 BDP 链路利用率</td><td>增速与共存公平性需要平衡</td><td><a href="https://datatracker.ietf.org/doc/html/rfc3649">RFC3649</a></td></tr><tr><td>2004 / 论文</td><td>BIC</td><td>结合二分搜索与加性增长寻找窗口工作点</td><td>为高吞吐调整的窗口探测可能增加队列</td><td><a href="https://doi.org/10.1109/INFCOM.2004.1354672">BIC 原论文</a></td></tr><tr><td>2005 / 技术报告</td><td>Compound TCP</td><td>将丢包窗口与时延窗口结合，改善高 BDP 利用率</td><td>混合信号增加参数、时延基线和共存复杂性</td><td><a href="https://www.microsoft.com/en-us/research/publication/a-compound-tcp-approach-for-high-speed-and-long-distance-networks/">Microsoft Research</a></td></tr><tr><td>2008 / 论文；2017、2023 / RFC</td><td>CUBIC</td><td>按距上次拥塞事件的时间，以三次函数寻找窗口工作点</td><td>改进扩展性，但不直接把媒体时限作为目标</td><td><a href="https://datatracker.ietf.org/doc/html/rfc8312">RFC8312</a> → <a href="https://datatracker.ietf.org/doc/html/rfc9438">RFC9438</a></td></tr><tr><td>2010 / 论文；2017 / RFC</td><td>DCTCP</td><td>按 ECN 标记比例调整窗口，降低数据中心排队</td><td>需要端点与网络标记机制配合，场景不同于普通公网 RTC</td><td><a href="https://datatracker.ietf.org/doc/html/rfc8257">RFC8257</a></td></tr><tr><td>2016 / 公开论文</td><td>BBRv1</td><td>建立带宽与传播时延模型，控制 pacing 与 inflight</td><td>模型误差、探测积压及与丢包算法共存</td><td><a href="https://queue.acm.org/detail.cfm?id=3022184">BBR / ACM Queue</a></td></tr><tr><td>2019 / 技术报告</td><td>BBRv2</td><td>扩展模型边界与丢包 / ECN 响应，改善过度探测和共存</td><td>不同代码与配置并非同一个固定行为</td><td><a href="https://github.com/google/bbr#information-about-bbr">BBR IETF 104 / 105 报告</a></td></tr><tr><td>2023 / 技术报告</td><td>BBRv3</td><td>继续调整带宽 / 在途边界与探测，面向公网部署</td><td>需要按具体版本评价；“BBR”不是统一性能结论</td><td><a href="https://github.com/google/bbr#information-about-bbr">BBRv3 / IETF 117</a></td></tr></tbody></table></div>
+<p><strong>对流媒体的影响：</strong>TCP 可以保障有序可靠的字节流，但丢失数据的恢复可能推迟后续字节交付。直播与点播可通过播放缓冲吸收部分变化；交互媒体还需约束应用队列、媒体产生量和数据时限。拥塞窗口变小后继续以原速率写入，只会把积压转移到发送端。</p>
+<h3 id="udp-evolution">6.2 UDP 主线：由上层建立反馈与发送控制</h3>
+<p>UDP 只提供数据报承载，应用不能因缺少 TCP 窗口就持续无约束发送。<a href="https://datatracker.ietf.org/doc/html/rfc8085">RFC 8085</a>要求使用 UDP 的应用或上层协议采用适当的拥塞控制机制。这里的“UDP 算法”指<strong>部署在 UDP 之上的控制器</strong>，并非 UDP 协议内部新增了算法。</p>
+<p>实时媒体的路线从平滑速率与 TCP 友好性，发展到包级反馈、排队趋势与媒体队列协同。TFRC 提供模型化速率控制；GCC、SCReAM、NADA 更直接针对实时媒体。LEDBAT 面向低优先级背景传输；PCC、Vivace、Copa 是通用研究路线，在 UDP 用户态传输等实现中探索新的控制方法，并不等同于 RTP 专用算法。</p>
+<div class="table-scroll" role="region" aria-label="UDP 上层拥塞控制算法与代表实现演进" tabindex="0"><table><thead><tr><th>时间 / 节点性质</th><th>算法或家族</th><th>主要机制</th><th>工程取舍</th><th>原始资料</th></tr></thead><tbody><tr><td>2003 / RFC</td><td>TFRC</td><td>以 TCP 吞吐模型进行较平滑的速率控制，面向速率敏感业务</td><td>仍依赖丢包事件率与 RTT，低时延控制能力有限</td><td><a href="https://datatracker.ietf.org/doc/html/rfc3448">RFC3448</a>；<a href="https://datatracker.ietf.org/doc/html/rfc5348">2008 年修订</a></td></tr><tr><td>2012 / RFC</td><td>LEDBAT</td><td>用单向排队时延目标实现低优先级背景传输</td><td>定位为让路背景流，基线误差与 latecomer 问题需要关注</td><td><a href="https://datatracker.ietf.org/doc/html/rfc6817">RFC6817</a></td></tr><tr><td>2015 / 论文</td><td>PCC</td><td>通过试探发送速率与测量效用，在线选择更好的动作</td><td>效用设计、观测窗口与试探成本决定行为</td><td><a href="https://www.usenix.org/conference/nsdi15/technical-sessions/presentation/dong">PCC / NSDI 2015</a></td></tr><tr><td>2016 / 草案 -02</td><td>GCC 历史设计</td><td>包组延迟变化与丢包控制相结合，形成媒体速率闭环</td><td>该草案是设计记录；不能代表后续所有浏览器实现</td><td><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rmcat-gcc-02">DRAFT-IETF-RMCAT-GCC-02</a></td></tr><tr><td>2017 / 实验性 RFC</td><td>SCReAM</td><td>ACK 自时钟、拥塞窗口、pacing 与媒体速率协同；结合时延与丢包</td><td>窗口、排队目标和媒体队列需协调</td><td><a href="https://datatracker.ietf.org/doc/html/rfc8298">RFC8298</a></td></tr><tr><td>2018 / 论文</td><td>PCC Vivace</td><td>在 PCC 框架内用在线优化更新速率</td><td>效用函数与网络噪声影响决策和收敛</td><td><a href="https://www.usenix.org/conference/nsdi18/presentation/dong">Vivace / NSDI 2018</a></td></tr><tr><td>2018 / 论文</td><td>Copa</td><td>根据排队时延选择目标速率，并调整共存行为</td><td>依赖时延估计与对竞争环境的判断</td><td><a href="https://www.usenix.org/conference/nsdi18/presentation/arun">Copa / NSDI 2018</a></td></tr><tr><td>2020 / 实验性 RFC</td><td>NADA</td><td>将时延、丢包与 ECN 汇成拥塞信号，驱动实时媒体速率更新</td><td>信号映射与参数选择影响响应和平滑度</td><td><a href="https://datatracker.ietf.org/doc/html/rfc8698">RFC8698</a></td></tr></tbody></table></div>
+<p>实现锚点可见 <a href="https://github.com/PCCproject/PCC-Uspace">PCC 用户态项目</a>与 <a href="https://www.usenix.org/system/files/conference/nsdi18/nsdi18-arun.pdf">Copa 原论文</a>。表中年份对应算法文档或论文节点，不等于其某个 UDP 实现的发布日期，也不代表这些算法只支持 UDP。</p>
+<p><strong>对 RTP 实时媒体的影响：</strong>控制器需要把反馈结果落实到音视频预算、编码输出、pacer 和修复开销，同时处理已经过期的媒体。SCReAM 也使用窗口与自时钟机制，因此不能把 TCP/UDP 的区别简化为“窗口算法 / 纯码率算法”。媒体栈通常拥有更多丢弃与修复策略的选择，也承担更多协调职责。</p>
+<div class="budget-card"><strong>跨协议的连接点：QUIC 与 BBR</strong><p>QUIC 运行于 UDP 之上，自行提供 ACK、丢失恢复和拥塞控制。<a href="https://datatracker.ietf.org/doc/html/rfc9002#section-7">RFC 9002 第 7 节</a>给出类似 NewReno 的控制方案，并允许选择其他算法；<a href="https://github.com/google/bbr">BBR 项目</a>同时提供 TCP 与 QUIC 实现入口。因此 BBR 在 TCP 时间线中回顾其版本演进，在 UDP 场景中仍可能使用，不能将其归为 TCP 专属。</p></div>
+<h3>6.3 配套机制：区分 TCP 网络信号与 UDP 媒体反馈</h3>
+<div class="table-scroll" role="region" aria-label="反馈与网络机制时间线" tabindex="0"><table><thead><tr><th>时间 / 节点</th><th>机制</th><th>与算法的关系</th><th>来源</th></tr></thead><tbody><tr><td>1996 → 2003 / RFC</td><td>RTP / RTCP</td><td>RFC 1889 到 RFC 3550：提供传输与接收报告基础</td><td><a href="https://datatracker.ietf.org/doc/html/rfc3550">RFC3550</a></td></tr><tr><td>2001 / RFC</td><td>ECN</td><td>网络标记拥塞，端点可以在丢包之前获得信号</td><td><a href="https://datatracker.ietf.org/doc/html/rfc3168">RFC3168</a></td></tr><tr><td>2006 / RFC</td><td>RTP/AVPF</td><td>支持更及时的 RTCP 反馈，建立反馈调度框架</td><td><a href="https://datatracker.ietf.org/doc/html/rfc4585">RFC4585</a></td></tr><tr><td>2015 / 草案 -01</td><td>transport-wide CC / TWCC</td><td>RTP 传输范围序号与包级到达反馈，支撑发送端估计</td><td><a href="https://datatracker.ietf.org/doc/html/draft-holmer-rmcat-transport-wide-cc-extensions-01">TWCC 草案</a></td></tr><tr><td>2021 / RFC</td><td>RTCP CCFB</td><td>RFC 8888 标准化另一种包级拥塞反馈；与 TWCC 不同线格式</td><td><a href="https://datatracker.ietf.org/doc/html/rfc8888">RFC8888</a></td></tr><tr><td>2023 / 实验性 RFC</td><td>L4S / DualQ</td><td>低时延 ECN 架构与耦合 AQM，需要网络及端点配合；不是某个媒体控制器的替代名</td><td><a href="https://datatracker.ietf.org/doc/html/rfc9332">RFC9332</a></td></tr></tbody></table></div>
+<p>RTCP/TWCC 改变“发送端能看见什么”，ECN/AQM 改变“网络如何报告和管理拥塞”，控制算法改变“依据这些信号怎样调整发送”。三条演进线会相互影响，但不能混在同一算法排名中。QUIC 同样允许选择拥塞控制算法；协议名称本身不意味着采用 BBR，见 <a href="https://datatracker.ietf.org/doc/html/rfc9002">RFC9002</a>。</p>
+<h3>6.4 回到流媒体系统：沿各自传输栈检查完整环路</h3>
+<p>回顾一个方案时，依次检查<strong>观测量是否可靠、决策如何处理噪声与滞后、执行端是否跟上、过期媒体是否退出队列</strong>。相同 target bitrate 下，编码输出、探测开销、pacer 积压和帧丢弃不同，用户看到的卡顿与延迟就可能完全不同。针对专业流媒体系统，容量阶跃、竞争流、无线突发、反向反馈拥塞与帧截止时间应一起纳入验证。</p>
+<p>本系列后续可继续阅读 <a href="02_bbr_algorithm.html">BBR</a>、<a href="03_gcc_algorithm.html">GCC</a> 与 <a href="04_algorithm_comparison.html">算法对比</a>。以上史料链接指向对应论文、标准或版本入口；GCC 实现说明固定到前文给出的 WebRTC 提交，BBR 模型说明固定到草案 -06，资料读取日期为 2026-10-14。</p>
+</section></article></div>
+<nav class="article-pagination" aria-label="系列阅读导航"><a href="index.html">返回系列目录</a><a href="02_bbr_algorithm.html">下一篇：BBR 算法详解 →</a></nav>
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+<em>系列：《RTC 拥塞控制群侠传》第一篇</em>
+<em>分析基于：IETF RTP/RTCP 与拥塞控制文档、BBR 草案 -06、WebRTC 源码（提交 0d3c711211f7）及算法原始论文（链接见正文），资料读取于 2026-10-14</em>
+</footer></main></body></html>

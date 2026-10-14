@@ -1,0 +1,14 @@
+/* 网络与音视频长文的局部排版增强。 */
+.technical .overview-flow.overview-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.overview-flow small { display:block; font-size:12px; color:var(--muted); margin-top:10px; }
+.technical .article-body h2 { display:block; }
+.technical .static-diagram img { max-width:none; }
+.technical .essay-hero h1 { overflow-wrap:anywhere; }
+@media(max-width:700px) {
+ .technical .overview-flow.overview-three { grid-template-columns:1fr; }
+ .technical .overview-flow li { display:grid; grid-template-columns:26px 1fr; gap:3px 12px; }
+ .technical .overview-flow small { grid-column:2; margin:0; }
+}
+@media print { .technical .static-diagram img { max-width:100%; width:100%!important; min-width:0!important; } }
+
+.technical .overview-parallel li::after { content:none; }

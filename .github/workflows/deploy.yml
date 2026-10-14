@@ -1,4 +1,4 @@
-name: Deploy VitePress site to Pages
+name: Deploy static HTML site to Pages
 
 on:
   push:
@@ -18,33 +18,27 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: npm ci || npm install
-      - name: Build with VitePress
-        run: npm run docs:build
+      - name: Validate local links
+        run: python3 scripts/check_site.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: site
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+    needs: prepare
     runs-on: ubuntu-latest
     name: Deploy
     steps:

@@ -1,0 +1,4 @@
+/* 用独立类名隔离站点返回入口，避免覆盖各专题的既有布局。 */
+.chronicles-return { display: flex; flex-wrap: wrap; gap: 18px; max-width: 1480px; margin: 16px auto; padding: 0 22px; font: 14px/1.8 system-ui, sans-serif; }
+.chronicles-return a { color: inherit; text-underline-offset: 4px; }
+@media print { .chronicles-return { display: none; } }

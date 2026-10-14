@@ -1,0 +1,201 @@
+/* 原生长文版式：通过 .philosophy 作用域供思想与实践系列共用。 */
+.philosophy {
+  --paper: #f6f5f1;
+  --surface: #fffefa;
+  --ink: #202d35;
+  --muted: #626f73;
+  --line: #dedfd7;
+  --accent: #276a56;
+  --wash: #edf4ef;
+  background: var(--paper);
+}
+.philosophy.theme-debt { --accent: #936020; --wash: #f7efdf; }
+.philosophy.theme-agent { --accent: #3e6288; --wash: #edf2f8; }
+.philosophy .container, .philosophy .header-inner { max-width: 1240px; }
+.philosophy .site-header { background: var(--surface); }
+.philosophy .header-inner { padding-top: 18px; padding-bottom: 18px; }
+.philosophy .brand { font-size: 15px; }
+.philosophy .site-nav { font-size: 12px; }
+.philosophy .breadcrumb { font-size: 12px; margin: 28px 0; }
+.reading-progress { position: fixed; z-index: 50; inset: 0 0 auto; height: 3px; pointer-events: none; }
+.reading-progress span { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }
+.essay-hero { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 64px; align-items: stretch; padding: 18px 0 46px; border-bottom: 1px solid var(--line); }
+.essay-kicker { display: flex; flex-wrap: wrap; gap: 18px; color: var(--accent); font: 12px/1.8 ui-monospace, monospace; letter-spacing: .14em; margin: 0 0 22px; }
+.essay-kicker span:first-child { font-family: inherit; letter-spacing: .08em; }
+.philosophy h1 { font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif; font-size: clamp(36px, 4.6vw, 58px); font-weight: 650; letter-spacing: -.035em; line-height: 1.35; margin: 0 0 22px; }
+.title-main { display: block; }
+.title-detail { display: block; font-size: .5em; line-height: 1.65; letter-spacing: 0; margin-top: 12px; font-family: system-ui, sans-serif; font-weight: 500; }
+.title-punctuation { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.philosophy .lead { font-size: 16px; line-height: 1.9; max-width: 690px; }
+.essay-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; font-size: 12px; color: var(--muted); }
+.essay-meta span + span { border-left: 1px solid var(--line); padding-left: 22px; }
+.hero-guide { display: flex; flex-direction: column; justify-content: flex-end; border-left: 1px solid var(--line); padding-left: 28px; }
+.chapter-mark { font: 92px/1 ui-monospace, monospace; letter-spacing: -.08em; color: var(--accent); opacity: .15; margin-bottom: 20px; }
+.guide-label { font-size: 11px; color: var(--muted); letter-spacing: .06em; margin-bottom: 14px; }
+.hero-guide nav { display: grid; }
+.hero-guide a { display: flex; gap: 12px; align-items: center; text-decoration: none; color: var(--ink); font-size: 13px; padding: 10px 0; border-top: 1px solid var(--line); }
+.hero-guide a span:first-child { color: var(--accent); font: 11px/1.8 ui-monospace, monospace; }
+.hero-guide a span:last-child { margin-left: auto; color: var(--accent); }
+.philosophy .article-layout { display: block; max-width: 900px; margin: 44px auto 0; }
+.philosophy .article-body { font-size: 17px; line-height: 2; }
+.philosophy .article-body p { margin: 19px 0; }
+.philosophy .article-body strong { font-weight: 650; }
+.essay-section { margin: 0 0 54px; padding-top: 14px; }
+.essay-section + .essay-section { border-top: 1px solid var(--line); padding-top: 36px; }
+.philosophy .article-body h2 { display: flex; align-items: baseline; gap: 18px; font-size: 25px; line-height: 1.55; margin: 0 0 24px; letter-spacing: -.02em; scroll-margin-top: 28px; }
+.section-number { flex: 0 0 auto; font-family: "Songti SC", "STSong", serif; font-size: 19px; color: var(--accent); }
+.philosophy .article-body h3 { font-size: 19px; line-height: 1.65; margin: 32px 0 16px; }
+.philosophy .article-body ul, .philosophy .article-body ol { padding-left: 24px; }
+.philosophy .article-body li { margin: 8px 0; padding-left: 4px; }
+.philosophy .article-body li::marker { color: var(--accent); }
+.philosophy .article-body blockquote { margin: 28px 0; padding: 10px 24px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 16px; }
+.philosophy .article-body blockquote p { margin: 12px 0; }
+.article-opening { margin-bottom: 34px; }
+.philosophy .article-body :not(pre) > code { background: var(--wash); color: var(--accent); border: 1px solid var(--line); font-size: .83em; padding: 1px 5px; }
+/* 所有图解的标题、节点与图注均在 HTML 中，禁用脚本后仍可读。 */
+.native-figure { margin: 30px 0; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 24px; font-size: 14px; line-height: 1.7; }
+.figure-heading { display: flex; flex-direction: column; gap: 7px; margin-bottom: 24px; }
+.figure-label { font: 11px/1.5 ui-monospace, monospace; color: var(--accent); letter-spacing: .1em; }
+.figure-heading strong { font-size: 18px; font-weight: 650; }
+.philosophy .native-figure figcaption { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.8; }
+.philosophy .process-flow { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin: 0; }
+.philosophy .process-flow li { display: flex; flex-direction: column; position: relative; background: var(--wash); border: 1px solid var(--line); padding: 14px 6px; text-align: center; margin: 0; border-radius: 7px; gap: 7px; }
+.process-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -16px; top: 43%; width: 16px; color: var(--accent); }
+.process-index { color: var(--accent); font: 11px/1.4 ui-monospace, monospace; }
+.process-flow strong { font-size: 13px; }
+.process-flow li > span:last-child { font-size: 11px; color: var(--muted); }
+.responsibility-grid { display: grid; grid-template-columns: 1fr 70px 1fr; align-items: center; gap: 12px; }
+.responsibility-card { padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: var(--wash); }
+.responsibility-card.machine { background: #f0f3f7; }
+.role-label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+.responsibility-card strong { display: block; font-size: 17px; }
+.philosophy .responsibility-card p { margin: 10px 0 0; font-size: 12px; color: var(--muted); }
+.diagram-connector { font-size: 12px; text-align: center; color: var(--accent); }
+.arrow-glyph { display: inline-block; }
+.feedback-line { margin-top: 16px; padding: 12px 14px; border-radius: 6px; border: 1px dashed var(--line); color: var(--muted); font-size: 12px; }
+.feedback-line > span { margin-right: 8px; color: var(--accent); }
+.cognition-path { display: grid; grid-template-columns: 120px 1fr; gap: 10px 20px; align-items: center; padding: 20px 0; }
+.cognition-path + .cognition-path { border-top: 1px solid var(--line); }
+.path-label { font-size: 11px; color: var(--muted); }
+.philosophy .cognition-path ol { display: flex; gap: 26px; list-style: none; padding: 0; margin: 0; }
+.philosophy .cognition-path li { margin: 0; flex: 1; padding: 10px; text-align: center; border: 1px solid var(--line); border-radius: 6px; position: relative; background: #f0f3f2; }
+.cognition-path li:not(:last-child)::after { content: "→"; position: absolute; right: -26px; width: 26px; color: var(--accent); }
+.philosophy .imported li { background: var(--wash); }
+.philosophy .cognition-path p { grid-column: 2; margin: 0; font-size: 12px; color: var(--muted); }
+.anchor-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.anchor-grid > div { border-left: 2px solid var(--accent); padding: 8px 12px; }
+.anchor-number { display: block; font: 11px/1.5 ui-monospace, monospace; color: var(--accent); margin-bottom: 10px; }
+.anchor-grid strong { font-size: 15px; }
+.philosophy .anchor-grid p { margin: 6px 0; color: var(--muted); font-size: 12px; }
+.philosophy .article-diagram { padding: 0; border: 0; border-radius: 0; }
+.philosophy .article-figure figcaption { margin-bottom: 0; }
+.pattern-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 28px 0; }
+.pattern-card { padding: 22px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
+.philosophy .pattern-card h3 { margin: 0 0 16px; font-size: 17px; color: var(--accent); }
+.philosophy .pattern-card ul { font-size: 14px; line-height: 1.9; padding-left: 17px; margin-bottom: 0; }
+.philosophy .pattern-card li { padding-left: 0; }
+.architecture-grid { display: grid; grid-template-columns: minmax(0, 1fr) 86px minmax(0, 1fr) 86px minmax(0, 1fr); gap: 7px; align-items: center; }
+.architecture-node { border: 1px solid var(--line); background: #f6f7f5; border-radius: 7px; padding: 18px 10px; text-align: center; }
+.architecture-node.coordinator { background: var(--wash); border-color: var(--accent); }
+.architecture-node strong { display: block; font-size: 16px; }
+.philosophy .architecture-node p { font-size: 11px; margin: 12px 0 0; color: var(--muted); }
+.architecture-arrows { display: flex; flex-direction: column; gap: 10px; font-size: 10px; text-align: center; color: var(--accent); }
+.architecture-arrows > span { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.philosophy .tool-steps { list-style: none; padding: 0; margin: 26px 0; }
+.philosophy .tool-steps > li { display: grid; grid-template-columns: 42px 1fr; gap: 18px; margin: 0; padding: 0 0 28px; position: relative; }
+.tool-steps > li:not(:last-child)::before { content: ""; position: absolute; left: 20px; top: 42px; bottom: 0; width: 1px; background: var(--line); }
+.step-number { width: 42px; height: 42px; border: 1px solid var(--line); background: var(--surface); border-radius: 50%; text-align: center; font: 13px/40px ui-monospace, monospace; color: var(--accent); }
+.step-content { padding: 20px 22px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); min-width: 0; }
+.step-role { display: inline-block; font-size: 10px; letter-spacing: .06em; color: var(--accent); background: var(--wash); padding: 2px 9px; border-radius: 4px; margin-bottom: 12px; }
+.step-action { font-size: 15px; line-height: 1.9; }
+.step-reason { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; font-size: 13px; color: var(--muted); line-height: 1.9; }
+.philosophy .loop-flow { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin: 0; }
+.philosophy .loop-flow li { margin: 0; padding: 16px 12px; position: relative; border: 1px solid var(--line); border-radius: 7px; background: var(--wash); }
+.loop-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -18px; top: 42%; width: 18px; color: var(--accent); }
+.loop-flow li > span { font: 11px/1.5 ui-monospace, monospace; color: var(--accent); }
+.loop-flow strong, .loop-flow small { display: block; margin-top: 8px; }
+.loop-flow strong { font-size: 13px; }
+.loop-flow small { font-size: 11px; color: var(--muted); }
+.loop-outcomes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; font-size: 11px; color: var(--muted); }
+.loop-outcomes span { background: #f5f6f3; padding: 8px 12px; border-radius: 5px; }
+.code-panel { border-radius: 9px; overflow: hidden; background: #202e37; margin: 28px 0; }
+.code-heading { display: flex; align-items: center; gap: 14px; min-height: 48px; padding: 10px 18px; background: #2b3a44; color: #d9e4e7; font: 11px/1.5 ui-monospace, monospace; }
+.code-dots { font-size: 8px; letter-spacing: 3px; color: #9bafb5; }
+.philosophy .code-panel pre { border-radius: 0; margin: 0; background: transparent; padding: 24px; font-size: 14px; line-height: 1.9; }
+.philosophy .code-panel pre code { font-size: 13px; }
+.philosophy .code-heading .copy-button { margin: 0 0 0 auto; padding: 4px 8px; font-size: 10px; color: #d9e4e7; border-color: #5a6d77; flex-shrink: 0; }
+.philosophy .table-scroll { border: 1px solid var(--line); border-radius: 8px; margin: 28px 0; background: var(--surface); }
+.philosophy .article-body table { font-size: 13px; line-height: 1.9; }
+.philosophy .article-body th { color: var(--accent); font-weight: 650; padding: 16px; }
+.philosophy .article-body td { padding: 16px; }
+.philosophy .article-body tbody tr:last-child td { border-bottom: 0; }
+.philosophy .article-body tbody tr:nth-child(even) { background: #f9faf7; }
+.philosophy .article-pagination { max-width: 900px; margin: 20px auto 0; padding-top: 28px; font-size: 14px; }
+.philosophy .article-pagination a { display: block; padding: 22px; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.philosophy .article-pagination a:hover { border-color: var(--accent); }
+.philosophy .article-provenance { max-width: 900px; margin: 32px auto 64px; padding: 22px 0; font-size: 12px; line-height: 2; }
+@media (max-width: 1100px) {
+  .essay-hero { gap: 36px; }
+  .philosophy .process-flow { grid-template-columns: 1fr; gap: 18px; }
+  .philosophy .process-flow li { display: grid; grid-template-columns: 45px 1fr 1fr; text-align: left; padding: 12px 18px; align-items: center; }
+  .process-flow li:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -19px; }
+}
+@media (max-width: 1000px) {
+  .essay-hero { grid-template-columns: minmax(0, 1fr) 210px; gap: 28px; }
+  .pattern-grid { gap: 12px; }
+}
+@media (max-width: 700px) {
+  .essay-hero { grid-template-columns: 1fr; padding-bottom: 32px; gap: 26px; }
+  .hero-guide { border-left: 0; border-top: 1px solid var(--line); padding: 18px 0 0; }
+  .chapter-mark { display: none; }
+  .hero-guide nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .hero-guide a { flex-wrap: wrap; align-content: start; border: 0; padding: 0; gap: 5px; font-size: 11px; }
+  .hero-guide a span:first-child { width: 100%; }
+  .hero-guide a span:last-child { display: none; }
+  .guide-label { margin: 0 0 14px; }
+  .philosophy h1 { font-size: 36px; }
+  .title-detail { font-size: 21px; }
+  .philosophy .lead { font-size: 15px; }
+  .philosophy .article-body { font-size: 16px; line-height: 2; }
+  .philosophy .article-body h2 { font-size: 22px; gap: 12px; }
+  .section-number { font-size: 16px; }
+  .philosophy .article-body h3 { font-size: 18px; }
+  .native-figure { padding: 18px; }
+  .responsibility-grid { grid-template-columns: 1fr; }
+  .diagram-connector { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 0; }
+  .arrow-glyph { transform: rotate(90deg); }
+  .anchor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .cognition-path { grid-template-columns: 1fr; gap: 12px; }
+  .philosophy .cognition-path p { grid-column: 1; }
+  .pattern-grid { grid-template-columns: 1fr; }
+  .architecture-grid { grid-template-columns: 1fr; gap: 12px; }
+  .architecture-node { padding: 16px; }
+  .architecture-arrows { flex-direction: row; justify-content: center; gap: 28px; }
+  .architecture-arrows > span { flex-direction: column; }
+  .philosophy .loop-flow { grid-template-columns: 1fr; gap: 18px; }
+  .philosophy .loop-flow li { display: grid; grid-template-columns: 24px 1fr; gap: 3px 12px; padding: 12px; align-items: center; }
+  .loop-flow strong { margin: 0; }
+  .loop-flow small { grid-column: 2; margin: 0; }
+  .loop-flow li:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -20px; }
+  .philosophy .tool-steps > li { grid-template-columns: 32px 1fr; gap: 12px; }
+  .step-number { width: 32px; height: 32px; line-height: 30px; }
+  .tool-steps > li:not(:last-child)::before { left: 15px; top: 32px; }
+  .step-content { padding: 16px; }
+  .step-action { font-size: 14px; }
+  .step-reason { font-size: 12px; }
+  .code-heading { gap: 8px; padding: 10px 12px; font-size: 10px; }
+  .code-dots { display: none; }
+  .philosophy .code-panel pre { padding: 18px; }
+  .philosophy .article-pagination a { padding: 18px; }
+}
+@media print {
+  .reading-progress, .hero-guide { display: none; }
+  .essay-hero { display: block; }
+  .philosophy { background: white; }
+  .philosophy .article-layout { display: block; }
+  .native-figure, .pattern-card, .step-content { break-inside: avoid; }
+  .philosophy .article-diagram img { min-width: 0; }
+  .philosophy .code-panel pre { background: white; color: #202d35; white-space: pre-wrap; }
+  .code-heading { background: #eee; color: #202d35; }
+  .philosophy .article-pagination, .philosophy .copy-button { display: none; }
+}

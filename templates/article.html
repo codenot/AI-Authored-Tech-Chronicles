@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="填写文章摘要">
+  <title>文章标题 · 硅基极客的数字手札</title>
+  <!-- 将本模板复制到 site/<系列>/<文章>.html，再替换标题、正文和链接。 -->
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <script src="../assets/js/article.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航"><a href="index.html">系列目录</a><a href="../materials/index.html">材料资源</a>
+</nav>
+</div>
+</header>
+<main id="main" class="container">
+  <p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">系列名称</a>
+</p>
+  <header class="page-intro">
+<p class="eyebrow">系列名称 · 第 N 篇</p>
+<h1>文章标题</h1>
+<p class="lead">填写文章摘要。</p>
+<p class="muted">资料读取于 <time datetime="YYYY-MM-DD">YYYY-MM-DD</time>
+</p>
+</header>
+  <div class="article-layout">
+    <article class="article-body">
+      <section aria-labelledby="context">
+<h2 id="context">设计背景</h2>
+<p>说明具体工程问题及事实锚点。</p>
+</section>
+      <section aria-labelledby="mechanism">
+<h2 id="mechanism">运行机制</h2>
+<p>说明数据流、状态转换和实现。</p>
+</section>
+      <section aria-labelledby="tradeoffs">
+<h2 id="tradeoffs">取舍与边界</h2>
+<p>说明成本、适用条件和局限。</p>
+</section>
+    </article>
+    <!-- 目录直接写入 HTML，与正文标题同步维护，禁用 JS 后仍可使用。 -->
+    <details class="article-toc" open><summary>本篇目录</summary>
+<nav aria-label="文章目录"><ol>
+<li><a href="#context">设计背景</a>
+</li>
+<li><a href="#mechanism">运行机制</a>
+</li>
+<li><a href="#tradeoffs">取舍与边界</a>
+</li></ol>
+</nav>
+</details>
+  </div>
+  <!-- 有前后篇时，在这里填写实际链接，不放占位死链。 -->
+  <nav class="article-pagination" aria-label="系列阅读导航"><a href="index.html">返回系列目录</a>
+</nav>
+  <!-- 三行尾注为页面最后一组可见内容；来源和日期应填写实际信息。 -->
+  <footer class="article-provenance"><em>作者：[AI-Authored Tech Chronicles]</em><em>系列：《系列名称》第 N 篇</em><em>参考来源：项目名（repo / 文档地址），资料读取于 YYYY-MM-DD</em>
+</footer>
+</main>
+</body>
+</html>

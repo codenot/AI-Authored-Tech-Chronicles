@@ -1,0 +1,428 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从 REMB 到 TWCC，分析延迟梯度、滤波器和码率决策。">
+<title>第三章：GCC 算法详解 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<link rel="stylesheet" href="../assets/css/technical.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices technical theme-agent">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">实时音视频算法 / 系列目录</a><a href="../ai-programming-practices/index.html#research">研究资料</a></nav>
+</div></header>
+
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">实时音视频算法</a> / 第 3 篇</p>
+
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>实时音视频算法</span><span>CHAPTER 03</span></p>
+<h1>GCC 算法详解</h1>
+<p class="lead">从 REMB 到 TWCC，分析延迟梯度、滤波器和码率决策。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-04-22">2026-04-22</time></span><span>第 3 / 8 篇</span><span>网页整理于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">03</span><p class="guide-label">阅读路径</p>
+
+<nav>
+<a href="#section-1"><span>01</span>为什么 WebRTC 不用 TCP 或 BBR？<span aria-hidden="true">↗</span></a><a href="#section-4"><span>02</span>把噪声变成信号：滤波器演进史<span aria-hidden="true">↗</span></a><a href="#section-7"><span>03</span>GCC 面临的挑战与进化<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout">
+<article class="article-body">
+
+<figure class="native-figure">
+<div class="figure-heading"><span class="figure-label">阅读概览 / 03</span><strong>从到达反馈到发送码率</strong></div><ol class="overview-flow "><li><span>01</span><strong>TWCC</strong><small>逐包到达反馈</small></li>
+<li><span>02</span><strong>延迟梯度</strong><small>发送与到达差分</small></li>
+<li><span>03</span><strong>滤波与检测</strong><small>识别排队趋势</small></li>
+<li><span>04</span><strong>码率控制</strong><small>调整发送目标</small></li>
+</ol>
+<figcaption>依据本篇原文整理；具体实现、状态转换与取舍见正文。</figcaption>
+</figure>
+<div class="article-opening"><blockquote>
+<p><strong>GCC = Google Congestion Control</strong></p>
+
+<p>WebRTC 标准中使用的核心拥塞控制算法。与 TCP 追求&quot;吞吐量最大化&quot;不同，GCC 为实时音视频（RTC）而生，它的终极目标是：<strong>在不引发高延迟的前提下，尽可能多地发送数据。</strong></p>
+
+<p>现状：目前 Chrome、Edge、Firefox 的 WebRTC 几乎全部默认使用它（演进版常被称为 GOOG-CC）。</p>
+
+</blockquote>
+<hr>
+</div>
+<section class="essay-section" aria-labelledby="section-1">
+<h2 id="section-1">1. 为什么 WebRTC 不用 TCP 或 BBR？</h2>
+
+<p>上一章我们讲了 BBR，它能通过探测带宽和物理延迟，实现极高的网络吞吐。那为什么 RTC 场景（比如视频开会）不能直接用 BBR？</p>
+
+<p><strong>RTC 的特殊要求：延迟必须 &lt; 150ms</strong></p>
+
+<ul>
+<li><strong>TCP 等传统算法</strong>：填满链路直到路由器排队溢出（丢包）才降速。在溢出发生前，路由器里可能已经积压了几百毫秒的数据。看视频点播没关系，但视频通话时对方说话晚了半秒，体验极差。</li>
+
+<li><strong>BBR</strong>：虽然不依赖丢包，但它为了测量真实的物理延迟，每 10 秒会强制把发送窗口降到极低（只发 4 个包，维持 200ms）来排空网络&quot;挤水分&quot;。这个突然的降速动作，会导致视频瞬间花屏或画质断崖式下跌。</li>
+
+</ul>
+
+<p><strong>GCC 的解法：提早预警，不探底水管</strong></p>
+
+<p>GCC 放弃了&quot;彻底探明物理上限&quot;的执念。它像一个极其敏感的司机，只要感觉前面<strong>稍微有点堵车的迹象</strong>（到达接收方的包之间的间隔变长了），就会立刻停止加速，甚至轻微踩刹车。</p>
+
+<p>这就引出了 GCC 的灵魂概念：<strong>延迟梯度（Delay Gradient）</strong>。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-2">
+<h2 id="section-2">2. 前传：没有 TWCC 之前的 GCC（REMB 时代）</h2>
+
+<p>在 WebRTC 早期（大约 2016 年前），GCC 并不是现在我们看到的这种&quot;所有计算都在发送端完成&quot;的统一架构。那时的 GCC（我们暂且叫它 GCC v1）是被<strong>割裂在两端</strong>的。</p>
+
+<h3 id="section-2-1">2.1 GCC v1 的割裂架构</h3>
+
+<p>早期的 GCC 由两个完全独立的控制器组成：</p>
+
+<ol>
+<li><strong>发送端控制器（基于丢包）</strong>：
+发送方只能通过普通的 RTCP 接收报告（RR），知道粗略的丢包率，据此计算出一个基于丢包的码率。</li>
+
+<li><strong>接收端控制器（基于延迟）</strong>：
+既然发送方不知道包到达的精确时间，那干脆让<strong>接收方自己算</strong>！接收方根据包到达的间隔计算延迟梯度，算出目标码率，然后通过一个专用的信号发回给发送方。</li>
+
+</ol>
+
+<h3 id="section-2-2">2.2 REMB：接收方给发送方的&quot;配额通知&quot;</h3>
+
+<p>接收方算出了它认为此时网络能承受的安全码率后，怎么告诉发送方呢？
+用的是一个叫 <strong>REMB（Receiver Estimated Maximum Bitrate，接收端估计最大码率）</strong> 的 RTCP 扩展报文。</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>[接收方]
+ 1. 记录每个包的到达时间
+ 2. 就算延迟梯度（当年用的还是卡尔曼滤波）
+ 3. 算出一个安全码率（比如 1.5 Mbps）
+ 4. 打包进 REMB 报文：&quot;喂，发送方，你接下来最多只能发 1.5 Mbps！&quot;
+   │
+   │ (REMB 反馈)
+   ▼
+[发送方]
+ 1. 收到 REMB 报文（拿到 1.5 Mbps）
+ 2. 自己用丢包率也算一个码率（比如 2.0 Mbps）
+ 3. 取两者最小值 = 1.5 Mbps，下发给编码器
+</code></pre>
+</div><h3 id="section-2-3">2.3 为什么旧架构被抛弃了？</h3>
+
+<p>REMB 时代能工作，但有几个致命缺点，逼着 Google 彻底重构了 GCC：</p>
+
+<ol>
+<li><strong>功能不对等，扩展太难</strong>：
+计算逻辑在接收方，这意味着如果我要升级拥塞控制算法（比如从卡尔曼换成 Trendline，或者加入 BBR），我必须要求<strong>接收方的客户端也升级</strong>！这在 WebRTC 这种多端互通（Chrome 连 Firefox，连手机 App）的生态里是噩梦。</li>
+
+<li><strong>SFU 路由器的噩梦</strong>：
+如果是多人视频会议（通过 SFU 服务器转发流），SFU 既要在收包时运行卡尔曼滤波，还要在发包时处理丢包逻辑，计算量爆炸，且逻辑极其复杂。</li>
+
+<li><strong>信号丢失了细节</strong>：
+REMB 只传回一个干瘪的数字（比如 1.5 Mbps）。发送方完全不知道这个数字是怎么算出来的，也不知道网络排队到底严不严重，没法做更精细的策略（比如基于底层队列状态预测未来）。</li>
+
+</ol>
+
+<p>这就引出了现在的 <strong>&quot;发送端绝对集权&quot;架构：TWCC</strong>。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-3">
+<h2 id="section-3">3. 现代 GCC 的基石：基于 TWCC 的延迟梯度</h2>
+
+<p>现代 GCC（常被称为 Send-side BWE 或 GOOG-CC）把所有计算权力全部收回到<strong>发送方</strong>。
+接收方不再做任何复杂的计算，彻底沦为一个<strong>无情的报时机器</strong>。</p>
+
+<h3 id="section-3-1">3.1 TWCC 是怎么提供情报的？</h3>
+
+<p>想要感知网络有没有拥挤，GCC 需要接收方告诉它：&quot;我收到这些包的时间节奏是怎样的？&quot;
+这个反馈机制叫 <strong>TWCC（Transport-Wide Congestion Control）</strong>。</p>
+
+<p><strong>工作原理：</strong></p>
+
+<ol>
+<li>发送方发出的每个包，都贴上一个全局递增的序号（TWCC 扩展头）。</li>
+
+<li>发送方自己拿个小本本记下：<code>[包1, 发送时刻 T1]</code>, <code>[包2, 发送时刻 T2]</code>。</li>
+
+<li>接收方收到包后，也记下：<code>[包1, 到达时刻 R1]</code>, <code>[包2, 到达时刻 R2]</code>。</li>
+
+<li>接收方每隔几十分钟（通常 50-100ms），打包一份反馈发给发送方。</li>
+
+</ol>
+
+<p>发送方拿到反馈后，就能精确知道：**我发包的节奏，到了对面，被网络拉扯成了什么样？**有了这些原始到达时间，发送方想用Trendline还是卡尔曼，想怎么控制速率，都不需要对面配合升级了！</p>
+
+<h3 id="section-3-2">3.2 什么是延迟梯度？</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>延迟梯度 = 接收方两包到达的时间差 - 发送方两包发出的时间差
+      d = (R2 - R1) - (T2 - T1)
+</code></pre>
+</div><p><strong>白话解释：</strong></p>
+
+<ul>
+<li>我每隔 <strong>20ms</strong> 投喂一个包，对方也是每隔 <strong>20ms</strong> 收到一个包。
+<ul>
+<li><code>梯度 = 20 - 20 = 0</code>。网络很空，顺滑通过。</li>
+
+</ul>
+
+</li>
+
+<li>我每隔 <strong>20ms</strong> 投喂一个包，对方却每隔 <strong>30ms</strong> 才收到一个包。
+<ul>
+<li><code>梯度 = 30 - 20 = 10ms</code>。正数！包在路上被拉开了距离。说明路由器在<strong>排队</strong>，队伍变长了！这是<strong>正在发生拥塞的早期信号</strong>。</li>
+
+</ul>
+
+</li>
+
+<li>我每隔 <strong>20ms</strong> 投喂一个包，对方每隔 <strong>15ms</strong> 收到一个包（像连珠炮一样到达）。
+<ul>
+<li><code>梯度 = 15 - 20 = -5ms</code>。负数！说明之前路由器里的积压正在被<strong>快速释放</strong>，网络变得空闲了。</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<blockquote>
+<p><strong>核心哲学</strong>：正因为依靠延迟梯度（队列正在变长），GCC 能在<strong>路由器排满产生丢包之前</strong>，就提前 1~2 个 RTT 做出反应。这比传统基于丢包的算法高级得多！</p>
+
+</blockquote>
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-4">
+<h2 id="section-4">4. 把噪声变成信号：滤波器演进史</h2>
+
+<p>理论很完美，但现实网络中经常有 Wi-Fi 抖动、操作系统的调度延迟。算出来的原始&quot;延迟梯度&quot;往往是上蹿下跳的：
+<code>+5, -2, +15, -10, +8...</code></p>
+
+<p>如果你直接看着这组数字去刹车/加速，视频通话就会抖成帕金森。GCC 必须给信号去噪。正如前面提到的，这个去噪过程经历了从接收端(REMB时代)到发送端(TWCC时代)的技术演进：<strong>卡尔曼滤波 -&gt; Trendline</strong>。</p>
+
+<h3 id="section-4-1">4.1 弃用的第一代：卡尔曼滤波（Kalman Filter）</h3>
+
+<p>早期（大约 2016 年前）WebRTC 使用卡尔曼滤波去除噪声。</p>
+
+<p>卡尔曼滤波就像一个试图猜测&quot;此刻真实温度&quot;的人。它结合<strong>历史预测值</strong>和<strong>当前带噪声的测量值</strong>，通过不断调配权重（Q/R 协方差），算出一个最新的、平滑的延迟梯度点。</p>
+
+<p><strong>为什么被弃用了？</strong></p>
+
+<ol>
+<li><strong>调参地狱</strong>：卡尔曼极其依赖你设定的系统噪声参数，不同网络（4G vs 有线）下的最优参数完全不一样。</li>
+
+<li><strong>&quot;点&quot;没用，我需要&quot;方向&quot;</strong>：卡尔曼算出当前平滑梯度是 <code>+3ms</code>，但这只能说明当前在排队，它很难告诉你&quot;排队的情况正在恶化还是好转？&quot;。拥塞控制需要的是<strong>趋势</strong>。</li>
+
+</ol>
+
+<h3 id="section-4-2">4.2 现任主力：Trendline（趋势线）滤波器</h3>
+
+<p>Google 后来彻底重写了这部分逻辑，采用了符合人类直觉的 <strong>Trendline 线性回归</strong>方案。</p>
+
+<p><strong>Trendline 是怎么做的？</strong></p>
+
+<ol>
+<li><strong>先压平毛刺（EMA 平滑）</strong>：对接收到最新梯度进行指数平滑。</li>
+
+<li><strong>算累积量（放大信号）</strong>：不看单点梯度，看<strong>累计积压在网络里的时间总量</strong>。
+<ul>
+<li>这就像排队：一个人多等 5ms 没什么，但如果这 20 个包加起来累计多等了 100ms，那队伍就真的很长了。</li>
+
+</ul>
+
+</li>
+
+<li><strong>画一条斜线（最小二乘法拟合）</strong>：取最近 <strong>20 个包</strong>的累计积压时间，用中学数学的最小二乘法，在坐标系里画一条拟合线（X 轴是时间，Y 轴是累计积压延迟）。</li>
+
+</ol>
+
+<p><strong>结果一目了然</strong>：</p>
+
+<ul>
+<li><strong>斜率 k &gt; 0</strong>：上升趋势，正在拥塞堆积！</li>
+
+<li><strong>斜率 k &lt; 0</strong>：下降趋势，网络正在排空！</li>
+
+<li><strong>斜率 k ≈ 0</strong>：水平，网络输入输出平衡。</li>
+
+</ul>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>cpp</span></div><pre><code class="language-cpp">// 极简 Trendline 核心逻辑
+class TrendlineFilter {
+    // 保存过去 20 个点的数据: x 是到达时间，y 是累计平滑后的延迟梯度
+    std::deque&lt;Point&gt; window_;
+
+    double Update(double raw_gradient) {
+        // 1. EMA 平滑
+        accumulated_delay += raw_gradient;
+        smoothed_delay_ = 0.9 * smoothed_delay_ + 0.1 * accumulated_delay;
+
+        window_.push_back({now_ms, smoothed_delay_});
+        if (window_.size() &gt; 20) window_.pop_front();
+
+        // 2. 最小二乘法算直线斜率
+        return LinearRegressionSlope(window_);
+    }
+};
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-5">
+<h2 id="section-5">5. 三层防线：GCC 是怎么做决策的？</h2>
+
+<p>拿到 Trendline 算出的趋势图斜率，GCC 就可以控制发车速度了。完整的 GCC 码率控制分为三层：</p>
+
+<h3 id="section-5-1">5.1 第一层：过载检测仪（Overuse Detector）</h3>
+
+<p>拿到斜率 <code>k</code>，对比一个阈值 <code>Threshold</code>。</p>
+
+<ul>
+<li><code>k &gt; Threshold</code> 且持续了一段时间：判定为 <strong>Overusing（过载涨水）</strong></li>
+
+<li><code>k &lt; -Threshold</code>：判定为 <strong>Underusing（退潮排空）</strong></li>
+
+<li>介于两者之间：判定为 <strong>Normal（平稳）</strong></li>
+
+</ul>
+
+<p><strong>精妙设计——自适应阈值：</strong>
+如果阈值写死为 <code>10ms</code> 很容易产生误判。GCC 让这个阈值<strong>像弹簧一样自适应缩放</strong>。</p>
+
+<ul>
+<li>如果网络经常触发过载，说明这个网络本身底噪就大，阈值就会自己慢慢放大（变迟钝，防误判）。</li>
+
+<li>如果网络一直很平静，阈值就会慢慢缩小（变灵敏，提前预警）。</li>
+
+</ul>
+
+<h3 id="section-5-2">5.2 第二层：状态机大管家（Adaptive State Machine）</h3>
+
+<p>拿到检测仪的 <code>Over/Under/Normal</code> 报警灯，状态机开始决定是：&quot;升挡&quot;、&quot;降挡&quot;还是&quot;巡航&quot;。</p>
+
+<p>根据 <strong>AIMD（加法增、乘法减）</strong> 经典原则：</p>
+
+<ol>
+<li><strong>Decrease（降速跑）</strong>：收到 <code>Overusing</code> 报警。当前码率乘以一个小于 1 的系数（通常是当前测得吞吐量的 <strong>0.85 倍</strong>）。立即执行大脚刹车，缓解排队！</li>
+
+<li><strong>Hold（巡航维持）</strong>：收到 <code>Underusing</code> 后。说明虽然在退潮，但水还没排干，维持当前速度，再观察观察。</li>
+
+<li><strong>Increase（加速跑）</strong>：收到 <code>Normal</code>。网络畅通！
+<ul>
+<li>如果此时感觉离网络上限很近，就<strong>加法增</strong>（比如每次加 10kbps）。</li>
+
+<li>如果感觉离上限很远，就<strong>乘法增</strong>（比如当前码率 × 1.08倍），快速把带宽重新顶上来。</li>
+
+</ul>
+
+</li>
+
+</ol>
+
+<h3 id="section-5-3">5.3 第三层：双通道保底（Loss-based Controller）</h3>
+
+<p>除了极其先进的&quot;延迟预测&quot;（Trendline 主通道），GCC 并未抛弃最古老的&quot;丢包兜底&quot;。</p>
+
+<p>有时网络的路由器缓冲区极小（Shallow Buffer），甚至不排队直接丢弃包。这个时候延迟并没有明显升高，但已经丢包了，Trendline 会失效。</p>
+
+<p>所以 GCC 会同时根据 RTCP 反馈的丢包率算一个安全码率：</p>
+
+<ul>
+<li>丢包 &gt; 10%：大降码率</li>
+
+<li>丢包 &lt; 2% ：可适当涨码率</li>
+
+<li>其他：维持现状</li>
+
+</ul>
+
+<p><strong>最终决策</strong>：<code>Final_Bitrate = min(基于延迟算出的码率, 基于丢包算出的码率)</code>。取最保守的一个，保证万无一失。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-6">
+<h2 id="section-6">6. 简明代码逻辑：串联整个 GCC</h2>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>cpp</span></div><pre><code class="language-cpp">class GCCController {
+    TrendlineFilter trendline_;
+    OveruseDetector detector_;
+    AimdRateControl rate_control_;
+
+public:
+    // 每收到一批 TWCC 反馈（通常包含过去 100ms 被签收的包）
+    int64_t OnTwccFeedback(const TwccFeedback&amp; feedback,
+                           int64_t current_throughput_bps) {
+
+        for (auto&amp; packet : feedback) {
+            // 1. 算基础物理量
+            double raw_gradient = packet.recv_delta - packet.send_delta;
+
+            // 2. 趋势线滤波（把一堆杂乱的斜率压成一条线）
+            double slope = trendline_.Update(raw_gradient);
+
+            // 3. 过载报警器（自带弹性阈值）
+            BandwidthUsage signal = detector_.Detect(slope);
+
+            // 4. 交给调度室状态机（AIMD 指导思想）
+            target_bitrate_ = rate_control_.Update(signal, current_throughput_bps);
+        }
+
+        // 5. 跟&quot;基于丢包&quot;的结果 PK，取保守值（伪代码省略丢包实现）
+        target_bitrate_ = std::min(target_bitrate_, GetLossBasedBitrate());
+
+        // 6. 交给底层的 Pacer 去按节奏往外发数据，完成闭环！
+        return target_bitrate_;
+    }
+};
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-7">
+<h2 id="section-7">7. GCC 面临的挑战与进化</h2>
+
+<p>作为 WebRTC 乃至地球上被使用最多的 RTC 拥塞跑控，GCC 非常出色，但并不是完美的：</p>
+
+<p><strong>挑战 1：竞争不过带刺的 TCP 兄弟</strong>
+GCC 是一个追求&quot;不排队&quot;的正人君子，一旦发现排队就主动降速。如果同一个 Wi-Fi 下有人在用 TCP 下电影（它会拼命占满路由器内存直到溢出），GCC 感受到了巨大的延迟梯度，就会疯狂退让，最后视频卡成幻灯片，带宽全被下电影的抢走了。这就是著名的<strong>公平性问题</strong>。
+（解决思路：目前 WebRTC 在探索 Robust CC 等变种方案来增强侵略性）。</p>
+
+<p><strong>挑战 2：对极低延迟（&lt; 10ms）无力</strong>
+如果在一个千兆局域网内进行电竞级串流，物理 RTT 只有两三毫秒，任何系统调度微小的毛刺都比网络延迟大。基于统计预测的 Trendline 在极小基数下会陷入迷茫。此时往往需要像 第一章 4.3 节提到的 SCReAM 或者更硬核的定时器方案。</p>
+
+<hr>
+<blockquote>
+<p><strong>本章提纲挈领</strong>：<br>
+GCC 向我们展示了在强实时要求下，是如何通过提取“延迟梯度”这种微观物理指标，利用数学拟合提前预判拥塞风暴，用三层防线优雅地在吞吐量与低延迟间走钢丝的。</p>
+
+</blockquote>
+<p><strong>← 上一章：</strong> <a href="02_bbr_algorithm.html">BBR 算法详解</a> | <strong>下一章：</strong> <a href="04_algorithm_comparison.html">算法横向全面对比 →</a></p>
+
+</section>
+</article>
+</div>
+<nav class="article-pagination" aria-label="系列阅读导航">
+<a href="02_bbr_algorithm.html">← 上一篇</a><a href="04_algorithm_comparison.html">下一篇 →</a></nav>
+
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+
+<em>系列：《RTC 拥塞控制群侠传》第三篇</em>
+
+<em>写于 2026-04-22</em>
+</footer>
+</main>
+</body>
+</html>

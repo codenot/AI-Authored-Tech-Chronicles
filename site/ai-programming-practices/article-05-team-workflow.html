@@ -1,0 +1,737 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="把产品、工程与测试三条工作线连接成可验证的团队协作协议。">
+<title>团队工作流标准化：把 AI 实践变成工程规范 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices theme-agent">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">系列文章</a><a href="index.html#research">研究资料</a></nav>
+</div></header>
+
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">AI 编程最佳实践</a> / 第 5 篇</p>
+
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>AI 编程最佳实践</span><span>CHAPTER 05</span></p>
+<h1>团队工作流标准化<span class="title-detail"><span class="title-punctuation">：</span>把 AI 实践变成工程规范 </span></h1>
+<p class="lead">把产品、工程与测试三条工作线连接成可验证的团队协作协议。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-03-30">2026-03-30</time></span><span>第 5 / 8 篇</span><span>网页整理于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">05</span><p class="guide-label">阅读路径</p>
+
+<nav>
+<a href="#section-1"><span>01</span>为什么团队需要自己的框架<span aria-hidden="true">↗</span></a><a href="#section-5"><span>02</span>测试线：AI 辅助测试工作流<span aria-hidden="true">↗</span></a><a href="#section-9"><span>03</span>结语：框架的本质是凝固的团队经验<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout">
+<article class="article-body">
+
+<figure class="native-figure">
+<div class="figure-heading"><span class="figure-label">阅读概览 / 05</span><strong>产品、工程与测试协作</strong></div><ol class="overview-flow"><li><span>01</span><strong>产品 PRD</strong></li>
+<li><span>02</span><strong>工程计划</strong></li>
+<li><span>03</span><strong>测试验证</strong></li>
+<li><span>04</span><strong>失败沉淀</strong></li>
+</ol>
+<figcaption>依据本篇内容整理；具体机制与工程取舍见正文。</figcaption>
+</figure>
+<div class="article-opening"><blockquote>
+<p><strong>系列背景</strong>：前四篇从机制（SKILL.md）、工具链（gstack）、认知约束（superpowers）、底层原理出发，理解了 AI 编程框架为什么要这么设计。本篇是实践篇：如何在真实团队里，让这些框架真正落地，并且引导团队产生属于自己的框架。</p>
+
+</blockquote>
+<hr>
+</div>
+<section class="essay-section" aria-labelledby="section-1">
+<h2 id="section-1">一、为什么团队需要自己的框架</h2>
+
+<p>读完前四篇，你可能会有一个冲动：把 gstack 和 superpowers 直接发给团队，说&quot;以后就这么用&quot;。</p>
+
+<p>这会失败。</p>
+
+<p>不是因为这两个框架不好，而是因为<strong>任何外部框架都是别人痛点的结晶，不是你团队痛点的结晶</strong>。</p>
+
+<p>gstack 解决的是 Garry Tan 团队的问题：发布流程容易被跳过、评审结果没有持久化、浏览器测试是手工的、设计质量容易退化。这些问题你们团队可能也有，也可能没有。</p>
+
+<p>superpowers 解决的是 Anthropic 工程师在使用 Claude Code 时发现的问题：AI 容易在设计未完成时开始实现、容易在没有根因时提修复方案、容易在未验证时声称完成。这些问题你们团队可能感受很强烈，也可能感受不到。</p>
+
+<p>框架必须从<strong>你们自己的痛点</strong>生长出来，才会有人真正使用它。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-2">
+<h2 id="section-2">二、框架是怎么生长出来的</h2>
+
+<h3 id="section-2-1">第一步：不要制定规范，先记录失败</h3>
+
+<p>在引入任何 AI 工作规范之前，先花两周时间做一件事：<strong>记录所有&quot;AI 让我们吃过的亏&quot;</strong>。</p>
+
+<p>在团队的日会或周会里，加一个 5 分钟的环节：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>【AI 工作复盘】
+- 这周有没有因为 AI 输出导致的问题？
+- 如果有，具体是什么？（不是&quot;AI 写错了&quot;，而是&quot;AI 在___场景下做了___，导致___&quot;）
+- 你有没有重复问 AI 同一类型的问题超过 3 次？
+- 有没有哪个 AI 回答特别好，但你不知道为什么？
+</code></pre>
+</div><p>两周后，你会得到一份真实的失败清单。这份清单里隐藏着你们团队需要的框架。</p>
+
+<p><strong>常见的失败模式</strong>（根据你们记录来验证）：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>失败描述</th>
+<th>背后的问题</th>
+<th>对应的约束设计</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>AI 写的代码和我们的代码风格完全不一样</td>
+<td>没有 Context 注入</td>
+<td>CLAUDE.md / 项目级 SKILL.md</td>
+</tr>
+
+<tr>
+<td>让 AI 改了 A，结果它顺手改了 B</td>
+<td>没有范围约束</td>
+<td><code>/freeze</code> 机制</td>
+</tr>
+
+<tr>
+<td>AI 说&quot;完成了&quot;，但实际上没测试</td>
+<td>无验证门控</td>
+<td>verification-before-completion</td>
+</tr>
+
+<tr>
+<td>反复跟 AI 解释同一个业务背景</td>
+<td>无持久化上下文</td>
+<td>业务领域 context 文档</td>
+</tr>
+
+<tr>
+<td>AI 的方案每次都不一样，无法预测</td>
+<td>无固定 workflow</td>
+<td>team SKILL.md</td>
+</tr>
+
+<tr>
+<td>产品写了需求，AI 理解成另一回事</td>
+<td>PRD 格式不利于 AI 消费</td>
+<td>AI 友好的 PRD 模板</td>
+</tr>
+
+</tbody>
+</table>
+</div><h3 id="section-2-2">第二步：把重复问题变成 SKILL.md</h3>
+
+<p>当你们找到一个<strong>重复出现</strong>的 AI 交互问题之后，动作是：</p>
+
+<ol>
+<li>用一句话描述这个问题（&quot;AI 在___时会___&quot;）</li>
+
+<li>设计一个约束（&quot;遇到___时，AI 必须先___，才能___&quot;）</li>
+
+<li>把这个约束写成 SKILL.md</li>
+
+<li>在接下来两周里，每次触发这个场景时测试约束是否有效</li>
+
+</ol>
+
+<p><strong>关键原则</strong>：不要在第一次出现问题时就写 SKILL.md。等它出现第三次以上，你才真正理解了这个问题的模式。</p>
+
+<h3 id="section-2-3">一个真实的长法：从失败到约束</h3>
+
+<p>假设某个团队在两周里连续遇到三次同类事故：</p>
+
+<ul>
+<li>第一次：让 AI 给“注册后发验证邮件”加逻辑，结果它顺手改了登录成功后的跳转行为</li>
+
+<li>第二次：修登录页文案时，AI 又把“未验证用户的提醒页”一起重构了</li>
+
+<li>第三次：改提醒页按钮时，AI 把邮件限流逻辑也一起改了</li>
+
+</ul>
+
+<p>这三次问题表面不同，本质是同一个模式：<strong>范围没有冻结，AI 会把“相关改动”自动扩成“它认为合理的整块改动”</strong>。</p>
+
+<p>这时不要继续抱怨“AI 老是顺手改别的”，而要把问题固化成一条约束：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>markdown</span></div><pre><code class="language-markdown">## 范围冻结规则
+
+当任务涉及认证、支付、权限、发布流程等核心链路时：
+
+1. 先列出本次允许修改的文件和函数
+2. AI 只能在这份清单内修改
+3. 发现清单外改动时，立即停止并单独列出，等待确认
+</code></pre>
+</div><p>接下来两周，只观察一件事：这类“顺手改 B”的情况是否明显下降。<br>
+如果下降，这条规则就值得进入 <code>.team-ai/engineering/SKILL.md</code>；如果没有下降，说明约束抓错了问题，应该继续追根因，而不是继续堆规则。</p>
+
+<h3 id="section-2-4">第三步：版本化你们的框架</h3>
+
+<p>框架不是一次写完的，它会演化。把你们的团队 SKILL.md 放进代码仓库，像对待代码一样对待它：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>.team-ai/
+├── SKILL.md                    # 全局约束（所有人所有任务都适用）
+├── product/
+│   └── SKILL.md                # 产品线约束（产品经理用）
+├── engineering/
+│   └── SKILL.md                # 工程约束（开发用）
+├── qa/
+│   └── SKILL.md                # 测试约束（测试用）
+└── CHANGELOG.md                # 框架变更记录（每个约束的来源和原因）
+</code></pre>
+</div><p>每次修改 SKILL.md，都要在 CHANGELOG.md 里写清楚：<strong>这个约束是因为什么失败而加的</strong>。这是框架有生命力的关键——团队成员能够追溯每一条规则的来源，而不是把它当作不解释的权威。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-3">
+<h2 id="section-3">三、产品线：AI 辅助 PRD 工作流</h2>
+
+<p>产品经理和 AI 的交互，最核心的问题是：<strong>PRD 是写给人看的，AI 不擅长消费</strong>。</p>
+
+<p>传统 PRD 的格式（背景 → 需求描述 → 功能列表 → 原型图说明）是为了让其他人类理解意图而设计的，其中包含大量隐含信息和上下文。AI 在读这类文档时，会丢失大量信息，或者做出错误的推断。</p>
+
+<h3 id="section-3-1">3.1 PRD 的 AI 友好化改造</h3>
+
+<p>不是颠覆现有 PRD 格式，而是在 PRD 末尾加一个&quot;AI 消费块&quot;：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>markdown</span></div><pre><code class="language-markdown">## AI 消费块（机器可读段）
+
+### 前置条件（这些已经存在，不需要实现）
+- 用户系统已有邮件字段，未验证
+- 邮件服务：Resend，API Key 在环境变量 RESEND_API_KEY
+
+### 本次变更的边界（只做这些，其余不动）
+- 注册流程：注册后发送验证邮件
+- 登录限制：邮件未验证的用户，登录成功后跳转到提醒页
+- 提醒页：展示&quot;请验证邮件&quot;，提供重发验证邮件功能
+
+### 不做什么（明确排除）
+- 不做&quot;修改邮件地址&quot;功能
+- 不做验证状态的管理后台
+- 不做已有用户的批量迁移
+
+### 验收标准（每条可被测试验证）
+- [ ] 新注册用户收到验证邮件
+- [ ] 点击邮件链接，状态变为&quot;已验证&quot;
+- [ ] 验证链接 24 小时后失效
+- [ ] 未验证用户登录后看到提醒页
+- [ ] 提醒页&quot;重发邮件&quot;按钮可用，限流 1 次/分钟
+
+### 依赖（实现前需要确认）
+- Resend 是否支持自定义发件人域名？（需 @infrastructure 确认）
+</code></pre>
+</div><p><strong>这个格式的设计原理</strong>：</p>
+
+<ul>
+<li><strong>前置条件</strong>：让 AI 不要重新实现已有的东西</li>
+
+<li><strong>边界</strong>：让 AI 不要&quot;顺手&quot;扩展功能</li>
+
+<li><strong>不做什么</strong>：显式排除，比只写&quot;做什么&quot;更清晰</li>
+
+<li><strong>验收标准</strong>：每条都是可被 AI 或测试人员验证的断言</li>
+
+</ul>
+
+<h3 id="section-3-2">3.2 产品线 SKILL.md 应该长什么样</h3>
+
+<p>这一层不需要一上来就写成长模板。对大多数团队来说，产品线 SKILL.md 先有下面这 3 组规则就够了：</p>
+
+<ul>
+<li><strong>PRD 输出前必须回答的 4 个问题</strong>
+<ul>
+<li>解决了谁的什么问题</li>
+
+<li>成功长什么样</li>
+
+<li>明确不做什么</li>
+
+<li>依赖哪些已有系统</li>
+
+</ul>
+
+</li>
+
+<li><strong>PRD 评审时必须检查的 3 件事</strong>
+<ul>
+<li>验收标准是否可测试</li>
+
+<li>是否有明确范围边界</li>
+
+<li>是否包含 AI 消费块</li>
+
+</ul>
+
+</li>
+
+<li><strong>与开发交接时的 1 条硬规则</strong>
+<ul>
+<li>AI 先读 PRD 输出理解摘要，产品确认后才能进入实现计划</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<p>如果要把它压成最小可用版，写成下面这样已经足够：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">---
+name: product-prd
+description: 产品需求文档撰写与评审规范
+---
+
+在输出 PRD 之前，必须明确：目标用户、成功标准、不做什么、前置依赖。
+在 PRD 评审时，必须检查：验收标准可测试、范围边界清晰、AI 消费块完整。
+在交接开发前，必须先让 AI 输出理解摘要，由产品确认后再继续。
+</code></pre>
+</div><h3 id="section-3-3">3.3 引导产品团队的步骤</h3>
+
+<p><strong>第一周</strong>：不改变任何流程，只是在每个 PRD 末尾加上&quot;AI 消费块&quot;。让开发把这个块给 Claude 读，看 Claude 的理解是否和产品意图一致，把不一致的地方记录下来。</p>
+
+<p><strong>第二周</strong>：根据记录的不一致，优化 AI 消费块的格式——哪些字段总是&quot;被 AI 误读&quot;，就说明描述方式需要改。</p>
+
+<p><strong>第三周</strong>：把改进后的格式写成 SKILL.md，团队开始统一使用。</p>
+
+<p><strong>一个月后</strong>：用一个下午的时间回顾所有&quot;开发说需求没理解清楚&quot;的情况，看使用新格式前后是否有改善。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-4">
+<h2 id="section-4">四、工程线：AI 辅助开发工作流</h2>
+
+<p>开发和 AI 的交互最复杂，因为开发的工作跨越多个阶段：理解需求 → 设计方案 → 实现 → 测试 → 发布。每个阶段 AI 的行为模式都不同，需要的约束也不同。</p>
+
+<h3 id="section-4-1">4.1 从 PRD 到代码：需求分解工作流</h3>
+
+<p>拿到 PRD 之后，不要直接开始写代码，先用 AI 做需求分解：</p>
+
+<p><strong>第一步：让 AI 读 PRD，输出它的理解</strong></p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>提示词模板（可写入 SKILL.md）：
+
+请阅读这份 PRD，用以下格式输出你的理解：
+
+1. 核心功能（3 条以内，每条一句话）
+2. 涉及的系统组件（列出所有需要修改的文件/模块）
+3. 你认为不确定或有歧义的地方（如果有）
+4. 你认为 PRD 没有提到但可能需要考虑的技术问题（如果有）
+
+不要开始实现，只输出理解。
+</code></pre>
+</div><p>产品和开发一起确认 AI 的理解是否正确，不一致的地方在 PRD 里修正。</p>
+
+<p><strong>第二步：让 AI 生成实现计划（不是代码）</strong></p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>提示词模板：
+
+基于上面确认的理解，请生成实现计划：
+
+格式要求：
+1. 每个步骤是一个原子变更（一个函数/一个迁移/一个组件）
+2. 每个步骤包含：做什么 → 验证：如何确认这步正确 ← 依赖：需要前面哪步完成
+3. 按照依赖顺序排列
+
+不要写代码，只写计划。
+</code></pre>
+</div><p>让计划先经过一次人工的快速评估（5 分钟），确认顺序合理，没有明显遗漏。</p>
+
+<p><strong>第三步：按步骤逐一实现</strong></p>
+
+<p>每个步骤独立完成，完成后立即验证（运行测试/检查输出），再进入下一步。不要让 AI 一口气实现所有步骤。</p>
+
+<h3 id="section-4-2">4.2 开发线 SKILL.md 应该长什么样</h3>
+
+<p>开发线 SKILL.md 的重点也不是“写得全”，而是<strong>让 AI 在实现阶段不要失控</strong>。最小版本至少要覆盖三件事：</p>
+
+<ul>
+<li><strong>实现前</strong>
+<ul>
+<li>先读项目约定</li>
+
+<li>先拆步骤</li>
+
+<li>先确认这一步到底在做什么</li>
+
+</ul>
+
+</li>
+
+<li><strong>实现中</strong>
+<ul>
+<li>每步完成立即验证</li>
+
+<li>测试失败先找根因</li>
+
+<li>AI 越界修改时回滚越界部分</li>
+
+</ul>
+
+</li>
+
+<li><strong>提交前</strong>
+<ul>
+<li>检查遗留日志、硬编码、未处理错误、范围外修改</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<p>压缩成最小可用版，大概是：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">---
+name: engineering-dev
+description: 开发实现规范
+---
+
+开始写代码前，必须先读约定、拆分步骤、确认当前这一步的目标。
+实现中，每步完成后立即验证；测试失败先找根因；范围外改动必须回滚。
+提交前，必须检查日志遗留、硬编码、未处理错误和超出 PRD 范围的修改。
+</code></pre>
+</div><h3 id="section-4-3">4.3 团队 Git 工作流与 AI 的结合</h3>
+
+<p>把 AI 引入 Git 工作流，不是&quot;让 AI 写 commit message&quot;，而是建立提交纪律：</p>
+
+<p><strong>Commit 粒度规范</strong>（写入 SKILL.md）：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>markdown</span></div><pre><code class="language-markdown">每个 commit 必须对应 PRD 里的一个验收标准，或者一个实现计划里的一个步骤。
+
+commit message 格式：
+type(scope): 描述
+
+type:
+- feat: 实现新功能
+- fix: 修复 bug
+- test: 添加/修改测试
+- refactor: 重构（不改变行为）
+- docs: 文档
+
+body（可选）：
+- 对应 PRD 验收标准: #AC-3
+- 如有，说明为什么这么实现而不是其他方式
+
+禁止：在一个 commit 里混合多种类型的变更
+</code></pre>
+</div><p><strong>PR 描述规范</strong>（让 AI 生成初稿）：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>让 AI 根据 commit 列表生成 PR 描述：
+
+请根据以下 commit 列表，生成 PR 描述：
+[粘贴 git log --oneline]
+
+格式要求：
+1. 一句话总结这个 PR 做了什么
+2. 对应的 PRD 验收标准：逐条列出，标注 DONE / NOT APPLICABLE
+3. 测试：说明测试了哪些场景（不是测试覆盖率）
+4. 风险：列出任何可能影响现有功能的地方
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-5">
+<h2 id="section-5">五、测试线：AI 辅助测试工作流</h2>
+
+<p>测试和 AI 的关系最容易被误解。</p>
+
+<p>常见的误解：<strong>让 AI 生成测试用例</strong>。这是把 AI 当成测试用例生成器，价值有限，而且容易产生大量低质量的&quot;代码覆盖率刷量用例&quot;（测试逻辑存在但没有真正验证行为）。</p>
+
+<p>正确的思维框架：<strong>让 AI 帮你发现你没有想到的场景</strong>。</p>
+
+<h3 id="section-5-1">5.1 测试的 AI 工作流：从 PRD 生成测试矩阵</h3>
+
+<p><strong>不是让 AI 直接写测试代码，而是先生成&quot;测试矩阵&quot;</strong>：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>提示词模板（写入 qa/SKILL.md）：
+
+请阅读这份 PRD（附上 PRD），生成测试矩阵。
+
+格式：
+
+| 场景 | 前置条件 | 操作 | 预期结果 | 类型 |
+|------|---------|------|---------|------|
+
+类型分类：
+- Happy Path（正常路径）
+- Edge Case（边界情况）
+- Error Case（错误情况）
+- Security（安全场景）
+- Performance（性能场景）
+
+要求：
+1. Happy Path 至少 3 条
+2. Edge Case 至少 5 条（登录时：空邮箱、邮箱格式错误、密码错误等）
+3. Security 场景：考虑越权访问、注入、重放攻击
+4. 不要生成测试代码，只生成矩阵
+
+完成后，标注你认为&quot;最容易被开发遗漏&quot;的 3 个场景，说明理由。
+</code></pre>
+</div><p><strong>测试矩阵的作用</strong>：不是为了让 AI 写代码，是为了让测试人员和开发人员在早期就对齐&quot;什么算完成&quot;，同时发现 PRD 里的空白。</p>
+
+<h3 id="section-5-2">5.2 AI 辅助探索性测试</h3>
+
+<p>对于已经上线的功能，用 AI 协助做探索性测试——类似 gstack <code>/qa</code> 的思路，但不依赖任何工具，只依赖测试人员和 AI 的对话：</p>
+
+<p><strong>探索性测试提示框架</strong>：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>我要对 [功能名称] 做探索性测试。
+
+已知信息：
+- 功能描述：[一句话]
+- 技术栈：[前端/后端/数据库]
+- 用户角色：[管理员/普通用户/未登录用户]
+
+请帮我设计探索路径：
+1. 从&quot;正常用户的完整使用流程&quot;开始，列出 5 个关键节点
+2. 对每个节点，列出可以&quot;斜着走&quot;的方向（什么样的异常操作可能暴露问题）
+3. 特别关注：状态切换（已登录↔未登录，有权限↔无权限）
+
+格式：探索地图（文字版，不需要代码）
+</code></pre>
+</div><p>测试人员用这个地图指导测试，发现问题后记录在 Bug 报告里，同时记录&quot;AI 预测的场景里，哪些确实发现了问题&quot;——这个数据帮助你优化提示词。</p>
+
+<h3 id="section-5-3">5.3 测试线 SKILL.md 应该长什么样</h3>
+
+<p>测试线 SKILL.md 的核心不是“让 AI 多写测试代码”，而是让 AI 帮测试团队提前看见盲区。最小版本只需要覆盖三件事：</p>
+
+<ul>
+<li>开始测试前，先把 PRD 验收标准转成测试矩阵</li>
+
+<li>记录 Bug 时，先补齐影响范围、可能根因和优先级建议</li>
+
+<li>发布前，必须对本次 PRD 的验收标准逐条给出 PASS / FAIL</li>
+
+</ul>
+
+<p>压成最小可用版，可以写成：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">---
+name: qa-testing
+description: 测试设计、Bug 记录与发布前验收规范
+---
+
+测试开始前，必须先读 PRD 验收标准并生成测试矩阵。
+Bug 报告必须包含现象、复现步骤、期望、实际、影响范围和优先级建议。
+发布前，必须对本次 PRD 的验收标准逐条给出 PASS / FAIL 结果。
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-6">
+<h2 id="section-6">六、把三条线连起来：团队 AI 协作协议</h2>
+
+<p>产品、开发、测试三条线分别有自己的 SKILL.md，但还需要一个跨线的协议，让三条线的 AI 工作流能够无缝衔接。</p>
+
+<h3 id="section-6-1">6.1 信息接力协议</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>PRD（产品）
+  ↓ 包含 AI 消费块
+Kickoff（产品 + 开发）
+  ↓ AI 输出理解摘要，双方确认
+实现计划（开发）
+  ↓ 每步对应一个 PRD 验收标准
+代码（开发）
+  ↓ 每个 commit 对应一个实现步骤
+测试矩阵（测试）
+  ↓ 覆盖 PRD 验收标准 + AI 生成的边界场景
+验收测试结果（测试）
+  ↓ 表格形式，逐条标注 PASS/FAIL
+发布决策（产品 + 开发 + 测试）
+</code></pre>
+</div><p>这条链上的每一个&quot;↓&quot;，都是 AI 帮助格式化和确认的节点，也是人类做决策的节点。</p>
+
+<p><strong>关键设计原则</strong>：AI 处理格式化、摘要、补充，人类做确认和决策。</p>
+
+<h3 id="section-6-2">6.2 团队全局 SKILL.md</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">---
+name: team-global
+description: |
+  团队全局 AI 工作规范。所有角色、所有任务都适用。
+  这里的约束优先级高于角色专属 SKILL.md。
+---
+
+# 团队 AI 全局规范
+
+## 永远适用的规则
+
+### 信息传递规则
+1. 跨角色传递的信息（PRD、计划、Bug 报告），必须用结构化格式
+2. 口头确认的决定，必须在对应文档中更新，不能只存在于会话里
+3. 使用 AI 生成的任何文档，发送前必须人工确认过一遍
+
+### AI 使用范围
+可以用 AI：
+- 生成草稿（PRD、计划、报告、代码、测试用例）
+- 检查完整性（有没有遗漏的场景、验收标准是否可测试）
+- 理解摘要（把长文档压缩成要点）
+- 格式转换（把非结构化信息转成结构化格式）
+
+不应该用 AI 做最终决策：
+- 发布决策（AI 可以提供信息，但发布 yes/no 是人来决定）
+- 优先级决策（业务权衡不是 AI 擅长的）
+- 法律/合规判断（需要专业人员）
+
+### 失败记录规则
+每周，每个人花 3 分钟记录一条&quot;AI 工作中遇到的问题&quot;：
+- 格式：[角色] 在 [场景] 下，AI [做了什么]，导致 [什么问题]
+- 记录位置：.team-ai/FAILURES.md
+
+每月一次，从 FAILURES.md 里提炼新的约束，更新各角色 SKILL.md。
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-7">
+<h2 id="section-7">七、一个稳妥的引导节奏</h2>
+
+<p>不要在一个月里把所有东西推给团队。一个相对稳妥的推进节奏可以是：</p>
+
+<h3 id="section-7-1">第 1 个月：建立记录习惯</h3>
+
+<p><strong>目标</strong>：团队开始系统地记录 AI 工作中的问题。</p>
+
+<p><strong>行动</strong>：</p>
+
+<ul>
+<li>在每周例会里加 5 分钟的 AI 工作复盘</li>
+
+<li>建立 <code>.team-ai/FAILURES.md</code> 文件，开始记录</li>
+
+</ul>
+
+<p><strong>不要做的</strong>：不要在这个阶段推任何约束，只是记录。</p>
+
+<h3 id="section-7-2">第 2 个月：第一个 SKILL.md</h3>
+
+<p><strong>目标</strong>：根据第一个月的记录，解决频率最高的一个问题。</p>
+
+<p><strong>行动</strong>：</p>
+
+<ul>
+<li>找出出现频率最高的失败模式</li>
+
+<li>设计一个约束（一条规则）</li>
+
+<li>把这一条规则写成团队的第一个 SKILL.md</li>
+
+<li>在团队里演示如何使用，让每个人试一次</li>
+
+</ul>
+
+<p><strong>不要做的</strong>：不要写超过 5 条规则的 SKILL.md，一条够了。</p>
+
+<h3 id="section-7-3">第 3 个月：角色分化</h3>
+
+<p><strong>目标</strong>：产品、开发、测试各自有一个专属的 SKILL.md。</p>
+
+<p><strong>行动</strong>：</p>
+
+<ul>
+<li>每个角色各自提出自己最需要的一条约束</li>
+
+<li>各角色的 leader 负责写这一条约束</li>
+
+<li>全团队 review，合并进各自的 SKILL.md</li>
+
+</ul>
+
+<h3 id="section-7-4">第 4 个月起：迭代与演化</h3>
+
+<p><strong>目标</strong>：SKILL.md 变成一个活的文档，每月迭代一次。</p>
+
+<p><strong>行动</strong>：</p>
+
+<ul>
+<li>每月一次，从 FAILURES.md 里提炼新约束</li>
+
+<li>删除不再需要的约束（团队已经内化了，就不需要写在文档里了）</li>
+
+<li>把最有效的约束分享给其他团队</li>
+
+</ul>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-8">
+<h2 id="section-8">八、如何知道框架真的在生效</h2>
+
+<p>不要只靠“大家感觉顺了”来判断。至少看四个指标，其中前 3 个应该尽量量化：</p>
+
+<h3 id="section-8-1">指标 1：同类失败的复发率是否下降</h3>
+
+<p>如果某条 SKILL.md 约束真的有效，它针对的那类失败应该在接下来一个月明显减少，而不是换个场景反复出现。</p>
+
+<p><strong>怎么测量</strong>：每月看 <code>FAILURES.md</code>，统计每类问题出现次数，看是否连续下降。</p>
+
+<h3 id="section-8-2">指标 2：AI 超出边界的次数是否下降</h3>
+
+<p>很多团队真正的损耗，不是“AI 写错了”，而是“AI 顺手多做了”。如果框架有效，这类超出 PRD / 计划边界的改动应该越来越少。</p>
+
+<p><strong>怎么测量</strong>：统计每周 PR 或实现步骤中，因“超出范围”被回滚或拆分的次数。</p>
+
+<h3 id="section-8-3">指标 3：“声称完成但未验证”的次数是否下降</h3>
+
+<p>这是最典型的 AI 工程风险之一。如果验证门控有效，那么“AI 说完成了，但测试/运行结果并未证明”的情况应该迅速下降。</p>
+
+<p><strong>怎么测量</strong>：统计每月出现多少次“完成声明被验证环节推翻”的记录。</p>
+
+<h3 id="section-8-4">指标 4：新人达到稳定使用 AI 的时间是否缩短</h3>
+
+<p>这是一个偏结果性的辅助指标。框架越成熟，新成员越不需要靠口口相传摸索“团队怎么跟 AI 协作”。</p>
+
+<p><strong>怎么测量</strong>：记录新人从加入团队到能独立产出一份合格 PRD、实现计划或 Bug 报告，平均需要几天。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-9">
+<h2 id="section-9">结语：框架的本质是凝固的团队经验</h2>
+
+<p>gstack 是 Garry Tan 团队凝固在代码里的经验。<br>
+superpowers 是 Anthropic 工程师凝固在 SKILL.md 里的经验。</p>
+
+<p>你们团队的 SKILL.md，是你们自己的痛点和解法凝固的产物。</p>
+
+<p>所以，团队框架不是“制定出来”的，而是从重复失败里长出来的。<br>
+先记录失败，再提炼约束；先验证约束，再写入 SKILL.md；先让团队感受到它真的减少了返工，再让它变成默认工作方式。</p>
+
+<p>它不会在第一天就完美。第一个月，它通常有些生硬；第三个月，大家开始顺手；第六个月，你会发现自己几乎不再想它——因为它已经成为团队工作方式的一部分，就像代码风格规范一样，你不再意识到它的存在，但你确实在遵守它。</p>
+
+<p>这就是工程规范应该有的生命轨迹。</p>
+
+</section>
+</article>
+</div>
+<nav class="article-pagination" aria-label="阅读导航">
+<a href="article-04-core-principles.html">← 上一篇</a><a href="article-06-compound-engineering.html">下一篇 →</a></nav>
+
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+
+<em>系列：《AI 编程最佳实践》第五篇</em>
+
+<em>写于 2026-03-30</em>
+</footer>
+</main>
+</body>
+</html>

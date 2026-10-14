@@ -1,0 +1,340 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="建立可验证证据、任务分解与审查能力，明确 AI 协作的适用边界。">
+<title>AI 编程总览：你需要先知道的事 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices theme-engineering">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">系列文章</a><a href="index.html#research">研究资料</a></nav>
+</div></header>
+
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">AI 编程最佳实践</a> / 第 1 篇</p>
+
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>AI 编程最佳实践</span><span>CHAPTER 01</span></p>
+<h1>AI 编程总览<span class="title-detail"><span class="title-punctuation">：</span>你需要先知道的事 </span></h1>
+<p class="lead">建立可验证证据、任务分解与审查能力，明确 AI 协作的适用边界。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-03-30">2026-03-30</time></span><span>第 1 / 8 篇</span><span>网页整理于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">01</span><p class="guide-label">阅读路径</p>
+
+<nav>
+<a href="#section-1"><span>01</span>&quot;AI 不会告诉你它不知道&quot;<span aria-hidden="true">↗</span></a><a href="#section-5"><span>02</span>哪些场景 AI 极其有效<span aria-hidden="true">↗</span></a><a href="#section-8"><span>03</span>读完这篇，你准备好了什么<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout">
+<article class="article-body">
+
+<figure class="native-figure">
+<div class="figure-heading"><span class="figure-label">阅读概览 / 01</span><strong>验证先于信任</strong></div><ol class="overview-flow"><li><span>01</span><strong>明确意图</strong></li>
+<li><span>02</span><strong>拆分任务</strong></li>
+<li><span>03</span><strong>生成实现</strong></li>
+<li><span>04</span><strong>证据验证</strong></li>
+</ol>
+<figcaption>依据本篇内容整理；具体机制与工程取舍见正文。</figcaption>
+</figure>
+<div class="article-opening"><blockquote>
+<p>这是《AI 编程最佳实践》系列的第一篇。不讲工具、不讲提示词技巧，只讲在开始之前，你需要建立的几个认知。有了这些认知，后续的框架才有意义；没有这些认知，再好的框架也只是照猫画虎。</p>
+
+</blockquote>
+<hr>
+</div>
+<section class="essay-section" aria-labelledby="section-1">
+<h2 id="section-1">一、&quot;AI 不会告诉你它不知道&quot;</h2>
+
+<p><strong>幻觉问题的工程化应对</strong></p>
+
+<h3 id="section-1-1">真正的问题</h3>
+
+<p>AI 的幻觉问题不是&quot;AI 会乱说&quot;，而是 <strong>AI 不知道它不知道</strong>。它在完全确信和完全瞎猜的时候，语气是一样自信的。它不会说&quot;这个我不确定&quot;，它只会给你一个听起来合理的答案。</p>
+
+<p>这意味着：你不能用&quot;AI 会不会回答&quot;来判断这个答案对不对。</p>
+
+<h3 id="section-1-2">简单答案</h3>
+
+<p><strong>每一个关键答案，都要求 AI 提供可验证的证据。</strong></p>
+
+<p>不是&quot;这个实现是对的&quot;，而是&quot;运行这个测试，如果通过了就说明对的&quot;。<br>
+不是&quot;这个查询很快&quot;，而是&quot;用 <code>EXPLAIN ANALYZE</code> 跑一下，看执行计划&quot;。<br>
+不是&quot;这个 API 是这样用的&quot;，而是&quot;在官方文档第 X 页，这里有原文&quot;。</p>
+
+<p>让每一个关键声明都有一个可以被验证的落脚点，幻觉就无处可藏。</p>
+
+<h3 id="section-1-3">框架怎么解决的</h3>
+
+<p>这就是 <code>verification-before-completion</code> 的设计动机：要求 AI 在声明&quot;完成&quot;之前，提供命令输出作为证据。不是让 AI 自我声明，而是让现实来说话。（→ 第三篇 superpowers 详细展开）</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-2">
+<h2 id="section-2">二、任务分解是核心技能</h2>
+
+<p><strong>把大任务拆成 AI 能精准完成的小任务</strong></p>
+
+<h3 id="section-2-1">真正的问题</h3>
+
+<p>你给 AI 一个大任务：&quot;帮我实现用户系统&quot;。AI 会给你一个答案，但这个答案里包含了它做出的几十个隐性决定：用什么存储、session 怎么管理、密码怎么加密、token 怎么刷新……这些决定你没法在事后审查，因为它们藏在代码里。</p>
+
+<p>等你发现某个决定不对，整个实现可能已经建立在错误的假设上了。</p>
+
+<h3 id="section-2-2">简单答案</h3>
+
+<p><strong>任务分解的单位是：一个决定，一个验证点。</strong></p>
+
+<p>每个步骤只做一件事，做完有一个可检查的结果。步骤之间是串行的，不是并行的。这样你在每一步都有机会介入，而不是等 AI 跑完 300 行代码再发现方向错了。</p>
+
+<p>一个好的分解原则：<strong>如果一个步骤失败，你立刻知道是哪里出了问题</strong>。如果失败后你需要大量排查才能定位问题，步骤拆得还不够细。</p>
+
+<h3 id="section-2-3">框架怎么解决的</h3>
+
+<p>这是 <code>brainstorming</code> 和 <code>plan-writing</code> 的核心：设计完成之前，实现不开始；计划里的每一步都有验证标准。（→ 第三篇 superpowers；第四篇讲为什么这么设计）</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-3">
+<h2 id="section-3">三、你的审查能力决定 AI 的上限</h2>
+
+<p><strong>你越强，AI 才越能帮你</strong></p>
+
+<h3 id="section-3-1">真正的问题</h3>
+
+<p>很多人觉得有了 AI，自己可以&quot;少学点&quot;——反正 AI 会做。这是一个危险的错误。</p>
+
+<p>实际情况恰恰相反：<strong>你的判断力是 AI 价值的上限</strong>。</p>
+
+<p>AI 能给你 10 个方案，但选哪个是你的责任。AI 能写 200 行代码，但代码里那个微妙的并发 bug，只有懂并发的人才能发现。AI 能生成测试，但只有懂测试设计的人才能判断这些测试有没有覆盖真正的边界情况。</p>
+
+<p>如果你做不到审查，你就无法信任 AI 的输出，你要么盲目接受所有答案，要么什么都让 AI 重做——两种都不是真正的协作。</p>
+
+<h3 id="section-3-2">简单答案</h3>
+
+<p><strong>用 AI 做事，用自己的专业能力做决定。</strong></p>
+
+<p>具体来说：</p>
+
+<ul>
+<li>AI 生成实现，你审查架构决策</li>
+
+<li>AI 生成测试用例，你判断测试覆盖是否充分</li>
+
+<li>AI 给出修复方案，你验证根因是否找对了</li>
+
+<li>AI 输出设计文档，你确认这反映了你的真实意图</li>
+
+</ul>
+
+<p>你要练习的不是&quot;怎么让 AI 写得更好&quot;，而是&quot;怎么在 AI 写完之后，用最少的时间找到最关键的问题&quot;。</p>
+
+<h3 id="section-3-3">框架怎么解决的</h3>
+
+<p>这就是 <code>code-review</code> 和 <code>/review</code> 设计思路的基础：AI 辅助做工程评审，但评审标准由人来定义。框架把&quot;需要审查什么&quot;结构化了，让你的审查效率提高，而不是让审查消失。（→ 第二篇 gstack 工程评审流程）</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-4">
+<h2 id="section-4">四、从&quot;生成代码&quot;到&quot;设计意图&quot;</h2>
+
+<p><strong>真正的价值在架构决策层</strong></p>
+
+<h3 id="section-4-1">真正的问题</h3>
+
+<p>大多数人把 AI 当代码生成器。输入：功能描述，输出：代码。这个用法的价值是真实的，但有上限——因为你省掉的只是&quot;打字&quot;，而不是&quot;思考&quot;。</p>
+
+<p>更高阶的用法是：<strong>在决策层使用 AI</strong>。</p>
+
+<p>不是&quot;帮我写这个 API&quot;，而是&quot;我有两个方案：方案 A 用同步，方案 B 用异步消息队列。在我们这个场景下（每天 10 万次调用，要求最终一致性），你认为哪个更合适？列出理由和你认为我没考虑到的权衡。&quot;</p>
+
+<p>这类对话，AI 能帮你发现你想不到的问题，能帮你压测你的决策逻辑，能帮你提前看到技术债。</p>
+
+<h3 id="section-4-2">简单答案</h3>
+
+<p><strong>把 AI 当成一个见过很多项目的工程师——问它&quot;你觉得这个决策有什么风险&quot;，而不只是&quot;帮我实现这个决策&quot;。</strong></p>
+
+<p>实践方法：在开始实现之前，先让 AI 做一次&quot;假设我选了方案 X，6 个月后我会遇到什么问题&quot;的推演。这 10 分钟的对话，可能避免 6 个月后一次大型重构。</p>
+
+<h3 id="section-4-3">框架怎么解决的</h3>
+
+<p><code>plan-eng-review</code> 专门做这件事：在实现计划上运行一次工程评审，暴露技术风险，优先于实现而不是在实现之后。这就是&quot;设计意图层&quot;的约束。（→ 第二篇 gstack 的 <code>/review</code> 机制）</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-5">
+<h2 id="section-5">五、哪些场景 AI 极其有效</h2>
+
+<p>这是值得认真整理的一张地图，因为在对的场景用 AI，效果是 10 倍；在错的场景用 AI，效果是负数。</p>
+
+<h3 id="section-5-1">✅ AI 极其有效的场景</h3>
+
+<p><strong>1. 有明确规范的代码生成</strong></p>
+
+<p>简单示例：写一个符合 RESTful 规范的 CRUD 接口、生成 TypeScript 类型定义、把 SQL 查询转成 ORM 代码。有明确规范、答案对错可被验证。AI 在这里速度是人的 5-10 倍，质量持平甚至更好。</p>
+
+<p><strong>2. 已知答案的查找</strong></p>
+
+<p>&quot;PostgreSQL 的 <code>EXPLAIN ANALYZE</code> 怎么看&quot;、&quot;React 18 的 <code>useEffect</code> 清理函数什么时候触发&quot;——这些是有确定答案的知识查询，AI 比搜索引擎更快，比文档更易读。</p>
+
+<p><strong>3. 样板代码和重复结构</strong></p>
+
+<p>生成 10 个方向类似的测试用例、把同一个逻辑在 5 个不同语言里实现、把一份 JSON 转成多个语言的 class 定义。AI 在这里消灭了大量枯燥工作。</p>
+
+<p><strong>4. 第一稿的生成</strong></p>
+
+<p>从空白开始写任何东西都是最难的：PRD、设计文档、测试方案、错误报告、API 文档。AI 给你一个 60 分的第一稿，你在 60 分的基础上改到 90 分，比你从零开始写到 90 分快得多。</p>
+
+<p><strong>5. 理解陌生代码库</strong></p>
+
+<p>新加入一个项目，让 AI 解释某个复杂函数、某个奇怪的架构决定、某个绕弯子的数据流。AI 理解代码的能力很强，特别适合加速 onboarding。</p>
+
+<p><strong>6. 调试：已知症状，未知根因</strong></p>
+
+<p>给 AI 报错信息、堆栈、相关代码，让它列出可能的根因。AI 在这里的价值不是给你答案，而是帮你列出你没想到的方向，节省 30 分钟的盲目排查。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-6">
+<h2 id="section-6">六、哪些场景是坑</h2>
+
+<h3 id="section-6-1">❌ AI 容易帮倒忙的场景</h3>
+
+<p><strong>1. 需要最新信息的决策</strong></p>
+
+<p>AI 的训练数据有截止日期。&quot;现在最流行的 React 状态管理库是什么&quot;、&quot;这个 npm 包最新版本有没有破坏性变更&quot;——这类问题 AI 会给你自信的答案，但可能是 1 年前的答案。</p>
+
+<p><strong>规避方法</strong>：凡是涉及版本、最新动态、当前最佳实践的问题，用日期约束 AI 的回答，或直接去官方文档确认。</p>
+
+<p><strong>2. 高度特定于你们业务的决策</strong></p>
+
+<p>AI 不了解你们公司的历史包袱、组织结构的约束、正在进行的技术债迁移。&quot;我们应该把这个服务拆成微服务吗&quot;——AI 给你的答案是基于通用情况的，不是基于你们的实际情况的。</p>
+
+<p><strong>规避方法</strong>：给 AI 提供足够多的具体约束，然后让它帮你推演，而不是直接让它决策。</p>
+
+<p><strong>3. 安全和合规的核心判断</strong></p>
+
+<p>&quot;这个实现符合 GDPR 吗&quot;、&quot;这个权限设计有安全漏洞吗&quot;——AI 能帮你列出检查项，但最终判断必须是专业人员来做。AI 在安全和合规上的置信度很难评估，而错误的代价极高。</p>
+
+<p><strong>规避方法</strong>：用 AI 做 checklist 生成，用人做最终审查。</p>
+
+<p><strong>4. 绿地架构的核心设计</strong></p>
+
+<p>完全从零开始的系统架构，核心的设计决策不应该完全委托给 AI。AI 倾向于给你&quot;合理的标准答案&quot;，但真正好的架构往往是针对具体约束的非标准解。</p>
+
+<p><strong>规避方法</strong>：用 AI 做方案评估（&quot;这个架构的风险是什么&quot;），用自己做核心决策。</p>
+
+<p><strong>5. 超过上下文窗口的大型任务</strong></p>
+
+<p>&quot;帮我重构整个项目&quot;——这类任务超出了 AI 能够可靠处理的范围。AI 在中途会失去对早期决定的记忆，导致前后不一致。</p>
+
+<p><strong>规避方法</strong>：任务分解（见第二节），永远不要把超过 500 行代码的改动作为一个单一任务交给 AI。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-7">
+<h2 id="section-7">七、如何建立判断力</h2>
+
+<p>知道 AI 有效和无效的场景，还不够。你还需要在具体情况下快速判断：<strong>这次我应该信任 AI 多少</strong>。</p>
+
+<p>这个判断力不是天生的，是练出来的。</p>
+
+<h3 id="section-7-1">建立判断力的三个方法</h3>
+
+<p><strong>方法 1：刻意验证，直到你校准了 AI 在某个领域的准确率</strong></p>
+
+<p>在你熟悉的领域，当 AI 给你一个答案时，先独立验证它，再告诉自己 AI 对了还是错了。做 20 次之后，你会对 AI 在这个领域的可靠程度有一个真实的感受，而不是基于印象的猜测。</p>
+
+<p><strong>方法 2：区分&quot;AI 可以独立做&quot;和&quot;AI 需要我审查&quot;</strong></p>
+
+<p>不是所有答案都需要同等的审查力度。建立你自己的分类：</p>
+
+<ul>
+<li><strong>低风险</strong>（生成样板代码、格式转换、文档草稿）：快速过眼，大概率直接用</li>
+
+<li><strong>中风险</strong>（功能实现、测试用例、配置）：逐段审查，重点看边界处理</li>
+
+<li><strong>高风险</strong>（架构决策、安全相关、生产配置）：每一行都要理解，不明白的不用</li>
+
+</ul>
+
+<p><strong>方法 3：记录你的&quot;AI 坑我&quot;清单</strong></p>
+
+<p>每次 AI 给你一个错误的答案，记录下来：在什么场景、问了什么、错在哪里。积累 20 条之后，你会看到规律——AI 在哪类问题上容易犯哪类错误，这就是你的私人&quot;AI 雷达&quot;。</p>
+
+<p>这也是第五篇团队工作流里建议的 <code>FAILURES.md</code> 的个人版——从个人到团队，都需要这个积累过程。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-8">
+<h2 id="section-8">八、读完这篇，你准备好了什么</h2>
+
+<p>这篇文章没有给你工具，没有给你提示词，只给了你 7 个认知框架：</p>
+
+<ol>
+<li><strong>幻觉问题</strong>：可验证证据是唯一可靠的过滤器</li>
+
+<li><strong>任务分解</strong>：每步一个决定，每步一个验证点</li>
+
+<li><strong>审查能力</strong>：你的判断力是 AI 价值的上限</li>
+
+<li><strong>决策层价值</strong>：真正的高价值用法在架构推演，不在代码生成</li>
+
+<li><strong>有效场景</strong>：规范明确、答案可验证、重复劳动</li>
+
+<li><strong>危险场景</strong>：需要最新信息、业务特定判断、安全合规</li>
+
+<li><strong>判断力</strong>：通过刻意验证和失败记录，校准你自己的 AI 雷达</li>
+
+</ol>
+
+<p>带着这 7 个认知，后续几篇的框架才会有意义：</p>
+
+<ul>
+<li><strong>第二篇</strong>：gstack —— 一个把上述约束全部自动化的工具链</li>
+
+<li><strong>第三篇</strong>：superpowers —— 用认知约束解决 AI 的结构性缺陷</li>
+
+<li><strong>第四篇</strong>：底层原理 —— 三层演进模型与 AI 编程的本质</li>
+
+<li><strong>第五篇</strong>：团队工作流 —— 如何把个人实践变成团队工程规范</li>
+
+</ul>
+
+<p>你不需要先读这些框架再开始实践。你可以现在就开始，用最简单的方式：</p>
+
+<p><strong>下次让 AI 做一件重要的事之前，先问它：&quot;你对这个答案有多确定，有什么我可以用来验证它的方法？&quot;</strong></p>
+
+<p>这就够了。</p>
+
+</section>
+</article>
+</div>
+<nav class="article-pagination" aria-label="阅读导航">
+<a href="index.html">返回系列目录</a><a href="article-02-gstack.html">下一篇 →</a></nav>
+
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+
+<em>系列：《AI 编程最佳实践》第一篇</em>
+
+<em>写于 2026-03-30</em>
+</footer>
+</main>
+</body>
+</html>

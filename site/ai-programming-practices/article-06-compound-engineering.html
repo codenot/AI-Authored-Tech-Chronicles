@@ -1,0 +1,757 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="沿 Plan、Work、Review、Compound 主循环分析知识沉淀与工程复利。">
+<title>Compound Engineering Plugin 深度解析：让 AI 编程产生复利效应的工程体系 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices theme-debt">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">系列文章</a><a href="index.html#research">研究资料</a></nav>
+</div></header>
+
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">AI 编程最佳实践</a> / 第 6 篇</p>
+
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>AI 编程最佳实践</span><span>CHAPTER 06</span></p>
+<h1>Compound Engineering Plugin 深度解析<span class="title-detail"><span class="title-punctuation">：</span>让 AI 编程产生复利效应的工程体系 </span></h1>
+<p class="lead">沿 Plan、Work、Review、Compound 主循环分析知识沉淀与工程复利。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-03-30">2026-03-30</time></span><span>第 6 / 8 篇</span><span>网页整理于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">06</span><p class="guide-label">阅读路径</p>
+
+<nav>
+<a href="#section-1"><span>01</span>问题的起点：传统 AI 编程的熵增陷阱<span aria-hidden="true">↗</span></a><a href="#section-7"><span>02</span>文件系统即知识架构<span aria-hidden="true">↗</span></a><a href="#section-13"><span>03</span>核心原则总结<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout">
+<article class="article-body">
+
+<figure class="native-figure">
+<div class="figure-heading"><span class="figure-label">阅读概览 / 06</span><strong>让工程知识进入下一次循环</strong></div><ol class="overview-flow"><li><span>01</span><strong>Plan</strong></li>
+<li><span>02</span><strong>Work</strong></li>
+<li><span>03</span><strong>Review</strong></li>
+<li><span>04</span><strong>Compound</strong></li>
+</ol>
+<figcaption>依据本篇内容整理；具体机制与工程取舍见正文。</figcaption>
+</figure>
+<div class="article-opening"><blockquote>
+<p><strong>系列背景</strong>：本文是《AI 编程最佳实践》第六篇。前三篇分别介绍了 AI 编程概论、gstack 研发流程工具链、obra/superpowers 认知约束系统。本篇聚焦 <strong>EveryInc/compound-engineering-plugin</strong>——一个试图从根本上解决 AI 辅助开发中「知识不复利」困局的工程体系。</p>
+
+</blockquote>
+<hr>
+</div>
+<section class="essay-section" aria-labelledby="section-1">
+<h2 id="section-1">一、问题的起点：传统 AI 编程的熵增陷阱</h2>
+
+<p>先描述一种大多数工程师都经历过的现实：</p>
+
+<p>项目早期，用 Claude Code 或 Cursor 处理需求，速度极快。但随着代码库增长，情况开始变质：</p>
+
+<ul>
+<li>每次新功能都要重新向 AI 解释项目规范，沟通成本恒为常数</li>
+
+<li>AI 在同类代码中重复出现同类错误，没有「上次犯过了」的记忆</li>
+
+<li>Review 后发现 bug，修了就过，没有沉淀；同类问题在三个月后的 PR 里再次出现</li>
+
+<li>Bug 修复后，解决方案只存在于 Slack 消息或某个工程师的脑子里</li>
+
+</ul>
+
+<p>这不是工具的问题。这是一个<strong>工程组织的知识管理问题</strong>，用软件工程的语言说：<strong>知识的边际成本始终不降</strong>。</p>
+
+<p>Compound Engineering 给出了一个系统性的答案。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-2">
+<h2 id="section-2">二、核心哲学：让每次工程投入产生复利</h2>
+
+<p><strong>核心命题</strong>：</p>
+
+<blockquote>
+<p>Each unit of engineering work should make subsequent units easier—not harder.</p>
+
+</blockquote>
+<p>传统开发的方向是<strong>线性甚至是递减的</strong>：每增加一个功能，代码库的复杂度往往增加，后续改动的摩擦力也随之上升。10 年后的大型项目，团队花在「理解现有系统」上的时间，往往超过「写新代码」的时间。</p>
+
+<p>Compound Engineering 的方向是<strong>指数级的</strong>：Bug 修复不只是消灭一个 bug，而是消灭整类 bug；代码 Review 不只是保证当次质量，而是把 Review 标准沉淀成可复用的 Agent；每一次解决问题，都往「系统性知识」的方向沉淀。</p>
+
+<p>这个哲学的数学直觉来自复利公式。当每次工程迭代产生的「知识增量」能够被后续迭代消费时，迭代的初始成本就会系统性地下降。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-3">
+<h2 id="section-3">三、主循环：Plan → Work → Review → Compound</h2>
+
+<p>Compound Engineering Plugin 的所有设计都围绕一个四步主循环：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Brainstorm → Plan → Work → Review → Compound → Repeat
+                  ↑ Ideate (optional)
+</code></pre>
+</div><p>在实际使用中对应以下 slash command：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>步骤</th>
+<th>命令</th>
+<th>角色定位</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>构想</td>
+<td><code>/ce:brainstorm</code></td>
+<td>需求模糊时，先对齐方向</td>
+</tr>
+
+<tr>
+<td>规划</td>
+<td><code>/ce:plan</code></td>
+<td>将功能描述转化为实现计划</td>
+</tr>
+
+<tr>
+<td>执行</td>
+<td><code>/ce:work</code></td>
+<td>Agent 按计划实现</td>
+</tr>
+
+<tr>
+<td>评审</td>
+<td><code>/ce:review</code></td>
+<td>多 Agent 并行专项审查</td>
+</tr>
+
+<tr>
+<td>沉淀</td>
+<td><code>/ce:compound</code></td>
+<td><strong>最关键一步</strong>：把本次解决的问题写入系统知识库</td>
+</tr>
+
+</tbody>
+</table>
+</div><p><strong>前三步（Plan → Work → Review）完成的是一个功能。</strong>
+<strong>第四步（Compound）构建的是一个持续生长的系统。</strong></p>
+
+<p>Every 的工程规范中明确指出：前三步占工程师时间的约 80%，后两步（Work + Compound）约 20%。即<strong>大部分时间应分配在思考和知识沉淀，而不是在键盘上敲代码</strong>。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-4">
+<h2 id="section-4">四、<code>/ce:plan</code>：三路并行研究 Agent 的内部机制</h2>
+
+<p><code>/ce:plan</code> 是整个系统的核心入口之一。输入一段需求描述，它不直接生成代码，而是先跑完一套研究流程。</p>
+
+<h3 id="section-4-1">并行研究 Agent 编排</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>/ce:plan Add email notifications when users receive new comments
+         ↓
+  ┌─────────────────────────────────────────────────────┐
+  │           三路研究 Agent 并行启动                    │
+  ├─────────────────┬──────────────┬────────────────────┤
+  │ repo-research   │ framework-   │ best-practices-    │
+  │ -analyst        │ docs-        │ researcher         │
+  │                 │ researcher   │                    │
+  │ 扫描代码库结构  │ 查框架官方   │ 调研行业最佳实践   │
+  │ 识别已有 email  │ 文档（Rails/ │ 查 email 通知的     │
+  │ 相关 pattern    │ Next.js 等）  │ 标准实现方式        │
+  └────────┬────────┴──────┬───────┴──────────┬─────────┘
+           └───────────────┼──────────────────┘
+                           ↓
+              spec-flow-analyzer
+              （分析用户流程及边界情况）
+                           ↓
+              生成结构化实现计划
+              包含：受影响文件、实现步骤、验收标准
+</code></pre>
+</div><p>这个设计的关键在于<strong>把「研究」和「实现」显式分离</strong>。直接让 AI 写代码，它会根据训练数据的最常见模式生成代码；先做三方面的研究再生成计划，输出的是<strong>针对当前代码库和框架版本的具体指令</strong>，而不是泛化的模板。</p>
+
+<h3 id="section-4-2"><code>ultrathink</code> 模式：40+ 并行研究 Agent</h3>
+
+<p>在 <code>plan</code> 命令中加入 <code>ultrathink</code> 关键字，会自动触发 <code>/deepen-plan</code>，启动超过 40 个并行研究 Agent，对原始计划进行深度验证和补充。适用于高风险变更（如数据库 Schema 迁移、认证模块重构）。</p>
+
+<h3 id="section-4-3">Context7 MCP：实时框架文档注入</h3>
+
+<p>Plugin 内置了 Context7 MCP Server：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>json</span></div><pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;context7&quot;: {
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;https://mcp.context7.com/mcp&quot;,
+      &quot;headers&quot;: {
+        &quot;x-api-key&quot;: &quot;${CONTEXT7_API_KEY:-}&quot;
+      }
+    }
+  }
+}
+</code></pre>
+</div><p>这个 MCP 提供两个工具：</p>
+
+<ul>
+<li><code>resolve-library-id</code>：将 <code>rails</code>、<code>next.js</code> 等名称解析为 Context7 的库 ID</li>
+
+<li><code>get-library-docs</code>：获取特定版本的框架文档片段</li>
+
+</ul>
+
+<p>支持 100+ 框架（Rails、React、Next.js、Vue、Django、Laravel 等）。</p>
+
+<p><strong>工程意义</strong>：LLM 的训练数据有截止时间，直接查询旧版 API 是 AI 辅助开发最常见的错误来源之一。Context7 解决了这个问题——<code>/ce:plan</code> 在生成计划时，引用的是<strong>当前框架的实时文档</strong>，而不是模型记忆中的可能过时的知识。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-5">
+<h2 id="section-5">五、<code>/ce:review</code>：14 路专家 Agent 并行 Code Review</h2>
+
+<p>传统 Code Review 由一个或多个工程师串行执行，每个人的审查视角受限于其专业背景。<code>/ce:review</code> 将「多专家 Review」这件事系统化。</p>
+
+<h3 id="section-5-1">14 个专项 Agent 矩阵</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>/ce:review PR#123
+     ↓
+14 个 Review Agent 并行执行
+     ↓
+合并为单一优先级列表（P1/P2/P3）
+</code></pre>
+</div><p><strong>安全层</strong>（security-sentinel）：</p>
+
+<ul>
+<li>扫描 OWASP Top 10 漏洞</li>
+
+<li>检查 SQL 注入、认证绕过、授权缺陷</li>
+
+</ul>
+
+<p><strong>性能层</strong>（performance-oracle）：</p>
+
+<ul>
+<li>检测 N+1 查询</li>
+
+<li>发现缺失索引、未命中缓存机会</li>
+
+<li>识别算法复杂度瓶颈</li>
+
+</ul>
+
+<p><strong>架构层</strong>：</p>
+
+<ul>
+<li><code>architecture-strategist</code>：评估系统设计决策、组件边界、依赖方向</li>
+
+<li><code>pattern-recognition-specialist</code>：识别跨 changeset 的设计模式与反模式</li>
+
+</ul>
+
+<p><strong>数据完整性层</strong>：</p>
+
+<ul>
+<li><code>data-integrity-guardian</code>：校验 migration、事务边界、referential integrity</li>
+
+<li><code>data-migration-expert</code>：检查 ID 映射、回滚安全性、生产数据验证</li>
+
+</ul>
+
+<p><strong>代码质量层</strong>：</p>
+
+<ul>
+<li><code>code-simplicity-reviewer</code>：强制 YAGNI 原则，标记不必要的复杂度</li>
+
+<li><code>maintainability-reviewer</code>：耦合度、命名、死代码分析</li>
+
+</ul>
+
+<p><strong>语言/框架专项层</strong>：</p>
+
+<ul>
+<li><code>kieran-rails-reviewer</code>：Rails 约定、Turbo Streams 模式、model/controller 职责分离</li>
+
+<li><code>dhh-rails-reviewer</code>：37signals 风格：简洁优于抽象，Omakase 技术栈</li>
+
+<li><code>kieran-typescript-reviewer</code>：类型安全、现代 ES 模式、简洁架构</li>
+
+<li><code>julik-frontend-races-reviewer</code>：JavaScript 和 Stimulus 控制器的竞态条件检测</li>
+
+</ul>
+
+<p><strong>部署层</strong>：</p>
+
+<ul>
+<li><code>deployment-verification-agent</code>：生成部署前检查清单、上线后验证步骤、回滚方案</li>
+
+</ul>
+
+<p><strong>Agent-native 层</strong>：</p>
+
+<ul>
+<li><code>agent-native-reviewer</code>：验证功能对 AI Agent 的可访问性（不只是对人类）</li>
+
+</ul>
+
+<h3 id="section-5-2">Review 输出格式</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>P1 - CRITICAL（必须修复）:
+  [ ] SQL injection vulnerability in search query (security-sentinel)
+  [ ] Missing transaction around user creation (data-integrity-guardian)
+
+P2 - IMPORTANT（应当修复）:
+  [ ] N+1 query in comments loading (performance-oracle)
+  [ ] Controller doing business logic (kieran-rails-reviewer)
+
+P3 - MINOR（可修复）:
+  [ ] Unused variable (code-simplicity-reviewer)
+  [ ] Could use guard clause (pattern-recognition-specialist)
+</code></pre>
+</div><h3 id="section-5-3">Review 后的自动化处置流程</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>/resolve_pr_parallel    ← 按 P1 → P2 顺序，并行修复各问题
+/triage                 ← 人工逐条过滤：approve / skip / customize
+/resolve_todo_parallel  ← 对 approved 的 todo 并行修复
+</code></pre>
+</div><p><code>/resolve_pr_parallel</code> 的关键设计：每个 fix 在<strong>独立隔离环境</strong>中运行，不会相互干扰，但人工 Review 最终 fix 的责任仍保留。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-6">
+<h2 id="section-6">六、<code>/ce:compound</code>：知识沉淀的工程化实现</h2>
+
+<p>这是整个系统<strong>最关键也最容易被跳过</strong>的一步。</p>
+
+<h3 id="section-6-1">内部机制：6 个并行 Agent</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>/ce:compound
+     ↓
+6 个 meta-Agent 并行分析本次工作
+     ↓
+┌────────────────────────────────────────────┐
+│ context-analyzer     → 理解问题的本质       │
+│ solution-extractor   → 提炼 what worked     │
+│ related-docs-finder  → 链接已有知识         │
+│ prevention-strategist→ 文档如何避免再犯     │
+│ category-classifier  → YAML 标签，确保可检索│
+│ documentation-writer → 格式化为标准 markdown│
+└────────────────────────────────────────────┘
+     ↓
+生成带 YAML frontmatter 的 solution 文档
+存入 docs/solutions/
+</code></pre>
+</div><h3 id="section-6-2">输出格式示例</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>markdown</span></div><pre><code class="language-markdown">---
+title: &quot;Fix N+1 query in comments loading&quot;
+category: performance
+tags: [rails, activerecord, n+1, eager-loading]
+date: 2026-03-30
+confidence: high
+---
+
+## Problem
+Comments 列表页在加载 1000 条评论时，产生 1001 条 SQL 查询...
+
+## Solution
+使用 `.includes(:author, :reactions)` 替换懒加载...
+
+## Prevention
+在 /ce:plan 阶段添加「检查 N+1 风险」作为验收标准之一...
+</code></pre>
+</div><p><strong>设计核心</strong>：YAML frontmatter 不是装饰，是<strong>检索接口</strong>。后续 <code>/ce:plan</code> 触发 <code>learnings-researcher</code> Agent 时，会全文搜索 <code>docs/solutions/</code> 目录，通过 tags + category 定位相关历史解决方案，并将其注入到当前计划的上下文中。</p>
+
+<p>这就是「复利」真正发生的位置：<strong>过去解决的问题，自动成为未来问题的解法候选</strong>。</p>
+
+<h3 id="section-6-3"><code>/ce:compound-refresh</code>：防止知识腐烂</h3>
+
+<p>代码库在演化，三个月前的 solution 文档可能已经过时。<code>/ce:compound-refresh</code> 会定期检查 <code>docs/solutions/</code> 中的文档与当前代码库的匹配程度，对每条知识做出决策：keep / update / replace / archive。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-7">
+<h2 id="section-7">七、文件系统即知识架构</h2>
+
+<p>Plugin 规定了固定的项目文件结构：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>your-project/
+├── CLAUDE.md                   # Agent 每次启动必读：规范、偏好、模式
+├── docs/
+│   ├── brainstorms/            # /ce:brainstorm 输出
+│   ├── plans/                  # /ce:plan 输出
+│   └── solutions/              # /ce:compound 沉淀的知识库
+└── todos/                      # Review 找到的待处理项
+    ├── 001-ready-p1-fix-auth.md
+    └── 002-pending-p2-add-tests.md
+</code></pre>
+</div><h3 id="section-7-1">CLAUDE.md 的角色</h3>
+
+<p><code>CLAUDE.md</code> 是<strong>整个系统最重要的单一文件</strong>。它在每次 Agent 启动时被自动读取，承载：</p>
+
+<ul>
+<li>项目级规范（命名约定、代码风格、禁止的 pattern）</li>
+
+<li>Agent 行为偏好（哪些 reviewer 需要、哪些可以跳过）</li>
+
+<li>历史犯错日志（防止同类问题再次出现）</li>
+
+</ul>
+
+<p>实际使用中，工程师的工作习惯会直接影响 CLAUDE.md 的质量：每次 Review 发现新的问题类型，就把「如何避免」写进 CLAUDE.md；每次重构发现的设计原则，也写进去。</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>markdown</span></div><pre><code class="language-markdown"># CLAUDE.md
+
+## 规范
+- 所有 ActiveRecord 查询必须检查 N+1：使用 Bullet gem 在开发环境中开启
+- Controller action 不能直接调用外部 API，必须通过 Service Object
+
+## 已知坑
+- Turbo Streams 更新 DOM 时，不要直接操作 Stimulus target，容易产生竞态条件
+- Redis cache key 必须包含版本号，避免类型变化导致的反序列化错误
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-8">
+<h2 id="section-8">八、<code>/lfg</code>：全自动管道，单命令到 PR</h2>
+
+<p><code>/lfg</code>（Let's Fucking Go）是整个 pipeline 的组合命令：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>/lfg Add dark mode toggle to settings page
+    ↓
+plan → deepen-plan → work → review → resolve findings → browser tests → feature video → compound
+    ↓
+生成 PR，等待人工合并
+</code></pre>
+</div><p>内部启动 <strong>50+ 个 Agent</strong>，覆盖从需求理解到 PR 描述生成的全链路。流程在等待 plan 审批后自动运行。</p>
+
+<p><strong>限制</strong>：这是 Beta 功能。<code>/lfg</code> 适合需求清晰、风险可控的功能；对于涉及复杂数据迁移或认证模块的变更，仍需手动逐步执行各阶段。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-9">
+<h2 id="section-9">九、多平台支持：CLI 转换层的工程实现</h2>
+
+<p>Plugin 原生支持 Claude Code，但通过 Bun/TypeScript CLI 实现了对其他平台的格式转换：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>bash</span></div><pre><code class="language-bash"># 安装到 OpenCode（将 Claude 插件格式转换为 opencode 格式）
+bunx @every-env/compound-plugin install compound-engineering --to opencode
+
+# 安装到 Codex
+bunx @every-env/compound-plugin install compound-engineering --to codex
+
+# 安装到 Gemini CLI
+bunx @every-env/compound-plugin install compound-engineering --to gemini
+
+# 安装到 GitHub Copilot
+bunx @every-env/compound-plugin install compound-engineering --to copilot
+
+# 自动检测已安装工具并全部安装
+bunx @every-env/compound-plugin install compound-engineering --to all
+</code></pre>
+</div><p>各平台的配置路径映射：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>平台</th>
+<th>配置目标</th>
+<th>备注</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td><code>.claude-plugin/</code></td>
+<td>原生格式</td>
+</tr>
+
+<tr>
+<td>OpenCode</td>
+<td><code>~/.config/opencode/</code></td>
+<td><code>.md</code> 格式</td>
+</tr>
+
+<tr>
+<td>Codex</td>
+<td><code>~/.codex/prompts</code>、<code>~/.codex/skills</code></td>
+<td><code>ce:*</code>、<code>workflows:*</code> 命令</td>
+</tr>
+
+<tr>
+<td>Gemini CLI</td>
+<td><code>.gemini/</code></td>
+<td><code>.toml</code> 格式，如 <code>commands/workflows/plan.toml</code></td>
+</tr>
+
+<tr>
+<td>GitHub Copilot</td>
+<td><code>.github/</code></td>
+<td><code>.agent.md</code> 格式</td>
+</tr>
+
+<tr>
+<td>Windsurf</td>
+<td><code>~/.codeium/windsurf/</code>（全局）或 <code>.windsurf/</code>（项目级）</td>
+<td><code>mcp_config.json</code></td>
+</tr>
+
+<tr>
+<td>Cursor</td>
+<td><code>.cursor-plugin/</code></td>
+<td>直接添加插件</td>
+</tr>
+
+</tbody>
+</table>
+</div><p><strong>个人配置同步</strong>：<code>bunx @every-env/compound-plugin sync</code> 可将 <code>~/.claude/</code> 下的个人 skills、commands 和 MCP 配置同步到所有已安装平台，skills 采用 <strong>符号链接</strong>而非复制，确保在 Claude Code 中的更改立即反映到其他工具。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-10">
+<h2 id="section-10">十、与 gstack / superpowers 的对比定位</h2>
+
+<p>读过前几篇的工程师，可能会发问：这和 gstack、superpowers 有什么本质区别？</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>维度</th>
+<th>gstack</th>
+<th>superpowers</th>
+<th>compound-engineering</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>研发流程（做什么、顺序）</td>
+<td>AI 认知约束（怎么想、避免错误）</td>
+<td>知识管理（每次工程投入能否产生复利）</td>
+</tr>
+
+<tr>
+<td>作用范围</td>
+<td>单次任务的执行路径</td>
+<td>AI 行为的约束规则</td>
+<td>跨会话、跨任务的知识积累</td>
+</tr>
+
+<tr>
+<td>状态持久化</td>
+<td>显式（metrics JSONL、review dashboard）</td>
+<td>隐式（TodoWrite checklist）</td>
+<td>显式（docs/solutions/*.md、CLAUDE.md）</td>
+</tr>
+
+<tr>
+<td>时间尺度</td>
+<td>单次 PR</td>
+<td>单次会话</td>
+<td>项目全生命周期</td>
+</tr>
+
+<tr>
+<td>主要受益者</td>
+<td>提升单次执行质量</td>
+<td>防止 AI 犯常见错误</td>
+<td>累计复利，后期收益显著</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>三者并不互斥——实际上，compound-engineering 本身也引用了 superpowers 中的 brainstorming 理念（先收敛需求再实现）。理想的组合是：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>superpowers  ← 认知约束层：防止 AI 犯错
+    +
+gstack       ← 流程框架层：规定执行路径
+    +
+compound-eng ← 知识沉淀层：让积累产生复利
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-11">
+<h2 id="section-11">十一、Trade-offs：复利体系的代价</h2>
+
+<h3 id="section-11-1">1. 冷启动成本真实存在</h3>
+
+<p>新项目启动的前几个 PR，<code>docs/solutions/</code> 是空的，<code>CLAUDE.md</code> 也几乎没有内容。此时 compound engineering 能提供的增益非常有限，而每次 <code>/ce:compound</code> 的时间开销却是真实的。</p>
+
+<p>复利效应需要积累到一定规模才会显现。Every 团队的经验是，大约在 <strong>20~30 次 Compound 迭代后</strong>，<code>learnings-researcher</code> Agent 开始能稳定找到相关历史解决方案，节省的重复研究时间开始抵消积累成本。</p>
+
+<h3 id="section-11-2">2. <code>/ce:review</code> 的 Token 消耗不可忽视</h3>
+
+<p>14 路并行 Review Agent 同时启动，每个 Agent 都需要读取完整的 diff 和相关上下文。对于大型 PR（超过 500 行变更），单次 <code>/ce:review</code> 的 Token 消耗可能达到数十万。</p>
+
+<p>实践中的折中方案：小 PR（&lt; 100 行）直接跑完整 Review；大型变更考虑按域拆分 PR，或手动选择具体的 Review Agent（如只跑 <code>security-sentinel</code> 和 <code>data-integrity-guardian</code>）。</p>
+
+<h3 id="section-11-3">3. CLAUDE.md 的维护成本</h3>
+
+<p>CLAUDE.md 的价值与维护质量正相关。如果团队不保持持续更新，它会迅速过时，或者因为堆积太多低质量注释而降低 Agent 的读取信噪比。</p>
+
+<p>这需要明确的工程纪律：每次 Review 发现新问题，必须指定一人负责将防范方案更新到 CLAUDE.md，而不是只改代码、不沉淀规律。</p>
+
+<h3 id="section-11-4">4. 知识孤岛风险</h3>
+
+<p><code>docs/solutions/</code> 的可检索性依赖于 YAML frontmatter 中的 tags 质量。如果 <code>category-classifier</code> Agent 的分类不准确，或者不同工程师手动修改时没有遵循统一的 tag 体系，检索效果会退化。</p>
+
+<p>建议定期运行 <code>/ce:compound-refresh</code>，并在 CLAUDE.md 中明确 tag 分类规范。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-12">
+<h2 id="section-12">十二、工程采纳路径：5 阶段成熟度模型</h2>
+
+<p>Every 提供了一个直白的<strong>AI 采纳阶梯</strong>，帮助工程师识别当前所处位置，避免跳级带来的不适应：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>阶段</th>
+<th>特征</th>
+<th>对应工作模式</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>Stage 0</td>
+<td>纯手工开发，不用 AI</td>
+<td>传统工程</td>
+</tr>
+
+<tr>
+<td>Stage 1</td>
+<td>用 AI 作为查询工具，复制代码片段</td>
+<td>Chat-based assistance</td>
+</tr>
+
+<tr>
+<td>Stage 2</td>
+<td>允许 AI 直接读写文件，但逐行审查</td>
+<td>Agentic with line-by-line review</td>
+</tr>
+
+<tr>
+<td>Stage 3</td>
+<td>Plan 先行，Agent 自主实现，PR 级别 Review</td>
+<td><strong>复利开始积累</strong></td>
+</tr>
+
+<tr>
+<td>Stage 4</td>
+<td>描述结果，Agent 负责计划和实现</td>
+<td>单机全自动</td>
+</tr>
+
+<tr>
+<td>Stage 5</td>
+<td>云端并行多 Agent，多功能同步推进</td>
+<td>指挥 Fleet</td>
+</tr>
+
+</tbody>
+</table>
+</div><p><strong>核心洞察</strong>：大多数工程师卡在 Stage 2。他们信任 AI 读文件，但不信任 AI 自主运行，于是陷入「AI 速度 + 人工审查」的双重性能瓶颈。</p>
+
+<p>进入 Stage 3 的关键不是技术门槛，而是<strong>心智模型的切换</strong>：从「监视 AI 每一步」转为「投资于计划和评审系统，信任 Agent 执行」。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-13">
+<h2 id="section-13">十三、核心原则总结</h2>
+
+<p>Compound Engineering 背后有 8 条工程师「需要解除」的旧信念，以及与之对应的新原则：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>旧信念（需要解除）</th>
+<th>新原则</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>代码必须手写</td>
+<td>谁打字（人/Agent）不重要，质量才是要求</td>
+</tr>
+
+<tr>
+<td>每行都要人工审查</td>
+<td>不信任输出时，加审查系统，而不是手工补偿</td>
+</tr>
+
+<tr>
+<td>解决方案必须来自工程师</td>
+<td>工程师的价值在于品味，而不是在于搜索</td>
+</tr>
+
+<tr>
+<td>代码是核心产物</td>
+<td>产生代码的系统，比任何单段代码更有价值</td>
+</tr>
+
+<tr>
+<td>写代码是核心工作</td>
+<td>规划、评审和教导系统，都算工程输出</td>
+</tr>
+
+<tr>
+<td>初稿应该很好</td>
+<td>初稿 95% 是垃圾，目标是让第三稿比第一稿来得更快</td>
+</tr>
+
+<tr>
+<td>代码是自我表达</td>
+<td>代码属于团队和产品，放下执念才能接受反馈</td>
+</tr>
+
+<tr>
+<td>打字越多，学得越多</td>
+<td>理解比肌肉记忆更重要，审查 10 次 AI 实现 &gt; 手打 2 次</td>
+</tr>
+
+</tbody>
+</table>
+</div><p>最根本的一条原则是：</p>
+
+<blockquote>
+<p><strong>Taste belongs in systems, not in review.</strong></p>
+
+<p>把你的判断力编码进配置、Schema 和自动检查。如果你只是在 Review 里手动把关，那是不可扩展的。</p>
+
+</blockquote>
+</section>
+</article>
+</div>
+<nav class="article-pagination" aria-label="阅读导航">
+<a href="article-05-team-workflow.html">← 上一篇</a><a href="article-07-intent-framework-comparison.html">下一篇 →</a></nav>
+
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+
+<em>系列：《AI 编程最佳实践》第六篇</em>
+
+<em>参考来源：EveryInc/compound-engineering-plugin（github.com/EveryInc/compound-engineering-plugin），every.to/chain-of-thought/compound-engineering，plugin README 读取于 2026-03-30，repo 版本 v2.59.0</em>
+</footer>
+</main>
+</body>
+</html>

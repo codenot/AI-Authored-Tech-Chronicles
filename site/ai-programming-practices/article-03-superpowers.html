@@ -1,0 +1,761 @@
+<!doctype html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="拆解六个认知约束，理解设计、调试、架构、计划、测试与验证的职责。">
+<title>Superpowers Skills 源码深度解析：让 AI 真正&quot;会思考&quot;的 6 把钥匙 · 硅基极客的数字手札</title><link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/article.css">
+<link rel="stylesheet" href="../assets/css/philosophy.css">
+<link rel="stylesheet" href="../assets/css/practices.css">
+<script src="../assets/js/article.js" defer></script>
+<script src="../assets/js/philosophy.js" defer></script>
+</head>
+
+<body class="philosophy practices theme-debt">
+<div class="reading-progress" aria-hidden="true"><span></span></div><a class="skip-link" href="#main">跳至主要内容</a>
+<header class="site-header">
+<div class="header-inner"><a class="brand" href="../index.html">硅基极客的数字手札</a>
+<nav class="site-nav" aria-label="全站导航">
+<a href="index.html">系列文章</a><a href="index.html#research">研究资料</a></nav>
+</div></header>
+
+<main id="main" class="container">
+<p class="breadcrumb"><a href="../index.html">首页</a> / <a href="index.html">AI 编程最佳实践</a> / 第 3 篇</p>
+
+<header class="essay-hero">
+<div class="hero-copy"><p class="essay-kicker"><span>AI 编程最佳实践</span><span>CHAPTER 03</span></p>
+<h1>Superpowers Skills 源码深度解析<span class="title-detail"><span class="title-punctuation">：</span>让 AI 真正&quot;会思考&quot;的 6 把钥匙 </span></h1>
+<p class="lead">拆解六个认知约束，理解设计、调试、架构、计划、测试与验证的职责。</p>
+<div class="essay-meta"><span>原稿日期 <time datetime="2026-03-30">2026-03-30</time></span><span>第 3 / 8 篇</span><span>网页整理于 2026-10-14</span></div></div>
+<aside class="hero-guide" aria-label="本篇阅读路径">
+<span class="chapter-mark" aria-hidden="true">03</span><p class="guide-label">阅读路径</p>
+
+<nav>
+<a href="#section-1"><span>01</span>Superpowers 是什么<span aria-hidden="true">↗</span></a><a href="#section-6"><span>02</span>plan-writing：禁止模板主义，每个计划都必须是独特的<span aria-hidden="true">↗</span></a><a href="#section-10"><span>03</span>Superpowers 的设计哲学<span aria-hidden="true">↗</span></a></nav>
+</aside>
+</header>
+<div class="article-layout">
+<article class="article-body">
+
+<figure class="native-figure">
+<div class="figure-heading"><span class="figure-label">阅读概览 / 03</span><strong>把认知约束放进执行链</strong></div><ol class="overview-flow"><li><span>01</span><strong>设计锁定</strong></li>
+<li><span>02</span><strong>编写计划</strong></li>
+<li><span>03</span><strong>测试驱动</strong></li>
+<li><span>04</span><strong>完成验证</strong></li>
+</ol>
+<figcaption>依据本篇内容整理；具体机制与工程取舍见正文。</figcaption>
+</figure>
+<div class="article-opening"><blockquote>
+<p><strong>系列背景</strong>：本文是《AI 编程最佳实践》第三篇，第二篇解析了 gstack 的研发流程工具链。本篇聚焦另一个 skill 生态：<strong>obra/superpowers</strong>，它不提供流程框架，而是把 AI 编程中最容易出错的六个&quot;思维环节&quot;用 SKILL.md 固化成强制性行为模式。</p>
+
+</blockquote>
+<hr>
+</div>
+<section class="essay-section" aria-labelledby="section-1">
+<h2 id="section-1">一、Superpowers 是什么</h2>
+
+<p><strong>项目地址</strong>：<code>github.com/obra/superpowers</code>（社区维护，source: community）</p>
+
+<p>gstack 解决的是&quot;做什么、怎么做&quot;的流程问题；superpowers 解决的是&quot;AI 在执行时最容易犯哪些错误&quot;的认知问题。</p>
+
+<p>它包含 6 个核心 skill：</p>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>Skill</th>
+<th>核心职责</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td><code>using-superpowers</code></td>
+<td>网关：强制在执行任何任务前先检查是否有适用 skill</td>
+</tr>
+
+<tr>
+<td><code>brainstorming</code></td>
+<td>设计门控：禁止在方案未验证前开始实现</td>
+</tr>
+
+<tr>
+<td><code>systematic-debugging</code></td>
+<td>调试纪律：强制根因分析，禁止猜测修复</td>
+</tr>
+
+<tr>
+<td><code>software-architecture</code></td>
+<td>架构规范：Clean Architecture + DDD 编码原则</td>
+</tr>
+
+<tr>
+<td><code>plan-writing</code></td>
+<td>计划格式：短而可验证的任务列表，禁止模板主义</td>
+</tr>
+
+<tr>
+<td><code>tdd-workflow</code></td>
+<td>测试驱动：RED-GREEN-REFACTOR 三法则</td>
+</tr>
+
+<tr>
+<td><code>verification-before-completion</code></td>
+<td>完成门控：禁止在没有验证证据前声称完成</td>
+</tr>
+
+</tbody>
+</table>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-2">
+<h2 id="section-2">二、<code>using-superpowers</code>：元 skill，所有行为的入口</h2>
+
+<h3 id="section-2-1">源码结构</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml"># YAML frontmatter
+name: using-superpowers
+description: &quot;Use when starting any conversation - establishes how to find and use skills,
+  requiring Skill tool invocation before ANY response including clarifying questions&quot;
+risk: unknown
+source: community
+</code></pre>
+</div><h3 id="section-2-2">核心机制：1% 规则</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>&lt;EXTREMELY-IMPORTANT&gt;
+If you think there is even a 1% chance a skill might apply to what you are doing,
+you ABSOLUTELY MUST invoke the skill.
+
+IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+
+This is not negotiable. This is not optional. You cannot rationalize your way out of this.
+&lt;/EXTREMELY-IMPORTANT&gt;
+</code></pre>
+</div><p>这不是建议——XML 标签 <code>&lt;EXTREMELY-IMPORTANT&gt;</code> 是 Claude 对系统指令强度的约束信号。</p>
+
+<h3 id="section-2-3">决策流程图（源码中的 DOT 图）</h3>
+
+<p>源码直接嵌入了一张 graphviz 图：</p>
+
+
+<figure class="native-figure static-diagram">
+<div class="figure-heading"><span class="figure-label">原文流程图 / 1</span><strong>流程与状态关系</strong></div><div class="diagram-scroll" tabindex="0" role="region" aria-label="可横向滚动的流程图"><img style="width:831px;min-width:831px" src="../assets/images/ai-programming-practices/article-03-superpowers-1.svg" alt="原文流程与状态关系图；完整节点及连接见下方图解源文本"></div><figcaption>保留原文节点与连接；小屏可横向滚动查看。</figcaption>
+<details class="diagram-source"><summary>查看图解源文本</summary>
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>dot</span></div><pre><code class="language-dot">digraph skill_flow {
+    &quot;User message received&quot; -&gt; &quot;Might any skill apply?&quot;;
+    &quot;Might any skill apply?&quot; -&gt; &quot;Invoke Skill tool&quot; [label=&quot;yes, even 1%&quot;];
+    &quot;Might any skill apply?&quot; -&gt; &quot;Respond&quot; [label=&quot;definitely not&quot;];
+    &quot;Invoke Skill tool&quot; -&gt; &quot;Announce: 'Using [skill] to [purpose]'&quot;;
+    &quot;Announce...&quot; -&gt; &quot;Has checklist?&quot;;
+    &quot;Has checklist?&quot; -&gt; &quot;Create TodoWrite todo per item&quot; [label=&quot;yes&quot;];
+    &quot;Has checklist?&quot; -&gt; &quot;Follow skill exactly&quot; [label=&quot;no&quot;];
+}
+</code></pre>
+</div></details>
+</figure>
+<p><strong>图的含义</strong>：skill 启动后，如果 skill 包含 checklist，必须将每条 checklist item 转为 <code>TodoWrite</code> 任务，逐项跟踪。</p>
+
+<h3 id="section-2-4">&quot;红旗&quot;表：12 个常见的 AI 自我欺骗模式</h3>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>AI 会这样想</th>
+<th>实际情况</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>&quot;这只是个简单问题&quot;</td>
+<td>问题也是任务，先检查 skill</td>
+</tr>
+
+<tr>
+<td>&quot;我需要先获取更多上下文&quot;</td>
+<td>skill 检查在提问之前</td>
+</tr>
+
+<tr>
+<td>&quot;先看看代码库&quot;</td>
+<td>skill 告诉你怎么看</td>
+</tr>
+
+<tr>
+<td>&quot;我记得这个 skill&quot;</td>
+<td>skill 会演化，读当前版本</td>
+</tr>
+
+<tr>
+<td>&quot;skill 太重了&quot;</td>
+<td>简单事情会变复杂，用 skill</td>
+</tr>
+
+</tbody>
+</table>
+</div><h3 id="section-2-5">Skill 优先级规则</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>1. Process skills 优先（brainstorming, debugging）→ 决定如何处理任务
+2. Implementation skills 其次（frontend-design, mcp-builder）→ 指导执行
+
+&quot;Let's build X&quot; → 先 brainstorming，再 implementation skills
+&quot;Fix this bug&quot; → 先 debugging，再 domain-specific skills
+</code></pre>
+</div><h3 id="section-2-6">设计洞察</h3>
+
+<p><code>using-superpowers</code> 是一个<strong>元协调器</strong>。它不做具体工作，只确保 AI 在每次任务开始前先加载对应的行为约束。没有它，其他 skill 在 AI 眼里只是&quot;建议&quot;；有了它，其他 skill 的执行变成了&quot;强制义务&quot;。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-3">
+<h2 id="section-3">三、<code>brainstorming</code>：禁止在设计未完成前写代码</h2>
+
+<h3 id="section-3-1">源码结构</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">name: brainstorming
+description: &quot;Use before creative or constructive work (features, architecture, behavior).
+  Transforms vague ideas into validated designs through disciplined reasoning and collaboration.&quot;
+</code></pre>
+</div><h3 id="section-3-2">核心禁令</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>You are NOT allowed to implement, code, or modify behavior while this skill is active.
+</code></pre>
+</div><p>这一句话是整个 skill 最重要的部分。AI 的天然倾向是&quot;立刻生成代码&quot;；这条规则从根本上切断了这种冲动。</p>
+
+<h3 id="section-3-3">7 步设计流程的关键节点</h3>
+
+<h4 id="section-3-4">Step 1：强制先读现有上下文（不能直接开始问问题）</h4>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Before asking any questions:
+- Review the current project state (if available): files, documentation, plans, prior decisions
+- Identify what already exists vs. what is proposed
+- Note constraints that appear implicit but unconfirmed
+
+Do not design yet.
+</code></pre>
+</div><h4 id="section-3-5">Step 4：理解锁（Hard Gate）</h4>
+
+<p>这是最关键的门控节点——在给出任何设计方案前，必须先输出理解摘要：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Understanding Summary（5-7 条 bullet）：
+- What is being built
+- Why it exists
+- Who it is for
+- Key constraints
+- Explicit non-goals
+
+Assumptions（显式列出所有假设）
+Open Questions（未解决问题）
+
+&gt; &quot;Does this accurately reflect your intent?
+&gt;  Please confirm or correct anything before we move to design.&quot;
+
+DO NOT proceed until explicit confirmation is given.
+</code></pre>
+</div><p><strong>硬性门控</strong>：没有用户的明确确认，不允许进入 Step 5（设计方案）。</p>
+
+<h4 id="section-3-6">Step 5：必须给出 2-3 个方案</h4>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>- Propose 2–3 viable approaches
+- Lead with your recommended option
+- Explain trade-offs: complexity, extensibility, risk, maintenance
+- Avoid premature optimization (YAGNI ruthlessly)
+</code></pre>
+</div><h4 id="section-3-7">Step 7：决策日志（强制）</h4>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Maintain a running Decision Log throughout the design discussion.
+For each decision:
+  - What was decided
+  - Alternatives considered
+  - Why this option was chosen
+</code></pre>
+</div><h4 id="section-3-8">退出条件（Exit Criteria）</h4>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>You may exit brainstorming mode ONLY when ALL of the following are true:
+- Understanding Lock has been confirmed
+- At least one design approach is explicitly accepted
+- Major assumptions are documented
+- Key risks are acknowledged
+- Decision Log is complete
+</code></pre>
+</div><p>缺少任何一条，禁止进入实现阶段。</p>
+
+<h3 id="section-3-9">高风险任务的升级路径</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>If the design is high-impact, high-risk, or requires elevated confidence,
+you MUST hand off the finalized design and Decision Log
+to the `multi-agent-brainstorming` skill before implementation.
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-4">
+<h2 id="section-4">四、<code>systematic-debugging</code>：四阶段调试纪律</h2>
+
+<p>这是 superpowers 中最详细的 skill，299 行。</p>
+
+<h3 id="section-4-1">源码结构</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">name: systematic-debugging
+description: &quot;Use when encountering any bug, test failure, or unexpected behavior,
+  before proposing fixes&quot;
+</code></pre>
+</div><h3 id="section-4-2">铁律</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
+</code></pre>
+</div><div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Core principle: ALWAYS find root cause before attempting fixes.
+Symptom fixes are failure.
+Violating the letter of this process is violating the spirit of debugging.
+</code></pre>
+</div><h3 id="section-4-3">四个阶段（不可跳步）</h3>
+
+<h4 id="section-4-4">Phase 1：根因调查</h4>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>BEFORE attempting ANY fix:
+
+1. Read Error Messages Carefully
+   - Read stack traces completely
+   - Note line numbers, file paths, error codes
+
+2. Reproduce Consistently
+   - Can you trigger it reliably?
+   - If not reproducible → gather more data, don't guess
+
+3. Check Recent Changes
+   - Git diff, recent commits, new dependencies, config changes
+
+4. Gather Evidence in Multi-Component Systems（关键）
+   For EACH component boundary:
+     - Log what data enters component
+     - Log what data exits component
+     - Verify environment/config propagation
+
+5. Trace Data Flow
+   - Where does bad value originate?
+   - Keep tracing up until you find the source
+   - Fix at source, not at symptom
+</code></pre>
+</div><p>多层架构调试示例（源码直接给了 bash 脚本）：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>bash</span></div><pre><code class="language-bash"># Layer 1: Workflow
+echo &quot;=== Secrets available in workflow: ===&quot;
+echo &quot;IDENTITY: ${IDENTITY:+SET}${IDENTITY:-UNSET}&quot;
+
+# Layer 2: Build script
+echo &quot;=== Env vars in build script: ===&quot;
+env | grep IDENTITY || echo &quot;IDENTITY not in environment&quot;
+
+# Layer 3: Signing script
+echo &quot;=== Keychain state: ===&quot;
+security list-keychains
+security find-identity -v
+</code></pre>
+</div><p><strong>目的</strong>：在每个边界打日志，找到数据在哪一层消失。</p>
+
+<h4 id="section-4-5">Phase 4：实现 + 三次失败架构复查</h4>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>4. If Fix Doesn't Work:
+   - STOP
+   - Count: How many fixes have you tried?
+   - If &lt; 3: Return to Phase 1, re-analyze with new information
+   - If ≥ 3: STOP and question the architecture
+
+5. If 3+ Fixes Failed: Question Architecture
+   Pattern indicating architectural problem:
+   - Each fix reveals new shared state/coupling/problem in different place
+   - Fixes require &quot;massive refactoring&quot; to implement
+   - Each fix creates new symptoms elsewhere
+
+   STOP and question fundamentals:
+   - Is this pattern fundamentally sound?
+   - Are we &quot;sticking with it through sheer inertia&quot;?
+   - Should we refactor architecture vs. continue fixing symptoms?
+
+   Discuss with your human partner before attempting more fixes
+</code></pre>
+</div><p><strong>核心洞察</strong>：连续三次修复失败不是假设错了，是架构本身有问题。继续修 bug 只会浪费时间。</p>
+
+<h3 id="section-4-6">AI 自我欺骗识别表</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>| Excuse                          | Reality                              |
+|---------------------------------|--------------------------------------|
+| &quot;Issue is simple&quot;               | Process is fast for simple bugs too  |
+| &quot;Emergency, no time&quot;            | Systematic is FASTER than thrashing  |
+| &quot;Just try this first&quot;           | First fix sets the pattern           |
+| &quot;I'll write test after&quot;         | Untested fixes don't stick           |
+| &quot;Multiple fixes save time&quot;      | Can't isolate what worked            |
+| &quot;One more fix attempt&quot; (2+)     | 3+ failures = architectural problem  |
+</code></pre>
+</div><h3 id="section-4-7">用户给出的信号词（源码中真实记录的）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>&quot;Is that not happening?&quot; → 你假设了而没有验证
+&quot;Will it show us...?&quot; → 你应该先加 evidence gathering
+&quot;Stop guessing&quot; → 你在没有理解的情况下提修复方案
+&quot;Ultrathink this&quot; → 质疑基础假设，不只是症状
+&quot;We're stuck?&quot; (frustrated) → 你的方法不起作用
+</code></pre>
+</div><p>这些是从真实会话中提炼的，会话历史即是规范。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-5">
+<h2 id="section-5">五、<code>software-architecture</code>：Clean Architecture 编码强制规则</h2>
+
+<h3 id="section-5-1">源码结构</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">name: software-architecture
+description: &quot;Guide for quality focused software architecture. This skill should be used
+  when users want to write code, design architecture, analyze code, in any case that
+  relates to software development.&quot;
+</code></pre>
+</div><h3 id="section-5-2">核心原则：Library-First（先找库，不要自己写）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>ALWAYS search for existing solutions before writing custom code
+- Check npm for existing libraries that solve the problem
+- Evaluate existing services/SaaS solutions
+
+Use libraries instead of writing your own utils or helpers.
+For example, use `cockatiel` instead of writing your own retry logic.
+</code></pre>
+</div><p><strong>何时才可以写自定义代码</strong>：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>- Specific business logic unique to the domain
+- Performance-critical paths with special requirements
+- When external dependencies would be overkill
+- Security-sensitive code requiring full control
+</code></pre>
+</div><p>原则：<strong>每一行自定义代码都是需要维护、测试、文档化的负担</strong>（Every line of custom code is a liability）。</p>
+
+<h3 id="section-5-3">命名反模式</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>AVOID generic names: utils, helpers, common, shared
+USE domain-specific names: OrderCalculator, UserAuthenticator, InvoiceGenerator
+</code></pre>
+</div><h3 id="section-5-4">量化约束</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>- 函数/组件 &gt; 80 行 → 拆分
+- 文件 &gt; 200 行 → 拆分为多个文件
+- 嵌套深度最大 3 层
+- 函数约束在 50 行以内
+</code></pre>
+</div><h3 id="section-5-5">反模式清单（Architecture Anti-Patterns）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>NIH (Not Invented Here) Syndrome:
+- Don't build custom auth when Auth0/Supabase exists
+- Don't write custom state management instead of Redux/Zustand
+- Don't create custom form validation instead of established libraries
+
+Poor Architectural Choices:
+- Mixing business logic with UI components
+- Database queries directly in controllers
+- Lack of clear separation of concerns
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-6">
+<h2 id="section-6">六、<code>plan-writing</code>：禁止模板主义，每个计划都必须是独特的</h2>
+
+<h3 id="section-6-1">源码揭示的核心原则</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">name: plan-writing
+description: &quot;Structured task planning with clear breakdowns, dependencies,
+  and verification criteria.&quot;
+# 注意：frontmatter 里有 source: obra/superpowers
+</code></pre>
+</div><h3 id="section-6-2">反模板宣言</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>🔴 NO fixed templates. Each plan is UNIQUE to the task.
+
+Rule: If plan is longer than 1 page, it's too long. Simplify.
+</code></pre>
+</div><h3 id="section-6-3">五个设计原则（对比表格形式，源码原样）</h3>
+
+<p><strong>Principle 1：保持简短</strong></p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>❌ Wrong                           ✅ Right
+50 tasks with sub-sub-tasks       5-10 clear tasks max
+Every micro-step listed           Only actionable items
+Verbose descriptions              One-line per task
+</code></pre>
+</div><p><strong>Principle 2：具体，不模糊</strong></p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>❌ Wrong                           ✅ Right
+&quot;Set up project&quot;                  &quot;Run `npx create-next-app`&quot;
+&quot;Add authentication&quot;              &quot;Install next-auth, create `/api/auth/[...nextauth].ts`&quot;
+&quot;Style the UI&quot;                    &quot;Add Tailwind classes to `Header.tsx`&quot;
+</code></pre>
+</div><p><strong>Principle 5：验证必须可执行</strong></p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>❌ Wrong                              ✅ Right
+&quot;Verify the component works&quot;          &quot;Run `npm run dev`, click button, see toast&quot;
+&quot;Test the API&quot;                        &quot;curl localhost:3000/api/users returns 200&quot;
+</code></pre>
+</div><h3 id="section-6-4">计划文件存放规则</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Plan files are saved as {task-slug}.md in the PROJECT ROOT
+Name derived from task: &quot;add auth&quot; → auth-feature.md
+NEVER inside .claude/, docs/, or temp folders
+</code></pre>
+</div><h3 id="section-6-5">最简计划模板</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>markdown</span></div><pre><code class="language-markdown"># [Task Name]
+
+## Goal
+One sentence: What are we building/fixing?
+
+## Tasks
+- [ ] Task 1: [Specific action] → Verify: [How to check]
+- [ ] Task 2: [Specific action] → Verify: [How to check]
+- [ ] Task 3: [Specific action] → Verify: [How to check]
+
+## Done When
+- [ ] [Main success criteria]
+</code></pre>
+</div><blockquote>
+<p><strong>&quot;That's it. No phases, no sub-sections unless truly needed. Keep it minimal. Add complexity only when required.&quot;</strong></p>
+
+</blockquote>
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-7">
+<h2 id="section-7">七、<code>tdd-workflow</code>：三法则 + 多智能体 TDD</h2>
+
+<h3 id="section-7-1">源码结构</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">name: tdd-workflow
+description: &quot;Test-Driven Development workflow principles. RED-GREEN-REFACTOR cycle.&quot;
+</code></pre>
+</div><h3 id="section-7-2">三法则（The Three Laws of TDD）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>1. Write production code only to make a failing test pass
+2. Write only enough test to demonstrate failure
+3. Write only enough code to make the test pass
+</code></pre>
+</div><h3 id="section-7-3">三阶段规则</h3>
+
+<p><strong>RED 阶段规则</strong>：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>- Test must fail first（必须先看到失败）
+- Test name describes expected behavior
+- One assertion per test (ideally)
+</code></pre>
+</div><p><strong>GREEN 阶段规则</strong>：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>Principle   Meaning
+YAGNI       You Aren't Gonna Need It
+Simplest    Write the minimum to pass
+No opt.     Just make it work
+
+- Don't write unneeded code
+- Don't optimize yet
+- Pass the test, nothing more
+</code></pre>
+</div><p><strong>REFACTOR 阶段规则</strong>：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>- All tests must stay green
+- Small incremental changes
+- Commit after each refactor
+</code></pre>
+</div><h3 id="section-7-4">AAA 测试模式</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>| Step    | Purpose                |
+|---------|------------------------|
+| Arrange | Set up test data       |
+| Act     | Execute code under test|
+| Assert  | Verify expected outcome|
+</code></pre>
+</div><h3 id="section-7-5">何时用 TDD（量化判断）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>| Scenario       | TDD Value |
+|----------------|-----------|
+| New feature    | High      |
+| Bug fix        | High (write test first) |
+| Complex logic  | High      |
+| Exploratory    | Low (spike, then TDD)   |
+| UI layout      | Low       |
+</code></pre>
+</div><h3 id="section-7-6">AI 多智能体 TDD 模式（源码创新点）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>| Agent   | Role                    |
+|---------|-------------------------|
+| Agent A | Write failing tests (RED)   |
+| Agent B | Implement to pass (GREEN)   |
+| Agent C | Optimize (REFACTOR)         |
+</code></pre>
+</div><p><strong>设计意图</strong>：将三个阶段分配给三个不同的 AI 实例，防止同一个实例在写测试时&quot;预先知道答案&quot;而写出迁就实现的测试。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-8">
+<h2 id="section-8">八、<code>verification-before-completion</code>：完成即谎言，验证即义务</h2>
+
+<h3 id="section-8-1">源码结构</h3>
+
+<p>这个 skill 的 description 是整个系统中语气最重的一个：</p>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>yaml</span></div><pre><code class="language-yaml">name: verification-before-completion
+description: &quot;Claiming work is complete without verification is dishonesty, not efficiency.
+  Use when ANY variation of success/completion claims, ANY expression of satisfaction,
+  or ANY positive statement about work state.&quot;
+</code></pre>
+</div><h3 id="section-8-2">铁律</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
+
+If you haven't run the verification command in this message,
+you cannot claim it passes.
+</code></pre>
+</div><h3 id="section-8-3">验证门函数（Gate Function）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>BEFORE claiming any status or expressing satisfaction:
+
+1. IDENTIFY: What command proves this claim?
+2. RUN: Execute the FULL command (fresh, complete)
+3. READ: Full output, check exit code, count failures
+4. VERIFY: Does output confirm the claim?
+   - If NO: State actual status with evidence
+   - If YES: State claim WITH evidence
+5. ONLY THEN: Make the claim
+
+Skip any step = lying, not verifying
+</code></pre>
+</div><h3 id="section-8-4">常见声明 vs 需要的证据</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>| Claim          | Requires                        | Not Sufficient         |
+|----------------|---------------------------------|------------------------|
+| Tests pass     | Test output: 0 failures         | Previous run           |
+| Build succeeds | Build command: exit 0           | Linter passing         |
+| Bug fixed      | Test original symptom: passes   | Code changed           |
+| Agent completed| VCS diff shows changes          | Agent reports &quot;success&quot;|
+| Requirements met| Line-by-line checklist         | Tests passing          |
+</code></pre>
+</div><p>最后一行是关键：<strong>测试通过 ≠ 需求满足</strong>。</p>
+
+<h3 id="section-8-5">触发条件（极其宽泛）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>When to Use:
+ALWAYS before:
+- ANY variation of success/completion claims
+- ANY expression of satisfaction（&quot;Great!&quot;, &quot;Perfect!&quot;, &quot;Done!&quot;）
+- ANY positive statement about work state
+- Committing, PR creation, task completion
+- Moving to next task
+- Delegating to agents
+
+Rule applies to:
+- Exact phrases
+- Paraphrases and synonyms
+- Implications of success
+- ANY communication suggesting completion/correctness
+</code></pre>
+</div><p>&quot;Great!&quot; 这一个词就会触发这个 skill。</p>
+
+<h3 id="section-8-6">来自真实失败的教训（源码中直接记录）</h3>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>From 24 failure memories:
+- your human partner said &quot;I don't believe you&quot; → trust broken
+- Undefined functions shipped → would crash
+- Missing requirements shipped → incomplete features
+- Time wasted on false completion → redirect → rework
+- Violates: &quot;Honesty is a core value. If you lie, you'll be replaced.&quot;
+</code></pre>
+</div><p>这段话暴露了这个 skill 的真实背景：这不是理论设计，是从真实会话失败中提炼出来的教训清单。</p>
+
+<hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-9">
+<h2 id="section-9">九、六个 Skills 的协作关系</h2>
+
+<div class="code-panel"><div class="code-heading"><span class="code-dots" aria-hidden="true">●●●</span><span>TEXT</span></div><pre><code>用户提出任务
+    ↓
+using-superpowers         ← 元 skill：强制检查是否有适用 skill
+    ↓
+brainstorming             ← 如果是新功能/架构：先设计，锁定理解，再实现
+    ↓
+plan-writing              ← 设计完成后：写短而具体的行动计划
+    ↓
+tdd-workflow              ← 实现时：先写失败测试，再写最小代码通过
+    ↓
+software-architecture     ← 贯穿实现全程：Library-First，50/200 行规则，DDD 命名
+    ↓
+systematic-debugging      ← 如果遇到 bug：4 阶段根因分析，3 次失败质疑架构
+    ↓
+verification-before-completion  ← 完成前：必须有验证命令的输出作为证据
+</code></pre>
+</div><hr>
+</section>
+
+<section class="essay-section" aria-labelledby="section-10">
+<h2 id="section-10">十、Superpowers 的设计哲学</h2>
+
+<h3 id="section-10-1">1. SKILL.md 即合约，不是文档</h3>
+
+<p>每个 skill 都使用强制性语言（MUST、NOT allowed、STOP、ALWAYS）而不是建议性语言（should、consider、try）。这不是风格偏好——<code>&lt;EXTREMELY-IMPORTANT&gt;</code> 标签配合 Claude 的指令遵从机制，将 SKILL.md 升格为不可违反的约束。</p>
+
+<h3 id="section-10-2">2. 从失败中提炼，不是从理论中想象</h3>
+
+<p><code>systematic-debugging</code> 里的&quot;用户信号词&quot;、<code>verification-before-completion</code> 里的&quot;24 次失败记忆&quot;——这些都是真实会话历史的高密度提炼。规范即历史。</p>
+
+<h3 id="section-10-3">3. 防 AI 惰性的&quot;红旗&quot;系统</h3>
+
+<p>每个 skill 都有一张&quot;你会这样想，但实际情况是这样&quot;的对比表。AI 的惰性模式是可预测的，superpowers 把它们全部列出来，并在发现时强制 STOP。</p>
+
+<h3 id="section-10-4">4. 与 gstack 的关系</h3>
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="可横向滚动的内容对照表"><table><thead>
+<tr>
+<th>维度</th>
+<th>gstack</th>
+<th>superpowers</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td>解决问题</td>
+<td>研发流程（做什么、什么顺序）</td>
+<td>思维模式（怎么想、避免什么错）</td>
+</tr>
+
+<tr>
+<td>粒度</td>
+<td>工具链级别（/autoplan → /ship）</td>
+<td>认知模式级别（调试4阶段、设计7步）</td>
+</tr>
+
+<tr>
+<td>状态管理</td>
+<td>显式（评审仪表盘、metrics JSONL）</td>
+<td>隐式（通过 TodoWrite 追踪 checklist）</td>
+</tr>
+
+<tr>
+<td>互补关系</td>
+<td>gstack 提供流程骨架</td>
+<td>superpowers 提供每步的&quot;怎么做对&quot;</td>
+</tr>
+
+</tbody>
+</table>
+</div></section>
+</article>
+</div>
+<nav class="article-pagination" aria-label="阅读导航">
+<a href="article-02-gstack.html">← 上一篇</a><a href="article-04-core-principles.html">下一篇 →</a></nav>
+
+<footer class="article-provenance">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+
+<em>系列：《AI 编程最佳实践》第三篇</em>
+
+<em>参考来源：obra/superpowers（github.com/obra/superpowers），skills 源码读取于 2026-03-30</em>
+</footer>
+</main>
+</body>
+</html>

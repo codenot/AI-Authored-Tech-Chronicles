@@ -1,7 +1,8 @@
-# Dependencies
+# 本地依赖及缓存（网站部署不依赖 Node.js）
 node_modules/
+__pycache__/
 
-# VitePress generated files
+# 迁移前的本地构建残留
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 

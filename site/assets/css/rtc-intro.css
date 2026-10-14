@@ -1,0 +1,98 @@
+/* 本篇的教学图解，不影响其他系列文章。 */
+.rtc-intro .reader-note { padding:18px 22px; border-left:3px solid var(--accent); background:var(--wash); margin-bottom:42px; }
+.rtc-intro .reader-note strong { color:var(--accent); font-size:13px; }
+.rtc-intro .reader-note p { font-size:14px; margin:8px 0 0; }
+.bottleneck-flow { display:grid; grid-template-columns:1fr 32px 1.25fr 32px 1fr; align-items:center; gap:8px; }
+.rate-node,.queue-node { border:1px solid var(--line); border-radius:8px; background:var(--wash); padding:20px 14px; text-align:center; }
+.rate-node span,.queue-node > span { display:block; font-size:12px; color:var(--muted); }
+.rate-node strong,.queue-node strong { display:block; font-size:24px; margin:12px 0; }
+.rate-node small,.queue-node small { display:block; font-size:11px; color:var(--muted); }
+.rate-arrow { color:var(--accent); text-align:center; font-size:23px; }
+.queue-cells { display:flex; gap:4px; margin:16px 0; }
+.queue-cells i { flex:1; height:24px; background:var(--accent); opacity:.75; border-radius:3px; }
+.queue-cells i:last-child { opacity:.18; }
+.formula-card { padding:24px; border:1px solid var(--line); background:var(--surface); border-radius:9px; margin:28px 0; }
+.formula-card > span { display:block; color:var(--accent); font-size:12px; margin-bottom:12px; }
+.rtc-intro .formula-card > code { display:block; background:transparent; border:0; padding:0; color:var(--ink); font-size:15px; line-height:2; }
+.rtc-intro .formula-card p { font-size:13px; color:var(--muted); margin-bottom:0; }
+.constraint-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:28px 0; }
+.constraint-grid > div { padding:22px; border:1px solid var(--line); border-radius:8px; background:var(--surface); }
+.constraint-grid span { display:block; font-size:12px; color:var(--accent); margin-bottom:12px; }
+.constraint-grid strong { font-size:17px; }
+.rtc-intro .constraint-grid p { margin:10px 0 0; font-size:14px; color:var(--muted); }
+.gap-row { display:grid; grid-template-columns:145px 1fr; gap:14px; align-items:center; padding:18px 0; }
+.gap-row + .gap-row { border-top:1px solid var(--line); }
+.gap-row > span { color:var(--muted); font-size:12px; }
+.gap-track { display:flex; align-items:center; max-width:390px; }
+.gap-track b { flex-shrink:0; font-size:13px; padding:8px 12px; background:var(--wash); border:1px solid var(--line); border-radius:6px; }
+.gap-distance { flex:1; text-align:center; font:13px/2 monospace; border-bottom:2px solid var(--accent); margin:0 8px; }
+.gap-arrival { max-width:530px; }
+.loop-return { text-align:center; border:1px dashed var(--accent); border-radius:6px; background:var(--wash); padding:12px; margin-top:20px; color:var(--accent); font-size:13px; }
+.loop-return span { font-size:20px; margin-right:8px; }
+.budget-card { padding:22px; border-left:3px solid var(--accent); background:var(--wash); margin:28px 0; font-size:15px; }
+.rtc-intro .budget-card p { font-size:13px; color:var(--muted); margin-bottom:0; }
+.algorithm-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin:28px 0; }
+.algorithm-cards > div { padding:22px 18px; background:var(--surface); border:1px solid var(--line); border-radius:8px; }
+.algorithm-cards span { font-size:11px; color:var(--accent); }
+.rtc-intro .algorithm-cards h3 { font-size:20px; margin:16px 0; }
+.rtc-intro .algorithm-cards p { font-size:14px; margin:12px 0; }
+.algorithm-cards a { font-size:12px; }
+@media(max-width:700px) {
+ .bottleneck-flow,.constraint-grid,.algorithm-cards { grid-template-columns:1fr; }
+ .rate-arrow { transform:rotate(90deg); }
+ .gap-row { grid-template-columns:1fr; }
+ .gap-track { width:82%; min-width:0; }
+ .gap-arrival { width:100%; }
+ .gap-track b { padding:8px; font-size:11px; }
+ .formula-card { padding:18px; }
+}
+@media print { .native-figure,.constraint-grid { break-inside:avoid; } }
+/* 专业回顾页：概念、包级反馈与时间线图解。 */
+.rtc-intro .title-subline { display:block; font-size:.54em; margin-top:16px; letter-spacing:0; }
+.latency-strip { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
+.latency-strip > div { background:var(--wash); border:1px solid var(--line); padding:18px 10px; border-radius:6px; }
+.latency-strip b { display:block; font-size:13px; }
+.latency-strip span { display:block; font-size:11px; color:var(--muted); margin-top:10px; line-height:1.7; }
+.rtc-intro .highlight { background:#e7eee8; border-color:#b6c9bd; }
+.pipeline-stack { display:grid; gap:10px; margin-top:20px; }
+.pipeline-row { display:grid; grid-template-columns:135px 1fr; gap:16px; padding:17px 20px; background:var(--wash); border:1px solid var(--line); border-radius:6px; }
+.pipeline-row b { font-size:13px; color:var(--accent); }
+.pipeline-row span { font-size:13px; line-height:1.8; }
+.transport-lanes { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.transport-lanes > div { padding:20px; border:1px solid var(--line); border-radius:6px; background:var(--wash); min-width:0; }
+.transport-lanes > div > span { display:block; color:var(--accent); font-size:12px; margin-bottom:14px; }
+.transport-lanes strong { font-size:18px; }
+.rtc-intro .transport-lanes p { font-size:13px; }
+.wire-packet { background:var(--surface); padding:14px; border:1px dashed var(--line); }
+.wire-packet b { display:block; font-size:12px; margin-bottom:12px; }
+.rtc-intro .wire-packet code { display:block; font-size:11px; line-height:1.9; white-space:normal; overflow-wrap:anywhere; padding:0; background:transparent; border:0; }
+.packet-chart,.plot-scroll { overflow-x:auto; max-width:100%; }
+.packet-row { display:grid; grid-template-columns:70px 1fr; gap:25px; min-width:650px; padding:24px 30px 28px 0; }
+.packet-row + .packet-row { border-top:1px solid var(--line); }
+.packet-row > b { font-size:13px; color:var(--muted); }
+.packet-axis { position:relative; height:45px; margin:0 12px; border-bottom:1px solid var(--line); }
+.packet-axis i { position:absolute; left:var(--x); transform:translateX(-50%); font:11px/1.4 monospace; color:var(--ink); top:24px; }
+.packet-axis i::before { content:""; position:absolute; left:50%; transform:translateX(-50%); top:-22px; height:17px; width:4px; background:var(--accent); border-radius:2px; }
+.send-axis i::before { background:#9b7458; }
+.queue-plot { width:100%; min-width:620px; display:block; }
+.queue-plot text { font-size:13px; font-family:system-ui,sans-serif; }
+.history-families { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.history-families > div { padding:22px; border:1px solid var(--line); border-radius:6px; background:var(--wash); }
+.history-families span { font-size:12px; color:var(--accent); display:block; margin-bottom:14px; }
+.history-families strong { font-size:17px; }
+.rtc-intro .history-families p { font-size:13px; color:var(--muted); margin-bottom:0; }
+.rtc-intro .formula-card code { overflow-wrap:anywhere; }
+.rtc-intro table { font-size:13px; }
+.rtc-intro #section-6 + p { margin-top:25px; }
+@media(max-width:700px) {
+ .latency-strip,.transport-lanes,.history-families { grid-template-columns:1fr; }
+ .latency-strip > div { display:grid; grid-template-columns:110px 1fr; gap:10px; align-items:center; padding:14px; }
+ .latency-strip span { margin-top:0; }
+ .pipeline-row { grid-template-columns:1fr; gap:8px; padding:16px; }
+ .rtc-intro .title-subline { font-size:.59em; line-height:1.5; }
+}
+@media print {
+ .packet-chart,.plot-scroll { overflow:visible; }
+ .packet-row { min-width:0; }
+ .queue-plot { min-width:0; }
+}

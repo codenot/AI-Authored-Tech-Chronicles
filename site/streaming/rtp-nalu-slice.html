@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RTP · NALU · Slice｜H.264 流媒体格式手册</title>
+<style>
+:root{--ink:#172b3a;--muted:#526779;--line:#cedce4;--blue:#dceeff;--green:#ddf3e9;--amber:#fff0d2;--purple:#eee6fb;--bg:#f4f7fa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1100px;margin:auto;padding:48px 28px}header{border-top:5px solid #2375ad;padding:26px 0}h1{font-size:38px;line-height:1.3;margin:12px 0}h2{font-size:25px;margin:0 0 20px}h3{font-size:19px;margin:28px 0 12px}p{margin:12px 0}.eyebrow{font:13px/1.5 ui-monospace,monospace;letter-spacing:2px;color:#2375ad}.lead{font-size:19px;max-width:850px}.muted,figcaption{color:var(--muted);font-size:14px}nav{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}nav a{padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:white;text-decoration:none}a{color:#17649b}section{background:white;border:1px solid var(--line);border-radius:12px;margin:24px 0;padding:28px;scroll-margin-top:20px}figure{margin:20px 0}figcaption{margin-top:10px}.diagram{overflow-x:auto;border:1px solid var(--line);border-radius:8px;padding:18px;background:#fafcfe}.bits{min-width:720px}.ruler,.word{display:grid;grid-template-columns:repeat(32,minmax(0,1fr))}.ruler span{text-align:center;font:10px/24px ui-monospace,monospace;color:var(--muted)}.word>div{border:1px solid #9eb3c3;text-align:center;padding:12px 0;line-height:1.35;font:14px/1.5 ui-monospace,monospace;overflow-wrap:anywhere}.word .tiny{font-size:12px}.blue{background:var(--blue)}.green{background:var(--green)}.amber{background:var(--amber)}.purple{background:var(--purple)}.gray{background:#eaf0f4}.byte{display:grid;grid-template-columns:repeat(8,1fr);min-width:400px;max-width:600px}.byte>div{border:1px solid #9eb3c3;padding:15px 6px;text-align:center;font-family:ui-monospace,monospace}.byte-ruler{display:grid;grid-template-columns:repeat(8,1fr);min-width:400px;max-width:600px;font:12px/24px ui-monospace,monospace;text-align:center;color:var(--muted)}.chain{display:flex;align-items:stretch;gap:0;min-width:700px}.block{padding:14px 18px;border:1px solid #9eb3c3;text-align:center;flex:1;line-height:1.5}.block small{display:block;font-size:12px;color:var(--muted)}.arrow{align-self:center;padding:0 14px;font-size:24px;color:#617d91}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f0f5f8}code{font:0.92em/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef3f7;padding:2px 5px;border-radius:4px}pre{overflow-x:auto;padding:18px;background:#152b3a;color:#e2edf4;border-radius:8px;font:14px/1.8 ui-monospace,monospace}pre code{background:none;color:inherit;padding:0}.note{border-left:3px solid #2375ad;background:#f0f7fc;padding:10px 16px;margin:18px 0}.note.warn{border-color:#b98325;background:#fff8e9}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:18px;border:1px solid var(--line);border-radius:8px}.card strong{display:block}.flow{display:grid;gap:8px;min-width:650px}.flow .line{display:flex;align-items:center;gap:12px}.tag{width:170px;flex-shrink:0;font:13px/1.5 ui-monospace,monospace}.wire{display:flex;flex:1}.wire>span{padding:10px;border:1px solid #9eb3c3;text-align:center;flex:1;font:13px/1.5 ui-monospace,monospace}.footer{padding:20px 0;font-size:13px;color:var(--muted)}.footer em{display:block}button{border:1px solid var(--line);border-radius:6px;padding:6px 12px;background:white;color:var(--ink);cursor:pointer}.toolbar{display:flex;justify-content:space-between;align-items:center}.scroll{overflow-x:auto}@media(max-width:700px){main{padding:24px 14px}section{padding:20px 16px}h1{font-size:29px}.cards{grid-template-columns:1fr}table{min-width:650px}}@media print{body{background:white;font-size:12px}main{padding:0;max-width:none}section{break-inside:auto;border-radius:0;padding:18px;margin:16px 0}figure,table,.note{break-inside:avoid}nav,button{display:none}h1{font-size:28px}h2{font-size:20px}a{color:inherit}.diagram{overflow:visible}.bits{min-width:0}.word>div{font-size:10px}.word .tiny{font-size:9px}.chain{min-width:0}.flow{min-width:0}.tag{width:130px}.wire>span{font-size:10px;padding:8px}.scroll{overflow:visible}table{min-width:0}.byte,.byte-ruler{min-width:0}}
+
+.packet{display:grid;grid-template-columns:150px minmax(0,1fr);min-width:780px;margin:10px 0;border:2px solid #8ba8bc;border-radius:6px;overflow:hidden}.packet-head{background:var(--amber);padding:16px 10px;text-align:center;border-right:2px solid #8ba8bc;display:flex;flex-direction:column;justify-content:center;font:14px/1.6 ui-monospace,monospace}.packet-head small{font:12px/1.6 system-ui;color:var(--muted)}.packet-payload{background:#f7fbfd}.payload-label{padding:5px 12px;color:#2375ad;font:12px/1.6 ui-monospace,monospace;border-bottom:1px dashed #9eb3c3}.packet-payload .chain{min-width:0}.packet-payload .block{border-width:0 1px 0 0;padding:14px 10px}.packet-payload .block:last-child{border-right:0}.packet-title{font-size:13px;color:var(--muted);margin-top:16px}@media print{.packet{min-width:0;grid-template-columns:110px minmax(0,1fr)}}
+</style>
+<link rel="stylesheet" href="../assets/css/special.css">
+</head>
+<body>
+<div class="chronicles-return" role="navigation" aria-label="站点返回入口"><a href="../index.html">← 首页</a><a href="index.html">系列目录</a><a href="../ai-programming-practices/index.html#research">材料资源</a></div><main>
+<header>
+<div class="toolbar"><span class="eyebrow">STREAMING ENGINEERING / FORMAT REFERENCE</span><button onclick="window.print()">打印 / 保存 PDF</button></div>
+<h1>RTP、NALU 与 Slice 的关系</h1>
+<p class="lead">从编码结构到传输字节：以 H.264、RTP 非交错模式为主，按图回顾字段、边界与重组规则。</p>
+<p class="muted">范围：普通 AVC、完整 Slice NALU、packetization-mode=1。数据分区、SVC/MVC 和交错模式仅标注边界；H.265 单独对比。示例报文为按协议构造的教学数据，省略号不代表有效可解码码流。</p>
+<nav aria-label="目录"><a href="#relation">概念关系</a><a href="#rtp">RTP 格式</a><a href="#nalu">NALU 格式</a><a href="#slice">Slice 结构</a><a href="#packing">封装与重组</a><a href="#walk">完整字节示例</a><a href="#hevc">H.265 对比</a><a href="#checks">速查与取舍</a></nav>
+</header>
+
+<section id="relation"><h2>01 / 三个概念，三个层次</h2>
+<div class="cards"><div class="card blue"><strong>Slice：编码结构</strong>图像中的一组宏块及其编码语法。包含 Slice Header 和 Slice Data；一幅图像可以拆成多个 Slice。</div><div class="card green"><strong>NALU：码流封装单元</strong>Network Abstraction Layer Unit。用类型头标识内容：Slice、SPS、PPS、SEI 等。不是每个 NALU 都是图像数据。</div><div class="card amber"><strong>RTP：传输包</strong>用序号、时间戳和源标识组织传输。载荷按 H.264 RTP 规则封装 NALU、多个 NALU 或一个 NALU 的片段。</div></div>
+<figure><div class="diagram"><div class="chain"><div class="block blue">一幅编码图像<small>例如两个 Slice</small></div><span class="arrow">→</span><div class="block green">Slice A → NALU A<br>Slice B → NALU B<small>普通 AVC、无数据分区</small></div><span class="arrow">→</span><div class="block amber">RTP 载荷封装<small>单包 / 聚合 / 分片</small></div></div></div><figcaption>图 1：编码结构映射到 NALU，再选择传输封装。RTP 分片是按字节切分，通常不对应宏块或 Slice 语法边界。</figcaption></figure>
+<p><strong>Access Unit（AU，访问单元）</strong>是围绕一幅主编码图像组织的 NALU 集合，可包含多个 Slice 和相关非 VCL NALU。工程上常称“一帧”，但场编码等情况下应使用图像 / AU 边界的准确语义。</p>
+<div class="scroll"><table><thead><tr><th>映射</th><th>可能的数量关系</th><th>含义</th></tr></thead><tbody><tr><td>图像 → Slice</td><td>1 → 1 或多</td><td>编码器决定如何划分图像。</td></tr><tr><td>Slice → NALU</td><td>通常 1 → 1</td><td>普通 AVC 完整 Slice；数据分区类型 2/3/4 是例外。</td></tr><tr><td>NALU → RTP</td><td>1 → 1、1 → 多、多 → 1</td><td>分别对应 Single NAL Unit、FU-A、STAP-A。</td></tr></tbody></table></div>
+</section>
+
+<section id="rtp"><h2>02 / RTP：先定位载荷，再解析 NALU</h2>
+<p>下图每行 32 bit，按网络字节序排列：左侧先传输，字节内高位在左。<strong>固定头是 12 字节；实际头长可能更大。</strong></p>
+<figure><div class="diagram"><div class="bits">
+<div class="ruler" id="ruler"></div>
+<div class="word"><div class="blue tiny" style="grid-column:span 2">V<br>2</div><div class="blue tiny">P<br>1</div><div class="blue tiny">X<br>1</div><div class="blue" style="grid-column:span 4">CC · 4</div><div class="amber tiny">M<br>1</div><div class="amber" style="grid-column:span 7">PT · 7</div><div class="green" style="grid-column:span 16">Sequence Number · 16 bit</div></div>
+<div class="word"><div class="green" style="grid-column:span 32">Timestamp · 32 bit</div></div>
+<div class="word"><div class="purple" style="grid-column:span 32">SSRC · 32 bit</div></div>
+<div class="word"><div class="gray" style="grid-column:span 32">CSRC 列表 · CC × 32 bit（可选）</div></div>
+<div class="word"><div class="gray" style="grid-column:span 16">扩展定义 / profile · 16 bit</div><div class="gray" style="grid-column:span 16">扩展长度 L · 16 bit</div></div>
+<div class="word"><div class="gray" style="grid-column:span 32">扩展内容 · L × 32 bit（以上两行仅 X=1 时存在）</div></div>
+<div class="word"><div class="amber" style="grid-column:span 32">RTP Payload · H.264 载荷</div></div>
+<div class="word"><div class="gray" style="grid-column:span 32">Padding（可选，P=1；包尾最后 1 字节给出填充总字节数）</div></div>
+</div></div><figcaption>图 2：RTP 固定头、可选头与载荷的位置。各字段旁的数字表示位数。依据 <a href="https://www.rfc-editor.org/rfc/rfc3550.html#section-5.1">RFC 3550 §5.1</a>、<a href="https://www.rfc-editor.org/rfc/rfc3550.html#section-5.3.1">§5.3.1</a>。</figcaption></figure>
+<div class="scroll"><table><thead><tr><th>字段</th><th>含义</th><th>H.264 接收侧关注点</th></tr></thead><tbody>
+<tr><td>V · 2 bit</td><td>RTP 版本，当前格式取 2。</td><td>首字节常见 <code>80</code>，不是固定值。</td></tr>
+<tr><td>P · 1 bit</td><td>存在尾部填充。</td><td>填充计数包含计数字节自身；验证长度后从载荷尾部排除。</td></tr>
+<tr><td>X · 1 bit</td><td>存在头扩展。</td><td>扩展紧随 CSRC 列表；具体元素格式由扩展 profile 定义。</td></tr>
+<tr><td>CC · 4 bit</td><td>CSRC 数量，0～15。</td><td>每项 4 字节，必须跳过。</td></tr>
+<tr><td>M · 1 bit</td><td>由载荷格式定义的标记。</td><td>H.264：当前 AU 的最后一个 RTP 包置 1；不是关键帧标记。</td></tr>
+<tr><td>PT · 7 bit</td><td>载荷类型标识。</td><td>依据 SDP 映射；<code>96</code> 不是 H.264 的固定编号。</td></tr>
+<tr><td>Sequence · 16 bit</td><td>每发送一个 RTP 数据包加 1，模 65536 回绕。</td><td>用于重排和识别缺包；不是 NALU 或帧编号，初值不要求为 0。</td></tr>
+<tr><td>Timestamp · 32 bit</td><td>媒体采样时间，按时钟频率计数。</td><td>H.264 时钟为 90 kHz；同一图像的 Slice 及同一 NALU 分片共享时间戳。不是 Unix 时间，也不是到达时间。</td></tr>
+<tr><td>SSRC · 32 bit</td><td>同步源标识。</td><td>不同源分别维护序号与重组状态。</td></tr>
+<tr><td>CSRC · 各 32 bit</td><td>混合器列出的贡献源标识。</td><td>与 SSRC 的角色不同。</td></tr>
+<tr><td>扩展定义 / L</td><td>16 bit 定义标识；16 bit 长度，以 32 bit 字为单位。</td><td>L 不含扩展头自身的 4 字节；L=0 合法。</td></tr>
+</tbody></table></div>
+<pre><code>payload_offset = 12 + 4 × CC
+若 X=1：payload_offset += 4 + 4 × L
+payload_end = packet_length − (P=1 ? 包尾填充计数 : 0)</code></pre>
+<p class="muted">公式只定位边界；读取 CC、扩展头与 L 前都需要检查报文剩余长度。SRTP 的认证尾部等需先按其协议处理。</p>
+<p>例如恒定 30 fps 时，相邻图像时间戳通常相差 <code>90000 / 30 = 3000</code>；序号仍按包递增。重排序编码时，时间戳不能简单视为按发送顺序递增的帧号。H.264 的 M / PT / 时间戳规则见 <a href="https://www.rfc-editor.org/rfc/rfc6184.html#section-5.1">RFC 6184 §5.1</a>。</p>
+</section>
+
+<section id="nalu"><h2>03 / H.264 NALU：1 字节头 + EBSP</h2>
+<figure><div class="diagram"><div class="chain"><div class="block green" style="flex:0 0 170px">NAL Header<small>普通 AVC：1 byte</small></div><div class="block blue">EBSP<small>承载 Slice / SPS / PPS / SEI 等语法</small></div></div><h3>头字节的位布局（bit 7 → bit 0）</h3><div class="byte-ruler"><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span></div><div class="byte"><div class="purple">F</div><div class="green" style="grid-column:span 2">NRI · 2 bit</div><div class="blue" style="grid-column:span 5">nal_unit_type · 5 bit</div></div></div><figcaption>图 3：普通 H.264 NALU 格式。NAL 头结构见 <a href="https://www.rfc-editor.org/rfc/rfc6184.html#section-1.3">RFC 6184 §1.3</a>；编码语法以 <a href="https://www.itu.int/rec/T-REC-H.264">ITU-T H.264</a> 为准。</figcaption></figure>
+<div class="scroll"><table><thead><tr><th>字段</th><th>解释</th><th>示例：头字节 0x65 = 01100101</th></tr></thead><tbody><tr><td>F</td><td>forbidden_zero_bit；符合 H.264 语法的 NALU 应为 0。RTP 规范也定义用 1 标记损坏内容的处理。</td><td>0</td></tr><tr><td>NRI</td><td>nal_ref_idc；0 表示该 NALU 不用于重建参考图像；非零表示相关重要性 / 参考属性。不能据此判断 I/P/B。</td><td>二进制 11，即 3</td></tr><tr><td>Type</td><td>NALU 内容类型。</td><td>00101，即 5：IDR 图像的编码 Slice</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>Type</th><th>内容</th><th>是否承载 Slice</th></tr></thead><tbody><tr><td>1</td><td>非 IDR 图像的编码 Slice</td><td>是；可能是 I、P、B 等 Slice，需读 slice_type。</td></tr><tr><td>2 / 3 / 4</td><td>Slice 数据分区 A / B / C</td><td>分区例外；不套用“一 Slice 一 NALU”的简化模型。</td></tr><tr><td>5</td><td>IDR 图像的编码 Slice</td><td>是；IDR 与普通 I Slice 不等价。</td></tr><tr><td>6</td><td>SEI：补充增强信息</td><td>否。</td></tr><tr><td>7 / 8</td><td>SPS / PPS：序列 / 图像参数集</td><td>否；为解析和解码 Slice 提供上下文。</td></tr><tr><td>9</td><td>AUD：访问单元分隔符</td><td>否；不是每条流都有 AUD。</td></tr><tr><td>24 / 28</td><td>RTP 载荷封装标识：STAP-A / FU-A</td><td>不是可直接交给 H.264 解码器的原始 NALU 类型。</td></tr></tbody></table></div>
+<h3>NALU 外面的边界标记，不属于 NALU 本身</h3>
+<figure><div class="diagram"><div class="flow"><div class="line"><span class="tag">Annex B 字节流</span><div class="wire"><span class="gray">00 00 01<br>或 00 00 00 01</span><span class="green">NAL Header</span><span class="blue">EBSP</span></div></div><div class="line"><span class="tag">长度前缀格式</span><div class="wire"><span class="gray">NALU 长度<br>宽度由配置决定</span><span class="green">NAL Header</span><span class="blue">EBSP</span></div></div><div class="line"><span class="tag">RTP Single NAL</span><div class="wire"><span class="amber">RTP Header</span><span class="green">NAL Header</span><span class="blue">EBSP</span></div></div></div></div><figcaption>图 4：同一个 NALU 的不同外部封装。RTP Single NAL 载荷不携带 Annex B 起始码，也不携带容器的长度前缀。</figcaption></figure>
+<p><strong>RBSP → EBSP：</strong>编码语法先形成 RBSP；为避免产生起始码形态，在规定的字节序列中插入防竞争字节 <code>03</code>，形成传输用 EBSP。例如 RBSP 的 <code>00 00 01</code> 变为 EBSP 的 <code>00 00 03 01</code>。接收侧先还原完整 NALU，再按语法规则移除防竞争字节；不能删除所有 <code>03</code>，也不能分别在 FU 分片内处理。</p>
+</section>
+
+<section id="slice"><h2>04 / Slice：在 NALU 里面，不在 RTP 头里面</h2>
+<figure><div class="diagram"><div class="chain"><div class="block green" style="flex:0 0 130px">NAL Header</div><div class="block blue">Slice Header<small>边界与参考 / 解码上下文</small></div><div class="block blue">Slice Data<small>宏块语法、预测及残差等</small></div><div class="block gray" style="flex:0 0 140px">RBSP 尾部<small>结束位与对齐等</small></div></div></div><figcaption>图 5：去除防竞争字节后的逻辑视图；不是固定字节偏移图。CABAC 等情况下还有对应的结束 / 对齐语法。</figcaption></figure>
+<div class="scroll"><table><thead><tr><th>Slice Header 常见字段</th><th>作用</th><th>解析约束</th></tr></thead><tbody><tr><td>first_mb_in_slice</td><td>首宏块位置相关索引。</td><td>Exp-Golomb 编码；MBAFF / FMO 情况需按标准解释。</td></tr><tr><td>slice_type</td><td>Slice 的预测类别。</td><td>值 0～9；取模 5 后 0=P、1=B、2=I、3=SP、4=SI。</td></tr><tr><td>pic_parameter_set_id</td><td>选择 PPS，PPS 再引用 SPS。</td><td>参数集可能由带内 NALU 或 SDP 提供。</td></tr><tr><td>frame_num、POC 相关字段</td><td>图像标识与输出顺序相关信息。</td><td>存在条件、位宽由 SPS / PPS 和 NAL 类型决定。</td></tr><tr><td>idr_pic_id 等</td><td>IDR 图像标识及其他条件语法。</td><td>不是每个 Slice Header 都包含相同字段。</td></tr></tbody></table></div>
+<div class="note">Slice Header 使用变长位编码与条件字段。不能通过“跳过 NAL 头后的固定几个字节”确定 Slice 类型、完整图像边界或 Slice Data 起点。NAL Type=1 也可能装载 I Slice。</div>
+<p>多个 Slice 限制图像内部的部分预测依赖，可能有利于并行与错误影响控制；它们仍可能依赖其他图像和参数集，并不意味着每个 Slice 都能独立输出一幅图像。</p>
+</section>
+
+<section id="packing"><h2>05 / 三种传输形式：一对一、多对一、一对多</h2>
+<p>以下使用 <code>packetization-mode=1</code>。未声明时默认 mode=0，只支持 Single NAL Unit；mode=2 的 DON、STAP-B、MTAP 和 FU-B 不在本手册展开范围内。模式规则见 <a href="https://www.rfc-editor.org/rfc/rfc6184.html#section-6">RFC 6184 §6</a>。</p>
+<div class="note"><strong>三种形式都具有 RTP Header。</strong>“一 / 多”比较的是原始 NALU 数量与 RTP 包数量。下图统一画出完整 RTP 包，并用边界明确区分 RTP Header 和 RTP Payload；省略可选尾部填充，方框宽度不表示实际字节比例。</div>
+<h3>A. Single NAL Unit：一个包承载一个完整 NALU</h3>
+<div class="diagram"><div class="packet"><div class="packet-head">RTP Header<small>一个 RTP 包<br>至少 12 bytes</small></div><div class="packet-payload"><div class="payload-label">RTP Payload</div><div class="chain"><div class="block green">原始 NAL Header<small>1 byte · Type 1～23</small></div><div class="block blue">完整 EBSP</div></div></div></div><p class="muted">载荷内两部分合起来就是一个完整 NALU：NAL Header + EBSP。</p></div>
+<p>去掉 RTP 头和填充后，载荷就是完整 NALU，不需要重建 NAL 头。</p>
+<h3>B. STAP-A：多个完整 NALU 共用一个 RTP 包</h3>
+<div class="diagram"><div class="packet"><div class="packet-head">RTP Header<small>一个 RTP 包<br>至少 12 bytes</small></div><div class="packet-payload"><div class="payload-label">RTP Payload</div><div class="chain"><div class="block purple">STAP-A Header<small>1 byte · Type=24</small></div><div class="block gray">Size₁<small>2 bytes</small></div><div class="block green">完整 NALU₁<small>NAL Header + EBSP</small></div><div class="block gray">Size₂<small>2 bytes</small></div><div class="block green">完整 NALU₂<small>NAL Header + EBSP</small></div></div></div></div><p class="muted">两个 NALU 共用一个 RTP Header；STAP-A Header 是载荷内部的聚合头。</p></div>
+<p>Size 是大端 16 bit，计算整个子 NALU 的字节数，包含它的 1 字节头、不包含 Size 自身。逐项读取并输出独立 NALU；不能把整个 STAP-A 直接提交解码。STAP-A 聚合同一 NALU 时间的单元，常用于 SPS / PPS。聚合头 NRI 取子 NALU 的最大值；F 按子单元错误标记汇总。</p>
+<h3 id="fua">C. FU-A：一个 NALU 分成多个 RTP 包</h3>
+<p><strong>FU = Fragmentation Unit（分片单元）。</strong>FU-A 载荷开头的两个字节是传输封装头，用于标识分片并重建原始 NALU；它们不是原始 NALU 的两个头字节。</p>
+<div class="scroll"><table><thead><tr><th>封装字节</th><th>位布局（高位 → 低位）</th><th>承载的信息</th></tr></thead><tbody><tr><td>FU Indicator · 第 1 字节</td><td>F（1） / NRI（2） / Type（5）</td><td>F、NRI 取自原始 NAL 头；Type 改为 28，表示当前 RTP 载荷采用 FU-A，而不是原始 NALU 类型。</td></tr><tr><td>FU Header · 第 2 字节</td><td>S（1） / E（1） / R（1） / Type（5）</td><td>S=1 标识首片，E=1 标识尾片，两者不能同时为 1；R=0；Type 保存原始 NALU 类型，例如 5 表示 IDR Slice。E 只标记 NALU 结束；若该包同时是 AU 最后一包，RTP 的 M 才置 1。</td></tr></tbody></table></div>
+<figure><div class="diagram"><p class="packet-title">发送前：一个完整的原始 NALU</p><div class="chain"><div class="block green" style="flex:0 0 220px">原始 NAL Header<small>1 byte：F / NRI / 原始 Type</small></div><div class="block blue">完整 EBSP<small>随后按字节拆成片段①②③</small></div></div><p class="packet-title">头信息的去向（以下箭头表示复制字段信息，不表示复制整个字节）</p><div class="chain"><div class="block green">原始头的 F / NRI<br>↓<br>每片的 FU Indicator<small>低 5 bit 换成 28</small></div><div class="block purple">原始头的 Type<br>↓<br>每片的 FU Header<small>高 3 bit 放 S / E / R</small></div></div></div><figcaption>原始 NAL 头不作为片段数据发送。它的 F、NRI 和 Type 分别保存在两个 FU 封装字节中，用于接收侧恢复。</figcaption></figure>
+<div class="note"><strong>NALU 在哪里？</strong>这几个 RTP 包共同承载一个 NALU：它的头信息在每片的 FU Indicator / FU Header 中，EBSP 在各片的数据区域中。任意一个分片都不是完整 NALU；接收侧恢复一个原始 NAL 头并拼齐全部 EBSP 后，才得到完整 NALU。</div>
+<figure><div class="diagram"><p class="muted">一个原始 NALU → 三个 RTP 包（示例）。每个包有独立 RTP Header；序号递增，时间戳相同。</p><div class="packet"><div class="packet-head">RTP Header<small>Seq=n · TS=T<br>至少 12 bytes</small></div><div class="packet-payload"><div class="payload-label">RTP Payload</div><div class="chain"><div class="block purple">FU Indicator<small>1 byte · F / NRI / 28</small></div><div class="block green">FU Header<small>1 byte · S=1 / E=0</small></div><div class="block blue">EBSP 片段①<small>不含原始 NAL Header</small></div></div></div></div><div class="packet"><div class="packet-head">RTP Header<small>Seq=n+1 · TS=T<br>至少 12 bytes</small></div><div class="packet-payload"><div class="payload-label">RTP Payload</div><div class="chain"><div class="block purple">FU Indicator<small>1 byte · F / NRI / 28</small></div><div class="block green">FU Header<small>1 byte · S=0 / E=0</small></div><div class="block blue">EBSP 片段②<small>不含原始 NAL Header</small></div></div></div></div><div class="packet"><div class="packet-head">RTP Header<small>Seq=n+2 · TS=T<br>至少 12 bytes</small></div><div class="packet-payload"><div class="payload-label">RTP Payload</div><div class="chain"><div class="block purple">FU Indicator<small>1 byte · F / NRI / 28</small></div><div class="block green">FU Header<small>1 byte · S=0 / E=1</small></div><div class="block blue">EBSP 片段③<small>不含原始 NAL Header</small></div></div></div></div><p class="muted">去掉每包的 RTP Header，再去掉载荷内的 FU Indicator / FU Header；重建一次原始 NAL Header，拼接片段①②③。</p><p class="packet-title">接收后：恢复为一个完整 NALU</p><div class="chain"><div class="block green" style="flex:0 0 220px">恢复的原始 NAL Header<small>F / NRI 来自 Indicator<br>Type 来自 FU Header</small></div><div class="block blue">EBSP 片段①</div><div class="block blue">EBSP 片段②</div><div class="block blue">EBSP 片段③</div></div><p class="muted">整个框是一个 NALU；不包含 RTP Header、FU Indicator 或 FU Header。</p></div><figcaption>图 6：一个 NALU 的分片传输与接收侧还原。封装规则见 <a href="https://www.rfc-editor.org/rfc/rfc6184.html#section-5.8">RFC 6184 §5.8</a>。</figcaption></figure>
+<p class="muted">接收侧按 SSRC 隔离重组状态，经重排后检查分片连续性与头字段一致性；缺片时不能输出为完整 NALU，M=1 也不能证明 AU 已收齐。具体字节计算见下一节。</p>
+<h3>补充：FU-B 与 FU-A 的区别</h3>
+<p>FU-B 用于 <code>packetization-mode=2</code> 的交错模式：FU Indicator 的 Type=29，并在 FU Header 后增加 <strong>2 字节 DON（Decoding Order Number，解码顺序号，大端）</strong>。RTP 序号表示包的传输顺序，DON 表示 NALU 的解码顺序。</p>
+<pre><code>FU-A：[RTP Header] [FU Indicator：28] [FU Header]              [数据片段]
+FU-B：[RTP Header] [FU Indicator：29] [FU Header] [DON：2 bytes] [数据片段]</code></pre>
+<p class="muted">交错模式中，被分片 NALU 的首片使用 FU-B，后续片使用 FU-A；首片的 DON 为整个 NALU 提供解码顺序信息。本手册主线采用 mode=1，不使用 FU-B。见 <a href="https://www.rfc-editor.org/rfc/rfc6184.html#section-5.8">RFC 6184 §5.8</a>。</p>
+</section>
+
+<section id="walk"><h2>06 / 按字节还原：三个 FU-A → 一个 IDR Slice NALU</h2>
+<p>构造原始 NALU 为 <code>65 AA BB CC DD EE FF</code>。其中 <code>65</code> 是合法的 IDR 类型头，后续字节仅用于演示拼接，<strong>不是有效 Slice 编码</strong>。假设它是 AU 的最后一个 NALU。</p>
+<figure><div class="diagram"><div class="flow">
+<div class="line"><span class="tag">原始 NALU</span><div class="wire"><span class="green">65</span><span class="blue">AA BB</span><span class="blue">CC DD</span><span class="blue">EE FF</span></div></div>
+<div class="line"><span class="tag">Seq=1000 · M=0</span><div class="wire"><span class="amber">7C<br>F=0 / NRI=3 / 28</span><span class="purple">85<br>S=1 / E=0 / Type=5</span><span class="blue">AA BB</span></div></div>
+<div class="line"><span class="tag">Seq=1001 · M=0</span><div class="wire"><span class="amber">7C</span><span class="purple">05<br>S=0 / E=0 / Type=5</span><span class="blue">CC DD</span></div></div>
+<div class="line"><span class="tag">Seq=1002 · M=1</span><div class="wire"><span class="amber">7C</span><span class="purple">45<br>S=0 / E=1 / Type=5</span><span class="blue">EE FF</span></div></div>
+<div class="line"><span class="tag">接收侧重组</span><div class="wire"><span class="green">(7C &amp; E0) | (85 &amp; 1F)<br>= 65</span><span class="blue">AA BB CC DD EE FF</span></div></div>
+</div></div><figcaption>图 7：每个 FU-A 都有自己的两字节封装头；还原后的原始 NAL 头只保留一次。</figcaption></figure>
+<h3>第三个 RTP 包的完整教学字节</h3>
+<pre><code>80 E0 03 EA 00 01 5F 90 12 34 56 78 | 7C 45 EE FF
+└──────────── RTP Header：12 bytes ─────────────┘   └─ FU-A ─┘
+
+80          V=2, P=0, X=0, CC=0
+E0          M=1, PT=96（本例 SDP 将 96 映射为 H264/90000）
+03 EA       Sequence=1002
+00 01 5F 90 Timestamp=90000（前两个分片相同）
+12 34 56 78 SSRC=0x12345678（前两个分片相同）
+7C 45       FU Indicator / FU Header
+EE FF       最后一个 EBSP 片段</code></pre>
+<h3>STAP-A 的长度边界示例</h3>
+<pre><code>78 | 00 04 | 67 42 00 1F | 00 02 | 68 CE
+头   长度4    子NALU₁       长度2   子NALU₂
+
+78：F=0、NRI=3、Type=24；总载荷 1 + 2 + 4 + 2 + 2 = 11 bytes。
+输出分别为 [67 42 00 1F] 和 [68 CE]，不输出 78 与两项长度。</code></pre>
+<p class="muted">两个子 NALU 只演示 SPS / PPS 类型头及长度字段；内容截短，不作为可用参数集。重组输出若对接 Annex B API，应为每个 NALU 添加起始码；若对接长度前缀 API，则添加其要求的长度字段。输出格式由解码器接口决定。</p>
+</section>
+
+<section id="hevc"><h2>07 / H.265：层次关系相同，头部与分片规则不同</h2>
+<figure><div class="diagram"><div class="word" style="min-width:650px;grid-template-columns:repeat(16,1fr)"><div class="purple">F</div><div class="blue" style="grid-column:span 6">Type · 6 bit</div><div class="green" style="grid-column:span 6">LayerId · 6 bit</div><div class="amber" style="grid-column:span 3">TID · 3 bit</div></div></div><figcaption>图 8：H.265 的 16 bit NAL 头，横跨两个字节；从高位到低位依次为 F、nal_unit_type、nuh_layer_id、nuh_temporal_id_plus1。</figcaption></figure>
+<div class="scroll"><table><thead><tr><th>项目</th><th>H.264</th><th>H.265 / HEVC</th></tr></thead><tbody><tr><td>NAL 头</td><td>普通 AVC 1 byte，F / NRI / Type</td><td>2 bytes，无 NRI；TID=TemporalId+1，不能为 0。</td></tr><tr><td>Slice 表述</td><td>宏块、Slice</td><td>CTU、Slice / Slice Segment；存在依赖 Slice Segment。</td></tr><tr><td>参数集类型</td><td>SPS=7、PPS=8</td><td>VPS=32、SPS=33、PPS=34</td></tr><tr><td>RTP 聚合 / 分片</td><td>STAP-A=24、FU-A=28</td><td>AP=48、FU=49；另有 PACI=50。</td></tr><tr><td>FU 头</td><td>S / E / R / Type（5 bit）</td><td>S / E / FuType（6 bit），没有 R 位。</td></tr><tr><td>重组</td><td>重建 1 byte NAL 头。</td><td>重建 2 byte 头并保留 LayerId / TID；还需按协商处理 DONL 等条件字段。</td></tr></tbody></table></div>
+<p>不能把 H.264 的 <code>payload[0] &amp; 0x1F</code> 或 FU-A 拼头公式直接用于 H.265。具体格式见 <a href="https://www.rfc-editor.org/rfc/rfc7798.html#section-1.1.4">RFC 7798 §1.1.4</a> 与 <a href="https://www.rfc-editor.org/rfc/rfc7798.html#section-4.4">§4.4</a>。</p>
+</section>
+
+<section id="checks"><h2>08 / 接收路径与工程取舍速查</h2>
+<div class="diagram"><div class="chain"><div class="block amber">解析 RTP<small>源 / 序号 / 载荷边界</small></div><span class="arrow">→</span><div class="block green">解包 NALU<small>Single / STAP-A / FU-A</small></div><span class="arrow">→</span><div class="block blue">组织 AU<small>参数集 + Slice 图像边界</small></div><span class="arrow">→</span><div class="block purple">解码器<small>按接口适配封装</small></div></div></div>
+<div class="scroll"><table><thead><tr><th>选择</th><th>收益</th><th>代价 / 边界</th></tr></thead><tbody><tr><td>Single NAL Unit</td><td>封装和解包简单。</td><td>NALU 过大可能触发 IP 分片；需要结合路径 MTU 规划。</td></tr><tr><td>STAP-A</td><td>多个小 NALU 共享 RTP / UDP / IP 头。</td><td>一个包丢失会同时损失多个 NALU；需要长度验证。</td></tr><tr><td>FU-A</td><td>控制每个 RTP 包大小。</td><td>每片增加 2 bytes FU 头；任一缺片影响整个 NALU。</td></tr><tr><td>更多 Slice</td><td>改变编码依赖边界，有利于部分并行与错误控制。</td><td>增加 Slice 头及编码约束，可能降低压缩效率；不等价于 RTP 分片。</td></tr></tbody></table></div>
+<p>例：路径 MTU=1500、IPv4 无选项（20 bytes）、UDP（8 bytes）、RTP 无可选头（12 bytes）、不使用 SRTP 时，RTP 载荷预算为 <code>1460 bytes</code>；FU-A 的片段数据最多 <code>1458 bytes</code>。IPv6、隧道、头扩展或 SRTP 会进一步减小预算。这里是条件化的计算示例，不是通用推荐包长。</p>
+<div class="note"><strong>回顾时检查四个边界：</strong>RTP Payload 从哪里开始？载荷是完整 NALU、聚合还是分片？NALU 是否真的完整？这些 NALU 是否属于同一完整 AU？时间戳与 M 是传输线索，图像判断还需要编码语法与参数集。</div>
+<h3>标准索引</h3>
+<p><a href="https://www.rfc-editor.org/rfc/rfc3550.html">RFC 3550</a>：RTP 通用格式；<a href="https://www.rfc-editor.org/rfc/rfc6184.html">RFC 6184</a>：H.264 RTP 载荷；<a href="https://www.itu.int/rec/T-REC-H.264">ITU-T H.264</a>：NAL / Slice / 参数集编码语法；<a href="https://www.rfc-editor.org/rfc/rfc7798.html">RFC 7798</a>：H.265 RTP 载荷。</p>
+</section>
+<script>const ruler=document.getElementById("ruler");for(let i=0;i<32;i++){const n=document.createElement("span");n.textContent=i;ruler.appendChild(n)}</script>
+<footer class="footer">
+<em>作者：[AI-Authored Tech Chronicles]</em>
+<em>系列：《流媒体协议与码流手册》第一篇</em>
+<em>参考来源：RTP / AVC / HEVC（<a href="https://www.rfc-editor.org/rfc/rfc3550.html">RFC 3550</a>、<a href="https://www.rfc-editor.org/rfc/rfc6184.html">RFC 6184</a>、<a href="https://www.itu.int/rec/T-REC-H.264">ITU-T H.264</a>、<a href="https://www.rfc-editor.org/rfc/rfc7798.html">RFC 7798</a>），资料读取于 2026-10-13</em>
+</footer>
+</main></body></html>
