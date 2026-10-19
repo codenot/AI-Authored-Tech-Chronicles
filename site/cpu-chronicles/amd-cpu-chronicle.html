@@ -168,14 +168,15 @@
     display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
     padding: 1px 6px; border-radius: 4px; margin-right: 6px; font-family: "IBM Plex Mono", monospace;
   }
-  .ver-7 { background: #c8102e; color: #fff; }
   .ver-6 { background: #2ec4b6; color: #062b28; }
   .ver-5 { background: #d4a017; color: #1a1400; }
+  .ver-r23 { background: #a78bfa; color: #20113f; }
   .ver-4 { background: #6b7c93; color: #fff; }
   .ver-3 { background: #4a5568; color: #fff; }
   .ver-2 { background: #805ad5; color: #fff; }
   .nums { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: #fff; }
   .nums small { color: var(--muted); font-size: 11px; }
+  .score-note { color: var(--muted); font-size: 10.5px; margin-top: 4px; line-height: 1.5; }
   .bar { height: 4px; background: #223049; border-radius: 99px; margin-top: 6px; overflow: hidden; }
   .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--amd-2), var(--amd)); }
   .na { color: var(--faint); font-family: "IBM Plex Mono", monospace; }
@@ -203,16 +204,16 @@
   <header class="hero">
     <div class="kicker"><span></span>AMD CPU Chronicle · 1978–2026</div>
     <h1>AMD 处理器世代全谱</h1>
-    <p class="lede">从 <b>Am8086 第二源</b> 讲到 2026 年 Ryzen 9000 X3D 刷新、Ryzen AI 400G 桌面 APU / EPYC Venice。桌面、移动、服务器分表；按产品系列与架构分代，每代选取不同产品线的 1–2 个代表型号。Geekbench 能抓到哪个大版本的分数就列哪个，版本之间不可换算。找不到就留空。</p>
+    <p class="lede">从 <b>Am8086 第二源</b> 讲到 2026 年 Ryzen 9000 X3D 刷新、Ryzen AI 400G 桌面 APU / EPYC Venice。桌面、移动、服务器分表；按产品系列与架构分代，每代选取不同产品线的 1–2 个代表型号。每个代表型号固定列出 Geekbench 5、Geekbench 6 与 Cinebench R23 的单核 / 多核分数；可点击数字查看来源。缺少可核验记录时明确标注，不换算版本或推算缺失值。</p>
     <div class="meta-row">
-      <span class="pill">资料读取于 2026-09-15</span>
-      <span class="pill">GB5 2019 · GB6 2023 · GB7 2026（能抓到的 GB5/GB6/GB7）</span>
+      <span class="pill">跑分资料核对于 2026-10-16</span>
+      <span class="pill">GB5 · GB6 · Cinebench R23</span>
     </div>
     <div class="stats">
       <div class="stat"><b id="n-desk">—</b><em>桌面系列 / 发布批次</em></div>
       <div class="stat"><b id="n-mob">—</b><em>移动世代</em></div>
       <div class="stat"><b id="n-srv">—</b><em>服务器世代</em></div>
-      <div class="stat"><b>GB5–GB7</b><em>有分数则列出，版本不可换算</em></div>
+      <div class="stat"><b>GB5 / GB6 / R23</b><em>单核 / 多核，数字可点击溯源</em></div>
     </div>
   </header>
 
@@ -232,10 +233,10 @@
       <li>日期优先采用 AMD 产品页的 Launch Date，已核实日期至少精确到月；仅能核实公告时标注“公布”。OEM 与零售时间不同时分别标明。早期档案未能确认月份的型号明确标注“发布月份未核实”，不以系列日期或授权协议日期代替。</li>
       <li>日期下方列中国大陆发布价格，以人民币（¥）表示，并区分国行建议零售价、首发标价与预售标价。仅查到厂商公布的首发活动价时单独注明；有预售定金抵扣时优先列优惠前标价。发布日期沿用各型号的原始记录，国行晚于全球上市的价格另注国行时间；OEM 与零售分批上市时价格对应各自日期。中国首发价未核实的条目明确标注，不以美元换算、现价、后续降价或整机售价代替。数字价格可点击查看来源。</li>
       <li>第 3–5 列直接列出代表型号、规格和跑分，不附加性能档次标签。Ryzen 按 3 / 5 / 7 / 9 产品线选取代表；早期 CPU 按产品家族、服务器按核心规模与用途选取代表。</li>
-      <li>Geekbench 能抓到哪个大版本就列哪个：优先 GB5（2019-09）/ GB6（2023-02）/ GB7（2026-07）。版本之间不可换算；本页只收录能抓到的 GB5/GB6/GB7。</li>
-      <li>型号与日期核对（2026-10-10）：<a href="https://www.amd.com/en/products/specifications/processors.html">AMD 产品规格表</a>、<a href="https://www.amd.com/en/products/processors/server/epyc/9004-series.html">EPYC 9004 型号表</a>。补充代表型号读取于 2026-10-10；无已核验跑分的条目留空。</li>
-      <li>分数来源：GB7 优先 Browser 官方榜；没有官方榜的型号用 CPU-Monkey / Notebookcheck / 实验室评测 / Geekbench 博客。编造分数不会出现，找不到就留空。</li>
-      <li>Cinebench R23 于 2020-11 发布。笔记本受功耗墙影响；服务器超高核心数 Geekbench 线程扩展有限（192 核 GB 多核往往远低于按核线性外推）。</li>
+      <li>每个型号固定显示 GB5、GB6、R23 三项，每项分别列单核和多核。不同软件及大版本分数不可换算；未找到可核验记录时显示“—”及说明，缺失的单核或多核也分别保留“—”。</li>
+      <li>型号与日期核对（2026-10-10）：<a href="https://www.amd.com/en/products/specifications/processors.html">AMD 产品规格表</a>、<a href="https://www.amd.com/en/products/processors/server/epyc/9004-series.html">EPYC 9004 型号表</a>。移动端 HS 代表型号补充核对于 2026-10-16；跑分记录重新核对于 2026-10-16。</li>
+      <li>分数来源：CPU-Monkey 的型号 / 对比 / 测试页、Notebookcheck 数据库与 StorageReview 实测。数字链接对应具体来源；Notebookcheck 取数据库中位数，CPU-Monkey 使用其收录值，均作为参考，不表示同一测试平台或默认功耗的严格横向比较。</li>
+      <li>Cinebench R23 于 2020-11 发布。早于测试软件上市不代表后来不能测试；早期型号仍以是否有可核验记录为准。笔记本结果受整机散热与功耗设置影响；服务器注明单路 / 多路与 SMT 等条件，不按核心数线性外推。</li>
     </ol>
   </section>
   <div class="legend">
@@ -255,7 +256,7 @@
             <th style="width:230px">架构 · 工艺 · 规格</th>
             <th class="date-cell">发布日期 /<br>国行发布价</th>
             <th>代表型号与规格</th>
-            <th style="width:300px">跑分（标明 GB 具体版本 + R23）</th>
+            <th style="width:300px">跑分 · GB5 / GB6 / R23</th>
             <th style="width:380px">里程碑与当时评论</th>
           </tr>
         </thead>
@@ -268,20 +269,19 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
-      <li>规格与发布日：AMD 产品规格、新闻稿与历史处理器列表；2025–2026 年桌面新品的日期可点击查看 AMD 原始来源。日期补充核对于 2026-10-10；7 个早期型号的发布月份仍未核实。</li>
+      <li>规格与发布日：AMD 产品规格、新闻稿与历史处理器列表；2025–2026 年桌面新品的日期可点击查看 AMD 原始来源。日期补充核对于 2026-10-10，移动端 HS 型号补充核对于 2026-10-16；7 个早期型号的发布月份仍未核实。</li>
       <li>国行发布价格：AMD 中国官方公告、厂商首发供稿、发布会现场记录与官方店首发页面的存档；部分链接为上述材料的媒体转载或首发实测记录，核对于 2026-10-12。价格仅指中国大陆市场，早期 CPU、移动端、OEM 与服务器型号未核实的中国首发报价不作推算。</li>
-      <li>Geekbench：GB7 = <a href="https://browser.geekbench.com/processor-benchmarks">Browser 官方榜</a>；GB6/GB5 = Notebookcheck 中位、CPU-Monkey、Technical City、NanoReview、实验室评测。官方榜没有的 SKU 用同一批第三方报告补齐。</li>
-      <li>1978–2008-07 的 CPU：Geekbench 尚未发布。K5/K6/Athlon 早期在公开网上几乎没有可引用的 GB 分数。</li>
-      <li>Cinebench R23：Maxon 无公开全量榜；CPU-Monkey / Notebookcheck / 实验室。R23 于 2020-11 发布。</li>
+      <li>Geekbench 5 / 6：<a href="https://www.cpu-monkey.com/">CPU-Monkey</a> 型号与测试页、<a href="https://www.notebookcheck.net/">Notebookcheck</a> 数据库；表内数字各自附来源，资料读取于 2026-10-16。未收录或未能复核的分数保留“—”。</li>
+      <li>早期 CPU 及具体型号未确认的系列占位条目仍列出三项测试，但没有可核验记录时不填写数值；不使用同家族、同架构或不同线程配置的分数替代。</li>
+      <li>Cinebench R23：CPU-Monkey、Notebookcheck，以及 <a href="https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5">StorageReview Turin 实测</a>。其中 EPYC 9755 / 9575F / 9965 的所列 StorageReview 结果为单路且关闭 SMT；R23 未测试的项保持空缺。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿与中国首发公告、厂商供稿及首发记录 + Wikipedia 处理器列表 + Geekbench Browser（GB7 官方榜）+ CPU-Monkey/Notebookcheck/Technical City/NanoReview（官方榜缺失 SKU 的 GB5/GB6），资料读取于 2026-09-15；代表型号与发布批次更新于 2026-10-10；中国大陆发布价格核对于 2026-10-12</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《AMD CPU 世代全谱》资料页<br />分析基于：AMD 产品规格/新闻稿与中国首发公告、厂商供稿及首发记录 + Wikipedia 处理器列表 + CPU-Monkey / Notebookcheck / StorageReview（GB5、GB6 与 Cinebench R23，跑分资料读取于 2026-10-16）；代表型号与发布批次更新于 2026-10-16；中国大陆发布价格核对于 2026-10-12</p>
   </footer>
 </div>
 
 <script>
 
 const GB_META = {
-  7: { tag: "GB7", label: "Geekbench 7", maxSc: 3164, from: "2026-07-23" },
   6: { tag: "GB6", label: "Geekbench 6", maxSc: 3400, from: "2023-02-14" },
   5: { tag: "GB5", label: "Geekbench 5", maxSc: 2600, from: "2019-09-03" }
 };
@@ -296,8 +296,8 @@ const DATA = {
       arch: [["微架构","8086 兼容"],["工艺","3 μm 级"],["总线","16-bit 内部"],["角色","Intel 第二源"],["寻址","1 MB"]],
       milestone: "AMD 按与 Intel 的交叉授权出货 Am8086 / Am8088，这是红队进入 x86 的真正起点，比自研内核早十年。内核与 Intel 8086 同级：16-bit、段寻址、没有保护模式。Am8088 的 8-bit 外部总线对标 IBM PC 生态。卖点是供货，不是微架构。公开 Geekbench 样本不存在——GB 要到 2008 年才发布。后来的 286 第二源和 386 清洁室诉讼，都从这份授权关系长出来。",
       skus: [
-        {"date":"约 1982（发布月份未核实）","name":"Am8086","spec":"1 核 · 5 / 8 / 10 MHz · 16-bit 总线 · 8086 兼容","gb":[],"r23":null},
-        {"date":"约 1982（发布月份未核实）","name":"Am8088","spec":"1 核 · 8-bit 外部总线 · IBM PC 兼容第二源","gb":[],"r23":null}
+        {"date":"约 1982（发布月份未核实）","name":"Am8086","spec":"1 核 · 5 / 8 / 10 MHz · 16-bit 总线 · 8086 兼容","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"约 1982（发布月份未核实）","name":"Am8088","spec":"1 核 · 8-bit 外部总线 · IBM PC 兼容第二源","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -307,7 +307,7 @@ const DATA = {
       arch: [["微架构","80286 兼容"],["工艺","1.5 μm"],["模式","实模式 + 保护模式"],["寻址","16 MB"],["角色","Intel 第二源"]],
       milestone: "1982 年 AMD 作为 Intel 第二源出货 Am286，这是 AMD 进入 x86 桌面的起点。内核与 Intel 80286 同级，同频相对 8086 大约 2 倍，卖点是供货和价格而不是微架构。没有从保护模式方便退回实模式，和 Intel 286 同一包袱。后来的 x86 克隆诉讼要从这里算起：AMD 先按授权做兼容，再在 386 上打出独立产品。",
       skus: [
-        {"date":"1982（发布月份未核实）","name":"Am286","spec":"1 核 · 8 / 10 / 12 / 16 / 20 MHz · 80286 兼容","gb":[],"r23":null}
+        {"date":"1982（发布月份未核实）","name":"Am286","spec":"1 核 · 8 / 10 / 12 / 16 / 20 MHz · 80286 兼容","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -317,8 +317,8 @@ const DATA = {
       arch: [["微架构","386 兼容 32-bit"],["工艺","0.8 μm 级"],["数据通路","32-bit"],["寻址","4 GB"],["晶体管","约 275k 级"]],
       milestone: "1991 年 Am386 是清洁室设计，不再依赖 Intel 授权。同频 IPC 与 Intel 386 相当（相对 286 约 1.5–2 倍的 32-bit 吞吐），卖点是更高频率档和更低价格：DX-40 比 Intel 33 MHz 顶配更快。这场诉讼胜出让 AMD 第一次有了独立 x86 产品线。分页与保护环仍是 NT/UNIX 的底座，AMD 在这里卖的是「兼容且更便宜」。",
       skus: [
-        {"date":"1991（发布月份未核实）","name":"Am386 DX-40","spec":"1 核 · 40 MHz · 32-bit 总线","gb":[],"r23":null},
-        {"date":"1991（发布月份未核实）","name":"Am386 SX","spec":"32-bit 核 + 16-bit 外部总线","gb":[],"r23":null}
+        {"date":"1991（发布月份未核实）","name":"Am386 DX-40","spec":"1 核 · 40 MHz · 32-bit 总线","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"1991（发布月份未核实）","name":"Am386 SX","spec":"32-bit 核 + 16-bit 外部总线","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -328,8 +328,8 @@ const DATA = {
       arch: [["微架构","486 兼容"],["工艺","0.7–0.5 μm"],["集成","片上 FPU + L1"],["倍频","DX2 / DX4"],["插槽","Socket 3"]],
       milestone: "Am486 把 FPU 和 8 KB L1 做成 Intel 486 兼容，同频相对 386 大约 2 倍。DX4-120 把频率推过 Intel 同期顶配，是 Pentium 到来前 AMD 的性能台阶。没有超标量，整数仍接近每时钟 1 条有效指令。NexGen 并购还没发生，K5 尚未出货——这一代仍是「更快的克隆」，不是自研微架构。",
       skus: [
-        {"date":"1995（发布月份未核实）","name":"Am486 DX4-120","spec":"1 核 · 120 MHz（×3）· L1 8–16 KB","gb":[],"r23":null},
-        {"date":"1993（发布月份未核实）","name":"Am486 DX2-66","spec":"1 核 · 66 MHz（×2）· 片上 FPU","gb":[],"r23":null}
+        {"date":"1995（发布月份未核实）","name":"Am486 DX4-120","spec":"1 核 · 120 MHz（×3）· L1 8–16 KB","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"1993（发布月份未核实）","name":"Am486 DX2-66","spec":"1 核 · 66 MHz（×2）· 片上 FPU","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -339,8 +339,8 @@ const DATA = {
       arch: [["微架构","K5 乱序 / RISC86"],["工艺","0.5–0.35 μm"],["插槽","Socket 5 / 7"],["译码","x86 → RISC 类 μop"],["晶体管","约 4.3M"]],
       milestone: "1996-03。AMD 第一颗完全自研 x86：把指令译成 RISC 类 μop 再乱序执行，思路接近 Pentium Pro 而不是 Pentium 双流水。同频整数常能打平或略胜 Pentium，浮点和上市延迟是短板——PR 75/90 对标 Pentium 75/90，实际时钟更低。Socket 7 兼容让升级便宜。K5 证明 AMD 能做乱序核，但错过了 Pentium 的市场窗口，真正翻盘要等 K7 Athlon。",
       skus: [
-        {"date":"1996-10","name":"AMD K5 PR133","spec":"1 核 · 100 MHz 实际 · Socket 7 · PR 评级 133","gb":[],"r23":null},
-        {"date":"1996-03-27","name":"AMD K5 PR75","spec":"1 核 · 75 MHz · 首发自研 x86","gb":[],"r23":null}
+        {"date":"1996-10","name":"AMD K5 PR133","spec":"1 核 · 100 MHz 实际 · Socket 7 · PR 评级 133","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"1996-03-27","name":"AMD K5 PR75","spec":"1 核 · 75 MHz · 首发自研 x86","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -350,9 +350,9 @@ const DATA = {
       arch: [["微架构","K6 乱序"],["工艺","0.35–0.18 μm"],["插槽","Socket 7 / Super 7"],["指令","MMX · 3DNow!"],["L2","K6-III 片上 256 KB"]],
       milestone: "1997-04 K6 来自 NexGen Nx686。同频整数常强于 Pentium MMX，Super 7 让 Socket 7 主板能上 100 MHz FSB。1998 K6-2 引入 3DNow!，是 x86 消费端第一次认真做 3D 扩展，游戏优化参差。1999 K6-III 把 256 KB L2 放回片上，同频 IPC 再抬一档，但 Athlon 已经上市。这一代的评论是：便宜、兼容、整数强，FPU 和平台带宽仍落后 Slot 1。",
       skus: [
-        {"date":"1999-02-22","name":"AMD K6-III 450","spec":"1 核 · 450 MHz · 片上 L2 256 KB · Super 7","gb":[],"r23":null},
-        {"date":"1998-05-28","name":"AMD K6-2 400","spec":"1 核 · 400 MHz · 3DNow! · Socket 7","gb":[],"r23":null},
-        {"date":"1997-04-02","name":"AMD K6 233","spec":"1 核 · 233 MHz · MMX · Socket 7","gb":[],"r23":null}
+        {"date":"1999-02-22","name":"AMD K6-III 450","spec":"1 核 · 450 MHz · 片上 L2 256 KB · Super 7","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"1998-05-28","name":"AMD K6-2 400","spec":"1 核 · 400 MHz · 3DNow! · Socket 7","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"1997-04-02","name":"AMD K6 233","spec":"1 核 · 233 MHz · MMX · Socket 7","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -362,9 +362,9 @@ const DATA = {
       arch: [["微架构","K7 乱序三发射"],["工艺","0.25–0.18 μm"],["插槽","Slot A → Socket A"],["总线","EV6 200–266 MHz"],["L2","Thunderbird 片上满速 256 KB"]],
       milestone: "1999-06-23 Athlon 是 AMD 第一次在性能上正面超过 Intel：三发射乱序、EV6 总线，同频整数相对 Pentium III 大约 +10–20%。Thunderbird 把满速 L2 放回片上，1 GHz 竞赛里 Athlon 与 Pentium III 交替破千。Slot A 卡式封装很快换成 Socket A。这是「红队能打高端」的世代，也是此后 Athlon XP 对 Pentium 4 的序章。",
       skus: [
-        {"date":"2000-06-05","name":"Athlon 1 GHz Thunderbird","spec":"1 核 · 1000 MHz · L2 256 KB 满速 · Socket A","gb":[],"r23":null},
-        {"date":"1999-06-23","name":"Athlon 500","spec":"Argon · 500 MHz · Slot A · 半速片外 L2","gb":[],"r23":null},
-        {"date":"2000-06","name":"Duron 600","spec":"1 核 · 600 MHz · Spitfire · Socket A","gb":[],"r23":null}
+        {"date":"2000-06-05","name":"Athlon 1 GHz Thunderbird","spec":"1 核 · 1000 MHz · L2 256 KB 满速 · Socket A","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"1999-06-23","name":"Athlon 500","spec":"Argon · 500 MHz · Slot A · 半速片外 L2","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2000-06","name":"Duron 600","spec":"1 核 · 600 MHz · Spitfire · Socket A","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -374,10 +374,10 @@ const DATA = {
       arch: [["微架构","K7 + 3DNow! Professional"],["工艺","0.18–0.13 μm"],["插槽","Socket A"],["FSB","266–400 MHz DDR"],["L2","Barton 512 KB"]],
       milestone: "2001-10 Palomino 引入 PR 评级（XP 1800+ 实际 1.53 GHz）。同频 IPC 相对 Thunderbird 大约 +5–10%，功耗下降。Thoroughbred 0.13 μm 把频率推到 2200+；Barton 512 KB L2 的 3200+ 是 K7 桌面收官。当时大量评测写：同价 Athlon XP 整数打赢早期 Pentium 4，NetBurst 的 IPC 回退正好被 K7 短流水线打中。Duron 走低价，Sempron 还没改名。",
       skus: [
-        {"date":"2003-05","name":"Athlon XP 3200+","spec":"Barton · 2200 MHz · L2 512 KB · FSB 400 · Socket A","gb":[],"r23":null},
-        {"date":"2001-10-09","name":"Athlon XP 1800+","spec":"Palomino · 1533 MHz · L2 256 KB","gb":[],"r23":null},
-        {"date":"2003-08","name":"Duron 1800","spec":"1 核 · 1.80 GHz · Applebred · Socket A","gb":[],"r23":null},
-        {"date":"2004-07","name":"Sempron 2500+","spec":"1 核 · 1.75 GHz · Socket A","gb":[],"r23":null}
+        {"date":"2003-05","name":"Athlon XP 3200+","spec":"Barton · 2200 MHz · L2 512 KB · FSB 400 · Socket A","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2001-10-09","name":"Athlon XP 1800+","spec":"Palomino · 1533 MHz · L2 256 KB","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2003-08","name":"Duron 1800","spec":"1 核 · 1.80 GHz · Applebred · Socket A","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2004-07","name":"Sempron 2500+","spec":"1 核 · 1.75 GHz · Socket A","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -387,9 +387,9 @@ const DATA = {
       arch: [["微架构","K8 Hammer"],["工艺","130–90 nm"],["插槽","754 / 939 / 940"],["内存","片上 IMC · DDR"],["指令","AMD64"]],
       milestone: "2003-09-23。K8 把内存控制器搬进 CPU，并推出 AMD64——后来 Intel 也只能跟。同频 IPC 相对 Barton 大约 +15–20%，相对 Prescott 的领先更明显，因为 IMC 把内存延迟打下来。FX-55 / FX-57 是单核旗舰。HyperTransport 替代 FSB。这一代被写成「AMD 的平台代差」：不是多几个 MHz，是把北桥瓶颈拆掉。64-bit 桌面软件当时几乎没有，真正吃到红利的是服务器 Opteron。",
       skus: [
-        {"date":"2005-06-27","name":"Athlon 64 FX-57","spec":"San Diego · 1 核 · 2.80 GHz · L2 1 MB · Socket 939","gb":[],"r23":null},
-        {"date":"2003-09-23","name":"Athlon 64 3200+","spec":"Clawhammer · 2.00 GHz · Socket 754 · IMC DDR","gb":[],"r23":null},
-        {"date":"2004-07","name":"Sempron 3100+","spec":"1 核 · 1.80 GHz · Paris · Socket 754","gb":[],"r23":null}
+        {"date":"2005-06-27","name":"Athlon 64 FX-57","spec":"San Diego · 1 核 · 2.80 GHz · L2 1 MB · Socket 939","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2003-09-23","name":"Athlon 64 3200+","spec":"Clawhammer · 2.00 GHz · Socket 754 · IMC DDR","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2004-07","name":"Sempron 3100+","spec":"1 核 · 1.80 GHz · Paris · Socket 754","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -399,9 +399,9 @@ const DATA = {
       arch: [["微架构","K8 双核"],["工艺","90 / 65 nm"],["插槽","939 / AM2"],["缓存","每核独立 L2"],["内存","AM2 起 DDR2"]],
       milestone: "2005-05 消费级双核。两颗 K8 核共享 IMC，不像 Pentium D 那样走 FSB 粘核，多核效率明显更高：相对单核大约 1.7–1.9 倍而不是 1.6。6400+（3.20 GHz / 2×1 MB L2）是消费级双核顶峰之一。AM2 把内存换成 DDR2。2006 年 Conroe 上市后，X2 在整数和功耗上被正面超过，K8 双核的窗口只有一年多。",
       skus: [
-        {"date":"2007-08-20","name":"Athlon 64 X2 6400+","spec":"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2005-05-31","name":"Athlon 64 X2 4800+","spec":"Toledo · 2.40 GHz · Socket 939","gb":[],"r23":null},
-        {"date":"2005-08","name":"Athlon 64 X2 3800+","spec":"2 核 / 2 线程 · Socket 939","gb":[],"r23":null}
+        {"date":"2007-08-20","name":"Athlon 64 X2 6400+","spec":"Windsor · 2 核 / 2 线程 · 3.20 GHz · L2 2×1 MB · AM2 · TDP 125 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2005-05-31","name":"Athlon 64 X2 4800+","spec":"Toledo · 2.40 GHz · Socket 939","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2005-08","name":"Athlon 64 X2 3800+","spec":"2 核 / 2 线程 · Socket 939","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -411,9 +411,9 @@ const DATA = {
       arch: [["微架构","K10 Stars"],["工艺","65 nm"],["插槽","AM2+"],["核心","真四核原生"],["缺陷","TLB errata"]],
       milestone: "2007-11 Phenom 是 AMD 第一颗原生四核（不是双模粘核）。K10 相对 K8 的 IPC 大约 +10–15%，共享 L3、HT 3.0。9950（2.60 GHz）是这一代桌面旗舰。上市即被 TLB errata 打断：BIOS 关掉快速路径后性能再掉一截，对上 Q6600/QX9650 几乎没有胜局。这一代口碑被缺陷改写，K10 的架构故事要等 Phenom II 才讲完。",
       skus: [
-        {"date":"2008-07","name":"Phenom X4 9950","spec":"Agena · 4 核 / 4 线程 · 2.60 GHz · L3 2 MB · TDP 140 W · AM2+","gb":[],"r23":null},
-        {"date":"2007-11-19","name":"Phenom X4 9600","spec":"4 核 · 2.30 GHz · 首发原生四核","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2008-04","name":"Phenom X3 8750","spec":"3 核 / 3 线程 · 2.40 GHz · AM2+","gb":[],"r23":null}
+        {"date":"2008-07","name":"Phenom X4 9950","spec":"Agena · 4 核 / 4 线程 · 2.60 GHz · L3 2 MB · TDP 140 W · AM2+","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2007-11-19","name":"Phenom X4 9600","spec":"4 核 · 2.30 GHz · 首发原生四核","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2008-04","name":"Phenom X3 8750","spec":"3 核 / 3 线程 · 2.40 GHz · AM2+","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -423,12 +423,12 @@ const DATA = {
       arch: [["微架构","K10 刷新"],["工艺","45 nm"],["插槽","AM2+ / AM3"],["L3","6 MB"],["顶配","六核 Thuban"]],
       milestone: "2009-01 Deneb 修好 TLB、加大 L3 到 6 MB，45 nm 降漏电。IPC 相对 Phenom 大约 +10–15%（含缓存），仍落后 Nehalem 约 10–20%。X4 965（3.40 GHz）是四核旗舰；2010 X6 1100T 把消费级推到 6 核。AM3 引入 DDR3。Unlock 核心（某些 555 能开第四核）成为社区传说。这一代能打主流，打不赢 i7-920/980X 的高端——直到 2011 Bulldozer 把局面变得更差。",
       skus: [
-        {"date":"2010-12-07","name":"Phenom II X6 1100T","spec":"Thuban · 6 核 / 6 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 125 W · AM3","gb":[{"v":5,"sc":508,"mc":2225,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2009-08-13","name":"Phenom II X4 965 BE","spec":"Deneb · 4 核 · 3.40 GHz · TDP 125 W · 可超频","gb":[{"v":5,"sc":441,"mc":1486,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2009-02","name":"Phenom II X3 720 BE","spec":"3 核 / 3 线程 · AM3","gb":[],"r23":null},
-        {"date":"2010-01","name":"Phenom II X2 555 BE","spec":"2 核 / 2 线程 · AM3","gb":[],"r23":null},
-        {"date":"2009-09","name":"Athlon II X4 630","spec":"4 核 / 4 线程 · 无 L3 · AM3","gb":[],"r23":null},
-        {"date":"2009-06","name":"Athlon II X2 250","spec":"2 核 / 2 线程 · AM3","gb":[],"r23":null}
+        {"date":"2010-12-07","name":"Phenom II X6 1100T","spec":"Thuban · 6 核 / 6 线程 · 3.30 / 3.70 GHz · L3 6 MB · TDP 125 W · AM3","gb":[{"v":5,"sc":508,"mc":2225,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_processor_n95-vs-amd_phenom_ii_x6_1100t","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_processor_n95-vs-amd_phenom_ii_x6_1100t"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2009-08-13","name":"Phenom II X4 965 BE","spec":"Deneb · 4 核 · 3.40 GHz · TDP 125 W · 可超频","gb":[{"v":5,"sc":441,"mc":1486,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_10100-vs-amd_phenom_ii_x4_965","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_10100-vs-amd_phenom_ii_x4_965"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2009-02","name":"Phenom II X3 720 BE","spec":"3 核 / 3 线程 · AM3","gb":[{"v":5,"sc":379,"mc":985,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_phenom_ii_x3_720","mc":"https://www.cpu-monkey.com/en/cpu-amd_phenom_ii_x3_720"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2010-01","name":"Phenom II X2 555 BE","spec":"2 核 / 2 线程 · AM3","gb":[{"v":5,"sc":409,"mc":767,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_phenom_ii_x2_555","mc":"https://www.cpu-monkey.com/en/cpu-amd_phenom_ii_x2_555"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2009-09","name":"Athlon II X4 630","spec":"4 核 / 4 线程 · 无 L3 · AM3","gb":[{"v":5,"sc":360,"mc":1244,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_athlon_ii_x4_630","mc":"https://www.cpu-monkey.com/en/cpu-amd_athlon_ii_x4_630"}},{"v":6,"sc":null,"mc":null}],"r23":[363,1373],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_athlon_ii_x4_630","mc":"https://www.cpu-monkey.com/en/cpu-amd_athlon_ii_x4_630"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2009-06","name":"Athlon II X2 250","spec":"2 核 / 2 线程 · AM3","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -438,11 +438,11 @@ const DATA = {
       arch: [["微架构","模块化双整数 / 共享 FPU"],["工艺","32 nm SOI"],["插槽","AM3+"],["顶配","8 模块整数 = 8「核」"],["功耗","TDP 125–220 W"]],
       milestone: "2011-10 Bulldozer：一个模块两套整数、一套共享 FPU，官方叫 8 核，评测当 4 个「胖核」看。同频 IPC 相对 K10 不升反降，单线程明显弱于 Sandy Bridge（常见 20–30%）。8150 多核只能打平 2600K 的一部分负载。2012 Piledriver 8350/9590 把 IPC 拉回约 +10–15%，9590 靠 4.7/5.0 GHz 和 220 W 堆频率，被写成「最后的 FX」。Steamroller/Excavator 几乎没进桌面旗舰。这一代把 AM3+ 钉死四年，Ryzen 的「52% IPC」叙事正是对它而来。",
       skus: [
-        {"date":"2013-06-11","name":"FX-9590","spec":"Vishera · 8 核 / 8 线程 · 4.70 / 5.00 GHz · L3 8 MB · TDP 220 W · AM3+","gb":[{"v":5,"sc":634,"mc":3020,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2012-10-23","name":"FX-8350","spec":"8 核 · 4.00 / 4.20 GHz · TDP 125 W","gb":[{"v":6,"sc":576,"mc":2361},{"v":5,"sc":573,"mc":2777}],"r23":[579,3803],"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2011-10-12","name":"FX-8150","spec":"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer","gb":[{"v":5,"sc":512,"mc":2431,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2012-10","name":"FX-6300","spec":"6 整数核心（3 模块）· Piledriver · AM3+","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2012-10","name":"FX-4300","spec":"4 整数核心（2 模块）· Piledriver · AM3+","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2013-06-11","name":"FX-9590","spec":"Vishera · 8 核 / 8 线程 · 4.70 / 5.00 GHz · L3 8 MB · TDP 220 W · AM3+","gb":[{"v":5,"sc":634,"mc":3020,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-amd_fx_9590","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-amd_fx_9590"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2012-10-23","name":"FX-8350","spec":"8 核 · 4.00 / 4.20 GHz · TDP 125 W","gb":[{"v":5,"sc":573,"mc":2777,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_8350-vs-amd_fx_6300","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_8350-vs-amd_fx_6300"}},{"v":6,"sc":576,"mc":2361,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_fx_8350","mc":"https://www.cpu-monkey.com/en/cpu-amd_fx_8350"}}],"r23":[579,3803],"launchPrices":[{"status":"中国首发价未核实"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_8350-vs-amd_ryzen_7_7700","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_8350-vs-amd_ryzen_7_7700"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2011-10-12","name":"FX-8150","spec":"Zambezi · 8 核 · 3.60 / 4.20 GHz · 首发 Bulldozer","gb":[{"v":5,"sc":512,"mc":2431,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_fx_8150","mc":"https://www.cpu-monkey.com/en/cpu-amd_fx_8150"}},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2012-10","name":"FX-6300","spec":"6 整数核心（3 模块）· Piledriver · AM3+","gb":[{"v":5,"sc":529,"mc":1916,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_4300-vs-amd_fx_6300","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_4300-vs-amd_fx_6300"}},{"v":6,"sc":534,"mc":1586,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_8350-vs-amd_fx_6300","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_8350-vs-amd_fx_6300"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2012-10","name":"FX-4300","spec":"4 整数核心（2 模块）· Piledriver · AM3+","gb":[{"v":5,"sc":511,"mc":1394,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_4300-vs-amd_fx_6300","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_fx_4300-vs-amd_fx_6300"}},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -452,11 +452,11 @@ const DATA = {
       arch: [["微架构","Stars / Piledriver / Steamroller / Excavator"],["工艺","32 nm → 28 nm"],["插槽","FM1 / FM2 / FM2+"],["定位","CPU+核显一体"],["对手","入门独显 + Pentium/i3"]],
       milestone: "2011 Llano 把 K10 四核和能打的核显封进 FM1，A8-3850 让「无独显也能 1080p 低画质」第一次在桌面成立。CPU IPC 仍是 2010 年的 Stars，对上 Sandy Bridge 单核大约落后 20%+。Trinity/Richland 换 Piledriver，Kaveri（2014）上 Steamroller 和 HSA，Godavari A10-7890K（2016，4.1/4.3 GHz、95 W）是 FM2+ 收官。评论口径稳定：核显赢入门独显，CPU 只够办公。这条线与 FX 并行四年，Ryzen 到来后桌面 APU 才重新有单核故事（2400G 起）。",
       skus: [
-        {"date":"2016-03（零售）","name":"A10-7890K","spec":"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7","gb":[{"v":5,"sc":538,"mc":1411,"src":"CpuTronic"}],"r23":null,"dateSource":"https://ir.amd.com/news-events/press-releases/detail/669/amd-enhances-its-desktop-processor-line-up-with-new-a10-7890k-and-athlontm-x4-880k-processors-delivering-superior-performance-features-and-near-silent-operation","launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2014-01-14","name":"A10-7850K","spec":"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+","gb":[{"v":5,"sc":506,"mc":1541,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2011-06-30","name":"A8-3850","spec":"Llano · 4 核 · 2.90 GHz · FM1 · 核显 HD 6550D","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2011-06","name":"A6-3650","spec":"4 核 / 4 线程 · Llano · FM1","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2011-09","name":"A4-3400","spec":"2 核 / 2 线程 · Llano · FM1","gb":[],"r23":null}
+        {"date":"2016-03（零售）","name":"A10-7890K","spec":"Godavari · 4 核 / 4 线程 · 4.10 / 4.30 GHz · TDP 95 W · FM2+ · Radeon R7","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://ir.amd.com/news-events/press-releases/detail/669/amd-enhances-its-desktop-processor-line-up-with-new-a10-7890k-and-athlontm-x4-880k-processors-delivering-superior-performance-features-and-near-silent-operation","launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2014-01-14","name":"A10-7850K","spec":"Kaveri · 4 核 · 3.70 / 4.00 GHz · Steamroller · FM2+","gb":[{"v":5,"sc":506,"mc":1541,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_a10_7850k","mc":"https://www.cpu-monkey.com/en/cpu-amd_a10_7850k"}},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2011-06-30","name":"A8-3850","spec":"Llano · 4 核 · 2.90 GHz · FM1 · 核显 HD 6550D","gb":[{"v":5,"sc":363,"mc":1159,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_a8_3850","mc":"https://www.cpu-monkey.com/en/cpu-amd_a8_3850"}},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2011-06","name":"A6-3650","spec":"4 核 / 4 线程 · Llano · FM1","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2011-09","name":"A4-3400","spec":"2 核 / 2 线程 · Llano · FM1","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -466,10 +466,10 @@ const DATA = {
       arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","AM4 / TR4"],["内存","DDR4 双通道 / TR 四通道"],["SMT","同时多线程回归"]],
       milestone: "2017-03-02。Zen 宣称相对 Excavator IPC +52%，评测整数大约 +50% 量级，单核追上 7700K 附近、多核 8 核 16 线程直接超过。1800X（3.6/4.0 GHz、95 W）把 8 核做进 500 美元档。Infinity Fabric + CCX（4 核一组）的跨 CCX 延迟成为新槽点。Threadripper 1950X 16 核打开 HEDT。AM4 承诺多代兼容。这一代把 AMD 从 FX 的口碑坑里拉出来，Intel 被迫在同年把 i7 改成 6 核。",
       skus: [
-        {"date":"2017-03-02","name":"Ryzen 7 1800X","spec":"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4","gb":[{"v":6,"sc":1167,"mc":5932},{"v":5,"sc":932,"mc":6344}],"r23":[969,9314],"launchPrices":[{"cny":3999,"basis":"国行建议零售价","source":"cn-ryzen7-2017"}]},
-        {"date":"2017-08-10","name":"Threadripper 1950X","spec":"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4","gb":[{"v":6,"sc":1181,"mc":8000,"src":"Geekbench Browser"},{"v":5,"sc":1040,"mc":11370,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":8499,"basis":"国行预售标价","source":"cn-tr-2017"}]},
-        {"date":"2017-04-11","name":"Ryzen 5 1600X","spec":"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W","gb":[{"v":6,"sc":1167,"mc":5089,"src":"CPU-Monkey"},{"v":5,"sc":950,"mc":5220,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":1999,"basis":"国行建议零售价","source":"cn-ryzen5-2017"}]},
-        {"date":"2017-07-27","name":"Ryzen 3 1200","spec":"4 核 / 4 线程 · Zen · AM4","gb":[],"r23":null,"launchPrices":[{"cny":779,"basis":"国行首发标价","source":"cn-ryzen3-2017"}]}
+        {"date":"2017-03-02","name":"Ryzen 7 1800X","spec":"8 核 / 16 线程 · 3.60 / 4.00 GHz · L3 16 MB · TDP 95 W · AM4","gb":[{"v":5,"sc":932,"mc":6344,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200"}},{"v":6,"sc":1167,"mc":5932,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200"}}],"r23":[969,9314],"launchPrices":[{"cny":3999,"basis":"国行建议零售价","source":"cn-ryzen7-2017"}],"r23Sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_1800x","sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_2300x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2017-08-10","name":"Threadripper 1950X","spec":"Whitehaven · 16 核 / 32 线程 · 3.40 / 4.00 GHz · TDP 180 W · TR4","gb":[{"v":5,"sc":1040,"mc":11370,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx"}},{"v":6,"sc":1201,"mc":8710,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx"}}],"r23":[1035,18780],"launchPrices":[{"cny":8499,"basis":"国行预售标价","source":"cn-tr-2017"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2017-04-11","name":"Ryzen 5 1600X","spec":"6 核 / 12 线程 · 3.60 / 4.00 GHz · TDP 95 W","gb":[{"v":5,"sc":950,"mc":5220,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_1600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_1600x"}},{"v":6,"sc":1167,"mc":5089,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_1600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_1600x"}}],"r23":[942,6470],"launchPrices":[{"cny":1999,"basis":"国行建议零售价","source":"cn-ryzen5-2017"}],"r23Sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_1600x","sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_1600x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2017-07-27","name":"Ryzen 3 1200","spec":"4 核 / 4 线程 · Zen · AM4","gb":[{"v":5,"sc":800,"mc":2574,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200"}},{"v":6,"sc":1073,"mc":3064,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_ryzen_3_1200"}}],"r23":null,"launchPrices":[{"cny":779,"basis":"国行首发标价","source":"cn-ryzen3-2017"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -479,8 +479,8 @@ const DATA = {
       arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 2000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2018-02-12","name":"Ryzen 5 2400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1299,"basis":"国行首发标价","source":"cn-apu-2018"}]},
-        {"date":"2018-02-12","name":"Ryzen 3 2200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":779,"basis":"国行首发标价","source":"cn-apu-2018"}]}
+        {"date":"2018-02-12","name":"Ryzen 5 2400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":854,"mc":3174,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g"}},{"v":6,"sc":1099,"mc":3368,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g"}}],"r23":[1021,4800],"launchPrices":[{"cny":1299,"basis":"国行首发标价","source":"cn-apu-2018"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2018-02-12","name":"Ryzen 3 2200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":855,"mc":2750,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g"}},{"v":6,"sc":1089,"mc":3367,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g"}}],"r23":[942,3587],"launchPrices":[{"cny":779,"basis":"国行首发标价","source":"cn-apu-2018"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2400g-vs-amd_ryzen_3_2200g"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -490,10 +490,10 @@ const DATA = {
       arch: [["微架构","Zen+"],["工艺","12 nm"],["插槽","AM4 / TR4"],["内存","DDR4-2933"],["缓存","更好的延迟"]],
       milestone: "2018-04。Zen+ 是 12 nm 优化，IPC 大约 +3–5%，频率和缓存延迟改善。2700X（3.7/4.3 GHz、105 W）Precision Boost 2 让加速更跟得上负载，游戏相对 1800X 大约 +10–12%。对上已经上市的 8700K 仍然单核落后。Threadripper 2990WX 32 核把 NUMA 式四 die 延迟问题公开化，评测常写成「核数够、跨 die 痛」。这一代没有架构故事，有的是价格和平台成熟。",
       skus: [
-        {"date":"2018-04-19","name":"Ryzen 7 2700X","spec":"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":1294,"mc":6789,"src":"CPU-Monkey"},{"v":5,"sc":1062,"mc":7100}],"r23":[1071,9971],"launchPrices":[{"cny":2699,"basis":"国行建议零售价","source":"cn-ryzen-2018"}]},
-        {"date":"2018-08-13","name":"Threadripper 2990WX","spec":"32 核 / 64 线程 · 3.00 / 4.20 GHz · TDP 250 W","gb":[],"r23":null,"launchPrices":[{"cny":13999,"basis":"国行建议零售价","source":"cn-tr-2018"}]},
-        {"date":"2018-04-19","name":"Ryzen 5 2600X","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W","gb":[{"v":6,"sc":1287,"mc":5598,"src":"CPU-Monkey"},{"v":5,"sc":1052,"mc":5782,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":1799,"basis":"国行建议零售价","source":"cn-ryzen-2018"}]},
-        {"date":"2018-04-19","name":"Ryzen 5 2600","spec":"6 核 / 12 线程 · Zen+ · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1599,"basis":"国行首发标价","source":"cn-2600"}]}
+        {"date":"2018-04-19","name":"Ryzen 7 2700X","spec":"8 核 / 16 线程 · 3.70 / 4.30 GHz · L3 16 MB · TDP 105 W · AM4","gb":[{"v":5,"sc":1062,"mc":7100,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x"}},{"v":6,"sc":1294,"mc":6789,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x"}}],"r23":[1071,9971],"launchPrices":[{"cny":2699,"basis":"国行建议零售价","source":"cn-ryzen-2018"}],"r23Sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x","sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2018-08-13","name":"Threadripper 2990WX","spec":"32 核 / 64 线程 · 3.00 / 4.20 GHz · TDP 250 W","gb":[{"v":5,"sc":1020,"mc":17204,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx"}},{"v":6,"sc":1193,"mc":10282,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx"}}],"r23":[1103,33213],"launchPrices":[{"cny":13999,"basis":"国行建议零售价","source":"cn-tr-2018"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_1950x-vs-amd_ryzen_threadripper_2990wx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2018-04-19","name":"Ryzen 5 2600X","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 95 W","gb":[{"v":5,"sc":1052,"mc":5782,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_2600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_2600x"}},{"v":6,"sc":1287,"mc":5598,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600x-vs-amd_ryzen_5_2600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600x-vs-amd_ryzen_5_2600"}}],"r23":[1074,7514],"launchPrices":[{"cny":1799,"basis":"国行建议零售价","source":"cn-ryzen-2018"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600x-vs-amd_ryzen_5_2600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600x-vs-amd_ryzen_5_2600"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2018-04-19","name":"Ryzen 5 2600","spec":"6 核 / 12 线程 · Zen+ · AM4","gb":[{"v":5,"sc":977,"mc":5351,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600-vs-amd_ryzen_5_2600x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600-vs-amd_ryzen_5_2600x"}},{"v":6,"sc":1233,"mc":5387,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600-vs-intel_core_i3_10105","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600-vs-intel_core_i3_10105"}}],"r23":[1040,7555],"launchPrices":[{"cny":1599,"basis":"国行首发标价","source":"cn-2600"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_2600-vs-amd_ryzen_5_5600"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -503,8 +503,8 @@ const DATA = {
       arch: [["微架构","Zen+"],["工艺","12 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 3000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2019-07-07","name":"Ryzen 5 3400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1199,"basis":"国行首发标价","source":"cn-3400g","chinaDate":"2019-09"}]},
-        {"date":"2019-07-07","name":"Ryzen 3 3200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2019-07-07","name":"Ryzen 5 3400G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":940,"mc":3660,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g"}},{"v":6,"sc":1173,"mc":3784,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g"}}],"r23":[1068,4810],"launchPrices":[{"cny":1199,"basis":"国行首发标价","source":"cn-3400g","chinaDate":"2019-09"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_athlon_3000g-vs-amd_ryzen_5_3400g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_athlon_3000g-vs-amd_ryzen_5_3400g"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-07-07","name":"Ryzen 3 3200G","spec":"4 核 / 4 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":890,"mc":2900,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g"}},{"v":6,"sc":1084,"mc":3276,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3200g"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -512,14 +512,14 @@ const DATA = {
       code: "Matisse / Castle Peak",
       year: "2019",
       arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 12 nm I/O"],["插槽","AM4 / sTRX4"],["结构","Chiplet：CCD + cIOD"],["AVX","256-bit 满速"]],
-      milestone: "2019-07。Zen 2 官方 IPC +15%，评测整数大约 +12–18%。Chiplet 把 7 nm 计算和 12 nm I/O 拆开，主流桌面第一次出现 16 核（3950X）。3900X 12 核在上市时就把 9900K 的多核甩开，单核仍略落后。Notebookcheck：3950X GB6 约 1840 / 11870。Threadripper 3990X 64 核把 HEDT 做成「半颗 EPYC」。跨 CCD 延迟仍在，游戏调度需要 BIOS 和 Windows 补丁。这一代是 AMD 在多核上确立默认选项的转折。",
+      milestone: "2019-07。Zen 2 官方 IPC +15%，评测整数大约 +12–18%。Chiplet 把 7 nm 计算和 12 nm I/O 拆开，主流桌面第一次出现 16 核（3950X）。3900X 12 核在上市时就把 9900K 的多核甩开，单核仍略落后。Threadripper 3990X 64 核把 HEDT 做成「半颗 EPYC」。跨 CCD 延迟仍在，游戏调度需要 BIOS 和 Windows 补丁。这一代是 AMD 在多核上确立默认选项的转折。",
       skus: [
-        {"date":"2019-11-25","name":"Ryzen 9 3950X","spec":"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":1840,"mc":11870},{"v":5,"sc":1408,"mc":14322,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":5749,"basis":"国行首发标价","source":"cn-3950x"}]},
-        {"date":"2020-02-07","name":"Threadripper 3990X","spec":"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4","gb":[{"v":6,"sc":1614,"mc":13830,"src":"Geekbench Browser"}],"r23":null,"launchPrices":[{"cny":29999,"basis":"国行首发标价","source":"cn-3990x"}]},
-        {"date":"2019-07-07","name":"Ryzen 9 3900X","spec":"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W","gb":[{"v":6,"sc":1714,"mc":10689,"src":"CPU-Monkey"},{"v":5,"sc":1300,"mc":12454,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":3999,"basis":"国行建议零售价","source":"cn-ryzen-2019"}]},
-        {"date":"2019-07-07","name":"Ryzen 5 3600","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W","gb":[{"v":6,"sc":1542,"mc":6784,"src":"CPU-Monkey"},{"v":5,"sc":1183,"mc":6821,"src":"CPU-Monkey"}],"r23":null,"launchPrices":[{"cny":1599,"basis":"国行建议零售价","source":"cn-ryzen-2019"}]},
-        {"date":"2019-07-07","name":"Ryzen 7 3700X","spec":"8 核 / 16 线程 · Zen 2 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":2599,"basis":"国行建议零售价","source":"cn-ryzen-2019"}]},
-        {"date":"2020-05","name":"Ryzen 3 3300X","spec":"4 核 / 8 线程 · Zen 2 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":899,"basis":"国行首发标价","source":"cn-3300x"}]}
+        {"date":"2019-11-25","name":"Ryzen 9 3950X","spec":"16 核 / 32 线程 · 3.50 / 4.70 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":5,"sc":1408,"mc":14322,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x"}},{"v":6,"sc":1697,"mc":11830,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x"}}],"r23":[1371,24050],"launchPrices":[{"cny":5749,"basis":"国行首发标价","source":"cn-3950x"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-02-07","name":"Threadripper 3990X","spec":"64 核 / 128 线程 · 2.90 / 4.30 GHz · TDP 280 W · sTRX4","gb":[{"v":5,"sc":1219,"mc":34670,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx"}},{"v":6,"sc":1639,"mc":15832,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx"}}],"r23":[1284,64355],"launchPrices":[{"cny":29999,"basis":"国行首发标价","source":"cn-3990x"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-07-07","name":"Ryzen 9 3900X","spec":"12 核 / 24 线程 · 3.80 / 4.60 GHz · TDP 105 W","gb":[{"v":5,"sc":1300,"mc":12454,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x"}},{"v":6,"sc":1714,"mc":10689,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x"}}],"r23":[1302,18165],"launchPrices":[{"cny":3999,"basis":"国行建议零售价","source":"cn-ryzen-2019"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-07-07","name":"Ryzen 5 3600","spec":"6 核 / 12 线程 · 3.60 / 4.20 GHz · TDP 65 W","gb":[{"v":5,"sc":1183,"mc":6821,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x"}},{"v":6,"sc":1542,"mc":6784,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x"}}],"r23":[1250,9150],"launchPrices":[{"cny":1599,"basis":"国行建议零售价","source":"cn-ryzen-2019"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-07-07","name":"Ryzen 7 3700X","spec":"8 核 / 16 线程 · Zen 2 · AM4","gb":[{"v":5,"sc":1252,"mc":8732,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x"}},{"v":6,"sc":1637,"mc":8693,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x"}}],"r23":[1294,12355],"launchPrices":[{"cny":2599,"basis":"国行建议零售价","source":"cn-ryzen-2019"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_3950x-vs-amd_ryzen_7_3700x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-05","name":"Ryzen 3 3300X","spec":"4 核 / 8 线程 · Zen 2 · AM4","gb":[{"v":5,"sc":1304,"mc":5266,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x"}},{"v":6,"sc":1654,"mc":5933,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3300x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3400g-vs-amd_ryzen_3_3300x"}}],"r23":[1267,6754],"launchPrices":[{"cny":899,"basis":"国行首发标价","source":"cn-3300x"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_3600-vs-amd_ryzen_3_3300x"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -529,9 +529,9 @@ const DATA = {
       arch: [["微架构","Zen 2"],["工艺","7 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 4000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2020-07-21","name":"Ryzen 7 4700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]},
-        {"date":"2020-07（OEM） / 2022-04（零售）","name":"Ryzen 5 4600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"},{"status":"中国首发价未核实"}]},
-        {"date":"2020-07-21","name":"Ryzen 3 4300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
+        {"date":"2020-07-21","name":"Ryzen 7 4700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":1252,"mc":8732,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g"}},{"v":6,"sc":1480,"mc":6185,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g"}}],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-07（OEM） / 2022-04（零售）","name":"Ryzen 5 4600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":1206,"mc":5877,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g"}},{"v":6,"sc":1554,"mc":4867,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4700g-vs-amd_ryzen_5_4600g"}}],"r23":[1221,9348],"launchPrices":[{"status":"OEM 中国价未核实"},{"status":"中国首发价未核实"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5700g-vs-amd_ryzen_5_4600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5700g-vs-amd_ryzen_5_4600g"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-07-21","name":"Ryzen 3 4300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":1134,"mc":4233,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300g-vs-amd_fx_4300","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300g-vs-amd_fx_4300"}},{"v":6,"sc":1519,"mc":5257,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_4300g","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_4300g"}}],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -539,15 +539,15 @@ const DATA = {
       code: "Vermeer / Chagall",
       year: "2020–2022",
       arch: [["微架构","Zen 3"],["工艺","TSMC 7 nm"],["插槽","AM4 / sWRX8"],["CCX","每 CCD 8 核共享 32 MB L3"],["X3D","5800X3D 3D V-Cache"]],
-      milestone: "2020-11-05。Zen 3 官方 IPC +19%，每个 CCD 从两个 4 核 CCX 合成一个 8 核 CCX，L3 对游戏延迟的改善比纸面 IPC 更明显。Tom's Hardware：5950X 终于在单核上超过 Intel 的长期领先。CPU-Monkey R23 1644 / 28577；GB5 实验室约 1726 / 14239；GB6 约 2226。2022-04 5800X3D 把 64 MB 堆叠缓存放进 8 核，游戏帧率超过当时所有非 X3D 旗舰，开启「游戏买缓存」路线。AM4 在这一代收官，升级理由从核数变成单核+缓存。",
+      milestone: "2020-11-05。Zen 3 官方 IPC +19%，每个 CCD 从两个 4 核 CCX 合成一个 8 核 CCX，L3 对游戏延迟的改善比纸面 IPC 更明显。Tom's Hardware：5950X 终于在单核上超过 Intel 的长期领先。2022-04 5800X3D 把 64 MB 堆叠缓存放进 8 核，游戏帧率超过当时所有非 X3D 旗舰，开启「游戏买缓存」路线。AM4 在这一代收官，升级理由从核数变成单核+缓存。",
       skus: [
-        {"date":"2020-11-05","name":"Ryzen 9 5950X","spec":"16 核 / 32 线程 · 3.40 / 4.90 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":6,"sc":2226,"mc":13355},{"v":5,"sc":1726,"mc":14239}],"r23":[1644,28577],"launchPrices":[{"cny":6049,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
-        {"date":"2022-04-20","name":"Ryzen 7 5800X3D","spec":"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W","gb":[{"v":6,"sc":2104,"mc":11646,"src":"CPU-Monkey"},{"v":5,"sc":1622,"mc":10856}],"r23":[1452,14317],"launchPrices":[{"cny":3099,"basis":"国行首发标价","source":"cn-5800x3d"}]},
-        {"date":"2020-11-05","name":"Ryzen 9 5900X","spec":"12 核 / 24 线程 · 3.70 / 4.80 GHz · TDP 105 W","gb":[{"v":6,"sc":2200,"mc":null},{"v":5,"sc":1700,"mc":12839}],"r23":[1636,21642],"launchPrices":[{"cny":4099,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
-        {"date":"2020-11-05","name":"Ryzen 5 5600X","spec":"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W","gb":[{"v":6,"sc":2113,"mc":9281,"src":"CPU-Monkey"},{"v":5,"sc":1641,"mc":8177}],"r23":[1544,11120],"launchPrices":[{"cny":2129,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
-        {"date":"2020-11-05","name":"Ryzen 7 5800X","spec":"8 核 / 16 线程 · Zen 3 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":3199,"basis":"国行首发标价","source":"cn-ryzen-2020"}]},
-        {"date":"2022-04","name":"Ryzen 5 5600","spec":"6 核 / 12 线程 · Zen 3 · AM4","gb":[],"r23":null,"launchPrices":[{"cny":1359,"basis":"国行首发标价","source":"cn-5600"}]},
-        {"date":"2022-03-08","name":"Threadripper PRO 5995WX","spec":"64 核 / 128 线程 · Zen 3 · sWRX8","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
+        {"date":"2020-11-05","name":"Ryzen 9 5950X","spec":"16 核 / 32 线程 · 3.40 / 4.90 GHz · L3 64 MB · TDP 105 W · AM4","gb":[{"v":5,"sc":1759,"mc":16606,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x"}},{"v":6,"sc":2226,"mc":13325,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x-vs-amd_ryzen_9_5950x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x-vs-amd_ryzen_9_5950x"}}],"r23":[1644,28577],"launchPrices":[{"cny":6049,"basis":"国行首发标价","source":"cn-ryzen-2020"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x-vs-amd_ryzen_9_5950x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x-vs-amd_ryzen_9_5950x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-04-20","name":"Ryzen 7 5800X3D","spec":"8 核 / 16 线程 · 3.40 / 4.50 GHz · L3 96 MB（3D V-Cache）· TDP 105 W","gb":[{"v":5,"sc":1679,"mc":12024,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_5800x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_5800x3d"}},{"v":6,"sc":2104,"mc":11646,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_5800x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_5800x3d"}}],"r23":[1475,15125],"launchPrices":[{"cny":3099,"basis":"国行首发标价","source":"cn-5800x3d"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x3d"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-11-05","name":"Ryzen 9 5900X","spec":"12 核 / 24 线程 · 3.70 / 4.80 GHz · TDP 105 W","gb":[{"v":5,"sc":1727,"mc":14515,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_5900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_5900x"}},{"v":6,"sc":2199,"mc":12420,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900x"}}],"r23":[1636,21878],"launchPrices":[{"cny":4099,"basis":"国行首发标价","source":"cn-ryzen-2020"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-11-05","name":"Ryzen 5 5600X","spec":"6 核 / 12 线程 · 3.70 / 4.60 GHz · TDP 65 W","gb":[{"v":5,"sc":1572,"mc":8420,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600x"}},{"v":6,"sc":2113,"mc":9281,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600x"}}],"r23":[1593,10988],"launchPrices":[{"cny":2129,"basis":"国行首发标价","source":"cn-ryzen-2020"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-11-05","name":"Ryzen 7 5800X","spec":"8 核 / 16 线程 · Zen 3 · AM4","gb":[{"v":5,"sc":1728,"mc":11465,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x"}},{"v":6,"sc":2141,"mc":10650,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_7_max_385-vs-amd_ryzen_7_5800x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_7_max_385-vs-amd_ryzen_7_5800x"}}],"r23":[1619,15228],"launchPrices":[{"cny":3199,"basis":"国行首发标价","source":"cn-ryzen-2020"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_5950x-vs-amd_ryzen_7_5800x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-04","name":"Ryzen 5 5600","spec":"6 核 / 12 线程 · Zen 3 · AM4","gb":[{"v":5,"sc":1538,"mc":8009,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600"}},{"v":6,"sc":2087,"mc":8816,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600"}}],"r23":[1504,11077],"launchPrices":[{"cny":1359,"basis":"国行首发标价","source":"cn-5600"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-03-08","name":"Threadripper PRO 5995WX","spec":"64 核 / 128 线程 · Zen 3 · sWRX8","gb":[{"v":5,"sc":1604,"mc":42350,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx"}},{"v":6,"sc":2054,"mc":20165,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx"}}],"r23":[1508,65112],"launchPrices":[{"status":"OEM 中国价未核实"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_3990x-vs-amd_ryzen_threadripper_pro_5995wx"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -557,9 +557,9 @@ const DATA = {
       arch: [["微架构","Zen 3"],["工艺","7 nm"],["插槽","AM4"],["内存","DDR4"],["核显","Vega"]],
       milestone: "Ryzen 5000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。",
       skus: [
-        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 7 5700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"},{"cny":2599,"basis":"国行首发标价","source":"cn-apu-5000"}]},
-        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 5 5600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"},{"cny":1899,"basis":"国行首发标价","source":"cn-apu-5000"}]},
-        {"date":"2021-04（OEM）","name":"Ryzen 3 5300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4 · OEM 产品","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
+        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 7 5700G","spec":"8 核 / 16 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":1595,"mc":10097,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5700-vs-amd_ryzen_7_5700g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5700-vs-amd_ryzen_7_5700g"}},{"v":6,"sc":1977,"mc":8947,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5700-vs-amd_ryzen_7_5700g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5700-vs-amd_ryzen_7_5700g"}}],"r23":[1517,14075],"launchPrices":[{"status":"OEM 中国价未核实"},{"cny":2599,"basis":"国行首发标价","source":"cn-apu-5000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_5700g","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_5700g"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-04（OEM） / 2021-08（零售）","name":"Ryzen 5 5600G","spec":"6 核 / 12 线程 · Vega 核显 · AM4","gb":[{"v":5,"sc":1507,"mc":7612,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600"}},{"v":6,"sc":1896,"mc":7966,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600"}}],"r23":[1421,10202],"launchPrices":[{"status":"OEM 中国价未核实"},{"cny":1899,"basis":"国行首发标价","source":"cn-apu-5000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600g-vs-amd_ryzen_5_5600"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-04（OEM）","name":"Ryzen 3 5300G","spec":"4 核 / 8 线程 · Vega 核显 · AM4 · OEM 产品","gb":[{"v":5,"sc":1380,"mc":5425,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5300g","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5300g"}},{"v":6,"sc":1740,"mc":4955,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5300g","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5300g"}}],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -567,15 +567,15 @@ const DATA = {
       code: "Raphael / Storm Peak",
       year: "2022–2023",
       arch: [["微架构","Zen 4"],["工艺","TSMC N5 CCD + N6 I/O"],["插槽","AM5 / sTR5"],["内存","DDR5"],["I/O","PCIe 5.0 · AVX-512"]],
-      milestone: "2022-09-27。Zen 4 官方 IPC +13%，加上 5 nm 频率（7950X 加速 5.7 GHz），Digital Trends 测得相对 5950X 单核 R23 +31%、GB5 +25%。R23 约 2018 / 37182；GB5 约 2149 / 23764；GB6 约 2977 / 19221；GB7 单核 2592。AM5 换 LGA 1718、DDR5、PCIe 5.0，平台税一次付清。2023-02 7950X3D / 7800X3D 把 V-Cache 带上 AM5，7800X3D 成为 2023–2024 游戏默认推荐。Threadripper 7980X 64 核走 sTR5。能效比 5000 明显好，170 W TDP 是新的满载账单。",
+      milestone: "2022-09-27。Zen 4 官方 IPC +13%，加上 5 nm 频率（7950X 加速 5.7 GHz），Digital Trends 测得相对 5950X 单核 R23 +31%、GB5 +25%。AM5 换 LGA 1718、DDR5、PCIe 5.0，平台税一次付清。2023-02 7950X3D / 7800X3D 把 V-Cache 带上 AM5，7800X3D 成为 2023–2024 游戏默认推荐。Threadripper 7980X 64 核走 sTR5。能效比 5000 明显好，170 W TDP 是新的满载账单。",
       skus: [
-        {"date":"2022-09-27","name":"Ryzen 9 7950X","spec":"16 核 / 32 线程 · 4.50 / 5.70 GHz · L3 64 MB · TDP 170 W · AM5","gb":[{"v":7,"sc":2592,"mc":null},{"v":6,"sc":2977,"mc":19221},{"v":5,"sc":2149,"mc":23764}],"r23":[2018,37182],"launchPrices":[{"cny":5499,"basis":"国行首发标价","source":"cn-ryzen-7000"}]},
-        {"date":"2023-02-28","name":"Ryzen 9 7950X3D","spec":"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W","gb":[{"v":7,"sc":2527,"mc":null},{"v":6,"sc":2990,"mc":19642,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2311,"mc":24343,"src":"Technical City Geekbench 5.5"}],"r23":null,"launchPrices":[{"cny":5299,"basis":"国行建议零售价","source":"cn-7950x3d"}]},
-        {"date":"2023-11-21","name":"Threadripper 7980X","spec":"64 核 / 128 线程 · 3.20 / 5.10 GHz · TDP 350 W · sTR5","gb":[{"v":7,"sc":2541,"mc":null}],"r23":null,"launchPrices":[{"cny":45999,"basis":"国行首发标价","source":"cn-tr-7000"}]},
-        {"date":"2023-04-06","name":"Ryzen 7 7800X3D","spec":"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":7,"sc":2422,"mc":null},{"v":6,"sc":2731,"mc":14229},{"v":5,"sc":1920,"mc":12715,"src":"Technical City Geekbench 5.5"}],"r23":[1811,17762],"launchPrices":[{"cny":3299,"basis":"国行首发标价","source":"cn-7800x3d"}]},
-        {"date":"2022-09-27","name":"Ryzen 9 7900X","spec":"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W","gb":[{"v":7,"sc":2609,"mc":null},{"v":6,"sc":2946,"mc":18300,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2274,"mc":19987}],"r23":[2039,29480],"launchPrices":[{"cny":4299,"basis":"国行首发标价","source":"cn-ryzen-7000"}]},
-        {"date":"2022-09-27","name":"Ryzen 5 7600X","spec":"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W","gb":[{"v":7,"sc":2599,"mc":null},{"v":6,"sc":2846,"mc":12714,"src":"CPU-Monkey"},{"v":5,"sc":2205,"mc":11917}],"r23":[1967,15322],"launchPrices":[{"cny":2249,"basis":"国行首发标价","source":"cn-ryzen-7000"}]},
-        {"date":"2022-09-27","name":"Ryzen 7 7700X","spec":"8 核 / 16 线程 · Zen 4 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":2999,"basis":"国行首发标价","source":"cn-ryzen-7000"}]}
+        {"date":"2022-09-27","name":"Ryzen 9 7950X","spec":"16 核 / 32 线程 · 4.50 / 5.70 GHz · L3 64 MB · TDP 170 W · AM5","gb":[{"v":5,"sc":2242,"mc":24265,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x-vs-amd_ryzen_9_7950x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x-vs-amd_ryzen_9_7950x3d"}},{"v":6,"sc":2974,"mc":20756,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x-vs-amd_ryzen_9_7950x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x-vs-amd_ryzen_9_7950x3d"}}],"r23":[2072,38640],"launchPrices":[{"cny":5499,"basis":"国行首发标价","source":"cn-ryzen-7000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x-vs-amd_ryzen_9_7950x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x-vs-amd_ryzen_9_7950x3d"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-02-28","name":"Ryzen 9 7950X3D","spec":"16 核 / 32 线程 · 4.20 / 5.70 GHz · L3 128 MB · TDP 120 W","gb":[{"v":5,"sc":2223,"mc":23460,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7900x"}},{"v":6,"sc":2906,"mc":19479,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x3d-vs-amd_ryzen_5_9600x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x3d-vs-amd_ryzen_5_9600x"}}],"r23":[2043,38581],"launchPrices":[{"cny":5299,"basis":"国行建议零售价","source":"cn-7950x3d"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x3d-vs-amd_ryzen_9_7945hx3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7950x3d-vs-amd_ryzen_9_7945hx3d"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-11-21","name":"Threadripper 7980X","spec":"64 核 / 128 线程 · 3.20 / 5.10 GHz · TDP 350 W · sTR5","gb":[{"v":5,"sc":2030,"mc":55282,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_ryzen_threadripper_7970x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_ryzen_threadripper_7970x"}},{"v":6,"sc":2897,"mc":26562,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_epyc_7502","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_epyc_7502"}}],"r23":[1897,98322],"launchPrices":[{"cny":45999,"basis":"国行首发标价","source":"cn-tr-7000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_ryzen_threadripper_7970x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_ryzen_threadripper_7970x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-04-06","name":"Ryzen 7 7800X3D","spec":"8 核 / 16 线程 · 4.20 / 5.00 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":5,"sc":2137,"mc":13620,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800x3d-vs-amd_ryzen_7_7800x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800x3d-vs-amd_ryzen_7_7800x3d"}},{"v":6,"sc":2731,"mc":14229,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9800x3d-vs-amd_ryzen_7_7800x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9800x3d-vs-amd_ryzen_7_7800x3d"}}],"r23":[1811,17762],"launchPrices":[{"cny":3299,"basis":"国行首发标价","source":"cn-7800x3d"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9800x3d-vs-amd_ryzen_7_7800x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9800x3d-vs-amd_ryzen_7_7800x3d"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-09-27","name":"Ryzen 9 7900X","spec":"12 核 / 24 线程 · 4.70 / 5.60 GHz · TDP 170 W","gb":[{"v":5,"sc":2226,"mc":21765,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7900x"}},{"v":6,"sc":2920,"mc":18875,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7900x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7900x"}}],"r23":[2034,29654],"launchPrices":[{"cny":4299,"basis":"国行首发标价","source":"cn-ryzen-7000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7900x-vs-amd_ryzen_9_7950x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7900x-vs-amd_ryzen_9_7950x3d"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-09-27","name":"Ryzen 5 7600X","spec":"6 核 / 12 线程 · 4.70 / 5.30 GHz · TDP 105 W","gb":[{"v":5,"sc":2197,"mc":11874,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7700-vs-amd_ryzen_5_7600x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7700-vs-amd_ryzen_5_7600x"}},{"v":6,"sc":2846,"mc":12714,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_9_9950x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_9_9950x3d"}}],"r23":[1976,15315],"launchPrices":[{"cny":2249,"basis":"国行首发标价","source":"cn-ryzen-7000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_7_7700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_7_7700x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-09-27","name":"Ryzen 7 7700X","spec":"8 核 / 16 线程 · Zen 4 · AM5","gb":[{"v":5,"sc":2202,"mc":14487,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7700x-vs-amd_ryzen_5_7600x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7700x-vs-amd_ryzen_5_7600x"}},{"v":6,"sc":2898,"mc":15137,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_7_7700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_7_7700x"}}],"r23":[2010,20399],"launchPrices":[{"cny":2999,"basis":"国行首发标价","source":"cn-ryzen-7000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_7_7700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7600x-vs-amd_ryzen_7_7700x"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -585,10 +585,10 @@ const DATA = {
       arch: [["微架构","Zen 4 / Zen 4c"],["工艺","4 nm"],["插槽","AM5"],["内存","DDR5"],["核显","RDNA 3"]],
       milestone: "Ryzen 8000G 是带核显的桌面 APU 产品系列，单列以避免与同编号的桌面 CPU 混淆。选型需同时考虑 CPU 架构、核显规模和整机内存带宽。8500G / 8300G 使用 Zen 4 + Zen 4c；8600G / 8700G 使用 Zen 4。",
       skus: [
-        {"date":"2024-01-31","name":"Ryzen 7 8700G","spec":"8 核 / 16 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":2499,"basis":"国行首发活动价","source":"cn-apu-8000"}]},
-        {"date":"2024-01-31","name":"Ryzen 5 8600G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":1699,"basis":"国行首发活动价","source":"cn-apu-8000"}]},
-        {"date":"2024-01-31","name":"Ryzen 5 8500G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":1329,"basis":"国行首发活动价","source":"cn-apu-8000"}]},
-        {"date":"2024-01（公布；OEM 供货为 Q2）","name":"Ryzen 3 8300G","spec":"4 核 / 8 线程 · RDNA 3 核显 · AM5 · OEM 产品","gb":[],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}]}
+        {"date":"2024-01-31","name":"Ryzen 7 8700G","spec":"8 核 / 16 线程 · RDNA 3 核显 · AM5","gb":[{"v":5,"sc":2014,"mc":13217,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_8700g","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_8700g"}},{"v":6,"sc":2721,"mc":14326,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9700x-vs-amd_ryzen_7_8700g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9700x-vs-amd_ryzen_7_8700g"}}],"r23":[1833,18040],"launchPrices":[{"cny":2499,"basis":"国行首发活动价","source":"cn-apu-8000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9700x-vs-amd_ryzen_7_8700g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9700x-vs-amd_ryzen_7_8700g"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-01-31","name":"Ryzen 5 8600G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[{"v":5,"sc":1947,"mc":10638,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8700g-vs-amd_ryzen_5_8600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8700g-vs-amd_ryzen_5_8600g"}},{"v":6,"sc":2671,"mc":11453,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8700g-vs-amd_ryzen_5_8600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8700g-vs-amd_ryzen_5_8600g"}}],"r23":[1792,14067],"launchPrices":[{"cny":1699,"basis":"国行首发活动价","source":"cn-apu-8000"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8700g-vs-amd_ryzen_5_8600g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8700g-vs-amd_ryzen_5_8600g"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-01-31","name":"Ryzen 5 8500G","spec":"6 核 / 12 线程 · RDNA 3 核显 · AM5","gb":[{"v":5,"sc":1965,"mc":8768,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_8500g","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_8500g"}},{"v":6,"sc":2686,"mc":11063,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_8600g-vs-amd_ryzen_5_8500g","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_8600g-vs-amd_ryzen_5_8500g"}}],"r23":null,"launchPrices":[{"cny":1329,"basis":"国行首发活动价","source":"cn-apu-8000"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-01（公布；OEM 供货为 Q2）","name":"Ryzen 3 8300G","spec":"4 核 / 8 线程 · RDNA 3 核显 · AM5 · OEM 产品","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -598,11 +598,11 @@ const DATA = {
       arch: [["微架构","Zen 5"],["工艺","TSMC N4X CCD + N6 I/O"],["插槽","AM5"],["AVX","满宽 AVX-512"]],
       milestone: "2024-08：9600X / 9700X 于 8 月 8 日上市，9900X / 9950X 于 8 月 15 日上市。11 月补充 9800X3D。均属 Zen 5；2025、2026 年的 X3D 扩展仍使用这一架构，下面按发布批次单列，不计作新的微架构世代。",
       skus: [
-        {"date":"2024-08-15","name":"Ryzen 9 9950X","spec":"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W","gb":[{"v":7,"sc":3034,"mc":25540},{"v":6,"sc":3385,"mc":21758},{"v":5,"sc":2548,"mc":23982,"src":"Technical City Geekbench 5.5"}],"r23":[2243,42103],"launchPrices":[{"cny":4899,"basis":"国行首发标价","source":"cn-ryzen-9000-high"}]},
-        {"date":"2024-11-07","name":"Ryzen 7 9800X3D","spec":"8 核 / 16 线程 · 4.70 / 5.20 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":7,"sc":2970,"mc":null},{"v":6,"sc":3315,"mc":18350}],"r23":[2087,22992],"launchPrices":[{"cny":3799,"basis":"国行预售标价","source":"cn-9800x3d","note":"预售抵扣后 3699 元"}]},
-        {"date":"2024-08-08","name":"Ryzen 5 9600X","spec":"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W","gb":[{"v":7,"sc":2918,"mc":14399},{"v":6,"sc":3343,"mc":15378,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2507,"mc":12840,"src":"Technical City Geekbench 5.5"}],"r23":null,"launchPrices":[{"cny":1949,"basis":"国行建议零售价","source":"cn-ryzen-9000-low"}]},
-        {"date":"2024-08-15","name":"Ryzen 9 9900X","spec":"12 核 / 24 线程 · Zen 5 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":3399,"basis":"国行首发标价","source":"cn-ryzen-9000-high"}]},
-        {"date":"2024-08-08","name":"Ryzen 7 9700X","spec":"8 核 / 16 线程 · Zen 5 · AM5","gb":[],"r23":null,"launchPrices":[{"cny":2549,"basis":"国行建议零售价","source":"cn-ryzen-9000-low"}]}
+        {"date":"2024-08-15","name":"Ryzen 9 9950X","spec":"16 核 / 32 线程 · 4.30 / 5.70 GHz · L3 64 MB · TDP 170 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3410,"mc":22430,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d"}}],"r23":[2262,42871],"launchPrices":[{"cny":4899,"basis":"国行首发标价","source":"cn-ryzen-9000-high"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x-vs-amd_ryzen_9_5950x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x-vs-amd_ryzen_9_5950x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-11-07","name":"Ryzen 7 9800X3D","spec":"8 核 / 16 线程 · 4.70 / 5.20 GHz · L3 96 MB · TDP 120 W · 游戏默认推荐","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3305,"mc":18221,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9800x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9800x3d"}}],"r23":[2080,23230],"launchPrices":[{"cny":3799,"basis":"国行预售标价","source":"cn-9800x3d","note":"预售抵扣后 3699 元"}],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-08-08","name":"Ryzen 5 9600X","spec":"6 核 / 12 线程 · 3.90 / 5.40 GHz · TDP 65 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3291,"mc":14418,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_9600x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_9600x"}}],"r23":[2207,17689],"launchPrices":[{"cny":1949,"basis":"国行建议零售价","source":"cn-ryzen-9000-low"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_9600x-vs-amd_ryzen_5_5600x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_9600x-vs-amd_ryzen_5_5600x3d"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-08-15","name":"Ryzen 9 9900X","spec":"12 核 / 24 线程 · Zen 5 · AM5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3347,"mc":19756,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900"}}],"r23":[2231,32960],"launchPrices":[{"cny":3399,"basis":"国行首发标价","source":"cn-ryzen-9000-high"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x-vs-amd_ryzen_9_5900"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-08-08","name":"Ryzen 7 9700X","spec":"8 核 / 16 线程 · Zen 5 · AM5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3362,"mc":16135,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9700x","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9700x"}}],"r23":[2206,23127],"launchPrices":[{"cny":2549,"basis":"国行建议零售价","source":"cn-ryzen-9000-low"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7800x3d-vs-amd_ryzen_7_9700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7800x3d-vs-amd_ryzen_7_9700x"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -612,8 +612,8 @@ const DATA = {
       arch: [["微架构","Zen 5"],["插槽","AM5"],["内存","DDR5"],["缓存","第二代 3D V-Cache"]],
       milestone: "2025 年 3 月补充 12 核与 16 核 X3D 型号。双 CCD 设计中一个 CCD 带堆叠缓存；游戏调度与多核应用需要分别考虑。属于 Ryzen 9000 的产品扩展。",
       skus: [
-        {"date":"2025-03-12","name":"Ryzen 9 9950X3D","spec":"16 核 / 32 线程 · L3 128 MB · TDP 170 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html","launchPrices":[{"cny":5599,"basis":"国行建议零售价","source":"cn-ryzen-9000x3d"}]},
-        {"date":"2025-03-12","name":"Ryzen 9 9900X3D","spec":"12 核 / 24 线程 · L3 128 MB · TDP 120 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html","launchPrices":[{"cny":4599,"basis":"国行建议零售价","source":"cn-ryzen-9000x3d"}]}
+        {"date":"2025-03-12","name":"Ryzen 9 9950X3D","spec":"16 核 / 32 线程 · L3 128 MB · TDP 170 W · AM5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3437,"mc":22115,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d"}}],"r23":[2259,42018],"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html","launchPrices":[{"cny":5599,"basis":"国行建议零售价","source":"cn-ryzen-9000x3d"}],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-03-12","name":"Ryzen 9 9900X3D","spec":"12 核 / 24 线程 · L3 128 MB · TDP 120 W · AM5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3347,"mc":19756,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9800x3d-vs-amd_ryzen_9_9900x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_9800x3d-vs-amd_ryzen_9_9900x3d"}}],"r23":[2231,32960],"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x3d.html","launchPrices":[{"cny":4599,"basis":"国行建议零售价","source":"cn-ryzen-9000x3d"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x3d-vs-amd_ryzen_ai_9_hx_370","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9900x3d-vs-amd_ryzen_ai_9_hx_370"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -623,9 +623,9 @@ const DATA = {
       arch: [["微架构","Zen 5"],["插槽","sTR5"],["内存","DDR5 RDIMM · 四通道"],["TDP","350 W"]],
       milestone: "2025 年 7 月 31 日开始供货。与 AM5 Ryzen 分列：平台采用 sTR5 与 RDIMM，适合需要更多核心、内存通道和 PCIe 通道的桌面工作负载。",
       skus: [
-        {"date":"2025-07-31","name":"Threadripper 9980X","spec":"64 核 / 128 线程 · 3.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[{"v":7,"sc":2725,"mc":null}],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":40980,"basis":"国行建议零售价","source":"cn-tr-9000"}]},
-        {"date":"2025-07-31","name":"Threadripper 9970X","spec":"32 核 / 64 线程 · 4.00 / 5.40 GHz · TDP 350 W · sTR5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":20970,"basis":"国行建议零售价","source":"cn-tr-9000"}]},
-        {"date":"2025-07-31","name":"Threadripper 9960X","spec":"24 核 / 48 线程 · 4.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":12960,"basis":"国行建议零售价","source":"cn-tr-9000"}]}
+        {"date":"2025-07-31","name":"Threadripper 9980X","spec":"64 核 / 128 线程 · 3.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3220,"mc":30320,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_ryzen_threadripper_9980x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7980x-vs-amd_ryzen_threadripper_9980x"}}],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":40980,"basis":"国行建议零售价","source":"cn-tr-9000"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-07-31","name":"Threadripper 9970X","spec":"32 核 / 64 线程 · 4.00 / 5.40 GHz · TDP 350 W · sTR5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3220,"mc":29244,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_9970x-vs-amd_ryzen_threadripper_7980x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_9970x-vs-amd_ryzen_threadripper_7980x"}}],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":20970,"basis":"国行建议零售价","source":"cn-tr-9000"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-07-31","name":"Threadripper 9960X","spec":"24 核 / 48 线程 · 4.20 / 5.40 GHz · TDP 350 W · sTR5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3220,"mc":25340,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7970x-vs-amd_ryzen_threadripper_9960x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_threadripper_7970x-vs-amd_ryzen_threadripper_9960x"}}],"r23":null,"dateSource":"https://www.amd.com/en/blogs/2025/designed-to-create-built-to-inspire-amd-introduces-new.html","launchPrices":[{"cny":12960,"basis":"国行建议零售价","source":"cn-tr-9000"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -635,8 +635,8 @@ const DATA = {
       arch: [["微架构","Zen 5"],["插槽","AM5"],["内存","DDR5"],["缓存","9850X3D 单 CCD；9950X3D2 双 CCD 堆叠"]],
       milestone: "9850X3D 于 2026 年 1 月 29 日上市，8 核 X3D 提升加速频率；9950X3D2 Dual Edition 于 4 月 22 日上市，两个 CCD 均配备堆叠缓存。这是同一架构的产品刷新，不能把 2024 年的首发年份当成整个系列的截止年份。",
       skus: [
-        {"date":"2026-01-29","name":"Ryzen 7 9850X3D","spec":"8 核 / 16 线程 · 最高 5.6 GHz · L3 96 MB · TDP 120 W · AM5","gb":[],"r23":null,"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9850x3d.html","launchPrices":[{"cny":3699,"basis":"国行建议零售价","source":"cn-9850x3d"}]},
-        {"date":"2026-04-22","name":"Ryzen 9 9950X3D2 Dual Edition","spec":"16 核 / 32 线程 · 4.30 / 5.60 GHz · L3 192 MB · TDP 200 W · AM5","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-launches-ryzen-9-9950x3d2-dual-edition-processor/","launchPrices":[{"cny":6999,"basis":"国行建议零售价","source":"cn-9950x3d2"}]}
+        {"date":"2026-01-29","name":"Ryzen 7 9850X3D","spec":"8 核 / 16 线程 · 最高 5.6 GHz · L3 96 MB · TDP 120 W · AM5","gb":[{"v":5,"sc":2641,"mc":17268,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9850x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9850x3d"}},{"v":6,"sc":3527,"mc":18968,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x3d-vs-amd_ryzen_7_9850x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x3d-vs-amd_ryzen_7_9850x3d"}}],"r23":[2228,22807],"dateSource":"https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9850x3d.html","launchPrices":[{"cny":3699,"basis":"国行建议零售价","source":"cn-9850x3d"}],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2026-04-22","name":"Ryzen 9 9950X3D2 Dual Edition","spec":"16 核 / 32 线程 · 4.30 / 5.60 GHz · L3 192 MB · TDP 200 W · AM5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3518,"mc":22910,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d"}}],"r23":[2234,42720],"dateSource":"https://newsroom.amd.com/news/amd-launches-ryzen-9-9950x3d2-dual-edition-processor/","launchPrices":[{"cny":6999,"basis":"国行建议零售价","source":"cn-9950x3d2"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d2","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9950x3d2"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -646,10 +646,10 @@ const DATA = {
       arch: [["微架构","Zen 5 / Zen 5c"],["插槽","AM5"],["内存","DDR5"],["核显","RDNA 3.5"],["NPU","XDNA 2 · 最高 50 TOPS"]],
       milestone: "2026 年 3 月 2 日公布桌面产品系列；AMD 宣布 OEM 整机从第二季度起供货，未在这份公告中给出具体月份。G 为 65 W，GE 为 35 W。此处日期指公布日期，不等于零售上市或整机供货日期。",
       skus: [
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450G","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 65 W · Radeon 860M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]},
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450GE","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 35 W · Radeon 860M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]},
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 440G","spec":"6 核 / 12 线程 · 2.00 / 4.80 GHz · 65 W · Radeon 840M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]},
-        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 435G","spec":"6 核 / 12 线程 · 2.00 / 4.50 GHz · 65 W · Radeon 840M","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}]}
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450G","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 65 W · Radeon 860M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 7 450GE","spec":"8 核 / 16 线程 · 2.00 / 5.10 GHz · 35 W · Radeon 860M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 440G","spec":"6 核 / 12 线程 · 2.00 / 4.80 GHz · 65 W · Radeon 840M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2026-03-02（公布）","name":"Ryzen AI 5 435G","spec":"6 核 / 12 线程 · 2.00 / 4.50 GHz · 65 W · Radeon 840M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-gives-consumers-and-businesses-more-ai-pc-opti/","launchPrices":[{"status":"OEM 中国价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     }
   ],
@@ -661,7 +661,7 @@ const DATA = {
       arch: [["定位","早期笔记本"],["工艺","0.8–0.18 μm"],["特点","低压、静态设计"],["平台","Compaq / Toshiba 等 OEM"]],
       milestone: "AMD 移动线从低压 386/486 开始，真正有独立故事的是 K6-2+ / K6-III+：片上 L2 和更低电压让 Win98 笔记本能买 AMD。同频 IPC 与桌面 K6 相同，瓶颈是电池和 66–100 MHz 总线。没有 SpeedStep 那样的动态变频品牌，OEM 靠降电压和停钟。Athlon 4 到来之前，AMD 笔记本是「便宜的 Socket 7 本」，不是性能本。",
       skus: [
-        {"date":"2000-04","name":"AMD K6-III+ 450","spec":"1 核 · 450 MHz · 片上 L2 · 低压移动","gb":[],"r23":null}
+        {"date":"2000-04","name":"AMD K6-III+ 450","spec":"1 核 · 450 MHz · 片上 L2 · 低压移动","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -671,7 +671,7 @@ const DATA = {
       arch: [["微架构","K7 移动"],["工艺","0.18–0.13 μm"],["插槽","Socket 563 / 754 前身"],["电源","PowerNow!"]],
       milestone: "2001 Mobile Athlon 4 把 K7 带进笔记本，PowerNow! 按负载调频调压，是 AMD 的 SpeedStep 对标。同频 IPC 与桌面 Athlon XP 相同，35 W 级热设计让 1.2–2.0 GHz 成为主流。对上 Pentium III-M / 早期 P4-M，整数往往不落下风，FPU 和平台芯片组是短板。这一代证明 K7 能进薄本，Turion 的品牌化还要再等两年。",
       skus: [
-        {"date":"2003-03","name":"Mobile Athlon XP-M 2600+（桌面替代版）","spec":"Thoroughbred · 1 核 · 2.133 GHz · 72 W · PowerNow!","gb":[],"r23":null}
+        {"date":"2003-03","name":"Mobile Athlon XP-M 2600+（桌面替代版）","spec":"Thoroughbred · 1 核 · 2.133 GHz · 72 W · PowerNow!","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -681,7 +681,7 @@ const DATA = {
       arch: [["微架构","K8 移动"],["工艺","90 nm"],["插槽","Socket S1"],["内存","IMC DDR"],["指令","AMD64"]],
       milestone: "2005-03 Turion 64 把 K8 IMC 和 AMD64 带进笔记本，25–35 W。同频 IPC 相对 XP-M 大约 +15%，内存延迟下降是体感来源。对上 Pentium M，单核互有胜负，Centrino 的整机（芯片组+Wi-Fi）品牌更完整。Turion 是 AMD 第一次认真做移动品牌，而不是「低压桌面核」。双核还要等 X2 移动版和之后的 Turion II。",
       skus: [
-        {"date":"2006-01","name":"Turion 64 ML-44","spec":"1 核 · 2.40 GHz · L2 1 MB · 35 W · Socket S1","gb":[],"r23":null}
+        {"date":"2006-01","name":"Turion 64 ML-44","spec":"1 核 · 2.40 GHz · L2 1 MB · 35 W · Socket S1","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -691,7 +691,7 @@ const DATA = {
       arch: [["微架构","K10 移动"],["工艺","45 nm"],["插槽","S1g3 / S1g4"],["核心","双核为主"],["内存","DDR3"]],
       milestone: "45 nm K10 移动版把双核 2.x GHz 做成 35 W 主流。IPC 相对 K8 大约 +10–15%，DDR3 和 45 nm 漏电下降改善续航。对上 Arrandale i5，核显和单核仍落后，价格是唯一武器。Phenom II 四核移动 SKU 很少，散热墙立刻出现。这一代是 AMD 笔记本在 Llano APU 到来前的「纯 CPU」尾声。",
       skus: [
-        {"date":"2009-09","name":"Turion II Ultra M620","spec":"2 核 · 2.50 GHz · 45 nm · 35 W","gb":[],"r23":null}
+        {"date":"2009-09","name":"Turion II Ultra M620","spec":"2 核 · 2.50 GHz · 45 nm · 35 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -701,7 +701,7 @@ const DATA = {
       arch: [["微架构","K10 Stars + Sumo 核显"],["工艺","32 nm"],["插槽","FS1"],["定位","第一代笔记本 APU"],["核显","VLIW"]],
       milestone: "2011-06 Llano 是第一代笔记本 APU：K10 四核 CPU + 相对能打的核显。CPU IPC 仍是 2010 年的 Stars，对上 Sandy Bridge 单核大约落后 20%+；核显在 1080p 低画质上第一次让「无独显本也能玩游戏」成立。A8-3500M 是典型 35 W 四核。评论分裂：核显赢、CPU 输。这条「APU 换独显入门」的路线一直延续到 Vega / RDNA。",
       skus: [
-        {"date":"2011-06-14","name":"A8-3500M","spec":"4 核 / 4 线程 · 1.50 / 2.40 GHz · 35 W · Radeon HD 6620G","gb":[],"r23":null}
+        {"date":"2011-06-14","name":"A8-3500M","spec":"4 核 / 4 线程 · 1.50 / 2.40 GHz · 35 W · Radeon HD 6620G","gb":[{"v":5,"sc":242,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_a8_3500m-vs-amd_ryzen_5_3500u"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -711,7 +711,7 @@ const DATA = {
       arch: [["微架构","Piledriver 模块 + 核显"],["工艺","32 nm"],["插槽","FS1r2"],["模块","2 模块 = 4 整数"]],
       milestone: "2012 Trinity 用 Piledriver 替换 Stars，官方 IPC 有个位数提升，实际单核仍明显弱于 Ivy Bridge。核显相对 Llano 大约 +20–50% 看驱动。A10-4600M 是 35 W 旗舰。Richland（2013）再提频。笔记本评测的口径很稳定：核显能打入门独显，CPU 只够办公和网页。Bulldozer 家族在移动端的问题与桌面相同——模块不是完整的核。",
       skus: [
-        {"date":"2012-05-15","name":"A10-4600M","spec":"4 核（2 模块）· 2.30 / 3.20 GHz · 35 W · HD 7660G","gb":[],"r23":null}
+        {"date":"2012-05-15","name":"A10-4600M","spec":"4 核（2 模块）· 2.30 / 3.20 GHz · 35 W · HD 7660G","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -721,7 +721,7 @@ const DATA = {
       arch: [["微架构","Excavator + GCN 核显"],["工艺","28 nm"],["封装","FP4 BGA"],["HSA","CPU/GPU 统一内存"]],
       milestone: "2015 Carrizo 是 Excavator 移动落地：官方相对 Steamroller IPC +5–15%，28 nm 在笔记本上已经偏老。HSA 统一内存是架构故事，软件几乎没跟上。Bristol Ridge（2016，AM4 前夜的 15–35 W APU）把 GCN 核显再提一档，FX-9830P 是最后的 pre-Zen 旗舰。这一代的意义是把 AM4/FP 平台铺好，性能叙事留给 2017 年的 Raven Ridge。",
       skus: [
-        {"date":"2016-06","name":"FX-9830P","spec":"Bristol Ridge · 4 核 · 3.00 / 3.70 GHz · 35 W · Radeon R7","gb":[],"r23":null}
+        {"date":"2016-06","name":"FX-9830P","spec":"Bristol Ridge · 4 核 · 3.00 / 3.70 GHz · 35 W · Radeon R7","gb":[{"v":5,"sc":538,"mc":1512,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_a4_6300-vs-amd_fx_9830p","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_a4_6300-vs-amd_fx_9830p"}},{"v":6,"sc":null,"mc":null}],"r23":[597,1653],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_fx_9830p","mc":"https://www.cpu-monkey.com/en/cpu-amd_fx_9830p"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -731,9 +731,9 @@ const DATA = {
       arch: [["微架构","Zen + Vega"],["工艺","14 nm"],["封装","FP5"],["TDP","15–35 W"],["核显","Vega 10/11"]],
       milestone: "2017-10 Raven Ridge 把 Zen 和 Vega 放进笔记本。2700U（4 核 8 线程、15 W）相对 Bristol Ridge 单核大约 +50% 量级，核显在 1080p 低画质能打独显 MX 入门。15 W 墙让全核频率掉得很快，评测必须看 PL1/PL2。这一代让 AMD 笔记本重新出现在推荐列表里：不是因为核显，是因为 CPU 终于不再是拖后腿的那个。",
       skus: [
-        {"date":"2017-10-26","name":"Ryzen 7 2700U","spec":"4 核 / 8 线程 · 2.20 / 3.80 GHz · 15 W · Vega 10","gb":[{"v":5,"sc":813,"mc":2969,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2018-01","name":"Ryzen 5 2500U","spec":"4 核 / 8 线程 · 2.00 / 3.60 GHz · 15 W · Vega 8","gb":[{"v":5,"sc":831,"mc":2515,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2018-01","name":"Ryzen 3 2200U","spec":"2 核 / 4 线程 · Zen · Vega","gb":[],"r23":null}
+        {"date":"2017-10-26","name":"Ryzen 7 2700U","spec":"4 核 / 8 线程 · 2.20 / 3.80 GHz · 15 W · Vega 10","gb":[{"v":5,"sc":665,"mc":2411,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200u-vs-amd_ryzen_7_2700u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200u-vs-amd_ryzen_7_2700u"}},{"v":6,"sc":1040,"mc":2930,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700u"}}],"r23":[823,2586],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200g-vs-amd_ryzen_7_2700u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200g-vs-amd_ryzen_7_2700u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2018-01","name":"Ryzen 5 2500U","spec":"4 核 / 8 线程 · 2.00 / 3.60 GHz · 15 W · Vega 8","gb":[{"v":5,"sc":672,"mc":2524,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_2500u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_2500u"}},{"v":6,"sc":null,"mc":null}],"r23":[797,2865],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_2500u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_2500u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2018-01","name":"Ryzen 3 2200U","spec":"2 核 / 4 线程 · Zen · Vega","gb":[{"v":5,"sc":671,"mc":1718,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200u-vs-amd_ryzen_7_2700u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200u-vs-amd_ryzen_7_2700u"}},{"v":6,"sc":858,"mc":1768,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200u-vs-amd_ryzen_7_2700u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_2200u-vs-amd_ryzen_7_2700u"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -743,9 +743,9 @@ const DATA = {
       arch: [["微架构","Zen+ + Vega"],["工艺","12 nm"],["封装","FP5"],["变化","提频与延迟"]],
       milestone: "2019 Picasso 是 12 nm Zen+ 刷新，IPC 约 +3–5%，3750H / 3700U 把频率再挤一档。核显仍是 Vega。真正的移动核数跃迁是 2020 Renoir（4000 系列，Zen 2 7 nm 8 核）。Picasso 被写成「Raven Ridge 的 Optimization」：能买，但等 4800H 的人更多。",
       skus: [
-        {"date":"2019-01-06","name":"Ryzen 7 3750H","spec":"4 核 / 8 线程 · 2.30 / 4.00 GHz · 35 W · Vega 10","gb":[{"v":6,"sc":1125,"mc":3303,"src":"NanoReview"},{"v":5,"sc":874,"mc":3537,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2019-01-06","name":"Ryzen 5 3500U","spec":"4 核 / 8 线程 · Zen+ · Vega","gb":[],"r23":null},
-        {"date":"2019-01-06","name":"Ryzen 3 3200U","spec":"2 核 / 4 线程 · Zen+ · Vega","gb":[],"r23":null}
+        {"date":"2019-01-06","name":"Ryzen 7 3750H","spec":"4 核 / 8 线程 · 2.30 / 4.00 GHz · 35 W · Vega 10","gb":[{"v":5,"sc":818,"mc":3155,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_3750h","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_3750h"}},{"v":6,"sc":1037,"mc":3314,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_3750h","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_3750h"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-01-06","name":"Ryzen 5 3500U","spec":"4 核 / 8 线程 · Zen+ · Vega","gb":[{"v":5,"sc":727,"mc":2579,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_3500u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_3500u"}},{"v":6,"sc":976,"mc":2907,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_3500u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_3500u"}}],"r23":[876,3544],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_3500u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_3500u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-01-06","name":"Ryzen 3 3200U","spec":"2 核 / 4 线程 · Zen+ · Vega","gb":[{"v":5,"sc":783,"mc":1632,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_3200u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_3200u"}},{"v":6,"sc":932,"mc":1588,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_3200u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_3200u"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -755,12 +755,12 @@ const DATA = {
       arch: [["微架构","Zen 2 + Vega"],["工艺","TSMC 7 nm"],["封装","FP6"],["核心","轻薄本首次 8 核"],["核显","Vega 8"]],
       milestone: "2020-01 CES。Renoir 把 Zen 2 8 核 16 线程塞进 15–45 W：4800H / 4900HS 是游戏本和创作者本的分水岭。IPC 相对 Picasso 大约 +15%，核数翻倍，多核是断层。Vega 核显没有同步升级到 RDNA，核显故事暂时让路给 CPU。15 W 4800U 的 PL2 短时加速成为新槽点。这一代让 AMD 在轻薄本多核上第一次明显领先同价 Intel 10 代。",
       skus: [
-        {"date":"2020-03-16","name":"Ryzen 9 4900HS","spec":"8 核 / 16 线程 · 3.00 / 4.30 GHz · 35 W · Vega 8","gb":[{"v":5,"sc":1452,"mc":6379}],"r23":null},
-        {"date":"2020-03-16","name":"Ryzen 7 4800H","spec":"8 核 / 16 线程 · 2.90 / 4.20 GHz · 45 W","gb":[{"v":6,"sc":1624,"mc":7307,"src":"NanoReview"},{"v":5,"sc":1147,"mc":7886,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2020-03-16","name":"Ryzen 7 4800U","spec":"8 核 / 16 线程 · 1.80 / 4.20 GHz · 15 W","gb":[{"v":6,"sc":1573,"mc":6147,"src":"NanoReview"},{"v":5,"sc":1157,"mc":6137,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2020-01（公布）","name":"Ryzen 5 4600H","spec":"6 核 / 12 线程 · Zen 2 · 45 W","gb":[],"r23":null},
-        {"date":"2020-01（公布）","name":"Ryzen 5 4500U","spec":"6 核 / 6 线程 · Zen 2 · 15 W","gb":[],"r23":null},
-        {"date":"2020-01（公布）","name":"Ryzen 3 4300U","spec":"4 核 / 4 线程 · Zen 2 · 15 W","gb":[],"r23":null}
+        {"date":"2020-03-16","name":"Ryzen 9 4900HS","spec":"8 核 / 16 线程 · 3.00 / 4.30 GHz · 35 W · Vega 8","gb":[{"v":5,"sc":1207,"mc":7842,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h"}},{"v":6,"sc":1586,"mc":7281,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h"}}],"r23":[1246,11006],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-03-16","name":"Ryzen 7 4800H","spec":"8 核 / 16 线程 · 2.90 / 4.20 GHz · 45 W","gb":[{"v":5,"sc":1147,"mc":7886,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h"}},{"v":6,"sc":1558,"mc":7215,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h"}}],"r23":[1242,10943],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_4900hs-vs-amd_ryzen_7_4800h"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-03-16","name":"Ryzen 7 4800U","spec":"8 核 / 16 线程 · 1.80 / 4.20 GHz · 15 W","gb":[{"v":5,"sc":1147,"mc":6955,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_4500u-vs-amd_ryzen_7_4800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_4500u-vs-amd_ryzen_7_4800u"}},{"v":6,"sc":1486,"mc":6246,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u"}}],"r23":[1227,9974],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-01（公布）","name":"Ryzen 5 4600H","spec":"6 核 / 12 线程 · Zen 2 · 45 W","gb":[{"v":5,"sc":1082,"mc":6479,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h"}},{"v":6,"sc":1458,"mc":5781,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h"}}],"r23":[1129,8457],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_4600u-vs-amd_ryzen_5_4600h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_4600u-vs-amd_ryzen_5_4600h"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-01（公布）","name":"Ryzen 5 4500U","spec":"6 核 / 6 线程 · Zen 2 · 15 W","gb":[{"v":5,"sc":1082,"mc":4097,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_4500u-vs-amd_ryzen_7_4800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_4500u-vs-amd_ryzen_7_4800u"}},{"v":6,"sc":1407,"mc":4620,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u"}}],"r23":[1151,5620],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_4800u-vs-amd_ryzen_5_4500u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2020-01（公布）","name":"Ryzen 3 4300U","spec":"4 核 / 4 线程 · Zen 2 · 15 W","gb":[{"v":5,"sc":1058,"mc":2655,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h"}},{"v":6,"sc":1340,"mc":3140,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_3_4300u-vs-amd_ryzen_5_4600h"}}],"r23":[1074,3571],"r23Sources":{"mc":"https://www.notebookcheck.net/AMD-Ryzen-3-4300U-Laptop-Processor-Benchmarks-and-Specs.449979.0.html","sc":"https://www.notebookcheck.net/AMD-Ryzen-3-4300U-Laptop-Processor-Benchmarks-and-Specs.449979.0.html"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -770,10 +770,10 @@ const DATA = {
       arch: [["微架构","Zen 3 + Vega"],["工艺","TSMC 7 nm"],["封装","FP6"],["CCX","8 核共享 L3"],["核显","仍为 Vega"]],
       milestone: "2021-01。Cézanne 把 Zen 3 带进笔记本，IPC 相对 Renoir 大约 +19% 的桌面口径在 15–45 W 墙上打了折扣，单核仍然明显强于 4800H。5900HX（8 核、45 W、4.6 GHz 加速）是游戏本旗舰。核显仍是 Vega，RDNA 要等 6000。Barcelo 是 2022 的 15 W 刷新。这一代赢在 CPU 单核和能效，核显开始成为短板。",
       skus: [
-        {"date":"2021-01-12","name":"Ryzen 9 5900HX","spec":"8 核 / 16 线程 · 3.30 / 4.60 GHz · 45 W · Vega 8","gb":[{"v":6,"sc":1992,"mc":7255},{"v":5,"sc":1510,"mc":8432}],"r23":null},
-        {"date":"2021-01-12","name":"Ryzen 7 5800U","spec":"8 核 / 16 线程 · 1.90 / 4.40 GHz · 15 W","gb":[{"v":6,"sc":1837,"mc":6967,"src":"CPU-Monkey"},{"v":5,"sc":1414,"mc":6880,"src":"CPU-Monkey"}],"r23":null},
-        {"date":"2021-01-12","name":"Ryzen 5 5600U","spec":"6 核 / 12 线程 · Zen 3 · Vega","gb":[],"r23":null},
-        {"date":"2021-01-12","name":"Ryzen 3 5400U","spec":"4 核 / 8 线程 · Zen 3 · Vega","gb":[],"r23":null}
+        {"date":"2021-01-12","name":"Ryzen 9 5900HX","spec":"8 核 / 16 线程 · 3.30 / 4.60 GHz · 45 W · Vega 8","gb":[{"v":5,"sc":1510,"mc":8432,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx"}},{"v":6,"sc":1992,"mc":7255,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx"}}],"r23":[1478,13955],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-01-12","name":"Ryzen 7 5800U","spec":"8 核 / 16 线程 · 1.90 / 4.40 GHz · 15 W","gb":[{"v":5,"sc":1414,"mc":6880,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx"}},{"v":6,"sc":1837,"mc":6967,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx"}}],"r23":[1478,11203],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_5800u-vs-amd_ryzen_9_5900hx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-01-12","name":"Ryzen 5 5600U","spec":"6 核 / 12 线程 · Zen 3 · Vega","gb":[{"v":5,"sc":1317,"mc":5437,"sources":{"mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600u-vs-amd_ryzen_5_5600","sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600u-vs-amd_ryzen_5_5500u"}},{"v":6,"sc":1776,"mc":6637,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600u-vs-amd_ryzen_5_5600","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_5600u-vs-amd_ryzen_5_5600"}}],"r23":[1332,6166],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_5600u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-01-12","name":"Ryzen 3 5400U","spec":"4 核 / 8 线程 · Zen 3 · Vega","gb":[{"v":5,"sc":1180,"mc":3682,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5400u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5400u"}},{"v":6,"sc":1630,"mc":3600,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5400u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_5400u"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -783,25 +783,38 @@ const DATA = {
       arch: [["微架构","Zen 3+ + RDNA 2"],["工艺","TSMC 6 nm"],["封装","FP7"],["内存","DDR5 / LPDDR5"],["核显","RDNA 2"]],
       milestone: "2022-01。Rembrandt 是 Zen 3+（6 nm）加 RDNA 2 核显，IPC 大约 +0–5%，真正的跃迁是核显：6900HS 的 680M 在 1080p 低中画质第一次能正经打游戏。DDR5/LPDDR5、PCIe 4.0、USB4 是平台升级。对上 Alder Lake-P 的核显互有胜负，CPU 多核 8 核打 12/14 核混合架构开始吃力。这一代把「APU 游戏本」重新写进推荐。",
       skus: [
-        {"date":"2022-01-04","name":"Ryzen 9 6900HX","spec":"8 核 / 16 线程 · 3.30 / 4.90 GHz · 45 W · Radeon 680M","gb":[{"v":6,"sc":1980,"mc":10340,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":1589,"mc":9647,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2022-01-04","name":"Ryzen 7 6800U","spec":"8 核 / 16 线程 · 2.70 / 4.70 GHz · 15–28 W · 680M","gb":[{"v":6,"sc":2028,"mc":8771,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":1514,"mc":7678,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2022-01-04","name":"Ryzen 5 6600H","spec":"6 核 / 12 线程 · Zen 3+ · Radeon 660M","gb":[],"r23":null},
-        {"date":"2022-01-04","name":"Ryzen 5 6600U","spec":"6 核 / 12 线程 · Zen 3+ · Radeon 660M","gb":[],"r23":null}
+        {"date":"2022-01-04","name":"Ryzen 9 6900HX","spec":"8 核 / 16 线程 · 3.30 / 4.90 GHz · 45 W · Radeon 680M","gb":[{"v":5,"sc":1644,"mc":10609,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u"}},{"v":6,"sc":2092,"mc":9938,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u"}}],"r23":[1662,14670],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-01-04","name":"Ryzen 7 6800U","spec":"8 核 / 16 线程 · 2.70 / 4.70 GHz · 15–28 W · 680M","gb":[{"v":5,"sc":1517,"mc":7335,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u"}},{"v":6,"sc":1861,"mc":7896,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u"}}],"r23":[1475,10412],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_6900hx-vs-amd_ryzen_7_6800u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-01-04","name":"Ryzen 5 6600H","spec":"6 核 / 12 线程 · Zen 3+ · Radeon 660M","gb":[{"v":5,"sc":1472,"mc":8054,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_6600h-vs-amd_ryzen_5_6600u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_6600h-vs-amd_ryzen_5_6600u"}},{"v":6,"sc":1886,"mc":8063,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_max_385-vs-amd_ryzen_5_6600h","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_max_385-vs-amd_ryzen_5_6600h"}}],"r23":[1458,10322],"r23Sources":{"mc":"https://www.notebookcheck.net/AMD-Ryzen-5-6600H-Processor-Benchmarks-and-Specs.589894.0.html","sc":"https://www.notebookcheck.net/AMD-Ryzen-5-6600H-Processor-Benchmarks-and-Specs.589894.0.html"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-01-04","name":"Ryzen 5 6600U","spec":"6 核 / 12 线程 · Zen 3+ · Radeon 660M","gb":[{"v":5,"sc":1465,"mc":6385,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_6600h-vs-amd_ryzen_5_6600u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_6600h-vs-amd_ryzen_5_6600u"}},{"v":6,"sc":1879,"mc":7423,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_6600h-vs-amd_ryzen_5_6600u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_6600h-vs-amd_ryzen_5_6600u"}}],"r23":[1425,8018],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_6600u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_6600u"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
-      gen: "Ryzen 7040 / 8040",
-      code: "Phoenix / Hawk Point",
-      year: "2023–2024",
-      arch: [["微架构","Zen 4 / Zen 4c + RDNA 3"],["工艺","TSMC 4 nm"],["封装","FP7/FP8"],["NPU","XDNA 第一代"],["核显","780M / 760M / 740M"]],
-      milestone: "2023-01 Phoenix（7040）把 Zen 4 和 RDNA 3 放进 15–45 W，IPC 相对 Rembrandt 大约 +10–15% 加频率。7840U / 7940HS 是轻薄创作者默认。NPU 10–16 TOPS 第一次出现，软件几乎接不上。2024 Hawk Point（8040）主要是 NPU 和频率刷新。核显 780M/760M 继续打 1080p。这一代的购买点是 CPU+核显组合，不是 AI 品牌。",
+      gen: "Ryzen 7040 移动",
+      code: "Phoenix / Phoenix 2",
+      year: "2023",
+      arch: [["微架构","Zen 4 / Zen 4c + RDNA 3"],["工艺","TSMC 4 nm"],["封装","FP7/FP7r2/FP8"],["NPU","部分型号搭载 XDNA · 最高 10 TOPS"],["核显","780M / 760M / 740M"]],
+      milestone: "2023-01 公布的 Phoenix（7040）将 Zen 4 CPU 与 RDNA 3 核显整合到移动 APU。7840HS 为 8 核 / 16 线程、最高 5.1 GHz；7640HS 为 6 核 / 12 线程、最高 5.0 GHz，分别搭配 Radeon 780M 与 760M。HS 分支支持 35–54 W 可调功耗，U 分支面向更低功耗的整机；实际持续性能受厂商功耗设置与散热影响。7840HS / 7640HS 的 XDNA NPU 为最高 10 TOPS；7440U 等 Phoenix 2 型号不能据系列名默认具备相同的 NPU 配置。",
       skus: [
-        {"date":"2023-03","name":"Ryzen 9 7940HS","spec":"8 核 / 16 线程 · 4.00 / 5.20 GHz · 35–54 W · Radeon 780M","gb":[{"v":7,"sc":2110,"mc":null},{"v":6,"sc":2617,"mc":12447},{"v":5,"sc":1974,"mc":11600}],"r23":null},
-        {"date":"2023-03","name":"Ryzen 7 7840U","spec":"8 核 / 16 线程 · 3.30 / 5.10 GHz · 15–30 W · 780M","gb":[{"v":7,"sc":2204,"mc":null},{"v":6,"sc":2394,"mc":10584,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":1738,"mc":9382,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2023-12-06","name":"Ryzen 9 8945HS","spec":"8 核 / 16 线程 · Zen 4 · Radeon 780M","gb":[],"r23":null},
-        {"date":"2023-05-03","name":"Ryzen 5 7640U","spec":"6 核 / 12 线程 · Zen 4 · Radeon 760M","gb":[],"r23":null},
-        {"date":"2023-12-06","name":"Ryzen 5 8645HS","spec":"6 核 / 12 线程 · Zen 4 · Radeon 760M","gb":[],"r23":null},
-        {"date":"2023-05-03","name":"Ryzen 3 7440U","spec":"4 核 / 8 线程 · Phoenix 2 · Zen 4 / Zen 4c","gb":[],"r23":null}
+        {"date":"2023-03","name":"Ryzen 9 7940HS","spec":"8 核 / 16 线程 · 4.00 / 5.20 GHz · 35–54 W · Radeon 780M","gb":[{"v":5,"sc":1974,"mc":11600,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7940hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7940hs"}},{"v":6,"sc":2617,"mc":12447,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7940hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_7940hs"}}],"r23":[1790,16713],"r23Sources":{"mc":"https://www.notebookcheck.net/AMD-Ryzen-9-7940HS-Processor-Benchmarks-and-Specs.680599.0.html","sc":"https://www.notebookcheck.net/AMD-Ryzen-9-7940HS-Processor-Benchmarks-and-Specs.680599.0.html"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-01-04（公布）","name":"Ryzen 7 7840HS","spec":"8 核 / 16 线程 · 3.80 / 5.10 GHz · 35–54 W · Radeon 780M · NPU 10 TOPS","gb":[{"v":5,"sc":1857,"mc":11334,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_7840hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_7840hs"}},{"v":6,"sc":2456,"mc":12135,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840hs-vs-intel_core_ultra_5_226v","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840hs-vs-intel_core_ultra_5_226v"}}],"r23":[1757,15930],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840hs-vs-intel_core_ultra_5_226v","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840hs-vs-intel_core_ultra_5_226v"},"dateSource":"https://www.amd.com/en/newsroom/press-releases/2023-1-4-amd-extends-its-leadership-with-the-introduction-o.html","launchPrices":[{"status":"随整机销售","basis":"中国单 CPU 首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-03","name":"Ryzen 7 7840U","spec":"8 核 / 16 线程 · 3.30 / 5.10 GHz · 15–30 W · 780M","gb":[{"v":5,"sc":1850,"mc":9612,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840u-vs-amd_ryzen_5_8640u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840u-vs-amd_ryzen_5_8640u"}},{"v":6,"sc":2445,"mc":10726,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840u-vs-amd_ryzen_5_8640u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7840u-vs-amd_ryzen_5_8640u"}}],"r23":[1755,13450],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_8600g-vs-amd_ryzen_7_7840u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_8600g-vs-amd_ryzen_7_7840u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-01-04（公布）","name":"Ryzen 5 7640HS","spec":"6 核 / 12 线程 · 4.30 / 5.00 GHz · 35–54 W · Radeon 760M · NPU 10 TOPS","gb":[{"v":5,"sc":1802,"mc":7768,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_7640hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_7640hs"}},{"v":6,"sc":2478,"mc":10357,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-apple_m1-vs-amd_ryzen_5_7640hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-apple_m1-vs-amd_ryzen_5_7640hs"}}],"r23":[1715.5,12554],"r23Sources":{"sc":"https://www.notebookcheck.net/AMD-Ryzen-5-7640HS-Processor-Benchmarks-and-Specs.680924.0.html","mc":"https://www.notebookcheck.net/AMD-Ryzen-5-7640HS-Processor-Benchmarks-and-Specs.680924.0.html"},"dateSource":"https://www.amd.com/en/newsroom/press-releases/2023-1-4-amd-extends-its-leadership-with-the-introduction-o.html","launchPrices":[{"status":"随整机销售","basis":"中国单 CPU 首发价未核实"}],"benchmarkStatus":"未找到可核验记录","r23Note":"Notebookcheck 数据库中位数；跨整机配置"},
+        {"date":"2023-05-03","name":"Ryzen 5 7640U","spec":"6 核 / 12 线程 · Zen 4 · Radeon 760M","gb":[{"v":5,"sc":1869,"mc":8853,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7640u-vs-amd_ryzen_5_8645hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7640u-vs-amd_ryzen_5_8645hs"}},{"v":6,"sc":2340,"mc":9197,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7640u-vs-amd_ryzen_5_8645hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_7640u-vs-amd_ryzen_5_8645hs"}}],"r23":[1552,10675],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_8640u-vs-amd_ryzen_5_7640u","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_5_8640u-vs-amd_ryzen_5_7640u"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-05-03","name":"Ryzen 3 7440U","spec":"4 核 / 8 线程 · Phoenix 2 · Zen 4 / Zen 4c","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2323,"mc":6571,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_7440u","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_3_7440u"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
+      ]
+    },
+    {
+      gen: "Ryzen 8040 移动",
+      code: "Hawk Point",
+      year: "2023–2024",
+      arch: [["微架构","Zen 4 + RDNA 3"],["工艺","TSMC 4 nm"],["封装","FP7/FP7r2/FP8（依型号）"],["NPU","部分型号最高 16 TOPS；8745HS 无独立 NPU"],["核显","780M / 760M"]],
+      milestone: "2023-12 公布的 Hawk Point（8040）延续 Zen 4 CPU 与 RDNA 3 核显，并将部分型号的 XDNA NPU 提升至最高 16 TOPS。8845HS 为 8 核 / 16 线程、最高 5.1 GHz，搭载 Radeon 780M；2024-06 发布的 8745HS 同属 Hawk Point，最高加速为 4.9 GHz，780M 核显为 2.6 GHz，且没有独立 NPU。两者均为默认 45 W、可调 35–54 W，常见于笔记本和迷你主机。系列编号从 7040 变为 8040，不代表 CPU 架构从 Zen 4 升为 Zen 5。",
+      skus: [
+        {"date":"2023-12-06","name":"Ryzen 9 8945HS","spec":"8 核 / 16 线程 · Zen 4 · Radeon 780M","gb":[{"v":5,"sc":1974,"mc":11600,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_8945hs-vs-amd_ryzen_7_8845hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_8945hs-vs-amd_ryzen_7_8845hs"}},{"v":6,"sc":2617,"mc":12447,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_8945hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_8945hs"}}],"r23":[1814,17200],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_8945hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_8945hs"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-12-06（公布）","name":"Ryzen 7 8845HS","spec":"8 核 / 16 线程 · 3.80 / 5.10 GHz · 45 W（35–54 W 可调）· Radeon 780M · NPU 16 TOPS","gb":[{"v":5,"sc":1857,"mc":11334,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_8845hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_8845hs"}},{"v":6,"sc":2456,"mc":12135,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8845hs-vs-amd_ryzen_7_8745hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8845hs-vs-amd_ryzen_7_8745hs"}}],"r23":[1757,15930],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8845hs-vs-amd_ryzen_7_8745hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8845hs-vs-amd_ryzen_7_8745hs"},"dateSource":"https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-7-8845hs.html","launchPrices":[{"status":"随整机销售","basis":"中国单 CPU 首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-06-18","name":"Ryzen 7 8745HS","spec":"8 核 / 16 线程 · 3.80 / 4.90 GHz · 45 W（35–54 W 可调）· Radeon 780M（2.6 GHz）· 无独立 NPU","gb":[{"v":5,"sc":1840,"mc":10517,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8745hs-vs-amd_ryzen_5_7535hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8745hs-vs-amd_ryzen_5_7535hs"}},{"v":6,"sc":2417,"mc":11542,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_8500-vs-amd_ryzen_7_8745hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_8500-vs-amd_ryzen_7_8745hs"}}],"r23":[1687,14557],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8845hs-vs-amd_ryzen_7_8745hs","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_8845hs-vs-amd_ryzen_7_8745hs"},"dateSource":"https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-7-8745hs.html","launchPrices":[{"status":"随整机销售","basis":"中国单 CPU 首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-12-06","name":"Ryzen 5 8645HS","spec":"6 核 / 12 线程 · Zen 4 · Radeon 760M","gb":[{"v":5,"sc":1802,"mc":7768,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_8645hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_8645hs"}},{"v":6,"sc":2478,"mc":10357,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_8645hs","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_8645hs"}}],"r23":[1714,13220],"r23Sources":{"mc":"https://www.notebookcheck.net/AMD-Ryzen-5-8645HS-Processor-Benchmarks-and-Specs.780989.0.html","sc":"https://www.notebookcheck.net/AMD-Ryzen-5-8645HS-Processor-Benchmarks-and-Specs.780989.0.html"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -809,12 +822,12 @@ const DATA = {
       code: "Ryzen 7045 / 8045",
       year: "2023–2025",
       arch: [["微架构","Zen 4 桌面 CCD"],["工艺","TSMC N5"],["封装","FL1"],["核心","最高 16 核"],["定位","厚游戏本"]],
-      milestone: "2023-01 Dragon Range 把 Raphael 桌面 CCD 塞进 55–75 W+ 厚本：7945HX 16 核 32 线程，多核接近桌面 7950X 的降压版。Notebookcheck GB6 约 2784 / 15473（8945HX 刷新）。单核强、全核看模具功耗墙。与 Phoenix 的分工很清楚：HX 拼核数，HS/U 拼核显和厚度。Intel HX 混合架构是直接对手，16 颗完整 Zen 4 对 8P+16E 各有胜场。",
+      milestone: "2023-01 Dragon Range 把 Raphael 桌面 CCD 塞进 55–75 W+ 厚本：7945HX 16 核 32 线程，多核接近桌面 7950X 的降压版。单核强、全核看模具功耗墙。与 Phoenix 的分工很清楚：HX 拼核数，HS/U 拼核显和厚度。Intel HX 混合架构是直接对手，16 颗完整 Zen 4 对 8P+16E 各有胜场。",
       skus: [
-        {"date":"2025-04-23","name":"Ryzen 9 8945HX","spec":"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55 W+ · Dragon Range 刷新","gb":[{"v":6,"sc":2784,"mc":15473}],"r23":null},
-        {"date":"2023-02","name":"Ryzen 9 7945HX","spec":"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55–75 W","gb":[{"v":7,"sc":2432,"mc":null},{"v":6,"sc":2876,"mc":16765,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2124,"mc":19745,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2023-01（公布）","name":"Ryzen 7 7745HX","spec":"8 核 / 16 线程 · Zen 4 · FL1","gb":[],"r23":null},
-        {"date":"2023-01（公布）","name":"Ryzen 5 7645HX","spec":"6 核 / 12 线程 · Zen 4 · FL1","gb":[],"r23":null}
+        {"date":"2025-04-23","name":"Ryzen 9 8945HX","spec":"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55 W+ · Dragon Range 刷新","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-02","name":"Ryzen 9 7945HX","spec":"16 核 / 32 线程 · 2.50 / 5.40 GHz · 55–75 W","gb":[{"v":5,"sc":2130,"mc":19472,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx"}},{"v":6,"sc":2774,"mc":16214,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_6800u-vs-amd_ryzen_9_7945hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_6800u-vs-amd_ryzen_9_7945hx"}}],"r23":[1955,31670],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-01（公布）","name":"Ryzen 7 7745HX","spec":"8 核 / 16 线程 · Zen 4 · FL1","gb":[{"v":5,"sc":2002,"mc":12744,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx"}},{"v":6,"sc":2674,"mc":13452,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7945hx-vs-amd_ryzen_7_7745hx"}}],"r23":[1842,18065],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7745hx-vs-amd_ryzen_5_7645hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_7745hx-vs-amd_ryzen_5_7645hx"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-01（公布）","name":"Ryzen 5 7645HX","spec":"6 核 / 12 线程 · Zen 4 · FL1","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":[1802,13824],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_7645hx","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_5_7645hx"},"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -824,10 +837,10 @@ const DATA = {
       arch: [["微架构","Zen 5 + Zen 5c 混合"],["工艺","TSMC 4 nm"],["NPU","XDNA 2 · 50 TOPS"],["核显","RDNA 3.5 890M"],["封装","FP8"]],
       milestone: "2024-07。Strix Point 是 AMD 的 Copilot+ 答卷：Zen 5 + Zen 5c 混合、NPU 50 TOPS、890M。AI 9 HX 370（4P+8c / 12 核）单核接近桌面 Zen 5 降频版。混合调度比 Intel 的 P/E 更同构（都是 Zen 5 家族）。NPU 终于跨过 40 TOPS 门槛，应用仍薄。核显继续打 1080p。这一代把品牌从 Ryzen 7040 换成 Ryzen AI，卖点顺序变成 NPU → 核显 → CPU。",
       skus: [
-        {"date":"2024-07-17","name":"Ryzen AI 9 HX 370","spec":"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.10 GHz · 28–54 W · 890M · NPU 50 TOPS","gb":[{"v":7,"sc":2364,"mc":null},{"v":6,"sc":2875,"mc":14749,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2072,"mc":14211,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2024-07-17","name":"Ryzen AI 9 365","spec":"10 核 / 20 线程 · 28 W 级 · 880M","gb":[{"v":7,"sc":2234,"mc":null},{"v":6,"sc":2814,"mc":14189,"src":"Technical City Geekbench 6.4"},{"v":5,"sc":2080,"mc":13009,"src":"Technical City Geekbench 5.5"}],"r23":null},
-        {"date":"2025-02-18","name":"Ryzen AI 7 350","spec":"8 核 / 16 线程 · Krackan Point · Radeon 860M","gb":[],"r23":null},
-        {"date":"2025-02-18","name":"Ryzen AI 5 340","spec":"6 核 / 12 线程 · Krackan Point · Radeon 840M","gb":[],"r23":null}
+        {"date":"2024-07-17","name":"Ryzen AI 9 HX 370","spec":"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.10 GHz · 28–54 W · 890M · NPU 50 TOPS","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2914,"mc":15044,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7940hx-vs-amd_ryzen_ai_9_hx_370","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_7940hx-vs-amd_ryzen_ai_9_hx_370"}}],"r23":[2018,23437],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_hx_370","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_hx_370"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-07-17","name":"Ryzen AI 9 365","spec":"10 核 / 20 线程 · 28 W 级 · 880M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2720,"mc":13065,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_9_365-vs-amd_ryzen_9_5900","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_9_365-vs-amd_ryzen_9_5900"}}],"r23":[1992,18698],"r23Sources":{"mc":"https://www.notebookcheck.net/AMD-Ryzen-AI-9-365-Processor-Benchmarks-and-Specs.843618.0.html","sc":"https://www.notebookcheck.net/AMD-Ryzen-AI-9-365-Processor-Benchmarks-and-Specs.843618.0.html"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-02-18","name":"Ryzen AI 7 350","spec":"8 核 / 16 线程 · Krackan Point · Radeon 860M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2856,"mc":13400,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_7_350","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_7_350"}}],"r23":[1958,16014.5],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-02-18","name":"Ryzen AI 5 340","spec":"6 核 / 12 线程 · Krackan Point · Radeon 840M","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2725,"mc":10340,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_max_385-vs-amd_ryzen_ai_5_340","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_max_385-vs-amd_ryzen_ai_5_340"}}],"r23":[1915.5,12532],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -835,11 +848,11 @@ const DATA = {
       code: "Strix Halo",
       year: "2025",
       arch: [["微架构","Zen 5 + RDNA 3.5 大核显"],["工艺","TSMC 4 nm"],["内存","256-bit LPDDR5X"],["核显","最多 40 CU"],["定位","迷你工作站 / 掌机级"]],
-      milestone: "2025。Strix Halo 把 16 核 Zen 5 和最多 40 CU 核显、256-bit 内存封进 BGA，对标苹果统一内存和 Intel 独显轻薄本。AI Max+ 395（16 核）GB7 单核 2438；PRO 390 单核 2511。多核受 55–120 W 墙限制。核显在 1080p/1440p 上第一次接近入门独显。封装内存不可升级。这一代是「APU 当工作站」的极限尝试，不是常规轻薄本。",
+      milestone: "2025。Strix Halo 把 16 核 Zen 5 和最多 40 CU 核显、256-bit 内存封进 BGA，对标苹果统一内存和 Intel 独显轻薄本。AI Max+ 395 为 16 核配置，AI Max PRO 390 为 12 核配置。多核受 55–120 W 墙限制。核显在 1080p/1440p 上第一次接近入门独显。封装内存不可升级。这一代是「APU 当工作站」的极限尝试，不是常规轻薄本。",
       skus: [
-        {"date":"2025-01","name":"Ryzen AI Max+ 395","spec":"16 核 / 32 线程 · 最高 5.1 GHz · 55–120 W · Radeon 8060S · 256-bit LPDDR5X","gb":[{"v":7,"sc":2438,"mc":null},{"v":6,"sc":2978,"mc":21269,"src":"Technical City Geekbench 6.4"}],"r23":null},
-        {"date":"2025-01","name":"Ryzen AI Max PRO 390","spec":"12 核 / 24 线程 · 3.20 / 5.00 GHz · 55 W","gb":[{"v":7,"sc":2511,"mc":null}],"r23":null},
-        {"date":"2025-01（公布）","name":"Ryzen AI Max 385","spec":"8 核 / 16 线程 · Zen 5 · Radeon 8050S","gb":[],"r23":null}
+        {"date":"2025-01","name":"Ryzen AI Max+ 395","spec":"16 核 / 32 线程 · 最高 5.1 GHz · 55–120 W · Radeon 8060S · 256-bit LPDDR5X","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3081,"mc":22314,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_max_plus_395-vs-amd_ryzen_7_3700x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_ai_max_plus_395-vs-amd_ryzen_7_3700x"}}],"r23":[2044,35314],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-01","name":"Ryzen AI Max PRO 390","spec":"12 核 / 24 线程 · 3.20 / 5.00 GHz · 55 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2886,"mc":16250,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_max_pro_390","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_max_pro_390"}}],"r23":[1976,24828],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-01（公布）","name":"Ryzen AI Max 385","spec":"8 核 / 16 线程 · Zen 5 · Radeon 8050S","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2886,"mc":14432,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_max_385","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_max_385"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -847,11 +860,11 @@ const DATA = {
       code: "Ryzen 9005 HX",
       year: "2025",
       arch: [["微架构","Zen 5 桌面 CCD"],["工艺","TSMC N4"],["封装","FL1"],["核心","最高 16 核"],["定位","厚游戏本 / 创作者本"]],
-      milestone: "2025-01 CES。Fire Range 把 Granite Ridge 桌面 CCD 塞进 55–75 W+ 厚本，对位上一代 Dragon Range。9955HX 16 核 / 5.4 GHz；9955HX3D 再叠 3D V-Cache，是 2025 年 AMD 笔记本多核顶。NanoReview：9955HX GB6 约 3230 / 19563，R23 多核约 35872。单核接近桌面 9950X 降压版，全核看模具 135 W PL2 墙。与 Strix Point / Halo 的分工不变：HX 拼核数，AI 300 拼 NPU 和核显，Halo 拼统一内存。",
+      milestone: "2025-01 CES。Fire Range 把 Granite Ridge 桌面 CCD 塞进 55–75 W+ 厚本，对位上一代 Dragon Range。9955HX 16 核 / 5.4 GHz；9955HX3D 再叠 3D V-Cache，是 2025 年 AMD 笔记本多核顶。单核接近桌面 9950X 降压版，全核看模具 135 W PL2 墙。与 Strix Point / Halo 的分工不变：HX 拼核数，AI 300 拼 NPU 和核显，Halo 拼统一内存。",
       skus: [
-        {"date":"2025-01","name":"Ryzen 9 9955HX3D","spec":"16 核 / 32 线程 · 最高 5.4 GHz · L3 128 MB · 55–75 W+ · 3D V-Cache","gb":[],"r23":null},
-        {"date":"2025-01-07","name":"Ryzen 9 9955HX","spec":"16 核 / 32 线程 · 2.50 / 5.40 GHz · L3 64 MB · 55–75 W","gb":[{"v":6,"sc":3230,"mc":19563}],"r23":null},
-        {"date":"2025-01（公布）","name":"Ryzen 9 9850HX","spec":"12 核 / 24 线程 · 3.00 / 5.20 GHz · Zen 5 · FL1","gb":[],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-announces-new-graphics-and-gaming-products-for/"}
+        {"date":"2025-01","name":"Ryzen 9 9955HX3D","spec":"16 核 / 32 线程 · 最高 5.4 GHz · L3 128 MB · 55–75 W+ · 3D V-Cache","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3290,"mc":20964,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9955hx3d","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9955hx3d"}}],"r23":[2159.5,38161.5],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-01-07","name":"Ryzen 9 9955HX","spec":"16 核 / 32 线程 · 2.50 / 5.40 GHz · L3 64 MB · 55–75 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3284,"mc":18712,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9955hx","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9955hx"}}],"r23":[2174,37159],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2025-01（公布）","name":"Ryzen 9 9850HX","spec":"12 核 / 24 线程 · 3.00 / 5.20 GHz · Zen 5 · FL1","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3134,"mc":18284,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9850hx","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_9850hx"}}],"r23":null,"dateSource":"https://newsroom.amd.com/news/amd-announces-new-graphics-and-gaming-products-for/","benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -861,9 +874,9 @@ const DATA = {
       arch: [["微架构","Zen 5 + Zen 5c 刷新"],["工艺","TSMC 4 nm"],["NPU","XDNA 2 · 最高 60 TOPS"],["核显","RDNA 3.5 890M"],["定位","Copilot+ 轻薄本刷新"]],
       milestone: "2026 CES / MWC。Gorgon Point 是 Strix Point 的频率与 NPU 刷新，不是 Zen 6：仍是 4×Zen 5 + 8×Zen 5c，加速提到 5.2 GHz，NPU 从 50 提到 60 TOPS。AI 9 HX 475 是消费旗舰；HX 470 / 465 填中间档。CPU IPC 与 AI 300 同族，购买点是 NPU 配额和 OEM 整机而不是微架构跃迁。Krackan 切下来的 4+4 核硅片另走桌面 Ryzen AI 400G（450G），不进这张移动旗舰表。公开 Geekbench 稳定样本在 2026-09 仍少，表中不编造。",
       skus: [
-        {"date":"2026-01","name":"Ryzen AI 9 HX 475","spec":"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.20 GHz · 15–54 W · 890M · NPU 60 TOPS","gb":[],"r23":null},
-        {"date":"2026-01","name":"Ryzen AI 9 HX 470","spec":"12 核 / 24 线程 · 5.20 GHz · NPU 55 TOPS","gb":[],"r23":null},
-        {"date":"2026-01","name":"Ryzen AI 9 465","spec":"10 核 / 20 线程 · 最高 5.0 GHz","gb":[],"r23":null}
+        {"date":"2026-01","name":"Ryzen AI 9 HX 475","spec":"12 核 / 24 线程（4×Zen 5 + 8×Zen 5c）· 2.00 / 5.20 GHz · 15–54 W · 890M · NPU 60 TOPS","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2862,"mc":14598,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_hx_475","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_hx_475"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2026-01","name":"Ryzen AI 9 HX 470","spec":"12 核 / 24 线程 · 5.20 GHz · NPU 55 TOPS","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2910,"mc":14973,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_hx_470","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_hx_470"}}],"r23":[2061,23208],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2026-01","name":"Ryzen AI 9 465","spec":"10 核 / 20 线程 · 最高 5.0 GHz","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2821,"mc":13587,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_465","mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_ai_9_465"}}],"r23":[1996.5,17462.5],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"}
       ]
     }
   ],
@@ -875,8 +888,8 @@ const DATA = {
       arch: [["微架构","K8"],["工艺","130–90 nm"],["插槽","940"],["互连","HyperTransport 多路"],["内存","每路 IMC DDR ECC"]],
       milestone: "2003-04-22 Opteron 把 K8 做成服务器：每路自带内存控制器，双路/四路走 HyperTransport，不再挤一条 FSB。同频 IPC 相对 Xeon Nocona 明显领先，内存延迟是胜负手。248 / 252 等 SKU 让双路 1U 第一次能用 AMD。AMD64 在服务器上比桌面更早变成刚需。这一代改写了双路模板，Intel 要到 2009 Nehalem-EP 才把 IMC 收进 Xeon。",
       skus: [
-        {"date":"2004-11","name":"Opteron 252","spec":"1 核 · 2.60 GHz · L2 1 MB · Socket 940 · 双路","gb":[],"r23":null},
-        {"date":"2003-04-22","name":"Opteron 246","spec":"1 核 · 2.00 GHz · 首发 K8 服务器","gb":[],"r23":null}
+        {"date":"2004-11","name":"Opteron 252","spec":"1 核 · 2.60 GHz · L2 1 MB · Socket 940 · 双路","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2003-04-22","name":"Opteron 246","spec":"1 核 · 2.00 GHz · 首发 K8 服务器","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -886,8 +899,8 @@ const DATA = {
       arch: [["微架构","K10"],["工艺","65 / 45 nm"],["插槽","F / AM3 服务器变体"],["核心","原生四核 → 六核"],["缺陷","Barcelona TLB"]],
       milestone: "2007 Barcelona 原生四核，TLB errata 重演桌面 Phenom 的翻车，BIOS 修复后性能再削一刀。Shanghai 45 nm / 6 MB L3 把局面挽回；Istanbul 六核（2010）是 K10 服务器顶。IPC 相对 K8 大约 +10–15%。对上 Xeon 5400/5500，能效互有胜负，Nehalem-EP 上市后 Opteron 重新落后。这一代证明「原生四核」不够，平台和缺陷管理同样决定口碑。",
       skus: [
-        {"date":"2010-06","name":"Opteron 2435 Istanbul","spec":"6 核 · 2.60 GHz · 45 nm · 双路","gb":[],"r23":null},
-        {"date":"2008-11","name":"Opteron 2384 Shanghai","spec":"4 核 · 2.70 GHz · L3 6 MB","gb":[],"r23":null}
+        {"date":"2010-06","name":"Opteron 2435 Istanbul","spec":"6 核 · 2.60 GHz · 45 nm · 双路","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2008-11","name":"Opteron 2384 Shanghai","spec":"4 核 · 2.70 GHz · L3 6 MB","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -897,8 +910,8 @@ const DATA = {
       arch: [["微架构","K10 双 die / Bulldozer"],["插槽","G34"],["内存","四通道"],["顶配","12 / 16 整数核"]],
       milestone: "2010 Magny-Cours 把两颗六核 K10 粘成 12 核，G34 四通道，核密度一时领先 Xeon 5600。模块间走 HT，NUMA 调优变成运维功课。2011 Interlagos（6200）换 Bulldozer 模块，16 整数核的单线程倒退把优势吐回去。对上 Sandy Bridge-EP，单核和功耗全面落后。G34 平台的遗产是「多核便宜」，不是「每核更快」。",
       skus: [
-        {"date":"2011-11","name":"Opteron 6282SE","spec":"Interlagos · 16 核 · 2.60 GHz · G34 · TDP 140 W","gb":[],"r23":null},
-        {"date":"2010-03-29","name":"Opteron 6174","spec":"Magny-Cours · 12 核 · 2.20 GHz · 四通道","gb":[],"r23":null}
+        {"date":"2011-11","name":"Opteron 6282SE","spec":"Interlagos · 16 核 · 2.60 GHz · G34 · TDP 140 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2010-03-29","name":"Opteron 6174","spec":"Magny-Cours · 12 核 · 2.20 GHz · 四通道","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -908,7 +921,7 @@ const DATA = {
       arch: [["微架构","Piledriver"],["插槽","G34"],["工艺","32 nm"],["顶配","16 核 6380"]],
       milestone: "2012 Piledriver 服务器版，IPC 相对 Interlagos 大约 +10–15%，6380 16 核 / 2.7 GHz。仍然打不赢 Ivy Bridge-EP 的单核和 AVX。这是 Zen 之前最后一代通用 Opteron 旗舰，之后 AMD 服务器几乎退出超大规模，直到 2017 EPYC。评论很短：能买来做密度，不能买来做单线程。",
       skus: [
-        {"date":"2012-11-05","name":"Opteron 6380","spec":"16 核 · 2.50 / 2.70 GHz · G34 · TDP 115 W","gb":[],"r23":null}
+        {"date":"2012-11-05","name":"Opteron 6380","spec":"16 核 · 2.50 / 2.70 GHz · G34 · TDP 115 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -918,10 +931,10 @@ const DATA = {
       arch: [["微架构","Zen"],["工艺","14 nm"],["插槽","SP3"],["核心","最高 32"],["内存","8 通道 DDR4"]],
       milestone: "2017-06-20。Naples 用 4 个 Zen die 做成 32 核 64 线程、8 通道 DDR4、128 条 PCIe 3.0，单路顶掉很多双路 Xeon 2600。IPC 就是桌面 Zen 那 +52% 相对 Excavator。7601（2.2/3.2 GHz、180 W）是旗舰。NUMA 域和 Infinity Fabric 延迟需要 BIOS/OS 调。这一代把 AMD 重新写进服务器短名单：不是因为单核，是因为每路通道数和核数。",
       skus: [
-        {"date":"2017-06-20","name":"EPYC 7601","spec":"32 核 / 64 线程 · 2.20 / 3.20 GHz · TDP 180 W · SP3","gb":[],"r23":null},
-        {"date":"2017-06-20","name":"EPYC 7351","spec":"16 核 / 32 线程 · 2.40 GHz · TDP 170 W","gb":[],"r23":null},
-        {"date":"2017-06-20","name":"EPYC 7281","spec":"16 核 / 32 线程 · Zen · SP3","gb":[],"r23":null},
-        {"date":"2017-06-20","name":"EPYC 7251","spec":"8 核 / 16 线程 · Zen · SP3","gb":[],"r23":null}
+        {"date":"2017-06-20","name":"EPYC 7601","spec":"32 核 / 64 线程 · 2.20 / 3.20 GHz · TDP 180 W · SP3","gb":[{"v":5,"sc":903,"mc":6904,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7601","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7601"}},{"v":6,"sc":921,"mc":7914,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7601","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7601"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2017-06-20","name":"EPYC 7351","spec":"16 核 / 32 线程 · 2.40 GHz · TDP 170 W","gb":[{"v":5,"sc":634,"mc":2002,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7351-737","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7351-737"}},{"v":6,"sc":717,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7281"}}],"r23":[null,17401],"r23Sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7351-737"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2017-06-20","name":"EPYC 7281","spec":"16 核 / 32 线程 · Zen · SP3","gb":[{"v":5,"sc":664,"mc":2098,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7351-737","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7351-737"}},{"v":6,"sc":713,"mc":2136,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_z2-vs-amd_epyc_7281","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_z2-vs-amd_epyc_7281"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2017-06-20","name":"EPYC 7251","spec":"8 核 / 16 线程 · Zen · SP3","gb":[{"v":5,"sc":783,"mc":4634,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7251","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7251"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -931,10 +944,10 @@ const DATA = {
       arch: [["微架构","Zen 2"],["工艺","TSMC 7 nm CCD + 14 nm I/O"],["插槽","SP3"],["核心","最高 64"],["PCIe","128 条 4.0"]],
       milestone: "2019-08。Rome 把 chiplet 做成 8 个 8 核 CCD + 中央 I/O die，64 核 128 线程。IPC +15% 量级，PCIe 4.0 和 8 通道继续拉大与 Cascade Lake 的 I/O 差距。7742 / 7H12 是顶配。云厂商第一次能在单路里放下「一台虚拟化主机」。跨 CCD 延迟仍在，但核密度和通道数已经足够改写 TCO 表格。SP3 插槽两代兼容是采购加分。",
       skus: [
-        {"date":"2019-08-07","name":"EPYC 7742","spec":"64 核 / 128 线程 · 2.25 / 3.40 GHz · TDP 225 W · SP3","gb":[{"v":6,"sc":1278,"mc":13647}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2019-08-07","name":"EPYC 7642","spec":"48 核 / 96 线程 · 2.30 / 3.30 GHz · TDP 225 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2019-08-07","name":"EPYC 7502","spec":"32 核 / 64 线程 · Zen 2 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2019-08-07","name":"EPYC 7302","spec":"16 核 / 32 线程 · Zen 2 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2019-08-07","name":"EPYC 7742","spec":"64 核 / 128 线程 · 2.25 / 3.40 GHz · TDP 225 W · SP3","gb":[{"v":5,"sc":1050,"mc":37515,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7502-vs-amd_epyc_7742","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7502-vs-amd_epyc_7742"}},{"v":6,"sc":1278,"mc":13647,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7742-vs-amd_ryzen_9_9950x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7742-vs-amd_ryzen_9_9950x3d"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-08-07","name":"EPYC 7642","spec":"48 核 / 96 线程 · 2.30 / 3.30 GHz · TDP 225 W","gb":[{"v":5,"sc":1047,"mc":33846,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7642","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7642"}},{"v":6,"sc":1334,"mc":15647,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7642","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7642"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-08-07","name":"EPYC 7502","spec":"32 核 / 64 线程 · Zen 2 · SP3","gb":[{"v":5,"sc":1074,"mc":26746,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7502","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7502"}},{"v":6,"sc":1283,"mc":12796,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7502","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7502"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2019-08-07","name":"EPYC 7302","spec":"16 核 / 32 线程 · Zen 2 · SP3","gb":[{"v":5,"sc":1057,"mc":16149,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7302","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7302"}},{"v":6,"sc":1274,"mc":10254,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7302","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7302"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -944,10 +957,10 @@ const DATA = {
       arch: [["微架构","Zen 3"],["工艺","TSMC 7 nm"],["插槽","SP3 末代"],["核心","最高 64"],["X","Milan-X 3D V-Cache"]],
       milestone: "2021-03-15 Milan。Zen 3 每 CCD 8 核共享 L3，IPC +19% 的桌面口径在服务器上同样成立。7763 64 核 / 280 W 是 SP3 收官旗舰。2022 Milan-X 把 3D V-Cache 堆进服务器，对技术计算和缓存敏感负载提升显著。对上 Ice Lake-SP 40 核，核数和通道继续领先，单核互有胜负。这是 AMD 在通用双路上变成「默认选项」的一代。",
       skus: [
-        {"date":"2021-03-15","name":"EPYC 7763","spec":"64 核 / 128 线程 · 2.45 / 3.50 GHz · TDP 280 W · SP3","gb":[{"v":6,"sc":1612,"mc":16042},{"v":5,"sc":1305,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2022-03-21","name":"EPYC 7773X","spec":"Milan-X · 64 核 · 3D V-Cache · TDP 280 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2021-03-15","name":"EPYC 7543","spec":"32 核 / 64 线程 · Zen 3 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2021-03-15","name":"EPYC 7313","spec":"16 核 / 32 线程 · Zen 3 · SP3","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2021-03-15","name":"EPYC 7763","spec":"64 核 / 128 线程 · 2.45 / 3.50 GHz · TDP 280 W · SP3","gb":[{"v":5,"sc":1305,"mc":43120,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763"}},{"v":6,"sc":1612,"mc":16042,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763"}}],"r23":[1298,61455],"launchPrices":[{"status":"中国首发价未核实"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-03-21","name":"EPYC 7773X","spec":"Milan-X · 64 核 · 3D V-Cache · TDP 280 W","gb":[{"v":5,"sc":null,"mc":45899,"sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763"}},{"v":6,"sc":null,"mc":null}],"r23":[1298,null],"launchPrices":[{"status":"中国首发价未核实"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x3d-vs-amd_epyc_7773x"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-03-15","name":"EPYC 7543","spec":"32 核 / 64 线程 · Zen 3 · SP3","gb":[{"v":5,"sc":1371,"mc":29987,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_epyc_7543","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_7_1800x-vs-amd_epyc_7543"}},{"v":6,"sc":1371,"mc":18068,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7313p","mc":"https://www.cpu-monkey.com/en/benchmark-amd_ryzen_7_9800x3d-geekbench_6_multi_core"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2021-03-15","name":"EPYC 7313","spec":"16 核 / 32 线程 · Zen 3 · SP3","gb":[{"v":5,"sc":1371,"mc":18665,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7313","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7313"}},{"v":6,"sc":1736,"mc":15264,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7313","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7313"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -957,11 +970,11 @@ const DATA = {
       arch: [["微架构","Zen 4"],["工艺","TSMC N5 CCD + N6 I/O"],["插槽","SP5"],["核心","最高 96"],["内存","12 通道 DDR5 · PCIe 5.0 · CXL"]],
       milestone: "2022-11-10 Genoa。96 核 192 线程、12 通道 DDR5、PCIe 5.0、CXL，SP5 新插座。IPC 相对 Milan 大约 +13% 加频率。9654（2.4/3.7 GHz、360 W）是通用旗舰。Genoa-X 再堆 V-Cache。Tom's Hardware：5 nm 数据中心 x86 第一次。对上 Sapphire Rapids 56 核，核密度和通道数继续压着打。12 通道把内存带宽写成规格的一部分，不再是「8 通道也够」。",
       skus: [
-        {"date":"2022-11-10","name":"EPYC 9654","spec":"96 核 / 192 线程 · 2.40 / 3.70 GHz · L3 384 MB · TDP 360 W · SP5","gb":[{"v":6,"sc":1981,"mc":21232}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2022-11-10","name":"EPYC 9554","spec":"64 核 / 128 线程 · 3.10 / 3.75 GHz · TDP 360 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2022-11-10","name":"EPYC 9454","spec":"48 核 / 96 线程 · Zen 4 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2022-11-10","name":"EPYC 9354","spec":"32 核 / 64 线程 · Zen 4 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2022-11-10","name":"EPYC 9124","spec":"16 核 / 32 线程 · Zen 4 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2022-11-10","name":"EPYC 9654","spec":"96 核 / 192 线程 · 2.40 / 3.70 GHz · L3 384 MB · TDP 360 W · SP5","gb":[{"v":5,"sc":1529,"mc":79486,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7601-vs-amd_epyc_9654","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7601-vs-amd_epyc_9654"}},{"v":6,"sc":2025,"mc":23214,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7601-vs-amd_epyc_9654","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_7601-vs-amd_epyc_9654"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-11-10","name":"EPYC 9554","spec":"64 核 / 128 线程 · 3.10 / 3.75 GHz · TDP 360 W","gb":[{"v":5,"sc":1568,"mc":65664,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_pentium_d_915-vs-amd_epyc_9554","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_pentium_d_915-vs-amd_epyc_9554"}},{"v":6,"sc":2064,"mc":23869,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_9554-vs-amd_ryzen_9_9950x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_epyc_9554-vs-amd_ryzen_9_9950x"}}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-11-10","name":"EPYC 9454","spec":"48 核 / 96 线程 · Zen 4 · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-11-10","name":"EPYC 9354","spec":"32 核 / 64 线程 · Zen 4 · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2022-11-10","name":"EPYC 9124","spec":"16 核 / 32 线程 · Zen 4 · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -971,8 +984,8 @@ const DATA = {
       arch: [["微架构","Zen 4c"],["工艺","TSMC N5"],["插槽","SP5"],["核心","最高 128"],["定位","云密度"]],
       milestone: "2023-06 Bergamo 用缩小的 Zen 4c 做到 128 核 256 线程（9754）。单核 IPC 接近 Zen 4、频率和缓存更保守，卖点是机柜密度和每瓦请求数。StorageReview 双路对比里 GB 多核很高，但单核低于 Genoa 高频 SKU。没有 AVX-512 满血定位，HPC 不是目标。云上的横向扩展负载（微服务、CDN）才是设计点。和 Genoa 同插座，选型从「一个 Platinum」变成「P 核吞吐 vs c 核密度」。",
       skus: [
-        {"date":"2023-06-13","name":"EPYC 9754","spec":"128 核 / 256 线程 · 2.25 / 3.10 GHz · TDP 360 W · Zen 4c · SP5","gb":[],"r23":null},
-        {"date":"2023-06-13","name":"EPYC 9734","spec":"112 核 / 224 线程 · TDP 340 W","gb":[],"r23":null}
+        {"date":"2023-06-13","name":"EPYC 9754","spec":"128 核 / 256 线程 · 2.25 / 3.10 GHz · TDP 360 W · Zen 4c · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":[1087,104584],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763","mc":"https://www.cpu-monkey.com/en/cpu-amd_epyc_7763"},"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-06-13","name":"EPYC 9734","spec":"112 核 / 224 线程 · TDP 340 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -982,9 +995,9 @@ const DATA = {
       arch: [["微架构","Zen 4c"],["工艺","TSMC N5"],["插槽","SP6"],["核心","最高 64"],["定位","边缘 / 单路"]],
       milestone: "2023-09 Siena 用更小的 SP6 插座把 Zen 4c 做成 32–64 核边缘/电信/存储节点。通道数和 PCIe 比 SP5 少，TDP 更低。这是「不是所有服务器都要 96 核」的产品线，对标 Xeon 的中低 TDP SKU。性能故事让给功耗封顶和单路成本。",
       skus: [
-        {"date":"2023-09-18","name":"EPYC 8534P","spec":"64 核 / 128 线程 · Zen 4c · SP6 · 单路边缘","gb":[],"r23":null},
-        {"date":"2023-09-18","name":"EPYC 8324P","spec":"32 核 / 64 线程 · Zen 4c · SP6","gb":[],"r23":null},
-        {"date":"2023-09-18","name":"EPYC 8124P","spec":"16 核 / 32 线程 · Zen 4c · SP6","gb":[],"r23":null}
+        {"date":"2023-09-18","name":"EPYC 8534P","spec":"64 核 / 128 线程 · Zen 4c · SP6 · 单路边缘","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-09-18","name":"EPYC 8324P","spec":"32 核 / 64 线程 · Zen 4c · SP6","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2023-09-18","name":"EPYC 8124P","spec":"16 核 / 32 线程 · Zen 4c · SP6","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -994,11 +1007,11 @@ const DATA = {
       arch: [["微架构","Zen 5"],["工艺","TSMC N4X"],["插槽","SP5"],["核心","最高 128"],["AVX","满宽 AVX-512"]],
       milestone: "2024-10 Turin。Zen 5 128 核（9755，2.7/4.1 GHz、512 MB L3、500 W）把满血 P 核密度再推一档。StorageReview：GB6 单核 1641 / 多核 11800（GB 对超高核数扩展有限）；R23 多核 131846 / 单核 1400。对上 128 核 Bergamo，整数压缩类负载可到约 2 倍（更高频率+更大 L3+Zen 5 IPC）。9575F 把 64 核推到 5.0 GHz。SP5 插槽两代兼容。500 W 把机柜供电写成规格。",
       skus: [
-        {"date":"2024-10-10","name":"EPYC 9755","spec":"128 核 / 256 线程 · 2.70 / 4.10 GHz · L3 512 MB · TDP 500 W · SP5","gb":[{"v":6,"sc":1641,"mc":11800}],"r23":[1400,131846],"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2024-10-10","name":"EPYC 9655","spec":"96 核 / 192 线程 · 2.50 / 4.50 GHz · TDP 400 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2024-10-10","name":"EPYC 9575F","spec":"64 核 / 128 线程 · 3.30 / 5.00 GHz · TDP 400 W · 高频","gb":[{"v":6,"sc":1865,"mc":13219}],"r23":[1052,111149],"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2024-10-10","name":"EPYC 9355","spec":"32 核 / 64 线程 · Zen 5 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2024-10-10","name":"EPYC 9255","spec":"24 核 / 48 线程 · Zen 5 · SP5","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2024-10-10","name":"EPYC 9755","spec":"128 核 / 256 线程 · 2.70 / 4.10 GHz · L3 512 MB · TDP 500 W · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":1641,"mc":11800,"sources":{"mc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5","sc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5"},"note":"StorageReview：单路，SMT 关闭"}],"r23":[1400,131846],"launchPrices":[{"status":"中国首发价未核实"}],"r23Sources":{"mc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5","sc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5"},"r23Note":"StorageReview：单路，SMT 关闭","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-10-10","name":"EPYC 9655","spec":"96 核 / 192 线程 · 2.50 / 4.50 GHz · TDP 400 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-10-10","name":"EPYC 9575F","spec":"64 核 / 128 线程 · 3.30 / 5.00 GHz · TDP 400 W · 高频","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":1865,"mc":13219,"sources":{"mc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5","sc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5"},"note":"StorageReview：单路，SMT 关闭"}],"r23":[1052,111149],"launchPrices":[{"status":"中国首发价未核实"}],"r23Sources":{"mc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5","sc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5"},"r23Note":"StorageReview：单路，SMT 关闭","benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-10-10","name":"EPYC 9355","spec":"32 核 / 64 线程 · Zen 5 · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-10-10","name":"EPYC 9255","spec":"24 核 / 48 线程 · Zen 5 · SP5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -1008,8 +1021,8 @@ const DATA = {
       arch: [["微架构","Zen 5c"],["工艺","TSMC N3E"],["插槽","SP5"],["核心","最高 192"],["定位","云密度"]],
       milestone: "2024-10 Turin Dense 用 Zen 5c 做到 192 核（9965，2.25/3.7 GHz、384 MB L3、500 W）。StorageReview GB6 1453 / 11199——单核低于 9755，多核在 GB 里也不按 192 核线性涨，说明这类负载的扩展墙。卖点是虚拟机密度和每瓦线程，不是 Cinebench 单核。9845 160 核、9825 144 核填中间档。和 9755 的分工：要单核和 AVX 选 Turin，要线程密度选 Dense。",
       skus: [
-        {"date":"2024-10-10","name":"EPYC 9965","spec":"192 核 / 384 线程 · 2.25 / 3.70 GHz · L3 384 MB · TDP 500 W · Zen 5c","gb":[{"v":6,"sc":1453,"mc":11199}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]},
-        {"date":"2024-10-10","name":"EPYC 9845","spec":"160 核 / 320 线程 · 2.10 / 3.70 GHz · TDP 390 W","gb":[],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}]}
+        {"date":"2024-10-10","name":"EPYC 9965","spec":"192 核 / 384 线程 · 2.25 / 3.70 GHz · L3 384 MB · TDP 500 W · Zen 5c","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":1453,"mc":11199,"sources":{"mc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5","sc":"https://www.storagereview.com/review/amd-epyc-turin-review-192-cores-of-zen-5"},"note":"StorageReview：单路，SMT 关闭"}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
+        {"date":"2024-10-10","name":"EPYC 9845","spec":"160 核 / 320 线程 · 2.10 / 3.70 GHz · TDP 390 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"}
       ]
     },
     {
@@ -1019,9 +1032,9 @@ const DATA = {
       arch: [["微架构","Zen 6 / Zen 6c"],["工艺","TSMC N2"],["插槽","SP7 / SP8"],["核心","最高 256×Zen 6c 或 96×Zen 6"],["I/O","16 通道 DDR5 · PCIe 6.0 · CXL 3.1"]],
       milestone: "2026-07-23 Advancing AI 发布。Venice 是第一代 Zen 6 服务器，也是第一款 2 nm 级高性能 x86。9006 覆盖 8–256 核：高频档最多 96 颗 Zen 6（加速至 5.0 GHz），密度档 256 颗 Zen 6c。新插座 SP7，16 通道 DDR5（最高 8 GT/s RDIMM / 12.8 GT/s MRDIMM），128 条 PCIe 6.0，CXL 3.1，TDP 最高 600 W。9006X 3D V-Cache 把 L3 堆到 1152 MB、加速 5.15 GHz。SP8 接边缘 8–128 核。公开 Geekbench 稳定样本在 2026-09 仍少，表中不编造。这是密度路线与带宽路线的下一次同时加码。",
       skus: [
-        {"date":"2026-07-23","name":"EPYC 9006（具体 SKU 待确认）","spec":"最多 256 核 Zen 6c · SP7 · TDP 最高 600 W · PCIe 6.0","gb":[],"r23":null},
-        {"date":"2026-07-23","name":"EPYC 9006（Zen 6 分支，SKU 待确认）","spec":"最多 96 核 Zen 6 · 加速至 5.0 GHz · 16 通道 DDR5","gb":[],"r23":null},
-        {"date":"2026-07-23","name":"EPYC 9006X","spec":"3D V-Cache · L3 最高 1152 MB · 加速至 5.15 GHz","gb":[],"r23":null}
+        {"date":"2026-07-23","name":"EPYC 9006（具体 SKU 待确认）","spec":"最多 256 核 Zen 6c · SP7 · TDP 最高 600 W · PCIe 6.0","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"型号未确认，暂无对应测试"},
+        {"date":"2026-07-23","name":"EPYC 9006（Zen 6 分支，SKU 待确认）","spec":"最多 96 核 Zen 6 · 加速至 5.0 GHz · 16 通道 DDR5","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"型号未确认，暂无对应测试"},
+        {"date":"2026-07-23","name":"EPYC 9006X","spec":"3D V-Cache · L3 最高 1152 MB · 加速至 5.15 GHz","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"型号未确认，暂无对应测试"}
       ]
     }
   ]
@@ -1070,37 +1083,34 @@ function barW(v, max) {
   return Math.max(6, Math.min(100, Math.round(v / max * 100)));
 }
 function normalizeGb(sku) {
-  if (Array.isArray(sku.gb) && sku.gb.length) return sku.gb.slice().sort((a,b) => a.v - b.v);
-  if (sku.gb7) return [{ v: 7, sc: sku.gb7[0], mc: sku.gb7[1] }];
-  return [];
+  return [5, 6].map(v => sku.gb?.find(item => item.v === v) || { v, sc: null, mc: null });
 }
-function gbBlock(item) {
-  const meta = GB_META[item.v] || { tag: "GB"+item.v, label: "Geekbench "+item.v, maxSc: 3000 };
-  const overall = item.overall != null && item.sc == null && item.mc == null;
-  const nums = overall
-    ? `${fmt(item.overall)} <small>综合分</small>`
-    : `${fmt(item.sc)} <small>单核</small> · ${fmt(item.mc)} <small>多核</small>`;
-  const bar = overall ? item.overall : item.sc;
-  return `<div class="score-block">
-    <div class="score-h"><span><span class="ver-tag ver-${item.v}">${meta.tag}</span></span></div>
-    <div class="nums">${nums}</div>
-    <div class="bar"><i style="width:${barW(bar, meta.maxSc)}%"></i></div>
+function scoreValue(value, source) {
+  if (value == null) return "—";
+  return source
+    ? `<a href="${source}" target="_blank" rel="noopener noreferrer">${fmt(value)}</a>`
+    : fmt(value);
+}
+function benchmarkBlock(label, item, status, version) {
+  const complete = item.sc != null && item.mc != null;
+  const hasScore = item.sc != null || item.mc != null;
+  const numbers = `${scoreValue(item.sc, item.sources?.sc)} <small>单核</small> · ${scoreValue(item.mc, item.sources?.mc)} <small>多核</small>`;
+  const note = [item.note, !hasScore ? status : !complete ? "缺失项未核实" : ""].filter(Boolean).join("；");
+  const tag = version ? `ver-tag ver-${version}` : "ver-tag ver-r23";
+  return `<div class="score-block" data-benchmark="${version ? "gb" + version : "r23"}">
+    <div class="score-h"><span class="${tag}">${label}</span></div>
+    <div class="nums">${numbers}</div>
+    ${note ? `<div class="score-note">${note}</div>` : ""}
   </div>`;
 }
 function scoreBox(sku) {
-  const rows = normalizeGb(sku);
-  const r = sku.r23;
-  let html = `<div class="scores">`;
-  html += rows.map(x => gbBlock(x)).join("");
-  if (!rows.length && !r) {
-    html += `<div class="score-block"><div class="na">—</div></div>`;
-  }
-  if (r) {
-    html += `<div class="score-block"><div class="score-h"><span class="ver">${R23}</span></div>
-      <div class="nums">${fmt(r[0])} <small>单核</small> · ${fmt(r[1])} <small>多核</small></div></div>`;
-  }
-  html += `</div>`;
-  return html;
+  const status = sku.benchmarkStatus || "未找到可核验记录";
+  const geekbench = normalizeGb(sku).map(item => benchmarkBlock(GB_META[item.v].tag, item, status, item.v)).join("");
+  const cinebench = benchmarkBlock(R23, {
+    sc: sku.r23?.[0] ?? null, mc: sku.r23?.[1] ?? null,
+    sources: sku.r23Sources, note: sku.r23Note
+  }, status);
+  return `<div class="scores">${geekbench}${cinebench}</div>`;
 }
 function archList(arr) {
   return `<ul class="kv">${arr.map(([k,v]) => `<li><b>${k}</b> · ${v}</li>`).join("")}</ul>`;
