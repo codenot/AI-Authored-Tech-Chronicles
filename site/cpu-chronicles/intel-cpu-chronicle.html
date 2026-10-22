@@ -192,13 +192,13 @@
   <header class="hero">
     <div class="kicker"><span></span>Intel CPU Chronicle · 1978–2026</div>
     <h1>Intel 处理器世代全谱</h1>
-    <p class="lede">从 <b>8086（1978）</b> 讲到 Core Ultra / Xeon 6。桌面、移动、服务器分表；按产品世代梳理，每条产品线选取 1–2 个代表型号。Core、Core Ultra、Core X / Xeon W 分开标注；日期下方列出可核实的人民币国行首发价。每个代表型号固定列出 Geekbench 5、Geekbench 6 与 Cinebench R23 的单核 / 多核分数；可点击数字查看来源。缺少可核验记录时明确标注，不换算版本或推算缺失值。</p>
+    <p class="lede">从 <b>8086（1978）</b> 讲到 Core Ultra / Xeon 6。桌面、移动、服务器分表；按产品世代梳理，每条产品线选取 1–2 个代表型号。桌面表仅选普通家用装机、可单独购买的 CPU，盒装与散片均可；日期下方列出可核实的人民币国行首发价。每个代表型号固定列出 Geekbench 5、Geekbench 6 与 Cinebench R23 的单核 / 多核分数；可点击数字查看来源。缺少可核验记录时明确标注，不换算版本或推算缺失值。</p>
     <div class="meta-row">
-      <span class="pill">跑分资料核对于 2026-10-16 · 世代 / 日期 / 国行价整理于 2026-10-12</span>
+      <span class="pill">家用桌面代表核对于 2026-10-22 · 原有跑分核对于 2026-10-16</span>
       <span class="pill">GB5 · GB6 · Cinebench R23</span>
     </div>
     <div class="stats">
-      <div class="stat"><b id="n-desk">—</b><em>桌面系列 / 发布批次</em></div>
+      <div class="stat"><b id="n-desk">—</b><em>家用桌面系列 / 发布批次</em></div>
       <div class="stat"><b id="n-mob">—</b><em>移动系列 / 发布批次</em></div>
       <div class="stat"><b id="n-srv">—</b><em>服务器系列 / 发布批次</em></div>
       <div class="stat"><b>GB5 / GB6 / R23</b><em>单核 / 多核，数字可点击溯源</em></div>
@@ -207,7 +207,7 @@
 
   <div class="toolbar">
     <div class="tabs">
-      <button class="tab active" data-seg="desktop">桌面端</button>
+      <button class="tab active" data-seg="desktop">家用桌面</button>
       <button class="tab" data-seg="mobile">移动端</button>
       <button class="tab" data-seg="server">服务器</button>
     </div>
@@ -218,7 +218,8 @@
     <strong>读表规则</strong>
     <ol>
       <li>第 1 列按产品系列与发布批次组织；Core 世代、Core Ultra 系列编号和 Xeon 平台不能直接视为同一条世代序列。同一品牌世代也可能包含不同架构。</li>
-      <li>每条产品线选取 1–2 个代表：桌面覆盖 i9 / i7 / i5 / i3 或 Ultra 9 / 7 / 5，移动端同时考虑 U / P / H / HX，Core X 与 Xeon W 单列平台。不再按“每档最高型号”选样。</li>
+      <li>桌面只选普通家用装机平台、曾可单独购买的 CPU，盒装与散片均计入；不收录笔记本焊接芯片、魔改转接型号、Core X / HEDT 或 Xeon W 工作站平台。历史型号不表示今天仍有全新零售库存。</li>
+      <li>每代按 i3 / i5 / i7 / i9 或 Ultra 5 / 7 / 9 等产品线各取 1–2 个代表；选用 K、F 或无后缀的实际型号，不将某一后缀的日期、价格或跑分套用到另一型号。移动端另按 U / P / H / HX 等分支选样。</li>
       <li>第 3 列第一行只显示日期，下方依次显示国行价格、价格口径与上市说明。日期优先精确到月；公布与开售不同的型号另作标注。仅能核实季度时明确保留季度，不能推定月份。</li>
       <li>价格只采用中国大陆人民币首发资料，区分预售标价与首发标价；点击价格可查看来源。未核实的旧款、OEM 与服务器型号明确标注，不用美元换算、后期行情、整机价或板 U 套装价填补。</li>
       <li>每个型号固定显示 GB5、GB6、R23 三项，每项分别列单核和多核。不同软件及大版本分数不可换算；未找到可核验记录时显示“—”及说明，缺失的单核或多核也分别保留“—”。</li>
@@ -227,7 +228,7 @@
     </ol>
   </section>
   <div class="legend">
-    <span class="chip">每条产品线选取 1–2 个代表</span>
+    <span class="chip">家用桌面：独立 CPU · 盒装 / 散片</span>
     <span class="chip">K / F / U / H / HX 表示不同产品分支</span>
     <span class="chip">R23 = Cinebench R23</span>
   </div>
@@ -255,13 +256,15 @@
   <footer>
     <h3>数据来源</h3>
     <ul>
+      <li>家用桌面选样：参照 <a href="https://www.intel.com/content/www/us/en/support/articles/000029613/processors.html">Intel 盒装 / 散片说明</a>及平台资料，排除 HEDT、工作站和服务器分支；<a href="https://www.intel.com/pressroom/archive/releases/2009/20090908comp.htm">LGA 1156 首发公告</a>与 <a href="https://cdrdv2-public.intel.com/811500/PCN110593-00.pdf">Intel 盒装订货记录</a>确认 i7-870 的桌面定位与独立销售形式。Pentium III 1.2 GHz 采用 <a href="https://images.hothardware.com/static/hh_files/CCAM/tualatin.htm">HotHardware 同期实测</a>核对 256 KB 桌面版本；<a href="https://www.intel.com/pressroom/archive/releases/2002/20020108comp.htm">1.4 GHz / 512 KB 服务器公告</a>用于区分 Pentium III-S。i7-870 的 GB5 / GB6 另据 CPU-Monkey 型号页补充；选样与新增资料读取于 2026-10-22。</li>
       <li>规格与日期：Intel 数据手册 / ARK、Intel Newsroom 及首发资料；世代、代表型号和日期整理于 2026-10-12。ARK 仅列季度且未找到具体月份的型号标明“月份未核实”。</li>
       <li>国行发布价：原始首发评测、国内首发上架记录与厂商发布资料；每条已填价格附来源链接。价格存在冲突时保留范围与说明，未验证的记录不填写单一金额。</li>
       <li>Geekbench 5 / 6：<a href="https://www.cpu-monkey.com/">CPU-Monkey</a> 型号与测试页、<a href="https://www.notebookcheck.net/">Notebookcheck</a> 数据库与 <a href="https://www.storagereview.com/review/supermicro-hyper-superserver-sys-212ha-tn-review-intel-xeon-6-6980p">StorageReview Xeon 6 实测</a>；表内数字各自附来源，资料读取于 2026-10-16。未收录或未能复核的分数保留“—”。</li>
       <li>早期 CPU 与缺少可核验测试记录的型号仍列出三项测试，不使用同家族、同架构或不同线程配置的分数替代。测试软件推出时间不作为某个旧型号无法测试的依据。</li>
       <li>Cinebench R23：CPU-Monkey、Notebookcheck 与 StorageReview。Xeon 6780E / 6980P 的 StorageReview 结果分别来自单路 Supermicro SYS-112H-TN / SYS-212HA-TN，不能与双路结果直接混用；其他来源未注明路数或 HT 设置时在分数旁提示。</li>
+      <li>架构补充：以<a href="https://www.zhihu.com/question/2048414933671588245/answer/2048718539205485573">知乎关于近年 CPU 性能进步的回答</a>为阅读线索，依据 <a href="https://www.intel.cn/content/www/cn/zh/developer/articles/guide/12th-gen-intel-core-processor-gamedev-guide.html">Intel 混合架构开发指南</a>、<a href="https://www.intel.com/content/www/us/en/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/specifications.html">13900K 规格</a>、<a href="https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html">285K 规格</a>与 <a href="https://www.intel.com/content/www/us/en/newsroom/news/core-ultra-200s-series-desktop.html">Core Ultra 200S 发布资料</a>核实并改写；资料读取于 2026-10-22。功率上限、最高睿频与持续全核状态分别说明，架构变化不直接换算为统一性能增幅。</li>
     </ul>
-    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Intel CPU 世代全谱》资料页<br />分析基于：Intel 数据手册/ARK + Intel Newsroom + 国内首发评测与上架记录（世代、日期与价格读取于 2026-10-12）+ CPU-Monkey / Notebookcheck / StorageReview（GB5、GB6 与 Cinebench R23，跑分资料读取于 2026-10-16）</p>
+    <p style="margin:16px 0 0;font-style:italic">作者：[AI-Authored Tech Chronicles]<br />系列：《Intel CPU 世代全谱》资料页<br />分析基于：Intel 数据手册/ARK + Intel Newsroom + 国内首发评测与上架记录（世代、日期与价格读取于 2026-10-12）+ CPU-Monkey / Notebookcheck / StorageReview（GB5、GB6 与 Cinebench R23，跑分资料读取于 2026-10-16）；架构补充基于上述知乎回答 + Intel 开发指南、ARK 与发布资料，读取于 2026-10-22；家用桌面选样与 i7-870 / Pentium III 桌面版本补充基于 Intel 原始资料 + HotHardware + CPU-Monkey，读取于 2026-10-22</p>
   </footer>
 </div>
 
@@ -331,16 +334,6 @@ desktop: [
     ]
   },
   {
-    gen: "Pentium Pro",
-    code: "P6",
-    year: "1995",
-    arch: [["微架构","P6 乱序执行"],["工艺","0.50–0.35 μm"],["封装","L2 与 CPU 同 MCM"],["插槽","Socket 8"],["晶体管","CPU 5.5M + L2"]],
-    milestone: "1995-11-01。P6：译码成 μop、乱序执行、寄存器重命名，32-bit 同频相对 Pentium 大约 +30–50%。L2 在同一 MCM 但片外，延迟仍高于后来的片上满速 L2。16-bit/段寄存器代码很慢，Win95 消费市场受挫，NT 工作站和服务器却吃到乱序红利。这颗核是 Pentium II/III 和后来 Core 的祖宗；消费级失败、服务器成功的分裂从这里开始。",
-    skus: [
-      {"date":"1995-11-01","name":"Pentium Pro 200","spec":"1 核 · 200 MHz · L2 256/512/1024 KB 片外 MCM · 功耗约 29–35 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
     gen: "Pentium II",
     code: "Klamath / Deschutes",
     year: "1997–1998",
@@ -357,9 +350,9 @@ desktop: [
     code: "Katmai / Coppermine / Tualatin",
     year: "1999–2001",
     arch: [["微架构","P6 + SSE"],["工艺","0.25–0.13 μm"],["插槽","Slot 1 → Socket 370"],["L2","Coppermine 起满速片上"],["指令","SSE"]],
-    milestone: "1999-02-26 引入 SSE（Katmai）。Coppermine 把 256 KB 满速 L2 放回片上，同频相对 Katmai 大约 +10–20%，1.0B GHz 是 2000 年主流旗舰。Tualatin 0.13 μm、512 KB L2、1.4 GHz 是 P6 消费桌面收官。当时大量评测写：同频整数 Tualatin 仍打得过早期 Willamette Pentium 4，NetBurst 的 IPC 回退已经暴露。P6 这条短流水线路线要等到 2006 年 Conroe 才全面回归。",
+    milestone: "1999-02-26 引入 SSE（Katmai）。Coppermine 把 256 KB 满速 L2 放回片上，同频相对 Katmai 大约 +10–20%，1.0B GHz 是 2000 年主流旗舰。Tualatin 转向 0.13 μm，普通桌面代表选用 256 KB L2 的 1.2 GHz 型号；512 KB L2、1.4 GHz 的 Pentium III-S 属服务器分支，不混入家用桌面代表。当时大量评测写：同频整数 Tualatin 仍打得过早期 Willamette Pentium 4，NetBurst 的 IPC 回退已经暴露。P6 这条短流水线路线要等到 2006 年 Conroe 才全面回归。",
     skus: [
-      {"date":"2001-07-01","name":"Pentium III 1.4 GHz","spec":"Tualatin · 1 核 · 1400 MHz · L2 512 KB 满速 · Socket 370","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+      {"date":"2001-07","name":"Pentium III 1.2 GHz","spec":"Tualatin 桌面版 · 1 核 · 1200 MHz · L2 256 KB 满速 · Socket 370","dateSource":"https://images.hothardware.com/static/hh_files/CCAM/tualatin.htm","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
       {"date":"2000-03-01","name":"Pentium III 1.0B GHz","spec":"Coppermine · 1000 MHz · 133 MHz FSB · L2 256 KB","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
       {"date":"1999-02-26","name":"Pentium III 500","spec":"Katmai · 500 MHz · SSE · Slot 1","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
     ]
@@ -372,18 +365,16 @@ desktop: [
     milestone: "2000-11-20。NetBurst 用 20 级以上流水线赌频率：同频 IPC 相对 Tualatin 大约回退 20–30%，指望 3–4 GHz 把差距赚回来。Northwood 130 nm、512 KB L2、3.2 GHz 尚可；Prescott 90 nm 再加深流水、2 MB L2，漏电和高温让 4 GHz 目标破产，670（3.80 GHz / 115 W）已是这条线的末路。HT 第一次出现在消费桌面。这是后来 Core 短流水线回头路的直接原因，也是 Tick-Tock 叙事被提出的背景。",
     skus: [
       {"date":"2005-11-14","name":"Pentium 4 670","spec":"Prescott · 1 核 / 2 线程（HT）· 3.80 GHz · L2 2 MB · LGA 775 · TDP 115 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
-      {"date":"2004-02-02","name":"Pentium 4 Extreme Edition 3.4","spec":"Gallatin · 3.40 GHz · L3 2 MB · FSB 800","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
       {"date":"2002-01-07","name":"Pentium 4 2.2 GHz","spec":"Northwood · 2200 MHz · L2 512 KB · Socket 478","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
     ]
   },
   {
-    gen: "Pentium D / EE",
+    gen: "Pentium D",
     code: "Smithfield / Presler",
     year: "2005–2006",
-    arch: [["微架构","NetBurst 双核"],["工艺","90 / 65 nm"],["封装","两颗 P4 核 glued"],["插槽","LGA 775"],["HT","EE 型号开 HT"]],
-    milestone: "消费级双核的 NetBurst 答卷：Smithfield/Presler 把两颗 P4 核粘在同一封装，L2 不共享，核间走 FSB。多核相对单核 P4 大约 1.6–1.8 倍而不是 2 倍，功耗 130 W 级。EE 965 开 HT 做到 2 核 4 线程、3.73 GHz，是这条线的顶点。2006 年 Conroe 同价位在整数和功耗上正面击溃 Pentium D，NetBurst 双核几乎没有完整产品周期。",
+    arch: [["微架构","NetBurst 双核"],["工艺","90 / 65 nm"],["结构","Smithfield 单芯片双核；Presler 双芯片封装"],["插槽","LGA 775"],["线程","Pentium D：2 核 / 2 线程"]],
+    milestone: "2005–2006 年，Pentium D 将 NetBurst 带入普通桌面双核：Smithfield 在一颗芯片上放两个核心，Presler 改为两颗芯片同封装；每核有独立 L2，核间通信仍依赖前端总线。这里保留可单独购买、使用 LGA 775 的 Pentium D 950，2 核 / 2 线程，不把支持超线程的 Pentium Extreme Edition 混入。两核可提高并行吞吐，但性能受总线、软件并行度与散热限制；2006 年 Core 2 转向更高每时钟效率的架构。",
     skus: [
-      {"date":"2006-03-05","name":"Pentium Extreme Edition 965","spec":"Presler · 2 核 / 4 线程 · 3.73 GHz · L2 2×2 MB · TDP 130 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
       {"date":"2006-01-05","name":"Pentium D 950","spec":"Presler · 2 核 / 2 线程 · 3.40 GHz · TDP 130 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
     ]
   },
@@ -392,9 +383,8 @@ desktop: [
     code: "Conroe / Penryn",
     year: "2006–2008",
     arch: [["微架构","Core / Penryn"],["工艺","65 nm → 45 nm"],["插槽","LGA 775"],["互连","FSB 1066–1600 MT/s"],["内存","主板北桥 DDR2/DDR3"]],
-    milestone: "2006-07 Conroe 结束 NetBurst。短流水线 + 共享大 L2，同频整数相对 Prescott 大约 +50–80%，Intel 当时的口径是「40% 更高性能、40% 更低功耗」。QX9770（3.20 GHz / 4 核 / FSB 1600）是 Yorkfield 旗舰；E8600 把双核做到 3.33 GHz / 65 W。45 nm Penryn 引入高 k 金属栅，IPC 再约 +5–10%。Tick-Tock 从此成为默认叙事：一年工艺、一年架构。AMD 在桌面的性能领先窗口被关上。",
+    milestone: "2006-07 Conroe 结束 NetBurst。短流水线 + 共享大 L2，同频整数相对 Prescott 大约 +50–80%，Intel 当时的口径是「40% 更高性能、40% 更低功耗」。普通装机代表选 Q9650（3.00 GHz、4 核、95 W）与 E8600（3.33 GHz、2 核、65 W），分别呈现双核与四核路线。45 nm Penryn 引入高 k 金属栅，IPC 再约 +5–10%。Tick-Tock 从此成为默认叙事：一年工艺、一年架构。AMD 在桌面的性能领先窗口被关上。",
     skus: [
-      {"date":"2007-11-11","name":"Core 2 Extreme QX9770","spec":"Yorkfield · 4 核 / 4 线程 · 3.20 GHz · L2 12 MB · TDP 136 W · FSB 1600","gb":[{"v":5,"sc":451,"mc":1583,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_2_extreme_qx9770","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_2_extreme_qx9770"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
       {"date":"2008-08-10","name":"Core 2 Quad Q9650","spec":"Yorkfield · 4 核 / 4 线程 · 3.00 GHz · L2 12 MB · TDP 95 W","gb":[{"v":5,"sc":469,"mc":1550,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_2_quad_q9650-vs-amd_a8_3850","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_2_quad_q9650-vs-amd_a8_3850"}},{"v":6,"sc":null,"mc":null}],"r23":[null,1742],"r23Sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_a10_9700"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2008-08-10","name":"Core 2 Duo E8600","spec":"Wolfdale · 2 核 / 2 线程 · 3.33 GHz · L2 6 MB · TDP 65 W","gb":[{"v":5,"sc":486,"mc":885,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_2_quad_q9650-vs-intel_core2_duo_e8600","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_2_quad_q9650-vs-intel_core2_duo_e8600"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
     ]
@@ -403,11 +393,10 @@ desktop: [
     gen: "第 1 代 Core i",
     code: "Nehalem / Westmere",
     year: "2008–2010",
-    arch: [["微架构","Nehalem → Westmere"],["工艺","45 nm → 32 nm"],["插槽","LGA 1366 / 1156"],["互连","LGA 1366：QPI；LGA 1156：DMI"],["内存","Bloomfield / Gulftown：三通道 DDR3；Lynnfield / Clarkdale：双通道"]],
-    milestone: "2008-11 Bloomfield：集成三通道 DDR3 控制器、QPI、HT 回归、Turbo Boost。内核 IPC 相对 Penryn 大约 +10–15%，内存延迟敏感负载更高。AnandTech 当时的判断是：这是把 Core 微架构补成完整平台的一代，北桥瓶颈被拆掉。Lynnfield i5-750 用 LGA 1156 把四核做进主流。2010 Gulftown i7-980X 把消费级推到 6 核 12 线程。代价是 LGA 1366 平台贵，X58 主板和三通道内存提高了升级门槛。",
+    arch: [["微架构","Nehalem → Westmere"],["工艺","45 nm → 32 nm"],["插槽","普通装机代表：LGA 1156"],["互连","DMI；CPU 集成 PCIe 控制器"],["内存","双通道 DDR3"]],
+    milestone: "Core i 品牌于 2008 年先从 Bloomfield 推出；本表的普通家用装机代表从 2009-09 的 LGA 1156 Lynnfield 选起。i7-870 与 i5-750 均为四核，前者支持超线程、共 8 线程，后者为 4 线程；CPU 集成双通道 DDR3 与 16 条 PCIe 2.0，借助 DMI 连接 P55，减少原有北桥承担的功能。2010 年 Clarkdale i3-530 以双核四线程与封装内核显覆盖另一档配置，搭配支持显示输出的主板使用。LGA 1366、三通道内存和六核 Extreme 型号属于另一条平台路线，不列为本表代表。",
     skus: [
-      {"name":"Core i7-920","date":"2008-11","spec":"Bloomfield · 4 核 / 8 线程 · 2.66–2.93 GHz · LGA 1366 · TDP 130 W","gb":[{"v":5,"sc":513,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_fx_8150"}},{"v":6,"sc":525,"mc":1771,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_920-vs-amd_ryzen_7_9800x3d","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_920-vs-amd_ryzen_7_9800x3d"}}],"r23":null,"dateSource":"https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html","benchmarkStatus":"未找到可核验记录"},
-      {"date":"2010-03-16","name":"Core i7-980X Extreme","spec":"Gulftown · 6 核 / 12 线程 · 3.33 / 3.60 GHz · L3 12 MB · TDP 130 W · LGA 1366","gb":[{"v":5,"sc":614,"mc":3391,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_980x-vs-intel_core_i9_13900hx","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_980x-vs-intel_core_i9_13900hx"}},{"v":6,"sc":645,"mc":2847,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_processor_300-vs-intel_core_i7_980x","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_processor_300-vs-intel_core_i7_980x"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
+      {"name":"Core i7-870","date":"2009-09-08","spec":"Lynnfield · 4 核 / 8 线程 · 2.93–3.60 GHz · L3 8 MB · LGA 1156 · TDP 95 W · 无核显","gb":[{"v":5,"sc":574,"mc":2124,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_870","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_870"}},{"v":6,"sc":481,"mc":1541,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_870","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_870"}}],"r23":null,"dateSource":"https://www.intel.com/pressroom/archive/releases/2009/20090908comp.htm","launchPrices":[{"status":"中国首发价未核实"}],"benchmarkStatus":"未找到可核验记录"},
       {"date":"2009-09-08","name":"Core i5-750","spec":"Lynnfield · 4 核 / 4 线程 · 2.66 / 3.20 GHz · L3 8 MB · TDP 95 W · LGA 1156","gb":[{"v":5,"sc":539,"mc":1692,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_750-vs-intel_core_i3_10105","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_750-vs-intel_core_i3_10105"}},{"v":6,"sc":null,"mc":null}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
       {"name":"Core i3-530","date":"2010-01-07","spec":"Clarkdale · 2 核 / 4 线程 · 2.93 GHz · L3 4 MB · TDP 73 W","gb":[{"v":5,"sc":469,"mc":1064,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_celeron_n5095-vs-intel_core_i3_530","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_celeron_n5095-vs-intel_core_i3_530"}},{"v":6,"sc":430,"mc":890,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_celeron_n5095-vs-intel_core_i3_530","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_celeron_n5095-vs-intel_core_i3_530"}}],"r23":null,"dateSource":"https://www.techspot.com/news/37525-intels-clarkdale-cpus-in-stock-at-newegg.html","benchmarkStatus":"未找到可核验记录"}
     ]
@@ -442,7 +431,7 @@ desktop: [
     code: "Haswell / Devil's Canyon",
     year: "2013–2014",
     arch: [["微架构","Haswell"],["工艺","22 nm"],["插槽","LGA 1150"],["指令","AVX2 · FMA3 · TSX"],["供电","FIVR 全集成电压调节"]],
-    milestone: "2013-06 Haswell：FIVR 把电压调节搬进封装，低载功耗明显改善，高载发热上升，超频墙比 2600K 更烫。内核 IPC 相对 Ivy Bridge 大约 +8–15%（整数偏 10%，AVX2/FMA3 代码更高）。AVX2 从此成为多媒体和 HPC 基线。2014 Devil's Canyon（4790K，4.0/4.4 GHz）改 TIM 并拉高频率，被看成 LGA 1150 的真正旗舰。Haswell-E 5960X 把消费 HEDT 推到 8 核。TSX 随后因 errata 被关掉，对当时消费软件几乎无感。",
+    milestone: "2013-06 Haswell：FIVR 把电压调节搬进封装，低载功耗明显改善，高载发热上升，超频墙比 2600K 更烫。内核 IPC 相对 Ivy Bridge 大约 +8–15%（整数偏 10%，AVX2/FMA3 代码更高）。AVX2 从此成为多媒体和 HPC 基线。2014 Devil's Canyon（4790K，4.0/4.4 GHz）改 TIM 并拉高频率，被看成 LGA 1150 的真正旗舰。TSX 随后因 errata 被关掉，对当时消费软件几乎无感。",
     skus: [
       {"date":"2014-06-02","name":"Core i7-4790K","spec":"Devil's Canyon · 4 核 / 8 线程 · 4.00 / 4.40 GHz · L3 8 MB · TDP 88 W","gb":[{"v":5,"sc":1073,"mc":4001,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_4790k-vs-intel_core_i7_6700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_4790k-vs-intel_core_i7_6700k"}},{"v":6,"sc":1387,"mc":4674,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_4790k-vs-intel_core_i7_6700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_4790k-vs-intel_core_i7_6700k"}}],"r23":[1069,4936],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_4790k-vs-intel_core_i7_6700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_4790k-vs-intel_core_i7_6700k"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2014-06-02","name":"Core i5-4690K","spec":"4 核 / 4 线程 · 3.50 / 3.90 GHz · L3 6 MB · TDP 88 W","gb":[{"v":5,"sc":1082,"mc":3723,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_4690k-vs-intel_core_i5_6600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_4690k-vs-intel_core_i5_6600k"}},{"v":6,"sc":1383,"mc":3864,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_4690k-vs-intel_core_i5_6600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_4690k-vs-intel_core_i5_6600k"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"},
@@ -450,21 +439,11 @@ desktop: [
     ]
   },
   {
-    gen: "Haswell-E / HEDT",
-    code: "Haswell-E",
-    year: "2014",
-    arch: [["微架构","Haswell-E"],["工艺","22 nm"],["插槽","LGA 2011-3"],["内存","四通道 DDR4-2133"],["产品线","HEDT 桌面平台"]],
-    milestone: "Haswell-E 是独立的 HEDT 平台，使用 LGA 2011-3 和四通道 DDR4-2133。核心数、内存通道与扩展能力面向并行计算和多设备工作负载，主板及内存成本也更高；产品编号不能直接套用普通桌面的世代与插槽关系。",
-    skus: [
-      {"date":"2014-08-29","name":"Core i7-5960X","spec":"Haswell-E · 8 核 / 16 线程 · 3.00 / 3.50 GHz · L3 20 MB · TDP 140 W · LGA 2011-3","gb":[{"v":5,"sc":1002,"mc":7843,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x"}},{"v":6,"sc":1154,"mc":7640,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x"}}],"r23":null,"benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
     gen: "第 5 代 Core",
     code: "Broadwell",
     year: "2015",
     arch: [["微架构","Broadwell"],["工艺","14 nm"],["插槽","LGA 1150"],["核显","Iris Pro + 128 MB eDRAM"],["定位","桌面 SKU 极少"]],
-    milestone: "14 nm 首发几乎只给移动和核显，桌面只剩 5775C / 5675C 这种「核显特化」SKU。内核 IPC 相对 Haswell 大约 +5%，真正的卖点是 Iris Pro 6200 + 128 MB eDRAM：当时核显打独显入门卡的唯一一代 Intel 桌面。14 nm 量产延迟被看成 Tick-Tock 破裂的起点。2016 Broadwell-E 6950X 把消费 HEDT 推到 10 核 20 线程，LGA 2011-3 继续吃四通道。主流桌面用户这一年几乎无升级理由，直接等 Skylake。",
+    milestone: "14 nm 首发几乎只给移动和核显，桌面只剩 5775C / 5675C 这种「核显特化」SKU。内核 IPC 相对 Haswell 大约 +5%，真正的卖点是 Iris Pro 6200 + 128 MB eDRAM：当时核显打独显入门卡的唯一一代 Intel 桌面。14 nm 量产延迟被看成 Tick-Tock 破裂的起点。主流桌面用户这一年几乎无升级理由，直接等 Skylake。",
     skus: [
       {"date":"2015-06-02","name":"Core i7-5775C","spec":"4 核 / 8 线程 · 3.30 / 3.70 GHz · L3 6 MB + 128 MB eDRAM · TDP 65 W · Iris Pro 6200","gb":[{"v":5,"sc":997,"mc":3897,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_5775c-vs-intel_core_i7_6700","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_5775c-vs-intel_core_i7_6700"}},{"v":6,"sc":1230,"mc":4309,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_5775c-vs-intel_core_i7_6700","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_5775c-vs-intel_core_i7_6700"}}],"r23":[null,4601],"r23Sources":{"mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_5775c"},"benchmarkStatus":"未找到可核验记录"},
       {"name":"Core i5-5675C","date":"2015-06-02","spec":"4 核 / 4 线程 · 3.10–3.60 GHz · L3 4 MB + 128 MB eDRAM · TDP 65 W · Iris Pro 6200","gb":[{"v":5,"sc":986,"mc":3551,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_5675c-vs-intel_core_i5_14400f","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_5675c-vs-intel_core_i5_14400f"}},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://www.anandtech.com/show/9320/intel-broadwell-review-i7-5775c-i5-5675c","benchmarkStatus":"未找到可核验记录"}
@@ -483,16 +462,6 @@ desktop: [
     ]
   },
   {
-    gen: "Broadwell-E / HEDT",
-    code: "Broadwell-E",
-    year: "2016",
-    arch: [["微架构","Broadwell-E"],["工艺","14 nm"],["插槽","LGA 2011-3"],["内存","四通道 DDR4-2400"],["产品线","HEDT 桌面平台"]],
-    milestone: "Broadwell-E 是独立的 HEDT 平台，使用 LGA 2011-3 和四通道 DDR4-2400。核心数、内存通道与扩展能力面向并行计算和多设备工作负载，主板及内存成本也更高；产品编号不能直接套用普通桌面的世代与插槽关系。",
-    skus: [
-      {"date":"2016-05-30","name":"Core i7-6950X","spec":"Broadwell-E · 10 核 / 20 线程 · 3.00 / 3.50 GHz · L3 25 MB · TDP 140 W · LGA 2011-3","gb":[{"v":5,"sc":974,"mc":8993,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x"}},{"v":6,"sc":1237,"mc":7421,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_5960x"}}],"r23":[1091,12713],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_9700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_9700k"},"benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
     gen: "第 7 代 Core",
     code: "Kaby Lake",
     year: "2017",
@@ -502,16 +471,6 @@ desktop: [
       {"date":"2017-01-03","name":"Core i7-7700K","spec":"4 核 / 8 线程 · 4.20 / 4.50 GHz · L3 8 MB · TDP 91 W · HD 630","gb":[{"v":5,"sc":1229,"mc":4719,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-amd_fx_9590","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-amd_fx_9590"}},{"v":6,"sc":1463,"mc":5149,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-intel_core_i7_8700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-intel_core_i7_8700k"}}],"r23":[1216,6055],"launchPrices":[{"cny":2799,"basis":"国行首发标价","source":"cn-gen7"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-intel_core_i7_8700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_7700k-vs-intel_core_i7_8700k"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2017-01-03","name":"Core i5-7600K","spec":"4 核 / 4 线程 · 3.80 / 4.20 GHz · L3 6 MB · TDP 91 W","gb":[{"v":5,"sc":1174,"mc":3855,"sources":{"mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_7600k-vs-amd_ryzen_5_8600g","sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_14600k-vs-intel_core_i5_7600k"}},{"v":6,"sc":1420,"mc":4278,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_7600k-vs-intel_core_i5_6600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_7600k-vs-intel_core_i5_6600k"}}],"r23":null,"launchPrices":[{"cny":1899,"basis":"国行首发标价","source":"cn-gen7"}],"benchmarkStatus":"未找到可核验记录"},
       {"date":"2017-01-03","name":"Core i3-7350K","spec":"2 核 / 4 线程 · 4.20 GHz · L3 4 MB · TDP 60 W · 可超频","gb":[{"v":5,"sc":1176,"mc":2557,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_7350k-vs-intel_core_i3_10100","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_7350k-vs-intel_core_i3_10100"}},{"v":6,"sc":1298,"mc":2740,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_7350k-vs-intel_core_i3_10100","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_7350k-vs-intel_core_i3_10100"}}],"r23":[1251,3136],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i3_7350k","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i3_7350k"},"benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
-    gen: "Skylake-X / Core X",
-    code: "Skylake-X",
-    year: "2017",
-    arch: [["微架构","Skylake-X"],["工艺","14 nm"],["插槽","LGA 2066"],["内存","四通道 DDR4-2666"],["产品线","HEDT 桌面平台"]],
-    milestone: "Skylake-X 是独立的 Core X / HEDT 平台，使用 LGA 2066 和四通道 DDR4-2666。核心数、内存通道与扩展能力面向并行计算和多设备工作负载，主板及内存成本也更高；产品编号不能直接套用普通桌面的世代与插槽关系。",
-    skus: [
-      {"date":"2017-09-25","name":"Core i9-7980XE","spec":"Skylake-X · 18 核 / 36 线程 · 2.60 / 4.20 GHz · L3 24.75 MB · TDP 165 W · LGA 2066","gb":[{"v":5,"sc":1121,"mc":16495,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe"}},{"v":6,"sc":1394,"mc":11708,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe"}}],"r23":[1281,28196],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe"},"benchmarkStatus":"未找到可核验记录"}
     ]
   },
   {
@@ -537,17 +496,6 @@ desktop: [
       {"date":"2018-10-19","name":"Core i7-9700K","spec":"8 核 / 8 线程 · 3.60 / 4.90 GHz · L3 12 MB · TDP 95 W · 无 HT","gb":[{"v":5,"sc":1302,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_3900x"}},{"v":6,"sc":1589,"mc":7361,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_9700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_9700k"}}],"r23":[1336,10326],"launchPrices":[{"cny":3499,"basis":"国行首发标价","source":"cn-gen9"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_9700k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_6950x-vs-intel_core_i7_9700k"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2018-10-19","name":"Core i5-9600K","spec":"6 核 / 6 线程 · 3.70 / 4.60 GHz · L3 9 MB · TDP 95 W","gb":[{"v":5,"sc":1244,"mc":5643,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_9600k-vs-intel_core_i5_10600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_9600k-vs-intel_core_i5_10600k"}},{"v":6,"sc":1561,"mc":6244,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_9600k-vs-intel_core_i5_10600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_9600k-vs-intel_core_i5_10600k"}}],"r23":[1276,7301],"launchPrices":[{"cny":2699,"basis":"国行首发标价","source":"cn-gen9"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_9600k-vs-intel_core_i5_10600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_9600k-vs-intel_core_i5_10600k"},"benchmarkStatus":"未找到可核验记录"},
       {"name":"Core i3-9100","date":"2019-04-23（公布）","spec":"4 核 / 4 线程 · 3.60–4.20 GHz · L3 6 MB · TDP 65 W","gb":[{"v":5,"sc":null,"mc":3249,"sources":{"mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_9100-vs-intel_core_i3_3220"}},{"v":6,"sc":1394,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_9100-vs-intel_core_i3_3220"}}],"r23":[1072,null],"dateSource":"https://www.anandtech.com/show/14256/intel-9th-gen-core-processors-all-the-desktop-and-mobile-45w-cpus-announced","r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_2700x"},"benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
-    gen: "Cascade Lake-X / Core X",
-    code: "Cascade Lake-X",
-    year: "2019",
-    arch: [["微架构","Cascade Lake-X"],["工艺","14 nm"],["插槽","LGA 2066"],["内存","四通道 DDR4-2933"],["产品线","HEDT 桌面平台"]],
-    milestone: "2019 年 Core X 刷新沿用 LGA 2066。10980XE 与 10900X 分别代表 18 核和 10 核配置；与同期 LGA 1151 的 i9-9900K 属于不同平台，不能把 10980XE 当作第 10 代普通桌面 CPU。",
-    skus: [
-      {"name":"Core i9-10980XE","date":"2019-11","spec":"18 核 / 36 线程 · L3 24.75 MB · TDP 165 W","gb":[{"v":5,"sc":1174,"mc":15841,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe"}},{"v":6,"sc":1573,"mc":11836,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-amd_ryzen_threadripper_9970x","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-amd_ryzen_threadripper_9970x"}}],"r23":[1191,24309],"dateSource":"https://www.anandtech.com/show/15039/the-intel-core-i9-10980xe-review","r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_10980xe-vs-intel_core_i9_7980xe"},"benchmarkStatus":"未找到可核验记录"},
-      {"name":"Core i9-10900X","date":"2019-11","spec":"10 核 / 20 线程 · L3 19.25 MB · TDP 165 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":[1143,14301],"dateSource":"https://www.anandtech.com/show/15039/the-intel-core-i9-10980xe-review","r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x3d-vs-intel_core_i9_10900x","mc":"https://www.cpu-monkey.com/en/compare_cpu-amd_ryzen_9_9950x3d-vs-intel_core_i9_10900x"},"benchmarkStatus":"未找到可核验记录"}
     ]
   },
   {
@@ -581,7 +529,7 @@ desktop: [
     code: "Alder Lake",
     year: "2021–2022",
     arch: [["微架构","Golden Cove P + Gracemont E"],["工艺","Intel 7"],["插槽","LGA 1700"],["内存","DDR5-4800 / DDR4-3200"],["I/O","PCIe 5.0 · Thread Director"]],
-    milestone: "2021-11。Golden Cove P 核 + Gracemont E 核，混合架构第一次在 x86 桌面落地。P 核 IPC 相对 Cypress Cove 大约 +15–20%，相对 Skylake 约 +25–30%；E 核单核大约相当于 Skylake 级，靠数量堆多核。Digital Trends 标题是 Call it a comeback：12900K 单核大幅拉开 Zen 3，多核追上 5950X。R23 多核约 2.6 万。新插槽 LGA 1700、DDR5/DDR4 双支持、PCIe 5.0、Thread Director。Windows 11 调度成为必选项，Win10 上 E 核经常帮倒忙。MTP 241 W 重新定义「125 W」。",
+    milestone: "2021-11。Golden Cove P 核与 Gracemont E 核组成桌面混合架构：P 核侧重单线程性能，E 核以较小面积提供并行吞吐，并非只能运行后台任务。P 核支持超线程，E 核每核一个线程；程序不能把所有逻辑处理器都当成等速核心。Thread Director 向操作系统提供调度提示，实际效果仍取决于系统与应用，不能将 Windows 11 写成运行前提。LGA 1700 同时提供 DDR4、DDR5 主板选择，并引入 PCIe 5.0。<br><br>指令集也有取舍：Intel 开发指南明确 P 核禁用 AVX-512、E 核不提供 AVX-512；早期少量芯片的非官方启用方式不属于平台支持承诺。向量程序需检测实际指令集并选择实现路径，不能仅凭 x86 或核心数推断性能。<br><a href='https://www.intel.cn/content/www/cn/zh/developer/articles/guide/12th-gen-intel-core-processor-gamedev-guide.html'>Intel 混合架构开发指南</a>",
     skus: [
       {"date":"2021-11-04","name":"Core i9-12900K","spec":"8P+8E / 24 线程 · P 3.2–5.2 GHz · L3 30 MB · PBP 125 W / MTP 241 W","gb":[{"v":5,"sc":1990,"mc":17595,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_11900k-vs-intel_core_i9_12900k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_11900k-vs-intel_core_i9_12900k"}},{"v":6,"sc":2560,"mc":16244,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_11900k-vs-intel_core_i9_12900k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_11900k-vs-intel_core_i9_12900k"}}],"r23":[1997,27472],"launchPrices":[{"cny":4999,"basis":"国行预售标价","source":"cn-gen12"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_11900k-vs-intel_core_i9_12900k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_11900k-vs-intel_core_i9_12900k"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2021-11-04","name":"Core i7-12700K","spec":"8P+4E / 20 线程 · P 3.6–5.0 GHz · L3 25 MB · PBP 125 W / MTP 190 W","gb":[{"v":5,"sc":1872,"mc":14992,"sources":{"mc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_9_5900x","sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_12700k-vs-intel_core_i7_14700k"}},{"v":6,"sc":2528,"mc":14129,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_12700k","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_12700k"}}],"r23":[1939,22812],"launchPrices":[{"cny":3199,"basis":"国行预售标价","source":"cn-gen12"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_12700k","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_12700k"},"benchmarkStatus":"未找到可核验记录"},
@@ -595,26 +543,13 @@ desktop: [
     code: "Raptor Lake",
     year: "2022–2023",
     arch: [["微架构","K 系列 Raptor Cove；部分非 K 为 Alder Lake 衍生"],["工艺","Intel 7"],["插槽","LGA 1700"],["缓存","K 系列 P 核 L2 2 MB；非 K 依型号 / 步进不同"],["功耗","MTP 253 W"]],
-    milestone: "2022-10。同插槽、同 Intel 7，Raptor Cove 把 P 核 L2 加倍到 2 MB，IPC 相对 Alder Lake 大约 +0–5%（缓存敏感代码更高），真正的跃迁是 E 核 8→16。13900K 变成 8P+16E / 32 线程，R23 多核跳到约 3.8 万，单核约 +8–12%（5.8 GHz）。13900KS 首次消费级 6.0 GHz。代价是持续全核功耗与温度：高功率主板默认解锁 PL，250 W+ 烤机成为常态。游戏帧率相对 12900K 有个位数提升，生产力才是这一代的购买理由。",
+    milestone: "2022-10。延续 LGA 1700 与 Intel 7；Raptor Lake K 系列扩大 P 核 L2，并增加 E 核。13900K 为 8P+16E / 32 线程，更多 E 核主要扩展可并行任务的吞吐，不会按核心数比例加速单线程操作。最高睿频 5.8 GHz 也不是全部核心持续运行的承诺。<br><br>功耗比较需先统一设置：13900K 官方处理器基础功率为 125 W，最大睿频功率为 253 W；不能把前者视为所有负载的耗电量，也不能把主板解除限制后的 300 W 级结果当成所有机器的默认状态。持续编译、渲染的成绩受功率限制、散热与主板设置影响；与后来产品比较时应同时看任务耗时和能耗。<br><a href='https://www.intel.com/content/www/us/en/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/specifications.html'>13900K 官方规格</a>",
     skus: [
       {"date":"2022-10-20","name":"Core i9-13900K","spec":"8P+16E / 32 线程 · P 3.0–5.8 GHz · L3 36 MB · PBP 125 W / MTP 253 W","gb":[{"v":5,"sc":2147,"mc":23982,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_13900k-vs-intel_core_i9_14900k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_13900k-vs-intel_core_i9_14900k"}},{"v":6,"sc":2868,"mc":20305,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_13900k-vs-intel_core_i9_14900k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i9_13900k-vs-intel_core_i9_14900k"}}],"r23":[2241,39652],"launchPrices":[{"cny":4899,"basis":"国行首发标价","source":"cn-gen13"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i9_13900k","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i9_13900k"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2022-10-20","name":"Core i7-13700K","spec":"8P+8E / 24 线程 · P 3.4–5.4 GHz · L3 30 MB · PBP 125 W / MTP 253 W","gb":[{"v":5,"sc":2065,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_13700k-vs-intel_core_i7_13700kf"}},{"v":6,"sc":2787,"mc":17208,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_13700k-vs-intel_core_i7_13700kf","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i7_13700k-vs-intel_core_i7_13700kf"}}],"r23":[2126,30766],"launchPrices":[{"cny":3499,"basis":"国行首发标价","source":"cn-gen13"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_13700k","mc":"https://www.cpu-monkey.com/en/cpu-intel_core_i7_13700k"},"benchmarkStatus":"未找到可核验记录"},
       {"date":"2022-10-20","name":"Core i5-13600K","spec":"6P+8E / 20 线程 · P 3.5–5.1 GHz · L3 24 MB · PBP 125 W / MTP 181 W","gb":[{"v":5,"sc":1955,"mc":16227,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_12600k-vs-intel_core_i5_13600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_12600k-vs-intel_core_i5_13600k"}},{"v":6,"sc":2639,"mc":16192,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_12600k-vs-intel_core_i5_13600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_12600k-vs-intel_core_i5_13600k"}}],"r23":[1976,23960],"launchPrices":[{"cny":2699,"basis":"国行首发标价","source":"cn-gen13"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_12600k-vs-intel_core_i5_13600k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_12600k-vs-intel_core_i5_13600k"},"benchmarkStatus":"未找到可核验记录"},
       {"name":"Core i5-13400F","date":"2023-01（公布）","spec":"6P+4E / 16 线程 · 2.50–4.60 GHz · L3 20 MB · PBP 65 W / MTP 148 W · 无核显","gb":[{"v":5,"sc":1644,"mc":10309,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_13400f-vs-intel_core_i5_14400f","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_13400f-vs-intel_core_i5_14400f"}},{"v":6,"sc":2375,"mc":9712,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_13400f-vs-intel_core_i5_14400f","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_13400f-vs-intel_core_i5_14400f"}}],"r23":[1794,15890],"dateSource":"https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html","launchPrices":[{"cny":1689,"basis":"国行首发标价","source":"cn-gen13-nonk"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_13400f-vs-intel_core_i5_14400f","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i5_13400f-vs-intel_core_i5_14400f"},"benchmarkStatus":"未找到可核验记录"},
       {"name":"Core i3-13100","date":"2023-01（公布）","spec":"4P / 8 线程 · 3.40–4.50 GHz · L3 12 MB · PBP 60 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2272,"mc":7943,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_13100-vs-intel_core_i5_11400","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_13100-vs-intel_core_i5_11400"}}],"r23":[1751,8843],"dateSource":"https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html","launchPrices":[{"cny":1189,"basis":"国行首发标价","source":"cn-gen13-nonk"}],"r23Sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_13100-vs-intel_core_i5_11400","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_i3_13100-vs-intel_core_i5_11400"},"benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
-    gen: "Xeon W-3400 / W-2400",
-    code: "Sapphire Rapids-WS",
-    year: "2023",
-    arch: [["微架构","Golden Cove / Sapphire Rapids-WS"],["工艺","Intel 7"],["插槽","LGA 4677 · W790"],["内存","W-3400/3500：8 通道 DDR5 RDIMM；W-2400/2500：4 通道"],["I/O","PCIe 5.0：112 / 64 条 CPU 通道"]],
-    milestone: "2023-02 公布桌面工作站平台。W-3400 和 W-2400 分别提供 8 / 4 通道 DDR5 RDIMM 与 112 / 64 条 PCIe 5.0 通道，适合大型内存和多扩展卡工作负载。w9 / w7 / w5 / w3 是产品线标识；这些 CPU 使用 W790 与 LGA 4677，不能装入普通 Core 主板。",
-    skus: [
-      {"name":"Xeon w9-3495X","date":"2023-02-15（公布）","spec":"W-3400 · 56 核 / 112 线程 · 8 通道 DDR5 RDIMM","gb":[{"v":5,"sc":1734,"mc":56911,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x","mc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x"}},{"v":6,"sc":2370,"mc":26114,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x","mc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x"}}],"r23":[1795,72560],"dateSource":"https://download.intel.com/newsroom/archive/2025/en-us-2023-02-15-intel-launches-new-xeon-workstation-processors-the-ultimate-solution-for-professionals.pdf","r23Sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x","mc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x"},"benchmarkStatus":"未找到可核验记录"},
-      {"name":"Xeon w7-2495X","date":"2023-02-15（公布）","spec":"W-2400 · 24 核 / 48 线程 · 4 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":2913,"mc":25869,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x","mc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x"}}],"r23":null,"dateSource":"https://download.intel.com/newsroom/archive/2025/en-us-2023-02-15-intel-launches-new-xeon-workstation-processors-the-ultimate-solution-for-professionals.pdf","benchmarkStatus":"未找到可核验记录"},
-      {"name":"Xeon w5-2465X","date":"2023-02-15（公布）","spec":"W-2400 · 16 核 / 32 线程 · 4 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://download.intel.com/newsroom/archive/2025/en-us-2023-02-15-intel-launches-new-xeon-workstation-processors-the-ultimate-solution-for-professionals.pdf","benchmarkStatus":"未找到可核验记录"},
-      {"name":"Xeon w3-2423","date":"2023-02-15（公布）","spec":"W-2400 · 6 核 / 12 线程 · 4 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://download.intel.com/newsroom/archive/2025/en-us-2023-02-15-intel-launches-new-xeon-workstation-processors-the-ultimate-solution-for-professionals.pdf","benchmarkStatus":"未找到可核验记录"}
     ]
   },
   {
@@ -632,24 +567,11 @@ desktop: [
     ]
   },
   {
-    gen: "Xeon W-3500 / W-2500",
-    code: "Sapphire Rapids-WS Refresh",
-    year: "2024",
-    arch: [["微架构","Golden Cove / Sapphire Rapids-WS"],["工艺","Intel 7"],["插槽","LGA 4677 · W790"],["内存","W-3400/3500：8 通道 DDR5 RDIMM；W-2400/2500：4 通道"],["I/O","PCIe 5.0：112 / 64 条 CPU 通道"]],
-    milestone: "2024-08-28 开放订购，整机从 9 月陆续上市。W-3500 / W-2500 延续 W790 与 LGA 4677，增加核心数；依然按内存通道及 PCIe 扩展能力划分两种平台，型号等级之外还需比较平台资源。",
-    skus: [
-      {"name":"Xeon w9-3595X","date":"2024-08-28（开放订购）","spec":"W-3500 · 60 核 / 120 线程 · 8 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":24200,"sources":{"mc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x"}}],"r23":null,"dateSource":"https://www.intel.com/content/www/us/en/newsroom/news/intel-xeon-w-3500-w-2500-processor-family.html","benchmarkStatus":"未找到可核验记录"},
-      {"name":"Xeon w7-2595X","date":"2024-08-28（开放订购）","spec":"W-2500 · 26 核 / 52 线程 · 4 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":21758,"sources":{"mc":"https://www.cpu-monkey.com/en/cpu-intel_xeon_w9_3495x"}}],"r23":null,"dateSource":"https://www.intel.com/content/www/us/en/newsroom/news/intel-xeon-w-3500-w-2500-processor-family.html","benchmarkStatus":"未找到可核验记录"},
-      {"name":"Xeon w5-2565X","date":"2024-08-28（开放订购）","spec":"W-2500 · 18 核 / 36 线程 · 4 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://www.intel.com/content/www/us/en/newsroom/news/intel-xeon-w-3500-w-2500-processor-family.html","benchmarkStatus":"未找到可核验记录"},
-      {"name":"Xeon w3-2525","date":"2024-08-28（开放订购）","spec":"W-2500 · 8 核 / 16 线程 · 4 通道 DDR5 RDIMM","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":null,"mc":null}],"r23":null,"dateSource":"https://www.intel.com/content/www/us/en/newsroom/news/intel-xeon-w-3500-w-2500-processor-family.html","benchmarkStatus":"未找到可核验记录"}
-    ]
-  },
-  {
     gen: "Core Ultra 200S",
     code: "Arrow Lake-S",
     year: "2024–2025",
     arch: [["微架构","Lion Cove P + Skymont E"],["工艺","计算贴片 TSMC N3B"],["插槽","LGA 1851"],["线程","取消超线程"],["AI","NPU 13 TOPS · Xe-LPG 核显"]],
-    milestone: "2024-10 首批 K 系列上市，2025-01 补充非 K 型号。Arrow Lake-S 使用 Lion Cove P 核与 Skymont E 核，计算 Tile 为 TSMC N3B，并通过 Foveros 组合不同功能 Tile。每个核心只运行一个硬件线程；285K 因此是 24 核 / 24 线程。新平台采用 LGA 1851、DDR5 与片上 NPU。Core Ultra 200S 是桌面系列名称，不代表此前已有桌面 Core Ultra 100S。",
+    milestone: "2024-10 首批 K 系列上市，2025-01 补充非 K 型号。Lion Cove P 核与 Skymont E 核配合，计算 Tile 使用 TSMC N3B，通过 Foveros 组合不同功能 Tile；平台改为 LGA 1851、DDR5，并加入 NPU。分块制造可为不同功能选择工艺，但不能据此直接推断整机性能或互连延迟。<br><br>取消超线程后，285K 为 8P+16E / 24 线程；14900K 同为 24 核却有 32 线程，两者的多核变化还取决于每核能力与任务并行度。285K 最高睿频 5.7 GHz，低于 14900K 的 6.0 GHz，因此 IPC 改善不会等比例变成单核成绩。Intel 将能效改善列为发布重点；游戏、单线程和持续多核应分别评估，既不能把它写成全面性能跃升，也不能称为没有架构变化。Core Ultra 200S 是桌面系列名称，此前没有桌面 Core Ultra 100S。<br><a href='https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html'>285K 官方规格</a> · <a href='https://www.intel.com/content/www/us/en/newsroom/news/core-ultra-200s-series-desktop.html'>发布资料</a>",
     skus: [
       {"date":"2024-10-24","name":"Core Ultra 9 285K","spec":"8P+16E / 24 线程 · P 3.7–5.7 GHz · L3 36 MB · PBP 125 W / MTP 250 W · NPU 13 TOPS","gb":[{"v":5,"sc":2458,"mc":null,"sources":{"sc":"https://www.cpu-monkey.com/en/cpu-amd_ryzen_7_9850x3d"}},{"v":6,"sc":3275,"mc":25870,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_ultra_9_285k-vs-intel_core_ultra_7_265k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_ultra_9_285k-vs-intel_core_ultra_7_265k"}}],"r23":[2377,42522],"launchPrices":[{"cny":4799,"basis":"国行预售标价","source":"cn-ultra200s"}],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
       {"date":"2024-10-24","name":"Core Ultra 7 265K","spec":"8P+12E / 20 线程 · P 3.9–5.5 GHz · L3 30 MB · PBP 125 W / MTP 250 W","gb":[{"v":5,"sc":null,"mc":null},{"v":6,"sc":3210,"mc":21640,"sources":{"sc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_ultra_9_285k-vs-intel_core_ultra_7_265k","mc":"https://www.cpu-monkey.com/en/compare_cpu-intel_core_ultra_9_285k-vs-intel_core_ultra_7_265k"}}],"r23":[2020,35850],"launchPrices":[{"cny":3199,"basis":"国行预售标价","source":"cn-ultra200s"}],"r23Sources":{"sc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1","mc":"https://www.notebookcheck.net/Mobile-Processors-Benchmark-List.2436.0.html?archive=1&cinebench_r23_multi=1&cinebench_r23_single=1&codename=1&cores=1&cpu_fullname=1&l2cache=1&l3cache=1&mhz=1&month=24&or=0&perfrating=1&showBars=1&sort=b_768_2371&tdp=1&threads=1&turbo_mhz=1"},"r23Note":"Notebookcheck 数据库中位数；跨整机配置","benchmarkStatus":"未找到可核验记录"},
@@ -1377,7 +1299,7 @@ function render(seg, q) {
   const empty = document.getElementById("empty");
   const list = DATA[seg].filter(g => matchQuery(g, q));
   document.getElementById("generation-overview").innerHTML = `<strong>世代与代表型号速览</strong>
-    <p>按产品系列与发布批次排列；Core i、Core Ultra、Core X / Xeon W 以及 Xeon P / E 核平台各有独立演进路径。同系列不同后缀也可能使用不同架构。</p>
+    <p>${seg === "desktop" ? "仅列可单独购买的普通家用装机型号，按产品世代与发布批次排列；盒装和散片均计入，不含 Core X / HEDT 与 Xeon W。" : "按产品系列与发布批次排列；移动与服务器分别按其产品线梳理，同系列不同后缀也可能使用不同架构。"}</p>
     <ul>${list.map(g => `<li><b>${g.gen}</b>（${g.year}） · ${g.skus.map(s => `${s.name}（${s.date}）`).join(" / ")}</li>`).join("")}</ul>`;
   tbody.innerHTML = "";
   if (!list.length) { empty.classList.remove("hidden"); return; }
