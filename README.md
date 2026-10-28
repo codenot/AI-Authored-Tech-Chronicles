@@ -10,6 +10,7 @@
 - `site/<系列>/*.html`：独立文章或专题页面。
 - `site/assets/`：共用样式、增强脚本和图片。
 - `site/ai-programming-practices/research/`：8 份原始 Markdown 研究资料，系列首页提供文件与下载入口。
+- `site/cpu-chronicles/research/`：9 份 AMD、Intel、Apple CPU 家族历史、桌面与移动取证、评价口径研究材料，入口见该目录的 `README.md`。
 - `templates/`：复制使用的文章与系列模板，不参与部署。
 - `scripts/check_site.py`：本地链接、资源和锚点检查。
 
@@ -44,7 +45,7 @@ python3 scripts/check_site.py
 
 正文材料已整理为原生 HTML：AI 编程思想 3 篇、AI 编程最佳实践 8 篇、RTC 算法 8 篇、WebRTC ICE 3 篇、Git 工作流 1 篇、VPS/ASN 1 篇；已转换的 Markdown 不再保留。旧首页与 CPU 导航材料已并入现有导航页面。
 
-当前仅保留 AI 编程最佳实践的 8 份原始 Markdown 研究资料，位于 `site/ai-programming-practices/research/`。系列首页只提供原文件与下载入口，不将资料渲染为 HTML。
+AI 编程最佳实践的 8 份原始 Markdown 研究资料位于 `site/ai-programming-practices/research/`。系列首页只提供原文件与下载入口，不将资料渲染为 HTML。CPU 历史研究材料另存于 `site/cpu-chronicles/research/`，包含三家厂商的家族时间线、评价证据与资料索引，检索截止日为 2026-10-28。
 
 AI 编程思想系列直接维护三篇 HTML 正文。流程、职责、认知路径、治理锚点和 Agent 交互图直接用 HTML/CSS 排版；异步状态图使用 `site/assets/images/ai-programming-philosophy/` 下的静态 SVG。三篇文章引用 `philosophy.css`，提供独立的章节版式、阅读路径、范式卡片和九步交互卡片；`philosophy.js` 仅增强阅读进度。正文与图解不依赖 Markdown、Mermaid 或其他运行时框架，发布时无需转换步骤。
 
@@ -68,3 +69,7 @@ AI 编程最佳实践的 8 篇正式文章在 `site/ai-programming-practices/`�
 普通页面使用相对路径以适配仓库子目录。`404.html` 可能在任意路径显示，因此其入口使用 `/AI-Authored-Tech-Chronicles/`；仓库改名或迁移到自定义域名根路径时，同步调整该文件和链接检查脚本中的项目路径。
 
 RTC 第一篇于 2026-10-14 重构为面向专业流媒体人员的回顾：先统一延迟与带宽口径、介绍 BBR/GCC 与 RTCP/TWCC，再用逐包账本、反馈流程和队列曲线演示闭环，最后回顾主要算法家族及反馈机制编年史。`rtc-intro.css` 提供 8 幅原生图解的局部样式；示例脚本只复算观测与队列，源码说明固定到 WebRTC 提交，史料区分论文、草案与 RFC 节点。
+
+桌面 CPU 编年史位于 `site/cpu-chronicles/desktop-cpu-timeline.html`，以 133 条记录按年月对齐 AMD、Intel、Apple。正文和引用直接保留在 HTML，`cpu-timeline.css` 提供桌面三列与窄屏滚动布局，`cpu-timeline.js` 仅增强筛选、搜索和依据展开。禁用 JavaScript 后仍可阅读全部内容；移动篇另列；服务器、工作站及 HEDT 留待独立篇目。
+
+移动 CPU 编年史位于 `site/cpu-chronicles/mobile-cpu-timeline.html`，以 109 条记录对照 AMD 与 Intel 的笔记本、二合一和上网本路线。完整日期与事件类型仅在左轴显示，厂商格不重复时间。复用时间轴样式和交互，`mobile-cpu-timeline.css` 调整两列布局与固定时间轴；检索包含左轴年份，性能评价保留原作者的整机与功耗条件。

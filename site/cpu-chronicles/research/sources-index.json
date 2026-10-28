@@ -1,0 +1,6275 @@
+{
+  "compiled_on": "2026-10-28",
+  "description": "研究材料中引用地址的去重索引。包含原文、目录入口与待归档线索；收录不表示全部链接全文已读或当前可访问，证据状态以对应研究笔记为准。",
+  "source_count": 493,
+  "sources": [
+    {
+      "url": "https://apple2history.org/dl/Apple_II_Redbook.pdf",
+      "host": "apple2history.org",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 173,
+          "label": "h02"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 79,
+          "label": "h02"
+        }
+      ]
+    },
+    {
+      "url": "https://archive.computerhistory.org/resources/access/text/2013/04/102723427-05-01-acc.pdf",
+      "host": "archive.computerhistory.org",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 112,
+          "label": "Intel 同期原始产品材料"
+        }
+      ]
+    },
+    {
+      "url": "https://archive.computerhistory.org/resources/access/text/2019/04/102779994-05-09-acc.pdf",
+      "host": "archive.computerhistory.org",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 178,
+          "label": "h05b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 85,
+          "label": "h05b"
+        }
+      ]
+    },
+    {
+      "url": "https://archive.computerhistory.org/resources/text/Apple/Apple.AppleI.1976.102646518.pdf",
+      "host": "archive.computerhistory.org",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 172,
+          "label": "h01"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 78,
+          "label": "h01"
+        }
+      ]
+    },
+    {
+      "url": "https://arstechnica.com/gadgets/2008/11/nehalem-launch-review/",
+      "host": "arstechnica.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 20,
+          "label": "原始测试，Valve Hardware Tests"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 123,
+          "label": "Joel Hruska 原始评测"
+        }
+      ]
+    },
+    {
+      "url": "https://arstechnica.com/gadgets/2022/03/mac-studio-review-a-nearly-perfect-workhorse-mac/",
+      "host": "arstechnica.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 290,
+          "label": "r05"
+        }
+      ]
+    },
+    {
+      "url": "https://arstechnica.com/gadgets/2025/01/intel-rounds-out-core-ultra-200-laptop-cpus-with-new-but-less-advanced-models/",
+      "host": "arstechnica.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 72,
+          "label": "Intel 对记者的直接架构确认"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 74,
+          "label": "Ars 记者得到的 Intel 直接确认"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.computerhistory.org/components/intel/_dataBooks/1985_Intel_Microcontroller_Handbook.pdf",
+      "host": "bitsavers.computerhistory.org",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 111,
+          "label": "1985 原始 Microcontroller Handbook"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.computerhistory.org/components/intel/iAPX_432/171821-001_Introduction_to_the_iAPX_432_Architecture_Aug81.pdf",
+      "host": "bitsavers.computerhistory.org",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 89,
+          "label": "Intel 架构手册原件"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 183,
+          "label": "Bitsavers AMD 原件档案"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/AMD_Geode/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 217,
+          "label": "a25"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/Am29000/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 203,
+          "label": "a11"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/_dataBooks/1977_AMD_8080A_9080A_MOS_Microprocessor_Handbook.pdf",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 193,
+          "label": "a01"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/_dataBooks/1988_AMD_8051_Microcontrollers.pdf",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 198,
+          "label": "a06"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/bitslice/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 205,
+          "label": "a13"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/bitslice/1978_The_Am2900_Family_Data_Book.pdf",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 195,
+          "label": "a03"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/x86/1992_AMD_Personal_Computer_Microprocessors_Data_Book.pdf",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 199,
+          "label": "a07"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/amd/z8000/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 196,
+          "label": "a04"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/intel/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 138,
+          "label": "Bitsavers 的 Intel 原始材料目录"
+        }
+      ]
+    },
+    {
+      "url": "https://bitsavers.trailing-edge.com/components/intel/i960/",
+      "host": "bitsavers.trailing-edge.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 90,
+          "label": "原始 Intel 手册归档目录"
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.embeddedts.com/resource-attachments/ElanSC520-datasheet.pdf",
+      "host": "cdn.embeddedts.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 201,
+          "label": "a09"
+        }
+      ]
+    },
+    {
+      "url": "https://cdrdv2-public.intel.com/332051/xeon-d-1500-datasheet-vol-2.pdf",
+      "host": "cdrdv2-public.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 81,
+          "label": "2015 年数据手册"
+        }
+      ]
+    },
+    {
+      "url": "https://cdrdv2-public.intel.com/854694/Public%20Real%20Time%20Gold%20Deck%20Q2-2025%20RDC-831868-update.pdf",
+      "host": "cdrdv2-public.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 81,
+          "label": "Intel 2025 实时计算资料"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 102,
+          "label": "Intel 2025 实时计算资料"
+        }
+      ]
+    },
+    {
+      "url": "https://cdrdv2-public.intel.com/872188/872188-001.pdf",
+      "host": "cdrdv2-public.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 60,
+          "label": "2026-01 数据手册"
+        }
+      ]
+    },
+    {
+      "url": "https://community.intel.com/cipcp26785/attachments/cipcp26785/processors/6462/1/Xeon%2520E5-2600%2520v3%2520Performance%2520Tuning.pdf",
+      "host": "community.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 72,
+          "label": "Intel 性能调优表"
+        }
+      ]
+    },
+    {
+      "url": "https://community.intel.com/t5/Blogs/Tech-Innovation/Client/Intel-Core-13th-and-14th-Gen-Desktop-Instability-Root-Cause/post/1633239",
+      "host": "community.intel.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 57,
+          "label": "Intel 2024 年根因更新旧地址"
+        }
+      ]
+    },
+    {
+      "url": "https://d1io3yog0oux5.cloudfront.net/_963ca61a00a1833982d0781f305879b5/amd/news/2017-07-27_AMD_Completes_Ryzen_Mainstream_Desktop_Lineup_780.pdf",
+      "host": "d1io3yog0oux5.cloudfront.net",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 74,
+          "label": "N07"
+        }
+      ]
+    },
+    {
+      "url": "https://d1io3yog0oux5.cloudfront.net/_e1df4b2e16a695782160a442d8457838/intel/news/2025-01-06_Intel_Extends_Leadership_in_AI_PCs_and_Edge_1722.pdf",
+      "host": "d1io3yog0oux5.cloudfront.net",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 59,
+          "label": "2025-01-06 官方资料 PDF"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 72,
+          "label": "Intel CES 2025 原始稿 P4"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 73,
+          "label": "Intel CES 2025 原稿的可用性段"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 74,
+          "label": "Intel 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://d1io3yog0oux5.cloudfront.net/_ef0e74a029a7ab7ac2a7aade0699acb6/intel/news/2023-01-03_CES_Intel_Extends_Performance_Leadership_with_1596.pdf",
+      "host": "d1io3yog0oux5.cloudfront.net",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 105,
+          "label": "第十三代移动与 N 线原稿"
+        }
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/metal/capabilities/",
+      "host": "developer.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 292,
+          "label": "metal"
+        }
+      ]
+    },
+    {
+      "url": "https://device.report/m/019ba491af10044ce12544a25d1baaceb2394673179e129e1bd3435d81bb493f.pdf",
+      "host": "device.report",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 79,
+          "label": "Intel fact sheet 扫描副本"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2021/archive/2017-01-03-editorials-get-ready-best-new-pcs-new-year-new-7th-generation-intel-core-processors.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 80,
+          "label": "Intel 当天声明 PDF"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2021/archive/2017-01-04-news-overclocking-records-set-7th-gen-intel-core-processors.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 80,
+          "label": "当天超频记录说明"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2021/archive/2019-04-23-news-9th-gen-intel-core-mobile-h-series.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 101,
+          "label": "第九代 H 系列原稿"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2021/archive/2019-08-01-news-intel-launches-first-10th-gen-intel-core-processors-redefining-next-era-laptop-experiences.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 48,
+          "label": "官方发布稿 PDF"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 39,
+          "label": "Intel 原始发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2021/data-center/4004-infographic.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 13,
+          "label": "官方 50 周年资料"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2023/client-computing/Intel-N-series-Processors-Media_Presentation.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 101,
+          "label": "官方 2023 资料"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 59,
+          "label": "Intel 官方 N 线规格"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/2024/client-computing/Media-Deck-Intel-Core-Processors-HXU-Mobile-65-35W-Desktop.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 68,
+          "label": "官方规格资料包"
+        }
+      ]
+    },
+    {
+      "url": "https://download.intel.com/newsroom/archive/2025/en-us-2022-02-23-intel-expands-mobile-leadership-brings-enthusiast-performance-to-thinandlight-laptops.pdf",
+      "host": "download.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 104,
+          "label": "Alder Lake P/U 扩线原稿"
+        }
+      ]
+    },
+    {
+      "url": "https://downloads.reactivemicro.com/Apple%20II%20Items/Documentation/Manuals/IIgs/IIgs%20Hardware%20Reference.pdf",
+      "host": "downloads.reactivemicro.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 177,
+          "label": "h05"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 84,
+          "label": "h05"
+        }
+      ]
+    },
+    {
+      "url": "https://edc.intel.com/content/www/ca/fr/design/products/platforms/processor-and-core-i3-n-series-datasheet-volume-1-of-2/002/revision-history/",
+      "host": "edc.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 59,
+          "label": "官方数据手册修订记录"
+        }
+      ]
+    },
+    {
+      "url": "https://everymac.com/systems/by_processor/",
+      "host": "everymac.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 296,
+          "label": "everymac"
+        }
+      ]
+    },
+    {
+      "url": "https://everymac.com/systems/by_processor/strongarm.html",
+      "host": "everymac.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 297,
+          "label": "newton"
+        }
+      ]
+    },
+    {
+      "url": "https://fsck.technology/documentation/Apple/Apple%20Spec%20PDFs/Applespec03/Systems/Apple%20II/Apple%20III.pdf",
+      "host": "fsck.technology",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 175,
+          "label": "h03b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 81,
+          "label": "h03b"
+        }
+      ]
+    },
+    {
+      "url": "https://gamersnexus.net/cpus/get-it-together-intel-core-ultra-9-285k-cpu-review-benchmarks-vs-7800x3d-9950x-more",
+      "host": "gamersnexus.net",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 71,
+          "label": "原始评测及供电测量说明"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 127,
+          "label": "GamersNexus 原始评测"
+        }
+      ]
+    },
+    {
+      "url": "https://gamersnexus.net/guides/3423-intel-i7-7700k-revisit-benchmark-vs-9700k-2700-9900k",
+      "host": "gamersnexus.net",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 47,
+          "label": "原始重测及测试条件"
+        },
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 81,
+          "label": "GN 回顾供货"
+        }
+      ]
+    },
+    {
+      "url": "https://gamersnexus.net/hwreviews/2035-intel-skylake-i7-6700k-gaming-benchmarks-and-review",
+      "host": "gamersnexus.net",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 41,
+          "label": "当时 Skylake 对比评测"
+        }
+      ]
+    },
+    {
+      "url": "https://gamersnexus.net/hwreviews/3412-intel-i7-2600k-revisit-2018-benchmarks-vs-9900k-ryzen-more",
+      "host": "gamersnexus.net",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 36,
+          "label": "2018 原作者重测"
+        }
+      ]
+    },
+    {
+      "url": "https://hardware-mag.de/artikel/notebooks/intel_pentium_m_735_dothan_im_praxistest/10/",
+      "host": "hardware-mag.de",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 22,
+          "label": "同期笔记本实测"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 85,
+          "label": "原始评分及推算说明"
+        }
+      ]
+    },
+    {
+      "url": "https://hardware-mag.de/artikel/notebooks/intel_pentium_m_735_dothan_im_praxistest/4/",
+      "host": "hardware-mag.de",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 85,
+          "label": "电池与空闲续航"
+        }
+      ]
+    },
+    {
+      "url": "https://hardware-mag.de/artikel/notebooks/intel_pentium_m_735_dothan_im_praxistest/5/",
+      "host": "hardware-mag.de",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 85,
+          "label": "测试平台"
+        }
+      ]
+    },
+    {
+      "url": "https://help.apple.com/pdf/security/en_US/apple-platform-security-guide.pdf",
+      "host": "help.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 291,
+          "label": "security"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 181,
+          "label": "AMD SEC 年报/季度报告"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-16-000111/amd-12262015x10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 239,
+          "label": "b14"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-25-000012/amd-20241228.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 268,
+          "label": "c26"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 301,
+          "label": "d25"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000891618-94-000068/10-K.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 207,
+          "label": "a15"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000891618-94-000068/EX-13.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 206,
+          "label": "a14"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0000950131-95-000530/10-K.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 204,
+          "label": "a12"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001012870-00-001494/10-K405.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 213,
+          "label": "a21"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001012870-01-001228/0001.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 214,
+          "label": "a22"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001012870-03-001181/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 215,
+          "label": "a23"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 100,
+          "label": "O02"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001012870-97-000533/10-K.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 209,
+          "label": "a17"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001012870-99-000892/EX-13.txt",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 211,
+          "label": "a19"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-04-037179/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 216,
+          "label": "a24"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-04-062410/dex991.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 101,
+          "label": "O03"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-05-039876/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 218,
+          "label": "a26"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 102,
+          "label": "O04"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-05-075683/dex991.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 305,
+          "label": "e01"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-06-040130/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 219,
+          "label": "a27"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 103,
+          "label": "O05"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-08-038588/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 222,
+          "label": "a30"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-09-036235/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 223,
+          "label": "a31"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 105,
+          "label": "O07"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-10-035218/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 224,
+          "label": "a32"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 106,
+          "label": "O08"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-11-040392/d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 225,
+          "label": "a33"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 107,
+          "label": "O09"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-12-075837/d257108d10k.htm",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 230,
+          "label": "b05"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-14-389701/0001193125-14-389701.pdf",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 242,
+          "label": "b17"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 181,
+          "label": "AMD IR 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1007/amd-showcases-industry-leading-innovation-across-the-high-performance-computing-ecosystem-at-computex-2021",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 76,
+          "label": "N09"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1040/amd-presents-latest-high-performance-computing-technologies-in-2022-product-premiere-livestream",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 260,
+          "label": "c18"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 88,
+          "label": "O05"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 122,
+          "label": "O24"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1051/new-amd-ryzen-threadripper-pro-5000-wx-series-processors-are-the-ultimate-workstation-processors-for-professionals-with-up-to-double-the-performance-of-competing-solutions",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 261,
+          "label": "c19"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1055/3rd-gen-amd-epyc-processors-with-amd-3d-v-cache-technology-deliver-outstanding-leadership-performance-in-technical-computing-workloads",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 284,
+          "label": "d08"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1079/amd-announces-ryzen-embedded-r2000-series-with-optimized-performance-and-power-efficiency-for-industrial-machine-vision-iot-and-thin-client-solutions",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 285,
+          "label": "d09"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1089/amdlaunches-ryzen-7000-series-desktop-processors-with-zen-4-architecture-the-fastest-core-in-gaming",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 262,
+          "label": "c20"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1092/amd-launches-ryzen-embedded-v3000-series-processors-delivering-new-levels-of-performance-and-power-efficiency-for-always-on-storage-and-networking",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 286,
+          "label": "d10"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1100/offering-unmatched-performance-leadership-energy-efficiency-and-next-generation-architecture-amd-brings-4th-gen-amd-epyc-processors-to-the-modern-data-center",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 287,
+          "label": "d11"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1111/amdextends-its-leadership-with-the-introduction-of-its-broadest-portfolio-of-high-performance-pc-products-for-mobile-and-desktop",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 265,
+          "label": "c23"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 89,
+          "label": "O06"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 124,
+          "label": "O26"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1126/amd-bolsters-embedded-portfolio-with-new-ryzen-embedded-5000-series-processors-for-networking-solutions",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 289,
+          "label": "d13"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1136/amd-expands-leadership-data-center-portfolio-with-new-epyc-cpus-and-shares-details-on-next-generation-amd-instinct-accelerator-and-software-enablement-for-generative-ai",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 291,
+          "label": "d15"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1162/amd-introduces-new-amd-ryzen-threadripper-7000-series-processors-and-ryzen-threadripper-pro-7000-wx-series-processors-for-the-ultimate-workstation",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 266,
+          "label": "c24"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1172/amd-extends-mobile-pc-leadership-with-amd-ryzen-8040-series-processors-and-makes-ryzen-ai-software-widely-available-advancing-the-ai-pc-era",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 90,
+          "label": "N01"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1177/amd-reveals-next-gen-desktop-processors-for-extreme-pc-gaming-and-creator-performance",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 267,
+          "label": "c25"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 86,
+          "label": "O03"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1202/amd-unveils-next-gen-zen-5-ryzen-processors-to-power-advanced-ai-experiences",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 269,
+          "label": "c27"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 125,
+          "label": "O27"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1219/amd-launches-5th-gen-amd-epyc-cpus-maintaining-leadership-performance-and-features-for-the-modern-data-center",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 296,
+          "label": "d20"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1232/amd-announces-expanded-consumer-and-commercial-ai-pc-portfolio-at-ces",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 271,
+          "label": "c29"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 126,
+          "label": "O28"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1233/amd-announces-new-graphics-and-gaming-products-for-ultimate-gameplay-experience-at-ces",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 272,
+          "label": "c30"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 90,
+          "label": "O07"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 127,
+          "label": "O29"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1239/amd-unveils-5th-gen-amd-epyc-embedded-processors-delivering-leadership-performance-efficiency-and-long-product-lifecycles-for-networking-storage-and-industrial-edge-markets",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 297,
+          "label": "d21"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1249/amd-unveils-epyc-4005-series-processors-delivering-workload-optimized-solutions-for-entry-level-enterprise",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 298,
+          "label": "d22"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1253/amd-introduces-new-radeon-graphics-cards-and-ryzen-threadripper-processors-at-computex-2025",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 274,
+          "label": "c32"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1270/amd-expands-ai-leadership-across-client-graphics-and-software-with-new-ryzen-ryzen-ai-and-amd-rocm-announcements-at-ces-2026",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 273,
+          "label": "c31"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 91,
+          "label": "O08"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 128,
+          "label": "O30"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1271/amd-introduces-ryzen-ai-embedded-processor-portfolio-powering-ai-driven-immersive-experiences-in-automotive-industrial-and-physical-ai",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 302,
+          "label": "d26"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1281/amd-gives-consumers-and-businesses-more-ai-pc-options-with-expanded-ryzen-ai-400-series-portfolio",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 275,
+          "label": "c33"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 87,
+          "label": "O04"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 303,
+          "label": "d27"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/168/amd-fusion-apu-era-begins",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 226,
+          "label": "b01"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 108,
+          "label": "O10"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/180/amd-introduces-the-worlds-most-advanced-x86-processor-designed-for-the-demanding-datacenter",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 221,
+          "label": "a29"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/199/new-amd-a-series-processors-bring-faster-speeds-high-core-count-and-amd-radeon-hd-7000-series-graphics-to-do-it-yourself-pc-enthusiasts-and-gamers",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 69,
+          "label": "N02"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/215/new-amd-a-series-apu-offers-mobile-pc-users-innovative-experiences-elite-graphics-performance-and-longer-battery-life",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 234,
+          "label": "b09"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 111,
+          "label": "O13"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/32/amd-ships-first-bulldozer-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 229,
+          "label": "b04"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/358/media-alert-amd-a-series-desktop-processors-set-the-apu-bar",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 68,
+          "label": "N01"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/360/amd-ushers-in-next-generation-of-computing-with-amd-a-series-apus",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 228,
+          "label": "b03"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 109,
+          "label": "O11"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/40/amd-extends-graphics-and-compute-leadership-with-2013-elite-a-series-desktop-apus",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 71,
+          "label": "N04"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/479/amd-revolutionizes-compute-and-ultrahd-entertainment-with-2014-amd-a-series-accelerated-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 235,
+          "label": "b10"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 84,
+          "label": "O01"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/510/next-generation-mobile-apus-extend-amd-performance-leadership-add-cutting-edge-features-and-enhanced-security",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 237,
+          "label": "b12"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 113,
+          "label": "O15"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/528/amd-announces-its-most-advanced-mobile-apus-for-consumer-and-commercial-notebooks",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 236,
+          "label": "b11"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 114,
+          "label": "O16"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/614/more-performance-features-and-value-new-amd-a-series-desktop-processors-deliver-best-in-class-experience-for-esports-and-online-gaming",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 72,
+          "label": "N05"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/616/amd-unveils-6th-generation-a-series-processor-bringing-unprecedented-hd-streaming-online-gaming-and-innovative-computing-experiences-to-notebooks-and-all-in-ones",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 238,
+          "label": "b13"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 115,
+          "label": "O17"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/64/unlock-your-record-setting-amd-fx-series-processor-today",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 231,
+          "label": "b06"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/661/amd-and-key-industry-partners-welcome-the-amd-opterontm-a1100-soc-to-the-64-bit-arm-datacenter-arena",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 241,
+          "label": "b16"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/679/amd-accelerates-availability-of-mobile-7th-generation-amd-a-series-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 116,
+          "label": "O18"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/689/work-faster-play-longer-with-new-mobile-7th-generation-amd-a-series-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 240,
+          "label": "b15"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 117,
+          "label": "O19"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/712/new-mainstream-esports-ready-gaming-pcs-powered-by-7th-generation-amd-a-series-desktop-processors-debut-globally",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 73,
+          "label": "N06"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/72/amd-unveils-innovative-new-apus-and-socs-that-give-consumers-a-more-exciting-and-immersive-experience",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 227,
+          "label": "b02"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 112,
+          "label": "O14"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/753/amd-ryzentm-7-desktop-processors-featuring-record-breaking-overclocking-performance-available-worldwide-today",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 243,
+          "label": "c01"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/766/amd-raises-expectations-for-server-performance-unveils-epyc-processor-brand-for-the-datacenter",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 277,
+          "label": "d01"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/773/amd-epyc-datacenter-processor-launches-with-record-setting-performance-optimized-platforms-and-global-server-ecosystem-support",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 278,
+          "label": "d02"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/775/amd-ryzen-pro-desktop-processors-deliver-professional-grade-performance-security-and-reliability-for-businesses-worldwide",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 244,
+          "label": "c02"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/786/amd-launches-the-highest-performance-desktop-processor-ever-with-ryzen-threadripper-high-end-desktop-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 245,
+          "label": "c03"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/795/correcting-and-replacing----amd-introduces-new-ryzen-mobile-processors-the-worlds-fastest-processor-for-ultrathin-notebooks1",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 246,
+          "label": "c04"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 118,
+          "label": "O20"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/816/amd-launches-epyc-embedded-and-ryzen-embedded-processors-for-end-to-end-zen-experiences-from-the-core-to-the-edge",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 279,
+          "label": "d03"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/823/2nd-generation-amd-ryzen-processors-ultimate-desktop-cpus-for-high-performance-computing-available-april-19-worldwide",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 247,
+          "label": "c05"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/827/2nd-generation-amd-ryzen-desktop-processors-deliver-best-in-class-compute-performance-and-even-faster-gaming-framerates-than-previous-generation",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 248,
+          "label": "c06"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/844/world-record-breaking-2nd-generation-amd-ryzen-threadripper-processor-pre-sales-begin-today-with-initial-availability-aug-13",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 249,
+          "label": "c07"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/846/amd-launches-worlds-most-powerful-desktop-processor-bigger-better-2nd-generation-amd-ryzen-threadripper-processors-break-boundaries-of-high-end-desktop-market",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 250,
+          "label": "c08"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/850/amd-reimagines-everyday-computing-with-new-zen-based-athlon-desktop-processors-expands-commercial-client-portfolio-with-2nd-generation-ryzen-pro-desktop-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 251,
+          "label": "c09"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/86/second-generation-amd-a-series-apus-enable-best-in-class-pc-mobility-entertainment-and-gaming-experience-in-single-chip",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 232,
+          "label": "b07"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 110,
+          "label": "O12"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/870/amd-kicks-off-2019-offering-complete-mobile-portfolio-new-ryzen-athlon-and-a-series-processors-for-ultrathin-mainstream-and-chromebook-laptops",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 252,
+          "label": "c10"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 119,
+          "label": "O21"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/892/amd-announces-next-generation-leadership-products-at-computex-2019-keynote",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 253,
+          "label": "c11"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/899/amd-unleashes-ultimate-pc-gaming-platform-with-worldwide-availability-of-amd-radeon-rx-5700-series-graphics-cards-and-amd-ryzen-3000-series-desktop-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 254,
+          "label": "c12"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 85,
+          "label": "O02"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/904/2nd-gen-amd-epyc-processors-set-new-standard-for-the-modern-datacenter-with-record-breaking-performance-and-significant-tco-savings",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 281,
+          "label": "d05"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/926/amd-announces-worlds-highest-performance-desktop-and-ultrathin-laptop-processors-at-ces-2020",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 255,
+          "label": "c13"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 120,
+          "label": "O22"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/935/new-amd-processors-drive-high-performance-computing-for-embedded-industry",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 280,
+          "label": "d04"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/947/amd-delivers-ultimate-performance-and-work-anywhere-flexibility-with-amd-ryzen-pro-4000-series-mobile-processors",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 256,
+          "label": "c14"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/959/amd-announce-worlds-first-64-core-pro-workstation-the-lenovo-thinkstation-p620-the-pinnacle-of-performance-for-modern-professionals",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 257,
+          "label": "c15"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/962/amd-ryzen-4000-series-desktop-processors-with-amd-radeon-graphics-set-to-deliver-breakthrough-performance-for-commercial-and-consumer-desktop-pcs",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 75,
+          "label": "N08"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/972/amd-launches-amd-ryzen-5000-series-desktop-processors-the-fastest-gaming-cpus-in-the-world",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 258,
+          "label": "c16"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 93,
+          "label": "O10"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/979/amd-unveils-amd-ryzen-embedded-v2000-processors-with-enhanced-performance-and-power-efficiency",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 282,
+          "label": "d06"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/986/amd-announces-worlds-best-mobile-processors-in-ces-2021-keynote",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 259,
+          "label": "c17"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 121,
+          "label": "O23"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/news-events/press-releases/detail/993/amd-epyc-7003-series-cpus-set-new-standard-as-highest-performance-server-processor",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 283,
+          "label": "d07"
+        }
+      ]
+    },
+    {
+      "url": "https://ir.amd.com/sec-filings/content/0001193125-07-044191/0001193125-07-044191.pdf",
+      "host": "ir.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 220,
+          "label": "a28"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 104,
+          "label": "O06"
+        }
+      ]
+    },
+    {
+      "url": "https://manuals.plus/m/2d280ce2e9f9e91d27b3a5ded59a2ab8ec4b28f338f1d32e32bda41fcb1a590a.pdf",
+      "host": "manuals.plus",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 176,
+          "label": "h04"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 82,
+          "label": "h04"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.amd.com/news/2023-amd-newsroom-archive/",
+      "host": "newsroom.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 306,
+          "label": "e02"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.amd.com/news/aai-2026-6th-gen-epyc/",
+      "host": "newsroom.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 304,
+          "label": "d28"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.amd.com/news/amd-launches-ryzen-9-9950x3d2-dual-edition-processor/",
+      "host": "newsroom.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 80,
+          "label": "N13"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.intel.com/client-computing/ces-2026-intel-core-ultra-series-3-debut-first-built-on-intel-18a",
+      "host": "newsroom.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 60,
+          "label": "CES 新闻线索"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.intel.com/client-computing/intel-launches-core-series-2-processors-expands-edge-ai-portfolio",
+      "host": "newsroom.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 105,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.intel.com/client-computing/keynote-core-ultra-200v-series-mobile",
+      "host": "newsroom.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 57,
+          "label": "官方发布会记录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 69,
+          "label": "Intel 发布会记录"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.intel.com/intel-products/intel-launches-new-intel-xeon-600-processors-for-workstation",
+      "host": "newsroom.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 82,
+          "label": "2026 新平台发布稿中的前代比较"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 83,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.intel.com/press-kit/press-kit-intel-at-ces-2026",
+      "host": "newsroom.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 75,
+          "label": "CES 2026 官方资料包"
+        }
+      ]
+    },
+    {
+      "url": "https://newsroom.intel.com/zh-cn/%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%A1%E7%AE%97/%E8%8B%B1%E7%89%B9%E5%B0%94%E9%85%B7%E7%9D%BFultra-200hx-plus%E7%99%BB%E5%9C%BA%E7%A1%AC%E6%A0%B8%E6%80%A7%E8%83%BD%E7%94%B1%E6%AD%A4%E7%84%95%E6%96%B0",
+      "host": "newsroom.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 62,
+          "label": "官方中文发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://projectzero.google/2018/01/reading-privileged-memory-with-side.html",
+      "host": "projectzero.google",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 51,
+          "label": "Jann Horn：Reading privileged memory with a side-channel"
+        }
+      ]
+    },
+    {
+      "url": "https://savagetaylor.com/til/KB020991.html",
+      "host": "savagetaylor.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 200,
+          "label": "h19"
+        }
+      ]
+    },
+    {
+      "url": "https://security.apple.com/blog/expanding-pcc/",
+      "host": "security.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 280,
+          "label": "pcc2"
+        }
+      ]
+    },
+    {
+      "url": "https://security.apple.com/blog/private-cloud-compute/",
+      "host": "security.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 279,
+          "label": "pcc"
+        }
+      ]
+    },
+    {
+      "url": "https://security.apple.com/documentation/private-cloud-compute/",
+      "host": "security.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 281,
+          "label": "pccdocs"
+        }
+      ]
+    },
+    {
+      "url": "https://stevemorse.org/8086history/8086history.pdf",
+      "host": "stevemorse.org",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 15,
+          "label": "设计者论文"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 18,
+          "label": "8086 设计者论文"
+        }
+      ]
+    },
+    {
+      "url": "https://subscriptions.amd.com/newsletters/channelnews/images/archive/%7B72be457a-e9a1-44be-8008-c2b0925a0a97%7D_53574a_amd_elite_series_apu_product_summary.pdf",
+      "host": "subscriptions.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 70,
+          "label": "N03"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-afri/112189",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 182,
+          "label": "h09"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 87,
+          "label": "h09"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-am/112279",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 187,
+          "label": "h13"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 92,
+          "label": "h13"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-ca/112176",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 188,
+          "label": "h13b"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-euro/112188",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 181,
+          "label": "h08"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 86,
+          "label": "h08"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-ge/112109",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 185,
+          "label": "h12"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 90,
+          "label": "h12"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-il/112219",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 183,
+          "label": "h10"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 88,
+          "label": "h10"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-la/112190",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 180,
+          "label": "h07"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 83,
+          "label": "h07"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-lb/112184",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 179,
+          "label": "h06"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-mide/125093",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 267,
+          "label": "s10b"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-ph/112296",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 189,
+          "label": "h14"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 93,
+          "label": "h14"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-sa/112101",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 184,
+          "label": "h11"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 89,
+          "label": "h11"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-us/112053",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 186,
+          "label": "h12b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 91,
+          "label": "h12b"
+        }
+      ]
+    },
+    {
+      "url": "https://support.apple.com/specs",
+      "host": "support.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 293,
+          "label": "spec"
+        }
+      ]
+    },
+    {
+      "url": "https://timeline.intel.com/1976/mcs-48",
+      "host": "timeline.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 111,
+          "label": "MCS-48 官方历史"
+        }
+      ]
+    },
+    {
+      "url": "https://timeline.intel.com/1982/a-new-level-of-control",
+      "host": "timeline.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 111,
+          "label": "8096 官方历史"
+        }
+      ]
+    },
+    {
+      "url": "https://timeline.intel.com/2000/the-pentium-4",
+      "host": "timeline.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 25,
+          "label": "Intel 历史回顾"
+        }
+      ]
+    },
+    {
+      "url": "https://timeline.intel.com/2001/introducing-itanium",
+      "host": "timeline.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 95,
+          "label": "Intel 历史回顾"
+        }
+      ]
+    },
+    {
+      "url": "https://timeline.intel.com/2014/breaking-the-14-nanometer-barrier%3A-the-intel-core-m",
+      "host": "timeline.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 42,
+          "label": "Intel Core M 历史条目"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 31,
+          "label": "Intel Core M 历史条目"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/blogs/2023/4th-gen-amd-epyc-8004-series-processors-designed-.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 307,
+          "label": "e03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/blogs/2024/amd-introducing-energy-efficient-epyc--embedded-8.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 295,
+          "label": "d19"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/blogs/2024/introducing-the-amd-epyc-4000-series-processors.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 294,
+          "label": "d18"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/blogs/2025/amd-introduces-epyc-embedded-4005-processors-for-low.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 299,
+          "label": "d23"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/blogs/2025/amd-ryzen-embedded-9000-series-brings-next-gen-performa.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 300,
+          "label": "d24"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 276,
+          "label": "c34"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/newsroom/press-releases/2022-3-15-amd-launches-the-ultimate-gaming-processor-brings.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 77,
+          "label": "N10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/newsroom/press-releases/2022-5-22-amd-showcases-industry-leading-gaming-commercial-.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 264,
+          "label": "c22"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/newsroom/press-releases/2023-3-14-amd-brings-world-class-performance-of-4th-gen-amd-.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 288,
+          "label": "d12"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/newsroom/press-releases/2023-9-18-amd-completes-4th-gen-epyc-family-with-the-amd-epy.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 292,
+          "label": "d16"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/newsroom/press-releases/2024-10-31-the-gaming-legend-continues--amd-introduces-next-.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 78,
+          "label": "N11"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/embedded/epyc.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 181,
+          "label": "EPYC Embedded 家族"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/embedded/epyc/7000-series.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 290,
+          "label": "d14"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7800x3d.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 97,
+          "label": "7800X3D 为 04/06/2023"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7950x3d.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 97,
+          "label": "7950X3D 的 Launch Date 为 02/28/2023"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9800x3d.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 97,
+          "label": "9800X3D 为 11/07/2024"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 97,
+          "label": "9950X3D 为 03/12/2025"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/laptop/ryzen/100-series/amd-ryzen-7-170.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 104,
+          "label": "AMD Ryzen 7 170"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 93,
+          "label": "N04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/laptop/ryzen/100-series/amd-ryzen-9-180.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 104,
+          "label": "AMD Ryzen 9 180"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 94,
+          "label": "N05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/laptop/ryzen/7000-series/amd-ryzen-9-7950hx3d.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 138,
+          "label": "AMD 7945HX3D 官方型号页"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-9-8945hx.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 92,
+          "label": "N03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-5-340.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 91,
+          "label": "N02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-9-hx-370.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 95,
+          "label": "N06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/processors/server/epyc.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 181,
+          "label": "EPYC 产品"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/products/specifications.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 181,
+          "label": "AMD 产品规格目录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/resources/support-articles/release-notes/RN-RYZEN-MASTER-2-14-0-3205.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 270,
+          "label": "c28"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/en/search/documentation/hub.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 181,
+          "label": "AMD 文档中心"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/zh-tw/blogs/2024/amd-launches-ryzen-embedded-8000-series-processor.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 293,
+          "label": "d17"
+        }
+      ]
+    },
+    {
+      "url": "https://www.amd.com/zh-tw/products/processors/laptop/ryzen/7000-series/amd-ryzen-5-7520u.html",
+      "host": "www.amd.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 263,
+          "label": "c21"
+        },
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 123,
+          "label": "O25"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/Show/Index/11170?all=False&cPage=50&page=16&slug=the-amd-zen-and-ryzen-7-review-a-deep-dive-on-1800x-1700x-and-1700&sort=0",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 317,
+          "label": "r10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/11170/the-amd-zen-and-ryzen-7-review-a-deep-dive-on-1800x-1700x-and-1700",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 316,
+          "label": "r09"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/1215",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 309,
+          "label": "r02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/14043/upgrading-from-an-intel-core-i7-2600k-testing-sandy-bridge-in-2019",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 37,
+          "label": "AnandTech 的 2600K 重测"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/14605/the-and-ryzen-3700x-3900x-review-raising-the-bar",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 319,
+          "label": "r12"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/16214/amd-zen-3-ryzen-deep-dive-review-5950x-5900x-5800x-and-5700x-tested",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 320,
+          "label": "r13"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/16252/mac-mini-apple-m1-tested",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 287,
+          "label": "r02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/165",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 308,
+          "label": "r01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/17024/apple-m1-max-performance-review/3",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 289,
+          "label": "r04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/2045",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 146,
+          "label": "Core 2"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/2477/2",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 313,
+          "label": "r06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/2658",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 146,
+          "label": "Nehalem"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/4083/the-sandy-bridge-review-intel-core-i7-2600k-i5-2500k-core-i3-2100-tested",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 146,
+          "label": "Sandy Bridge"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/6508/the-new-opteron-6300-finally-tested",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 315,
+          "label": "r08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/661/24",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 146,
+          "label": "Pentium 4 首发"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/6974/amd-kabini-review",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 314,
+          "label": "r07"
+        }
+      ]
+    },
+    {
+      "url": "https://www.anandtech.com/show/7335/the-iphone-5s-review/6",
+      "host": "www.anandtech.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 286,
+          "label": "r01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/br/newsroom/2017/09/apple-watch-series-3-features-built-in-cellular-and-more/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 259,
+          "label": "s03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ca/newsroom/2003/06/23Apple-Unleashes-the-Worlds-Fastest-Personal-Computer-the-Power-Mac-G5/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 192,
+          "label": "h15"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 95,
+          "label": "h15"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ca/newsroom/2017/06/imac-receives-major-update-featuring-more-powerful-graphics-faster-processors-thunderbolt-3-brighter-displays/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 106,
+          "label": "di08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ca/newsroom/2018/10/new-mac-mini-packs-huge-punch/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 107,
+          "label": "di09"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ca/newsroom/2019/03/airpods-the-worlds-most-popular-wireless-headphones-are-getting-even-better/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 282,
+          "label": "h1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/es/newsroom/2012/10/23Apple-Introduces-iPad-mini/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 206,
+          "label": "a05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/hk/en/newsroom/2012/09/12Apple-Introduces-iPhone-5/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 205,
+          "label": "a04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ie/newsroom/2002/05/14Apple-Introduces-Xserve-1U-Rack-Mount-Server/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 198,
+          "label": "h18"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ie/newsroom/2022/09/apple-debuts-iphone-14-pro-and-iphone-14-pro-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 226,
+          "label": "a20"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ie/newsroom/2025/10/new-ipad-pro-14-inch-macbook-pro-now-available/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 250,
+          "label": "m12b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ie/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 275,
+          "label": "home5"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/in/apple-homeview/specs/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 276,
+          "label": "home5b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/it/newsroom/2013/09/10Apple-Announces-iPhone-5s-The-Most-Forward-Thinking-Smartphone-in-the-World/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 207,
+          "label": "a06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/jp/newsroom/2014/09/09Apple-Announces-iPhone-6-iPhone-6-Plus-The-Biggest-Advancements-in-iPhone-History/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 208,
+          "label": "a07"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ml/newsroom/2025/09/apple-introduces-iphone-17/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 231,
+          "label": "a23"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/ne/newsroom/2015/09/09Apple-Introduces-iPad-Pro-Featuring-Epic-12-9-inch-Retina-Display/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 211,
+          "label": "a10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2000/07/19Apple-Debuts-New-Power-Mac-G4s-with-Dual-Processors/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 190,
+          "label": "h14b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 94,
+          "label": "h14b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2001/01/09Apple-Unveils-One-Inch-Thick-Titanium-PowerBook-G4/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 191,
+          "label": "h14c"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2005/06/06Apple-to-Use-Intel-Microprocessors-Beginning-in-2006/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 195,
+          "label": "h16"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2005/10/19Apple-Introduces-Power-Mac-G5-Quad-Power-Mac-G5-Dual/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 194,
+          "label": "h15c"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 97,
+          "label": "h15c"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2006/01/10Apple-Unveils-New-iMac-with-Intel-Core-Duo-Processor/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 196,
+          "label": "h16b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 98,
+          "label": "h16b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2006/08/07Apple-Unveils-New-Mac-Pro-Featuring-Quad-64-bit-Xeon-Processors/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 197,
+          "label": "h17"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2006/09/06Apple-iMac-Line-Now-Features-Intel-Core-2-Duo-Processors-In-Every-Model/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 99,
+          "label": "di01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2009/04/07Apple-Updates-Xserve-with-Twice-the-Performance/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 199,
+          "label": "h18b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2009/10/20Apple-Unveils-New-iMac-With-21-5-and-27-inch-Displays/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 100,
+          "label": "di02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2010/01/27Apple-Launches-iPad/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 201,
+          "label": "a01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2010/03/05iPad-Available-in-US-on-April-3/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 202,
+          "label": "a01b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2010/07/27Apple-Updates-iMac-Line/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 101,
+          "label": "di03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2011/05/03Apple-Announces-New-iMac-With-Next-Generation-Quad-Core-Processors-Graphics-Thunderbolt-I-O-Technology/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 102,
+          "label": "di04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2012/03/07Apple-Launches-New-iPad/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 204,
+          "label": "a03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2012/10/23All-New-iMac-Features-Stunning-Design-Brilliant-Display-Faster-Performance/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 103,
+          "label": "di05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2013/09/24Apple-Updates-iMac/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 104,
+          "label": "di06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2014/09/09Apple-Unveils-Apple-Watch-Apples-Most-Personal-Device-Ever/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 257,
+          "label": "s01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2014/10/16Apple-Introduces-iPad-Air-2-The-Thinnest-Most-Powerful-iPad-Ever/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 209,
+          "label": "a08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2015/09/09Apple-Introduces-iPhone-6s-iPhone-6s-Plus/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 210,
+          "label": "a09"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2015/10/13Apple-Updates-iMac-Family-with-Stunning-New-Retina-Displays/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 105,
+          "label": "di07"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2015/11/09Epic-12-9-inch-iPad-Pro-Available-to-Order-Online-Wednesday-Arrives-in-Stores-Later-This-Week/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 212,
+          "label": "a10b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2016/09/apple-introduces-apple-watch-series-2/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 258,
+          "label": "s02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2016/09/apple-introduces-iphone-7-iphone-7-plus/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 213,
+          "label": "a11"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2017/06/homepod-reinvents-music-in-the-home/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 271,
+          "label": "home1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2017/06/ipad-pro-10-5-and-12-9-inch-models-introduces-worlds-most-advanced-display-breakthrough-performance/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 214,
+          "label": "a12"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2017/09/iphone-8-and-iphone-8-plus-a-new-generation-of-iphone/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 215,
+          "label": "a13"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 216,
+          "label": "a13b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2018/09/apple-introduces-iphone-xr/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 218,
+          "label": "a14b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2018/09/iphone-xs-and-iphone-xs-max-bring-the-best-and-biggest-displays-to-iphone/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 217,
+          "label": "a14"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2018/09/redesigned-apple-watch-series-4-revolutionizes-communication-fitness-and-health/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 260,
+          "label": "s04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2018/10/new-ipad-pro-with-all-screen-design-is-most-advanced-powerful-ipad-ever/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 219,
+          "label": "a15"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2019/09/apple-introduces-dual-camera-iphone-11/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 220,
+          "label": "a16"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2019/09/apple-unveils-apple-watch-series-5/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 261,
+          "label": "s05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/03/apple-unveils-new-ipad-pro-with-lidar-scanner-and-trackpad-support-in-ipados/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 221,
+          "label": "a17"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/06/apple-announces-mac-transition-to-apple-silicon/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 298,
+          "label": "transition"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/08/27-inch-imac-gets-a-major-update/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 108,
+          "label": "di10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/09/apple-unveils-all-new-ipad-air-with-a14-bionic-apples-most-advanced-chip/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 222,
+          "label": "a18"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/09/apple-watch-series-6-delivers-breakthrough-wellness-and-fitness-capabilities/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 262,
+          "label": "s06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/10/all-new-ipad-air-with-advanced-a14-bionic-chip-available-to-order-starting-today/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 223,
+          "label": "a18b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/10/apple-introduces-homepod-mini-a-powerful-smart-speaker-with-amazing-sound/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 272,
+          "label": "home2"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/11/apple-unleashes-m1/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 236,
+          "label": "m01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2020/11/introducing-the-next-generation-of-mac/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 237,
+          "label": "m01b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 109,
+          "label": "m01b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2021/09/apple-introduces-iphone-13-and-iphone-13-mini/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 224,
+          "label": "a19"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2021/09/apple-reveals-apple-watch-series-7-featuring-the-largest-most-advanced-display/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 263,
+          "label": "s07"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2021/10/introducing-m1-pro-and-m1-max-the-most-powerful-chips-apple-has-ever-built/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 238,
+          "label": "m02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2022/03/apple-unveils-all-new-mac-studio-and-studio-display/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 110,
+          "label": "dm01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2022/03/apple-unveils-m1-ultra-the-worlds-most-powerful-chip-for-a-personal-computer/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 239,
+          "label": "m03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2022/06/apple-unveils-m2-with-breakthrough-performance-and-capabilities/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 240,
+          "label": "m04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2022/09/apple-announces-the-next-generation-of-airpods-pro/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 283,
+          "label": "h2"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2022/09/apple-reveals-apple-watch-series-8-and-the-new-apple-watch-se/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 264,
+          "label": "s08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2022/10/apple-introduces-the-powerful-next-generation-apple-tv-4k/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 269,
+          "label": "tv1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/01/apple-introduces-new-mac-mini-with-m2-and-m2-pro-more-powerful-capable-and-versatile-than-ever/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 111,
+          "label": "dm02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/01/apple-introduces-the-new-homepod-with-breakthrough-sound-and-intelligence/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 273,
+          "label": "home3"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/01/apple-unveils-m2-pro-and-m2-max-next-generation-chips-for-next-level-workflows/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 241,
+          "label": "m05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/06/apple-introduces-m2-ultra/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 242,
+          "label": "m06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/06/apple-unveils-new-mac-studio-and-brings-apple-silicon-to-mac-pro/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 112,
+          "label": "dm03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/06/introducing-apple-vision-pro/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 277,
+          "label": "r1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 227,
+          "label": "a20b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/09/apple-introduces-the-advanced-new-apple-watch-series-9/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 265,
+          "label": "s09"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/09/apple-unveils-iphone-15-pro-and-iphone-15-pro-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 228,
+          "label": "a21"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/10/apple-supercharges-24-inch-imac-with-new-m3-chip/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 113,
+          "label": "dm04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2023/10/apple-unveils-m3-m3-pro-and-m3-max-the-most-advanced-chips-for-a-personal-computer/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 243,
+          "label": "m07"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2024/05/apple-introduces-m4-chip/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 244,
+          "label": "m08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 230,
+          "label": "a22b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 229,
+          "label": "a22"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2024/09/introducing-apple-watch-series-10/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 266,
+          "label": "s10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2024/10/apple-introduces-m4-pro-and-m4-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 246,
+          "label": "m10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2024/10/apple-introduces-new-imac-supercharged-by-m4-and-apple-intelligence/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 114,
+          "label": "dm05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/02/apple-debuts-iphone-16e-a-powerful-new-member-of-the-iphone-16-family/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 284,
+          "label": "c1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/03/apple-reveals-m3-ultra-taking-apple-silicon-to-a-new-extreme/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 247,
+          "label": "m11"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/03/apple-unveils-new-mac-studio-the-most-powerful-mac-ever/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 248,
+          "label": "m11b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 116,
+          "label": "m11b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 232,
+          "label": "a23b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/09/introducing-iphone-air-a-powerful-new-iphone-with-a-breakthrough-design/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 285,
+          "label": "n1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/10/apple-unleashes-m5-the-next-big-leap-in-ai-performance-for-apple-silicon/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 249,
+          "label": "m12"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 278,
+          "label": "vision5"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/03/apple-debuts-m5-pro-and-m5-max-to-supercharge-the-most-demanding-pro-workflows/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 251,
+          "label": "m13"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/03/apple-introduces-macbook-pro-with-all-new-m5-pro-and-m5-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 252,
+          "label": "m13b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 235,
+          "label": "a25"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 253,
+          "label": "m14"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 119,
+          "label": "m14"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 255,
+          "label": "m15"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 117,
+          "label": "m15"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 233,
+          "label": "a24"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 268,
+          "label": "s11"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/09/the-latest-iphone-apple-watch-and-airpods-lineups-arrive-in-stores-worldwide/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 234,
+          "label": "a24b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 254,
+          "label": "m14b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 118,
+          "label": "m14b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/10/apple-announces-the-next-generation-of-homepod-mini/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 274,
+          "label": "home4"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 256,
+          "label": "m15b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 120,
+          "label": "dm06"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/2026/10/apple-unveils-the-new-apple-tv-4k/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 270,
+          "label": "tv2"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/newsroom/archive/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 294,
+          "label": "archive"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/se/newsroom/2011/03/02Apple-Launches-iPad-2/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 203,
+          "label": "a02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/uk/newsroom/2021/09/apple-unveils-new-ipad-mini-with-breakthrough-performance-in-stunning-new-design/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 225,
+          "label": "a19b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/uk/newsroom/2024/10/apples-new-mac-mini-is-more-mighty-more-mini-and-built-for-apple-intelligence/",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 245,
+          "label": "m09"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 115,
+          "label": "m09"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple.com/uk/newsroom/archive/?page=178",
+      "host": "www.apple.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 193,
+          "label": "h15b"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 96,
+          "label": "h15b"
+        }
+      ]
+    },
+    {
+      "url": "https://www.apple3.org/Documents/Manuals/a3sosrm.pdf",
+      "host": "www.apple3.org",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 174,
+          "label": "h03"
+        },
+        {
+          "file": "material-desktop-cpu-apple-evidence.md",
+          "line": 80,
+          "label": "h03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ardent-tool.com/CPU/docs/AMD/",
+      "host": "www.ardent-tool.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 183,
+          "label": "Ardent Tool AMD 原始文档"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ardent-tool.com/CPU/docs/AMD/286/",
+      "host": "www.ardent-tool.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 200,
+          "label": "a08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ardent-tool.com/CPU/docs/AMD/486_5x86/",
+      "host": "www.ardent-tool.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 208,
+          "label": "a16"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ardent-tool.com/CPU/docs/AMD/8018x/",
+      "host": "www.ardent-tool.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 202,
+          "label": "a10"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ardent-tool.com/CPU/docs/AMD/K6/",
+      "host": "www.ardent-tool.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 212,
+          "label": "a20"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ardent-tool.com/CPU/docs/AMD/K6/mobile/",
+      "host": "www.ardent-tool.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 99,
+          "label": "O01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.computerhistory.org/brochures/doc-43729572afbd3/",
+      "host": "www.computerhistory.org",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 295,
+          "label": "chm"
+        }
+      ]
+    },
+    {
+      "url": "https://www.computerhistory.org/revolution/digital-logic/12/330/1579",
+      "host": "www.computerhistory.org",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 194,
+          "label": "a02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.cpushack.com/CIC/announce/1997/AMDK6Processor.html",
+      "host": "www.cpushack.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 210,
+          "label": "a18"
+        }
+      ]
+    },
+    {
+      "url": "https://www.geekbench.com/blog/2026/02/geekbench-66/",
+      "host": "www.geekbench.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 30,
+          "label": "Geekbench 6.6 更新说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.geekbench.com/blog/2026/03/analyzing-geekbench-6-under-intels-bot/",
+      "host": "www.geekbench.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 52,
+          "label": "John Poole：Analyzing Geekbench 6 under Intel’s BOT"
+        }
+      ]
+    },
+    {
+      "url": "https://www.geekbench.com/blog/2026/07/geekbench-7/",
+      "host": "www.geekbench.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 31,
+          "label": "Geekbench 7 发布说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.geekbench.com/blog/2026/09/geekbench-71/",
+      "host": "www.geekbench.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 32,
+          "label": "Geekbench 7.1 更新说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.geekbench.com/doc/geekbench5-cpu-workloads.pdf",
+      "host": "www.geekbench.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 29,
+          "label": "Geekbench 5 CPU Workloads"
+        }
+      ]
+    },
+    {
+      "url": "https://www.geekbench.com/legacy/",
+      "host": "www.geekbench.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 28,
+          "label": "Geekbench 历史版本与系统要求"
+        }
+      ]
+    },
+    {
+      "url": "https://www.globenewswire.com/news-release/2012/10/23/1011821/0/en/New-AMD-FX-Line-Up-Brings-Faster-Speeds-and-Higher-Performance-Core-Over-Previous-Generation-to-PC-Enthusiasts-and-Gamers.html",
+      "host": "www.globenewswire.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 233,
+          "label": "b08"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ifixit.com/Device/iPhone_1st_Generation",
+      "host": "www.ifixit.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 170,
+          "label": "prea2"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ifixit.com/Teardown/iPhone%2B1st%2BGeneration%2BTeardown/599",
+      "host": "www.ifixit.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 169,
+          "label": "prea1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ifixit.com/Teardown/iPhone%2B3GS%2BTeardown/817",
+      "host": "www.ifixit.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 171,
+          "label": "prea3"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-11-000020/0000050863-11-000020.pdf",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 78,
+          "label": "官方出货记录"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 39,
+          "label": "官方芯片组缺陷声明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-16-000105/a10kdocument12262015q4.htm",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 32,
+          "label": "Intel 同期年报"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-94-000018/0000050863-94-000018.pdf",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 49,
+          "label": "Intel 当年 Form 8-K，附发布稿 Exhibit 99.1"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/filings-reports/all-sec-filings/content/0000912057-01-503434/a2040883z10-k.htm",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 93,
+          "label": "Intel 2000 年 10-K"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1078/intel-hybrid-processors-uncompromised-pc-experiences-for",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 50,
+          "label": "官方发布稿"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 100,
+          "label": "Lakefield 发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 41,
+          "label": "Intel 原始发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1081/intel-announces-unmatched-ai-and-analytics-platform-with",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 76,
+          "label": "Cooper Lake 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1193/introducing-6th-generation-intel-core-intels-best",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 43,
+          "label": "官方家族发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 33,
+          "label": "Intel 全家族发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/122/intel-announces-worlds-best-gaming-processor-new-9th",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 47,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1227/intel-powers-the-worlds-fastest-supercomputer-reveals-new",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 113,
+          "label": "2013 官方 CPU/协处理器区别说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1240/new-intel-itanium-processor-9500-delivers-breakthrough",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 95,
+          "label": "9500 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1250/latest-intel-xeon-processors-e5-product-family-achieves",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 113,
+          "label": "2012 品牌与产品说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1298/intel-itanium-9300-processor-raises-bar-for-scalable",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 95,
+          "label": "9300 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/130/new-8th-gen-intel-core-processors-optimize-connectivity",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 46,
+          "label": "Whiskey/Amber 发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 37,
+          "label": "Intel 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1411/intel-launches-worlds-best-processor-for-thin-and-light",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 51,
+          "label": "官方发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 42,
+          "label": "Intel 首发稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1418/intel-introduces-iot-enhanced-processors-to-increase",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 100,
+          "label": "Elkhart Lake 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1449/introducing-11th-gen-intel-core-unmatched-overclocking",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 52,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1517/intel-engineers-fastest-mobile-processor-ever-with-12th-gen",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 103,
+          "label": "第十二代移动 H 原稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1578/intel-launches-13th-gen-intel-core-processor-family",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 54,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1598/intel-launches-4th-gen-xeon-scalable-processors-max-series",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 77,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1648/intel-innovation-2023-empowering-developers-to-bring-ai",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 56,
+          "label": "技术与发布时间说明"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 66,
+          "label": "架构预览稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1667/ces-2024-intel-delivers-new-high-level-compute-solutions",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 67,
+          "label": "Intel CES 2024 更正后的正式稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 68,
+          "label": "同一官方发布稿中的 Series 1 可用性"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1697/intel-accelerates-ai-everywhere-at-computex-2024-redefines",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 79,
+          "label": "首次发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/1752/intel-unveils-panther-lake-architecture-first-ai-pc",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 60,
+          "label": "官方预览稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 75,
+          "label": "Intel 预览发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/203/intel-unveils-the-8th-gen-intel-core-processor-family",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 81,
+          "label": "官方桌面公告"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 45,
+          "label": "桌面开售稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/210/new-8th-gen-intel-core-processors-simplifying-today",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 45,
+          "label": "移动家族发布"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 35,
+          "label": "Intel 首批公布"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/219/intel-unveils-powerful-intel-xeon-scalable-processors",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 74,
+          "label": "发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/479/intel-launches-new-multicore-low-power-socs-for-tablets-2",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 98,
+          "label": "Bay Trail 产品稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 55,
+          "label": "Bay Trail 产品发布"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/499/innovation-reinvention-on-intel-architecture-fuel-wave",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 41,
+          "label": "家族发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 30,
+          "label": "Intel 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/507/intel-launches-low-power-high-performance-silvermont",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 98,
+          "label": "架构发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 55,
+          "label": "Silvermont 官方架构稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/577/3rd-generation-intel-core-processors-bring-exciting",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 40,
+          "label": "发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 29,
+          "label": "Intel 家族发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/709/live-a-visual-life-with-intel-at-ces-2011",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 78,
+          "label": "官方 CES 预告"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 39,
+          "label": "官方 CES 预告"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 28,
+          "label": "官方 CES 公布说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intc.com/news-events/press-releases/detail/795/correcting-and-replacing-photo-intel-unveils-all-new-2010",
+      "host": "www.intc.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 37,
+          "label": "2010 产品发布表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/develop/external/us/en/documents/ipsxe-2019-update-2-release-notes-en-743120.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 113,
+          "label": "官方 x100 退役支持记录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/develop/external/us/en/documents/release-notes-socwatch-windows-v2020-1-797107.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 49,
+          "label": "Intel 工具支持记录"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 99,
+          "label": "Intel 工具修订记录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 57,
+          "label": "Intel 工具支持历史"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/support/us/en/documents/processors/CustomerSupportServicing-MobileProcessors.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 36,
+          "label": "Intel 移动产品生命周期目录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 38,
+          "label": "Intel 移动生命周期目录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 40,
+          "label": "Intel 移动生命周期目录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 44,
+          "label": "Intel 移动生命周期目录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-05/history-1975-annual-report.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 14,
+          "label": "Intel 1975 年报"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-05/history-1981-annual-report.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 89,
+          "label": "1981 年报"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-05/history-1984-annual-report.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 111,
+          "label": "1984 年报"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-05/history-1989-annual-report.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 21,
+          "label": "Intel 1989 年报"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 90,
+          "label": "Intel 1989 年报"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 91,
+          "label": "Intel 1989 年报"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-05/history-2007-annual-report.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 29,
+          "label": "2007 年报"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/platform-briefs/intro-xeon-processor-scalable-family.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 74,
+          "label": "官方架构简介"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/2nd-gen-xeon-scalable-processors-brief.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 75,
+          "label": "官方产品说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/research/2001-vol05-iss-1-intel-technology-journal.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 17,
+          "label": "Intel 工程师回忆论文"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/roadmaps/iotg-intel-launch-update-ilu-roadmap-rev1.pdf",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 75,
+          "label": "官方 2019 发布窗口记录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 135,
+          "label": "Intel 产品规格目录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/codename/128428/products-formerly-granite-rapids.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 79,
+          "label": "Granite Rapids ARK"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 83,
+          "label": "官方规格表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/codename/238004/products-formerly-twin-lake.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 101,
+          "label": "2025 Twin Lake ARK"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 60,
+          "label": "Twin Lake 官方型号与季度表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/codename/82879/products-formerly-kaby-lake.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 44,
+          "label": "Kaby Lake 家族表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 34,
+          "label": "Kaby Lake 官方型号表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/series/595/intel-xeon-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 71,
+          "label": "Intel Xeon 型号总表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 73,
+          "label": "Xeon 官方型号表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 82,
+          "label": "Xeon 官方产品目录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/series/78582/intel-xeon-processor-e5-v2-family.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 72,
+          "label": "E5 v2 ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/series/79048/intel-quark-soc-x1000-series.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 104,
+          "label": "X1000 家族表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/ark/products/series/91287/intel-xeon-processor-e5-v4-family.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 72,
+          "label": "E5 v4 ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-atom-processor-c3000-family-technical-overview.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 99,
+          "label": "C3000 官方技术概览"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 71,
+          "label": "Intel SDM 历史章节入口"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 136,
+          "label": "Intel SDM"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-xeon-processor-d-2100-product-family-technical-overview.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 81,
+          "label": "D-2100 官方技术比较"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/history/historical-annual-reports.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 134,
+          "label": "Intel Historical Annual Reports"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/3rd-gen-xeon-scalable-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 76,
+          "label": "Ice Lake 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/50-years-ago-the-influential-intel-8080.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 16,
+          "label": "Intel 8080 回顾"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/ai-everywhere-core-ultra-5th-gen-xeon-news.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 78,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-expands-intel-core-ultra-series-2-ai-pc-commercial-portfolio.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 59,
+          "label": "官方商用发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/postcard-from-embedded-world-meet-intel-core-series-2-processor-with-p-cores.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 105,
+          "label": "官方可用性说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/ces-2021-four-new-processor-families.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 102,
+          "label": "CES 四个新处理器家族原稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-announces-new-intel-core-ultra-200s-plus-series-desktop-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 83,
+          "label": "Intel 官方发布稿"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 61,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-arc-g-series-processors-set-a-new-standard-for-handheld-pc-gaming.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 64,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-launches-core-ultra-200hx-plus-series-mobile-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 76,
+          "label": "Intel 官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-launches-intel-core-series-3-processors-changing-the-game-for-everyday-computing.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 63,
+          "label": "官方发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 77,
+          "label": "Intel 官方发布稿及 OEM 清单"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/core-ultra-200s-series-desktop.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 82,
+          "label": "Intel 官方发布稿"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 58,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/core-ultra-client-computing-news-1.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 56,
+          "label": "官方发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 66,
+          "label": "Intel 正式发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/data-center/intel-puts-agentic-ai-xeon-6-networking-ai-systems.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 80,
+          "label": "官方发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/intel-core-14th-gen-desktop-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 55,
+          "label": "官方发布稿及更正"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/resources/press-kit-12th-gen-core-procesors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 53,
+          "label": "官方发布资料包"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/newsroom/resources/press-kit-intel-xeon-6-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 79,
+          "label": "官方 Xeon 6 资料包"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/details/processors/atom/p/products.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 103,
+          "label": "Intel Atom P 官方型号表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/details/processors/core/series-2.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 70,
+          "label": "Intel 官方 Series 2 型号表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 71,
+          "label": "官方系列表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/details/processors/intel-processor.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 24,
+          "label": "后续 Intel Processor 型号表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 58,
+          "label": "Intel 处理器规格目录"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 97,
+          "label": "Intel Atom 原始技术文档集合"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 99,
+          "label": "Atom 文档集合"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 137,
+          "label": "Intel Atom 技术文档"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 52,
+          "label": "Atom 产品原始文档"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 53,
+          "label": "Atom 官方文档集合"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 54,
+          "label": "Atom 官方文档集合"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 56,
+          "label": "Atom 原始技术文档集合"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/platforms/details/elkhart-lake.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 100,
+          "label": "平台文档"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/platforms/details/rangeley.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 98,
+          "label": "C2000 平台说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/sku/186605/intel-core-i99900k-processor-16m-cache-up-to-5-00-ghz/specifications.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 47,
+          "label": "9900K ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/sku/238771/intel-core-7-processor-250u-12m-cache-up-to-5-40-ghz/specifications.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 71,
+          "label": "250U 官方 ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/sku/79084/intel-quark-soc-x1000-16k-cache-400-mhz/specifications.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 104,
+          "label": "X1000 ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/sku/88040/intel-core-i75775c-processor-6m-cache-up-to-3-70-ghz/specifications.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 79,
+          "label": "5775C ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/products/sku/95451/intel-core-i77500u-processor-4m-cache-up-to-3-50-ghz/specifications.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 44,
+          "label": "i7-7500U ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/support/articles/000099655/processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 49,
+          "label": "官方桌面世代与季度表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/support/articles/000102331/processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 53,
+          "label": "Intel 支持文章 000102331"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/support/topics/support-and-servicing-for-processors.html",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 73,
+          "label": "官方服务生命周期总表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/1998/EM072798.HTM",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 92,
+          "label": "官方路线声明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/1998/em100798.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 92,
+          "label": "实际产品声明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/1999/em050399.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 93,
+          "label": "此前 StrongARM 技术说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2000/dp112000.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 25,
+          "label": "首发稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2001/20010529comp.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 94,
+          "label": "初代系统说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2002/20020708comp.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 94,
+          "label": "Itanium 2 出货稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2008/20080302comp.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 96,
+          "label": "品牌稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 52,
+          "label": "Intel 品牌发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2008/20080401comp.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 96,
+          "label": "首批芯片稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2008/20081117comp_sm.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 37,
+          "label": "首发稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/archive/releases/2010/20100107comp_sm.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 38,
+          "label": "2010 Core 发布稿"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 26,
+          "label": "Intel 2010 全家族资料与既有产品对照"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 27,
+          "label": "Intel 发布稿"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/kits/core2duo/index.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 77,
+          "label": "Intel 原始资料包"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 29,
+          "label": "Core 2 发布资料包"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 24,
+          "label": "Core 2 资料包"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/kits/quickreffam.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 15,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 22,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 23,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 24,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 26,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 27,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 28,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 70,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 94,
+          "label": "官方家族速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 133,
+          "label": "按家族"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 15,
+          "label": "Intel 老产品家族表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 16,
+          "label": "Intel 家族表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 17,
+          "label": "Intel 家族表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 18,
+          "label": "Intel 家族表的 Mobile 区"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 19,
+          "label": "Intel 家族表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 20,
+          "label": "Intel 家族表"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 22,
+          "label": "Intel 老产品目录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 24,
+          "label": "Intel 家族表"
+        }
+      ]
+    },
+    {
+      "url": "https://www.intel.com/pressroom/kits/quickrefyr.htm",
+      "host": "www.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 13,
+          "label": "官方历史速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 16,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 17,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 18,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 19,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 20,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 21,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 25,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 29,
+          "label": "官方速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 70,
+          "label": "按年速查表"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 133,
+          "label": "Intel Microprocessor Quick Reference Guide：按年"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 13,
+          "label": "Intel 按年速查"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 14,
+          "label": "Intel 按年速查"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 21,
+          "label": "Intel 按年速查"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 23,
+          "label": "Intel 按年与家族目录"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 25,
+          "label": "Intel 按年速查"
+        }
+      ]
+    },
+    {
+      "url": "https://www.kitguru.net/components/cpu/zardon/intel-core-i7-2600k-and-core-i5-2500k-review/all/1/",
+      "host": "www.kitguru.net",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 28,
+          "label": "原始评测，默认设置比较及后续等频测试"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 124,
+          "label": "Allan Campbell 原始评测"
+        }
+      ]
+    },
+    {
+      "url": "https://www.mathworks.com/company/technical-articles/a-tale-of-two-numbers.html",
+      "host": "www.mathworks.com",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 50,
+          "label": "MathWorks：A Tale of Two Numbers"
+        }
+      ]
+    },
+    {
+      "url": "https://www.maxon.net/en/article/maxon-introduces-cinebench-2024",
+      "host": "www.maxon.net",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 34,
+          "label": "Cinebench 2024 发布说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.maxon.net/en/tech-info-cinebench",
+      "host": "www.maxon.net",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 33,
+          "label": "Cinebench 技术说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.notebookcheck.net/Asus-ROG-Flow-Z13-GZ302EA-Convertible-Review-AMD-s-Strix-Halo-GPU-is-neck-and-neck-with-the-RTX-4070-Laptop.963266.0.html",
+      "host": "www.notebookcheck.net",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 134,
+          "label": "R03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.notebookcheck.net/Intel-Lunar-Lake-CPU-analysis-The-Core-Ultra-7-258V-s-multi-core-performance-is-disappointing-but-its-everyday-efficiency-is-good.893405.0.html",
+      "host": "www.notebookcheck.net",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 69,
+          "label": "原作者 09-24 实测"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 87,
+          "label": "原作者分析，Power consumption during everyday use"
+        }
+      ]
+    },
+    {
+      "url": "https://www.overclockersclub.com/reviews/intel_corei7_2600k_and_corei5_2500k/",
+      "host": "www.overclockersclub.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 38,
+          "label": "当时 Sandy Bridge 对比说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.pcwelt.de/article/1119368/pentium-4-1500.html",
+      "host": "www.pcwelt.de",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 121,
+          "label": "Michael Schmelzle 原始测试"
+        }
+      ]
+    },
+    {
+      "url": "https://www.pcworld.com/article/2568168/intel-debuts-arrow-lake-for-laptops-with-core-h-hx-chips.html",
+      "host": "www.pcworld.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 74,
+          "label": "PCWorld 记者得到的 Intel 原始邮件说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.phoronix.com/review/amd-epyc-9005-7601",
+      "host": "www.phoronix.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 322,
+          "label": "r15"
+        }
+      ]
+    },
+    {
+      "url": "https://www.phoronix.com/review/amd-epyc-9755-avx512",
+      "host": "www.phoronix.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 321,
+          "label": "r14"
+        }
+      ]
+    },
+    {
+      "url": "https://www.rsp-italy.it/Electronics/Databooks/AMD/_contents/AMD%20Mos%20microprocessors%20and%20peripherals%201983.pdf",
+      "host": "www.rsp-italy.it",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 197,
+          "label": "a05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.spec.org/cpu/",
+      "host": "www.spec.org",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 37,
+          "label": "SPEC 历代 CPU 基准入口"
+        }
+      ]
+    },
+    {
+      "url": "https://www.spec.org/cpu2017/Docs/overview.html",
+      "host": "www.spec.org",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 35,
+          "label": "SPEC CPU2017 概览"
+        }
+      ]
+    },
+    {
+      "url": "https://www.spec.org/cpu2017/results/",
+      "host": "www.spec.org",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 36,
+          "label": "SPEC CPU2017 结果档案"
+        }
+      ]
+    },
+    {
+      "url": "https://www.spec.org/cpu2026/docs/overview.html",
+      "host": "www.spec.org",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 38,
+          "label": "SPEC CPU2026 概览"
+        }
+      ]
+    },
+    {
+      "url": "https://www.spec.org/cpu2026/results/",
+      "host": "www.spec.org",
+      "references": [
+        {
+          "file": "material-cpu-evaluation-and-sources.md",
+          "line": 39,
+          "label": "SPEC CPU2026 结果档案"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techinsights.com/blog/apple-iphone-5s-teardown",
+      "host": "www.techinsights.com",
+      "references": [
+        {
+          "file": "material-apple-cpu-history.md",
+          "line": 288,
+          "label": "r03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/1041-intel-core-i7-6700k-skylake/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 42,
+          "label": "2015 年桌面实测背景"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 43,
+          "label": "首批实测"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/1041-intel-core-i7-6700k-skylake/page14.html",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 125,
+          "label": "Steven Walton 原始结论"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/1497-intel-core-i7-8700k/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 56,
+          "label": "测试条件"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/1497-intel-core-i7-8700k/page2.html",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 56,
+          "label": "原始渲染/转码页"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/1869-amd-ryzen-3900x-ryzen-3700x/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 318,
+          "label": "r11"
+        },
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 92,
+          "label": "O09"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/2075-same-laptop-different-cpu-productivity/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 132,
+          "label": "R01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/2096-amd-ryzen-4800u/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-amd-evidence.md",
+          "line": 133,
+          "label": "R02"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/2351-intel-core-i9-12900k/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 64,
+          "label": "原始评测：10 Game Average、Power Consumption、结论"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 53,
+          "label": "11-04 原始评测"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 126,
+          "label": "Steven Walton 原始评测"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/2410-intel-core-i7-12700h/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 42,
+          "label": "同期 11800H 对比说明"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 43,
+          "label": "实际移动 H 原测与配置"
+        },
+        {
+          "file": "material-mobile-cpu-intel-evidence.md",
+          "line": 86,
+          "label": "完整原测与功率设置"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/2881-amd-ryzen-9-9950x/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 310,
+          "label": "r03"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/3077-amd-ryzen-am4-5800x3d-5700x3d/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-amd-evidence.md",
+          "line": 79,
+          "label": "N12"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/452-amd-bulldozer-fx-cpus/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 311,
+          "label": "r04"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/452-amd-bulldozer-fx-cpus/page13.html",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-amd-cpu-history.md",
+          "line": 312,
+          "label": "r05"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/8-intel_core_2_duo_family/",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 13,
+          "label": "平台及分项入口"
+        },
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 77,
+          "label": "实际测试作者 08-02 的购买状态说明"
+        }
+      ]
+    },
+    {
+      "url": "https://www.techspot.com/review/8-intel_core_2_duo_family/page6.html",
+      "host": "www.techspot.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 13,
+          "label": "原始评测结论"
+        },
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 122,
+          "label": "Steven Walton 原始评测及结论"
+        }
+      ]
+    },
+    {
+      "url": "https://www.thailand.intel.com/content/www/th/th/products/sku/136863/intel-core-i38121u-processor-4m-cache-up-to-3-20-ghz/specifications.html",
+      "host": "www.thailand.intel.com",
+      "references": [
+        {
+          "file": "material-intel-cpu-history.md",
+          "line": 46,
+          "label": "8121U ARK"
+        }
+      ]
+    },
+    {
+      "url": "https://www.velocitymicro.com/blog/introducing-broadwell-intel-core-i7-5775c-and-i5-5675c-processors/",
+      "host": "www.velocitymicro.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 79,
+          "label": "OEM 自述"
+        }
+      ]
+    },
+    {
+      "url": "https://www.webwire.com/ViewPressRel.asp?aId=17497",
+      "host": "www.webwire.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 77,
+          "label": "Intel 发布稿的同期分发副本"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KPWEdbfJ0oE",
+      "host": "www.youtube.com",
+      "references": [
+        {
+          "file": "material-desktop-cpu-intel-evidence.md",
+          "line": 38,
+          "label": "GN《10 Years of Intel CPUs Benchmarked: i7-930, 2600K, 4790K, & Everything Since (2020)》"
+        }
+      ]
+    }
+  ]
+}

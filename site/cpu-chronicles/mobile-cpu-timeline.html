@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="AMD 与 Intel 移动 CPU 编年史，按时间对照笔记本、二合一和上网本的代际发布、重要转折与整机实测。">
+<title>移动 CPU 编年史：AMD × Intel · 1990—2026</title>
+<link rel="stylesheet" href="../assets/css/special.css"><link rel="stylesheet" href="../assets/css/cpu-timeline.css"><link rel="stylesheet" href="../assets/css/mobile-cpu-timeline.css">
+<script src="../assets/js/cpu-timeline.js" defer></script></head>
+<body id="top" class="mobile-chronicle"><a class="skip-link" href="#chronicle">跳至编年史</a>
+<header class="topbar"><a class="wordmark" href="../index.html">硅基极客的数字手札</a><nav aria-label="站点导航"><a href="index.html">CPU 专题</a><a href="desktop-cpu-timeline.html">桌面篇</a><a href="#references">资料口径</a></nav></header>
+<main class="page" data-cpu-chronicle><header class="hero"><div><p class="eyebrow">Mobile CPU / A parallel chronicle</p><h1>移动 CPU 编年史</h1><p class="hero-subtitle">AMD 与 Intel 的笔记本、二合一和上网本路线：从移动 x86、电源管理，到多核 APU、混合架构与新一代 SoC。</p></div><div class="hero-period"><strong>1990 — 2026</strong><span>笔记本与二合一 · AMD × Intel</span></div></header>
+<div class="hero-meta"><span><b>109</b> 条产品与事件记录</span><span>AMD <b>45</b> / Intel <b>64</b></span><span>资料截止 <b>2026-10-28</b></span></div>
+<div class="guide"><p><strong>左轴看时间，两列看产品。</strong>日期统一放在左侧；同日公布的产品横向对齐。仅查到年、季度或月份的保留原精度；时间间隔压缩，不按物理长度表示相隔年数。</p><div class="legend" aria-label="记录标记"><span class="tag release">产品发布</span><span class="tag leap">显著提升</span><span class="tag turn">平台转折</span><span class="tag enduring">架构延续</span></div></div>
+<nav class="era-nav" aria-label="跳转年代"><a href="#year-1990">1990—1999</a><a href="#year-2000">2000—2009</a><a href="#year-2010">2010—2016</a><a href="#year-2017">2017—2021</a><a href="#year-2022">2022—2026</a></nav>
+<div class="controls" data-controls hidden><div class="filter-group" aria-label="筛选记录"><button class="filter-button" type="button" data-kind="all" aria-pressed="true">全部记录</button><button class="filter-button" type="button" data-kind="release" aria-pressed="false">产品发布</button><button class="filter-button" type="button" data-kind="leap" aria-pressed="false">显著提升</button><button class="filter-button" type="button" data-kind="turn" aria-pressed="false">平台转折</button><button class="filter-button" type="button" data-kind="continuity" aria-pressed="false">架构延续</button></div><label class="search-field"><input type="search" data-search aria-label="搜索处理器、架构或左轴时间" placeholder="搜索 Renoir、Pentium M、2023…"></label><label class="display-switch"><input type="checkbox" data-compact>紧凑</label><label class="display-switch"><input type="checkbox" data-expand>展开依据</label></div>
+<p class="results" data-status role="status">109 条记录 · 点击“依据与说明”查看来源和整机测试条件</p><p class="mobile-hint">横向滑动查看两家，左侧时间轴与厂商表头固定。</p>
+<section id="chronicle" aria-label="AMD 与 Intel 移动 CPU 对照"><div class="timeline-scroll" tabindex="0" role="region" aria-label="移动 CPU 时间轴，可横向和纵向滚动"><table class="timeline"><colgroup><col class="axis"><col><col></colgroup><thead><tr><th scope="col">时间 ↓</th><th class="amd-heading" scope="col"><div class="brand-name">AMD <small>45 RECORDS</small></div></th><th class="intel-heading" scope="col"><div class="brand-name">Intel <small>64 RECORDS</small></div></th></tr></thead>
+<tbody id="year-1990" data-year="1990">
+<tr class="month-row"><th scope="row"><span class="axis-date">1990-10-15</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-1990-10-15-1" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-1990-10-15-1" aria-label="链接到386SL：面向笔记本的 x86">↗</a>
+<h3>386SL：面向笔记本的 x86</h3>
+<p class="code">386SL · SMM</p>
+<p>SL 路线把低功耗和系统管理能力放到便携机设计中心，成为专门面向笔记本优化的节点。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>与用于多种电脑的通用 386DX/SX 分开；低功耗状态、主板和电池共同决定整机续航。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickrefyr.htm" target="_blank" rel="noopener noreferrer">Intel 官方年表 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-1992" data-year="1992">
+<tr class="month-row"><th scope="row"><span class="axis-date">1992-11-09</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-1992-11-09-2" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-1992-11-09-2" aria-label="链接到486SL">↗</a>
+<h3>486SL</h3>
+<p class="code">486SL</p>
+<p>486 计算能力与 SL 电源管理路线结合，笔记本继续缩小功耗与体积。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>这是移动 SL 家族节点，不使用桌面 486DX 的首发日。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickrefyr.htm" target="_blank" rel="noopener noreferrer">Intel 官方年表 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-1995" data-year="1995">
+<tr class="month-row"><th scope="row"><span class="axis-date">1990s 中期</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-1995-3" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-1995-3" aria-label="链接到Mobile Pentium">↗</a>
+<h3>Mobile Pentium</h3>
+<p class="code">Mobile P5 / P54C</p>
+<p>P5 移动产品进入笔记本，电压、封装与热设计开始明确区别于桌面。</p>
+<details><summary>依据与说明</summary>
+<p>家族跨多个批次，时间轴保留年级精度；并非所有笔记本都能在同一功耗下维持桌面频率。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-1997" data-year="1997">
+<tr class="month-row"><th scope="row"><span class="axis-date">1997-09</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-1997-09-4" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-1997-09-4" aria-label="链接到Mobile Pentium MMX">↗</a>
+<h3>Mobile Pentium MMX</h3>
+<p class="code">Tillamook · Pentium MMX</p>
+<p>Tillamook 延续 P5，加入 MMX，并通过工艺和电压调整服务移动整机。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>MMX 收益取决于程序；移动封装不等于普通桌面插座。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-1998" data-year="1998">
+<tr class="month-row"><th scope="row"><span class="axis-date">1998-04</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-1998-04-5" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-1998-04-5" aria-label="链接到Mobile Pentium II">↗</a>
+<h3>Mobile Pentium II</h3>
+<p class="code">Tonga / Dixon · P6</p>
+<p>P6 路线进入移动平台，CPU、缓存与模块封装继续演进。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>按移动家族列年，不采用 Pentium II 桌面首发时间。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-1999" data-year="1999">
+<tr class="month-row"><th scope="row"><span class="axis-date">1999-10</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-1999-10-6" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-1999-10-6" aria-label="链接到Mobile Pentium III">↗</a>
+<h3>Mobile Pentium III</h3>
+<p class="code">Coppermine · Mobile Pentium III</p>
+<p>SSE 与后续 SpeedStep 进入移动路线；CPU 根据供电与负载调整工作状态。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>首批移动 PIII 与 SpeedStep 扩展分批推出，品牌出现不代表每款 CPU 都具备相同电源管理能力。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2000" data-year="2000">
+<tr class="month-row"><th scope="row"><span class="axis-date">≤ 2000</span><span class="axis-kind">档案记录 / 家族记录</span></th>
+<td><article id="mobile-amd-2000-7" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2000-7" aria-label="链接到Mobile K6">↗</a>
+<h3>Mobile K6</h3>
+<p class="code">Mobile K6 / K6-2</p>
+<p>K6 兼容 x86 的路线扩展到笔记本，通过频率、电压和缓存配置覆盖移动市场。</p>
+<details><summary>依据与说明</summary>
+<p>原始移动资料能证明家族存在，但首发年尚未锁定；左轴为档案证据的时间上界，不是首次发布。</p>
+<div class="sources"><a href="https://www.ardent-tool.com/CPU/docs/AMD/K6/mobile/" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2000-8" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2000-8" aria-label="链接到Mobile K6-2+／K6-III+">↗</a>
+<h3>Mobile K6-2+／K6-III+</h3>
+<p class="code">K6-2+ / K6-III+ · PowerNow!</p>
+<p>更小工艺和移动电源管理延长 K6 平台寿命，片上缓存区分不同型号。</p>
+<details><summary>依据与说明</summary>
+<p>“+”移动分支与最初桌面 K6 的发布时间分开；旧机器的 BIOS 支持仍是升级条件。</p>
+<div class="sources"><a href="https://www.ardent-tool.com/CPU/docs/AMD/K6/" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://ir.amd.com/financial-information/sec-filings/content/0001012870-01-001228/0001.txt" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2001" data-year="2001">
+<tr class="month-row"><th scope="row"><span class="axis-date">2001</span><span class="axis-kind">家族记录</span></th>
+<td><article id="mobile-amd-2001-9" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2001-9" aria-label="链接到Mobile Athlon 4／Duron">↗</a>
+<h3>Mobile Athlon 4／Duron</h3>
+<p class="code">Palomino · K7</p>
+<p>K7 进入移动平台，PowerNow! 调整频率和电压；高性能与入门型号分层。</p>
+<details><summary>依据与说明</summary>
+<p>PowerNow! 是电源管理机制，不是单独的 CPU 微架构；本条保留年级产品阶段。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001012870-03-001181/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2001-07</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2001-07-10" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2001-07-10" aria-label="链接到Mobile Pentium III-M">↗</a>
+<h3>Mobile Pentium III-M</h3>
+<p class="code">Tualatin · 130 nm</p>
+<p>Tualatin 继续优化 P6 移动路线，频率、缓存与低功耗模式一起影响体验。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2002" data-year="2002">
+<tr class="month-row"><th scope="row"><span class="axis-date">2002</span><span class="axis-kind">家族记录</span></th>
+<td><article id="mobile-amd-2002-11" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2002-11" aria-label="链接到Mobile Athlon XP／XP-M">↗</a>
+<h3>Mobile Athlon XP／XP-M</h3>
+<p class="code">Palomino / Thoroughbred / Barton</p>
+<p>K7 通过工艺、缓存和电压配置继续覆盖笔记本；PR 评级不等于真实 MHz。</p>
+<details><summary>依据与说明</summary>
+<p>不同移动后缀和功耗配置不能共用一个性能结论。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001012870-03-001181/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2002-03</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2002-03-12" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2002-03-12" aria-label="链接到Mobile Pentium 4-M">↗</a>
+<h3>Mobile Pentium 4-M</h3>
+<p class="code">Northwood-M · NetBurst</p>
+<p>NetBurst 路线进入笔记本；更高主频同时带来散热和供电要求。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>后续专门为移动优化的 Pentium M 是另一条设计路线，不能按名称相近合并。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2003" data-year="2003">
+<tr class="month-row"><th scope="row"><span class="axis-date">2003-03-12</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2003-03-12-13" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2003-03-12-13" aria-label="链接到Pentium M：移动效率路线">↗</a>
+<h3>Pentium M：移动效率路线</h3>
+<p class="code">Banias · Pentium M</p>
+<p>Banias 把移动性能与功耗放在设计中心，成为 Centrino 平台的 CPU 部分。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>Centrino 是 CPU、芯片组和无线连接组成的平台品牌；不应当作一颗处理器。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2003-06</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2003-06-14" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2003-06-14" aria-label="链接到Mobile Pentium 4／HT 扩展">↗</a>
+<h3>Mobile Pentium 4／HT 扩展</h3>
+<p class="code">Mobile Pentium 4 · NetBurst</p>
+<p>桌面替代路线继续扩展，后续加入超线程；与面向效率的 Pentium M 并行。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>4-M、Mobile Pentium4 与 PentiumM 是不同系列；同为“Pentium”不足以判断功耗和核心设计。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2004" data-year="2004">
+<tr class="month-row"><th scope="row"><span class="axis-date">2004</span><span class="axis-kind">家族记录</span></th>
+<td><article id="mobile-amd-2004-15" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2004-15" aria-label="链接到Mobile Athlon 64／Mobile Sempron">↗</a>
+<h3>Mobile Athlon 64／Mobile Sempron</h3>
+<p class="code">K8 移动 · PowerNow!</p>
+<p>AMD64 与集成内存控制器进入更多笔记本；入门 Sempron 的能力按具体型号区分。</p>
+<details><summary>依据与说明</summary>
+<p>该条记录已存在的移动家族阶段，不将桌面 Athlon64 的日期直接套用；全部子型号的日级首发未齐。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-04-062410/dex991.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-05-039876/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2004-05</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2004-05-16" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2004-05-16" aria-label="链接到Pentium M Dothan">↗</a>
+<h3>Pentium M Dothan</h3>
+<p class="code">Dothan · Pentium M</p>
+<p>90 nm、扩大 L2，延续移动效率路线；频率和架构效率分开评价。</p>
+<p class="evidence">两台 i855PM 笔记本原测：Dothan1.7GHz 对 Banias1.6GHz 的作者综合评分为 114 对 100。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>MaxdataPro8100X 对 AsusM6800N，两块电池均 65.12Wh；整机、频率和内存布局不同，不当作等频 IPC +14%。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a><a href="https://hardware-mag.de/artikel/notebooks/intel_pentium_m_735_dothan_im_praxistest/10/" target="_blank" rel="noopener noreferrer">原作者笔记本实测 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2005" data-year="2005">
+<tr class="month-row"><th scope="row"><span class="axis-date">2005-03</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2005-03-17" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2005-03-17" aria-label="链接到Turion 64">↗</a>
+<h3>Turion 64</h3>
+<p class="code">Lancaster · K8</p>
+<p>面向轻薄笔记本的 K8 产品线，把 AMD64 与移动功耗分档结合。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>ML、MT 等档位和实际 OEM 机器不同，处理器标称功耗不能直接换算电池使用时间。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-06-040130/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2006" data-year="2006">
+<tr class="month-row"><th scope="row"><span class="axis-date">2006-01</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2006-01-18" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2006-01-18" aria-label="链接到Core Solo／Core Duo">↗</a>
+<h3>Core Solo／Core Duo</h3>
+<p class="code">Yonah · 65 nm</p>
+<p>Yonah 用单核和双核产品覆盖移动市场，共享缓存和动态功耗管理成为重点。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>Core Duo 是 32 位 CPU；双核收益与单线程性能不是同一个指标。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2006-05</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2006-05-19" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2006-05-19" aria-label="链接到Turion 64 X2">↗</a>
+<h3>Turion 64 X2</h3>
+<p class="code">Taylor / Trinidad · K8 双核</p>
+<p>AMD64 双核进入 Turion，移动平台扩展到 DDR2 与新的插座体系。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>是双核与平台更新，不是把所有单线程程序自动加速两倍。</p>
+<div class="sources"><a href="https://ir.amd.com/sec-filings/content/0001193125-07-044191/0001193125-07-044191.pdf" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2006-08</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2006-08-20" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2006-08-20" aria-label="链接到Core 2 Duo 移动版">↗</a>
+<h3>Core 2 Duo 移动版</h3>
+<p class="code">Merom · Core 2</p>
+<p>Merom 将 Core 路线和 64 位能力带入笔记本，后续覆盖更广功耗档位。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>移动采用节点与 Conroe 桌面批次分开；不能从 Core2 品牌推定所有型号缓存相同。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickreffam.htm" target="_blank" rel="noopener noreferrer">Intel 家族档案 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2008" data-year="2008">
+<tr class="month-row"><th scope="row"><span class="axis-date">2008</span><span class="axis-kind">发布 / 家族记录</span></th>
+<td><article id="mobile-amd-2008-21" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2008-21" aria-label="链接到Turion X2 Ultra／Puma 平台">↗</a>
+<h3>Turion X2 Ultra／Puma 平台</h3>
+<p class="code">Griffin · Puma 平台</p>
+<p>继续采用 K8 衍生移动核心，配合平台级电源管理和集成图形改善笔记本方案。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>此处 Puma 是平台名称，和后来低功耗 APU 的 Puma CPU 核不是同一概念。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-09-036235/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2008-22" class="event intel" data-tags="turn event">
+<a class="permalink" href="#mobile-intel-2008-22" aria-label="链接到Atom 进入上网本">↗</a>
+<h3>Atom 进入上网本</h3>
+<p class="code">Bonnell · Atom N270 / N280</p>
+<p>Diamondville 与低价、小型笔记本结合，形成不同于 Core 的低功耗路线。</p>
+<div class="tags"><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>这里收上网本分支；MID、手机与嵌入式 Atom 不借同品牌全部并入。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickrefyr.htm" target="_blank" rel="noopener noreferrer">Intel 官方年表 ↗</a><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2008-01</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2008-01-23" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2008-01-23" aria-label="链接到45 nm Core 2 移动版">↗</a>
+<h3>45 nm Core 2 移动版</h3>
+<p class="code">Penryn · Core 2 Duo</p>
+<p>Penryn 对工艺、缓存与指令能力继续优化，覆盖常规和低压笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<div class="sources"><a href="https://www.intel.com/pressroom/kits/quickrefyr.htm" target="_blank" rel="noopener noreferrer">Intel 官方年表 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2009" data-year="2009">
+<tr class="month-row"><th scope="row"><span class="axis-date">2009</span><span class="axis-kind">发布 / 家族记录</span></th>
+<td><article id="mobile-amd-2009-24" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2009-24" aria-label="链接到Turion II 移动平台">↗</a>
+<h3>Turion II 移动平台</h3>
+<p class="code">Caspian · Tigris 平台</p>
+<p>45 nm 与 K10 衍生产品进入主流笔记本，延续双核和移动功耗管理。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-10-035218/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-11-040392/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2009-25" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2009-25" aria-label="链接到Pine Trail／Atom N450">↗</a>
+<h3>Pine Trail／Atom N450</h3>
+<p class="code">Pineview · Bonnell</p>
+<p>CPU 与图形、内存控制相关功能进一步整合，继续面向上网本。</p>
+<details><summary>依据与说明</summary>
+<p>保留平台批次的月级记录；整机续航还受屏幕、电池与厂商设计影响。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article>
+<article id="mobile-intel-2009-26" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2009-26" aria-label="链接到第一代移动 Core i7">↗</a>
+<h3>第一代移动 Core i7</h3>
+<p class="code">Nehalem · Clarksfield</p>
+<p>Clarksfield 将 Nehalem 四核、超线程与 Turbo Boost 带入性能笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>高性能四核与后续轻薄双核不是同一块硅；按具体型号和整机功耗比较。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/archive/releases/2010/20100107comp_sm.htm" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2009-01</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2009-01-27" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2009-01-27" aria-label="链接到Athlon Neo：超轻薄路线">↗</a>
+<h3>Athlon Neo：超轻薄路线</h3>
+<p class="code">Athlon Neo · Yukon</p>
+<p>Yukon 平台以低压 x86 服务轻薄笔记本；后续继续扩展双核配置。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>这是低功耗移动定位，不能直接套用同名桌面 Athlon 的性能与散热条件。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-10-035218/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2010" data-year="2010">
+<tr class="month-row"><th scope="row"><span class="axis-date">2010</span><span class="axis-kind">年度记录</span></th>
+<td><article id="mobile-amd-2010-28" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2010-28" aria-label="链接到Phenom II 移动">↗</a>
+<h3>Phenom II 移动</h3>
+<p class="code">Champlain · Danube 平台</p>
+<p>K10 移动产品扩展到双核、三核与四核，笔记本型号开始明显分层。</p>
+<details><summary>依据与说明</summary>
+<p>型号内的 N/P 等功耗定位、缓存和核心数需分别核对。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0001193125-11-040392/d10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2010-01-07</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2010-01-07-29" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2010-01-07-29" aria-label="链接到第一代移动 Core i3／i5">↗</a>
+<h3>第一代移动 Core i3／i5</h3>
+<p class="code">Westmere · Arrandale</p>
+<p>Arrandale 的 32 nm CPU 与图形位于同封装不同裸片，补齐移动 Core i 主流线。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>不是整个封装都用 32 nm 单片制造；Clarksfield 四核与 Arrandale 双核并存。</p>
+<div class="sources"><a href="https://www.intel.com/pressroom/archive/releases/2010/20100107comp_sm.htm" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2011" data-year="2011">
+<tr class="month-row"><th scope="row"><span class="axis-date">2011—2012</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-2011-30" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2011-30" aria-label="链接到Cedar Trail／Atom">↗</a>
+<h3>Cedar Trail／Atom</h3>
+<p class="code">Cedarview · Saltwell</p>
+<p>32 nm Saltwell 路线延续上网本，N2600／N2800 与同品牌手机 SoC 分开。</p>
+<details><summary>依据与说明</summary>
+<p>这里只取笔记本家族记录；精确供货批次仍需具体型号档案，不将一条 Atom 日期套给所有市场。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2011-01</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2011-01-31" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2011-01-31" aria-label="链接到第二代移动 Core：Sandy Bridge">↗</a>
+<h3>第二代移动 Core：Sandy Bridge</h3>
+<p class="code">Sandy Bridge · HD Graphics 3000</p>
+<p>CPU、图形与环形互连进一步整合，AVX、Quick Sync 与新一代媒体路径进入笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>这里记录移动产品家族；媒体引擎转码不等同于纯 CPU 计算，低压双核和高性能四核也不同。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/709/live-a-visual-life-with-intel-at-ces-2011" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2011-01-04</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2011-01-04-32" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2011-01-04-32" aria-label="链接到Brazos：Bobcat 低功耗 APU">↗</a>
+<h3>Brazos：Bobcat 低功耗 APU</h3>
+<p class="code">Ontario / Zacate · Bobcat</p>
+<p>C/E 系列把 Bobcat CPU 与集成显卡结合，面向小型和入门笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>低功耗 APU 与主流 Llano 使用不同 CPU 核，不是同一种架构缩小频率。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/168/amd-fusion-apu-era-begins" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2011-06-14</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2011-06-14-33" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2011-06-14-33" aria-label="链接到Llano 移动 APU">↗</a>
+<h3>Llano 移动 APU</h3>
+<p class="code">Sabine · Llano · Stars + Sumo</p>
+<p>A 系列把 Stars CPU 与集成图形结合，覆盖主流笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>核显帧率、CPU 应用与双通道内存收益分别看；不使用桌面 FM1 的发布日。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/360/amd-ushers-in-next-generation-of-computing-with-amd-a-series-apus" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2012" data-year="2012">
+<tr class="month-row"><th scope="row"><span class="axis-date">2012-04-23</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2012-04-23-34" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2012-04-23-34" aria-label="链接到第三代移动 Core：Ivy Bridge">↗</a>
+<h3>第三代移动 Core：Ivy Bridge</h3>
+<p class="code">Ivy Bridge · 22 nm</p>
+<p>22 nm Tri-Gate 推进工艺，HD4000 改善图形能力；高性能与低压产品分批供货。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>工艺数字不是等比例性能或续航增幅；移动与桌面虽然同架构，配置和散热边界不同。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/577/3rd-generation-intel-core-processors-bring-exciting" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2012-05-15</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2012-05-15-35" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2012-05-15-35" aria-label="链接到Trinity">↗</a>
+<h3>Trinity</h3>
+<p class="code">Trinity · Piledriver</p>
+<p>Piledriver 与核显组合进入笔记本，继续改善 APU 平台和功耗策略。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>模块共享资源，宣传的核心数不足以单独预测单线程与浮点表现。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/86/second-generation-amd-a-series-apus-enable-best-in-class-pc-mobility-entertainment-and-gaming-experience-in-single-chip" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2013" data-year="2013">
+<tr class="month-row"><th scope="row"><span class="axis-date">2013</span><span class="axis-kind">家族记录</span></th>
+<td><article id="mobile-amd-2013-36" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2013-36" aria-label="链接到Kabini／Temash">↗</a>
+<h3>Kabini／Temash</h3>
+<p class="code">Jaguar · Kabini / Temash</p>
+<p>Jaguar 低功耗 SoC 覆盖入门笔记本、平板及二合一方案。</p>
+<details><summary>依据与说明</summary>
+<p>这里取移动 PC 分支；嵌入式与家用游戏主机的同类核心不一起排名。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/72/amd-unveils-innovative-new-apus-and-socs-that-give-consumers-a-more-exciting-and-immersive-experience" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-16-000111/amd-12262015x10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2013-37" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2013-37" aria-label="链接到Bay Trail 移动 PC">↗</a>
+<h3>Bay Trail 移动 PC</h3>
+<p class="code">Silvermont · Bay Trail</p>
+<p>Silvermont 乱序执行进入低功耗移动路线，Atom 平板与 Pentium/Celeron N 产品并行。</p>
+<details><summary>依据与说明</summary>
+<p>此条保留移动平台月级阶段；上网本/二合一配置与服务器 C2000 分开。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/507/intel-launches-low-power-high-performance-silvermont" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2013-03-12</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2013-03-12-38" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2013-03-12-38" aria-label="链接到Richland">↗</a>
+<h3>Richland</h3>
+<p class="code">Richland · Piledriver</p>
+<p>在 Trinity 路线上继续调优频率、电源管理与软件体验。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>属于既有架构演进，不是又一次从零设计的 CPU 核。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/215/new-amd-a-series-apu-offers-mobile-pc-users-innovative-experiences-elite-graphics-performance-and-longer-battery-life" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2013-06-04</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2013-06-04-39" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2013-06-04-39" aria-label="链接到第四代移动 Core：Haswell">↗</a>
+<h3>第四代移动 Core：Haswell</h3>
+<p class="code">Haswell · U / M / H</p>
+<p>U 系列与低功耗状态推动轻薄本设计，AVX2 和图形配置继续扩展。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>续航是整机结果；15W U 与高性能 H/M 的持续性能不能只按 i5/i7 名称比较。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/499/innovation-reinvention-on-intel-architecture-fuel-wave" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2014" data-year="2014">
+<tr class="month-row"><th scope="row"><span class="axis-date">2014-04-29</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2014-04-29-40" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2014-04-29-40" aria-label="链接到Beema／Mullins">↗</a>
+<h3>Beema／Mullins</h3>
+<p class="code">Puma · Beema / Mullins</p>
+<p>Puma 低功耗核继续服务轻薄、入门和二合一设备，并引入独立安全子系统。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>与较早 Puma 笔记本平台同名，但这里是 CPU 核路线；不是把相隔多代的两者视作同一架构。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/510/next-generation-mobile-apus-extend-amd-performance-leadership-add-cutting-edge-features-and-enhanced-security" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2014-06-04</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2014-06-04-41" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2014-06-04-41" aria-label="链接到Kaveri 移动">↗</a>
+<h3>Kaveri 移动</h3>
+<p class="code">Kaveri · Steamroller</p>
+<p>Steamroller 与 GCN、HSA 扩展到笔记本 A/FX 系列。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>“Compute Cores”包含 GPU 计算单元；CPU 核数和 GPU 单元不能相加为通用核心。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/528/amd-announces-its-most-advanced-mobile-apus-for-consumer-and-commercial-notebooks" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2014-09-05</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2014-09-05-42" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2014-09-05-42" aria-label="链接到Core M：14 nm 先进入移动">↗</a>
+<h3>Core M：14 nm 先进入移动</h3>
+<p class="code">Broadwell-Y · Core M</p>
+<p>Broadwell-Y 面向无风扇和二合一设计；更低功耗同时限制持续重载能力。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>Core M 是产品线；它先于大范围 Broadwell-U，不能用后续 U 系列日期覆盖其出现。</p>
+<div class="sources"><a href="https://timeline.intel.com/2014/breaking-the-14-nanometer-barrier%3A-the-intel-core-m" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2015" data-year="2015">
+<tr class="month-row"><th scope="row"><span class="axis-date">2015</span><span class="axis-kind">家族记录 / 家族扩线</span></th>
+<td><article id="mobile-amd-2015-43" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2015-43" aria-label="链接到Carrizo-L">↗</a>
+<h3>Carrizo-L</h3>
+<p class="code">Puma 衍生 · Carrizo-L</p>
+<p>低功耗移动 APU 延续 Puma 系路线，与 Excavator 版 Carrizo 并行。</p>
+<details><summary>依据与说明</summary>
+<p>同一平台销售名称下存在不同核心，笔记本实际配置比宣传系列名更有辨识度。</p>
+<div class="sources"><a href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-16-000111/amd-12262015x10k.htm" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2015-44" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2015-44" aria-label="链接到Braswell">↗</a>
+<h3>Braswell</h3>
+<p class="code">Airmont · Braswell</p>
+<p>Airmont 延续低功耗路线，Pentium／Celeron N 覆盖低价移动 PC。</p>
+<details><summary>依据与说明</summary>
+<p>系列名称变化不意味着转到高性能 Core 大核；此处只保留季度级产品记录。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article>
+<article id="mobile-intel-2015-45" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2015-45" aria-label="链接到Cherry Trail 二合一">↗</a>
+<h3>Cherry Trail 二合一</h3>
+<p class="code">Cherry Trail · Airmont</p>
+<p>Atom x5/x7-Z8xxx 将 Airmont 路线用于可运行通用 PC 系统的二合一设备。</p>
+<details><summary>依据与说明</summary>
+<p>与 Braswell 的 N 系列并行；手机 Atom x3 与专用嵌入式产品不混入这一格。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article>
+<article id="mobile-intel-2015-46" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2015-46" aria-label="链接到第五代移动 Core：Broadwell-U">↗</a>
+<h3>第五代移动 Core：Broadwell-U</h3>
+<p class="code">Broadwell-U / H</p>
+<p>14 nm 扩展到主流低压笔记本，后续高性能 H 线继续分批补齐。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>Core M、U、H 的产品定位和发布时间不同；不把同一代号视为一套相同核显与功耗配置。</p>
+<div class="sources"><a href="https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-16-000105/a10kdocument12262015q4.htm" target="_blank" rel="noopener noreferrer">原作者资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2015-06-02</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2015-06-02-47" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2015-06-02-47" aria-label="链接到Carrizo">↗</a>
+<h3>Carrizo</h3>
+<p class="code">Carrizo · Excavator</p>
+<p>Excavator 与 GCN 以更高 SoC 集成度进入移动 APU，面向主流笔记本与二合一。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>Carrizo-L 使用低功耗 CPU 路线，不能继承高性能 Carrizo 的核心描述。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/616/amd-unveils-6th-generation-a-series-processor-bringing-unprecedented-hd-streaming-online-gaming-and-innovative-computing-experiences-to-notebooks-and-all-in-ones" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2015-09-01</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2015-09-01-48" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2015-09-01-48" aria-label="链接到第六代移动 Core：Skylake">↗</a>
+<h3>第六代移动 Core：Skylake</h3>
+<p class="code">Skylake · U / H / Y</p>
+<p>DDR4、图形与平台能力继续更新，移动 U/H 与 Y 进一步分化。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>系列最高配置不代表每台机器都具备相同接口、内存或图形能力。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1193/introducing-6th-generation-intel-core-intels-best" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2016" data-year="2016">
+<tr class="month-row"><th scope="row"><span class="axis-date">2016</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-2016-49" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2016-49" aria-label="链接到Apollo Lake">↗</a>
+<h3>Apollo Lake</h3>
+<p class="code">Goldmont · Apollo Lake</p>
+<p>Goldmont 进入低价笔记本，延续 Pentium／Celeron N 的低功耗产品定位。</p>
+<details><summary>依据与说明</summary>
+<p>Atom 衍生核与同年 Core 大核产品并行，不按 Pentium 品牌推断微架构。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2016-04-05</span><span class="axis-kind">可用公告</span></th>
+<td><article id="mobile-amd-2016-04-05-50" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2016-04-05-50" aria-label="链接到Bristol Ridge 提前供应">↗</a>
+<h3>Bristol Ridge 提前供应</h3>
+<p class="code">Bristol Ridge Mobile · Excavator</p>
+<p>部分笔记本提前获得第七代移动 APU，HP ENVY x360 是原稿给出的整机锚点。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>这是局部整机提前可用事件；后续全线发布单列，不挪用桌面 AM4 的日期。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/679/amd-accelerates-availability-of-mobile-7th-generation-amd-a-series-processors" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2016-05-31</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2016-05-31-51" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2016-05-31-51" aria-label="链接到第七代移动 A 系列">↗</a>
+<h3>第七代移动 A 系列</h3>
+<p class="code">Excavator · Bristol / Stoney Ridge</p>
+<p>Bristol Ridge／Stoney Ridge 延续 Excavator，覆盖不同功耗和价格的笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>同名桌面 AM4 产品是另一组发布节点；A/FX/E 的品牌不是 Zen 代际。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/689/work-faster-play-longer-with-new-mobile-7th-generation-amd-a-series-processors" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2016 Q3</span><span class="axis-kind">发布季度</span></th>
+<td></td>
+<td><article id="mobile-intel-2016-Q3-52" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2016-Q3-52" aria-label="链接到第七代移动 Core：Kaby Lake-U/Y">↗</a>
+<h3>第七代移动 Core：Kaby Lake-U/Y</h3>
+<p class="code">Kaby Lake-U / Y</p>
+<p>14 nm 优化与硬件媒体能力更新，低压主流仍以双核为主。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>高性能 H 产品后续扩线；HEVC/VP9 专用解码不是通用 CPU 性能增长。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/sku/95451/intel-core-i77500u-processor-4m-cache-up-to-3-50-ghz/specifications.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://www.intel.com/content/www/us/en/ark/products/codename/82879/products-formerly-kaby-lake.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2017" data-year="2017">
+<tr class="month-row"><th scope="row"><span class="axis-date">2017</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-2017-53" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2017-53" aria-label="链接到Gemini Lake">↗</a>
+<h3>Gemini Lake</h3>
+<p class="code">Goldmont Plus · Gemini Lake</p>
+<p>Goldmont Plus 更新低价移动 PC，继续以 Pentium Silver／Celeron N 销售。</p>
+<details><summary>依据与说明</summary>
+<p>Gold/Silver 是产品分层信息，不足以单独判断是否为高性能 Core 大核。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2017 Q1</span><span class="axis-kind">扩线季度</span></th>
+<td></td>
+<td><article id="mobile-intel-2017-Q1-54" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2017-Q1-54" aria-label="链接到Kaby Lake-H">↗</a>
+<h3>Kaby Lake-H</h3>
+<p class="code">Kaby Lake-H</p>
+<p>四核八线程继续覆盖性能笔记本，7700HQ 等成为同代 H 线代表。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>H 与 U 的核心规模和功耗差异显著，同代型号不能只按 i7 评级比较。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html" target="_blank" rel="noopener noreferrer">Intel 规格目录 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2017-08-21</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2017-08-21-55" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2017-08-21-55" aria-label="链接到第八代低压 Core：U 系列四核">↗</a>
+<h3>第八代低压 Core：U 系列四核</h3>
+<p class="code">Kaby Lake-R · 8250U / 8550U</p>
+<p>Kaby Lake Refresh 将主流 U 系列扩到 4 核 8 线程，是轻薄本的扩核节点。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>核心数翻倍不是所有程序速度翻倍；实际持续功耗和散热决定机器能否长期维持高频。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/210/new-8th-gen-intel-core-processors-simplifying-today" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2017-10-26</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2017-10-26-56" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2017-10-26-56" aria-label="链接到Ryzen Mobile 2000">↗</a>
+<h3>Ryzen Mobile 2000</h3>
+<p class="code">Raven Ridge · Ryzen 5 2500U / 7 2700U</p>
+<p>Zen 与 Vega 首次组成 Ryzen 笔记本 APU，替换旧 A/FX 移动高性能路线。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>移动 2000 使用 Zen；与同编号的桌面 Zen+ 产品分开，不用某个 OEM 后续上市日期替代首发公告。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/795/correcting-and-replacing----amd-introduces-new-ryzen-mobile-processors-the-worlds-fastest-processor-for-ultrathin-notebooks1" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2018" data-year="2018">
+<tr class="month-row"><th scope="row"><span class="axis-date">2018</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-2018-57" class="event intel" data-tags="turn event">
+<a class="permalink" href="#mobile-intel-2018-57" aria-label="链接到Kaby Lake-G">↗</a>
+<h3>Kaby Lake-G</h3>
+<p class="code">Kaby Lake-G · EMIB / Radeon</p>
+<p>CPU 与 Radeon 图形、HBM 在同封装组合，为部分性能笔记本提供独特路线。</p>
+<div class="tags"><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>这里只收笔记本采用；同平台的桌面 NUC 另列。日级首发与首批整机日期仍有档案缺口。</p>
+<div class="sources"><a href="https://www.intel.com/content/dam/support/us/en/documents/processors/CustomerSupportServicing-MobileProcessors.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2018-04</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2018-04-58" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2018-04-58" aria-label="链接到第八代高性能 Core：Coffee Lake-H">↗</a>
+<h3>第八代高性能 Core：Coffee Lake-H</h3>
+<p class="code">Coffee Lake-H · 8750H / 8850H</p>
+<p>六核进入性能笔记本，移动 i9 加入产品线，重载并行度继续上移。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>这里是移动 H 线，桌面 Coffee Lake 的更早出现不计为笔记本首发。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html" target="_blank" rel="noopener noreferrer">Intel 规格目录 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2018-08-28</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2018-08-28-59" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2018-08-28-59" aria-label="链接到Whiskey Lake-U／Amber Lake-Y">↗</a>
+<h3>Whiskey Lake-U／Amber Lake-Y</h3>
+<p class="code">Whiskey Lake-U / Amber Lake-Y</p>
+<p>同为第八代，分别更新轻薄和低功耗产品；平台连接能力和频率策略继续调整。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>与 Coffee Lake-H 不同定位；编号相同不代表相同裸片、功耗或核心数。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/130/new-8th-gen-intel-core-processors-optimize-connectivity" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2019" data-year="2019">
+<tr class="month-row"><th scope="row"><span class="axis-date">2019</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-2019-60" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2019-60" aria-label="链接到Gemini Lake Refresh">↗</a>
+<h3>Gemini Lake Refresh</h3>
+<p class="code">Goldmont Plus · Refresh</p>
+<p>低功耗 N/J 线继续刷新频率，入门笔记本仍走独立于 Core 的路线。</p>
+<details><summary>依据与说明</summary>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2019-01-06</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2019-01-06-61" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2019-01-06-61" aria-label="链接到Ryzen Mobile 3000">↗</a>
+<h3>Ryzen Mobile 3000</h3>
+<p class="code">Picasso · Ryzen 3500U / 3750H</p>
+<p>Picasso 将 Zen+ 与 Vega 带入低压及 H 系列笔记本，Athlon 移动线同时扩展。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>与同号桌面 Ryzen3000 的 Zen2 不同；核心架构必须按移动型号核对。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/870/amd-kicks-off-2019-offering-complete-mobile-portfolio-new-ryzen-athlon-and-a-series-processors-for-ultrathin-mainstream-and-chromebook-laptops" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2019-04-23</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2019-04-23-62" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2019-04-23-62" aria-label="链接到第九代移动 Core">↗</a>
+<h3>第九代移动 Core</h3>
+<p class="code">Coffee Lake-H Refresh · 9750H / 9980HK</p>
+<p>Coffee Lake-H Refresh 将顶配扩到 8 核 16 线程，进一步服务高性能游戏本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>45W 等标称值不是整机实际持续供电上限；散热和 BIOS 可改变多核表现。</p>
+<div class="sources"><a href="https://download.intel.com/newsroom/2021/archive/2019-04-23-news-9th-gen-intel-core-mobile-h-series.pdf" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2019-08</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2019-08-63" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2019-08-63" aria-label="链接到第十代 Comet Lake-U/Y">↗</a>
+<h3>第十代 Comet Lake-U/Y</h3>
+<p class="code">Comet Lake-U / Y</p>
+<p>14 nm 路线延续，部分 U 型号扩到六核，与 Ice Lake 并行销售。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>品牌代数不再能单独表达制程、核心与图形；应保存具体型号和整机功耗。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html" target="_blank" rel="noopener noreferrer">Intel 规格目录 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2019-08-01</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2019-08-01-64" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2019-08-01-64" aria-label="链接到第十代 Ice Lake">↗</a>
+<h3>第十代 Ice Lake</h3>
+<p class="code">Ice Lake-U/Y · Sunny Cove</p>
+<p>10 nm、Sunny Cove 与 Gen11 图形进入轻薄本；CPU 和图形路线同时变化。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>同为第十代的 Comet Lake 仍沿用不同 CPU 路线；G7 等图形后缀也不等于 CPU 核心更多。</p>
+<div class="sources"><a href="https://download.intel.com/newsroom/2021/archive/2019-08-01-news-intel-launches-first-10th-gen-intel-core-processors-redefining-next-era-laptop-experiences.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2020" data-year="2020">
+<tr class="month-row"><th scope="row"><span class="axis-date">2020-01-06</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2020-01-06-65" class="event amd is-leap" data-tags="leap turn release">
+<a class="permalink" href="#mobile-amd-2020-01-06-65" aria-label="链接到Ryzen Mobile 4000：Renoir">↗</a>
+<h3>Ryzen Mobile 4000：Renoir</h3>
+<p class="code">Renoir · Zen 2 + Vega</p>
+<p>7 nm 单片 Zen2 APU 将最高 8 核带到 U 系列，H/HS 同时服务性能笔记本。</p>
+<p class="evidence">XMG Core15 同机身原测：4800H 的 R20 多核比 10750H 快约 60%，Handbrake 快约 49%。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag leap">显著提升</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>AMD/Intel 持续 CPU 功耗约 72W/75W，均 RTX2060、16GB 双通道内存；是八核对六核的产品比较，不是等频 IPC。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/926/amd-announces-worlds-highest-performance-desktop-and-ultrathin-laptop-processors-at-ces-2020" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://www.techspot.com/review/2075-same-laptop-different-cpu-productivity/" target="_blank" rel="noopener noreferrer">原作者同机身实测 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2020-04-02</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2020-04-02-66" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2020-04-02-66" aria-label="链接到第十代 Comet Lake-H">↗</a>
+<h3>第十代 Comet Lake-H</h3>
+<p class="code">Comet Lake-H · 10750H / 10875H</p>
+<p>高性能移动线继续 14 nm 与高频方向，最高八核覆盖 H/HK。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>与同代 Ice Lake-U 的 CPU/图形配置不同，不能合成一个“第十代平均提升”。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html" target="_blank" rel="noopener noreferrer">Intel 规格目录 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2020-06-10</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2020-06-10-67" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2020-06-10-67" aria-label="链接到Lakefield：移动混合核试验">↗</a>
+<h3>Lakefield：移动混合核试验</h3>
+<p class="code">1 Sunny Cove + 4 Tremont</p>
+<p>Foveros 堆叠与大小核组合进入超轻薄和折叠 PC，为后续混合路线提供早期商用节点。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>Alder Lake 并非 Intel 第一次商用混合 CPU；Lakefield 的产品规模与定位不同。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1078/intel-hybrid-processors-uncompromised-pc-experiences-for" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2020-09-02</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2020-09-02-68" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2020-09-02-68" aria-label="链接到第十一代 Tiger Lake-U">↗</a>
+<h3>第十一代 Tiger Lake-U</h3>
+<p class="code">Tiger Lake · Willow Cove / Xe-LP</p>
+<p>Willow Cove、10 nm SuperFin 与 Xe-LP 图形进入轻薄本，平台支持 Thunderbolt4 等能力。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>高性能八核 H45 是另一批产品；核显能力取决于 EU 数量、内存和厂商功耗设置。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1411/intel-launches-worlds-best-processor-for-thin-and-light" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2021" data-year="2021">
+<tr class="month-row"><th scope="row"><span class="axis-date">2021</span><span class="axis-kind">家族记录</span></th>
+<td></td>
+<td><article id="mobile-intel-2021-69" class="event intel" data-tags="event">
+<a class="permalink" href="#mobile-intel-2021-69" aria-label="链接到Jasper Lake">↗</a>
+<h3>Jasper Lake</h3>
+<p class="code">Tremont · Pentium Silver / Celeron N</p>
+<p>Tremont 核进入低价 N 系列移动 PC，继续服务入门笔记本。</p>
+<details><summary>依据与说明</summary>
+<p>仅取移动 PC 版本；工业 Elkhart Lake 和服务器 Atom 不混入本篇。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/docs/processors/atom/technical-resources.html" target="_blank" rel="noopener noreferrer">Intel Atom 技术档案 ↗</a><a href="https://www.intel.com/content/www/us/en/newsroom/news/ces-2021-four-new-processor-families.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2021-01-11</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2021-01-11-70" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2021-01-11-70" aria-label="链接到Tiger Lake-H35">↗</a>
+<h3>Tiger Lake-H35</h3>
+<p class="code">Tiger Lake-H35 · 4C/8T</p>
+<p>四核高性能移动分支面向超便携游戏本，与后续八核 H45 区分。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>H35 与 H45 不只是同一颗芯片换一个功耗数字；核心规模、定位和图形配置不同。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/newsroom/news/ces-2021-four-new-processor-families.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2021-01-12</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2021-01-12-71" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2021-01-12-71" aria-label="链接到Ryzen Mobile 5000">↗</a>
+<h3>Ryzen Mobile 5000</h3>
+<p class="code">Cezanne / Lucienne · Zen 3 / Zen 2</p>
+<p>Cezanne 使用 Zen3，但部分 5000U 延续 Zen2 Lucienne；数字相近不保证同一架构。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>5800U/5600U 与 5700U/5500U 应按核心分开；Vega 核显也没有随 CPU 名字切换成 RDNA。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/986/amd-announces-worlds-best-mobile-processors-in-ces-2021-keynote" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2021-05</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2021-05-72" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2021-05-72" aria-label="链接到Tiger Lake-H45">↗</a>
+<h3>Tiger Lake-H45</h3>
+<p class="code">Tiger Lake-H · 11800H / 11980HK</p>
+<p>Willow Cove 扩展到最高八核高性能笔记本，补齐 H45 的核心规模。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>同属第十一代，和较早轻薄四核的核心数、图形资源、功耗都不同。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html" target="_blank" rel="noopener noreferrer">Intel 规格目录 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2022" data-year="2022">
+<tr class="month-row"><th scope="row"><span class="axis-date">2022-01-04</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2022-01-04-73" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2022-01-04-73" aria-label="链接到Ryzen Mobile 6000">↗</a>
+<h3>Ryzen Mobile 6000</h3>
+<p class="code">Rembrandt · Zen 3+ + RDNA 2</p>
+<p>Zen3+、6 nm 与 RDNA2 图形进入笔记本，配合 DDR5/LPDDR5 平台。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>图形架构变化和 CPU 核心效率分别评价；新内存平台的成本和带宽影响整机选择。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1040/amd-presents-latest-high-performance-computing-technologies-in-2022-product-premiere-livestream" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2022-01-04-74" class="event intel is-leap" data-tags="leap turn release">
+<a class="permalink" href="#mobile-intel-2022-01-04-74" aria-label="链接到第十二代移动 Core：Alder Lake-H">↗</a>
+<h3>第十二代移动 Core：Alder Lake-H</h3>
+<p class="code">Golden Cove + Gracemont · Intel 7</p>
+<p>P/E 混合核进入移动 H 线，同时披露 P/U 规格；性能本与后续轻薄本分批扩线。</p>
+<p class="evidence">XMG/Uniwill 原测：同为 PL1 45W，12700H 的 R23 多线程比 11800H 约快 27%；75W 档约快 36%。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag leap">显著提升</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>测试机使用 DDR5-4800、PL2 115W；这里的瓦数是 CPU 限制。插座读数仍有差异，不能据相同 PL1 宣称整机能效同比例提高。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1517/intel-engineers-fastest-mobile-processor-ever-with-12th-gen" target="_blank" rel="noopener noreferrer">官方资料 ↗</a><a href="https://www.techspot.com/review/2410-intel-core-i7-12700h/" target="_blank" rel="noopener noreferrer">原作者笔记本实测 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2022-02-23</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2022-02-23-75" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2022-02-23-75" aria-label="链接到Alder Lake-P／U 正式扩线">↗</a>
+<h3>Alder Lake-P／U 正式扩线</h3>
+<p class="code">Alder Lake-P / U · P + E</p>
+<p>P 系列 28W 与 U 系列 9/15W 面向轻薄笔记本，补齐移动混合核产品栈。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>较早公布规格不等于全部整机已交付；本节点记录 P/U 的正式产品扩线，实际整机分批上市。</p>
+<div class="sources"><a href="https://download.intel.com/newsroom/archive/2025/en-us-2022-02-23-intel-expands-mobile-leadership-brings-enthusiast-performance-to-thinandlight-laptops.pdf" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2022-05</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2022-05-76" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2022-05-76" aria-label="链接到Alder Lake-HX">↗</a>
+<h3>Alder Lake-HX</h3>
+<p class="code">Alder Lake-HX</p>
+<p>桌面来源的更大核心规模进入厚重性能本，最高 16 核面向重载。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>HX 并非普通 U 系列的直接替代；机身、供电和电池使用场景差异很大。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/series/122139/intel-core-processors.html" target="_blank" rel="noopener noreferrer">Intel 规格目录 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2022-09-20</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2022-09-20-77" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2022-09-20-77" aria-label="链接到Ryzen／Athlon 7020">↗</a>
+<h3>Ryzen／Athlon 7020</h3>
+<p class="code">Mendocino · Zen 2</p>
+<p>Mendocino 用 Zen2 与小规模 RDNA2 图形面向入门轻薄本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>“7”是营销系列，不表示 Zen4；这是移动新命名最容易误读的例子。</p>
+<div class="sources"><a href="https://www.amd.com/zh-tw/products/processors/laptop/ryzen/7000-series/amd-ryzen-5-7520u.html" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://www.amd.com/en/newsroom/press-releases/2022-5-22-amd-showcases-industry-leading-gaming-commercial-.html" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2023" data-year="2023">
+<tr class="month-row"><th scope="row"><span class="axis-date">2023-01-03</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2023-01-03-78" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2023-01-03-78" aria-label="链接到Intel Processor N／Core i3-N">↗</a>
+<h3>Intel Processor N／Core i3-N</h3>
+<p class="code">Gracemont · N100 / N200 / i3-N300</p>
+<p>Alder Lake-N 用纯 E 核服务低价笔记本与其他入门 PC。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>N100 四核、i3-N300 八核；“Intel Processor”是品牌，不是新的指令集。</p>
+<div class="sources"><a href="https://download.intel.com/newsroom/2023/client-computing/Intel-N-series-Processors-Media_Presentation.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://d1io3yog0oux5.cloudfront.net/_ef0e74a029a7ab7ac2a7aade0699acb6/intel/news/2023-01-03_CES_Intel_Extends_Performance_Leadership_with_1596.pdf" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article>
+<article id="mobile-intel-2023-01-03-79" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2023-01-03-79" aria-label="链接到第十三代移动 Core">↗</a>
+<h3>第十三代移动 Core</h3>
+<p class="code">Raptor Lake-HX / H / P / U</p>
+<p>Raptor Lake-HX 最高 24 核，H/P/U 则继续覆盖不同功耗层级。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>24 核顶配属于 HX；不能把 HX 的最大规格写成所有第十三代移动 CPU 的配置。</p>
+<div class="sources"><a href="https://d1io3yog0oux5.cloudfront.net/_ef0e74a029a7ab7ac2a7aade0699acb6/intel/news/2023-01-03_CES_Intel_Extends_Performance_Leadership_with_1596.pdf" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2023-01-04</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2023-01-04-80" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2023-01-04-80" aria-label="链接到Ryzen 7030">↗</a>
+<h3>Ryzen 7030</h3>
+<p class="code">Barcelo-R · Zen 3 + Vega</p>
+<p>Barcelo-R 延续 Zen3 与 Vega，属于成熟低压 APU 的重新编号。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>它和 7040、7045 同属移动 7000 大系列，但不是同一 CPU 核或相同核显。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1111/amdextends-its-leadership-with-the-introduction-of-its-broadest-portfolio-of-high-performance-pc-products-for-mobile-and-desktop" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2023-01-04-81" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2023-01-04-81" aria-label="链接到Ryzen 7035">↗</a>
+<h3>Ryzen 7035</h3>
+<p class="code">Rembrandt-R · Zen 3+ + RDNA 2</p>
+<p>Rembrandt-R 延续 Zen3+、RDNA2 与 DDR5/LPDDR5 平台。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>延续成熟平台，不因编号从 6000 到 7000 就视为 Zen3+ 被全新 CPU 核替代。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1111/amdextends-its-leadership-with-the-introduction-of-its-broadest-portfolio-of-high-performance-pc-products-for-mobile-and-desktop" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2023-01-04-82" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2023-01-04-82" aria-label="链接到Ryzen 7040">↗</a>
+<h3>Ryzen 7040</h3>
+<p class="code">Phoenix / Phoenix 2 · Zen 4 / Zen 4c</p>
+<p>Phoenix 把 Zen4、RDNA3 与部分型号的 Ryzen AI NPU 组合进移动 APU。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>NPU 只在指定型号上；后续较小配置可能混用 Zen4 与 Zen4c，缓存和核显亦不同。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1111/amdextends-its-leadership-with-the-introduction-of-its-broadest-portfolio-of-high-performance-pc-products-for-mobile-and-desktop" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2023-01-04-83" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2023-01-04-83" aria-label="链接到Ryzen 7045HX">↗</a>
+<h3>Ryzen 7045HX</h3>
+<p class="code">Dragon Range · Zen 4 · HX</p>
+<p>Dragon Range 把桌面来源 Zen4 CCD 带入高性能笔记本，最高 16 核 32 线程。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>小规模核显与高负载功耗定位不同于 Phoenix；两者不能因同为 7000 就合成平均表现。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1111/amdextends-its-leadership-with-the-introduction-of-its-broadest-portfolio-of-high-performance-pc-products-for-mobile-and-desktop" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2023-07-27</span><span class="axis-kind">型号页记录</span></th>
+<td><article id="mobile-amd-2023-07-27-84" class="event amd" data-tags="turn event">
+<a class="permalink" href="#mobile-amd-2023-07-27-84" aria-label="链接到7945HX3D：堆叠缓存进入笔记本">↗</a>
+<h3>7945HX3D：堆叠缓存进入笔记本</h3>
+<p class="code">Ryzen 9 7945HX3D · 16C/32T · 128 MB L3</p>
+<p>Dragon Range 的 Zen4 加入 3D V-Cache，ROG Strix SCAR17 X3D 成为代表整机。</p>
+<div class="tags"><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>链接路径与页面产品名不完全一致，按页面确认的 7945HX3D 记录；型号页日期不等于所有地区整机同时现货。</p>
+<div class="sources"><a href="https://www.amd.com/en/products/processors/laptop/ryzen/7000-series/amd-ryzen-9-7950hx3d.html" target="_blank" rel="noopener noreferrer">AMD 官方型号档案 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2023-12-06</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2023-12-06-85" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2023-12-06-85" aria-label="链接到Ryzen 8040">↗</a>
+<h3>Ryzen 8040</h3>
+<p class="code">Hawk Point · 8845HS / 8945HS</p>
+<p>Hawk Point 延续 Zen4 与 RDNA3，重点更新 NPU 能力与 AI 软件路径。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>8040 不是 Zen5；部分型号没有独立 NPU，整个系列不能都套用宣传最高 TOPS。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1172/amd-extends-mobile-pc-leadership-with-amd-ryzen-8040-series-processors-and-makes-ryzen-ai-software-widely-available-advancing-the-ai-pc-era" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2023-12-14</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2023-12-14-86" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2023-12-14-86" aria-label="链接到Core Ultra 100：Meteor Lake">↗</a>
+<h3>Core Ultra 100：Meteor Lake</h3>
+<p class="code">Redwood Cove + Crestmont + LP-E</p>
+<p>分块封装、低功耗 E 核与 NPU 进入 Core Ultra，H/U 产品与普通 Core 并行。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>计算 tile 与其他 tile 采用不同工艺；整机续航、CPU/GPU/NPU 吞吐分别比较。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/newsroom/news/core-ultra-client-computing-news-1.htm" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2024" data-year="2024">
+<tr class="month-row"><th scope="row"><span class="axis-date">2024-01-08</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2024-01-08-87" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2024-01-08-87" aria-label="链接到Core 100U／Series 1">↗</a>
+<h3>Core 100U／Series 1</h3>
+<p class="code">Core 7 / 5 / 3 · Raptor Lake-U Refresh</p>
+<p>不带 Ultra 的 Core7/5/3 延续 Raptor Lake-U，覆盖主流低压笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>与 Core Ultra100 并非同一种 CPU；是否有 NPU、核显规模和工艺不能只按三位数判断。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1667/ces-2024-intel-delivers-new-high-level-compute-solutions" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://download.intel.com/newsroom/2024/client-computing/Media-Deck-Intel-Core-Processors-HXU-Mobile-65-35W-Desktop.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article>
+<article id="mobile-intel-2024-01-08-88" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2024-01-08-88" aria-label="链接到第十四代移动 Core HX">↗</a>
+<h3>第十四代移动 Core HX</h3>
+<p class="code">Raptor Lake-HX Refresh · 14900HX / 14700HX</p>
+<p>Raptor Lake-HX Refresh 继续服务游戏本和重载笔记本，主要调整频率与部分核心配置。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>不是 Meteor Lake；同年产品品牌分叉，i9 与 Ultra 不能互相替代。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1667/ces-2024-intel-delivers-new-high-level-compute-solutions" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2024-06-02</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2024-06-02-89" class="event amd" data-tags="turn release">
+<a class="permalink" href="#mobile-amd-2024-06-02-89" aria-label="链接到Ryzen AI 300">↗</a>
+<h3>Ryzen AI 300</h3>
+<p class="code">Strix Point · HX 370 / 365</p>
+<p>Strix Point 将 Zen5/Zen5c、RDNA3.5 与 XDNA2 组合进轻薄移动平台。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>此处采用首发公告，不照搬与历史公告矛盾的动态型号页字段；NPU TOPS 不代表 CPU 单核或多核速度。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1202/amd-unveils-next-gen-zen-5-ryzen-processors-to-power-advanced-ai-experiences" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2024-09-03</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2024-09-03-90" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2024-09-03-90" aria-label="链接到Core Ultra 200V：Lunar Lake">↗</a>
+<h3>Core Ultra 200V：Lunar Lake</h3>
+<p class="code">Lion Cove + Skymont · Lunar Lake</p>
+<p>4P+4E、封装内存与 Xe2 图形面向轻薄本；P 核不再使用超线程。</p>
+<p class="evidence">ZenbookS14 等原测，约 22 分钟 PCMark10 场景：258V 封装平均略低于 9W，155H 接近 16W。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>各机默认设置，且封装内存改变计量边界；是 CPU 封装遥测，不是整机功率或续航翻倍，多核满载应另看。</p>
+<div class="sources"><a href="https://newsroom.intel.com/client-computing/keynote-core-ultra-200v-series-mobile" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://www.notebookcheck.net/Intel-Lunar-Lake-CPU-analysis-The-Core-Ultra-7-258V-s-multi-core-performance-is-disappointing-but-its-everyday-efficiency-is-good.893405.0.html" target="_blank" rel="noopener noreferrer">原作者能耗分析 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2024 Q4</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2024-Q4-91" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2024-Q4-91" aria-label="链接到Core 200H／Series 2">↗</a>
+<h3>Core 200H／Series 2</h3>
+<p class="code">Core 7 250H / Core 5 220H</p>
+<p>普通 Core 的 H 线继续采用 Raptor Lake 衍生核心，与 Ultra 系列保持分叉。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>按官方季度记录；没有将整个普通 200H 系列推迟到下一轮 CES，也不把它当作 Arrow Lake。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/details/processors/core/series-2.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+</tbody>
+<tbody id="year-2025" data-year="2025">
+<tr class="month-row"><th scope="row"><span class="axis-date">2025 Q1</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2025-Q1-92" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2025-Q1-92" aria-label="链接到Core 200U／Series 2">↗</a>
+<h3>Core 200U／Series 2</h3>
+<p class="code">Core 7 250U / Core 5 220U</p>
+<p>不带 Ultra 的 U 系列继续 Raptor Lake 衍生路线，与 Core200H 的季度不同。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>普通 Core 与 Core Ultra 同时销售，型号中的 Ultra 字样有实质区分意义。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/products/sku/238771/intel-core-7-processor-250u-12m-cache-up-to-5-40-ghz/specifications.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://www.intel.com/content/www/us/en/products/details/processors/core/series-2.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article>
+<article id="mobile-intel-2025-Q1-93" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2025-Q1-93" aria-label="链接到Twin Lake／N 系列刷新">↗</a>
+<h3>Twin Lake／N 系列刷新</h3>
+<p class="code">Twin Lake · N / Core 3 N</p>
+<p>N150、N250 与 Core3 N350 等继续覆盖低价移动 PC，延续 E 核路线。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>不是所有 N 系列都为四核，也不代表进入性能 P 核架构。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/ark/products/codename/238004/products-formerly-twin-lake.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2025-01-06</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2025-01-06-94" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2025-01-06-94" aria-label="链接到Ryzen 200">↗</a>
+<h3>Ryzen 200</h3>
+<p class="code">Hawk Point / Hawk Point Refresh</p>
+<p>不带 AI 前缀的移动 200 系列延续 Zen4 路线，覆盖成熟主流笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>不是早期 Ryzen2000 的简称；部分低端型号混用 Zen4/Zen4c，且无独立 NPU。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1232/amd-announces-expanded-consumer-and-commercial-ai-pc-portfolio-at-ces" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2025-01-06-95" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2025-01-06-95" aria-label="链接到Ryzen 9000HX／HX3D">↗</a>
+<h3>Ryzen 9000HX／HX3D</h3>
+<p class="code">Fire Range · 9955HX / 9955HX3D</p>
+<p>Fire Range 将 Zen5 桌面 CCD 与可选 3D V-Cache 带入高性能笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>它与 Ryzen AI300 的单片 APU 不是同一设计；高核数、缓存、核显与续航应分别比较。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1233/amd-announces-new-graphics-and-gaming-products-for-ultimate-gameplay-experience-at-ces" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2025-01-06-96" class="event amd" data-tags="release">
+<a class="permalink" href="#mobile-amd-2025-01-06-96" aria-label="链接到Ryzen AI 300 扩线">↗</a>
+<h3>Ryzen AI 300 扩线</h3>
+<p class="code">Krackan Point · Ryzen AI 7 350 等</p>
+<p>Krackan Point 等配置扩展 Zen5/Zen5c APU 的功耗和价格覆盖。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>更低价型号可能减少 CPU、核显和缓存规模；同属 AI300 并非全部等同 HX370。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1232/amd-announces-expanded-consumer-and-commercial-ai-pc-portfolio-at-ces" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2025-01-06-97" class="event amd is-leap" data-tags="leap turn release">
+<a class="permalink" href="#mobile-amd-2025-01-06-97" aria-label="链接到Ryzen AI Max">↗</a>
+<h3>Ryzen AI Max</h3>
+<p class="code">Strix Halo · Zen 5 + RDNA 3.5</p>
+<p>Strix Halo 把最高 16 核 Zen5、40CU 图形与宽内存接口组合进移动 SoC。</p>
+<p class="evidence">Flow Z13 原测：AI Max+395 在持续约 70W 的 Turbo 模式，多核比旧款 13900H 机器高约 50–70%。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag leap">显著提升</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>32GB LPDDR5X-8000、短时约 86W；不同机型和功耗预算的比较。大型核显是另一项收益，不当作 CPU 提速，也不代表安静模式保持相同成绩。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1232/amd-announces-expanded-consumer-and-commercial-ai-pc-portfolio-at-ces" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a><a href="https://www.notebookcheck.net/Asus-ROG-Flow-Z13-GZ302EA-Convertible-Review-AMD-s-Strix-Halo-GPU-is-neck-and-neck-with-the-RTX-4070-Laptop.963266.0.html" target="_blank" rel="noopener noreferrer">原作者二合一实测 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2025-01-06-98" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2025-01-06-98" aria-label="链接到Core Ultra 200H">↗</a>
+<h3>Core Ultra 200H</h3>
+<p class="code">Lion Cove + Skymont + LP-E</p>
+<p>Arrow Lake-H 用新一代 P/E 核与低功耗 E 核覆盖高性能轻薄笔记本。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>高性能 H 与低功耗 U 虽同编号，CPU 核设计和工艺不同；P 核取消超线程。</p>
+<div class="sources"><a href="https://d1io3yog0oux5.cloudfront.net/_e1df4b2e16a695782160a442d8457838/intel/news/2025-01-06_Intel_Extends_Leadership_in_AI_PCs_and_Edge_1722.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://arstechnica.com/gadgets/2025/01/intel-rounds-out-core-ultra-200-laptop-cpus-with-new-but-less-advanced-models/" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article>
+<article id="mobile-intel-2025-01-06-99" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2025-01-06-99" aria-label="链接到Core Ultra 200HX">↗</a>
+<h3>Core Ultra 200HX</h3>
+<p class="code">Arrow Lake-HX · 285HX / 275HX</p>
+<p>Arrow Lake-HX 面向厚重性能本，最高 24 核 24 线程，延续桌面来源的规模路线。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>其图形与 NPU 配置不等于 200H；多线程上限必须结合持续功耗和机身散热看。</p>
+<div class="sources"><a href="https://d1io3yog0oux5.cloudfront.net/_e1df4b2e16a695782160a442d8457838/intel/news/2025-01-06_Intel_Extends_Leadership_in_AI_PCs_and_Edge_1722.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article>
+<article id="mobile-intel-2025-01-06-100" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2025-01-06-100" aria-label="链接到Core Ultra 200U">↗</a>
+<h3>Core Ultra 200U</h3>
+<p class="code">Redwood Cove + Crestmont + LP-E · Intel 3</p>
+<p>Ultra 的 U 线继续采用 Redwood Cove 与 Crestmont，而非 H/HX 的新一代核心组合。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>官方代号分类与实际 CPU 核心代际是不同字段；P 核保留超线程，不能套用 200V/H/HX 的线程配置。</p>
+<div class="sources"><a href="https://d1io3yog0oux5.cloudfront.net/_e1df4b2e16a695782160a442d8457838/intel/news/2025-01-06_Intel_Extends_Leadership_in_AI_PCs_and_Edge_1722.pdf" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://arstechnica.com/gadgets/2025/01/intel-rounds-out-core-ultra-200-laptop-cpus-with-new-but-less-advanced-models/" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a><a href="https://www.pcworld.com/article/2568168/intel-debuts-arrow-lake-for-laptops-with-core-h-hx-chips.html" target="_blank" rel="noopener noreferrer">Intel 原始资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2025-02-18</span><span class="axis-kind">型号页记录</span></th>
+<td><article id="mobile-amd-2025-02-18-101" class="event amd" data-tags="event">
+<a class="permalink" href="#mobile-amd-2025-02-18-101" aria-label="链接到Ryzen AI 5 340">↗</a>
+<h3>Ryzen AI 5 340</h3>
+<p class="code">Krackan Point · Zen 5 / Zen 5c</p>
+<p>Krackan Point 的更低价位配置进入型号档案，继续扩展 AI300 笔记本产品。</p>
+<details><summary>依据与说明</summary>
+<p>型号页的 LaunchDate 与整个家族首次公布是不同事件；CPU、核显和 NPU 资源分别核对。</p>
+<div class="sources"><a href="https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-5-340.html" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2025-04-23</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2025-04-23-102" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2025-04-23-102" aria-label="链接到Ryzen 8000HX">↗</a>
+<h3>Ryzen 8000HX</h3>
+<p class="code">Dragon Range Refresh · 8945HX</p>
+<p>Dragon Range Refresh 继续用 Zen4 服务高性能本，与 Zen5 的 9000HX 并行。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>8945HX 与 8945HS 不是只换后缀的同款芯片；HX 与 HS 的封装、核显和功耗定位不同。</p>
+<div class="sources"><a href="https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-9-8945hx.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2025-10-01</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2025-10-01-103" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2025-10-01-103" aria-label="链接到Ryzen 100：Rembrandt 分支">↗</a>
+<h3>Ryzen 100：Rembrandt 分支</h3>
+<p class="code">Rembrandt · Ryzen 7 170</p>
+<p>Ryzen7 170 等用 Zen3+ 与 RDNA2 覆盖成熟移动平台，采用新的三位数销售编号。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>没有 AI 前缀；同一个 Ryzen100 系列后续出现不同 Zen 核心，编号不足以判断架构。</p>
+<div class="sources"><a href="https://www.amd.com/en/products/processors/laptop/ryzen/100-series/amd-ryzen-7-170.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+<tbody id="year-2026" data-year="2026">
+<tr class="month-row"><th scope="row"><span class="axis-date">2026-01-05</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2026-01-05-104" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2026-01-05-104" aria-label="链接到Ryzen AI 400">↗</a>
+<h3>Ryzen AI 400</h3>
+<p class="code">Gorgon Point · Ryzen AI 9 HX 470 等</p>
+<p>Gorgon Point 延续 Zen5/Zen5c 与 RDNA3.5，提升部分型号的 NPU 上限并扩展配置。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>是成熟移动 AI 平台刷新；部分宣传指标针对 NPU，不是 CPU 全部负载的统一增幅。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1270/amd-expands-ai-leadership-across-client-graphics-and-software-with-new-ryzen-ryzen-ai-and-amd-rocm-announcements-at-ces-2026" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article>
+<article id="mobile-amd-2026-01-05-105" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2026-01-05-105" aria-label="链接到Ryzen AI Max+ 扩展型号">↗</a>
+<h3>Ryzen AI Max+ 扩展型号</h3>
+<p class="code">Strix Halo · Max+ 392 / 388</p>
+<p>Max+ 392／388 为 Strix Halo 增加 CPU 与图形配置选择，延续大核显移动平台。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>新增型号不等于出现新的 Zen 微架构；各型号应分别核对 CPU 核数和 GPU 单元数。</p>
+<div class="sources"><a href="https://ir.amd.com/news-events/press-releases/detail/1270/amd-expands-ai-leadership-across-client-graphics-and-software-with-new-ryzen-ryzen-ai-and-amd-rocm-announcements-at-ces-2026" target="_blank" rel="noopener noreferrer">AMD 原始资料 ↗</a></div></details></article></td>
+<td><article id="mobile-intel-2026-01-05-106" class="event intel" data-tags="turn release">
+<a class="permalink" href="#mobile-intel-2026-01-05-106" aria-label="链接到Core Ultra Series 3：Panther Lake">↗</a>
+<h3>Core Ultra Series 3：Panther Lake</h3>
+<p class="code">Cougar Cove + Darkmont · Panther Lake</p>
+<p>Intel18A 与新 CPU 核组合进入移动，CPU、Xe3 图形和 NPU 继续按型号分层。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag turn">平台转折</span></div>
+<details><summary>依据与说明</summary>
+<p>架构预览、产品发布与整机上市是不同事件；本条采用正式产品公布日，旗舰 GPU 规格不能套给全系列。</p>
+<div class="sources"><a href="https://www.intc.com/news-events/press-releases/detail/1757/ces-2026-intel-core-ultra-series-3-debuts-as-first-built?pubDate=20260105" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2026-03-17</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2026-03-17-107" class="event intel" data-tags="continuity release">
+<a class="permalink" href="#mobile-intel-2026-03-17-107" aria-label="链接到Core Ultra 200HX Plus">↗</a>
+<h3>Core Ultra 200HX Plus</h3>
+<p class="code">Arrow Lake-HX Refresh</p>
+<p>290HX Plus／270HX Plus 延续 Arrow Lake-HX，调整频率、互连和软件优化路径。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>不是 Panther Lake；应用专门优化的结果也不能代表所有软件同幅度变快。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-launches-core-ultra-200hx-plus-series-mobile-processors.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2026-04-16</span><span class="axis-kind">发布</span></th>
+<td></td>
+<td><article id="mobile-intel-2026-04-16-108" class="event intel" data-tags="release">
+<a class="permalink" href="#mobile-intel-2026-04-16-108" aria-label="链接到普通 Core Series 3">↗</a>
+<h3>普通 Core Series 3</h3>
+<p class="code">Core Series 3 · Intel 18A</p>
+<p>不带 Ultra 的 Core7/5/3 把 Intel18A 与新核心路线扩展到更主流移动 PC。</p>
+<div class="tags"><span class="tag release">产品发布</span></div>
+<details><summary>依据与说明</summary>
+<p>本文只取笔记本分支；同代平台的边缘/工业用途不混入移动消费记录。</p>
+<div class="sources"><a href="https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-launches-intel-core-series-3-processors-changing-the-game-for-everyday-computing.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+</tr>
+<tr class="month-row"><th scope="row"><span class="axis-date">2026-06-02</span><span class="axis-kind">发布</span></th>
+<td><article id="mobile-amd-2026-06-02-109" class="event amd" data-tags="continuity release">
+<a class="permalink" href="#mobile-amd-2026-06-02-109" aria-label="链接到Ryzen 100：Hawk Point 分支">↗</a>
+<h3>Ryzen 100：Hawk Point 分支</h3>
+<p class="code">Hawk Point · Ryzen 9 180</p>
+<p>Ryzen9 180 使用 Zen4 与 RDNA3，和同系列的 Rembrandt 配置不同。</p>
+<div class="tags"><span class="tag release">产品发布</span><span class="tag enduring">架构延续</span></div>
+<details><summary>依据与说明</summary>
+<p>同为三位数 100 系列不代表同一种 CPU 核；官网 LaunchDate 为此型号字段，不代替全部 OEM 整机首销日。</p>
+<div class="sources"><a href="https://www.amd.com/en/products/processors/laptop/ryzen/100-series/amd-ryzen-9-180.html" target="_blank" rel="noopener noreferrer">官方资料 ↗</a></div></details></article></td>
+<td></td>
+</tr>
+</tbody>
+</table></div><p class="empty-message" data-empty hidden>没有匹配记录。可清空搜索或选择“全部记录”。</p></section>
+<section id="references" class="reference-notes" aria-label="范围与资料口径"><div><h2>移动篇的范围</h2><p>只记录 AMD、Intel 面向笔记本、二合一和上网本的 CPU/SoC 家族及主要分支。包括轻薄 U/P、性能 H/HS/HX，以及低价 Atom/N 路线；手机、专用掌机、桌面和服务器另篇处理。</p><p>发布日期、型号页 LaunchDate、家族存续记录和整机可用公告分别标在左轴。旧原件不足时保留时间范围，不挪用桌面首发，也不把发布时的预计供货写成已经全球上市。</p><p>每个销售代际内部仍有不同核数、缓存、图形、NPU、封装和功耗档。本表按家族与主要代际记录，未逐项列出所有 OEM 型号和频率档。</p></div><div><h2>如何看移动平台的提升</h2><p>整机散热、CPU 持续功耗、短时加速、电池、屏幕和内存都会影响结果。显著提升卡保留真实笔记本/二合一测试条件；CPU 多核、图形帧率、NPU TOPS 与续航不合成一个排名。</p><p>“架构延续”表示原有 CPU 核或平台在新编号中继续销售，不代表全部整机性能相同。“平台转折”记录核心/封装/电源管理方向变化，不保证每项程序都更快。</p><ul><li><a href="research/material-mobile-cpu-amd-evidence.md">AMD 移动取证笔记</a> / <a href="research/material-mobile-cpu-intel-evidence.md">Intel 移动取证笔记</a></li><li><a href="research/README.md">历史材料总索引</a> / <a href="research/material-cpu-evaluation-and-sources.md">评价与基准口径</a></li><li><a href="desktop-cpu-timeline.html">上一篇：桌面 CPU 编年史</a> / <a href="index.html">CPU 专题目录</a></li></ul></div></section>
+<a class="back-top" href="#top">返回顶部 ↑</a><footer class="article-footer"><p><em>作者：[AI-Authored Tech Chronicles]</em></p><p><em>系列：《CPU 编年史》第二篇 · 移动 CPU</em></p><p><em>分析基于：AMD 与 Intel 官方发布稿、历史产品目录、年报及规格资料 + TechSpot、Notebookcheck、Hardware-Magazin 原作者笔记本实测 + Intel 向 Ars Technica／PCWorld 的架构直接确认，资料读取于 2026-10-28</em></p></footer>
+</main></body></html>

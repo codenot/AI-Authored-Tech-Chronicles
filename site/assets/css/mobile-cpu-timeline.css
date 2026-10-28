@@ -1,0 +1,29 @@
+/* 移动篇仅有两家厂商，完整日期集中在左轴，卡片不设置日期区。 */
+.mobile-chronicle .hero { padding-top:44px; }
+.mobile-chronicle .timeline col.axis { width:136px; }
+.mobile-chronicle .month-row > th { padding:20px 13px; }
+.mobile-chronicle .axis-date { display:block; margin:0; color:#46545d; font:600 12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace; white-space:nowrap; }
+.mobile-chronicle .axis-kind { display:block; margin-top:5px; color:var(--muted); font-size:10px; }
+.mobile-chronicle .event { padding:16px 18px 12px; }
+.mobile-chronicle .event h3 { padding-right:20px; font-size:17px; }
+.mobile-chronicle .event .permalink { position:absolute; right:13px; top:15px; }
+.mobile-chronicle .event .code { margin-top:7px; }
+.mobile-chronicle .event p { font-size:13px; }
+.mobile-chronicle .event .evidence,.mobile-chronicle .event details p { font-size:11px; }
+.mobile-chronicle .timeline tbody:nth-of-type(even) .month-row > th { background-color:#efefe8; }
+.mobile-chronicle .compact .event { padding:11px 14px; }
+@media (max-width:900px) {
+  .mobile-chronicle .timeline { min-width:790px; }
+  .mobile-chronicle .timeline col.axis { width:116px; }
+  .mobile-chronicle .axis-date { font-size:11px; }
+  .mobile-chronicle .event { padding:13px; }
+  .mobile-chronicle .event h3 { font-size:16px; }
+  .mobile-chronicle .event p { font-size:12px; }
+}
+@media print {
+  .mobile-chronicle .timeline { min-width:0; }
+  .mobile-chronicle .timeline col.axis { width:90px; }
+  .mobile-chronicle .axis-date { font-size:9px; }
+  .mobile-chronicle .event h3 { font-size:12px; }
+  .mobile-chronicle .event p { font-size:10px; }
+}
